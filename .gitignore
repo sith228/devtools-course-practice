@@ -1,0 +1,11 @@
+build/
+build_cmake/
+code-build/
+Testing/
+dashboard/
+
+*.user
+
+.DS_Store
+
+*.*~
