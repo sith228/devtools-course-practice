@@ -14,9 +14,7 @@
 ## Ресурсы
 
  - [CDash Dashboard][cdash]
- - Коммуникация
-   - [Gitter chat][gitter]
-   - [Google-группа][mailing-list]
+ - Коммуникация: [Gitter chat][gitter]
  - [Таблица успеваемости][hall-of-fame]
  - Теория
    - [Слайды в HTML][html]
