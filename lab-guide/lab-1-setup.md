@@ -27,7 +27,7 @@
 ## Задачи
 
   1. Подготовить рабочее окружение
-     - Установить и настоить все необходимые инструменты
+     - Установить и настроить все необходимые инструменты
      - Получить исходные коды, построить проект и запустить имеющиеся тесты
   1. Реализовать несколько модульных тестов на уже существующий компонент
   1. Интегрировать свои изменения в центральный репозиторий
@@ -41,14 +41,14 @@
   1. Зарегистрируйтесь на GitHub. Создайте свой форк [центрального
      репозитория][central-repo] и склонируйте его к себе на машину.
   1. Соберите проект и убедитесь в его работоспособности, запустив модульные
-     тесты на компонент `kornyakov-kirill-zcalc`. Изучите общую организацию
+     тесты на компонент `complex-number`. Изучите общую организацию
      данного компонента.
   1. В отдельной ветке Git выполните задание лабораторной работы:
-     - Создайте новую ветку Git с именем вида `kornyakov-lab1`.
+     - Создайте новую ветку Git с именем вида `YOUR-NAME-lab1`.
      - В директории
-       `devtools-course-practice/modules/kornyakov-kirill-zcalc/test/` заведите
+       `devtools-course-practice/modules/complex-number/test/` заведите
        свой личный файл для тестов с именем вида
-       `test_kornyakov_kirill_complex_number.cpp`.
+       `test_YOUR_NAME_complex_number.cpp`.
      - Реализуйте в этом файле не менее 5 тестов на класс `ComplexNumber`. Если
        некоторые из ваших тестов будут падать по причине некорректной, на ваш
        взгляд, реализации, стоит оставить тесты, но приписать в начало их имени
@@ -56,10 +56,14 @@
        найденный дефект.
      - Убедитесь, что ваши тесты компилируются и запускаются вместе с
        остальными.
-  1. Пошлите свои изменения в виде pull request на GitHub и пройдите рецензию
-     кода (два сокурсника и преподаватель).
+  1. Включите тестирование своего форка на TravisCI и убедитесь, что ваши
+     изменения успешно проходят тестирование. Для этого пошлите свои изменения в
+     виде pull request на GitHub в свой же репозиторий.
+  1. Когда вы убедитесь в корректности своего кода, пошлите свои изменения в
+     виде pull request на GitHub и пройдите рецензию кода (два сокурсника и
+     преподаватель).
      - Убедитесь, что ваши тесты компилируются и запускаются вместе с
-       остальными уже на [TravisCI][travis].
+       остальными уже на центральном [TravisCI][travis].
 
 ## Типичные ошибки
 
@@ -68,7 +72,7 @@
 
   - Работа велась в ветке с именем `master`.
   - Изменение файлов вне своего личного файла. Так, например, файл
-    `test_kornyakov_kirill_complex_number.cpp` должен остаться неизменным.
+    `test_korniakov_kirill_complex_number.cpp` должен остаться неизменным.
   - Ваши тесты должны быть уникальны, нельзя просто копировать уже имеющиеся.
     Постарайтесь протестировать какие-то интересные и нетривиальные случаи.
 
@@ -86,8 +90,8 @@
   1. Инсталлируйте приложение CMake.
   1. Инсталлируйте IDE QtCreator. В принципе, вы можете разрабатываться в IDE
      Microsoft Visual Studio, любой другой IDE, или в простом текстовом
-     редакторе. CMake допускает все эти варианты, только преподаватели не всегда
-     смогут вам помочь.
+     редакторе. CMake допускает все эти варианты, но преподаватели не всегда
+     смогут вам помочь, если окружение не будет стандартным.
 
 ### Выполнение лабораторной
 
@@ -101,19 +105,26 @@
      исходники от результатов компиляции. Далее скомпилируйте проект в IDE,
      запустите тесты и убедитесь, что все они проходят.
 
+  1. Также полезно попробовать выполнить тестирование из консольной строки. Для
+     этого нужно открыть консоль, перейти в корень директории с проектом и
+     запустить команду ниже. Имено эта команда используется для тестирования на
+     CI сервере, поэтому полезно пользоваться ей локально.
+
+        $ ctest -VV -S devtools_test.cmake
+
   1. Создайте новый файл для своих собственных тестов. Ему нужно дать имя вида
-     `test_kornyakov_kirill_complex_number.cpp` и разместить в директории
-     `devtools-course-practice/modules/kornyakov-kirill-zcalc/test/`. Можете
+     `test_korniakov_kirill_complex_number.cpp` и разместить в директории
+     `devtools-course-practice/modules/complex-number/test/`. Можете
      использовать следующую заготовку для начала.
 
      ```cpp
-     // Copyright 2016 Kornyakov Kirill
+     // Copyright 2017 Korniakov Kirill
 
      #include <gtest/gtest.h>
 
      #include "include/complex_number.h"
 
-     TEST(Kornyakov_Kirill_ComplexNumberTest, Can_Create_Zero) {
+     TEST(Korniakov_Kirill_ComplexNumberTest, Can_Create_Zero) {
          // Arrange
          double re = 0.0;
          double im = 0.0;
@@ -134,7 +145,7 @@
          Copyright [year] <Copyright Owner>
          ```
 
-       - В качестве отступов не должны использоваться символы табуляции. Можно
+       - В качестве отступов не должны использоваться символы табуляции. Нужно
          использовать последовательность из пробелов.
        - Подробнее про требования по стилю кода можно прочитать здесь -
          [Google C++ Style Guide][style-guide]
@@ -146,18 +157,22 @@
      выполнения своего теста:
 
      ```txt
-     [----------] 1 test from Kornyakov_Kirill_ComplexNumberTest
-     [ RUN      ] Kornyakov_Kirill_ComplexNumberTest.Can_Create_Zero
-     [       OK ] Kornyakov_Kirill_ComplexNumberTest.Can_Create_Zero (0 ms)
-     [----------] 1 test from Kornyakov_Kirill_ComplexNumberTest (0 ms total)
+     [----------] 1 test from Korniakov_Kirill_ComplexNumberTest
+     [ RUN      ] Korniakov_Kirill_ComplexNumberTest.Can_Create_Zero
+     [       OK ] Korniakov_Kirill_ComplexNumberTest.Can_Create_Zero (0 ms)
+     [----------] 1 test from Korniakov_Kirill_ComplexNumberTest (0 ms total)
      ```
 
   1. Теперь вы готовы к тому, чтобы реализовать свои собственные тесты. Добавьте
-     не менее 5 штук в файл `test_kornyakov_kirill_complex_number.cpp`, всякий
-     раз убеждаясь, что проект все еще компилируется, и все тесты проходят.
+     не менее 5 штук в файл `test_korniakov_kirill_complex_number.cpp`, всякий
+     раз убеждаясь, что проект все еще компилируется, и все тесты проходят. Для
+     этого можно запускать тестирование в IDE или из командной строки:
+
+             $ ctest -VV -S devtools_test.cmake
+
      Время от времени делайте локальные коммиты:
 
-        $ git add test_kornyakov_kirill_complex_number.cpp
+        $ git add test_korniakov_kirill_complex_number.cpp
         $ git commit -m "Added new tests for lab1"
 
   1. Далее сделайте `git push` в свой форк проекта:
@@ -167,30 +182,47 @@
   1. Если нужно будет что-то поправить, используйте следующие команды:
 
         # Editing file with tests ...
-        $ git add test_kornyakov_kirill_complex_number.cpp
+        $ git add test_korniakov_kirill_complex_number.cpp
         $ git commit -m "Updated tests"
         $ git push origin HEAD
 
 Когда вы посчитаете, что закончили реализацию новых тестов, можно перейти к
-процедуре интеграции в центральный репозиторий. И следующий шаг — это пройти
-рецензию кода от сокурсников.
+процедуре интеграции в центральный репозиторий.
+
+### Тестирование на Travis-CI
+
+  1. Зайдите на https://travis-ci.org и залогинтесь при помощи своего GitHub
+     аккаунта. Включите тестирование своего репозитория как было показано на
+     лекции. Для этого нужно обновить список своих репозиториев и включить
+     тестирование на своем форке репозитория `devtools-course-practice`.
+  1. Затем необходимо необходимо сделать [pull-request][help-pr] в свой же
+     репозиторий. В названии pull-request нужно указать свою фамилию и номер
+     лабораторной, например _"Корняков - Лабораторная работа #0"_.
+  1. Когда вы это сделаете, Travis должен будет запустить тестирование. Зайдите
+     на страничку с билдом и убедитесь, что все конфигурации успешно прошли
+     тестирование.
+  1. Если выявились какие-то проблемы, исправьте их, и обновите pull-request:
+
+        # Editing files ...
+        $ git commit -m "Updated tests"
+        $ git push origin HEAD
 
 ### Ревью кода
 
-  1. Первым делом необходимо сделать [pull-request][help-pr] в центральный
-     репозиторий. В названии pull-request нужно указать свою фамилию и номер
-     лабораторной, например _"Корняков - Лабораторная работа #0"_.
+  1. Затем необходимо необходимо сделать [pull-request][help-pr] в центральный
+     репозиторий. В своем форке пулл-реквест вы можете закрыть, поскольку эти
+     коммиты потом придут к вам из `upstream/master`.
   1. Первым делом необходимо убедиться, что успешно прошло тестирование на
-     [Travis CI][travis]. Вероятность того, что что-то пойдет не так невелика,
+     [Travis CI][travis]. Вероятность того, что что-то пойдет не так -- невелика,
      но ниже приведены инструкции на тот случай, если что-то нужно поправить.
   1. Далее необходимо пройти ревью кода от двух своих сокурсников. Пригласите их
      к дискуссии, дабавив в pull reqeust комментарий вида @github-name (например
-     @kirill-kornyakov).
+     @kirill-korniakov).
   1. Если будут замечания к вашему коду, вам нужно добавлять коммиты в
      свою ветку, и пулл-реквест будет автоматически обновляться.
 
         # Editing file with tests ...
-        $ git add test_kornyakov_kirill_complex_number.cpp
+        $ git add test_korniakov_kirill_complex_number.cpp
         $ git commit -m "Updated tests"
         $ git push origin HEAD
 
@@ -208,25 +240,10 @@
 [topics]:       https://docs.google.com/spreadsheet/ccc?key=0AsBBkrQIoSbjdEdTUFRsaUw3LV92eVhwXzYtb0tZNHc#gid=3
 [travis]:       https://travis-ci.org/UNN-VMK-Software/devtools-course-practice/pull_requests
 [central-repo]: https://github.com/UNN-VMK-Software/devtools-course-practice
-
 [help-git-mp2]: https://github.com/UNN-VMK-Software/mp2-lab1-set#Инструкция-по-выполнению-работы
 [help-git]:     https://help.github.com/articles/set-up-git
 [help-fork]:    https://help.github.com/articles/fork-a-repo
 [help-pr]:      https://help.github.com/articles/using-pull-requests
 [gfm]:          https://help.github.com/articles/github-flavored-markdown
 [imworkflow]:   https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow
-
 [style-guide]:  https://google.github.io/styleguide/cppguide.html
-
-<!-- BACKUP
-  1. Выберите себе свободную тему из [списка][topics], вписав свое имя и группу.
-
-    1. В подпапке `code` заведите папку со своим именем (вида `surname-name`), и
-     поместите туда файл `README.md`. Это будет ваша wiki страничка в формате
-     Markdown со всеми деталями о вашем проекте.
-
-        $ cd code
-        $ mkdir surname-name
-        $ cd surname-name
-        $ touch README.md
--->
