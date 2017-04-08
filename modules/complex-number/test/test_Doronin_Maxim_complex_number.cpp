@@ -40,3 +40,47 @@ TEST(Doronin_Maxim_ComplexNumberTest, Setting_imaginary_doesnt_change_real) {
     
     EXPECT_EQ(z.getRe(), Re);
 }
+
+TEST(Doronin_Maxim_ComplexNumberTest, Equal_operator_return_false_if_different) {
+    ComplexNumber z1(13.3, -17.8);
+    ComplexNumber z2(10.3, 17.8);
+    
+    ASSERT_FALSE(z1 == z2);
+}
+
+TEST(Doronin_Maxim_ComplexNumberTest, NotEqual_operator_return_false_if_equal) {
+    ComplexNumber z1(13.3, -17.8);
+    ComplexNumber z2(13.3, -17.8);
+
+    ASSERT_FALSE(z1 != z2);
+}
+
+TEST(Doronin_Maxim_ComplexNumberTest, getRe_is_const_method) {
+    double Re = 13.3;
+    double Im = -17.8;
+    ComplexNumber z(Re, Im);
+    ComplexNumber expected_z(z);
+
+    double gottenRe = z.getRe();
+
+    EXPECT_EQ(expected_z, z);
+}
+
+TEST(Doronin_Maxim_ComplexNumberTest, getIm_is_const_method) {
+    double Re = 13.3;
+    double Im = -17.8;
+    ComplexNumber z(Re, Im);
+    ComplexNumber expected_z(z);
+
+    double gottenIm = z.getIm();
+
+    EXPECT_EQ(expected_z, z);
+}
+
+TEST(Doronin_Maxim_ComplexNumberTest, assignment_to_itself) {
+    double Re = 13.3;
+    double Im = -17.8;
+    ComplexNumber z(Re, Im);
+    
+    ASSERT_NO_FATAL_FAILURE(z = z);
+}
