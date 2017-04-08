@@ -6,7 +6,7 @@
 
 TEST(Doronin_Maxim_ComplexNumberTest, Default_constructor_set_zeros) {
     ComplexNumber z;
-	
+
     EXPECT_EQ(0.0, z.getRe());
     EXPECT_EQ(0.0, z.getIm());
 }
