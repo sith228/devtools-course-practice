@@ -84,3 +84,4 @@ TEST(Doronin_Maxim_ComplexNumberTest, assignment_to_itself) {
     
     ASSERT_NO_FATAL_FAILURE(z = z);
 }
+
