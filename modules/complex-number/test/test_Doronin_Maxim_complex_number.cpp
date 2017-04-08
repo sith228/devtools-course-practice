@@ -61,7 +61,7 @@ TEST(Doronin_Maxim_ComplexNumberTest, getRe_is_const_method) {
     ComplexNumber z(Re, Im);
     ComplexNumber expected_z(z);
 
-    double gottenRe = z.getRe();
+    z.getRe();
 
     EXPECT_EQ(expected_z, z);
 }
@@ -72,7 +72,7 @@ TEST(Doronin_Maxim_ComplexNumberTest, getIm_is_const_method) {
     ComplexNumber z(Re, Im);
     ComplexNumber expected_z(z);
 
-    double gottenIm = z.getIm();
+    z.getIm();
 
     EXPECT_EQ(expected_z, z);
 }
