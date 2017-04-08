@@ -9,13 +9,13 @@
 
  - Нижегородский Государственный Университет им. Н.И. Лобачевского
  - Институт ИТММ, каф. МОСТ
- - __License:__ Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
+ - License: Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
 
 ## Ресурсы
 
- - [CDash Dashboard][cdash]
  - Коммуникация: [Gitter chat][gitter]
  - [Таблица успеваемости][hall-of-fame]
+ - [CDash Dashboard][cdash]
  - Теория
    - [Слайды в HTML][html]
    - [Исходники слайдов][theory]
@@ -39,7 +39,7 @@
 
 <!-- LINKS -->
 
-[gitter]:            https://gitter.im/UNN-VMK-Software/devtools-course-practice
+[gitter]:            https://gitter.im/devtools-course-practice/Lobby
 [license]:           http://creativecommons.org/licenses/by-sa/3.0/
 [mailing-list]:      https://groups.google.com/forum/?hl=ru#!forum/devtools-course
 [hall-of-fame]:      https://docs.google.com/spreadsheet/ccc?key=0AsBBkrQIoSbjdEdTUFRsaUw3LV92eVhwXzYtb0tZNHc#gid=5
