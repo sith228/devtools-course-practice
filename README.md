@@ -9,11 +9,10 @@
 
  - Нижегородский Государственный Университет им. Н.И. Лобачевского
  - Институт ИТММ, каф. МОСТ
- - __License:__ Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
+ - License: Creative Commons Attribution-Share Alike 3.0 ([CC BY-SA 3.0][license])
 
 ## Ресурсы
 
- - [CDash Dashboard][cdash]
  - Коммуникация: [Gitter chat][gitter]
  - [Таблица успеваемости][hall-of-fame]
  - Теория
@@ -21,6 +20,7 @@
    - [Исходники слайдов][theory]
    - [Контрольные вопросы][control-questions]
  - [Лабораторные работы][labs]
+   - [CDash Dashboard][cdash]
 
 ## Code Coverage
 
@@ -39,10 +39,9 @@
 
 <!-- LINKS -->
 
-[gitter]:            https://gitter.im/UNN-VMK-Software/devtools-course-practice
+[gitter]:            https://gitter.im/devtools-course-practice/Lobby
 [license]:           http://creativecommons.org/licenses/by-sa/3.0/
-[mailing-list]:      https://groups.google.com/forum/?hl=ru#!forum/devtools-course
-[hall-of-fame]:      https://docs.google.com/spreadsheet/ccc?key=0AsBBkrQIoSbjdEdTUFRsaUw3LV92eVhwXzYtb0tZNHc#gid=5
+[hall-of-fame]:      https://docs.google.com/spreadsheets/d/1m5rS9Faw9btVamYrwWCAzIUgrL-EvZgkaOg4tUHhmO0/edit#gid=760076616
 [labs]:              https://github.com/UNN-VMK-Software/devtools-course-theory/tree/master/lab-guide
 [control-questions]: https://github.com/UNN-VMK-Software/devtools-course-theory/blob/master/slides/control-questions.md
 [theory]:            https://github.com/UNN-VMK-Software/devtools-course-theory
