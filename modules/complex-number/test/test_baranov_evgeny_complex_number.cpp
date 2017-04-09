@@ -4,16 +4,14 @@
 
 #include "include/complex_number.h"
 
-TEST(Baranov_Evgeny_ComplexNumberTest, Can_create_zero_via_copying) {
+TEST(Baranov_Evgeny_ComplexNumberTest, cant_create_null) {
     // Arrange
-    double re = 0.0;
-    double im = 0.0;
 
     // Act
-    ComplexNumber r(re, im);
+    ComplexNumber *r=NULL;
 
     // Assert
-    ASSERT_NO_THROW(ComplexNumber(r));
+    ASSERT_ANY_THROW(ComplexNumber(*r));
 }
 
 TEST(Baranov_Evgeny_ComplexNumberTest, setRe_does_not_change_Im) {
