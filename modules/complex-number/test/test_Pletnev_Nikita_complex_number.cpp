@@ -11,7 +11,7 @@ TEST(Pletnev_Nikita_ComplexNumberTest, Assignment_Returns_The_Value) {
     ComplexNumber z2(1.0, 1.0);
 
     // Act & Assert
-    EXPECT_EQ(z2, z1=z2);
+    EXPECT_EQ(z2, z1 = z2);
 }
 
 TEST(Pletnev_Nikita_ComplexNumberTest, Divide_Zero_By_A_Complex) {
@@ -50,18 +50,18 @@ TEST(Pletnev_Nikita_ComplexNumberTest, Copy_Constructor_Works) {
     EXPECT_EQ(z1, z2);
 }
 
-TEST(Pletnev_Nikita_ComplexNumberTest, Variables_Have_Different_Memory_After_Assignment) {
+TEST(Pletnev_Nikita_ComplexNumberTest, Different_Memory_After_Assignment) {
     // Arrange
     ComplexNumber z1(1.0, 1.0);
 
     // Act
-    ComplexNumber z2=z1;
+    ComplexNumber z2 = z1;
 
     // Assert
     EXPECT_NE(&z1, &z2);
 }
 
-TEST(Pletnev_Nikita_ComplexNumberTest, Variables_Have_Different_Memory_After_Copy_Constructor) {
+TEST(Pletnev_Nikita_ComplexNumberTest, Different_Memory_After_Copy_Constr) {
     // Arrange
     ComplexNumber z1(1.0, 1.0);
 
