@@ -31,7 +31,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Can_compare_objects) {
     EXPECT_TRUE(result);
 }
 
-TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_nmbr_by_nmbr_is_equal_to_one) {
+TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_by_its_equal_to_one) {
     // Arrange
     ComplexNumber z1(3.0, 6.0);
 
