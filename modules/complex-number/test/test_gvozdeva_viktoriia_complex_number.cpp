@@ -31,7 +31,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Can_compare_objects) {
     EXPECT_TRUE(result);
 }
 
-TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_number_by_number_is_equal_to_one) {
+TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_nmbr_by_nmbr_is_equal_to_one) {
     // Arrange
     ComplexNumber z1(3.0, 6.0);
 
@@ -43,7 +43,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_number_by_number_is_equal_to
     EXPECT_DOUBLE_EQ(result.getIm(), 0.0);
 }
 
-TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_multiplication) {
+TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_mult) {
     // Arrange
     ComplexNumber z1(3.0, 6.0);
     ComplexNumber z2(2.0, 4.0);
@@ -57,7 +57,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_multiplication
     EXPECT_EQ(result, result_);
 }
 
-TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Module_of_multiplication_is_multiplication_of_modules) {
+TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Module_of_mult_is_mult_of_modules) {
     // Arrange
     double re1 = 3.0;
     double re2 = 2.0;
@@ -68,7 +68,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Module_of_multiplication_is_multiplic
 
     // Act
     ComplexNumber result = z1 * z2;
-    double module_z1= sqrt(re1 * re1 + im1 * im1);
+    double module_z1 = sqrt(re1 * re1 + im1 * im1);
     double module_z2 = sqrt(re2 * re2 + im2 * im2);
     double re_com = result.getRe();
     double re_im = result.getIm();
