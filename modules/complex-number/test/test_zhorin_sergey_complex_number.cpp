@@ -17,7 +17,7 @@ TEST(Zhorin_Sergey_ComplexNumberTest, Can_Sum_Complex_And_Complex_Without_Im) {
     EXPECT_EQ(z, expected_z);
 }
 
-TEST(Zhorin_Sergey_ComplexNumberTest, Can_Multiply_Complex_And_Complex_Without_Im) {
+TEST(Zhorin_Sergey_ComplexNumberTest, Can_Mult_Complex_And_Complex_Without_Im) {
     // Arrange
     ComplexNumber z1(1, 2);
     ComplexNumber z2(2, 0);
