@@ -1,8 +1,8 @@
 // Copyright 2017 Alexander Gaivanuk
 
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 
-#include "include\complex_number.h"
+#include "include/complex_number.h"
 
 TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_default_ctor) {
     ComplexNumber z(0.0, 0.0);
@@ -37,18 +37,18 @@ TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_assign_operator) {
     EXPECT_EQ(z, z2);
 }
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_assign_operator_applying_to_itself) {
+TEST(Gaivanuk_Alexander_ComplexNumberTest,
+    Check_assign_operator_applying_to_itself) {
     double re = -24.435;
     double im = 54.34;
     ComplexNumber z(re, im);
-    
+
     z = z;
     EXPECT_EQ(z.getRe(), re);
     EXPECT_EQ(z.getIm(), im);
 }
 
 TEST(Gaivanuk_Alexander_ComplexNumberTest, Can_set_re) {
-    
     ComplexNumber z(-35.23, 56.0);
 
     double re2 = 45.223;
