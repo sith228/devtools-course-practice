@@ -43,7 +43,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_number_by_number_is_equal_to
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_multiplication) {
 	// Arrange
-	ComplexNumber z1(3.0, 6.0);
+    ComplexNumber z1(3.0, 6.0);
 	ComplexNumber z2(2.0, 4.0);
 	ComplexNumber z3(1.0, 2.0);
 
