@@ -8,7 +8,7 @@ TEST(Baranov_Evgeny_ComplexNumberTest, cant_create_null) {
     // Arrange
 
     // Act
-    ComplexNumber *r = NULL;
+    ComplexNumber *r = nullptr;
 
     // Assert
     ASSERT_ANY_THROW(ComplexNumber(*r));
