@@ -49,14 +49,14 @@ TEST(Lapin_Artem_ComplexNumberTest, Zero_Add_Complex_Is_Equal_To_Complex) {
     ComplexNumber z2(20.0, 20.0);
 
     // Act
-    ComplexNumber z=z1+z2;
+    ComplexNumber z = z1 + z2;
 
     // Assert
     ComplexNumber expected_z = z2;
     EXPECT_EQ(expected_z, z);
 }
 
-TEST(Lapin_Artem_ComplexNumberTest, Zero_Mulriplication_Complex_Is_Equal_To_Zero) {
+TEST(Lapin_Artem_ComplexNumberTest, Zero_Mult_Complex_Is_Equal_To_Zero) {
     // Arrange
     ComplexNumber z1(0.0, 0.0);
     ComplexNumber z2(20.0, 20.0);
