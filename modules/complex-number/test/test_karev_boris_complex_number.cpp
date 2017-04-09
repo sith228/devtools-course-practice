@@ -5,7 +5,6 @@
 #include "include/complex_number.h"
 
 TEST(Karev_Boris_ComplexNumberTest, Can_add_opposite) {
-
     double re = 8.9;
     double im = 5.4;
 
@@ -18,7 +17,6 @@ TEST(Karev_Boris_ComplexNumberTest, Can_add_opposite) {
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Can_create_via_copy_constructor) {
-
     ComplexNumber z(8.9, 5.4);
     ComplexNumber z2(z);
 
@@ -26,7 +24,6 @@ TEST(Karev_Boris_ComplexNumberTest, Can_create_via_copy_constructor) {
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Commutativity_add) {
-
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(z + z2);
@@ -36,7 +33,6 @@ TEST(Karev_Boris_ComplexNumberTest, Commutativity_add) {
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Commutativity_multiplication) {
-
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(z*z2);
@@ -46,7 +42,6 @@ TEST(Karev_Boris_ComplexNumberTest, Commutativity_multiplication) {
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Associativity_add) {
-
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(10.0, 10.0);
@@ -57,7 +52,6 @@ TEST(Karev_Boris_ComplexNumberTest, Associativity_add) {
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Associativity_multiplication) {
-
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(10.0, 10.0);
