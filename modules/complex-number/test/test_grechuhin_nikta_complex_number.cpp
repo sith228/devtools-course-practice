@@ -70,7 +70,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, can_multiplication_numbers) {
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
     ComplexNumber z3;
-	z3 = z1*z2;
+    z3 = z1*z2;
 
     EXPECT_EQ(re1*re2, z3.getRe());
     EXPECT_EQ(re1*im2, z3.getIm());
