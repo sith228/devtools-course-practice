@@ -12,11 +12,11 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Multiplication_by_zero_is_zero) {
     ComplexNumber zero(0.0, 0.0);
 
     // Act
-    ComplexNumber result = z * zero;
+    ComplexNumber mult = z * zero;
 
     // Assert
-    EXPECT_DOUBLE_EQ(0.0, result.getRe());
-    EXPECT_DOUBLE_EQ(0.0, result.getIm());
+    EXPECT_EQ(zero, mult);
+
 }
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Can_compare_objects) {
@@ -37,10 +37,10 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Division_by_its_equal_to_one) {
     ComplexNumber z2(1.0, 0.0);
 
     // Act
-    ComplexNumber result = z1 / z1;
+    ComplexNumber div = z1 / z1;
 
     // Assert
-    EXPECT_DOUBLE_EQ(z2, result);
+    EXPECT_EQ(z2, div);
 }
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_mult) {
@@ -53,8 +53,8 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Check_associativity_of_mult) {
     ComplexNumber result = (z1 * z2) * z3;
 
     // Assert
-    ComplexNumber result_ = z1 * (z2 * z3);
-    EXPECT_EQ(result, result_);
+    ComplexNumber exp_result = z1 * (z2 * z3);
+    EXPECT_EQ(result, exp_result);
 }
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Module_of_mult_is_mult_of_modules) {
