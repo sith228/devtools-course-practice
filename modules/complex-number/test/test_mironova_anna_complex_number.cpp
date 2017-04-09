@@ -33,7 +33,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Can_Multiply_Purely_Imaginary_Complex) {
     EXPECT_EQ(expected_im, res.getIm());
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Difference_Zero_and_Complex_is_Opposite_Number) {
+TEST(Mironova_Anna_ComplexNumberTest, Difference_Zero_and_Complex_Opposite) {
     // Arrange
     ComplexNumber z1;
     ComplexNumber z2(-3.0, 5.0);
@@ -69,7 +69,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Check_Commutativity_Of_Addition) {
     EXPECT_TRUE(res1.getIm() == res2.getIm());
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Division_Purely_Imaginary_and_Conjugate_is_Minus_One) {
+TEST(Mironova_Anna_ComplexNumberTest, Div_Purely_Im_and_Conjugate_Minus_One) {
     // Arrange
     ComplexNumber z1(0.0, 5.0);
     ComplexNumber z2(0.0, -5.0);
@@ -82,7 +82,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Division_Purely_Imaginary_and_Conjugate_is
     EXPECT_EQ(expected_res, res);
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_is_Two_Real_Part) {
+TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_Two_Real_Part) {
     // Arrange
     ComplexNumber z1(20.0, 5.0);
     ComplexNumber z2(20.0, -5.0);
