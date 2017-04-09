@@ -1,9 +1,7 @@
 // Copyright 2017 Gvozdeva Viktoriia
 
 #include <gtest/gtest.h>
-
 #include <cmath>
-
 #include "include/complex_number.h"
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Multiplication_by_zero_is_zero) {
