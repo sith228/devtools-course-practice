@@ -30,8 +30,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Create_By_Copy) {
     EXPECT_EQ(test_number, z);
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Set_Re_and_Im)
-{
+TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Set_Re_and_Im) {
     // Arrange
     double re = 13.5;
     double im = 0.6;
@@ -46,8 +45,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Set_Re_and_Im)
     EXPECT_EQ(im, z.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Equals_operator_is_correct)
-{
+TEST(Grechuhin_Nikita_Complex_Number_Test, Equals_operator_is_correct) {
     // Arrange
     double re = 1.2;
     double im = 2.1;
@@ -61,8 +59,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Equals_operator_is_correct)
     EXPECT_EQ(true, is_correct);
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_multiplication_numbers)
-{
+TEST(Grechuhin_Nikita_Complex_Number_Test, Can_multiplication_numbers) {
     // Arrange
     double re1 = 2.0;
     double im1 = 0.0;
@@ -79,8 +76,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_multiplication_numbers)
     EXPECT_EQ(re1*im2, c.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_summerize_numbers)
-{
+TEST(Grechuhin_Nikita_Complex_Number_Test, Can_summerize_numbers) {
     // Arrange
     double re1 = 2.0;
     double im1 = 0.0;
