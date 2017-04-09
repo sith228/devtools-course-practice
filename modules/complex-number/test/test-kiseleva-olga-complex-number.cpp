@@ -4,6 +4,8 @@
 
 #include "include/complex_number.h"
 
+#include <limits>
+
 TEST(Kiseleva_Olga_ComplexNumberTest, Can_Create_Not_Zero) {
     // Arrange
     double re = 1.5;
@@ -27,22 +29,23 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Can_Change_Without_Im) {
     z.setRe(new_re);
 
     // Assert
-    EXPECT_DOUBLE_EQ(new_re,z.getRe());
+    EXPECT_DOUBLE_EQ(new_re, z.getRe());
     EXPECT_DOUBLE_EQ(old_im, z.getIm());
 }
 TEST(Kiseleva_Olga_ComplexNumberTest, Do_Throw_When_Division_By_Double_Min) {
     // Arrange
-    double min= std::numeric_limits<double>::min();
+    double min = std::numeric_limits<double>::min();
     double re = 10.2;
     double im = -89.3;
     // Act
     ComplexNumber z1(min, min);
-    ComplexNumber z2(re,im);
+    ComplexNumber z2(re, im);
 
     // Assert
-    EXPECT_ANY_THROW(z2/z1);
+    EXPECT_ANY_THROW(z2 / z1);
 }
-TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Equal_To_Itself_When_Difference_By_Double_Min) {
+TEST(Kiseleva_Olga_ComplexNumberTest,
+    Number_Is_Equal_To_Itself_Different_By_Double_Min) {
     // Arrange
     double min = std::numeric_limits<double>::min();
     double re = -50.4;
@@ -55,7 +58,8 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Equal_To_Itself_When_Difference_
     EXPECT_DOUBLE_EQ(re, expected.getRe());
     EXPECT_DOUBLE_EQ(im, expected.getIm());
 }
-TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Zero_When_Multiplication_By_Double_Min) {
+TEST(Kiseleva_Olga_ComplexNumberTest,
+    Number_Is_Zero_When_Multiplication_By_Double_Min) {
     // Arrange
     double min = std::numeric_limits<double>::min();
     double eps = std::numeric_limits<double>::epsilon();
@@ -63,9 +67,9 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Zero_When_Multiplication_By_Doub
     double im = -1679.1;
 
     // Act
-    ComplexNumber z1(re,im);
-    ComplexNumber z2(min,min);
-    ComplexNumber expected=z1*z2;
+    ComplexNumber z1(re, im);
+    ComplexNumber z2(min, min);
+    ComplexNumber expected = z1*z2;
 
     // Assert
     EXPECT_NEAR(expected.getIm(), 0.0, eps);
@@ -79,9 +83,9 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Zero_When_Division_From_Min) {
     double im = 19876;
 
     // Act
-    ComplexNumber z1(min,min);
-    ComplexNumber z2(re,im);
-    ComplexNumber expected = z1/z2;
+    ComplexNumber z1(min, min);
+    ComplexNumber z2(re, im);
+    ComplexNumber expected = z1 / z2;
 
     // Assert
     EXPECT_NEAR(expected.getIm(), 0.0, eps);
