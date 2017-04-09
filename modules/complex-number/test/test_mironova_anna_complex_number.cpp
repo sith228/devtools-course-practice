@@ -10,13 +10,13 @@ TEST(Mironova_Anna_ComplexNumberTest, Can_Get_Imaginary) {
     ComplexNumber z(0.0, im);
 
     // Act
-    double actual_im=z.getIm();
+    double actual_im = z.getIm();
 
     // Assert
-    EXPECT_EQ(im,actual_im);
+    EXPECT_EQ(im, actual_im);
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Can_Multiply_Purely_Imaginary_Complex_and_Complex) {
+TEST(Mironova_Anna_ComplexNumberTest, Can_Multiply_Purely_Imaginary_Complex) {
     // Arrange
     ComplexNumber z1;
     ComplexNumber z2(-3.0, 5.0);
@@ -29,11 +29,11 @@ TEST(Mironova_Anna_ComplexNumberTest, Can_Multiply_Purely_Imaginary_Complex_and_
     double expected_im = z2.getRe();
 
     // Assert
-    EXPECT_EQ(expected_re,res.getRe());
+    EXPECT_EQ(expected_re, res.getRe());
     EXPECT_EQ(expected_im, res.getIm());
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Difference_Between_Zero_and_Complex_is_Opposite_Number) {
+TEST(Mironova_Anna_ComplexNumberTest, Difference_Zero_and_Complex_is_Opposite_Number) {
     // Arrange
     ComplexNumber z1;
     ComplexNumber z2(-3.0, 5.0);
@@ -69,7 +69,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Check_Commutativity_Of_Addition) {
     EXPECT_TRUE(res1.getIm() == res2.getIm());
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Division_Purely_Imaginary_Complex_and_Conjugate_Complex_is_Minus_One) {
+TEST(Mironova_Anna_ComplexNumberTest, Division_Purely_Imaginary_and_Conjugate_is_Minus_One) {
     // Arrange
     ComplexNumber z1(0.0, 5.0);
     ComplexNumber z2(0.0, -5.0);
@@ -79,17 +79,17 @@ TEST(Mironova_Anna_ComplexNumberTest, Division_Purely_Imaginary_Complex_and_Conj
     ComplexNumber expected_res(-1.0, 0.0);
 
     // Assert
-    EXPECT_EQ(expected_res,res);
+    EXPECT_EQ(expected_res, res);
 }
 
-TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_Complex_is_Two_Real_Part) {
+TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_is_Two_Real_Part) {
     // Arrange
     ComplexNumber z1(20.0, 5.0);
     ComplexNumber z2(20.0, -5.0);
 
     // Act
     ComplexNumber res = z1+z2;
-    double expected_re=40.0;
+    double expected_re = 40.0;
     double expected_im = 0.0;
 
     // Assert
