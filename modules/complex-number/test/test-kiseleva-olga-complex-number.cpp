@@ -2,9 +2,9 @@
 
 #include <gtest/gtest.h>
 
-#include "include/complex_number.h"
-
 #include <limits>
+
+#include "include/complex_number.h"
 
 TEST(Kiseleva_Olga_ComplexNumberTest, Can_Create_Not_Zero) {
     // Arrange
