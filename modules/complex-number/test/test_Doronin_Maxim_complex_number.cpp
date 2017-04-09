@@ -1,8 +1,8 @@
 // Copyright 2017 Doronin Maxim
 
-#include <climits>
-#include <cmath>
 #include <gtest/gtest.h>
+#include <limits>
+#include <cmath>
 
 #include "include/complex_number.h"
 
