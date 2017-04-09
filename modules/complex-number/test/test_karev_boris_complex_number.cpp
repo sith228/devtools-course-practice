@@ -11,7 +11,7 @@ TEST(Karev_Boris_ComplexNumberTest, Can_add_opposite) {
 
     ComplexNumber z(re, im);
     ComplexNumber z2(-re, -im);
-    z=z+z2;
+    z = z + z2;
 
     EXPECT_EQ(0.0, z.getRe());
     EXPECT_EQ(0.0, z.getIm());
@@ -29,10 +29,10 @@ TEST(Karev_Boris_ComplexNumberTest, Commutativity_add) {
 
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
-    ComplexNumber z3(z+z2);
-    z=z2+z;
+    ComplexNumber z3(z + z2);
+    z = z2 + z;
 
-    EXPECT_EQ(z,z3);
+    EXPECT_EQ(z, z3);
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Commutativity_multiplication) {
@@ -40,9 +40,9 @@ TEST(Karev_Boris_ComplexNumberTest, Commutativity_multiplication) {
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(z*z2);
-    z=z2*z;
+    z = z2*z;
 
-    EXPECT_EQ(z,z3);
+    EXPECT_EQ(z, z3);
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Associativity_add) {
@@ -50,10 +50,10 @@ TEST(Karev_Boris_ComplexNumberTest, Associativity_add) {
     ComplexNumber z(1.0, 5.0);
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(10.0, 10.0);
-    ComplexNumber z4((z+z2)+z3);
-    z=z+(z2+z3);
+    ComplexNumber z4((z + z2) + z3);
+    z = z + (z2 + z3);
 
-    EXPECT_EQ(z,z4);
+    EXPECT_EQ(z, z4);
 }
 
 TEST(Karev_Boris_ComplexNumberTest, Associativity_multiplication) {
@@ -62,7 +62,7 @@ TEST(Karev_Boris_ComplexNumberTest, Associativity_multiplication) {
     ComplexNumber z2(5.0, 1.0);
     ComplexNumber z3(10.0, 10.0);
     ComplexNumber z4((z*z2)*z3);
-    z=z*(z2*z3);
+    z = z*(z2*z3);
 
-    EXPECT_EQ(z,z4);
+    EXPECT_EQ(z, z4);
 }
