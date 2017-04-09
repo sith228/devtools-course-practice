@@ -76,7 +76,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, can_multiplication_numbers) {
     EXPECT_EQ(re1*im2, z3.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, can_summerize_numbers) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_summarize_numbers) {
     // Arrange
     double re1 = 2.0;
     double im1 = 0.0;
