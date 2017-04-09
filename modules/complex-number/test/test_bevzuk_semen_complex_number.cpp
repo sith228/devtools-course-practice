@@ -51,7 +51,7 @@ TEST(Bevzuk_Semen_ComplexNumberTest, Sum_number_and_conjugate_is_real_number) {
     EXPECT_EQ(z1+z2, result);
 }
 
-TEST(Bevzuk_Semen_ComplexNumberTest, 
+TEST(Bevzuk_Semen_ComplexNumberTest,
     Multiplication_by_conjugate_corresponds_property_of_complex_number) {
     // Arrange
     // z1 = a+ib; z2 = a-ib; => z1*z2 = a^2+b^2;
@@ -69,9 +69,9 @@ TEST(Bevzuk_Semen_ComplexNumberTest, Difference_with_oneself_is_zero) {
     ComplexNumber z1;
     ComplexNumber result(0, 0);
 
-    //Act
+    // Act
     z1 = z - z;
 
-    //Assert
+    // Assert
     EXPECT_EQ(z1, result);
 }
