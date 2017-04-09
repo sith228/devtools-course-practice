@@ -4,7 +4,7 @@
 
 #include "include/complex_number.h"
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Create_Complex_Number) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_create_complex_number) {
     // Arrange
     double re = 10.1;
     double im = 3.196;
@@ -17,7 +17,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Create_Complex_Number) {
     EXPECT_EQ(im, z.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Create_By_Copy) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_create_by_copy) {
     // Arrange
     double re = 5.4;
     double im = 1.3;
@@ -30,7 +30,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Create_By_Copy) {
     EXPECT_EQ(test_number, z);
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Set_Re_and_Im) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_set_re_and_im) {
     // Arrange
     double re = 13.5;
     double im = 0.6;
@@ -45,7 +45,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_Set_Re_and_Im) {
     EXPECT_EQ(im, z.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Equals_operator_is_correct) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, equals_operator_is_correct) {
     // Arrange
     double re = 1.2;
     double im = 2.1;
@@ -59,7 +59,7 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Equals_operator_is_correct) {
     EXPECT_EQ(true, is_correct);
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_multiplication_numbers) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_multiplication_numbers) {
     // Arrange
     double re1 = 2.0;
     double im1 = 0.0;
@@ -67,16 +67,16 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_multiplication_numbers) {
     double im2 = 5.6;
 
     // Act
-    ComplexNumber a(re1, im1);
-    ComplexNumber b(re2, im2);
-    ComplexNumber c;
-    c = a*b;
+    ComplexNumber z1(re1, im1);
+    ComplexNumber z2(re2, im2);
+    ComplexNumber z3;
+	z3 = z1*z2;
 
-    EXPECT_EQ(re1*re2, c.getRe());
-    EXPECT_EQ(re1*im2, c.getIm());
+    EXPECT_EQ(re1*re2, z3.getRe());
+    EXPECT_EQ(re1*im2, z3.getIm());
 }
 
-TEST(Grechuhin_Nikita_Complex_Number_Test, Can_summerize_numbers) {
+TEST(Grechuhin_Nikita_Complex_Number_Test, can_summerize_numbers) {
     // Arrange
     double re1 = 2.0;
     double im1 = 0.0;
@@ -84,11 +84,11 @@ TEST(Grechuhin_Nikita_Complex_Number_Test, Can_summerize_numbers) {
     double im2 = 5.6;
 
     // Act
-    ComplexNumber a(re1, im1);
-    ComplexNumber b(re2, im2);
-    ComplexNumber c;
-    c = a + b;
+    ComplexNumber z1(re1, im1);
+    ComplexNumber z2(re2, im2);
+    ComplexNumber z3;
+    z3 = z1 + z2;
 
-    EXPECT_EQ(re1 + re2, c.getRe());
-    EXPECT_EQ(im1 + im2, c.getIm());
+    EXPECT_EQ(re1 + re2, z3.getRe());
+    EXPECT_EQ(im1 + im2, z3.getIm());
 }
