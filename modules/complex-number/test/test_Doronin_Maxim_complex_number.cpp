@@ -41,14 +41,14 @@ TEST(Doronin_Maxim_ComplexNumberTest, Setting_imaginary_doesnt_change_real) {
     EXPECT_EQ(z.getRe(), Re);
 }
 
-TEST(Doronin_Maxim_ComplexNumberTest, Equal_oper_return_false_if_diffe) {
+TEST(Doronin_Maxim_ComplexNumberTest, Equal_method_return_false_if_notequal) {
     ComplexNumber z1(13.3, -17.8);
     ComplexNumber z2(10.3, 17.8);
 
     ASSERT_FALSE(z1 == z2);
 }
 
-TEST(Doronin_Maxim_ComplexNumberTest, NotEqual_oper_return_false_if_equal) {
+TEST(Doronin_Maxim_ComplexNumberTest, NotEqual_method_return_false_if_equal) {
     ComplexNumber z1(13.3, -17.8);
     ComplexNumber z2(13.3, -17.8);
 
