@@ -32,7 +32,7 @@ class FractionCalculatorTest: public ::testing::Test {
     }
 
     void Assert(std::string expected) {
-        EXPECT_TRUE(IsMatch(output_, expected));
+        EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
  private:
