@@ -104,9 +104,9 @@ TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Divide_large_nums_correctly) {
     EXPECT_EQ(expected, z1 / z2);
 }
 
-TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Copy_nullptr) {
+TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Copy_from_nullptr) {
     ComplexNumber *z1 = nullptr;
-    ASSERT_NO_THROW(ComplexNumber z2(*z1););
+    ASSERT_ANY_THROW(ComplexNumber z2(*z1););
 }
 
 
