@@ -22,9 +22,9 @@ TEST(Doronin_Maxim_ComplexNumberTest, Can_create_via_copying_constructor) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, Setting_real_doesnt_change_imaginary) {
-    double Re = 13.3;
-    double Im = -17.8;
-    double newRe = 15.5;
+    const double Re = 13.3;
+    const double Im = -17.8;
+    const double newRe = 15.5;
     ComplexNumber z(Re, Im);
 
     z.setRe(newRe);
@@ -33,9 +33,9 @@ TEST(Doronin_Maxim_ComplexNumberTest, Setting_real_doesnt_change_imaginary) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, Setting_imaginary_doesnt_change_real) {
-    double Re = 13.3;
-    double Im = -17.8;
-    double newIm = 21.3;
+    const double Re = 13.3;
+    const double Im = -17.8;
+    const double newIm = 21.3;
     ComplexNumber z(Re, Im);
 
     z.setIm(newIm);
@@ -58,8 +58,8 @@ TEST(Doronin_Maxim_ComplexNumberTest, NotEqual_method_return_false_if_equal) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, getRe_is_const_method) {
-    double Re = 13.3;
-    double Im = -17.8;
+    const double Re = 13.3;
+    const double Im = -17.8;
     ComplexNumber z(Re, Im);
     ComplexNumber expected_z(z);
 
@@ -69,8 +69,8 @@ TEST(Doronin_Maxim_ComplexNumberTest, getRe_is_const_method) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, getIm_is_const_method) {
-    double Re = 13.3;
-    double Im = -17.8;
+    const double Re = 13.3;
+    const double Im = -17.8;
     ComplexNumber z(Re, Im);
     ComplexNumber expected_z(z);
 
@@ -80,15 +80,15 @@ TEST(Doronin_Maxim_ComplexNumberTest, getIm_is_const_method) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, assignment_to_itself) {
-    double Re = 13.3;
-    double Im = -17.8;
+    const double Re = 13.3;
+    const double Im = -17.8;
     ComplexNumber z(Re, Im);
 
     ASSERT_NO_FATAL_FAILURE(z = z);
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Can_divide_large_nums) {
-    double x = sqrt(std::numeric_limits<double>::max());
+    const double x = sqrt(std::numeric_limits<double>::max());
     ComplexNumber z1(x, x);
     ComplexNumber z2(x, x);
 
@@ -96,7 +96,7 @@ TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Can_divide_large_nums) {
 }
 
 TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Divide_large_nums_correctly) {
-    double x = sqrt(std::numeric_limits<double>::max());
+    const double x = sqrt(std::numeric_limits<double>::max());
     ComplexNumber z1(x, x);
     ComplexNumber z2(x, x);
     ComplexNumber expected(1.0, 0);
