@@ -85,3 +85,20 @@ TEST(Doronin_Maxim_ComplexNumberTest, assignment_to_itself) {
     ASSERT_NO_FATAL_FAILURE(z = z);
 }
 
+TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Can_divide_large_nums){
+	ComplexNumber z1(1.7e+200, 1.7e+200);
+	ComplexNumber z2(1.7e+200, 1.7e+200);
+
+	ASSERT_NO_THROW(z1 / z2);
+}
+
+#include <climits>
+TEST(Doronin_Maxim_ComplexNumberTest, DISABLED_Divide_large_nums_correctly){
+	double x = sqrt(std::numeric_limits<double>::max());
+	ComplexNumber z1(x, x);
+	ComplexNumber z2(x, x);
+	ComplexNumber expected(1.0, 0);
+
+	EXPECT_EQ(expected, z1 / z2);
+}
+
