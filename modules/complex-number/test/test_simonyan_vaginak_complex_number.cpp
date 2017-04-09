@@ -1,6 +1,7 @@
-// Simonyan Vaginak
+// Copyright 2017 Simonyan Vaginak
 
 #include <gtest/gtest.h>
+
 #include "include/complex_number.h"
 
 TEST(Simonyan_Vaginak_ComplexNumberTest, Can_setRe) {
