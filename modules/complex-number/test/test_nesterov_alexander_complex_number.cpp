@@ -8,6 +8,23 @@
 typedef std::function<ComplexNumber(int, ComplexNumber)> functor;
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
+     Can_Repeatedly_Rewrite_Values_Of_Complex_Numbers) {
+    // Arrange
+    const int STEPS = 10000;
+
+    // Act
+    ComplexNumber z;
+    for (int i = 0; i < STEPS; i++) {
+        z.setRe(z.getRe() + 1);
+        z.setIm(z.getIm() - 1);
+    }
+
+    // Assert
+    EXPECT_DOUBLE_EQ(10000, z.getRe());
+    EXPECT_DOUBLE_EQ(-10000, z.getIm());
+}
+
+TEST(Nesterov_Alexander_ComplexNumberTest,
      Can_Division_Different_Methods) {
     // Arrange
     const double re_z = 3.256;
