@@ -5,25 +5,44 @@
 
 #include "include/complex_number.h"
 
+typedef std::function<ComplexNumber(int, ComplexNumber)> functor;
+
+TEST(Nesterov_Alexander_ComplexNumberTest,
+     DISABLED_Will_Be_Result_Is_Real_Number) {
+    // Arrange
+    double re = 42.256;
+    double im = 101.85;
+    ComplexNumber z(re, im);
+    ComplexNumber conjugate_z(re, -im);
+
+    // Act
+    ComplexNumber res(1.0, 0.0);
+    for (int i = 0; i < 10000; i++) {
+        res = res * (z +  z * conjugate_z + conjugate_z);
+    }
+
+    // Assert
+    EXPECT_DOUBLE_EQ(0.0, res.getIm());
+}
+
 TEST(Nesterov_Alexander_ComplexNumberTest,
      Can_Use_Repeated_Enclosure_Constructors) {
-// Arrange
+    // Arrange
     double re = 3.68;
     double im = 2.09;
-
-// Act
     ComplexNumber z(re, im);
-    std::function<ComplexNumber(int, ComplexNumber)> foo
-        = [&foo](int k, ComplexNumber y) {
-            if (k != 1) {
-                ComplexNumber temp(foo(k - 1, y));
-                y = temp;
-            }
-            return y;
-        };
+
+    // Act
+    functor foo = [&foo](int k, ComplexNumber y) -> ComplexNumber {
+        if (k != 1) {
+            ComplexNumber temp(foo(k - 1, y));
+            return temp;
+        }
+        return y;
+    };
     ComplexNumber res(foo(10000, z));
 
-// Assert
-    EXPECT_EQ(re, res.getRe());
-    EXPECT_EQ(im, res.getIm());
+    // Assert
+    EXPECT_DOUBLE_EQ(re, res.getRe());
+    EXPECT_DOUBLE_EQ(im, res.getIm());
 }
