@@ -7,11 +7,13 @@
 
 const double eps = std::numeric_limits<double>::epsilon();
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_default_ctor) {
-    ComplexNumber z(0.0, 0.0);
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Assign_operator_returns_this) {
+    ComplexNumber z1(-324.23, 123.42);
+    ComplexNumber z2(24.23, -2.2);
 
-    EXPECT_EQ(0.0, z.getRe());
-    EXPECT_EQ(0.0, z.getIm());
+    ComplexNumber &z = (z1 = z2);
+
+    EXPECT_EQ(&z, &z1);
 }
 
 TEST(Gaivanuk_Alexander_ComplexNumberTest, Difference_on_equal_numbers) {
