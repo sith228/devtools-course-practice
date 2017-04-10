@@ -13,7 +13,7 @@ TEST(Ilya_Kiparenko_ComplexNumberTest, Cant_Divide_Zero) {
     EXPECT_ANY_THROW({ z1 / z2; });
 }
 
-TEST(Ilya_Kiparenko_ComplexNumberTest, Multiplication_Of__Two_Imaginary_Is_Real) {
+TEST(Ilya_Kiparenko_ComplexNumberTest, Multiplication_Of_Imaginary_Is_Real) {
     // Arrange
     ComplexNumber z1(0, 2);
     ComplexNumber z2(0, -3);
@@ -53,7 +53,7 @@ TEST(Ilya_Kiparenko_ComplexNumberTest, Sum_Of_Zeros_is_Zero) {
 TEST(Ilya_Kiparenko_ComplexNumberTest, Copy_Equal_Original) {
     // Arrange
     ComplexNumber z1(1, 2);
-	ComplexNumber z2(z1);
+    ComplexNumber z2(z1);
 
     // Assert
     EXPECT_TRUE(z1 == z2);
