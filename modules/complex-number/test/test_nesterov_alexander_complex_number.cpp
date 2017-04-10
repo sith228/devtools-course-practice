@@ -19,7 +19,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     ComplexNumber res1(1.0, 0.0);
     ComplexNumber res2(1.0, 0.0);
 
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         res1 = res1 * conjugate_z;
         res2 = res2 * z;
     }
@@ -38,7 +38,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
 
     // Act
     ComplexNumber res(1.0, 0.0);
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1000; i++) {
         res = res * (z +  z * conjugate_z + conjugate_z);
     }
 
