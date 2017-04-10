@@ -35,7 +35,7 @@ TEST(Ilya_Kiparenko_ComplexNumberTest, Sum_Of_Opposite_Is_Zero) {
 
     // Assert
     ComplexNumber expected_z(0, 0);
-    EXPECT_TRUE(z, expected_z);
+    EXPECT_EQ(z, expected_z);
 }
 
 TEST(Ilya_Kiparenko_ComplexNumberTest, Sum_Of_Zeros_is_Zero) {
