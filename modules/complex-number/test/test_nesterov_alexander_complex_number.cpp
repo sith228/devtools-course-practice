@@ -8,10 +8,10 @@
 typedef std::function<ComplexNumber(int, ComplexNumber)> functor;
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
-     DISABLED_Check_Property_Conjugacy) {
+     Check_Property_Conjugacy) {
     // Arrange
-    double re = 1.00001;
-    double im = 0.00001;
+    double re = 1 + 1e-5;
+    double im = 1e-5;
     ComplexNumber z(re, im);
     ComplexNumber conjugate_z(re, -im);
 
@@ -19,7 +19,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     ComplexNumber res1(1.0, 0.0);
     ComplexNumber res2(1.0, 0.0);
 
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         res1 = res1 * conjugate_z;
         res2 = res2 * z;
     }
@@ -29,16 +29,16 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
 }
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
-     /*DISABLED*/_Will_Be_Result_Is_Real_Number) {
+     Will_Be_Result_Is_Real_Number) {
     // Arrange
-    double re = 0.0;
-    double im = 2.0;
+    double re = 5e-7;
+    double im = 3e-7;
     ComplexNumber z(re, im);
     ComplexNumber conjugate_z(re, -im);
 
     // Act
     ComplexNumber res(1.0, 0.0);
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         res = res * (z +  z * conjugate_z + conjugate_z);
     }
 
