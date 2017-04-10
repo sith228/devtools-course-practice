@@ -1,8 +1,11 @@
 // Copyright 2017 Alexander Gaivanuk
 
 #include <gtest/gtest.h>
+#include <limits>
 
 #include "include/complex_number.h"
+
+const double eps = std::numeric_limits<double>::epsilon();
 
 TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_default_ctor) {
     ComplexNumber z(0.0, 0.0);
@@ -11,21 +14,28 @@ TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_default_ctor) {
     EXPECT_EQ(0.0, z.getIm());
 }
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Can_create_with_im_and_re_parts) {
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Difference_on_equal_numbers) {
     double re = 234.23;
     double im = 324432.243;
-    ComplexNumber z(re, im);
 
-    EXPECT_EQ(re, z.getRe());
-    EXPECT_EQ(im, z.getIm());
+    ComplexNumber z1(re, im);
+	ComplexNumber z2(re, im);
+	ComplexNumber z = z1 - z2;
+
+    EXPECT_EQ(0.0, z.getRe());
+    EXPECT_EQ(0.0, z.getIm());
 }
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Can_create_via_copy_ctor) {
-    ComplexNumber z(34.23, -12.44);
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Mult_conjuctive_numbers) {
+	double re = 34.23;
+	double im = -12.44;
+    ComplexNumber z1(re, im);
+	ComplexNumber z2(re, -im);
 
-    ComplexNumber z2(z);
+    ComplexNumber z = z1 * z2;
 
-    EXPECT_EQ(z, z2);
+	EXPECT_NEAR(re*re + im*im, z.getRe(), eps);
+    EXPECT_NEAR(0.0, z.getIm(), eps);
 }
 
 TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_assign_operator) {
@@ -37,8 +47,7 @@ TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_assign_operator) {
     EXPECT_EQ(z, z2);
 }
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest,
-    Check_assign_operator_applying_to_itself) {
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Assign_to_itself) {
     double re = -24.435;
     double im = 54.34;
     ComplexNumber z(re, im);
@@ -48,21 +57,18 @@ TEST(Gaivanuk_Alexander_ComplexNumberTest,
     EXPECT_EQ(z.getIm(), im);
 }
 
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Can_set_re) {
-    ComplexNumber z(-35.23, 56.0);
 
-    double re2 = 45.223;
-    double im2 = -5.344;
-
-    z.setRe(re2);
-    z.setIm(im2);
-
-    EXPECT_EQ(z.getRe(), re2);
-    EXPECT_EQ(z.getIm(), im2);
-}
-
-TEST(Gaivanuk_Alexander_ComplexNumberTest, Check_number_is_equal_to_itself) {
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Division_by_itself) {
     ComplexNumber z(-3.23, 12.0);
 
-    EXPECT_EQ(z, z);
+	ComplexNumber z2 = z / z;
+
+    EXPECT_NEAR(1.0, z2.getRe(), eps);
+	EXPECT_NEAR(0.0, z2.getIm(), eps);
+}
+
+TEST(Gaivanuk_Alexander_ComplexNumberTest, Number_is_not_not_equal_to_itself) {
+	ComplexNumber z(-3.23, 12.0);
+
+	EXPECT_FALSE(z != z);
 }
