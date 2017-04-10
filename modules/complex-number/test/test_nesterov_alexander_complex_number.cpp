@@ -15,7 +15,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     ComplexNumber z(re, im);
     ComplexNumber conjugate_z(re, -im);
 
-    // Act
+    // Act & Assert
     ComplexNumber res1(1.0, 0.0);
     ComplexNumber res2(1.0, 0.0);
 
