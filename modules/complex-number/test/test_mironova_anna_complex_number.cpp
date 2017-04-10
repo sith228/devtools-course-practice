@@ -86,7 +86,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_Two_Real_Part) {
 
     // Act
     ComplexNumber res = z1+z2;
-	ComplexNumber expected_res(40.0, 0.0);
+    ComplexNumber expected_res(40.0, 0.0);
 
     // Assert
     EXPECT_EQ(expected_res, res);
