@@ -20,8 +20,8 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     }
 
     // Assert
-    EXPECT_DOUBLE_EQ(10000, z.getRe());
-    EXPECT_DOUBLE_EQ(-10000, z.getIm());
+    ComplexNumber expected_z(10000, -10000);
+    EXPECT_EQ(expected_z, z);
 }
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
@@ -42,9 +42,9 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
         (z * conjugate_w).getIm() / norme_w);
 
     // Assert
-    ComplexNumber expect = z / w;
-    EXPECT_EQ(expect, res1);
-    EXPECT_EQ(expect, res2);
+    ComplexNumber expected_division = z / w;
+    EXPECT_EQ(expected_division, res1);
+    EXPECT_EQ(expected_division, res2);
 }
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
@@ -63,10 +63,10 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     res.setIm(-res.getIm());
 
     // Assert
-    ComplexNumber expect(1.0, 0.0);
+    ComplexNumber expected_conjugacy(1.0, 0.0);
     for (int i = 0; i < STEPS; i++)
-        expect = expect * conjugate_z;
-    EXPECT_EQ(expect, res);
+        expected_conjugacy = expected_conjugacy * conjugate_z;
+    EXPECT_EQ(expected_conjugacy, res);
 }
 
 TEST(Nesterov_Alexander_ComplexNumberTest,
