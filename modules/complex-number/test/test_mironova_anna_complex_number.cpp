@@ -25,12 +25,10 @@ TEST(Mironova_Anna_ComplexNumberTest, Can_Multiply_Purely_Imaginary_Complex) {
 
     // Act
     ComplexNumber res = z1*z2;
-    double expected_re = -z2.getIm();
-    double expected_im = z2.getRe();
+    ComplexNumber expected_res(-z2.getIm(), z2.getRe());
 
     // Assert
-    EXPECT_EQ(expected_re, res.getRe());
-    EXPECT_EQ(expected_im, res.getIm());
+    EXPECT_EQ(expected_res, res);
 }
 
 TEST(Mironova_Anna_ComplexNumberTest, Difference_Zero_and_Complex_Opposite) {
@@ -65,8 +63,7 @@ TEST(Mironova_Anna_ComplexNumberTest, Check_Commutativity_Of_Addition) {
     ComplexNumber res2 = z2+z1;
 
     // Assert
-    EXPECT_TRUE(res1.getRe() == res2.getRe());
-    EXPECT_TRUE(res1.getIm() == res2.getIm());
+    EXPECT_TRUE(res1 == res2);
 }
 
 TEST(Mironova_Anna_ComplexNumberTest, Div_Purely_Im_and_Conjugate_Minus_One) {
@@ -89,10 +86,8 @@ TEST(Mironova_Anna_ComplexNumberTest, Sum_Complex_and_Conjugate_Two_Real_Part) {
 
     // Act
     ComplexNumber res = z1+z2;
-    double expected_re = 40.0;
-    double expected_im = 0.0;
+	ComplexNumber expected_res(40.0, 0.0);
 
     // Assert
-    EXPECT_EQ(expected_re, res.getRe());
-    EXPECT_EQ(expected_im, res.getIm());
+    EXPECT_EQ(expected_res, res);
 }
