@@ -18,20 +18,6 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Can_Create_Not_Zero) {
     EXPECT_EQ(re, z.getRe());
     EXPECT_EQ(im, z.getIm());
 }
-TEST(Kiseleva_Olga_ComplexNumberTest, Can_Change_Without_Im) {
-    // Arrange
-    double old_re = 96.3;
-    double old_im = 10.6;
-    double new_re = -12.0;
-
-    // Act
-    ComplexNumber z(old_re, old_im);
-    z.setRe(new_re);
-
-    // Assert
-    EXPECT_DOUBLE_EQ(new_re, z.getRe());
-    EXPECT_DOUBLE_EQ(old_im, z.getIm());
-}
 TEST(Kiseleva_Olga_ComplexNumberTest, Do_Throw_When_Division_By_Double_Min) {
     // Arrange
     double min = std::numeric_limits<double>::min();
@@ -90,5 +76,19 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Number_Is_Zero_When_Division_From_Min) {
     // Assert
     EXPECT_NEAR(expected.getIm(), 0.0, eps);
     EXPECT_NEAR(expected.getRe(), 0.0, eps);
+}
+TEST(Kiseleva_Olga_ComplexNumberTest,
+    Number_Is_Equal_To_Itself_Summary_By_Double_Min) {
+    // Arrange
+    double min = std::numeric_limits<double>::min();
+    double re = 150.4;
+    double im = -42301.32;
+    // Act
+    ComplexNumber z1(min, min);
+    ComplexNumber z2(re, im);
+    ComplexNumber expected = z2 + z1;
+    // Assert
+    EXPECT_DOUBLE_EQ(re, expected.getRe());
+    EXPECT_DOUBLE_EQ(im, expected.getIm());
 }
 
