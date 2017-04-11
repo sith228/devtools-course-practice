@@ -71,3 +71,15 @@ TEST(Vasin_Stanislav_ComplexNumberTest, default_constructor) {
 	EXPECT_EQ(0.0, A.getIm());
 }
 
+TEST(Vasin_Stanislav_ComplexNumberTest, copy_constructor) {
+	// Arrange
+	ComplexNumber A(1.0, 23.1);
+
+	// Act
+	ComplexNumber B(A);
+
+	// Assert
+	EXPECT_EQ(A.getRe(), B.getRe());
+	EXPECT_EQ(A.getIm(), B.getIm());
+	EXPECT_FALSE(&A == &B);
+}
