@@ -5,7 +5,6 @@ Testing/
 dashboard/
 
 *.user
-vs2015/
 
 .DS_Store
 
