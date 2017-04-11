@@ -51,5 +51,5 @@ TEST_F(Povelikin_Rostislav_ComplexNumberTest, abs) {
 
 TEST(Povelikin_Rostislav_ComplexNumberTest_NoF, trigomonical) {
     ComplexNumber* complexNumber = new ComplexNumber[10];
-    EXPECT_NO_THROW(delete complexNumber);
+    EXPECT_NO_THROW(delete [] complexNumber);
 }
