@@ -47,4 +47,16 @@ TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
 	EXPECT_EQ(0.0, C.getIm());
 }
 
+TEST(Vasin_Stanislav_ComplexNumberTest, error_when_adding_small_and_large_numbers) {
+	// Arrange
+	ComplexNumber A(10000000000.0, 10000000000.0);
+	ComplexNumber B(0.0000000001, 0.0000000001);
+
+	// Act
+	ComplexNumber C = A + B;
+
+	// Assert
+	EXPECT_EQ(A.getRe(), C.getRe());
+	EXPECT_EQ(A.getIm(), C.getIm());
+}
 
