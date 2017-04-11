@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "include\complex_number.h"
+#include "include/complex_number.h"
 
 class Povelikin_Rostislav_ComplexNumberTest : public ::testing::Test {
-protected:
+ protected:
     double im = 213.123;
     double re = -312.31;
     ComplexNumber complexNumber;
