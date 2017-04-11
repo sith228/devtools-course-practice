@@ -10,7 +10,7 @@ typedef std::function<ComplexNumber(int, ComplexNumber)> functor;
 TEST(Nesterov_Alexander_ComplexNumberTest,
      Can_Repeatedly_Rewrite_Values_Of_Complex_Numbers) {
     // Arrange
-    const int STEPS = 10000;
+    const int STEPS = 1000;
 
     // Act
     ComplexNumber z;
@@ -20,7 +20,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
     }
 
     // Assert
-    ComplexNumber expected_z(10000, -10000);
+    ComplexNumber expected_z(1000, -1000);
     EXPECT_EQ(expected_z, z);
 }
 
@@ -50,7 +50,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
 TEST(Nesterov_Alexander_ComplexNumberTest,
      Can_Use_Property_Conjugacy) {
     // Arrange
-    const int STEPS = 10000;
+    const int STEPS = 1000;
     const double re = 1 + 1e-5;
     const double im = 1e-5;
     const ComplexNumber z(re, im);
@@ -72,7 +72,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
 TEST(Nesterov_Alexander_ComplexNumberTest,
      Can_Receive_The_Real_Number) {
     // Arrange
-    const int STEPS = 10000;
+    const int STEPS = 1000;
     const double re = 5e-7;
     const double im = 3e-7;
     const ComplexNumber z(re, im);
@@ -103,7 +103,7 @@ TEST(Nesterov_Alexander_ComplexNumberTest,
         }
         return y;
     };
-    ComplexNumber res(foo(10000, z));
+    ComplexNumber res(foo(1000, z));
 
     // Assert
     EXPECT_EQ(z, res);
