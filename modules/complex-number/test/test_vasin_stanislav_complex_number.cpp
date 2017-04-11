@@ -60,3 +60,14 @@ TEST(Vasin_Stanislav_ComplexNumberTest, error_when_adding_small_and_large_number
 	EXPECT_EQ(A.getIm(), C.getIm());
 }
 
+TEST(Vasin_Stanislav_ComplexNumberTest, default_constructor) {
+	// Arrange
+
+	// Act
+	ComplexNumber A;
+
+	// Assert
+	EXPECT_EQ(0.0, A.getRe());
+	EXPECT_EQ(0.0, A.getIm());
+}
+
