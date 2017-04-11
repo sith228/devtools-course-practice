@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
+#include <complex>
 
 class Povelikin_Rostislav_ComplexNumberTest : public ::testing::Test {
  protected:
@@ -37,38 +38,16 @@ TEST_F(Povelikin_Rostislav_ComplexNumberTest, sum_of_conjugate_is_0) {
     EXPECT_EQ(0, (complexNumber + conjucate).getIm());
 }
 
-TEST(Povelikin_Rostislav_ComplexNumber, contructor_with_casted_long) {
-    long double re = 0.0;
-    long double im = 0.0;
+TEST_F(Povelikin_Rostislav_ComplexNumberTest, abs) {
+    std::complex<double> stdComplexNumber(complexNumber.getIm(), complexNumber.getRe());
 
-    ASSERT_NO_THROW(ComplexNumber complexNumber(
-        static_cast<double>(re),
-        static_cast<double>(im)));
+    double absolute = std::sqrt(complexNumber.getIm()*complexNumber.getIm() + 
+        complexNumber.getRe()*complexNumber.getRe());
+
+    EXPECT_EQ(std::abs(stdComplexNumber), absolute);
 }
 
-TEST(Povelikin_Rostislav_ComplexNumber, contructor_with_casted_float) {
-    float re = 0.0;
-    float im = 0.0;
-
-    ASSERT_NO_THROW(ComplexNumber complexNumber(
-        static_cast<double>(re),
-        static_cast<double>(im)));
-}
-
-TEST(Povelikin_Rostislav_ComplexNumber, contructor_with_casted_int) {
-    int re = 0.0;
-    int im = 0.0;
-
-    ASSERT_NO_THROW(ComplexNumber complexNumber(
-        static_cast<double>(re),
-        static_cast<double>(im)));
-}
-
-TEST(Povelikin_Rostislav_ComplexNumber, contructor_with_casted_char) {
-    char re = 0.0;
-    char im = 0.0;
-
-    ASSERT_NO_THROW(ComplexNumber complexNumber(
-        static_cast<double>(re),
-        static_cast<double>(im)));
+TEST(Povelikin_Rostislav_ComplexNumberTest_NoF, trigomonical) {
+    ComplexNumber* complexNumber = new ComplexNumber[10];
+    EXPECT_NO_THROW(delete complexNumber);
 }
