@@ -1,9 +1,10 @@
 // Copyright 2017 Povelikin Rostislav
 
+#include <complex>
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
-#include <complex>
+
 
 class Povelikin_Rostislav_ComplexNumberTest : public ::testing::Test {
  protected:
@@ -39,9 +40,10 @@ TEST_F(Povelikin_Rostislav_ComplexNumberTest, sum_of_conjugate_is_0) {
 }
 
 TEST_F(Povelikin_Rostislav_ComplexNumberTest, abs) {
-    std::complex<double> stdComplexNumber(complexNumber.getIm(), complexNumber.getRe());
+    std::complex<double> stdComplexNumber(complexNumber.getIm(), 
+        complexNumber.getRe());
 
-    double absolute = std::sqrt(complexNumber.getIm()*complexNumber.getIm() + 
+    double absolute = std::sqrt(complexNumber.getIm()*complexNumber.getIm() +
         complexNumber.getRe()*complexNumber.getRe());
 
     EXPECT_EQ(std::abs(stdComplexNumber), absolute);
