@@ -4,6 +4,7 @@
 
 #include "include/complex_number.h"
 
+
 TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit) {
 	// Arrange
 	ComplexNumber i(0.0, 1.0);
@@ -31,3 +32,19 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit) {
 	EXPECT_EQ(1.0, i_pow_4.getRe());
 	EXPECT_EQ(0.0, i_pow_4.getIm());
 }
+
+TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
+	// Arrange
+	ComplexNumber A(2.3, 15.0);
+	ComplexNumber B(2.3, -15.0);
+	double real_number = 2.3 * 2.3 + 15.0 * 15.0;
+
+	// Act
+	ComplexNumber C = A * B;
+
+	// Assert
+	EXPECT_EQ(real_number, C.getRe());
+	EXPECT_EQ(0.0, C.getIm());
+}
+
+
