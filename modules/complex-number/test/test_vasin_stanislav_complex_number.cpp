@@ -110,14 +110,3 @@ TEST(Vasin_Stanislav_ComplexNumberTest, copy_constructor_2) {
     // Assert
     EXPECT_EQ(A.getIm(), B.getIm());
 }
-
-TEST(Vasin_Stanislav_ComplexNumberTest, copy_constructor_3) {
-    // Arrange
-    ComplexNumber A(1.0, 23.1);
-
-    // Act
-    ComplexNumber B(A);
-
-    // Assert
-    EXPECT_FALSE(&A == &B);
-}
