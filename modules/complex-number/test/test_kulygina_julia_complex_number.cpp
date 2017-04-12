@@ -23,7 +23,8 @@ TEST(Kulygina_Julia_ComplexNumberTest, Can_set_complex_number) {
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(z1);
-    EXPECT_EQ((z2+z1), 2*z1);
+    ComplexNumber tmp(2.0, 4.0);
+    EXPECT_EQ((z2+z1), tmp);
 }
 
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_definition_operation) {
@@ -42,6 +43,7 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_divided_zero) {
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_divide_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(1.0, -1.0);
+    double tmp = (z1.getRe() / z2.getRe());
     ASSERT_NO_THROW(z1/z2);
-    EXPECT_FALSE((z1/z2).getRe() == (z1.getRe() / z2.getRe()));
+    EXPECT_FALSE((z1/z2).getRe() == tmp);
 }
