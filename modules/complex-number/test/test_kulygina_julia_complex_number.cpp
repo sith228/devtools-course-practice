@@ -23,7 +23,7 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(z1);
     ComplexNumber tmp(2.0, 4.0);
-	ComplexNumber zres;
+    ComplexNumber zres;
 	zres = z1+z2;
     EXPECT_EQ(tmp, zres);
 }
@@ -51,6 +51,6 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_divide_operation) {
 TEST(Kulygina_Julia_ComplexNumberTest, Can_divide) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(1.0, 0.0);
-	ComplexNumber tmp = z1 / z2;
+    ComplexNumber tmp = z1 / z2;
     EXPECT_EQ(z1, tmp);
 }
