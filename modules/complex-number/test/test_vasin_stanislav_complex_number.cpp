@@ -15,7 +15,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_1) {
 
     // Assert
     // i^2 = -1
-    EXPECT_EQ(result, i_pow_2);
+	EXPECT_TRUE(result == i_pow_2);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_2) {
@@ -28,7 +28,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_2) {
 
     // Assert
     // i^3 = -i
-    EXPECT_EQ(result, i_pow_3);
+    EXPECT_TRUE(result == i_pow_3);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_3) {
@@ -41,7 +41,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_3) {
 
     // Assert
     // i^4 = 1
-    EXPECT_EQ(result, i_pow_4);
+    EXPECT_TRUE(result == i_pow_4);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
@@ -54,7 +54,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
     ComplexNumber C = A * B;
 
     // Assert
-    EXPECT_EQ(real_number, C);
+    EXPECT_TRUE(real_number == C);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, error_add_small_and_large_numbers) {
@@ -66,7 +66,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, error_add_small_and_large_numbers) {
     ComplexNumber C = A + B;
 
     // Assert
-    EXPECT_EQ(A, C);
+    EXPECT_TRUE(A == C);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, default_constructor_1) {
