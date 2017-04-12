@@ -4,19 +4,6 @@
 
 #include "include/complex_number.h"
 
-TEST(Kildishev_Maxim_ComplexNumberTest, Can_Create_Zero) {
-	// Arrange
-	double re = 0.0;
-	double im = 0.0;
-
-	// Act
-	ComplexNumber z(re, im);
-
-	// Assert
-	EXPECT_EQ(re, z.getRe());
-	EXPECT_EQ(im, z.getIm());
-}
-
 TEST(Kildishev_Maxim_ComplexNumberTest, Cant_division_by_zero) {
 	ComplexNumber z(1.0, 1.0);
 	ComplexNumber zero(0.0, 0.0);
