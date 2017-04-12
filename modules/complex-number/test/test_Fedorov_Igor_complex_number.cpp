@@ -23,13 +23,22 @@ TEST(Igor_Fedorov_ComplexNumberTest, can_divide_by_1) {
 	EXPECT_EQ(c,d);
 }
 TEST(Igor_Fedorov_ComplexNumberTest, get_work_ok) {
-	double r1 = 1;
-	double i1 = 12;
-	double r2 = 123;
-	double i2 = 1234; 
+	double r1 = 1.123;
+	double i1 = 12.23;
+	double r2 = 123.4;
+	double i2 = 1234.0; 
 	ComplexNumber a(r1, i1);
 	ComplexNumber b(r2, i2);
 	ComplexNumber c = a * b;
 	ComplexNumber d(c.getRe, c.getIm);
 	EXPECT_EQ(c , d);
+}
+TEST(Igor_Fedorov_ComplexNumberTest, set_work_ok) {
+	double r = 1.234;
+	double i = 12.34;
+	ComplexNumber a(r, i);
+	ComplexNumber d;
+	d.setIm(r);
+	d.setIm(i);
+	EXPECT_EQ(a, d);
 }
