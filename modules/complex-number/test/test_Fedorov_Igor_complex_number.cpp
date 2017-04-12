@@ -5,12 +5,20 @@
 #include "include/complex_number.h"
 
 TEST(Igor_Fedorov_ComplexNumberTest, Cant_divide_by_Zero) {
-	double re = 234.23;
-	double im = 324432.243;
-
-	ComplexNumber z1(re, im);
-	ComplexNumber z2(re, im);
-	ComplexNumber z = z1 - z2;
-	ComplexNumber c;
-	EXPECT_ANY_THROW(c = z / c);
+	double r = 15.023;
+	double i = 97.193;
+	ComplexNumber a(r, i);
+	ComplexNumber b(r, i);
+	ComplexNumber c = a - b;
+	ComplexNumber d;
+	EXPECT_ANY_THROW(d = c / d);
+}
+TEST(Igor_Fedorov_ComplexNumberTest, Cant_divide_by_Zero) {
+	double r = 123;
+	double i = 123;
+	ComplexNumber a(1, 0);
+	ComplexNumber b(r, i);
+	ComplexNumber c = a / b;
+	ComplexNumber d(r / (r*r +i*i ),-i/(r*r+i*i));
+	EXPECT_EQ(c,d);
 }
