@@ -15,7 +15,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_1) {
 
     // Assert
     // i^2 = -1
-	EXPECT_TRUE(result == i_pow_2);
+    EXPECT_TRUE(result == i_pow_2);
 }
 
 TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit_2) {
