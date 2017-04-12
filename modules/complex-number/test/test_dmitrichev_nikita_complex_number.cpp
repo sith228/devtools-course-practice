@@ -5,16 +5,16 @@
 #include "include/complex_number.h"
 
 class Dmitrichev_Nikita_ComplexNumberTest : public ::testing::Test {
-protected: 
+ protected:
     virtual void SetUp() {
-        CN = new ComplexNumber[N]; 
+        CN = new ComplexNumber[N];
 
-        for (int i = 0;i < N;++i) {
+        for (int i = 0; i < N; ++i) {
             CN[i].setRe(i + 1);
             CN[i].setIm(i + 1);
         }
     }
-    virtual void TearDown() { 
+    virtual void TearDown() {
         delete[] CN;
     }
     const int N = 3;
