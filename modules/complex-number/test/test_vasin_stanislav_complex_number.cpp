@@ -31,10 +31,10 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit) {
     // i^4 = 1
     EXPECT_EQ(1.0, i_pow_4.getRe());
     EXPECT_EQ(0.0, i_pow_4.getIm());
-}   
+}
 
 TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
-    // Arrange 
+    // Arrange
     ComplexNumber A(2.3, 15.0);
     ComplexNumber B(2.3, -15.0);
     double real_number = 2.3 * 2.3 + 15.0 * 15.0;
@@ -47,7 +47,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
     EXPECT_EQ(0.0, C.getIm());
 }
 
-TEST(Vasin_Stanislav_ComplexNumberTest, error_when_adding_small_and_large_numbers) {
+TEST(Vasin_Stanislav_ComplexNumberTest, error_add_small_and_large_numbers) {
     // Arrange
     ComplexNumber A(10000000000.0, 10000000000.0);
     ComplexNumber B(0.0000000001, 0.0000000001);
