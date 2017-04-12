@@ -38,7 +38,7 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_divided_zero)
 {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(0.0, 0.0);
-    EXPECT_ANY_THROW({z1/z2});
+    EXPECT_ANY_THROW(z1/z2);
 }
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_divide_operation)
 {
