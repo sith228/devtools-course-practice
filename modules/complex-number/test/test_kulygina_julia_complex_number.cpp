@@ -16,15 +16,14 @@ TEST(Kulygina_Julia_ComplexNumberTest, Can_set_complex_number) {
     ComplexNumber z2(1.0, 0.0);
     z.setRe(z2.getRe());
     z.setIm(-1.0);
-    EXPECT_EQ(z2.getRe(), z.getRe());
-    EXPECT_EQ(-1.0, z.getIm());
+    EXPECT_FALSE(z2, z);
 }
 
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(z1);
     ComplexNumber tmp(2.0, 4.0);
-    EXPECT_EQ((z2+z1), tmp);
+    EXPECT_EQ(tmp,(z2+z1));
 }
 
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_definition_operation) {
@@ -44,6 +43,11 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_divide_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(1.0, -1.0);
     double tmp = (z1.getRe() / z2.getRe());
-    ASSERT_NO_THROW(z1/z2);
     EXPECT_FALSE((z1/z2).getRe() == tmp);
+}
+
+TEST(Kulygina_Julia_ComplexNumberTest, Can_divide) {
+    ComplexNumber z1(1.0, 2.0);
+    ComplexNumber z2(1.0, 0.0);
+    EXPECT_EQ(z1/z2, z1);
 }
