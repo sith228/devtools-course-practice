@@ -14,7 +14,6 @@ TEST(Kulygina_Julia_ComplexNumberTest, Can_create_complex_number) {
 TEST(Kulygina_Julia_ComplexNumberTest, Can_set_complex_number) {
     ComplexNumber z(10.0, 10.0);
     ComplexNumber z2(1.0, 0.0);
-    
     z.setRe(z2.getRe());
     z.setIm(-1.0);
     EXPECT_EQ(z2.getRe(), z.getRe());
@@ -24,7 +23,6 @@ TEST(Kulygina_Julia_ComplexNumberTest, Can_set_complex_number) {
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z1(1.0, 2.0);
     ComplexNumber z2(z1);
-
     EXPECT_EQ((z2+z1), 2*z1);
 }
 
