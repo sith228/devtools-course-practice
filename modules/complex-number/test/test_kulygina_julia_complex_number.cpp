@@ -23,8 +23,9 @@ TEST(Kulygina_Julia_ComplexNumberTest, Can_set_complex_number) {
 
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z1(1.0, 2.0);
-    
-    ASSERT_ANY_THROW((z2+z1).getRe(), 2.0);
+    ComplexNumber z2(z1);
+
+    EXPECT_EQ((z2+z1), 2*z1);
 }
 
 TEST(Kulygina_Julia_ComplexNumberTest, Correct_definition_operation) {
