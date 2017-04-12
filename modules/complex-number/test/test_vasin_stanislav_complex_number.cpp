@@ -31,7 +31,7 @@ TEST(Vasin_Stanislav_ComplexNumberTest, the_degree_of_the_imaginary_unit) {
     // i^4 = 1
     EXPECT_EQ(1.0, i_pow_4.getRe());
     EXPECT_EQ(0.0, i_pow_4.getIm());
-}
+}   
 
 TEST(Vasin_Stanislav_ComplexNumberTest, complex_conjugate_numbers) {
     // Arrange 
