@@ -24,7 +24,7 @@ TEST(Kulygina_Julia_ComplexNumberTest, Correct_add_operation) {
     ComplexNumber z2(z1);
     ComplexNumber tmp(2.0, 4.0);
     ComplexNumber zres;
-	zres = z1+z2;
+    zres = z1+z2;
     EXPECT_EQ(tmp, zres);
 }
 
