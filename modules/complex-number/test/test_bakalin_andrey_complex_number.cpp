@@ -1,4 +1,4 @@
-//Copyright 2017 Bakalin Andrey
+// Copyright 2017 Bakalin Andrey
 
 #include <gtest/gtest.h>
 
@@ -8,7 +8,7 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Real) {
     // Arrange
     double re = 1.0, im = 2.0, re_expected;
     ComplexNumber z(re, im);
-	
+
     // Act
     re_expected = z.getRe();
 
@@ -28,7 +28,7 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Imaginary) {
     EXPECT_EQ(im, im_expected);
 }
 
-TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Commutativity_Works_With_Complex_Numbers) {
+TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Commutativity_Works) {
     // Arrange
     ComplexNumber z1(1.0, 2.0), z2(3.0, 4.0), z3, z4;
 
@@ -40,7 +40,7 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Commutativity_Works_With_Complex
     EXPECT_EQ(z3, z4);
 }
 
-TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Associativity_Works_With_Complex_Numbers) {
+TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Associativity_Works) {
     // Arrange
     ComplexNumber z1(1.0, 2.0), z2(3.0, 4.0), z3(7.0, 8.0), z4, z5;
 
@@ -52,11 +52,11 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Associativity_Works_With_Complex
     EXPECT_EQ(z4, z5);
 }
 
-TEST(Bakalin_Andrey_ComplexNumberTest, Left_Distributivity_Works_With_Complex_Numbers) {
+TEST(Bakalin_Andrey_ComplexNumberTest, Left_Distributivity_Works) {
     // Arrange
     ComplexNumber z1(1.0, 2.0), z2(3.0, 4.0), z3(7.0, 8.0), z4, z5;
 
-    // Act 
+    // Act
     z4 = z1 * (z2 + z3);
     z5 = z1 * z2 + z1 * z3;
 
