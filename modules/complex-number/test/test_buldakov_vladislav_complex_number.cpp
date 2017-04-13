@@ -9,8 +9,8 @@ TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Create_Default) {
     ComplexNumber z = ComplexNumber();
 
     // Assert
-    EXPECT_EQ(0.0, z.getRe());
-    EXPECT_EQ(0.0, z.getIm());
+    EXPECT_DOUBLE_EQ(0.0, z.getRe());
+    EXPECT_DOUBLE_EQ(0.0, z.getIm());
 }
 
 TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Compare) {
@@ -44,8 +44,8 @@ TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Sum) {
     ComplexNumber resut = z + neg_z;
 
     // Assert
-    EXPECT_EQ(0.0, resut.getRe());
-    EXPECT_EQ(0.0, resut.getIm());
+    EXPECT_DOUBLE_EQ(0.0, resut.getRe());
+    EXPECT_DOUBLE_EQ(0.0, resut.getIm());
 }
 
 TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Multiply) {
@@ -57,8 +57,8 @@ TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Multiply) {
     ComplexNumber resut = x * y;
 
     // Assert
-    EXPECT_EQ(-0.0, resut.getRe());
-    EXPECT_EQ(-3.17, resut.getIm());
+    EXPECT_DOUBLE_EQ(-0.0, resut.getRe());
+    EXPECT_DOUBLE_EQ(-3.17, resut.getIm());
 }
 
 TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Divide) {
@@ -70,6 +70,6 @@ TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Divide) {
     ComplexNumber resut = x / y;
 
     // Assert
-    EXPECT_EQ(-0.25, resut.getRe());
-    EXPECT_EQ(0.0, resut.getIm());
+    EXPECT_DOUBLE_EQ(-0.25, resut.getRe());
+    EXPECT_DOUBLE_EQ(0.0, resut.getIm());
 }
