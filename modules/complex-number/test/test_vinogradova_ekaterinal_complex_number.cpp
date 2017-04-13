@@ -75,3 +75,15 @@ TEST(Vinogradova_Ekaterina_ComplexNumberTest, Imaginary_Squared_Is_Minus_One) {
 	ComplexNumber exp_z(-1.0, 0.0);
 	EXPECT_EQ(exp_z, res_z);
 }
+
+TEST(Vinogradova_Ekaterina_ComplexNumberTest, Multiplication_Of_Conjugate_Numbers_Gives_Zero_Im) {
+	// Arrange
+	ComplexNumber z1(5.0, 12.0);
+	ComplexNumber z2(5.0, -12.0);
+
+	// Act
+	ComplexNumber res_z = z1 * z2;
+
+	// Assert
+	EXPECT_EQ(0.0, res_z.getIm());
+}
