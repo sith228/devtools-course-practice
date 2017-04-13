@@ -7,7 +7,7 @@
 TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Re) {
         // Act
         ComplexNumber a(11, 11);
-        //Assert
+        // Assert
         EXPECT_EQ(a.getRe(), 11);
 }
 
@@ -16,7 +16,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Im) {
         ComplexNumber a(11, 11);
 
         a.setIm(12);
-        //Assert
+        // Assert
         EXPECT_EQ(a.getIm(), 12);
 }
 
@@ -25,7 +25,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Re) {
         ComplexNumber a(11, 11);
 
         a.setRe(12);
-        //Assert
+        // Assert
         EXPECT_EQ(a.getRe(), 12);
 
 }
@@ -33,7 +33,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Re) {
 TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Im) {
         // Act
         ComplexNumber a(11, 11);
-        //Assert
+        // Assert
         EXPECT_EQ(a.getIm(), 11);
 
 }
@@ -47,7 +47,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Sum) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a + b);
 
         EXPECT_EQ(c.getRe(), cr);
@@ -63,7 +63,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Subtract) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a - b);
 
         EXPECT_EQ(c.getRe(), cr);
@@ -79,7 +79,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Multiplication) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a * b);
 
         EXPECT_EQ(c.getRe(), cr);
@@ -95,7 +95,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Division) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a / b);
 
         EXPECT_EQ(c.getRe(), cr);
@@ -110,7 +110,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Equal) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a);
 
         EXPECT_EQ(c, a);
@@ -127,7 +127,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Not_Equal) {
         ComplexNumber a(ar, ai);
         ComplexNumber b(br, bi);
         ComplexNumber c(0.00, 0.00);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(c = a);
 
         EXPECT_EQ(c, a);
@@ -141,7 +141,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Equate_To_Itself) {
         double ar = 13.77, ai = 19.86;
         // Act
         ComplexNumber a(ar, ai);
-        //Assert
+        // Assert
         ASSERT_NO_THROW(a = a);
 
         EXPECT_EQ(a.getIm(), ai);
@@ -154,6 +154,6 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Cant_Division_To_Zero) {
         // Act
         ComplexNumber a(ar, ai);
         ComplexNumber b(0, 0);
-        //Assert
+        // Assert
         ASSERT_ANY_THROW(a/b);
 }
