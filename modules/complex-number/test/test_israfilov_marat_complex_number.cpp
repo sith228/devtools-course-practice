@@ -11,11 +11,11 @@ TEST(Israfilov_Marat_ComplexNumberTest, Difference_Equal_Numbers_Gives_Zero) {
     ComplexNumber z2;
 
     //Act
-	z2 = z - z1;
+    z2 = z - z1;
 
     // Assert
-	ComplexNumber expected_z(0.0, 0.0);
-	
+    ComplexNumber expected_z(0.0, 0.0);
+
     EXPECT_EQ(z2, expected_z);
 }
 
