@@ -7,7 +7,7 @@
 TEST(Israfilov_Marat_ComplexNumberTest, Difference_Equal_Numbers_Gives_Zero) {
     // Arrange
     double re = 12.3;
-    double im = 7.7;
+    double im = -7.7;
     double re1 = 0.0;
     double im1 = 0.0;
 
