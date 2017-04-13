@@ -4,7 +4,6 @@
 
 #include "include/complex_number.h"
 
-
 TEST(Kildishev_Maxim_ComplexNumberTest, Cant_division_by_zero) {
     ComplexNumber z(1.0, 1.0);
     ComplexNumber zero(0.0, 0.0);
