@@ -63,3 +63,15 @@ TEST(Vinogradova_Ekaterina_ComplexNumberTest, Distributivity) {
 	// Assert
 	EXPECT_EQ(left_z, right_z);
 }
+
+TEST(Vinogradova_Ekaterina_ComplexNumberTest, Imaginary_Squared_Is_Minus_One) {
+	// Arrange
+	ComplexNumber z(0.0, 1.0);
+
+	// Act
+	ComplexNumber res_z = z * z;
+
+	// Assert
+	ComplexNumber exp_z(-1.0, 0.0);
+	EXPECT_EQ(exp_z, res_z);
+}
