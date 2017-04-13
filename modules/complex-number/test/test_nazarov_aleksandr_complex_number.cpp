@@ -4,14 +4,14 @@
 
 #include "include/complex_number.h"
 
-TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Re) {
+TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Re) {
         // Act
         ComplexNumber a(11, 11);
         // Assert
         EXPECT_EQ(a.getRe(), 11);
 }
 
-TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Im) {
+TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Right_Im) {
         // Act
         ComplexNumber a(11, 11);
 
@@ -20,7 +20,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Im) {
         EXPECT_EQ(a.getIm(), 12);
 }
 
-TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Re) {
+TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Right_Re) {
         // Act
         ComplexNumber a(11, 11);
 
@@ -29,7 +29,7 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Re) {
         EXPECT_EQ(a.getRe(), 12);
 }
 
-TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Im) {
+TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Im) {
         // Act
         ComplexNumber a(11, 11);
         // Assert
