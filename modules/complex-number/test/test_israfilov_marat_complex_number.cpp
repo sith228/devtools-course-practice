@@ -10,7 +10,7 @@ TEST(Israfilov_Marat_ComplexNumberTest, Difference_Equal_Numbers_Gives_Zero) {
     ComplexNumber z1(z);
     ComplexNumber z2;
 
-    //Act
+    // Act
     z2 = z - z1;
 
     // Assert
