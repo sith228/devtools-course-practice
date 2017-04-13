@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
+#include <string>
 
 TEST(TarasovOlegTest, Diff_Complex_Number) {
     // Arrange
