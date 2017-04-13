@@ -27,7 +27,6 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Set_Rigt_Re) {
         a.setRe(12);
         // Assert
         EXPECT_EQ(a.getRe(), 12);
-
 }
 
 TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Im) {
@@ -35,7 +34,6 @@ TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Rigt_Im) {
         ComplexNumber a(11, 11);
         // Assert
         EXPECT_EQ(a.getIm(), 11);
-
 }
 
 TEST(Nazarov_Aleksandr_ComplexNumberTest, Can_Get_Right_Sum) {
