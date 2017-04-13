@@ -5,7 +5,7 @@
 
 #include "include/complex_number.h"
 
-TEST(Kildishev_Maxim_ComplexNumberTest, Multiply_by_selfajoint_is_only_realpart) {
+TEST(Kildishev_Maxim_ComplexNumberTest, MLTPLY_by_selfajoint_is_only_rlpt) {
     ComplexNumber z(1.0, 1.0);
     ComplexNumber z1(1.0, -1.0);
     ComplexNumber res = z * z1;
@@ -26,7 +26,6 @@ TEST(Kildishev_Maxim_ComplexNumberTest, Multyply_by_zero_is_zero) {
     ComplexNumber expected(0.0, 0.0);
     EXPECT_DOUBLE_EQ(expected.getRe(), (z = z * expected).getRe());
     EXPECT_DOUBLE_EQ(expected.getIm(), (z = z* expected).getIm());
-
 }
 
 TEST(Kildishev_Maxim_ComplexNumberTest, Copy_is_equal_orig) {
