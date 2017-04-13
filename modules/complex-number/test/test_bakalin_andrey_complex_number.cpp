@@ -6,26 +6,28 @@
 
 TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Real) {
     // Arrange
-    double re = 1.0, im = 2.0, re_expected;
+    double re = 1.0, im = 2.0;
     ComplexNumber z(re, im);
 
     // Act
-    re_expected = z.getRe();
+    double re_real = z.getRe();
 
     // Assert
-    EXPECT_EQ(re, re_expected);
+	double re_expected = re;
+    EXPECT_EQ(re_real, re_expected);
 }
 
 TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Imaginary) {
     // Arrange
-    double re = 1.0, im = 2.0, im_expected;
+    double re = 1.0, im = 2.0;
     ComplexNumber z(re, im);
 
     // Act
-    im_expected = z.getIm();
+    double im_real = z.getIm();
 
     // Assert
-    EXPECT_EQ(im, im_expected);
+	double im_expected = im;
+    EXPECT_EQ(im_real, im_expected);
 }
 
 TEST(Bakalin_Andrey_ComplexNumberTest, Additive_Commutativity_Works) {
