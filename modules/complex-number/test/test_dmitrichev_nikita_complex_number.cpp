@@ -74,9 +74,9 @@ TEST_F(Dmitrichev_Nikita_ComplexNumberTest, addition_is_associative) {
     z3 = (CN[0] + CN[2]) + CN[1];
 
     // Assert
-    EXPECT_TRUE(z1 == z2);
-    EXPECT_TRUE(z1 == z3);
-    EXPECT_TRUE(z2 == z3);
+    EXPECT_EQ(z1, z2);
+    EXPECT_EQ(z1, z3);
+    EXPECT_EQ(z2, z3);
 }
 
 TEST_F(Dmitrichev_Nikita_ComplexNumberTest, can_do_add_dif_mult_div_together) {
