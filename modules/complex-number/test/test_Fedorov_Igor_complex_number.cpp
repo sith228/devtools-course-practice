@@ -18,14 +18,14 @@ TEST(Igor_Fedorov_ComplexNumberTest, can_divide_by_1) {
     ComplexNumber a(1, 0);
     ComplexNumber b(r, i);
     ComplexNumber c = a / b;
-    ComplexNumber d(r / (r*r +i*i ),-i/(r*r+i*i));
-    EXPECT_EQ(c,d);
+    ComplexNumber d(r / (r*r + i*i), -i / (r*r + i*i));
+    EXPECT_EQ(c, d);
 }
 TEST(Igor_Fedorov_ComplexNumberTest, get_work_ok) {
     double r1 = 1.123;
     double i1 = 12.23;
     double r2 = 123.4;
-    double i2 = 1234.0; 
+    double i2 = 1234.0;
     ComplexNumber a(r1, i1);
     ComplexNumber b(r2, i2);
     ComplexNumber c = a * b;
@@ -44,7 +44,7 @@ TEST(Igor_Fedorov_ComplexNumberTest, set_work_ok) {
 TEST(Igor_Fedorov_ComplexNumberTest, correct_multilication) {
     double r = 1.0;
     double i = 0.0;
-    ComplexNumber c(i,r);
+    ComplexNumber c(i, r);
     ComplexNumber result(-r, i);
     ComplexNumber cc = c * c;
     EXPECT_EQ(result, cc);
