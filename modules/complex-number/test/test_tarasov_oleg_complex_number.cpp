@@ -1,9 +1,10 @@
 // Copyright 2017 Tarasov Oleg
 
-#include <gtest/gtest.h>
 
-#include "include/complex_number.h"
+#include <gtest/gtest.h>
 #include <string>
+#include "include/complex_number.h"
+
 
 TEST(TarasovOlegTest, Diff_Complex_Number) {
     // Arrange
