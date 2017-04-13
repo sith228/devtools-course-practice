@@ -5,27 +5,27 @@
 #include "include/complex_number.h"
 
 TEST(Kochin_Ivan_ComplexNumberTest, Work_of_Link_Constructor) {
-	// Arrange
-	ComplexNumber z(1, 1);
+    // Arrange
+    ComplexNumber z(1, 1);
 
-	// Act
-	ComplexNumber z1(z);
+    // Act
+    ComplexNumber z1(z);
 
-	// Assert
-	EXPECT_EQ(z,z1);
+    // Assert
+    EXPECT_EQ(z, z1);
 }
 
 TEST(Kochin_Ivan_ComplexNumberTest, Can_Multiplication_Zero) {
-	// Arrange
-	ComplexNumber z1(1, 1);
-	ComplexNumber z2(0,0);
+    // Arrange
+    ComplexNumber z1(1, 1);
+    ComplexNumber z2(0, 0);
 
-	// Act
-	ComplexNumber z = z2*z1;
+    // Act
+    ComplexNumber z = z2*z1;
 
-	// Assert
-	ComplexNumber expected_z(0, 0);
-	EXPECT_EQ(expected_z,z);
+    // Assert
+    ComplexNumber expected_z(0, 0);
+    EXPECT_EQ(expected_z, z);
 }
 
 TEST(Kochin_Ivan_ComplexNumberTest, Can_Difference_By_Yourself) {
