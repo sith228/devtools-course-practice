@@ -6,66 +6,71 @@
 
 TEST(Israfilov_Marat_ComplexNumberTest, Difference_Equal_Numbers_Gives_Zero) {
     // Arrange
-    double re = 12.4;
-    double im = -7.7;    
-    ComplexNumber z2(0.0, 0.0);
+    ComplexNumber z(1.2, 3.4);
+    ComplexNumber z1(z);
+    ComplexNumber z2;
 
-    // Act
-    ComplexNumber z(re, im);
-    ComplexNumber z1(re, im);
+    //Act
+	z2 = z - z1;
 
     // Assert
-    EXPECT_EQ(z - z1, z2);
+	ComplexNumber expected_z(0.0, 0.0);
+	
+    EXPECT_EQ(z2, expected_z);
 }
 
 TEST(Israfilov_Marat_ComplexNumberTest, Add_With_Zero_Does_Not_Change_Number) {
     // Arrange
-    double re = 1.2;
-    double im = 3.4;
+    ComplexNumber z(1.2, 3.4);
     ComplexNumber z1(0.0, 0.0);
+    ComplexNumber z2;
 
     // Act
-    ComplexNumber z(re, im);
+    z2 = z + z1;
 
     // Assert
-    EXPECT_EQ(z + z1, z);
+    EXPECT_EQ(z2, z);
 }
 
 TEST(Israfilov_Marat_ComplexNumberTest, Multiplication_With_Zero_Gives_Zero) {
     // Arrange
-    double re = 1.2;
-    double im = 3.4;
+    ComplexNumber z(1.2, 3.4);
     ComplexNumber z1(0.0, 0.0);
+    ComplexNumber z2;
 
     // Act
-    ComplexNumber z(re, im);
+    z2 = z * z1;
 
     // Assert
-    EXPECT_EQ(z * z1, z1);
+    ComplexNumber expected_z(0.0, 0.0);
+
+    EXPECT_EQ(z2, expected_z);
 }
 
 TEST(Israfilov_Marat_ComplexNumberTest, Diff_With_Zero_Does_Not_Change_Number) {
     // Arrange
-    double re = 1.2;
-    double im = 3.4;
+    ComplexNumber z(1.2, 3.4);
     ComplexNumber z1(0.0, 0.0);
+    ComplexNumber z2;
 
     // Act
-    ComplexNumber z(re, im);
+    z2 = z - z1;
 
     // Assert
-    EXPECT_EQ(z - z1, z);
+    EXPECT_EQ(z2, z);
 }
 
 TEST(Israfilov_Marat_ComplexNumberTest, Division_Zero_By_Number_Gives_Zero) {
     // Arrange
-    double re = 1.2;
-    double im = 3.4;
+    ComplexNumber z(1.2, 3.4);
     ComplexNumber z1(0.0, 0.0);
+    ComplexNumber z2;
 
     // Act
-    ComplexNumber z(re, im);
+    z2 = z1 / z;
 
     // Assert
-    EXPECT_EQ(z1 / z, z1);
+    ComplexNumber expected_z(0.0, 0.0);
+
+    EXPECT_EQ(z2, expected_z);
 }
