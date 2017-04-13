@@ -76,7 +76,7 @@ TEST(Vinogradova_Ekaterina_ComplexNumberTest, Imaginary_Squared_Is_Minus_One) {
     EXPECT_EQ(exp_z, res_z);
 }
 
-TEST(Vinogradova_Ekaterina_ComplexNumberTest, Multiplication_Of_Conjugate_Numbers_Gives_Zero_Im) {
+TEST(Vinogradova_Ekaterina_ComplexNumberTest, Mult_Of_Conjugate_Numbers_Gives_Zero_Im) {
     // Arrange
     ComplexNumber z1(5.0, 12.0);
     ComplexNumber z2(5.0, -12.0);
