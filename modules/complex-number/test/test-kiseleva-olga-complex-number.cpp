@@ -23,6 +23,7 @@ TEST(Kiseleva_Olga_ComplexNumberTest, Do_Throw_When_Division_By_Double_Min) {
     double min = std::numeric_limits<double>::min();
     double re = 10.2;
     double im = -89.3;
+
     // Act
     ComplexNumber z1(min, min);
     ComplexNumber z2(re, im);
