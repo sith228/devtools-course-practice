@@ -13,7 +13,7 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Real) {
     double re_real = z.getRe();
 
     // Assert
-	double re_expected = re;
+    double re_expected = re;
     EXPECT_EQ(re_real, re_expected);
 }
 
@@ -26,7 +26,7 @@ TEST(Bakalin_Andrey_ComplexNumberTest, Can_Get_Imaginary) {
     double im_real = z.getIm();
 
     // Assert
-	double im_expected = im;
+    double im_expected = im;
     EXPECT_EQ(im_real, im_expected);
 }
 
