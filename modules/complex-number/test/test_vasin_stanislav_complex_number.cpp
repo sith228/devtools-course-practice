@@ -42,10 +42,10 @@ TEST(Vasin_Stanislav_ComplexNumberTest, mull_by_the_complex_conjugate) {
     // Arrange
     ComplexNumber A(2.3, 15.0);
     ComplexNumber B(2.3, -15.0);
-    
+
     // Act
     ComplexNumber C = A * B;
-    
+
     // Assert
     double res = 2.3 * 2.3 + 15.0 * 15.0;
     EXPECT_TRUE((C.getRe() == res) && (C.getIm() == 0.0));
