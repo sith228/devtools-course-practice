@@ -49,7 +49,7 @@ TEST_F(Povelikin_Rostislav_ComplexNumberTest, abs) {
     EXPECT_DOUBLE_EQ(std::abs(stdComplexNumber), absolute);
 }
 
-TEST(Povelikin_Rostislav_ComplexNumberTest_NoF, array_destruction) {
+TEST(Povelikin_Rostislav_ComplexNumberTest_NoF, destruction_of_array) {
     ComplexNumber* complexNumber = new ComplexNumber[10];
     EXPECT_NO_THROW(delete [] complexNumber);
 }
