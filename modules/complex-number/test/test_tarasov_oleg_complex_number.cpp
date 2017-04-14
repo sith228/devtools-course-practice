@@ -43,7 +43,7 @@ TEST(TarasovOlegTest, Complex_Expression_With_Divide) {
 TEST(TarasovOlegTest, Check_Additivity) {
     // Arrange
     ComplexNumber z1(5.0, 11.0);
-    ComplexNumber z2(14.0, 1.0);
+    ComplexNumber z2(14.0, -1.0);
 
     // Act & Assert
     EXPECT_EQ(z1 + z2, z2 + z1);
@@ -52,7 +52,7 @@ TEST(TarasovOlegTest, Check_Additivity) {
 TEST(TarasovOlegTest, Check_Assotiative) {
     // Arrange
     ComplexNumber z1(5.0, 11.0);
-    ComplexNumber z2(14.0, 1.0);
+    ComplexNumber z2(14.0, -1.0);
 	ComplexNumber z3(5.0, 2.0);
 
     // Act & Assert
@@ -62,7 +62,8 @@ TEST(TarasovOlegTest, Check_Assotiative) {
 TEST(TarasovOlegTest, Check_Distributive) {
     // Arrange
     ComplexNumber z1(5.0, 11.0);
-    ComplexNumber z2(14.0, 1.0);
+    ComplexNumber z2(14.0, -1.0);
+	ComplexNumber z3(5.0, 2.0);
 
     // Act & Assert
     EXPECT_EQ((z1 + z2) * z3, z1 * z3 + z2 * z3);
