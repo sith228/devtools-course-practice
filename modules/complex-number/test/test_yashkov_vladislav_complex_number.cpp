@@ -5,18 +5,18 @@
 #include "include/complex_number.h"
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Can_Set_Negative_Real) {
- ComplexNumber z(-1, 1);
- EXPECT_EQ(-1, z.getRe());
+  ComplexNumber z(-1, 1);
+  EXPECT_EQ(-1, z.getRe());
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Can_Set_Negative_Imaginary) {
- ComplexNumber z(1, -1);
- EXPECT_EQ(-1, z.getIm());
+  ComplexNumber z(1, -1);
+  EXPECT_EQ(-1, z.getIm());
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, First_Parm_Is_Real) {
- ComplexNumber z(1, 2);
- EXPECT_EQ(1, z.getRe());
+  ComplexNumber z(1, 2);
+  EXPECT_EQ(1, z.getRe());
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Second_Parm_Is_Imaginary) {
@@ -25,7 +25,7 @@ TEST(Yashkov_Vladislav_ComplexNumberTest, Second_Parm_Is_Imaginary) {
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Numbers_With_Equal_Real_And_Not_Equal_Imaginary_Is_Not_Equal) {
- ComplexNumber z1(1, 2);
- ComplexNumber z2(1, 3);
- EXPECT_TRUE(z1 != z2);
+  ComplexNumber z1(1, 2);
+  ComplexNumber z2(1, 3);
+  EXPECT_TRUE(z1 != z2);
 }
