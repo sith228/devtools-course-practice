@@ -53,7 +53,7 @@ TEST(TarasovOlegTest, Check_Assotiative) {
     // Arrange
     ComplexNumber z1(5.0, 11.0);
     ComplexNumber z2(14.0, -1.0);
-	ComplexNumber z3(5.0, 2.0);
+    ComplexNumber z3(5.0, 2.0);
 
     // Act & Assert
     EXPECT_EQ((z1 + z2) + z3, z1 + (z2 + z3));
@@ -63,7 +63,7 @@ TEST(TarasovOlegTest, Check_Distributive) {
     // Arrange
     ComplexNumber z1(5.0, 11.0);
     ComplexNumber z2(14.0, -1.0);
-	ComplexNumber z3(5.0, 2.0);
+    ComplexNumber z3(5.0, 2.0);
 
     // Act & Assert
     EXPECT_EQ((z1 + z2) * z3, z1 * z3 + z2 * z3);
