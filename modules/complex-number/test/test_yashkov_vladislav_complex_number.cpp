@@ -20,8 +20,8 @@ TEST(Yashkov_Vladislav_ComplexNumberTest, First_Parm_Is_Real) {
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Second_Parm_Is_Imaginary) {
- ComplexNumber z(1, 2);
- EXPECT_EQ(2, z.getIm());
+  ComplexNumber z(1, 2);
+  EXPECT_EQ(2, z.getIm());
 }
 
 TEST(Yashkov_Vladislav_ComplexNumberTest, Numbers_With_Equal_Real_And_Not_Equal_Imaginary_Is_Not_Equal) {
