@@ -19,9 +19,9 @@ TEST(Zemlyanskiy_TEST,Can_Subtract_Numbers)
 TEST(Zemlyanskiy_TEST,Can_Get_Real_Value)
 {
     double a = rand() % 100;
-    ComplexNumber z(a,0.0);
+    ComplexNumber p(a,0.0);
 
-    ASSERT_NO_THROW(z.getRe());
+    ASSERT_NO_THROW(p.getRe());
 }
 
 TEST(Zemlyanskiy_TEST, Can_Get_Imaginary_Value)
@@ -56,6 +56,7 @@ TEST(Zemlyanskiy_TEST, Can_Set_Real_Value)
 
     ASSERT_NO_THROW(z.setRe(re));
 }
+
 TEST(Zemlyanskiy_TEST, Can_Set_Imaginary_Value)
 {
     ComplexNumber z;
