@@ -6,7 +6,7 @@
 
 TEST(Buldakov_Vladislav_ComplexNumberTest, Can_Create_Default) {
     // Arrange & Act
-    ComplexNumber z = ComplexNumber();
+    ComplexNumber z;
 
     // Assert
     EXPECT_DOUBLE_EQ(0.0, z.getRe());
