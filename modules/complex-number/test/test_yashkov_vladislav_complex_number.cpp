@@ -24,7 +24,7 @@ TEST(Yashkov_Vladislav_ComplexNumberTest, Second_Parm_Is_Imaginary) {
   EXPECT_EQ(2, z.getIm());
 }
 
-TEST(Yashkov_Vladislav_ComplexNumberTest, Numbers_With_Not_Equal_Imaginary_Not_Equal) {
+TEST(Yashkov_Vladislav_ComplexNumberTest, If_Not_Equal_Imaginary_Not_Equal) {
   ComplexNumber z1(1, 2);
   ComplexNumber z2(1, 3);
   EXPECT_TRUE(z1 != z2);
