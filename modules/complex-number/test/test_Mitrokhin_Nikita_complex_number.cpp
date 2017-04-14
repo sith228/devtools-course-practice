@@ -15,7 +15,6 @@ TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Add_Imaginary_Complex) {
     // Assert
     EXPECT_DOUBLE_EQ(0.0, z.getRe());
     EXPECT_DOUBLE_EQ(15.0, z.getIm());
-    
 }
 
 TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Multiply_Imaginary_Complex) {
