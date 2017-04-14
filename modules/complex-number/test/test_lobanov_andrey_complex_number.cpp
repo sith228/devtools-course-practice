@@ -3,7 +3,6 @@
 #include "include/complex_number.h"
 
 TEST(Lobanov_Andrey_ComplexNumberTest, Add__Complex_And_Comparing__Result) {
-
   ComplexNumber z1(5.0, 4.0);
   ComplexNumber z2(2.0, -7.0);
   ComplexNumber z3(10.0, 1.0);
@@ -14,7 +13,6 @@ TEST(Lobanov_Andrey_ComplexNumberTest, Add__Complex_And_Comparing__Result) {
 }
 
 TEST(Lobanov_Andrey_ComplexNumberTest, Subtract_Complex_And_Comparing_Result) {
-
   ComplexNumber z1(12.0, 8.0);
   ComplexNumber z2(-6.0, -15.0);
   ComplexNumber z3(11.0, 7.0);
@@ -25,7 +23,6 @@ TEST(Lobanov_Andrey_ComplexNumberTest, Subtract_Complex_And_Comparing_Result) {
 }
 
 TEST(Lobanov_Andrey_ComplexNumberTest, Multiplication_With_Permutation) {
-
   double r = 5.0;
   double im = -5.0;
   ComplexNumber z1(r, im);
@@ -36,7 +33,6 @@ TEST(Lobanov_Andrey_ComplexNumberTest, Multiplication_With_Permutation) {
 }
 
 TEST(Lobanov_Andrey_ComplexNumberTest, Set_Works_Correctly) {
-
   ComplexNumber z;
   double r = 25.0;
   double im = 29.0;
@@ -47,7 +43,6 @@ TEST(Lobanov_Andrey_ComplexNumberTest, Set_Works_Correctly) {
 }
 
 TEST(Lobanov_Andrey_ComplexNumberTest, Division_With_Opposite_And_Compare) {
-
   double r = 11.0;
   double im = 23.0;
   ComplexNumber z1(r, im);
