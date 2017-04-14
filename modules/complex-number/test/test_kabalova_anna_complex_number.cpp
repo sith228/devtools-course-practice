@@ -28,7 +28,7 @@ TEST(Kabalova_Anna_ComplexNumberTest, Difference_Complex_Number) {
     double re2 = 0.2;
     double im2 = 0.3;
 
-	double re3 = 0.1;
+    double re3 = 0.1;
     double im3 = 0.1;
 
     ComplexNumber z1(re1, im1);
