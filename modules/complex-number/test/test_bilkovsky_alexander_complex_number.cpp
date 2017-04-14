@@ -1,7 +1,7 @@
 // Copyright 2017 Bilkovsky Alexander
 #include <gtest/gtest.h>
 #include "include/complex_number.h"
-TEST(Bilkovsky_Alexander_ComplexNumberTest, copied_object_has_another_adress_1) {
+TEST(Bilkovsky_Alexander_ComplexNumberTest, copied_has_another_adress_1) {
 double re = 15.0;
 double im = 10.0;
 ComplexNumber z(re, im), z1(z);
@@ -9,7 +9,7 @@ EXPECT_EQ(z == z1, true);
 z1 = z1 + z1;
 EXPECT_EQ(z == z1, false);
 }
-TEST(Bilkovsky_Alexander_ComplexNumberTest, copied_object_has_another_adress_2) {
+TEST(Bilkovsky_Alexander_ComplexNumberTest, copied_has_another_adress_2) {
 double re = 15.0;
 double im = 10.0;
 ComplexNumber z(re, im), z1;
@@ -42,4 +42,3 @@ z = z * z1;
 EXPECT_EQ(z1.getRe(), 0);
 EXPECT_EQ(z1.getIm(), 0);
 }
- 
