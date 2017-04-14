@@ -29,7 +29,7 @@ TEST(Zemlyanskiy_TEST, Can_Multiply_Numbers) {
 }
 TEST(Zemlyanskiy_TEST, Can_Set_Real_Value) {
     ComplexNumber z;
-	double re = 4.2;
+    double re = 4.2;
     ASSERT_NO_THROW(z.setRe(re));
 }
 TEST(Zemlyanskiy_TEST, Can_Set_Imaginary_Value) {
