@@ -7,16 +7,16 @@
 
 TEST(Bevzuk_Semen_ComplexNumberTest, Can_assigning_yourself) {
     // Arrange
-    double re = 1.0;
-    double im = 2.0;
+    double re = 1.1;
+    double im = 2.2;
 
     // Act
     ComplexNumber z(re, im);
     z = z;
 
     // Assert
-    EXPECT_EQ(re, z.getRe());
-    EXPECT_EQ(im, z.getIm());
+    EXPECT_DOUBLE_EQ(re, z.getRe());
+    EXPECT_DOUBLE_EQ(im, z.getIm());
 }
 
 TEST(Bevzuk_Semen_ComplexNumberTest, Can_not_division_by_number_less_eps) {
@@ -63,7 +63,7 @@ TEST(Bevzuk_Semen_ComplexNumberTest,
     EXPECT_EQ(z1*z2, result);
 }
 
-TEST(Bevzuk_Semen_ComplexNumberTest, Difference_with_oneself_is_zero) {
+TEST(Bevzuk_Semen_ComplexNumberTest, Difference_with_itself_is_zero) {
     // Arrange
     ComplexNumber z(4.0, 2.0);
     ComplexNumber z1;
