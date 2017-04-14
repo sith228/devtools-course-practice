@@ -13,8 +13,9 @@ TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Add_Imaginary_Complex) {
     ComplexNumber z = z1 + z2;
 
     // Assert
-    ComplexNumber expected_z(0.0, 15.0);
-    EXPECT_DOUBLE_EQ(expected_z, z);
+    EXPECT_DOUBLE_EQ(0.0, z.getRe());
+    EXPECT_DOUBLE_EQ(15.0, z.getIm());
+    
 }
 
 TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Multiply_Imaginary_Complex) {
@@ -26,8 +27,8 @@ TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Multiply_Imaginary_Complex) {
     ComplexNumber z = z1 * z2;
 
     // Assert
-    ComplexNumber expected_z(-26.0, 0.0);
-    EXPECT_DOUBLE_EQ(expected_z, z);
+    EXPECT_DOUBLE_EQ(-26.0, z.getRe());
+    EXPECT_DOUBLE_EQ(0.0, z.getIm());
 }
 
 TEST(Mitrokhin_Nikita_ComplexNumberTest, Equal_Imaginary_Complex) {
@@ -48,8 +49,8 @@ TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Multiply_By_Zero) {
     ComplexNumber z = z1 * z2;
 
     // Assert
-    ComplexNumber expected_z(0.0, 0.0);
-    EXPECT_DOUBLE_EQ(expected_z, z);
+    EXPECT_DOUBLE_EQ(0.0, z.getRe());
+    EXPECT_DOUBLE_EQ(0.0, z.getIm());
 }
 
 TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Division_Imaginary_Complex) {
@@ -61,7 +62,7 @@ TEST(Mitrokhin_Nikita_ComplexNumberTest, Can_Division_Imaginary_Complex) {
     ComplexNumber z = z2 / z1;
 
     // Assert
-    ComplexNumber expected_z(2.0, 0.0);
-    EXPECT_DOUBLE_EQ(expected_z, z);
+    EXPECT_DOUBLE_EQ(2.0, z.getRe());
+    EXPECT_DOUBLE_EQ(0.0, z.getIm());
 }
 
