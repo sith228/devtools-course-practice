@@ -70,8 +70,8 @@ TEST(Kabalova_Anna_ComplexNumberTest, Test_Assignment_Operator) {
     double im1 = 2.0;
 
     ComplexNumber z1(re1, im1);
-    ComplexNumber z2;
-    z2 = z1;
+    ComplexNumber Assigment;
+    Assigment = z1;
 
-    EXPECT_EQ(z1, z2);
+    EXPECT_EQ(z1, Assigment);
 }
