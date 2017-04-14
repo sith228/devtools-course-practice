@@ -4,8 +4,7 @@
 
 #include "include/complex_number.h"
 
-TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Assign_Complex_Number_To_Itself)
-{
+TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Assign_Complex_Number_To_Itself){
     // Arrange
     double re = 1.0, im = -1.0;
     // Act
@@ -16,8 +15,7 @@ TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Assign_Complex_Number_To_Itself)
     EXPECT_EQ(z1, z2);
 }
 
-TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Substract_Many_Complex_Numbers)
-{
+TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Substract_Many_Complex_Numbers){
     // Arrange
     double re = 2.0, im = -1.0;
     // Act
@@ -32,8 +30,7 @@ TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Substract_Many_Complex_Numbers)
     EXPECT_EQ(z, zt);
 }
 
-TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Add_Many_Complex_Numbers)
-{
+TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Add_Many_Complex_Numbers){
     // Arrange
     double re = 1.0, im = -1.0;
     // Act
@@ -47,8 +44,7 @@ TEST(Zorina_Ekaterina_ComplexNumberTest, Can_Add_Many_Complex_Numbers)
     EXPECT_EQ(z, z1 + z2 + z3 + z4 + z5);
 }
 
-TEST(Zorina_Ekaterina_ComplexNumberTest, Conjugate_Complex_Numbers_Multiplicat)
-{
+TEST(Zorina_Ekaterina_ComplexNumberTest, Conjugate_Complex_Numbers_Multiply){
     // Arrange
     double re = 6.0, im = 4.22;
     // Act
@@ -59,8 +55,7 @@ TEST(Zorina_Ekaterina_ComplexNumberTest, Conjugate_Complex_Numbers_Multiplicat)
     EXPECT_EQ(z, z1 * z2);
 }
 
-TEST(Zorina_Ekaterina_ComplexNumberTest, Copied_Number_Has_Its_Own_Memory)
-{
+TEST(Zorina_Ekaterina_ComplexNumberTest, Copied_Number_Has_Its_Own_Memory){
     // Arrange
     double re = 1.0, im = -1.0;
     // Act
