@@ -39,14 +39,6 @@ TEST(Zemlyanskiy_TEST, Can_Not_Divide_By_Zero)
 	EXPECT_THROW(m1 / m2, std::string);
 }
 
-TEST(Zemlyanskiy_TEST,Can_Compare_Numbers)
-{
-	ComplexNumber r1(2.5, 4.4);
-	ComplexNumber r2(2.1, 4.1);
-
-	EXPECT_FALSE(r2==r1,std::string);
-}
-
 TEST(Zemlyanskiy_TEST,Can_Multiply_Numbers)
 {
 	ComplexNumber x1(2.2, 2.2);
