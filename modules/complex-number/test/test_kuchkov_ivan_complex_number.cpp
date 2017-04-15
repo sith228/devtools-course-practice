@@ -4,16 +4,21 @@
 
 #include "include/complex_number.h"
 
-TEST(Kuchkov_Ivan_ComplexNumberTest, Can_Create_Zero) 
+TEST(Kuchkov_Ivan_ComplexNumberTest, check_create_by_default)
 {
-    // Arrange
-    double re = 0.0;
-    double im = 0.0;
+	ComplexNumber z;
 
-    // Act
-    ComplexNumber z(re, im);
+	EXPECT_DOUBLE_EQ(0.0, z.getRe());
+	EXPECT_DOUBLE_EQ(0.0, z.getIm());
+}
 
-    // Assert
-    EXPECT_EQ(re, z.getRe());
-    EXPECT_EQ(im, z.getIm());
+TEST(Kuchkov_Ivan_ComplexNumberTest, can_create_non_zero_number) {
+	
+	double re = 3.1415;
+	double im = 2.71828;
+
+	ComplexNumber z(re, im);
+
+	EXPECT_DOUBLE_EQ(re, z.getRe());
+	EXPECT_DOUBLE_EQ(im, z.getIm());
 }
