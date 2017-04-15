@@ -72,7 +72,7 @@ TEST(Kuchkov_Ivan_ComplexNumberTest, check_is_set_part_of_number_correct) {
 TEST(Kuchkov_Ivan_ComplexNumberTest, check_is_summing_number_correct) {
     double re1 = 3.2;
     double re2 = 2.2;
-    double re_retult = 5.4;
+    double re_result = 5.4;
     double im1 = 2.7;
     double im2 = 2.8;
     double im_result = 5.5;
