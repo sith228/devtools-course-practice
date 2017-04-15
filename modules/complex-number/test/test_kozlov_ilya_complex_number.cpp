@@ -1,5 +1,3 @@
-// Copyright [2017] Kozlov Ilya
-
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
@@ -9,10 +7,10 @@ TEST(Kozlov_Ilya_ComplexNumberTest, Existence_Of_Neutral_Element_For_Multiplicat
 {
     // (a + bi)(1 + 0i) =  a + bi - Существование нейтрального элемента для умножения (свойство)
 
-	int a = 10;
-    int b = 15;
+	const int a = 10;
+    const int b = 15;
     
-    ComplexNumber C1(10, 15);
+    ComplexNumber C1(a, b);
     ComplexNumber C2(1, 0);
  
     EXPECT_EQ((C1*C2), C1);
