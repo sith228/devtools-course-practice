@@ -80,7 +80,7 @@ TEST(Kuchkov_Ivan_ComplexNumberTest, check_is_summing_number_correct) {
     ComplexNumber z1(re1, im1);
     ComplexNumber z2(re2, im2);
     ComplexNumber z3;
-    ComplexNumber z_result(re_retult, im_result);
+    ComplexNumber z_result(re_result, im_result);
 
     z3 = z1 + z2;
 
