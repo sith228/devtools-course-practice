@@ -15,7 +15,7 @@ TEST(Kozlov_Ilya_ComplexNumberTest, Multiplicate_With_One) {
     EXPECT_EQ((C1*C2), C1);
 }
 
-TEST(Kozlov_Ilya_ComplexNumberTest, DISABLED_Existence_Of_Private_Number)	{
+TEST(Kozlov_Ilya_ComplexNumberTest, DISABLED_Existence_Of_Private_Number) {
     const double az = 5.0;
     const double bz = 6.0;
 
@@ -28,7 +28,7 @@ TEST(Kozlov_Ilya_ComplexNumberTest, DISABLED_Existence_Of_Private_Number)	{
     ASSERT_TRUE(res);
 }
 
-TEST(Kozlov_Ilya_ComplexNumberTest, Divide_And_Multiplicate_With_Z_Is_Equal_To_Z) {
+TEST(Kozlov_Ilya_ComplexNumberTest, Divide_And_Multiplicate_Complex) {
     ComplexNumber z(10, 10);
 
     EXPECT_EQ(z*z / z, z);
