@@ -24,7 +24,7 @@ TEST(Vladimir_Kalinin_ComplexNumberTest, Multiplication_Of_Conjugate_Is_Real) {
   EXPECT_EQ(z.getIm(), 0);
 }
 
-TEST(Vladimir_Kalinin_ComplexNumberTest, Cant_Divide_Zero) {
+TEST(Vladimir_Kalinin_ComplexNumberTest, Throw_When_Divide_Zero) {
   // Arrange
   ComplexNumber z1(1, 2);
   ComplexNumber z2(0, 0);
@@ -50,7 +50,10 @@ TEST(Vladimir_Kalinin_ComplexNumberTest, Can_Appropriate_Element_To_Itself) {
   // Arrange
   ComplexNumber z1(5, 25);
   ComplexNumber z2(z1);
+
+  // Act
   z1 = z1;
+
   // Assert
   EXPECT_TRUE(z1 == z2);
 }
