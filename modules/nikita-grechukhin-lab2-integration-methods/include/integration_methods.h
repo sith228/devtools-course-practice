@@ -17,7 +17,6 @@ class IntegrationMethod {
  private:
     double upperLimit;
     double lowerLimit;
-
 };
 
 #endif  // MODULES_NIKITA_GRECHUKHIN_LAB2_INTEGRATION_METHODS_INCLUDE_INTEGRATION_METHODS_H_
