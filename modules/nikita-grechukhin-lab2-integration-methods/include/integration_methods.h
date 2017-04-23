@@ -5,8 +5,7 @@
 
 #include <string>
 
-enum method
-{
+enum method {
     Rectangles,
     Trapezium,
     Simpson
@@ -20,15 +19,14 @@ private:
     double lowerLimit;
 
 public:
-
+    IntegrationMethod();
     IntegrationMethod(double upperLimit, double lowerLimit);
-    ~IntegrationMethod(){}
 
-    double upper_limit() const;
-    void set_upper_limit(double upper_limit);
+    double getUpperLimit() const;
+    void setUpperLimit(double upperLimit);
 
-    double lower_limit() const;
-    void set_lower_limit(double lower_limit);
+    double getLowerLimit() const;
+    void setLowerLimit(double lowerLimit);
 };
 
 #endif  // MODULES_INTEGRATION_METHOD_INCLUDE_INTEGRATION_METHOD_H_

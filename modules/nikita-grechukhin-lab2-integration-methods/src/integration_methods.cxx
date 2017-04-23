@@ -2,28 +2,28 @@
 
 #include "include/integration_methods.h"
 
-IntegrationMethod::IntegrationMethod(double upperLimit, double lowerLimit)
-{
+IntegrationMethod::IntegrationMethod() {
+    this->upperLimit = 1.0;
+    this->lowerLimit = 0.0;
+}
+
+IntegrationMethod::IntegrationMethod(double upperLimit, double lowerLimit) {
     this->upperLimit = upperLimit;
     this->lowerLimit = lowerLimit;
 }
 
-double IntegrationMethod::upper_limit() const
-{
+double IntegrationMethod::getUpperLimit() const {
     return upperLimit;
 }
 
-void IntegrationMethod::set_upper_limit(double upper_limit)
-{
-    upperLimit = upper_limit;
+void IntegrationMethod::setUpperLimit(double upperLimit) {
+    this->upperLimit = upperLimit;
 }
 
-double IntegrationMethod::lower_limit() const
-{
+double IntegrationMethod::getLowerLimit() const {
     return lowerLimit;
 }
 
-void IntegrationMethod::set_lower_limit(double lower_limit)
-{
-    lowerLimit = lower_limit;
+void IntegrationMethod::setLowerLimit(double lowerLimit) {
+    this->lowerLimit = lowerLimit;
 }

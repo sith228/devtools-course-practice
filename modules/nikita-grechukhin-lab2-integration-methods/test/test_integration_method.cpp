@@ -7,10 +7,19 @@
 
 #include "include/integration_methods.h"
 
-TEST(INTEGRATION, can_create_integration_method)
-{
-    IntegrationMethod im(2.1, 1.4);
+TEST(INTEGRATION, canCreateIntegrationMethod) {
+    IntegrationMethod im(3.0, 1.5);
 
-    EXPECT_EQ(2.1, im.upper_limit());
-    EXPECT_EQ(1.4, im.lower_limit());
+    EXPECT_EQ(3.0, im.getUpperLimit());
+    EXPECT_EQ(1.5, im.getLowerLimit());
+}
+
+TEST(INTEGRATION, canSetLimits) {
+    IntegrationMethod im;
+
+    im.setUpperLimit(2.5);
+    im.setLowerLimit(0.5);
+
+    EXPECT_EQ(2.5, im.getUpperLimit());
+    EXPECT_EQ(0.5, im.getLowerLimit());
 }
