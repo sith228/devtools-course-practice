@@ -1,4 +1,4 @@
-// Copyright 2016 Nikita Grechukhin
+// Copyright 2017 Nikita Grechukhin
 
 #include "include/integration_methods.h"
 
