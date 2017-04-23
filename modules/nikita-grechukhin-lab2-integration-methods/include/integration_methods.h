@@ -4,12 +4,7 @@
 #define MODULES_NIKITA_GRECHUKHIN_LAB2_INTEGRATION_METHODS_INCLUDE_INTEGRATION_METHODS_H_
 
 class IntegrationMethod {
-
-private:
-    double upperLimit;
-    double lowerLimit;
-
-public:
+ public:
     IntegrationMethod();
     IntegrationMethod(double upperLimit, double lowerLimit);
 
@@ -18,6 +13,11 @@ public:
 
     double getLowerLimit() const;
     void setLowerLimit(double lowerLimit);
+
+ private:
+    double upperLimit;
+    double lowerLimit;
+
 };
 
 #endif  // MODULES_NIKITA_GRECHUKHIN_LAB2_INTEGRATION_METHODS_INCLUDE_INTEGRATION_METHODS_H_
