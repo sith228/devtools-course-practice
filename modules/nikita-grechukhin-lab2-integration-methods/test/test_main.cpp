@@ -1,4 +1,4 @@
-// Copyright 2017 Nikita Grechukhin
+// Copyright 2017 Grechukhin Nikita
 
 #include <gtest/gtest.h>
 
