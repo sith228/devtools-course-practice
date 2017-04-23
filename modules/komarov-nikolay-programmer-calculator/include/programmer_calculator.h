@@ -1,13 +1,12 @@
 // Copyright 2017 Komarov Nikolay
 
-#ifndef MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
-#define MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
+#ifndef MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROG_CALC_H_
+#define MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROG_CALC_H_
 
 #include <string>
 
 class ProgrammerCalculator {
-public:
-
+ public:
     ProgrammerCalculator();
 
     std::string convertDecToBin(int dec);
@@ -26,9 +25,8 @@ public:
     std::string convertHexToOct(std::string hex);
     int convertHexToDec(std::string hex);
 
-private:
-
+ private:
     ~ProgrammerCalculator();
 };
 
-#endif // MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROG_CALC_H_
+#endif  // MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROG_CALC_H_
