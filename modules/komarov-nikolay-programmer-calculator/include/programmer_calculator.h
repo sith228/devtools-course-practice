@@ -6,8 +6,9 @@
 #include <string>
 
 class ProgrammerCalculator {
+
 public:
-    ProgrammerCalculator ();
+    ProgrammerCalculator();
 
     std::string convertDecToBin(int dec);
     std::string convertDecToOct(int dec);
@@ -24,9 +25,9 @@ public:
     std::string convertHexToBin(std::string hex);
     std::string convertHexToOct(std::string hex);
     int convertHexToDec(std::string hex);
+
 private:
     ~ProgrammerCalculator();
-
 };
 
-#endif
+#endif // MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
