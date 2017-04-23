@@ -14,7 +14,6 @@ enum method {
 class IntegrationMethod {
 
 private:
-    double result;
     double upperLimit;
     double lowerLimit;
 
