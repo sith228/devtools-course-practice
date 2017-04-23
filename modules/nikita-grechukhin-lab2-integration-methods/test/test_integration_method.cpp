@@ -2,9 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <string>
-#include <stdexcept>
-
 #include "include/integration_methods.h"
 
 TEST(INTEGRATION, canCreateIntegrationMethod) {
