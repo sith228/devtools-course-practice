@@ -10,6 +10,7 @@ class ArithmeticParser {
  public:
     bool parse(const std::string &expression);
     double evaluate(double x = 0.0) const;
+
  private:
     typedef double(*func_t)(double);
 

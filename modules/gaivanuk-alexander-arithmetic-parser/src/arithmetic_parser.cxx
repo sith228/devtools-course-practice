@@ -3,22 +3,23 @@
 #include "include/arithmetic_parser.h"
 
 #include <math.h>
+#include <cstring>
 #include <iostream>
 #include <string>
 #include <stack>
 
 /*
-	ArithmeticParser is a recursive descent parser that
-	uses the folowing formal grammar:
+    ArithmeticParser is a recursive descent parser that
+    uses the folowing formal grammar:
 
-	EXPR  -> EXPR2{[+ | -]EXPR2}
-	EXPR2 -> EXPR3{[* | /]EXPR3}
-	EXPR3 -> EXPR4 | EXPR4^EXPR4
-	EXPR4 -> x | NUM x | NUM(EXPR) | -F | FUNC(EXPR) | (EXPR)
-	FUNC  -> cos | sin | tg | ctg | arcsin | arccos | arctg | ln | lg | abs
-	NUM   -> I | R
-	I     -> 0|1|2...|9|0I|1I|...|9I
-	R     -> I.I
+    EXPR  -> EXPR2{[+ | -]EXPR2}
+    EXPR2 -> EXPR3{[* | /]EXPR3}
+    EXPR3 -> EXPR4 | EXPR4^EXPR4
+    EXPR4 -> x | NUM x | NUM(EXPR) | -F | FUNC(EXPR) | (EXPR)
+    FUNC  -> cos | sin | tg | ctg | arcsin | arccos | arctg | ln | lg | abs
+    NUM   -> I | R
+    I     -> 0|1|2...|9|0I|1I|...|9I
+    R     -> I.I
 */
 
 using std::string;
@@ -34,7 +35,7 @@ const char *ArithmeticParser::funcnames[] = {
 
 ArithmeticParser::func_t ArithmeticParser::functions[] = {
     cos, sin, tan, [](double x) -> double { return 1.0 / tan(x); },
-    asin, acos, atan, log, log10, abs
+    asin, acos, atan, log, log10, fabs
 };
 
 bool ArithmeticParser::parse(const string &s) {
@@ -100,6 +101,8 @@ double ArithmeticParser::evaluate(double x) const {
             case T_FUNC:
                 nums.push(functions[t.intValue](op2));
                 break;
+            default:
+                break;
             }
         }
     }
@@ -164,7 +167,8 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
             }
             buf.push_back('\0');
             const char *str = buf.data();
-            for (int i = 0; i < sizeof(funcnames) / sizeof(char *); i++) {
+            int s = static_cast<int>(sizeof(funcnames) / sizeof(char *));
+            for (int i = 0; i < s; i++) {
                 if (!strcmp(str, funcnames[i])) {
                     return Token(T_FUNC, i);
                 }
@@ -172,7 +176,7 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
             throw str;
         }
         case TS_DELIM:
-            for (int i = 0; i < sizeof(delims); i++) {
+            for (int i = 0; i < static_cast<int>(sizeof(delims)); i++) {
                 if (c == delims[i]) {
                     data++;
                     return Token((token_t)i);
@@ -236,7 +240,7 @@ void ArithmeticParser::EXPR4() {
             nextToken();
             EXPR();
             expectToken(T_RPAREN);
-			nextToken();
+            nextToken();
             rpn.push_back(Token(T_MUL));
         }
     } else if (token.type == T_LPAREN) {
