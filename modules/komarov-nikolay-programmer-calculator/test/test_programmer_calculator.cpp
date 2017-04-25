@@ -1,6 +1,7 @@
 // Copyright 2017 Komarov Nikolay
 
 #include <gtest/gtest.h>
+#include <string>
 
 #include "include/programmer_calculator.h"
 
