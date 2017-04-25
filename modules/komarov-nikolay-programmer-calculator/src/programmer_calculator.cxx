@@ -6,8 +6,6 @@
 
 ProgrammerCalculator::ProgrammerCalculator() {}
 
-ProgrammerCalculator::~ProgrammerCalculator() {}
-
 std::string ProgrammerCalculator::convertDecToBin(int dec) {
     return "";
 }
