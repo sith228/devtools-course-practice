@@ -17,8 +17,10 @@ class SearchTree {
      ~SearchTree();
 
      Node* search(const double key) const;
-     Node* findMin(const Node* const node = root) const;
-     Node* findMax(const Node* const node = root) const;
+     Node* findMin() const;
+     Node* findMax() const;
+     Node* findMin(const Node* const node) const;
+     Node* findMax(const Node* const node) const;
      Node* findPrev(const double key) const;
      Node* findNext(const double key) const;
      Node* findPrev(const Node* const node) const;
