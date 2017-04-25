@@ -1,7 +1,8 @@
 // Copyright 2017 Doronin Maxim
 
-#ifndef MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
-#define MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
+#ifndef MODULES_DORONIN_MAXIM_SEARCH_TREE_INCLUDE_SEARCHTREE_H_
+#define MODULES_DORONIN_MAXIM_SEARCH_TREE_INCLUDE_SEARCHTREE_H_
+
 
 class Node {
  public:
@@ -34,8 +35,8 @@ class SearchTree {
 
  protected:
      Node* root;
-     void recursiveDeletion(Node* node); //for destructor
+     void recursiveDeletion(Node* node);  // for destructor
      const int recursiveSize(const Node* const node) const;
 };
 
-#endif //MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
+#endif  // MODULES_DORONIN_MAXIM_SEARCH_TREE_INCLUDE_SEARCHTREE_H_
