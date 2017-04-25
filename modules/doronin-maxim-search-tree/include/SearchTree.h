@@ -16,26 +16,26 @@ class SearchTree {
      SearchTree();
      ~SearchTree();
 
-     Node* search(const double key) const;
-     Node* findMin() const;
-     Node* findMax() const;
-     Node* findMin(const Node* const node) const;
-     Node* findMax(const Node* const node) const;
-     Node* findPrev(const double key) const;
-     Node* findNext(const double key) const;
-     Node* findPrev(const Node* const node) const;
-     Node* findNext(const Node* const node) const;
+     const Node* search(const double key) const;
+     const Node* findMin() const;
+     const Node* findMax() const;
+     const Node* findMin(const Node* const node) const;
+     const Node* findMax(const Node* const node) const;
+     const Node* findPrev(const double key) const;
+     const Node* findNext(const double key) const;
+     const Node* findPrev(const Node* const node) const;
+     const Node* findNext(const Node* const node) const;
 
-     void insert(const float key);
-     void erase(const float key);
+     void insert(const double key);
+     void erase(const double key);
 
      bool isEmpty() const;
-     int size() const;
+     const int size() const;
 
  protected:
      Node* root;
-     void recursiveDeletion(Node* node);
-     int recursiveSize(const Node* const node) const;
+     void recursiveDeletion(Node* node); //for destructor
+     const int recursiveSize(const Node* const node) const;
 };
 
 #endif MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
