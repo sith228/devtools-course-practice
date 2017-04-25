@@ -30,7 +30,7 @@ class SearchTree {
      void erase(const float key);
 
      bool isEmpty() const;
-     bool size() const;
+     int size() const;
 
  protected:
      Node* root;
