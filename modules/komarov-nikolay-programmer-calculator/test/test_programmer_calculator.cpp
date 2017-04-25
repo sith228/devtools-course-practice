@@ -6,10 +6,10 @@
 #include "include/programmer_calculator.h"
 
 TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Dec_To_Bin) {
-    std::string binResult;
+    std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
-    std::string bin = "1010";
-    int dec = 10;
+    std::string bin = "1101010110111";
+    int dec = 6839;
 
     binResult = programmer_calculator.convertDecToBin(dec);
 
