@@ -7,15 +7,32 @@
 ProgrammerCalculator::ProgrammerCalculator() {}
 
 std::string ProgrammerCalculator::convertDecToBin(int dec) {
-    return "";
+    if (dec < 0) return "";
+    std::string result = "";
+    int quotient = dec;
+    int remainder = 0;
+    while (quotient >= 2)
+    {
+        quotient = quotient / 2;
+        remainder = quotient % 2;
+        result = std::to_string(remainder) + result;
+    }
+    result = std::to_string(quotient) + result;
+    return result;
 }
 
 std::string ProgrammerCalculator::convertDecToOct(int dec) {
-    return "";
+    if (dec < 0) return "";
+    std::string result = "";
+
+    return result;
 }
 
 std::string ProgrammerCalculator::convertDecToHex(int dec) {
-    return "";
+    if (dec < 0) return "";
+    std::string result = "";
+
+    return result;
 }
 
 std::string ProgrammerCalculator::convertBinToOct(std::string bin) {
