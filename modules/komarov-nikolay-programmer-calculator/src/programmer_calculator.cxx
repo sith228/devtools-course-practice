@@ -11,8 +11,7 @@ std::string ProgrammerCalculator::convertDecToBin(int dec) {
     std::string result = "";
     int quotient = dec;
     int remainder = 0;
-    while (quotient >= 2)
-    {
+    while (quotient >= 2) {
         quotient = quotient / 2;
         remainder = quotient % 2;
         result = std::to_string(remainder) + result;
