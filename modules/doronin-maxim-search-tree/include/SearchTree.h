@@ -38,4 +38,4 @@ class SearchTree {
      const int recursiveSize(const Node* const node) const;
 };
 
-#endif MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
+#endif //MODULES_SEARCH_TREE_INCLUDE_SEARCH_TREE_H_
