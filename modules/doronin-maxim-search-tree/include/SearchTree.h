@@ -16,11 +16,13 @@ class SearchTree {
      SearchTree();
      ~SearchTree();
 
-     double findMin() const;
-     double findMax() const;
-     double findPrev(const double key) const;
-     double findNext(const double key) const;
-     bool search(const double key) const;
+     Node* search(const double key) const;
+     Node* findMin(const Node* const node = root) const;
+     Node* findMax(const Node* const node = root) const;
+     Node* findPrev(const double key) const;
+     Node* findNext(const double key) const;
+     Node* findPrev(const Node* const node) const;
+     Node* findNext(const Node* const node) const;
 
      void insert(const float key);
      void erase(const float key);
