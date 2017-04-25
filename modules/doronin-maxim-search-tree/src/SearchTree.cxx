@@ -2,7 +2,7 @@
 
 #include "include/SearchTree.h"
 
-SearchTree::SearchTree() : root(0) {};
+SearchTree::SearchTree() : root(0) {}
 
 SearchTree::~SearchTree() {
     recursiveDeletion(root);
@@ -132,16 +132,14 @@ void SearchTree::erase(const double key) {
             parent->right = 0;
         delete dyingNode;
         return;
-    }
-    else if (dyingNode->left == 0 || dyingNode->right == 0) {
+    } else if (dyingNode->left == 0 || dyingNode->right == 0) {
         if (dyingNode->left == 0) {
             if (parent->left == dyingNode)
                 parent->left = dyingNode->right;
             else
                 parent->right = dyingNode->right;
             dyingNode->right->parent = parent;
-        }
-        else {
+        } else {
             if (parent->left == dyingNode)
                 parent->left = dyingNode->left;
             else
@@ -150,8 +148,7 @@ void SearchTree::erase(const double key) {
         }
         delete dyingNode;
         return;
-    }
-    else {
+    } else {
         Node* child = const_cast<Node*>(findNext(dyingNode));
         double newKey = child->key;
         erase(child->key);
