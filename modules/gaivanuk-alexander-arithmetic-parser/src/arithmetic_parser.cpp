@@ -42,13 +42,13 @@ ArithmeticParser::func_t ArithmeticParser::functions[] = {
     asin, acos, atan, log, log10, fabs
 };
 
-bool ArithmeticParser::parse(const string &s) {
-    buf = vector<char>();
+bool ArithmeticParser::parse(const string &expression) {
+    buffer = vector<char>();
     rpn = vector<Token>();
-    buf.reserve(80);
+    buffer.reserve(80);
     rpn.reserve(50);
 
-    data = s.c_str();
+    string_ptr = expression.c_str();
     try {
         nextToken();
         EXPR();
@@ -67,39 +67,39 @@ bool ArithmeticParser::parse(const string &s) {
 
 double ArithmeticParser::evaluate(double x) const {
     stack<double> nums;
-    int s = rpn.size();
-    if (s == 0) return 0.0;
+    int rpn_size = rpn.size();
+    if (rpn_size == 0) return 0.0;
 
-    for (int i = 0; i < s; i++) {
-        const Token &t = rpn[i];
+    for (int i = 0; i < rpn_size; i++) {
+        const Token &token = rpn[i];
+        token_t tt = token.type;
 
-        if (t.type == T_NUMBER) {
-            nums.push(t.realValue);
-        } else if (t.type == T_X) {
+        if (tt == T_NUMBER) {
+            nums.push(token.realValue);
+        } else if (tt == T_X) {
             nums.push(x);
         } else {
-            double op1, op2;
-            token_t tt = t.type;
+            double left_operand, right_operand;
 
-            op2 = nums.top(); nums.pop();
-            if (t.type != T_NEGATE && t.type != T_FUNC) {
-                op1 = nums.top(); nums.pop();
+            right_operand = nums.top(); nums.pop();
+            if (tt != T_NEGATE && tt != T_FUNC) {
+                left_operand = nums.top(); nums.pop();
             }
 
             if (tt == T_PLUS)
-                nums.push(op1 + op2);
+                nums.push(left_operand + right_operand);
             else if (tt == T_MINUS)
-                nums.push(op1 - op2);
+                nums.push(left_operand - right_operand);
             else if (tt == T_MUL)
-                nums.push(op1 * op2);
+                nums.push(left_operand * right_operand);
             else if (tt == T_DIV)
-                nums.push(op1 / op2);
+                nums.push(left_operand / right_operand);
             else if (tt == T_POW)
-                nums.push(pow(op1, op2));
+                nums.push(pow(left_operand, right_operand));
             else if (tt == T_NEGATE)
-                nums.push(-op2);
+                nums.push(-right_operand);
             else if (tt == T_FUNC)
-                nums.push(functions[t.intValue](op2));
+                nums.push(functions[token.intValue](right_operand));
         }
     }
 
@@ -108,61 +108,62 @@ double ArithmeticParser::evaluate(double x) const {
 
 ArithmeticParser::Token ArithmeticParser::getToken() {
     token_state state = TS_INITIAL;
-    int n = 0;
+    char ch = 0;     // current char
+    int number = 0;  // currently parsed number
 
     while (true) {
-        char c = *data;
+        ch = *string_ptr;
         switch (state) {
         case TS_INITIAL:
-            if (isspace(c)) {
-                data++;
-            } else if (tolower(c) == 'x') {
-                data++;
+            if (isspace(ch)) {
+                string_ptr++;
+            } else if (tolower(ch) == 'x') {
+                string_ptr++;
                 return Token(T_X);
-            } else if (isdigit(c)) {
-                n = c - '0';
-                data++;
+            } else if (isdigit(ch)) {
+                number = ch - '0';
+                string_ptr++;
                 state = TS_NUMBER;
-            } else if (isalpha(c)) {
+            } else if (isalpha(ch)) {
                 state = TS_FUNCNAME;
-            } else if (c == 0) {
+            } else if (ch == 0) {
                 return Token(T_END);
             } else {
                 state = TS_DELIM;
             }
             break;
         case TS_NUMBER:
-            while (isdigit(c)) {
-                n = n * 10 + c - '0';
-                c = *++data;
+            while (isdigit(ch)) {
+                number = number * 10 + ch - '0';
+                ch = *++string_ptr;
             }
 
-            if (c == '.') {
-                c = *++data;
-                if (!isdigit(c)) throw data;
+            if (ch == '.') {
+                ch = *++string_ptr;
+                if (!isdigit(ch)) throw string_ptr;
 
-                buf.clear();
-                buf.push_back('0');
-                buf.push_back('.');
+                buffer.clear();
+                buffer.push_back('0');
+                buffer.push_back('.');
                 do {
-                    buf.push_back(c);
-                    c = *++data;
-                } while (isdigit(c));
+                    buffer.push_back(ch);
+                    ch = *++string_ptr;
+                } while (isdigit(ch));
 
-                double value = n + atof(buf.data());
+                double value = number + atof(buffer.data());
                 return Token(T_NUMBER, value);
             } else {
-                return Token(T_NUMBER, static_cast<double>(n));
+                return Token(T_NUMBER, static_cast<double>(number));
             }
             break;
         case TS_FUNCNAME: {
-            buf.clear();
-            while (isalpha(c)) {
-                buf.push_back(c);
-                c = *++data;
+            buffer.clear();
+            while (isalpha(ch)) {
+                buffer.push_back(ch);
+                ch = *++string_ptr;
             }
-            buf.push_back('\0');
-            const char *str = buf.data();
+            buffer.push_back('\0');
+            const char *str = buffer.data();
 
             auto it = std::find(funcnames.begin(), funcnames.end(), str);
             if (it != funcnames.end()) {
@@ -173,13 +174,13 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
             throw str;
         }
         case TS_DELIM:
-            auto it = std::find(delims.begin(), delims.end(), c);
+            auto it = std::find(delims.begin(), delims.end(), ch);
             if (it != delims.end()) {
                 int index = std::distance(delims.begin(), it);
-                data++;
+                string_ptr++;
                 return Token((token_t)index);
             }
-            throw data;
+            throw string_ptr;
         }
     }
 }

@@ -57,10 +57,10 @@ class ArithmeticParser {
             : type(type), realValue(value) { }
     };
 
-    const char *data;
-    Token token;
-    std::vector<char> buf;
-    std::vector<Token> rpn;
+    Token token;               // current token
+    std::vector<Token> rpn;    // reverse polish notation
+    const char *string_ptr;    // pointer to string to parse, used in getToken
+    std::vector<char> buffer;  // temporary buffer used in getToken
 
     Token getToken();
     void nextToken() { token = getToken(); }
