@@ -443,7 +443,6 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     erase_correct_for_next_when_both_children) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 7.0;
-    double nextKey = 8.0;
     double nextParentKey = 10.0;
     double nextLeftChildKey = 9.0;
     const Node* nextParent = tree->search(nextParentKey);

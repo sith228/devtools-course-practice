@@ -175,7 +175,7 @@ const int SearchTree::size() const {
     return recursiveSize(root);
 }
 
-void SearchTree::recursiveDeletion(Node*& node) {
+void SearchTree::recursiveDeletion(Node*& const node) {
     if (node == 0)
         return;
     recursiveDeletion(node->left);
