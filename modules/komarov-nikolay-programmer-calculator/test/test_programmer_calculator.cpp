@@ -61,6 +61,17 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test,
     EXPECT_EQ(binResult, bin);
 }
 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Bin) {
+    std::string binResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string oct = "125";
+    std::string bin = "1010101";
+
+    binResult = programmer_calculator.convertOctToBin(oct);
+
+    EXPECT_EQ(binResult, bin);
+}
+
 TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         Wrong_Result_Of_Converting_Dec_To_Oct) {
     std::string octResult = "";
