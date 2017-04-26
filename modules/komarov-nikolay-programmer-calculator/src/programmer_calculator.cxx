@@ -29,7 +29,7 @@ std::string ProgrammerCalculator::convertDecToOct(int dec) {
     if (dec < 0) {
         return "-1";
     }
-    return cutUnnecessaryZeroes(convertBinToOct(convertDecToBin(dec)));
+    return convertBinToOct(convertDecToBin(dec));
 }
 
 std::string ProgrammerCalculator::convertDecToHex(int dec) {
@@ -47,8 +47,10 @@ std::string ProgrammerCalculator::convertBinToOct(std::string bin) {
     int lenghtOfBin = bin.length();
     int additionalLeftZeroesCount = 3 - lenghtOfBin % 3;
 
-    for (int i = 0; i < additionalLeftZeroesCount; i++) {
-        bin = "0" + bin;
+    if (additionalLeftZeroesCount != 3) {
+        for (int i = 0; i < additionalLeftZeroesCount; i++) {
+            bin = "0" + bin;
+        }
     }
 
     int triadsCount = bin.length() / 3;
@@ -102,8 +104,10 @@ std::string ProgrammerCalculator::convertBinToHex(std::string bin) {
     int lengthOfBin = bin.length();
     int additionalLeftZeroesCount = 4 - lengthOfBin % 4;
 
-    for (int i = 0; i < additionalLeftZeroesCount; i++) {
-        bin = "0" + bin;
+    if (additionalLeftZeroesCount != 4) {
+        for (int i = 0; i < additionalLeftZeroesCount; i++) {
+            bin = "0" + bin;
+        }
     }
 
     int tetradsCount = bin.length() / 4;
