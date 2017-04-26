@@ -6,8 +6,9 @@ set_source_files_properties(${srcs} ${hdrs} PROPERTIES
     LABELS "${MODULE};Library")
 
 add_library(${target} STATIC ${srcs} ${hdrs})
-set_target_properties(${target}
-    PROPERTIES OUTPUT_NAME ${MODULE})
+set_target_properties(${target} PROPERTIES
+    OUTPUT_NAME ${MODULE}
+    LABELS "${MODULE};Library")
 
 if (UNIX)
   target_link_libraries(${target} ${CMAKE_THREAD_LIBS_INIT})
