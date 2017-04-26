@@ -24,8 +24,6 @@ class SearchTree {
      const Node* findMax(const Node* const node) const;
      const Node* findPrev(const double key) const;
      const Node* findNext(const double key) const;
-     const Node* findPrev(const Node* const node) const;
-     const Node* findNext(const Node* const node) const;
 
      void insert(const double key);
      void erase(const double key);
@@ -36,6 +34,10 @@ class SearchTree {
 
  protected:
      Node* root;
+
+     const Node* findPrev(const Node* const node) const;
+     const Node* findNext(const Node* const node) const;
+
      void recursiveDeletion(Node*& node);  // for destructor
      const int recursiveSize(const Node* const node) const;
 };
