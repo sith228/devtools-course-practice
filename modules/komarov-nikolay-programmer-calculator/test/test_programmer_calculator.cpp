@@ -97,7 +97,7 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Hex) {
     std::string hexResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
     std::string oct = "13574367";
-    std::string hex = "2ef8fe";
+    std::string hex = "2ef8f7";
 
     hexResult = programmer_calculator.convertOctToHex(oct);
 

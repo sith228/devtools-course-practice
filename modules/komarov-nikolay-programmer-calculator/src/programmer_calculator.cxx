@@ -29,7 +29,7 @@ std::string ProgrammerCalculator::convertDecToOct(int dec) {
     if (dec < 0) {
         return "-1";
     }
-    return convertBinToOct(convertDecToBin(dec));
+    return cutUnnecessaryZeroes(convertBinToOct(convertDecToBin(dec)));
 }
 
 std::string ProgrammerCalculator::convertDecToHex(int dec) {
