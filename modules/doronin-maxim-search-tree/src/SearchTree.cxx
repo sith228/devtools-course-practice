@@ -69,10 +69,12 @@ const Node* SearchTree::findPrev(const Node* const node) const {
         return findMax(node->left);
 
     const Node* currentNode = node;
-    while (currentNode->parent != 0
-        && currentNode == currentNode->parent->left)
-        currentNode = currentNode->parent;
-    return currentNode;
+    const Node* currentParent = node->parent;
+    while (currentParent != 0 && currentNode == currentParent->left) {
+        currentNode = currentParent;
+        currentParent = currentParent->parent;
+    }
+    return currentParent;
 }
 
 const Node* SearchTree::findNext(const Node* const node) const {
@@ -82,10 +84,12 @@ const Node* SearchTree::findNext(const Node* const node) const {
         return findMin(node->right);
 
     const Node* currentNode = node;
-    while (currentNode->parent != 0
-        && currentNode == currentNode->parent->right)
-        currentNode = currentNode->parent;
-    return currentNode;
+    const Node* currentParent = node->parent;
+    while (currentParent != 0 && currentNode == currentParent->right) {
+        currentNode = currentParent;
+        currentParent = currentParent->parent;
+    }
+    return currentParent;
 }
 
 void SearchTree::insert(const double key) {
