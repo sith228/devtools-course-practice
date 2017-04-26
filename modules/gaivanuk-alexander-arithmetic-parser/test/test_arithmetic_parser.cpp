@@ -124,11 +124,11 @@ TEST(ArithmeticParserTest, Cant_parse_non_alphanum) {
 }
 
 TEST(ArithmeticParserTest, Cant_parse_unknown_function) {
-	ArithmeticParser parser;
+    ArithmeticParser parser;
 
-	string e = "pancake(x)";
+    string e = "pancake(x)";
 
-	EXPECT_FALSE(parser.parse(e));
+    EXPECT_FALSE(parser.parse(e));
 }
 
 TEST(ArithmeticParserTest, Can_eval_expressions_without_x) {

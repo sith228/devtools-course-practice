@@ -56,11 +56,11 @@ bool ArithmeticParser::parse(const string &s) {
         return true;
     }
     catch (Token) {
-		rpn.clear();
+        rpn.clear();
         return false;
     }
     catch (const char *) {
-		rpn.clear();
+        rpn.clear();
         return false;
     }
 }

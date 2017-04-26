@@ -48,9 +48,9 @@ class ArithmeticParser {
             double realValue = 0.0;
         };
 
-		Token() { }
-		explicit Token(token_t type)
-			: type(type) { }
+        Token() { }
+        explicit Token(token_t type)
+            : type(type) { }
         Token(token_t type, int value)
             : type(type), intValue(value) { }
         Token(token_t type, double value)
