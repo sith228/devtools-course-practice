@@ -163,7 +163,7 @@ TEST(ArithmeticParserTest, Can_eval_expressions_with_x) {
 
     auto e1_fn = [](double x) { return x / (1 + 3.0*x); };
     auto e2_fn = [](double x) { return 1 + x * 2 / (x*x*x); };
-    auto e3_fn = [](double x) { return 3.3 * (x - 1) / (2*x) / 2; };
+    auto e3_fn = [](double x) { return 3.3 * (x - 1.0) / (2.0*x) / 2.0; };
 
     double x = 0.234;
 
@@ -171,6 +171,7 @@ TEST(ArithmeticParserTest, Can_eval_expressions_with_x) {
     double a1 = parser.evaluate(x);
     parser.parse(e2);
     double a2 = parser.evaluate(x);
+    double a = e3_fn(x);
     parser.parse(e3);
     double a3 = parser.evaluate(x);
 
