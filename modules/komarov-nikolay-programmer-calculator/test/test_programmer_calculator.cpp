@@ -118,7 +118,7 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Wrong_Result_Of_Converting_Oct_
 TEST(Komarov_Nikolay_Programmer_Calculator_Test, Wrong_Result_Of_Converting_Hex_To_Bin) {
     std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
-    std::string hex = "49a7fe";
+    std::string hex = "49a7feg";
     std::string bin = "-1";
 
     binResult = programmer_calculator.convertHexToBin(hex);
