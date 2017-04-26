@@ -58,6 +58,12 @@ int ProgrammerCalculator::convertBinToDec(std::string bin) {
     }
     int result = 0;
 
+    for (int i = 0; i < bin.length(); i++) {
+        if (bin[i] == '1') {
+            result += pow(2, bin.length() - i);
+        }
+    }
+
     return result;
 }
 
