@@ -1,6 +1,7 @@
 // Copyright 2017 Komarov Nikolay
 
 #include <string>
+#include <math.h>
 
 #include "include/programmer_calculator.h"
 
@@ -60,7 +61,7 @@ int ProgrammerCalculator::convertBinToDec(std::string bin) {
 
     for (int i = 0; i < lengthOfBin; i++) {
         if (bin[i] == '1') {
-            result += std::pow(2, lengthOfBin - i);
+            result += pow(2, lengthOfBin - i);
         }
     }
 
