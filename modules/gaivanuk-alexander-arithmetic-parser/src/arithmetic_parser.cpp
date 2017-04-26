@@ -79,37 +79,27 @@ double ArithmeticParser::evaluate(double x) const {
             nums.push(x);
         } else {
             double op1, op2;
-            op2 = nums.top(); nums.pop();
+            token_t tt = t.type;
 
+            op2 = nums.top(); nums.pop();
             if (t.type != T_NEGATE && t.type != T_FUNC) {
                 op1 = nums.top(); nums.pop();
             }
 
-            switch (t.type) {
-            case T_PLUS:
+            if (tt == T_PLUS)
                 nums.push(op1 + op2);
-                break;
-            case T_MINUS:
+            else if (tt == T_MINUS)
                 nums.push(op1 - op2);
-                break;
-            case T_MUL:
+            else if (tt == T_MUL)
                 nums.push(op1 * op2);
-                break;
-            case T_DIV:
+            else if (tt == T_DIV)
                 nums.push(op1 / op2);
-                break;
-            case T_POW:
+            else if (tt == T_POW)
                 nums.push(pow(op1, op2));
-                break;
-            case T_NEGATE:
+            else if (tt == T_NEGATE)
                 nums.push(-op2);
-                break;
-            case T_FUNC:
+            else if (tt == T_FUNC)
                 nums.push(functions[t.intValue](op2));
-                break;
-            default:
-                return 0.0;
-            }
         }
     }
 
