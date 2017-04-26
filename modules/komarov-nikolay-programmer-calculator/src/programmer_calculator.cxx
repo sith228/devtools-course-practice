@@ -1,7 +1,7 @@
 // Copyright 2017 Komarov Nikolay
 
-#include <string>
 #include <math.h>
+#include <string>
 
 #include "include/programmer_calculator.h"
 
