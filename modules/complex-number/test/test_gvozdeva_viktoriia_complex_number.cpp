@@ -16,6 +16,7 @@ TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Multiplication_by_zero_is_zero) {
 
     // Assert
     EXPECT_EQ(zero, mult);
+
 }
 
 TEST(Gvozdeva_Viktoriia_ComplexNumberTest, Can_compare_objects) {
