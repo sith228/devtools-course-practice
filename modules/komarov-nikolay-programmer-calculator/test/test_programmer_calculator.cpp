@@ -166,7 +166,7 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test,
     std::string hex = "8592^";
     int dec = -1;
 
-    decResult = programmer_calculator.convertOctToDec(hex);
+    decResult = programmer_calculator.convertHexToDec(hex);
 
     EXPECT_EQ(decResult, dec);
 }
