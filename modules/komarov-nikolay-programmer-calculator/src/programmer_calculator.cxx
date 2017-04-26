@@ -12,10 +12,9 @@ std::string ProgrammerCalculator::convertDecToBin(int dec) {
     }
     std::string result = "";
     int quotient = dec;
-    int remainder = 0;
 
     while (quotient >= 2) {
-        remainder = quotient % 2;
+        int remainder = quotient % 2;
         quotient = quotient / 2;
         result = std::to_string(remainder) + result;
     }
@@ -57,10 +56,11 @@ int ProgrammerCalculator::convertBinToDec(std::string bin) {
         return -1;
     }
     int result = 0;
+    int lengthOfBin = bin.length();
 
-    for (int i = 0; i < bin.length(); i++) {
+    for (int i = 0; i < lengthOfBin; i++) {
         if (bin[i] == '1') {
-            result += pow(2, bin.length() - i);
+            result += std::pow(2, lengthOfBin - i);
         }
     }
 
@@ -82,7 +82,7 @@ std::string ProgrammerCalculator::convertOctToBin(std::string oct) {
     }
     std::string result = "";
 
-    return "";
+    return result;
 }
 
 int ProgrammerCalculator::convertOctToDec(std::string oct) {
