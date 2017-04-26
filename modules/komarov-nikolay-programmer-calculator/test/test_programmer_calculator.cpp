@@ -38,6 +38,17 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Dec) {
     EXPECT_EQ(decResult, dec);
 }
 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Hex) {
+    std::string hexResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string bin = "1001011011100";
+    std::string hex = "12dc";
+
+    hexResult = programmer_calculator.convertBinToHex(bin);
+
+    EXPECT_EQ(hexResult, hex);
+}
+
 TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         Wrong_Result_Of_Converting_Dec_To_Bin) {
     std::string binResult = "";

@@ -104,10 +104,49 @@ std::string ProgrammerCalculator::convertBinToHex(std::string bin) {
     }
     std::string result = "";
     int lengthOfBin = bin.length();
+    int additionalLeftZeroesCount = 4 - lengthOfBin % 4;
 
-    for (int i = 0; i < lengthOfBin; i++) {
-        if (bin[i] == '1') {
-            
+    for (int i = 0; i < additionalLeftZeroesCount; i++) {
+        bin = "0" + bin;
+    }
+
+    int tetradsCount = bin.length() / 4;
+
+    for (int i = 0; i < tetradsCount; i++) {
+        std::string triad = bin.substr(4 * (tetradsCount - 1 - i), 4);
+
+        if (triad == "0000") {
+            result = "0" + result;
+        } else if (triad == "0001") {
+            result = "1" + result;
+        } else if (triad == "0010") {
+            result = "2" + result;
+        } else if (triad == "0011") {
+            result = "3" + result;
+        } else if (triad == "0100") {
+            result = "4" + result;
+        } else if (triad == "0101") {
+            result = "5" + result;
+        } else if (triad == "0110") {
+            result = "6" + result;
+        } else if (triad == "0111") {
+            result = "7" + result;
+        } else if (triad == "1000") {
+            result = "8" + result;
+        } else if (triad == "1001") {
+            result = "9" + result;
+        } else if (triad == "1010") {
+            result = "a" + result;
+        } else if (triad == "1011") {
+            result = "b" + result;
+        } else if (triad == "1100") {
+            result = "c" + result;
+        } else if (triad == "1101") {
+            result = "d" + result;
+        } else if (triad == "1110") {
+            result = "e" + result;
+        } else if (triad == "1111") {
+            result = "f" + result;
         }
     }
 
