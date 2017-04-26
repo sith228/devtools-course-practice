@@ -16,6 +16,28 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Dec_To_Bin) {
     EXPECT_EQ(binResult, bin);
 }
 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Dec_To_Oct) {
+    std::string octResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string oct = "6761530211";
+    int dec = 935768201;
+
+    octResult = programmer_calculator.convertDecToOct(dec);
+
+    EXPECT_EQ(octResult, oct);
+}
+
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Dec_To_Hex) {
+    std::string hexResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string hex = "1661f37";
+    int dec = 23469879;
+
+    hexResult = programmer_calculator.convertDecToHex(dec);
+
+    EXPECT_EQ(hexResult, hex);
+}
+
 TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Oct) {
     std::string octResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
@@ -60,6 +82,28 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Bin) {
     EXPECT_EQ(binResult, bin);
 }
 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Dec) {
+    int decResult = 0;
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string oct = "5174";
+    int dec = 2684;
+
+    decResult = programmer_calculator.convertOctToDec(oct);
+
+    EXPECT_EQ(decResult, dec);
+}
+
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Hex) {
+    std::string hexResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string oct = "13574367";
+    std::string hex = "2ef8fe";
+
+    hexResult = programmer_calculator.convertOctToHex(oct);
+
+    EXPECT_EQ(hexResult, hex);
+}
+
 TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Hex_To_Bin) {
     std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
@@ -69,6 +113,28 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Hex_To_Bin) {
     binResult = programmer_calculator.convertHexToBin(hex);
 
     EXPECT_EQ(binResult, bin);
+}
+
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Hex_To_Oct) {
+    std::string octResult = "";
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string hex = "78Dac";
+    std::string oct = "1706654";
+
+    octResult = programmer_calculator.convertHexToOct(hex);
+
+    EXPECT_EQ(octResult, oct);
+}
+
+TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Hex_To_Dec) {
+    int decResult = 0;
+    ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
+    std::string hex = "fFae5";
+    int dec = 1047269;
+
+    decResult = programmer_calculator.convertHexToDec(hex);
+
+    EXPECT_EQ(decResult, dec);
 }
 
 TEST(Komarov_Nikolay_Programmer_Calculator_Test,
