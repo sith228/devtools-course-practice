@@ -29,13 +29,14 @@ class SearchTree {
 
      void insert(const double key);
      void erase(const double key);
+     void clear();
 
      bool isEmpty() const;
      const int size() const;
 
  protected:
      Node* root;
-     void recursiveDeletion(Node* node);  // for destructor
+     void recursiveDeletion(Node*& node);  // for destructor
      const int recursiveSize(const Node* const node) const;
 };
 

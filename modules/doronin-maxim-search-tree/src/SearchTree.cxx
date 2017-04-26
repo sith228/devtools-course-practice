@@ -156,6 +156,10 @@ void SearchTree::erase(const double key) {
     }
 }
 
+void SearchTree::clear() {
+    recursiveDeletion(root);
+}
+
 bool SearchTree::isEmpty() const {
     if (root != 0)
         return 0;
@@ -167,12 +171,13 @@ const int SearchTree::size() const {
     return recursiveSize(root);
 }
 
-void SearchTree::recursiveDeletion(Node* node) {
+void SearchTree::recursiveDeletion(Node*& node) {
     if (node == 0)
         return;
     recursiveDeletion(node->left);
     recursiveDeletion(node->right);
     delete node;
+    node = 0;
 }
 
 const int SearchTree::recursiveSize(const Node* const node) const {
