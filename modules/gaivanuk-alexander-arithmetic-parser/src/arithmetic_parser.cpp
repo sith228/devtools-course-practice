@@ -108,11 +108,10 @@ double ArithmeticParser::evaluate(double x) const {
 
 ArithmeticParser::Token ArithmeticParser::getToken() {
     token_state state = TS_INITIAL;
-    char ch = 0;     // current char
     int number = 0;  // currently parsed number
 
     while (true) {
-        ch = *string_ptr;
+        char ch = *string_ptr;  // current char
         switch (state) {
         case TS_INITIAL:
             if (isspace(ch)) {
@@ -167,7 +166,8 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
 
             auto it = std::find(funcnames.begin(), funcnames.end(), str);
             if (it != funcnames.end()) {
-                int index = static_cast<int>(std::distance(funcnames.begin(), it));
+                int index =
+                    static_cast<int>(std::distance(funcnames.begin(), it));
                 return Token(T_FUNC, index);
             }
 
@@ -176,7 +176,8 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
         case TS_DELIM:
             auto it = std::find(delims.begin(), delims.end(), ch);
             if (it != delims.end()) {
-                int index = static_cast<int>(std::distance(delims.begin(), it));
+                int index =
+                    static_cast<int>(std::distance(delims.begin(), it));
                 string_ptr++;
                 return Token((token_t)index);
             }
