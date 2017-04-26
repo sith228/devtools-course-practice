@@ -41,19 +41,20 @@ class ArithmeticParser {
     };
 
     struct Token {
-        token_t type;
+        token_t type = (token_t)0;
 
         union {
             int intValue;
-            double realValue;
+            double realValue = 0.0;
         };
 
+		Token() { }
+		explicit Token(token_t type)
+			: type(type) { }
         Token(token_t type, int value)
             : type(type), intValue(value) { }
         Token(token_t type, double value)
             : type(type), realValue(value) { }
-        explicit Token(token_t type = token_t(0))
-            : type(type) { }
     };
 
     const char *data;

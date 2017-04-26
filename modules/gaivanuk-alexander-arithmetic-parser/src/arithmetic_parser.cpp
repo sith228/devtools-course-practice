@@ -56,9 +56,11 @@ bool ArithmeticParser::parse(const string &s) {
         return true;
     }
     catch (Token) {
+		rpn.clear();
         return false;
     }
     catch (const char *) {
+		rpn.clear();
         return false;
     }
 }
@@ -106,7 +108,7 @@ double ArithmeticParser::evaluate(double x) const {
                 nums.push(functions[t.intValue](op2));
                 break;
             default:
-                break;
+                return 0.0;
             }
         }
     }
