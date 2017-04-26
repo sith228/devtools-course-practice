@@ -187,7 +187,7 @@ TEST(ArithmeticParserTest, Can_eval_expressions_with_functions) {
     auto e4_fn = [](double x) { return acos(0.2) * sin(x / 3); };
     auto e5_fn = [](double x) { return atan(0.01) - tan(x + 3) + 1; };
     auto e6_fn = [](double x) { return log(x*log(2.72)) / log(10); };
-    auto e7_fn = [](double x) { return -abs(x) / x; };
+    auto e7_fn = [](double x) { return -fabs(x) / x; };
 
     double x = 435.343;
 

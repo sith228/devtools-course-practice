@@ -6,7 +6,10 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include <vector>
 #include <stack>
+#include <algorithm>
+#include <iterator>
 
 /*
     ArithmeticParser is a recursive descent parser that
@@ -26,10 +29,11 @@ using std::string;
 using std::vector;
 using std::stack;
 
-char ArithmeticParser::delims[] = {
+vector<char> ArithmeticParser::delims = {
     '^', '+', '-', '*', '/', '(', ')'
 };
-const char *ArithmeticParser::funcnames[] = {
+
+vector<string> ArithmeticParser::funcnames = {
     "cos", "sin", "tg", "ctg", "arcsin", "arccos", "arctg", "ln", "lg", "abs"
 };
 
@@ -167,20 +171,21 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
             }
             buf.push_back('\0');
             const char *str = buf.data();
-            int s = static_cast<int>(sizeof(funcnames) / sizeof(char *));
-            for (int i = 0; i < s; i++) {
-                if (!strcmp(str, funcnames[i])) {
-                    return Token(T_FUNC, i);
-                }
+
+            auto it = std::find(funcnames.begin(), funcnames.end(), str);
+            if (it != funcnames.end()) {
+                int index = std::distance(funcnames.begin(), it);
+                return Token(T_FUNC, index);
             }
+
             throw str;
         }
         case TS_DELIM:
-            for (int i = 0; i < static_cast<int>(sizeof(delims)); i++) {
-                if (c == delims[i]) {
-                    data++;
-                    return Token((token_t)i);
-                }
+            auto it = std::find(delims.begin(), delims.end(), c);
+            if (it != delims.end()) {
+                int index = std::distance(delims.begin(), it);
+                data++;
+                return Token((token_t)index);
             }
             throw data;
         }

@@ -14,8 +14,8 @@ class ArithmeticParser {
  private:
     typedef double(*func_t)(double);
 
-    static char delims[];
-    static const char *funcnames[];
+    static std::vector<char> delims;
+    static std::vector<std::string> funcnames;
     static func_t functions[];
 
     enum token_t {
