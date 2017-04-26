@@ -67,10 +67,10 @@ bool ArithmeticParser::parse(const string &expression) {
 
 double ArithmeticParser::evaluate(double x) const {
     stack<double> nums;
-    int rpn_size = rpn.size();
+    size_t rpn_size = rpn.size();
     if (rpn_size == 0) return 0.0;
 
-    for (int i = 0; i < rpn_size; i++) {
+    for (size_t i = 0; i < rpn_size; i++) {
         const Token &token = rpn[i];
         token_t tt = token.type;
 
@@ -167,7 +167,7 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
 
             auto it = std::find(funcnames.begin(), funcnames.end(), str);
             if (it != funcnames.end()) {
-                int index = std::distance(funcnames.begin(), it);
+                int index = static_cast<int>(std::distance(funcnames.begin(), it));
                 return Token(T_FUNC, index);
             }
 
@@ -176,7 +176,7 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
         case TS_DELIM:
             auto it = std::find(delims.begin(), delims.end(), ch);
             if (it != delims.end()) {
-                int index = std::distance(delims.begin(), it);
+                int index = static_cast<int>(std::distance(delims.begin(), it));
                 string_ptr++;
                 return Token((token_t)index);
             }
