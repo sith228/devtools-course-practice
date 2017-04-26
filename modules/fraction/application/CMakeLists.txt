@@ -1,6 +1,8 @@
 set(target ${APPLICATION})
 
 file(GLOB srcs "*.cpp")
+set_source_files_properties(${srcs} PROPERTIES
+    LABELS "${MODULE};Application")
 
 add_executable(${target} ${srcs})
 set_target_properties(${target}
