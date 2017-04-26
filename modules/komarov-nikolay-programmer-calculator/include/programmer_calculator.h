@@ -26,6 +26,7 @@ class ProgrammerCalculator {
     int convertHexToDec(std::string hex);
 
  private:
+     std::string cutUnnecessaryZeroes(std::string bin);
 };
 
 #endif  // MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_

@@ -189,14 +189,7 @@ std::string ProgrammerCalculator::convertOctToBin(std::string oct) {
         }
     }
 
-    int lengthOfBin = result.length();
-    int positionOfTheFirstOne = result.find("1");
-
-    if (positionOfTheFirstOne < lengthOfBin) {
-        result = result.substr(positionOfTheFirstOne, lengthOfBin);
-    }
-
-    return result;
+    return cutUnnecessaryZeroes(result);
 }
 
 int ProgrammerCalculator::convertOctToDec(std::string oct) {
@@ -222,8 +215,68 @@ std::string ProgrammerCalculator::convertHexToBin(std::string hex) {
         return "-1";
     }
     std::string result = "";
+    int lengthOfHex = hex.length();
 
-    return result;
+    for (int i = 0; i < lengthOfHex; i++) {
+        switch (hex[i]) {
+        case '0':
+            result += "0000";
+            break;
+        case '1':
+            result += "0001";
+            break;
+        case '2':
+            result += "0010";
+            break;
+        case '3':
+            result += "0011";
+            break;
+        case '4':
+            result += "0100";
+            break;
+        case '5':
+            result += "0101";
+            break;
+        case '6':
+            result += "0110";
+            break;
+        case '7':
+            result += "0111";
+            break;
+        case '8':
+            result += "1000";
+            break;
+        case '9':
+            result += "1001";
+            break;
+        case 'a':
+        case 'A':
+            result += "1010";
+            break;
+        case 'b':
+        case 'B':
+            result += "1011";
+            break;
+        case 'c':
+        case 'C':
+            result += "1100";
+            break;
+        case 'd':
+        case 'D':
+            result += "1101";
+            break;
+        case 'e':
+        case 'E':
+            result += "1110";
+            break;
+        case 'f':
+        case 'F':
+            result += "1111";
+            break;
+        }
+    }
+
+    return cutUnnecessaryZeroes(result);
 }
 
 std::string ProgrammerCalculator::convertHexToOct(std::string hex) {
@@ -242,4 +295,16 @@ int ProgrammerCalculator::convertHexToDec(std::string hex) {
     int result = 0;
 
     return result;
+}
+
+
+std::string ProgrammerCalculator::cutUnnecessaryZeroes(std::string bin) {
+    int lengthOfBin = bin.length();
+    int positionOfTheFirstOne = bin.find("1");
+
+    if (positionOfTheFirstOne < lengthOfBin) {
+        bin = bin.substr(positionOfTheFirstOne, lengthOfBin);
+    }
+
+    return bin;
 }
