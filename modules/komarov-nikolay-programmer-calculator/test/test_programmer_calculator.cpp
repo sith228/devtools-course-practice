@@ -49,7 +49,7 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Oct) {
     EXPECT_EQ(octResult, oct);
 }
 
-TEST(Komarov_Nikolay_Programmer_Calculator_Test, 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         All_Cases_In_Convert_Bin_To_Oct) {
     std::string octResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
@@ -83,11 +83,12 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Hex) {
     EXPECT_EQ(hexResult, hex);
 }
 
-TEST(Komarov_Nikolay_Programmer_Calculator_Test, 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         All_Cases_In_Convert_Bin_To_Hex) {
     std::string hexResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
-    std::string bin = "1111111011011100101110101001100001110110010101000011001000010000";
+    std::string bin = 
+        "1111111011011100101110101001100001110110010101000011001000010000";
     std::string hex = "fedcba9876543210";
 
     hexResult = programmer_calculator.convertBinToHex(bin);
@@ -106,7 +107,7 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Oct_To_Bin) {
     EXPECT_EQ(binResult, bin);
 }
 
-TEST(Komarov_Nikolay_Programmer_Calculator_Test, 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         All_Cases_In_Convert_Oct_To_Bin) {
     std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
@@ -151,12 +152,13 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Hex_To_Bin) {
     EXPECT_EQ(binResult, bin);
 }
 
-TEST(Komarov_Nikolay_Programmer_Calculator_Test, 
+TEST(Komarov_Nikolay_Programmer_Calculator_Test,
         All_Cases_In_Convert_Hex_To_Bin_Small) {
     std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
     std::string hex = "fedcba9876543210";
-    std::string bin = "1111111011011100101110101001100001110110010101000011001000010000";
+    std::string bin = 
+        "1111111011011100101110101001100001110110010101000011001000010000";
 
     binResult = programmer_calculator.convertHexToBin(hex);
 
@@ -168,7 +170,8 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test,
     std::string binResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
     std::string hex = "FEDCBA9876543210";
-    std::string bin = "1111111011011100101110101001100001110110010101000011001000010000";
+    std::string bin = 
+        "1111111011011100101110101001100001110110010101000011001000010000";
 
     binResult = programmer_calculator.convertHexToBin(hex);
 
