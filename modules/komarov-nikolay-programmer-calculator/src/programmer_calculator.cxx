@@ -75,7 +75,7 @@ std::string ProgrammerCalculator::convertBinToOct(std::string bin) {
         } else if (triad == "110") {
             result = "6" + result;
         } else if (triad == "111") {
-            result = "1" + result;
+            result = "7" + result;
         }
     }
 

@@ -20,9 +20,9 @@ TEST(Komarov_Nikolay_Programmer_Calculator_Test, Can_Convert_Bin_To_Oct) {
     std::string octResult = "";
     ProgrammerCalculator programmer_calculator = *new ProgrammerCalculator();
     std::string bin = "1001111000";
-    std::string oct = "632";
+    std::string oct = "1170";
 
-    octResult = programmer_calculator.convertBinToDec(bin);
+    octResult = programmer_calculator.convertBinToOct(bin);
 
     EXPECT_EQ(octResult, oct);
 }
