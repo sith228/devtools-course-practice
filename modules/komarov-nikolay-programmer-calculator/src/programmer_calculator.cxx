@@ -48,6 +48,36 @@ std::string ProgrammerCalculator::convertBinToOct(std::string bin) {
         return "-1";
     }
     std::string result = "";
+    int lenghtOfBin = bin.length();
+    int additionalLeftZeroesCount = 3 - lenghtOfBin % 3;
+
+    for (int i = 0; i < additionalLeftZeroesCount; i++) {
+        bin = "0" + bin;
+    }
+
+    int triadsCount = bin.length() / 3;
+
+    for (int i = 0; i < triadsCount; i++) {
+        std::string triad = bin.substr(3 * (triadsCount - 1 - i), 3);
+
+        if (triad == "000") {
+            result = "0" + result;
+        } else if (triad == "001") {
+            result = "1" + result;
+        } else if (triad == "010") {
+            result = "2" + result;
+        } else if (triad == "011") {
+            result = "3" + result;
+        } else if (triad == "100") {
+            result = "4" + result;
+        } else if (triad == "101") {
+            result = "5" + result;
+        } else if (triad == "110") {
+            result = "6" + result;
+        } else if (triad == "111") {
+            result = "1" + result;
+        }
+    }
 
     return result;
 }
@@ -61,7 +91,7 @@ int ProgrammerCalculator::convertBinToDec(std::string bin) {
 
     for (int i = 0; i < lengthOfBin; i++) {
         if (bin[i] == '1') {
-            result += pow(2, lengthOfBin - i);
+            result += pow(2, lengthOfBin - 1 - i);
         }
     }
 
@@ -73,6 +103,13 @@ std::string ProgrammerCalculator::convertBinToHex(std::string bin) {
         return "-1";
     }
     std::string result = "";
+    int lengthOfBin = bin.length();
+
+    for (int i = 0; i < lengthOfBin; i++) {
+        if (bin[i] == '1') {
+            
+        }
+    }
 
     return result;
 }
