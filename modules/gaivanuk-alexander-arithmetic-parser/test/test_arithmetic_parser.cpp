@@ -171,7 +171,6 @@ TEST(ArithmeticParserTest, Can_eval_expressions_with_x) {
     double a1 = parser.evaluate(x);
     parser.parse(e2);
     double a2 = parser.evaluate(x);
-    double a = e3_fn(x);
     parser.parse(e3);
     double a3 = parser.evaluate(x);
 
