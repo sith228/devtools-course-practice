@@ -318,7 +318,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, can_erase_actual_element) {
     ASSERT_NO_THROW(tree->erase(key));
 }
 
-TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_leaf_correct_for_parent) {
+TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_left_leaf_correct_for_parent) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 4.0;
     double parentKey = 5.0;
@@ -329,7 +329,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_leaf_correct_for_parent) {
     EXPECT_EQ((Node*)0, parent->left);
 }
 
-TEST_F(Doronin_Maxim_SearchTree_Test_F, no_leaf_after_erasing) {
+TEST_F(Doronin_Maxim_SearchTree_Test_F, no_left_leaf_after_erasing) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 4.0;
 
@@ -338,6 +338,28 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, no_leaf_after_erasing) {
 
     EXPECT_EQ((Node*)0, node);
 }
+
+TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_right_leaf_correct_for_parent) {
+    // SetUP() in Doronin_Maxim_SearchTree_Test_F
+    double eraseKey = 6.0;
+    double parentKey = 5.0;
+    const Node* parent = tree->search(parentKey);
+
+    tree->erase(eraseKey);
+
+    EXPECT_EQ((Node*)0, parent->right);
+}
+
+TEST_F(Doronin_Maxim_SearchTree_Test_F, no_right_leaf_after_erasing) {
+    // SetUP() in Doronin_Maxim_SearchTree_Test_F
+    double eraseKey = 6.0;
+
+    tree->erase(eraseKey);
+    const Node* node = tree->search(eraseKey);
+
+    EXPECT_EQ((Node*)0, node);
+}
+
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F,
     erase_correct_for_parent_when_only_right_child) {
@@ -410,6 +432,45 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     no_element_after_erasing_when_only_left_child) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 10.0;
+
+    tree->erase(eraseKey);
+    const Node* node = tree->search(eraseKey);
+
+    EXPECT_EQ((Node*)0, node);
+}
+
+TEST_F(Doronin_Maxim_SearchTree_Test_F,
+    erase_correct_for_parent_when_only_left_child_and_its_left_child) {
+    // SetUP() in Doronin_Maxim_SearchTree_Test_F
+    double eraseKey = 2.0;
+    double parentKey = 3.0;
+    double leftChildKey = 1.0;
+    const Node* parent = tree->search(parentKey);
+    const Node* leftChild = tree->search(leftChildKey);
+
+    tree->erase(eraseKey);
+
+    EXPECT_EQ(leftChild, parent->left);
+}
+
+TEST_F(Doronin_Maxim_SearchTree_Test_F,
+    erase_correct_for_child_when_only_left_child_and_its_left_child) {
+    // SetUP() in Doronin_Maxim_SearchTree_Test_F
+    double eraseKey = 2.0;
+    double parentKey = 3.0;
+    double leftChildKey = 1.0;
+    const Node* parent = tree->search(parentKey);
+    const Node* leftChild = tree->search(leftChildKey);
+
+    tree->erase(eraseKey);
+
+    EXPECT_EQ(leftChild->parent, parent);
+}
+
+TEST_F(Doronin_Maxim_SearchTree_Test_F,
+    no_element_after_erasing_when_only_left_child_and_its_left_child) {
+    // SetUP() in Doronin_Maxim_SearchTree_Test_F
+    double eraseKey = 2.0;
 
     tree->erase(eraseKey);
     const Node* node = tree->search(eraseKey);
