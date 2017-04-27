@@ -18,10 +18,11 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Zero) {
 }
 //Свои тесты
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_With_Negative_And_Double_Number) {
-  double re = 0.0;
-  double im = 0.0;
+  double re = -10.0;
+  double im = 5.4;
   ComplexNumber z(re, im);
-  ASSERT_NO_THROW(z);
+  EXPECT_EQ(re, z.getRe());
+  EXPECT_EQ(im, z.getIm());
 }
 
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Multiplication_And_Addition) {
