@@ -38,7 +38,7 @@ class SearchTree {
      const Node* findPrev(const Node* const node) const;
      const Node* findNext(const Node* const node) const;
 
-     void recursiveDeletion(Node*& const node);  // for destructor
+     void recursiveDeletion(Node** const node);  // for destructor
      const int recursiveSize(const Node* const node) const;
 };
 

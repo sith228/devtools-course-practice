@@ -5,7 +5,7 @@
 SearchTree::SearchTree() : root(0) {}
 
 SearchTree::~SearchTree() {
-    recursiveDeletion(root);
+    recursiveDeletion(&root);
 }
 
 const Node* SearchTree::search(const double key) const {
@@ -161,7 +161,7 @@ void SearchTree::erase(const double key) {
 }
 
 void SearchTree::clear() {
-    recursiveDeletion(root);
+    recursiveDeletion(&root);
 }
 
 bool SearchTree::isEmpty() const {
@@ -175,13 +175,13 @@ const int SearchTree::size() const {
     return recursiveSize(root);
 }
 
-void SearchTree::recursiveDeletion(Node*& const node) {
-    if (node == 0)
+void SearchTree::recursiveDeletion(Node** const node) {
+    if (*node == 0)
         return;
-    recursiveDeletion(node->left);
-    recursiveDeletion(node->right);
-    delete node;
-    node = 0;
+    recursiveDeletion(&((*node)->left));
+    recursiveDeletion(&((*node)->left));
+    delete *node;
+    *node = 0;
 }
 
 const int SearchTree::recursiveSize(const Node* const node) const {
