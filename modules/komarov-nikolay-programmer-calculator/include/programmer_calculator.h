@@ -4,6 +4,7 @@
 #define MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
 
 #include <string>
+#include <vector>
 
 class ProgrammerCalculator {
  public:
@@ -13,20 +14,23 @@ class ProgrammerCalculator {
     std::string convertDecToOct(int dec);
     std::string convertDecToHex(int dec);
 
-    std::string convertBinToOct(std::string bin);
-    int convertBinToDec(std::string bin);
-    std::string convertBinToHex(std::string bin);
+    std::string convertBinToOct(const std::string &bin);
+    int convertBinToDec(const std::string &bin);
+    std::string convertBinToHex(const std::string &bin);
 
-    std::string convertOctToBin(std::string oct);
-    int convertOctToDec(std::string oct);
-    std::string convertOctToHex(std::string oct);
+    std::string convertOctToBin(const std::string &oct);
+    int convertOctToDec(const std::string &oct);
+    std::string convertOctToHex(const std::string &oct);
 
-    std::string convertHexToBin(std::string hex);
-    std::string convertHexToOct(std::string hex);
-    int convertHexToDec(std::string hex);
+    std::string convertHexToBin(const std::string &hex);
+    std::string convertHexToOct(const std::string &hex);
+    int convertHexToDec(const std::string &hex);
 
  private:
-     std::string cutUnnecessaryZeroes(std::string bin);
+    static std::vector<std::string> triades;
+    static std::vector<std::string> tetrads;
+    static std::vector<std::string> charsSet;
+    std::string cutUnnecessaryZeroes(const std::string &bin);
 };
 
 #endif  // MODULES_KOMAROV_NIKOLAY_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
