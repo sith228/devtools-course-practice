@@ -114,8 +114,8 @@ std::string ProgrammerCalculator::convertBinToHex(const std::string &bin) {
 
     for (int i = 0; i < tetradsCount; i++) {
         std::string tetrad = binCopy.substr(4 * (tetradsCount - 1 - i), 4);
-        result = charsSet[tetrad[0] * 8 + tetrad[1] * 4 +
-            tetrad[2] * 2 + tetrad[3]] + result;
+        result = charsSet[(tetrad[0] - '0') * 8 + (tetrad[1] - '0') * 4 +
+            (tetrad[2] - '0') * 2 + (tetrad[3] - '0')] + result;
     }
 
     return result;
