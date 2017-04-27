@@ -10,223 +10,206 @@
 
 using std::string;
 
-TEST(ArithmeticParserTest, Can_parse_simple_expressions) {
+class ArithmeticParserTest : public ::testing::Test {
+ protected:
     ArithmeticParser parser;
+};
 
-    string e1 = "1 + 2";
-    string e2 = "x - 1";
-    string e3 = "3.1 * 3";
-    string e4 = "x / 2.0";
-    string e5 = "x ^ 2.0";
+TEST_F(ArithmeticParserTest, Can_parse_simple_expressions) {
+    string s1 = "1 + 2";
+    string s2 = "x - 1";
+    string s3 = "3.1 * 3";
+    string s4 = "x / 2.0";
+    string s5 = "x ^ 2.0";
 
-    EXPECT_TRUE(parser.parse(e1));
-    EXPECT_TRUE(parser.parse(e2));
-    EXPECT_TRUE(parser.parse(e3));
-    EXPECT_TRUE(parser.parse(e4));
+    EXPECT_TRUE(parser.parse(s1));
+    EXPECT_TRUE(parser.parse(s2));
+    EXPECT_TRUE(parser.parse(s3));
+    EXPECT_TRUE(parser.parse(s4));
 }
 
-TEST(ArithmeticParserTest, Can_parse_mixed_expressions) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_parse_mixed_expressions) {
+    string s1 = "1 + (2 * x)";
+    string s2 = "(1 - x) - (x + 21.3)";
+    string s3 = "3.1/1 * 3^(1 + x)";
 
-    string e1 = "1 + (2 * x)";
-    string e2 = "(1 - x) - (x + 21.3)";
-    string e3 = "3.1/1 * 3^(1 + x)";
-
-    EXPECT_TRUE(parser.parse(e1));
-    EXPECT_TRUE(parser.parse(e2));
-    EXPECT_TRUE(parser.parse(e3));
+    EXPECT_TRUE(parser.parse(s1));
+    EXPECT_TRUE(parser.parse(s2));
+    EXPECT_TRUE(parser.parse(s3));
 }
 
-TEST(ArithmeticParserTest, Can_parse_expressions_with_omitted_mult) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_parse_expressions_with_omitted_mult) {
+    string s1 = "2x";
+    string s2 = "23x + 11 / (3(2+3x))";
+    string s3 = "3.1 - 3^2 * 3(1 + 2.0x)";
 
-    string e1 = "2x";
-    string e2 = "23x + 11 / (3(2+3x))";
-    string e3 = "3.1 - 3^2 * 3(1 + 2.0x)";
-
-    EXPECT_TRUE(parser.parse(e1));
-    EXPECT_TRUE(parser.parse(e2));
-    EXPECT_TRUE(parser.parse(e3));
+    EXPECT_TRUE(parser.parse(s1));
+    EXPECT_TRUE(parser.parse(s2));
+    EXPECT_TRUE(parser.parse(s3));
 }
 
-TEST(ArithmeticParserTest, Can_parse_expressions_with_unary_minus) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_parse_expressions_with_unary_minus) {
+    string s1 = "-2x";
+    string s2 = "23.1x + -11";
+    string s3 = "-1 - (-2)";
+    string s4 = "-(1 * -(-2x))";
 
-    string e1 = "-2x";
-    string e2 = "23.1x + -11";
-    string e3 = "-1 - (-2)";
-    string e4 = "-(1 * -(-2x))";
-
-    EXPECT_TRUE(parser.parse(e1));
-    EXPECT_TRUE(parser.parse(e2));
-    EXPECT_TRUE(parser.parse(e3));
-    EXPECT_TRUE(parser.parse(e4));
+    EXPECT_TRUE(parser.parse(s1));
+    EXPECT_TRUE(parser.parse(s2));
+    EXPECT_TRUE(parser.parse(s3));
+    EXPECT_TRUE(parser.parse(s4));
 }
 
-TEST(ArithmeticParserTest, Can_parse_expressions_with_functions) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_parse_expressions_with_functions) {
+    string s1 = "(cos(x)^2 + sin(x)^2)";
+    string s2 = "tg(1.0) / ctg(1/x)";
+    string s3 = "arcsin(-arccos(x+2*arctg(2x)))";
+    string s4 = "-ln(2(lg(-3x / 2)))";
+    string s5 = "-abs(-x + 2)^2";
 
-    string e1 = "(cos(x)^2 + sin(x)^2)";
-    string e2 = "tg(1.0) / ctg(1/x)";
-    string e3 = "arcsin(-arccos(x+2*arctg(2x)))";
-    string e4 = "-ln(2(lg(-3x / 2)))";
-    string e5 = "-abs(-x + 2)^2";
-
-    EXPECT_TRUE(parser.parse(e1));
-    EXPECT_TRUE(parser.parse(e2));
-    EXPECT_TRUE(parser.parse(e3));
-    EXPECT_TRUE(parser.parse(e4));
-    EXPECT_TRUE(parser.parse(e5));
+    EXPECT_TRUE(parser.parse(s1));
+    EXPECT_TRUE(parser.parse(s2));
+    EXPECT_TRUE(parser.parse(s3));
+    EXPECT_TRUE(parser.parse(s4));
+    EXPECT_TRUE(parser.parse(s5));
 }
 
-TEST(ArithmeticParserTest, Can_parse_expressions_with_whitespaces) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_parse_expressions_with_whitespaces) {
+    string s = "1   \t + 2\f\r / x * cos (\t\n1.0/-x)";
 
-    string e = "1   \t + 2\f\r / x * cos (\t\n1.0/-x)";
-
-    EXPECT_TRUE(parser.parse(e));
+    EXPECT_TRUE(parser.parse(s));
 }
 
-TEST(ArithmeticParserTest, Cant_parse_aborted_expressions) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Cant_parse_aborted_expressions) {
+    string s1 = "-2x +";
+    string s2 = "x /";
+    string s3 = "-1 - (-2";
+    string s4 = "-1.";
 
-    string e1 = "-2x +";
-    string e2 = "x /";
-    string e3 = "-1 - (-2";
-    string e4 = "-1.";
-
-    EXPECT_FALSE(parser.parse(e1));
-    EXPECT_FALSE(parser.parse(e2));
-    EXPECT_FALSE(parser.parse(e3));
-    EXPECT_FALSE(parser.parse(e4));
+    EXPECT_FALSE(parser.parse(s1));
+    EXPECT_FALSE(parser.parse(s2));
+    EXPECT_FALSE(parser.parse(s3));
+    EXPECT_FALSE(parser.parse(s4));
 }
 
-TEST(ArithmeticParserTest, Cant_parse_wrong_parenthesis_order) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Cant_parse_wrong_parenthesis_order) {
+    string s1 = "(x)+(1/2)/((1+2)";
+    string s2 = "x / 4 + (2))";
 
-    string e1 = "(x)+(1/2)/((1+2)";
-    string e2 = "x / 4 + (2))";
-
-    EXPECT_FALSE(parser.parse(e1));
-    EXPECT_FALSE(parser.parse(e2));
+    EXPECT_FALSE(parser.parse(s1));
+    EXPECT_FALSE(parser.parse(s2));
 }
 
-TEST(ArithmeticParserTest, Cant_parse_non_alphanum) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Cant_parse_non_alphanum) {
+    string s1 = "^+1";
+    string s2 = "$/x+1";
 
-    string e1 = "^+1";
-    string e2 = "$/x+1";
-
-    EXPECT_NO_THROW(parser.parse(e1));
-    EXPECT_NO_THROW(parser.parse(e2));
-    EXPECT_FALSE(parser.parse(e1));
-    EXPECT_FALSE(parser.parse(e2));
+    EXPECT_NO_THROW(parser.parse(s1));
+    EXPECT_NO_THROW(parser.parse(s2));
+    EXPECT_FALSE(parser.parse(s1));
+    EXPECT_FALSE(parser.parse(s2));
 }
 
-TEST(ArithmeticParserTest, Cant_parse_unknown_function) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Cant_parse_unknown_function) {
+    string s = "pancake(x)";
 
-    string e = "pancake(x)";
-
-    EXPECT_FALSE(parser.parse(e));
+    EXPECT_FALSE(parser.parse(s));
 }
 
-TEST(ArithmeticParserTest, Can_eval_expressions_without_x) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Can_eval_expressions_without_x) {
+    string s1 = "2*(2+2)";
+    string s2 = "3 / 1 + 5^3";
+    string s3 = "3.43 * (1+2) + 5/3";
 
-    string e1 = "2*(2+2)";
-    string e2 = "3 / 1 + 5^3";
-    string e3 = "3.43 * (1+2) + 5/3";
+    double e1 = 8;
+    double e2 = 128;
+    double e3 = 3.43 * (1 + 2) + 5.0 / 3.0;
+    double a1, a2, a3;
 
-    double e1_exp = 8;
-    double e2_exp = 128;
-    double e3_exp = 3.43 * (1 + 2) + 5.0 / 3.0;
+    parser.parse(s1);
+    parser.evaluate(&a1);
+    parser.parse(s2);
+    parser.evaluate(&a2);
+    parser.parse(s3);
+    parser.evaluate(&a3);
 
-    parser.parse(e1);
-    double a1 = parser.evaluate();
-    parser.parse(e2);
-    double a2 = parser.evaluate();
-    parser.parse(e3);
-    double a3 = parser.evaluate();
-
-    EXPECT_DOUBLE_EQ(a1, e1_exp);
-    EXPECT_DOUBLE_EQ(a2, e2_exp);
-    EXPECT_DOUBLE_EQ(a3, e3_exp);
+    EXPECT_DOUBLE_EQ(e1, a1);
+    EXPECT_DOUBLE_EQ(e2, a2);
+    EXPECT_DOUBLE_EQ(e3, a3);
 }
 
-TEST(ArithmeticParserTest, Can_eval_expressions_with_x) {
-    ArithmeticParser parser;
-
-    string e1 = "x / (1 + 3.0x)";
-    string e2 = "1 + x*2 / x^3";
-    string e3 = "3.3 * (x - 1) / 2x / 2";
-
-    auto e1_fn = [](double x) { return x / (1 + 3.0*x); };
-    auto e2_fn = [](double x) { return 1 + x * 2 / (x*x*x); };
-    auto e3_fn = [](double x) { return 3.3 * (x - 1.0) / (2.0*x) / 2.0; };
-
+TEST_F(ArithmeticParserTest, Can_eval_expressions_with_x) {
+    string s1 = "x / (1 + 3.0x)";
+    string s2 = "1 + x*2 / x^3";
+    string s3 = "3.3 * (x - 1) / 2x / 2";
     double x = 0.234;
 
-    parser.parse(e1);
-    double a1 = parser.evaluate(x);
-    parser.parse(e2);
-    double a2 = parser.evaluate(x);
-    parser.parse(e3);
-    double a3 = parser.evaluate(x);
+    double e1 = [](double x) { return x / (1 + 3.0*x); }(x);
+    double e2 = [](double x) { return 1 + x * 2 / (x*x*x); }(x);
+    double e3 = [](double x) { return 3.3 * (x - 1.0) / (2.0*x) / 2.0; }(x);
+    double a1, a2, a3;
 
-    EXPECT_DOUBLE_EQ(a1, e1_fn(x));
-    EXPECT_DOUBLE_EQ(a2, e2_fn(x));
-    EXPECT_DOUBLE_EQ(a3, e3_fn(x));
+    parser.parse(s1);
+    parser.evaluate(x, &a1);
+    parser.parse(s2);
+    parser.evaluate(x, &a2);
+    parser.parse(s3);
+    parser.evaluate(x, &a3);
+
+    EXPECT_DOUBLE_EQ(e1, a1);
+    EXPECT_DOUBLE_EQ(e2, a2);
+    EXPECT_DOUBLE_EQ(e3, a3);
 }
 
-TEST(ArithmeticParserTest, Can_eval_expressions_with_functions) {
-    ArithmeticParser parser;
-    string e1 = "cos(x)^2 + sin(x)^2";
-    string e2 = "tg(x) * ctg(x) + x / 2";
-    string e3 = "sin(x) + arcsin(0.2)";
-    string e4 = "arccos(0.2) * sin(x/3)";
-    string e5 = "arctg(0.01) - tg(x+3)+1";
-    string e6 = "lg(x*ln(2.72))";
-    string e7 = "-abs(x)/x";
-
-    auto e1_exp = 1.0;
-    auto e2_fn = [](double x) { return 1 + x / 2; };
-    auto e3_fn = [](double x) { return sin(x) + asin(0.2); };
-    auto e4_fn = [](double x) { return acos(0.2) * sin(x / 3); };
-    auto e5_fn = [](double x) { return atan(0.01) - tan(x + 3) + 1; };
-    auto e6_fn = [](double x) { return log(x*log(2.72)) / log(10); };
-    auto e7_fn = [](double x) { return -fabs(x) / x; };
-
+TEST_F(ArithmeticParserTest, Can_eval_expressions_with_functions) {
+    string s1 = "cos(x)^2 + sin(x)^2";
+    string s2 = "tg(x) * ctg(x) + x / 2";
+    string s3 = "sin(x) + arcsin(0.2)";
+    string s4 = "arccos(0.2) * sin(x/3)";
+    string s5 = "arctg(0.01) - tg(x+3)+1";
+    string s6 = "lg(x*ln(2.72))";
+    string s7 = "-abs(x)/x";
     double x = 435.343;
 
-    parser.parse(e1);
-    double a1 = parser.evaluate(x);
-    parser.parse(e2);
-    double a2 = parser.evaluate(x);
-    parser.parse(e3);
-    double a3 = parser.evaluate(x);
-    parser.parse(e4);
-    double a4 = parser.evaluate(x);
-    parser.parse(e5);
-    double a5 = parser.evaluate(x);
-    parser.parse(e6);
-    double a6 = parser.evaluate(x);
-    parser.parse(e7);
-    double a7 = parser.evaluate(x);
+    double e1 = 1.0;
+    double e2 = [](double x) { return 1 + x / 2; }(x);
+    double e3 = [](double x) { return sin(x) + asin(0.2); }(x);
+    double e4 = [](double x) { return acos(0.2) * sin(x / 3); }(x);
+    double e5 = [](double x) { return atan(0.01) - tan(x + 3) + 1; }(x);
+    double e6 = [](double x) { return log(x*log(2.72)) / log(10); }(x);
+    double e7 = [](double x) { return -fabs(x) / x; }(x);
+    double a1, a2, a3, a4, a5, a6, a7;
 
-    EXPECT_DOUBLE_EQ(a1, e1_exp);
-    EXPECT_DOUBLE_EQ(a2, e2_fn(x));
-    EXPECT_DOUBLE_EQ(a3, e3_fn(x));
-    EXPECT_DOUBLE_EQ(a4, e4_fn(x));
-    EXPECT_DOUBLE_EQ(a5, e5_fn(x));
-    EXPECT_DOUBLE_EQ(a6, e6_fn(x));
-    EXPECT_DOUBLE_EQ(a7, e7_fn(x));
+    parser.parse(s1);
+    parser.evaluate(x, &a1);
+    parser.parse(s2);
+    parser.evaluate(x, &a2);
+    parser.parse(s3);
+    parser.evaluate(x, &a3);
+    parser.parse(s4);
+    parser.evaluate(x, &a4);
+    parser.parse(s5);
+    parser.evaluate(x, &a5);
+    parser.parse(s6);
+    parser.evaluate(x, &a6);
+    parser.parse(s7);
+    parser.evaluate(x, &a7);
+
+    EXPECT_DOUBLE_EQ(e1, a1);
+    EXPECT_DOUBLE_EQ(e2, a2);
+    EXPECT_DOUBLE_EQ(e3, a3);
+    EXPECT_DOUBLE_EQ(e4, a4);
+    EXPECT_DOUBLE_EQ(e5, a5);
+    EXPECT_DOUBLE_EQ(e6, a6);
+    EXPECT_DOUBLE_EQ(e7, a7);
 }
 
-TEST(ArithmeticParserTest, Evaluate_returns_zero_on_error) {
-    ArithmeticParser parser;
+TEST_F(ArithmeticParserTest, Evaluate_returns_zero_on_error) {
+    double a;
+    bool success;
 
     parser.parse("(");
+    success = parser.evaluate(0.424, &a);
 
-    EXPECT_EQ(parser.evaluate(0.424), 0.0);
+    EXPECT_FALSE(success);
 }

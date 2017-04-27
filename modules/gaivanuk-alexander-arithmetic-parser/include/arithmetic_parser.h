@@ -9,16 +9,17 @@
 class ArithmeticParser {
  public:
     bool parse(const std::string &expression);
-    double evaluate(double x = 0.0) const;
+    bool evaluate(double x, double *result) const;
+    bool evaluate(double *result) const { return evaluate(0.0, result); }
 
  private:
-    typedef double(*func_t)(double);
+    typedef double(*Function)(double);
 
-    static std::vector<char> delims;
-    static std::vector<std::string> funcnames;
-    static func_t functions[];
+    static std::vector<char> delims_;
+    static std::vector<std::string> funcnames_;
+    static Function functions_[];
 
-    enum token_t {
+    enum TokenType {
         T_POW,
         T_PLUS,
         T_MINUS,
@@ -33,7 +34,7 @@ class ArithmeticParser {
         T_END
     };
 
-    enum token_state {
+    enum TokenState {
         TS_INITIAL,
         TS_NUMBER,
         TS_FUNCNAME,
@@ -41,37 +42,38 @@ class ArithmeticParser {
     };
 
     struct Token {
-        token_t type = (token_t)0;
+        TokenType type = (TokenType)0;
 
         union {
-            int intValue;
-            double realValue = 0.0;
+            int int_value;
+            double real_value = 0.0;
         };
 
         Token() { }
-        explicit Token(token_t type)
+        explicit Token(TokenType type)
             : type(type) { }
-        Token(token_t type, int value)
-            : type(type), intValue(value) { }
-        Token(token_t type, double value)
-            : type(type), realValue(value) { }
+        Token(TokenType type, int value)
+            : type(type), int_value(value) { }
+        Token(TokenType type, double value)
+            : type(type), real_value(value) { }
     };
 
-    Token token;               // current token
-    std::vector<Token> rpn;    // reverse polish notation
-    const char *string_ptr;    // pointer to string to parse, used in getToken
-    std::vector<char> buffer;  // temporary buffer used in getToken
+    bool is_good = false;               // was expression parsed successfully
+    Token token_;                       // current token
+    std::vector<Token> rpn_;            // reverse polish notation
+    const char *string_ptr_ = nullptr;  // pointer to string to parse
+    std::vector<char> buffer_;          // temporary buffer used in getToken
 
     Token getToken();
-    void nextToken() { token = getToken(); }
-    void expectToken(token_t tt) {
-        if (token.type != tt) throw token;
+    void nextToken() { token_ = getToken(); }
+    void expectToken(TokenType token_type) {
+        if (token_.type != token_type) throw token_;
     }
 
-    void EXPR();
-    void EXPR2();
-    void EXPR3();
-    void EXPR4();
+    void SUM_OPERATORS();
+    void PRODUCT_OPERATORS();
+    void POW_OPERATOR();
+    void VALUE();
 };
 
 #endif  // MODULES_GAIVANUK_ALEXANDER_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
