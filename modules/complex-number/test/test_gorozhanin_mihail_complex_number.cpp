@@ -21,7 +21,7 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_With_Negative_And_Double_Nu
   double re = 0.0;
   double im = 0.0;
   ComplexNumber z(re, im);
-  ASSERT_NO_THROW(ComplexNumber z());
+  ASSERT_NO_THROW(z);
 }
 
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Multiplication_And_Addition) {
