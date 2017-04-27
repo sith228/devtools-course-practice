@@ -63,8 +63,6 @@ const Node* SearchTree::findNext(const double key) const {
 }
 
 const Node* SearchTree::findPrev(const Node* const node) const {
-    if (node == 0)
-        throw "findPrev: Tree is empty!";
     if (node->left != 0)
         return findMax(node->left);
 
@@ -78,8 +76,6 @@ const Node* SearchTree::findPrev(const Node* const node) const {
 }
 
 const Node* SearchTree::findNext(const Node* const node) const {
-    if (node == 0)
-        throw "findNext: Tree is empty!";
     if (node->right != 0)
         return findMin(node->right);
 
