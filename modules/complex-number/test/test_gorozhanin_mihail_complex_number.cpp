@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
-//Образец
+//Example
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Zero) {
   // Arrange
   double re = 0.0;
@@ -16,8 +16,9 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Zero) {
   EXPECT_EQ(re, z.getRe());
   EXPECT_EQ(im, z.getIm());
 }
-//Свои тесты
-TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_With_Negative_And_Double_Number) {
+//My tests
+TEST(Gorozhanin_Mihail_ComplexNumberTest, 
+  Can_Create_With_Neg_And_Double_Number) {
   double re = -10.0;
   double im = 5.4;
   ComplexNumber z(re, im);
@@ -33,8 +34,8 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Multiplication_And_Addition) {
   ComplexNumber zRes1 = z1 * z2;
   ComplexNumber zRes2 = z3 * z4;
   EXPECT_EQ(zRes1.getIm()-zRes2.getIm(), 109);
-  EXPECT_EQ(zRes1.getRe() ,0);
-  EXPECT_EQ(zRes2.getRe() ,0);
+  EXPECT_EQ(zRes1.getRe(), 0);
+  EXPECT_EQ(zRes2.getRe(), 0);
 }
 
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Validation_For_Completeness) {
@@ -53,7 +54,8 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Soever) {
   EXPECT_EQ(re, z2.getRe());
   EXPECT_EQ(im, z2.getIm());
 }
-TEST(Gorozhanin_Mihail_ComplexNumberTest, Any_Order_Of_Multiplication_And_Verification_Of_Assignment) {
+TEST(Gorozhanin_Mihail_ComplexNumberTest, 
+  Any_Order_Of_Multiplication_And_Verification_Of_Assignment) {
   double re = 5.0;
   double im = -8.0;
   ComplexNumber z1(re, im);
@@ -62,4 +64,4 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Any_Order_Of_Multiplication_And_Verifi
   ComplexNumber z_2 = z2*z1;
   EXPECT_TRUE(z_1 == z_2);
 }
-//Дата сдачи поздняя в связи с проблемой в техническом плане.
+//Delivery date late in connection with the problem in technical terms.
