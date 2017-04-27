@@ -71,9 +71,9 @@ std::string ProgrammerCalculator::convertBinToOct(const std::string &bin) {
     for (int i = 0; i < triadsCount; i++) {
         std::string triad = binCopy.substr(3 * (triadsCount - 1 - i), 3);
 
-        result = std::to_string((triad[2] - '0') * 4 +
+        result = std::to_string((triad[0] - '0') * 4 +
             (triad[1] - '0') * 2 +
-            (triad[0] - '0')) + result;
+            (triad[2] - '0')) + result;
     }
 
     return result;
@@ -114,8 +114,8 @@ std::string ProgrammerCalculator::convertBinToHex(const std::string &bin) {
 
     for (int i = 0; i < tetradsCount; i++) {
         std::string tetrad = binCopy.substr(4 * (tetradsCount - 1 - i), 4);
-        result = charsSet[tetrad[3] * 8 + tetrad[2] * 4 +
-            tetrad[1] * 2 + tetrad[0]] + result;
+        result = charsSet[tetrad[0] * 8 + tetrad[1] * 4 +
+            tetrad[2] * 2 + tetrad[3]] + result;
     }
 
     return result;
