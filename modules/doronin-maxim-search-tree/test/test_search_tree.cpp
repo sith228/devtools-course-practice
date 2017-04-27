@@ -41,6 +41,7 @@ TEST(Doronin_Maxim_SearchTree_Test, can_create_tree) {
     SearchTree *tree;
 
     ASSERT_NO_THROW(tree = new SearchTree());
+    delete tree;
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, can_delete_empty_tree) {
