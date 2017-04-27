@@ -38,11 +38,7 @@ class Doronin_Maxim_SearchTree_Test_F : public ::testing::Test {
 };
 
 TEST(Doronin_Maxim_SearchTree_Test, can_create_tree) {
-    SearchTree *tree;
-
-    ASSERT_NO_THROW(tree = new SearchTree());
-    if (tree != 0)
-        delete tree;
+    ASSERT_NO_THROW(SearchTree *tree = new SearchTree());
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, can_delete_empty_tree) {
