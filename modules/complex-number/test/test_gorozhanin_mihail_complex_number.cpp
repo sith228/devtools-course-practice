@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "include/complex_number.h"
-//Example
+// Example
 TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Zero) {
   // Arrange
   double re = 0.0;
@@ -16,8 +16,8 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Zero) {
   EXPECT_EQ(re, z.getRe());
   EXPECT_EQ(im, z.getIm());
 }
-//My tests
-TEST(Gorozhanin_Mihail_ComplexNumberTest, 
+// My tests
+TEST(Gorozhanin_Mihail_ComplexNumberTest,
   Can_Create_With_Neg_And_Double_Number) {
   double re = -10.0;
   double im = 5.4;
@@ -54,7 +54,7 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest, Can_Create_Soever) {
   EXPECT_EQ(re, z2.getRe());
   EXPECT_EQ(im, z2.getIm());
 }
-TEST(Gorozhanin_Mihail_ComplexNumberTest, 
+TEST(Gorozhanin_Mihail_ComplexNumberTest,
   Any_Order_Of_Multiplication_And_Verification_Of_Assignment) {
   double re = 5.0;
   double im = -8.0;
@@ -64,4 +64,4 @@ TEST(Gorozhanin_Mihail_ComplexNumberTest,
   ComplexNumber z_2 = z2*z1;
   EXPECT_TRUE(z_1 == z_2);
 }
-//Delivery date late in connection with the problem in technical terms.
+// Delivery date late in connection with the problem in technical terms.
