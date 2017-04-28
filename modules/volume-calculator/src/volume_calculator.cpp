@@ -13,7 +13,7 @@ double Volume::Dodecahedron(double a)
 {
     if (a <= 0)
         throw "error of class \"Volume\": uncorrect arguments";
-    return ((pow(a, 3)*((double)15 + (double)7 * (double)sqrt(5))) / 4);
+    return ((pow(a, 3)*((double)15 + (double)7 * (double)sqrt((double)5))) / 4);
 }
 
 double Volume::Cylinder(double h, double r)
