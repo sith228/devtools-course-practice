@@ -99,27 +99,32 @@ TEST(volume_test, cant_get_ellipsoid_volume_with_uncorrect_ribs) {
 
 TEST(volume_test, can_get_right_frustum_volume) {
     // Arrange
-    double radius_of_first_base = 10, radius_of_second_base = 5, height = 15;
+    double radius_of_first_base = 10;
+    double radius_of_second_base = 5;
+    double height = 15;
     // Act
-    double right_volume = (1 / 3)*M_PI*height*(pow(radius_of_first_base, 2) 
-        + radius_of_first_base*radius_of_second_base 
+    double right_volume = (1 / 3)*M_PI*height*(pow(radius_of_first_base, 2)
+        + radius_of_first_base*radius_of_second_base
         + pow(radius_of_second_base, 2));
     // Assert
-    EXPECT_EQ(Volume::Frustum(radius_of_first_base, radius_of_second_base, height), right_volume);
+    EXPECT_EQ(Volume::Frustum(radius_of_first_base,
+        radius_of_second_base,
+        height),
+        right_volume);
 }
 
 TEST(volume_test, cant_get_frustum_volume_with_uncorrect_radius_and_height) {
     // Arrange
-    double correct_number = 10;
-    double uncorrect_number = -10;
+    double c_num = 10;
+    double un_num = -10;
     // Assert
-    ASSERT_ANY_THROW(Volume::Frustum(uncorrect_number, correct_number, correct_number));
-    ASSERT_ANY_THROW(Volume::Frustum(correct_number, uncorrect_number, correct_number));
-    ASSERT_ANY_THROW(Volume::Frustum(correct_number, correct_number, uncorrect_number));
-    ASSERT_ANY_THROW(Volume::Frustum(uncorrect_number, uncorrect_number, correct_number));
-    ASSERT_ANY_THROW(Volume::Frustum(correct_number, uncorrect_number, uncorrect_number));
-    ASSERT_ANY_THROW(Volume::Frustum(uncorrect_number, correct_number, uncorrect_number));
-    ASSERT_ANY_THROW(Volume::Frustum(uncorrect_number, uncorrect_number, uncorrect_number));
+    ASSERT_ANY_THROW(Volume::Frustum(un_num, c_num, c_num));
+    ASSERT_ANY_THROW(Volume::Frustum(c_num, un_num, c_num));
+    ASSERT_ANY_THROW(Volume::Frustum(c_num, c_num, un_num));
+    ASSERT_ANY_THROW(Volume::Frustum(un_num, un_num, c_num));
+    ASSERT_ANY_THROW(Volume::Frustum(c_num, un_num, un_num));
+    ASSERT_ANY_THROW(Volume::Frustum(un_num, c_num, un_num));
+    ASSERT_ANY_THROW(Volume::Frustum(un_num, un_num, un_num));
 }
 
 TEST(volume_test, can_get_right_paraboloid_volume) {
@@ -148,7 +153,8 @@ TEST(volume_test, can_get_right_parallelepiped_volume_with_base_area_and_h) {
     // Act
     double right_volume = base_area * height;
     // Assert
-    EXPECT_EQ(Volume::Parallelepiped(a_base_rib, b_base_rib, height), right_volume);
+    EXPECT_EQ(Volume::Parallelepiped(a_base_rib, b_base_rib, height), 
+        right_volume);
     EXPECT_EQ(Volume::Parallelepiped(base_area, height), right_volume);
 }
 
@@ -181,17 +187,20 @@ TEST(volume_test, can_get_right_parallelepiped_volume_with_ribs_and_angle) {
 
 TEST(volume_test, cant_get_right_parallelepiped_volume_with_uncorrect_var) {
     // Arrange
-    double un_rib = -10, uncorrect_argument_of_sin = -M_PI / 4;
-    double c_rib = 10, correct_argument_of_sin = M_PI / 4;
+    double un_rib = -10, un_sin = -M_PI / 4;
+    double c_rib = 10, c_sin = M_PI / 4;
     // Assert
-    ASSERT_ANY_THROW(Volume::Parallelepiped(un_rib, un_rib, un_rib, correct_argument_of_sin));
-    ASSERT_ANY_THROW(Volume::Parallelepiped(c_rib, c_rib, c_rib, uncorrect_argument_of_sin));
+    ASSERT_ANY_THROW(Volume::Parallelepiped(un_rib, un_rib, un_rib, c_sin));
+    ASSERT_ANY_THROW(Volume::Parallelepiped(c_rib, c_rib, c_rib, un_sin));
 }
 
 TEST(volume_test, can_get_right_pyramid_volume) {
     // Arrange
-    double a_base_rib_of_base_triangle = 5, height_of_base_triangle = 10, height_of_pyramid = 20;
-    double base_area = ((double)1 / 2)*a_base_rib_of_base_triangle * height_of_base_triangle;
+    double a_base_rib_of_base_triangle = 5;
+    double height_of_base_triangle = 10;
+    double height_of_pyramid = 20;
+    double base_area = ((double)1 / 2) *
+        a_base_rib_of_base_triangle * height_of_base_triangle;
     // Act
     double right_volume = (1 / 3)*base_area*height_of_pyramid;
     // Assert
@@ -203,10 +212,10 @@ TEST(volume_test, can_get_right_pyramid_volume) {
 
 TEST(volume_test, cant_get_pyramid_volume_with_uncorrect_rib_and_height) {
     // Arrange
-    double uncorrect_number = -10;
+    double un_num = -10;
     // Assert
-    ASSERT_ANY_THROW(Volume::Pyramid(uncorrect_number, uncorrect_number, uncorrect_number));
-    ASSERT_ANY_THROW(Volume::Pyramid(uncorrect_number, uncorrect_number));
+    ASSERT_ANY_THROW(Volume::Pyramid(un_num, un_num, un_num));
+    ASSERT_ANY_THROW(Volume::Pyramid(un_num, un_num));
 }
 
 TEST(volume_test, can_get_right_rectangular_parallelepiped_volume) {
