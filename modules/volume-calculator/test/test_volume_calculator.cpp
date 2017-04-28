@@ -219,7 +219,6 @@ TEST(volume_calculator_test, can_get_right_pyramid_volume)
 TEST(volume_calculator_test, cant_get_pyramid_volume_with_uncorrect_rib_and_height)
 {
     // Arrange
-    double correct_number = 10;
     double uncorrect_number = -10;
     // Assert
     ASSERT_ANY_THROW(Volume::Pyramid(uncorrect_number, uncorrect_number, uncorrect_number));
