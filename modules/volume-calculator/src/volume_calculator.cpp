@@ -11,7 +11,7 @@ double Volume::Cube(double a) {
 double Volume::Dodecahedron(double a) {
     if (a <= 0)
         throw "error of class \"Volume\": uncorrect arguments";
-    return ((pow(a, 3)*((double)15 + (double)7 * (double)sqrt((double)5))) / 4);
+    return ((pow(a, 3)*(15.0 + 7.0 * sqrt(5.0))) / 4);
 }
 
 double Volume::Cylinder(double h, double r) {
@@ -83,5 +83,5 @@ double Volume::RectangularParallelepiped(double a, double b, double c) {
 double Volume::Frustum(double r_base_1, double r_base_2, double h) {
     if (r_base_1 <= 0 || r_base_2 <= 0 || h <= 0)
         throw "error of class \"Volume\": uncorrect arguments";
-    return (1 / 3)*M_PI*h*(pow(r_base_1, 2) + r_base_1*r_base_2 + pow(r_base_2, 2));
+    return (1 / 3)*M_PI*h*(pow(r_base_1, 2)+r_base_1*r_base_2+pow(r_base_2, 2));
 }
