@@ -199,11 +199,11 @@ TEST(volume_test, can_get_right_pyramid_volume) {
     double a_rib_of_triangle = 5;
     double height_of_triangle = 10;
     double height_of_pyramid = 20;
-    double base_area = ((double)1 / 2) * a_rib_of_triangle * height_of_triangle;
+    double base_area = (1 / 2) * a_rib_of_triangle * height_of_triangle;
     // Act
     double right_volume = (1 / 3)*base_area*height_of_pyramid;
     // Assert
-    EXPECT_EQ(Volume::Pyramid(a_rib_of_triangle, 
+    EXPECT_EQ(Volume::Pyramid(a_rib_of_triangle,
                               height_of_triangle,
                               height_of_pyramid), right_volume);
     EXPECT_EQ(Volume::Pyramid(base_area, height_of_pyramid), right_volume);
