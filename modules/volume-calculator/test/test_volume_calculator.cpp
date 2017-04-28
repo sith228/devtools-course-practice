@@ -4,7 +4,7 @@
 
 #include "include/volume_calculator.h"
 
-TEST(volume_calculator_test, can_get_right_cube_volume) {
+TEST(volume_test, can_get_right_cube_volume) {
     // Arrange
     double cube_rib = 25;
     // Act
@@ -13,14 +13,14 @@ TEST(volume_calculator_test, can_get_right_cube_volume) {
     EXPECT_EQ(Volume::Cube(cube_rib), right_cube_volume);
 }
 
-TEST(volume_calculator_test, cant_get_cube_volume_with_incorrect_rib) {
+TEST(volume_test, cant_get_cube_volume_with_incorrect_rib) {
     // Arrange
     double cube_rib = -1;
     // Assert
     ASSERT_ANY_THROW(Volume::Cube(cube_rib));
 }
 
-TEST(volume_calculator_test, can_get_right_cone_volume) {
+TEST(volume_test, can_get_right_cone_volume) {
     // Arrange
     double cone_radius = 10, cone_height = 10;
     // Act
@@ -29,7 +29,7 @@ TEST(volume_calculator_test, can_get_right_cone_volume) {
     EXPECT_EQ(Volume::Cone(cone_height, cone_radius), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_cone_volume_with_uncorrect_radius_and_height) {
+TEST(volume_test, cant_get_cone_volume_with_uncorrect_variable) {
     // Arrange
     double uncorrect_number = -2;
     double correct_number = 10;
@@ -39,7 +39,7 @@ TEST(volume_calculator_test, cant_get_cone_volume_with_uncorrect_radius_and_heig
     ASSERT_ANY_THROW(Volume::Cone(uncorrect_number, uncorrect_number));
 }
 
-TEST(volume_calculator_test, can_get_right_cylinder_volume) {
+TEST(volume_test, can_get_right_cylinder_volume) {
     // Arrange
     double cylinder_radius = 10, cylinder_height = 10;
     // Act
@@ -48,7 +48,7 @@ TEST(volume_calculator_test, can_get_right_cylinder_volume) {
     EXPECT_EQ(Volume::Cylinder(cylinder_height, cylinder_radius), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_cylinder_volume_with_uncorrect_radius_and_height) {
+TEST(volume_test, cant_get_cylinder_volume_with_uncorrect_variable) {
     // Arrange
     double wrong_number = -2;
     double right_number = 10;
@@ -58,7 +58,7 @@ TEST(volume_calculator_test, cant_get_cylinder_volume_with_uncorrect_radius_and_
     ASSERT_ANY_THROW(Volume::Cylinder(wrong_number, wrong_number));
 }
 
-TEST(volume_calculator_test, can_get_right_dodecahedron_volume) {
+TEST(volume_test, can_get_right_dodecahedron_volume) {
     // Arrange
     double dodecahedron_rib = 10;
     // Act
@@ -67,14 +67,14 @@ TEST(volume_calculator_test, can_get_right_dodecahedron_volume) {
     EXPECT_EQ(Volume::Dodecahedron(dodecahedron_rib), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_dodecahedron_volume_with_uncorrect_rib) {
+TEST(volume_test, cant_get_dodecahedron_volume_with_uncorrect_rib) {
     // Arrange
     double dodecahedron_rib = -10;
     // Assert
     ASSERT_ANY_THROW(Volume::Dodecahedron(dodecahedron_rib));
 }
 
-TEST(volume_calculator_test, can_get_right_ellipsoid_volume) {
+TEST(volume_test, can_get_right_ellipsoid_volume) {
     // Arrange
     double a = 4, b = 4, c = 4;
     // Act
@@ -83,7 +83,7 @@ TEST(volume_calculator_test, can_get_right_ellipsoid_volume) {
     EXPECT_EQ(Volume::Ellipsoid(a, b, c), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_ellipsoid_volume_with_uncorrect_ribs) {
+TEST(volume_test, cant_get_ellipsoid_volume_with_uncorrect_ribs) {
     // Arrange
     double correct_rib = 10;
     double uncorrect_rib = -10;
@@ -97,7 +97,7 @@ TEST(volume_calculator_test, cant_get_ellipsoid_volume_with_uncorrect_ribs) {
     ASSERT_ANY_THROW(Volume::Ellipsoid(uncorrect_rib, uncorrect_rib, uncorrect_rib));
 }
 
-TEST(volume_calculator_test, can_get_right_frustum_volume) {
+TEST(volume_test, can_get_right_frustum_volume) {
     // Arrange
     double radius_of_first_base = 10, radius_of_second_base = 5, height = 15;
     // Act
@@ -106,7 +106,7 @@ TEST(volume_calculator_test, can_get_right_frustum_volume) {
     EXPECT_EQ(Volume::Frustum(radius_of_first_base, radius_of_second_base, height), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_frustum_volume_with_uncorrect_radius_and_height) {
+TEST(volume_test, cant_get_frustum_volume_with_uncorrect_radius_and_height) {
     // Arrange
     double correct_number = 10;
     double uncorrect_number = -10;
@@ -120,7 +120,7 @@ TEST(volume_calculator_test, cant_get_frustum_volume_with_uncorrect_radius_and_h
     ASSERT_ANY_THROW(Volume::Frustum(uncorrect_number, uncorrect_number, uncorrect_number));
 }
 
-TEST(volume_calculator_test, can_get_right_paraboloid_volume) {
+TEST(volume_test, can_get_right_paraboloid_volume) {
     // Arrange
     double radius = 10, height = 5;
     // Act
@@ -129,7 +129,7 @@ TEST(volume_calculator_test, can_get_right_paraboloid_volume) {
     EXPECT_EQ(Volume::Paraboloid(height, radius), right_value);
 }
 
-TEST(volume_calculator_test, cant_get_paraboloid_volume_with_uncorrect_radius_and_height) {
+TEST(volume_test, cant_get_paraboloid_volume_with_uncorrect_radius_and_height) {
     // Arrange
     double correct_number = 10;
     double uncorrect_number = -10;
@@ -139,7 +139,7 @@ TEST(volume_calculator_test, cant_get_paraboloid_volume_with_uncorrect_radius_an
     ASSERT_ANY_THROW(Volume::Paraboloid(uncorrect_number, uncorrect_number));
 }
 
-TEST(volume_calculator_test, can_get_right_parallelepiped_volume_with_base_area_and_height) {
+TEST(volume_test, can_get_right_parallelepiped_volume_with_base_area_and_height) {
     // Arrange
     double a_base_rib = 5, b_base_rib = 10, height = 20;
     double base_area = a_base_rib * b_base_rib;
@@ -150,7 +150,7 @@ TEST(volume_calculator_test, can_get_right_parallelepiped_volume_with_base_area_
     EXPECT_EQ(Volume::Parallelepiped(base_area, height), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_parallelepiped_volume_with_uncorrect_base_area_and_height) {
+TEST(volume_test, cant_get_parallelepiped_volume_with_uncorrect_base_area_and_height) {
     // Arrange
     double uncorrect_number = -10;
     double correct_number = 10;
@@ -167,7 +167,7 @@ TEST(volume_calculator_test, cant_get_parallelepiped_volume_with_uncorrect_base_
     ASSERT_ANY_THROW(Volume::Parallelepiped(uncorrect_number, uncorrect_number));
 }
 
-TEST(volume_calculator_test, can_get_right_parallelepiped_volume_with_ribs_and_angle) {
+TEST(volume_test, can_get_right_parallelepiped_volume_with_ribs_and_angle) {
     // Arrange
     double a = 5, b = 10, c = 15;
     double argument_of_sin = M_PI/4;
@@ -177,7 +177,7 @@ TEST(volume_calculator_test, can_get_right_parallelepiped_volume_with_ribs_and_a
     EXPECT_EQ(Volume::Parallelepiped(a, b, c, argument_of_sin), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_right_parallelepiped_volume_with_uncorrect_ribs_and_angle) {
+TEST(volume_test, cant_get_right_parallelepiped_volume_with_uncorrect_ribs_and_angle) {
     // Arrange
     double uncorrect_rib = -10, uncorrect_argument_of_sin = -M_PI / 4;
     double correct_rib = 10, correct_argument_of_sin = M_PI / 4;
@@ -186,7 +186,7 @@ TEST(volume_calculator_test, cant_get_right_parallelepiped_volume_with_uncorrect
     ASSERT_ANY_THROW(Volume::Parallelepiped(correct_rib, correct_rib, correct_rib, uncorrect_argument_of_sin));
 }
 
-TEST(volume_calculator_test, can_get_right_pyramid_volume) {
+TEST(volume_test, can_get_right_pyramid_volume) {
     // Arrange
     double a_base_rib_of_base_triangle = 5, height_of_base_triangle = 10, height_of_pyramid = 20;
     double base_area = ((double)1 / 2)*a_base_rib_of_base_triangle * height_of_base_triangle;
@@ -197,7 +197,7 @@ TEST(volume_calculator_test, can_get_right_pyramid_volume) {
     EXPECT_EQ(Volume::Pyramid(base_area, height_of_pyramid), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_pyramid_volume_with_uncorrect_rib_and_height) {
+TEST(volume_test, cant_get_pyramid_volume_with_uncorrect_rib_and_height) {
     // Arrange
     double uncorrect_number = -10;
     // Assert
@@ -205,7 +205,7 @@ TEST(volume_calculator_test, cant_get_pyramid_volume_with_uncorrect_rib_and_heig
     ASSERT_ANY_THROW(Volume::Pyramid(uncorrect_number, uncorrect_number));
 }
 
-TEST(volume_calculator_test, can_get_right_rectangular_parallelepiped_volume) {
+TEST(volume_test, can_get_right_rectangular_parallelepiped_volume) {
     // Arrange
     double a = 4, b = 6, c = 10;
     // Act
@@ -214,7 +214,7 @@ TEST(volume_calculator_test, can_get_right_rectangular_parallelepiped_volume) {
     EXPECT_EQ(Volume::RectangularParallelepiped(a, b, c), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_right_rectangular_parallelepiped_volume_with_uncorrect_ribs) {
+TEST(volume_test, cant_get_right_rectangular_parallelepiped_volume_with_uncorrect_ribs) {
     // Arrange
     double correct_rib = 10;
     double uncorrect_rib = -10;
@@ -228,7 +228,7 @@ TEST(volume_calculator_test, cant_get_right_rectangular_parallelepiped_volume_wi
     ASSERT_ANY_THROW(Volume::RectangularParallelepiped(uncorrect_rib, uncorrect_rib, uncorrect_rib));
 }
 
-TEST(volume_calculator_test, can_get_right_sphere_volume) {
+TEST(volume_test, can_get_right_sphere_volume) {
     // Arrange
     double radius = 10;
     // Act
@@ -237,7 +237,7 @@ TEST(volume_calculator_test, can_get_right_sphere_volume) {
     EXPECT_EQ(Volume::Sphere(radius), right_volume);
 }
 
-TEST(volume_calculator_test, cant_get_sphere_volume_with_uncorrect_radius) {
+TEST(volume_test, cant_get_sphere_volume_with_uncorrect_radius) {
     // Arrange
     double radius = -100;
     // Assert

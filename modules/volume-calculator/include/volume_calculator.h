@@ -7,7 +7,7 @@
 #include <math.h>
 
 // Class "Volume" can calculate volume of 3d figure.
-// Class "Volume" have only static methods because 
+// Class "Volume" have only static methods because
 // to calculate volume of figure we don't need create object of class
 class Volume {
  public:
@@ -25,7 +25,7 @@ class Volume {
     static double Parallelepiped(double a, double b, double c, double x);
     // S is base area of pyramid, h is height
     static double Pyramid(double S, double h);
-    // a is rid of base triangle of pyramid, base_h is height of base triangle, 
+    // a is rid of base triangle of pyramid, base_h is height of base triangle,
     // pyramid_h is height of pyramid
     static double Pyramid(double a, double base_h, double pyramid_h);
     // h is height of cone, r is radius of cone
@@ -41,4 +41,4 @@ class Volume {
     // r_base_1, r_base_2 is radius of bases of frustum, h is height of frustum
     static double Frustum(double r_base_1, double r_base_2, double h);
 };
-#endif // MODULES_VOLUME_CALCULATOR_INCLUDE_VOLUME_CALCULATOR_H_
+#endif  // MODULES_VOLUME_CALCULATOR_INCLUDE_VOLUME_CALCULATOR_H_
