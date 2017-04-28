@@ -8,7 +8,7 @@
 
 // Class "Volume" can calculate volume of 3d figure.
 // Class "Volume" is static class because to calculate volume of figure we don't need create object of class
-static class Volume
+class Volume
 {
 public:
     // a is side length of cube
