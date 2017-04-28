@@ -62,18 +62,18 @@ class ArithmeticParser {
     Token token_;                       // current token
     std::vector<Token> rpn_;            // reverse polish notation
     const char *string_ptr_ = nullptr;  // pointer to string to parse
-    std::vector<char> buffer_;          // temporary buffer used in getToken
+    std::vector<char> buffer_;          // temporary buffer used in GetToken
 
-    Token getToken();
-    void nextToken() { token_ = getToken(); }
-    void expectToken(TokenType token_type) {
+    Token GetToken();
+    void NextToken() { token_ = GetToken(); }
+    void ExpectToken(TokenType token_type) {
         if (token_.type != token_type) throw token_;
     }
 
-    void SUM_OPERATORS();
-    void PRODUCT_OPERATORS();
-    void POW_OPERATOR();
-    void VALUE();
+    void NonterminalPlusMinus();
+    void NonterminalMulDiv();
+    void NonterminalPow();
+    void NonterminalValue();
 };
 
 #endif  // MODULES_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_

@@ -71,9 +71,9 @@ bool ArithmeticParser::Parse(const string &expression) {
     string_ptr_ = expression.c_str();
 
     try {
-        nextToken();
-        SUM_OPERATORS();
-        expectToken(T_END);
+        NextToken();
+        NonterminalPlusMinus();
+        ExpectToken(T_END);
     }
     catch (Token) {
         rpn_.clear();
@@ -132,7 +132,7 @@ bool ArithmeticParser::Evaluate(double x, double *result) const {
     return true;
 }
 
-ArithmeticParser::Token ArithmeticParser::getToken() {
+ArithmeticParser::Token ArithmeticParser::GetToken() {
     TokenState state = TS_INITIAL;
     int number = 0;  // currently parsed number
 
@@ -212,70 +212,70 @@ ArithmeticParser::Token ArithmeticParser::getToken() {
     }
 }
 
-void ArithmeticParser::SUM_OPERATORS() {
-    PRODUCT_OPERATORS();
+void ArithmeticParser::NonterminalPlusMinus() {
+    NonterminalMulDiv();
     while (token_.type == T_PLUS || token_.type == T_MINUS) {
         TokenType token_type = token_.type;
-        nextToken();
-        PRODUCT_OPERATORS();
+        NextToken();
+        NonterminalMulDiv();
         rpn_.push_back(Token(token_type));
     }
 }
 
-void ArithmeticParser::PRODUCT_OPERATORS() {
-    POW_OPERATOR();
+void ArithmeticParser::NonterminalMulDiv() {
+    NonterminalPow();
     while (token_.type == T_MUL || token_.type == T_DIV) {
         TokenType token_type = token_.type;
-        nextToken();
-        POW_OPERATOR();
+        NextToken();
+        NonterminalPow();
         rpn_.push_back(Token(token_type));
     }
 }
 
-void ArithmeticParser::POW_OPERATOR() {
-    VALUE();
+void ArithmeticParser::NonterminalPow() {
+    NonterminalValue();
     if (token_.type == T_POW) {
-        nextToken();
-        VALUE();
+        NextToken();
+        NonterminalValue();
         rpn_.push_back(Token(T_POW));
     }
 }
 
-void ArithmeticParser::VALUE() {
+void ArithmeticParser::NonterminalValue() {
     if (token_.type == T_FUNC) {
         int functionIndex = token_.int_value;
-        nextToken();
-        expectToken(T_LPAREN);
-        nextToken();
-        SUM_OPERATORS();
-        expectToken(T_RPAREN);
-        nextToken();
+        NextToken();
+        ExpectToken(T_LPAREN);
+        NextToken();
+        NonterminalPlusMinus();
+        ExpectToken(T_RPAREN);
+        NextToken();
         rpn_.push_back(Token(T_FUNC, functionIndex));
     } else if (token_.type == T_X) {
         rpn_.push_back(Token(T_X));
-        nextToken();
+        NextToken();
     } else if (token_.type == T_NUMBER) {
         rpn_.push_back(Token(token_));
-        nextToken();
+        NextToken();
         if (token_.type == T_X) {
             rpn_.push_back(Token(T_X));
             rpn_.push_back(Token(T_MUL));
-            nextToken();
+            NextToken();
         } else if (token_.type == T_LPAREN) {
-            nextToken();
-            SUM_OPERATORS();
-            expectToken(T_RPAREN);
-            nextToken();
+            NextToken();
+            NonterminalPlusMinus();
+            ExpectToken(T_RPAREN);
+            NextToken();
             rpn_.push_back(Token(T_MUL));
         }
     } else if (token_.type == T_LPAREN) {
-        nextToken();
-        SUM_OPERATORS();
-        expectToken(T_RPAREN);
-        nextToken();
+        NextToken();
+        NonterminalPlusMinus();
+        ExpectToken(T_RPAREN);
+        NextToken();
     } else if (token_.type == T_MINUS) {
-        nextToken();
-        VALUE();
+        NextToken();
+        NonterminalValue();
         rpn_.push_back(Token(T_NEGATE));
     } else {
         throw token_;
