@@ -61,7 +61,7 @@ ArithmeticParser::Function ArithmeticParser::functions_[] = {
     fabs
 };
 
-bool ArithmeticParser::parse(const string &expression) {
+bool ArithmeticParser::Parse(const string &expression) {
     buffer_ = vector<char>();
     rpn_ = vector<Token>();
     buffer_.reserve(80);
@@ -87,7 +87,7 @@ bool ArithmeticParser::parse(const string &expression) {
     return is_good;
 }
 
-bool ArithmeticParser::evaluate(double x, double *result) const {
+bool ArithmeticParser::Evaluate(double x, double *result) const {
     assert(result);
     if (!is_good) return false;
 

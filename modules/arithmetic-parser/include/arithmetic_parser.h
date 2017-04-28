@@ -1,16 +1,16 @@
 // Copyright 2017 Alexander Gaivanuk
 
-#ifndef MODULES_GAIVANUK_ALEXANDER_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
-#define MODULES_GAIVANUK_ALEXANDER_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
+#ifndef MODULES_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
+#define MODULES_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
 
 #include <vector>
 #include <string>
 
 class ArithmeticParser {
  public:
-    bool parse(const std::string &expression);
-    bool evaluate(double x, double *result) const;
-    bool evaluate(double *result) const { return evaluate(0.0, result); }
+    bool Parse(const std::string &expression);
+    bool Evaluate(double x, double *result) const;
+    bool Evaluate(double *result) const { return Evaluate(0.0, result); }
 
  private:
     typedef double(*Function)(double);
@@ -76,4 +76,4 @@ class ArithmeticParser {
     void VALUE();
 };
 
-#endif  // MODULES_GAIVANUK_ALEXANDER_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
+#endif  // MODULES_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
