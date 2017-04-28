@@ -153,7 +153,7 @@ TEST(volume_test, can_get_right_parallelepiped_volume_with_base_area_and_h) {
     // Act
     double right_volume = base_area * height;
     // Assert
-    EXPECT_EQ(Volume::Parallelepiped(a_base_rib, b_base_rib, height), 
+    EXPECT_EQ(Volume::Parallelepiped(a_base_rib, b_base_rib, height),
         right_volume);
     EXPECT_EQ(Volume::Parallelepiped(base_area, height), right_volume);
 }
@@ -196,16 +196,15 @@ TEST(volume_test, cant_get_right_parallelepiped_volume_with_uncorrect_var) {
 
 TEST(volume_test, can_get_right_pyramid_volume) {
     // Arrange
-    double a_base_rib_of_base_triangle = 5;
-    double height_of_base_triangle = 10;
+    double a_rib_of_triangle = 5;
+    double height_of_triangle = 10;
     double height_of_pyramid = 20;
-    double base_area = ((double)1 / 2) *
-        a_base_rib_of_base_triangle * height_of_base_triangle;
+    double base_area = ((double)1 / 2) * a_rib_of_triangle * height_of_triangle;
     // Act
     double right_volume = (1 / 3)*base_area*height_of_pyramid;
     // Assert
-    EXPECT_EQ(Volume::Pyramid(a_base_rib_of_base_triangle, 
-                              height_of_base_triangle, 
+    EXPECT_EQ(Volume::Pyramid(a_rib_of_triangle, 
+                              height_of_triangle,
                               height_of_pyramid), right_volume);
     EXPECT_EQ(Volume::Pyramid(base_area, height_of_pyramid), right_volume);
 }
