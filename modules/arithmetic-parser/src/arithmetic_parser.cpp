@@ -16,10 +16,10 @@
     ArithmeticParser is a recursive descent parser that
     uses the folowing formal grammar:
 
-    EXPRESSION        -> SUM_OPERATORS
-    SUM_OPERATORS     -> PRODUCT_OPERATORS{[+ | -]PRODUCT_OPERATORS}
-    PRODUCT_OPERATORS -> POW_OPERATORS{[* | /]POW_OPERATORS}
-    POW_OPERATOR      -> VALUE | VALUE^VALUE
+    EXPRESSION        -> PLUSMINUS
+    PLUSMINUS         -> MULDIV{[+ | -]MULDIV}
+    MULDIV            -> POW{[* | /]POW}
+    POW               -> VALUE | VALUE^VALUE
     VALUE             -> x | NUM x | NUM(EXPRESSION) | -VALUE | FUNCTION(EXPRESSION) | (EXPRESSION)
     FUNCTION          -> cos | sin | tg | ctg | arcsin | arccos | arctg | ln | lg | abs
     NUM               -> I | R
