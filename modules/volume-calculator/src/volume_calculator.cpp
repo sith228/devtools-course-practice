@@ -17,7 +17,7 @@ double Volume::Dodecahedron(double a) {
 double Volume::Cylinder(double h, double r) {
     if (h <= 0 || r <= 0)
         throw "error of class \"Volume\": incorrect arguments";
-    return (M_PI * pow(r, 2) * h);
+    return (M_PI*pow(r, 2)*h);
 }
 
 double Volume::Parallelepiped(double S, double h) {
