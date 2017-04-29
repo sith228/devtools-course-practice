@@ -512,8 +512,7 @@ TEST(volume_test, can_get_right_pyramid_volume_with_ribs) {
                               height_of_pyramid), right_volume);
 }
 
-TEST(volume_test, can_get_right_pyramid_volume_with_base_area)
-{
+TEST(volume_test, can_get_right_pyramid_volume_with_base_area) {
     // Arrange
     double a_rib_of_triangle = 5;
     double height_of_triangle = 10;
