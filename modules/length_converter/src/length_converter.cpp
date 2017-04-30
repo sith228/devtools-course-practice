@@ -2,7 +2,7 @@
 
 #include "include/length_converter.h"
 
-/* Коэффициенты перевода единицы измерения в см */
+/* РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ РїРµСЂРµРІРѕРґР° РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ РІ СЃРј */
 #define MICROMETRE_TO_CM    0.0001
 #define MILLIMETRE_TO_CM    0.1
 #define CENTIMETRE_TO_CM    1.0
