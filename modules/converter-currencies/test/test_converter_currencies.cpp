@@ -3,26 +3,26 @@
 #include <gtest/gtest.h>
 
 #include "include/converter_currencies.h"
-     
-TEST(ConverterCurrenciesTest, can_not_create_converter_with_negative_first_parameter) {
+
+TEST(ConverterCurrenciesTest, can_not_create_convert_with_negativ_first_arg) {
      // No actions
 
      EXPECT_ANY_THROW(new converter_currencies(-100, RUR));
 }
 
-TEST(ConverterCurrenciesTest, can_create_converter_with_positive_first_parameter) {
+TEST(ConverterCurrenciesTest, can_create_converter_with_positive_first_arg) {
     // No actions
 
     EXPECT_NO_THROW(new converter_currencies(100, RUR));
 }
 
-TEST(ConverterCurrenciesTest, can_not_set_converter_with_negative_first_parameter) {
+TEST(ConverterCurrenciesTest, can_not_set_convert_with_negative_first_arg) {
     converter_currencies conv_curr(0.0f, RUR);
 
     EXPECT_ANY_THROW(conv_curr.SetCurrentMoney(-100, RUR));
 }
 
-TEST(ConverterCurrenciesTest, can_set_converter_with_positive_first_parameter) {
+TEST(ConverterCurrenciesTest, can_set_converter_with_positive_first_arg) {
     converter_currencies conv_curr(0.0f, RUR);
 
     EXPECT_NO_THROW(conv_curr.SetCurrentMoney(100, RUR));
@@ -60,14 +60,15 @@ TEST(ConverterCurrenciesTest, setter_changes_currency_size) {
     EXPECT_EQ(expected, conv_curr.GetCurrentSize());
 }
 
-TEST(ConverterCurrenciesTest, convert_of_zero_changes_name_without_changing_size) {
+TEST(ConverterCurrenciesTest, convert_zero_changes_name_do_not_changes_size) {
     converter_currencies conv_curr(0.0f, RUR);
     float oldsize = conv_curr.GetCurrentSize();
     Currency oldname = conv_curr.GetCurrentCurrency();
 
     conv_curr.Convert(UAH);
 
-    bool expected = conv_curr.GetCurrentCurrency() != oldname && conv_curr.GetCurrentSize() == oldsize;
+    bool expected = conv_curr.GetCurrentCurrency() != oldname &&
+         conv_curr.GetCurrentSize() == oldsize;
     EXPECT_TRUE(expected);
 }
 
@@ -78,7 +79,8 @@ TEST(ConverterCurrenciesTest, conver_of_no_zero_changes_name_and_size) {
 
     conv_curr.Convert(UAH);
 
-    bool expected = conv_curr.GetCurrentCurrency() != oldname && conv_curr.GetCurrentSize() != oldsize;
+    bool expected = conv_curr.GetCurrentCurrency() != oldname &&
+         conv_curr.GetCurrentSize() != oldsize;
     EXPECT_TRUE(expected);
 }
 
