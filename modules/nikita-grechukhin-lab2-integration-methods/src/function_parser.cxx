@@ -3,7 +3,7 @@
 #include "include/function_parser.h"
 #include <cctype>
 #include <cstring>
-#include <math.h>
+#include <cmath>
 #include <stdexcept>
 
 int get_priority(const std::string& token) {
