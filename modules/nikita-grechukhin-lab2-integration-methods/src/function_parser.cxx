@@ -5,6 +5,8 @@
 #include <cstring>
 #include <cmath>
 #include <stdexcept>
+#include <cstdlib>
+#include <iomanip>
 
 int get_priority(const std::string& token) {
     if (token == "+") return 1;
@@ -115,7 +117,7 @@ double eval(Expression e) {
     }
 
     case 0:
-		return atof(strtok(e.token.c_str, nullptr));
+        return strtod(e.token.c_str, nullptr);
     }
 
     throw std::runtime_error("Unknown expression type");
