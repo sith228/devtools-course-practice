@@ -256,7 +256,7 @@ TEST(LengthConverterTest, Can_Do_Several_Convert) {
     Length length(type1, value);
     value = length.ConvertTo(type2);
     Length length2(type2, value);
-	converted_value = length2.ConvertTo(YARD);
+	converted_value = length2.ConvertTo(type3);
     
     // Assert
 	ASSERT_NEAR(converted_value, expected_value, 0.000001);
