@@ -117,7 +117,7 @@ double eval(Expression e) {
     }
 
     case 0:
-        return strtod(e.token.c_str, nullptr);
+        return strtod(e.token.c_str(), nullptr);
     }
 
     throw std::runtime_error("Unknown expression type");
