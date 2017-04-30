@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "include/function_parser.h"
+#include <string>
 
 TEST(EXPRESSION, can_create_number_expression) {
     std::string token = "1";
