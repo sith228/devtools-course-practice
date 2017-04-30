@@ -1,29 +1,15 @@
 // Copyright 2017 Grechukhin Nikita
 
 #include "include/integration_methods.h"
+#include <string>
 
-IntegrationMethod::IntegrationMethod() {
-    this->upperLimit = 1.0;
-    this->lowerLimit = 0.0;
+void IntegrationMethod::change_variable_to_value(std::string &input,
+    double value) {
+    int size = input.size();
+    for (int i = 0; i < size; i++) {
+        if (input.at(i) == 'x' || input.at(i) == 'X')
+            input.replace(i, 1, std::to_string(value));
+    }
 }
 
-IntegrationMethod::IntegrationMethod(double upperLimit, double lowerLimit) {
-    this->upperLimit = upperLimit;
-    this->lowerLimit = lowerLimit;
-}
-
-double IntegrationMethod::getUpperLimit() const {
-    return upperLimit;
-}
-
-void IntegrationMethod::setUpperLimit(double upperLimit) {
-    this->upperLimit = upperLimit;
-}
-
-double IntegrationMethod::getLowerLimit() const {
-    return lowerLimit;
-}
-
-void IntegrationMethod::setLowerLimit(double lowerLimit) {
-    this->lowerLimit = lowerLimit;
-}
+IntegrationMethod::IntegrationMethod() {}
