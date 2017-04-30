@@ -3,9 +3,8 @@
 #include "include/bit_array.h"
 #include <string>
 
-BitArray::BitArray(const unsigned int size = 1){
+BitArray::BitArray(const unsigned int size = 1) : size_(size){
     if (size > 0) {
-        size_ = size;
         nBlocks_ = size / sizeof(MemoryBlock);
         nBlocks_++;
         if (size % (sizeof(MemoryBlock) * 8) == 0)
