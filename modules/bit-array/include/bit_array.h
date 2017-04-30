@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-using namespace std
+using namespace std;
 
 typedef unsigned int MemoryBlock;
 
@@ -18,9 +18,9 @@ class BitArray {
     BitArray& operator = (const BitArray& bitArray);
 
     unsigned int getSize() const;
-    void setBit(unsigned int bitNumber);
-    void clearBit(unsigned int bitNumber);
-    int getBit(unsigned int bitNumber) const;
+    void setBit(const unsigned int bitNumber);
+    void clearBit(const unsigned int bitNumber);
+    int getBit(const unsigned int bitNumber) const;
 
     BitArray operator & (const BitArray& bitArray);
     BitArray operator | (const BitArray& bitArray);
@@ -34,9 +34,9 @@ class BitArray {
     friend ostream& operator << (ostream& ostr, const BitArray& bitArray);
 
  private:
-    unsigned int getBlockNumber(const unsigned int globalBitNumber);
-    unsigned int getLocalBitNumber(const unsigned int globalBitNumber);
-    MemoryBlock getMask(const unsigned int localBitNumber);
+    unsigned int getBlockNumber(const unsigned int globalBitNumber) const;
+    unsigned int getLocalBitNumber(const unsigned int globalBitNumber) const;
+    MemoryBlock getMask(const unsigned int globalBitNumber) const;
 
     unsigned int size_;
     MemoryBlock* memoryBlocks;
