@@ -47,4 +47,4 @@ class Length {
     double GetConvertCoef(LENGTH_TYPE type) const;
 };
 
-#endif
+#endif  // MODULES_LENGTH_CONVERTER_INCLUDE_LENGTH_CONVERTER_H_
