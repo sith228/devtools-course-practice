@@ -68,6 +68,13 @@ TEST_F(ConverterCurrenciesTest, can_convert_from_RUR_to_GBP) {
     EXPECT_EQ(expected, Converter->Convert(oldMoney, RUR,GBP));
 }
 
+TEST_F(ConverterCurrenciesTest, can_convert_from_USD_to_RUR) {
+    float oldMoney = 111.1f;
+
+    float expected = oldMoney / RURtoUSD;
+    EXPECT_EQ(expected, Converter->Convert(oldMoney, USD, RUR));
+}
+
 TEST_F(ConverterCurrenciesTest, can_convert_from_RUR_to_UAH) {
     float oldMoney = 111.1f;
 
