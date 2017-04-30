@@ -46,28 +46,28 @@ float converter_currencies::CurrentToRubles(void) {
     return ResultMoney;
 }
 
-void converter_currencies::RublesToTarget(float &OldMoney, 
+void converter_currencies::RublesToTarget(float* OldMoney, 
                                            const Currency TargetMoney) {
     switch (TargetMoney) {
     case RUR:
         break;
     case USD:
-        OldMoney *= RURtoUSD;
+        *OldMoney *= RURtoUSD;
         break;
     case EUR:
-        OldMoney *= RURtoEUR;
+        *OldMoney *= RURtoEUR;
         break;
     case UAH:
-        OldMoney *= RURtoUAH;
+        *OldMoney *= RURtoUAH;
         break;
     case CNY:
-        OldMoney *= RURtoCNY;
+        *OldMoney *= RURtoCNY;
         break;
     case JPY:
-        OldMoney *= RURtoJPY;
+        *OldMoney *= RURtoJPY;
         break;
     case GBP:
-        OldMoney *= RURtoGBP;
+        *OldMoney *= RURtoGBP;
         break;
     }
 }
@@ -86,7 +86,7 @@ void converter_currencies::Convert(const Currency TargetMoney) {
           ResultMoney = 0;
      else {
          ResultMoney = CurrentToRubles();
-         RublesToTarget(ResultMoney, TargetMoney);
+         RublesToTarget(&ResultMoney, TargetMoney);
      }
      SetCurrentMoney(ResultMoney, TargetMoney);
 }

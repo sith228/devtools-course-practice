@@ -18,7 +18,7 @@ class converter_currencies {
      float UniversalMoney;
      Currency CurrencyName;
      float CurrentToRubles(void);
-     void RublesToTarget(float &OldMoney, const Currency TargetMoney);
+     void RublesToTarget(float* OldMoney, const Currency TargetMoney);
  public:
      converter_currencies(const float CurrencySize, const Currency MoneyName);
      void SetCurrentMoney(const float CurrencySize, const Currency MoneyName);
