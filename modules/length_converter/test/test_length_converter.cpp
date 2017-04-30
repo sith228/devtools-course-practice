@@ -92,7 +92,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Metre) {
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
 
-TEST(LengthConverterTest, Can_Convert_Into_Kilometre){
+TEST(LengthConverterTest, Can_Convert_Into_Kilometre) {
     // Arrange
     LENGTH_TYPE type = CENTIMETRE;
     double value = 117.0;
@@ -106,7 +106,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Kilometre){
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
 
-TEST(LengthConverterTest, Can_Convert_Into_Inch) { // дюйм
+TEST(LengthConverterTest, Can_Convert_Into_Inch) {  // дюйм
     // Arrange
     LENGTH_TYPE type = CENTIMETRE;
     double value = 1.17;
@@ -134,7 +134,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Hand) {
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
 
-TEST(LengthConverterTest, Can_Convert_Into_Link) { 
+TEST(LengthConverterTest, Can_Convert_Into_Link) {
     // Arrange
     LENGTH_TYPE type = CENTIMETRE;
     double value = 11.7;

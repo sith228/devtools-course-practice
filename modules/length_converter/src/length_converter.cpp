@@ -20,13 +20,11 @@
 #define MILE_TO_CM          160934.4
 #define LEAGUE_TO_CM        482803.2
 
-Length::Length(LENGTH_TYPE type, double value)
-{
+Length::Length(LENGTH_TYPE type, double value) {
     length_sm = value * GetConvertCoef(type);
 }
 
-double Length::GetConvertCoef(LENGTH_TYPE type) const
-{
+double Length::GetConvertCoef(LENGTH_TYPE type) const {
     if (type == MICROMETRE) return MICROMETRE_TO_CM;
     else if (type == MILLIMETRE) return MILLIMETRE_TO_CM;
     else if (type == CENTIMETRE) return CENTIMETRE_TO_CM;
@@ -43,11 +41,10 @@ double Length::GetConvertCoef(LENGTH_TYPE type) const
     else if (type == FURHLONG) return FURHLONG_TO_CM;
     else if (type == MILE) return MILE_TO_CM;
     else if (type == LEAGUE) return LEAGUE_TO_CM;
-    else 
+    else
         throw "Incorrect LENGTH_TYPE value.";
 }
 
-double Length::ConvertTo(LENGTH_TYPE type) const
-{
+double Length::ConvertTo(LENGTH_TYPE type) const {
     return length_sm / GetConvertCoef(type);
 }
