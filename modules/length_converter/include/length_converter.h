@@ -11,8 +11,8 @@ out_type - выходная единица измерения
 */
 
 
-#ifndef _LENGTH_CONVERTER_H_
-#define _LENGTH_CONVERTER_H_
+#ifndef MODULES_LENGTH_CONVERTER_INCLUDE_LENGTH_CONVERTER_H_
+#define MODULES_LENGTH_CONVERTER_INCLUDE_LENGTH_CONVERTER_H_
 
 enum LENGTH_TYPE {
     /* Метрические единицы измерения */
@@ -38,12 +38,12 @@ enum LENGTH_TYPE {
 
 
 class Length {
-public:
+ public:
     Length(LENGTH_TYPE type, double value);
     double ConvertTo(LENGTH_TYPE type) const;
-    
-private:
-    double length_sm; // Длина в сантиметрах
+
+ private:
+    double length_sm;  // Длина в сантиметрах
     double GetConvertCoef(LENGTH_TYPE type) const;
 };
 
