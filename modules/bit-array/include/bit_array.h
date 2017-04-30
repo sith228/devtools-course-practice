@@ -1,7 +1,7 @@
 // Copyright 2017 Grachev Vlad
 
 #ifndef MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
-#define	MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
+#define MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
 
 #include <iostream>
 
@@ -25,7 +25,7 @@ class BitArray {
     BitArray operator & (const BitArray& bitArray);
     BitArray operator | (const BitArray& bitArray);
     BitArray operator ^ (const BitArray& bitArray);
-    BitArray operator ~ ();
+    BitArray operator ~();
 
     bool operator == (const BitArray& bitArray) const;
     bool operator != (const BitArray& bitArray) const;
@@ -43,4 +43,4 @@ class BitArray {
     unsigned int nBlocks_;
 };
 
-#endif // MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
+#endif  // MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
