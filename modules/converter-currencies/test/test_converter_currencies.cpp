@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "converter_currencies.h"
+#include "include/converter_currencies.h"
      
 TEST(ConverterCurrenciesTest, can_not_create_converter_with_negative_first_parameter) {
      // No actions
