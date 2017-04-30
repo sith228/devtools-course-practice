@@ -19,7 +19,7 @@ TEST(LengthConverterTest, Can_Conver_Into_SM) {
 
     // Act
     Length length(type, value);
-    
+
     // Assert
     ASSERT_EQ(length.ConvertTo(type), value);
 }
@@ -31,7 +31,7 @@ TEST(LengthConverterTest, Can_Convert_Into_SM_Not_Equal) {
 
     // Act
     Length length(type, value);
-    
+
     // Assert
     ASSERT_NE(length.ConvertTo(type), 1.17);
 }
@@ -45,7 +45,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Micrometre) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(MICROMETRE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -59,7 +59,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Millimetre) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(MILLIMETRE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -73,7 +73,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Decimetre) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(DECIMETRE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -87,7 +87,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Metre) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(METRE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -101,7 +101,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Kilometre){
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(KILOMETRE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -115,7 +115,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Inch) { // дюйм
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(INCH);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -129,7 +129,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Hand) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(HAND);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -143,7 +143,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Link) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(LINK);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -157,7 +157,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Foot) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(FOOT);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -171,7 +171,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Yard) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(YARD);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -185,7 +185,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Rod) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(ROD);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -199,7 +199,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Chain) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(CHAIN);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -213,7 +213,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Furhlong) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(FURHLONG);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -227,7 +227,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Mile) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(MILE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -241,7 +241,7 @@ TEST(LengthConverterTest, Can_Convert_Into_League) {
     // Act
     Length length(type, value);
     converted_value = length.ConvertTo(LEAGUE);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
@@ -257,7 +257,7 @@ TEST(LengthConverterTest, Can_Do_Several_Convert) {
     value = length.ConvertTo(type2);
     Length length2(type2, value);
     converted_value = length2.ConvertTo(type3);
-    
+
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }

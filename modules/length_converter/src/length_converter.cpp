@@ -27,22 +27,22 @@ Length::Length(LENGTH_TYPE type, double value)
 
 double Length::GetConvertCoef(LENGTH_TYPE type) const
 {
-    if(type == MICROMETRE) return MICROMETRE_TO_CM;
-    else if(type == MILLIMETRE) return MILLIMETRE_TO_CM;
-    else if(type == CENTIMETRE) return CENTIMETRE_TO_CM;
-    else if(type == DECIMETRE) return DECIMETRE_TO_CM;
-    else if(type == METRE) return METRE_TO_CM;
-    else if(type == KILOMETRE) return KILOMETRE_TO_CM;
-    else if(type == INCH) return INCH_TO_CM;
-    else if(type == HAND) return HAND_TO_CM;
-    else if(type == LINK) return LINK_TO_CM;
-    else if(type == FOOT) return FOOT_TO_CM;
-    else if(type == YARD) return YARD_TO_CM;
-    else if(type == ROD) return ROD_TO_CM;
-    else if(type == CHAIN) return CHAIN_TO_CM;
-    else if(type == FURHLONG) return FURHLONG_TO_CM;
-    else if(type == MILE) return MILE_TO_CM;
-    else if(type == LEAGUE) return LEAGUE_TO_CM;
+    if (type == MICROMETRE) return MICROMETRE_TO_CM;
+    else if (type == MILLIMETRE) return MILLIMETRE_TO_CM;
+    else if (type == CENTIMETRE) return CENTIMETRE_TO_CM;
+    else if (type == DECIMETRE) return DECIMETRE_TO_CM;
+    else if (type == METRE) return METRE_TO_CM;
+    else if (type == KILOMETRE) return KILOMETRE_TO_CM;
+    else if (type == INCH) return INCH_TO_CM;
+    else if (type == HAND) return HAND_TO_CM;
+    else if (type == LINK) return LINK_TO_CM;
+    else if (type == FOOT) return FOOT_TO_CM;
+    else if (type == YARD) return YARD_TO_CM;
+    else if (type == ROD) return ROD_TO_CM;
+    else if (type == CHAIN) return CHAIN_TO_CM;
+    else if (type == FURHLONG) return FURHLONG_TO_CM;
+    else if (type == MILE) return MILE_TO_CM;
+    else if (type == LEAGUE) return LEAGUE_TO_CM;
     else 
         throw "Incorrect LENGTH_TYPE value.";
 }
