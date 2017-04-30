@@ -34,7 +34,7 @@ float converter_currency::CurrentToRubles(const float MoneySize,
     return ResultMoney;
 }
 
-float converter_currency::RublesToTarget(const float MoneySize, 
+float converter_currency::RublesToTarget(const float MoneySize,
                                            const Currency TargetMoney) {
     float ResultMoney = MoneySize;
     switch (TargetMoney) {
@@ -69,14 +69,13 @@ float converter_currency::Convert(const float MoneySize,
         float ResultMoney;
         if (MoneySize == 0)
             ResultMoney = 0;
-        else if (OldCurrency == NewCurrency)
-            ResultMoney = MoneySize;
-        else {
+		else if (OldCurrency == NewCurrency) {
+			ResultMoney = MoneySize;
+		} else {
             ResultMoney = CurrentToRubles(MoneySize, OldCurrency);
             ResultMoney = RublesToTarget(ResultMoney, NewCurrency);
         }
         return ResultMoney;
-    }
-    else
+    } else
         throw Error_1000;
 }
