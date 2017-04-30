@@ -3,7 +3,7 @@
 #include "include/integration_methods.h"
 #include <string>
 
-void IntegrationMethod::change_variable_to_value(std::string &input,
+void IntegrationMethod::change_variable_to_value(std::string input,
     double value) {
     int size = input.size();
     for (int i = 0; i < size; i++) {

@@ -108,14 +108,14 @@ double eval(Expression e) {
                 auto a = eval(e.args[0]);
                 if (e.token == "+") return +a;
                 if (e.token == "-") return -a;
-                if (e.token == "abs") return abs(a);
+                if (e.token == "abs") return fabs(a);
                 if (e.token == "sin") return sin(a);
                 if (e.token == "cos") return cos(a);
                 throw std::runtime_error("Unknown unary operator");
     }
 
     case 0:
-        return strtod(e.token.c_str(), nullptr);
+		return atof(strtok(e.token.c_str, nullptr));
     }
 
     throw std::runtime_error("Unknown expression type");
