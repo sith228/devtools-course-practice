@@ -67,15 +67,19 @@ float converter_currency::Convert(const float MoneySize,
                                  const Currency NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoney;
-        if (MoneySize == 0)
+        if (MoneySize == 0) {
             ResultMoney = 0;
-		else if (OldCurrency == NewCurrency) {
-			ResultMoney = MoneySize;
-		} else {
+        }
+        else if (OldCurrency == NewCurrency) {
+            ResultMoney = MoneySize;
+        } 
+        else {
             ResultMoney = CurrentToRubles(MoneySize, OldCurrency);
             ResultMoney = RublesToTarget(ResultMoney, NewCurrency);
         }
         return ResultMoney;
-    } else
+    }
+    else {
         throw Error_1000;
+    }
 }
