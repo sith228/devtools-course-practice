@@ -4,14 +4,13 @@
 #define MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
 
 #include <iostream>
-
-using namespace std;
+#include <string>
 
 typedef unsigned int MemoryBlock;
 
 class BitArray {
  public:
-    BitArray(const unsigned int size);
+    explicit BitArray(const unsigned int size = 1);
     BitArray(const BitArray& bitArray);
     ~BitArray();
 
@@ -30,8 +29,8 @@ class BitArray {
     bool operator == (const BitArray& bitArray) const;
     bool operator != (const BitArray& bitArray) const;
 
-    friend istream& operator >> (istream& istr, BitArray& bitArray);
-    friend ostream& operator << (ostream& ostr, const BitArray& bitArray);
+    std::string ToString();
+    friend std::istream& operator >> (std::istream& istr, BitArray& bitArray);
 
  private:
     unsigned int getBlockNumber(const unsigned int globalBitNumber) const;
