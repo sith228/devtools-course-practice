@@ -1,6 +1,10 @@
 // Copyright 2017 Bevzuk Semen
 
+#ifndef MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_H_
+#define MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_H_
+
 #include <iostream>
+#include <string>
 #include <vector>
 #include <list>
 #include <map>
@@ -48,3 +52,5 @@ class Huffman {
     std::string Decode_reverse_table(const std::string &str,
                                      std::map<std::vector<bool>, char> *table);
 };
+
+#endif  // MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_H_
