@@ -1,8 +1,10 @@
 // Copyright 2017 Bevzuk Semen
 
 #include <include/huffman.h>
+#include <vector>
 #include <string>
 #include <list>
+#include <map>
 
 Node::Node() {
     left = right = NULL;
@@ -67,14 +69,16 @@ std::string Huffman::Decode(const std::string &_s,
     std::map<char, std::vector<bool> > temp_table = _table;
     std::map<std::vector<bool>, char> reverse_table;
     std::map<char, std::vector<bool> >::iterator itr_table;
-    for (itr_table = temp_table.begin(); itr_table != temp_table.end(); itr_table++)
+    for (itr_table = temp_table.begin(); itr_table != temp_table.end();
+         itr_table++)
         reverse_table[itr_table->second] = itr_table->first;
 
     return Decode_reverse_table(_s, &reverse_table);
 }
 
 void Huffman::CheckInputEncode(const std::string& _string,
-                               const std::map<char, std::vector<bool>>* _table) {
+                               const std::map<char,
+                               std::vector<bool>>* _table) {
     if (_string == "") {
         throw std::string("Empty line");
     }
@@ -117,15 +121,15 @@ void Huffman::CreateTree(std::list<Node*> *trees) {
     }
 }
 
-void Huffman::CreateTable(Node *root, std::vector<bool> *code, 
+void Huffman::CreateTable(Node *root, std::vector<bool> *code,
                           std::map<char, std::vector<bool>> *table) {
     if (root->left) {
-        code->push_back(0); // left - 0
+        code->push_back(0);
         CreateTable(root->left, code, table);
     }
 
     if (root->right) {
-        code->push_back(1); // right - 1
+        code->push_back(1);
         CreateTable(root->right, code, table);
     }
 
@@ -136,8 +140,9 @@ void Huffman::CreateTable(Node *root, std::vector<bool> *code,
         code->pop_back();
 }
 
-std::string Huffman::Decode_reverse_table(const std::string &str,
-                                          std::map<std::vector<bool>, char> *table) {
+std::string Huffman::Decode_reverse_table(
+    const std::string &str,
+    std::map<std::vector<bool>, char> *table) {
     std::string out = "";
     std::vector<bool> code;
     int current_code;

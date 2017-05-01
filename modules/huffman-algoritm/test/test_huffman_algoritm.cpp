@@ -2,17 +2,16 @@
 
 #include <gtest/gtest.h>
 
-#include "include/huffman.h"
 #include <map>
 #include <string>
 #include <list>
 #include <vector>
+#include "include/huffman.h"
 
 void AddVector(std::map<char, std::vector<bool> >* table,
                char char_symbol, std::string input) {
     std::vector<bool> vec;
-    for (unsigned int i = 0; i < input.length(); i++)
-    {
+    for (unsigned int i = 0; i < input.length(); i++) {
         vec.push_back(input[i] - '0');
     }
     (*table)[char_symbol] = vec;
@@ -105,7 +104,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_and_Decode) {
     std::string input_string = "aaabbc";
     std::string result_string = input_string;
     Huffman ha;
-    
+
     std::string out_code = ha.Encode(input_string, &code_table);
     std::string out_string = ha.Decode(out_code, code_table);
 
