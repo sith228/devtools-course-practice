@@ -1,6 +1,7 @@
 // Copyright 2017 Grachev Vlad
 
 #include "include/bit_array.h"
+#include <string>
 
 BitArray::BitArray(const unsigned int size) {
     if (size > 0) {
@@ -12,10 +13,13 @@ BitArray::BitArray(const unsigned int size) {
         if (memoryBlocks != nullptr) {
             for (unsigned int i = 0; i < size; i++)
                 memoryBlocks[i] = 0;
-        } else
+        } 
+        else
             throw std::string("Data has no memory");
-    } else
+    } 
+    else
         throw std::string("Incorrect array size");
+    }
 }
 
 
@@ -27,7 +31,8 @@ BitArray::BitArray(const BitArray& bitArray) {
     if (memoryBlocks != nullptr) {
         for (unsigned int i = 0; i < size_; i++)
             memoryBlocks[i] = bitArray.memoryBlocks[i];
-    } else
+    } 
+    else
         throw std::string("Data has no memory");
 }
 
@@ -49,7 +54,8 @@ BitArray& BitArray::operator = (const BitArray& bitArray) {
         if (memoryBlocks != nullptr) {
             for (unsigned int i = 0; i < size_; i++)
                 memoryBlocks[i] = bitArray.memoryBlocks[i];
-        } else
+        } 
+        else
             throw std::string("Data has no memory");
     }
     return *this;
@@ -67,7 +73,8 @@ unsigned int BitArray::getBlockNumber
                        (const unsigned int globalBitNumber) const {
     if (globalBitNumber < size_) {
         return globalBitNumber / sizeof(MemoryBlock);
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
@@ -77,7 +84,8 @@ unsigned int BitArray::getLocalBitNumber
                        (const unsigned int globalBitNumber) const {
     if (globalBitNumber < size_) {
         return globalBitNumber % (sizeof(MemoryBlock) * 8);
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
@@ -89,14 +97,16 @@ MemoryBlock BitArray::getMask
         MemoryBlock mask = 1;
         mask <<= getLocalBitNumber(globalBitNumber);
         return mask;
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
 void BitArray::setBit(const unsigned int bitNumber) {
     if ((bitNumber >= 0) && (bitNumber < size_)) {
         memoryBlocks[getBlockNumber(bitNumber)] |= getMask(bitNumber);
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
@@ -105,7 +115,8 @@ void BitArray::setBit(const unsigned int bitNumber) {
 void BitArray::clearBit(const unsigned int bitNumber) {
     if ((bitNumber >= 0) && (bitNumber < size_)) {
         memoryBlocks[getBlockNumber(bitNumber)] &= ~getMask(bitNumber);
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
@@ -116,7 +127,8 @@ int BitArray::getBit(const unsigned int bitNumber) const {
         int bitValue;
         bitValue = (memoryBlocks[getBlockNumber(bitNumber)] & getMask(bitNumber)) > 0 ? 1 : 0;
         return bitValue;
-    } else
+    } 
+    else
         throw std::string("Incorrect index");
 }
 
@@ -167,7 +179,8 @@ BitArray BitArray::operator ~ () {
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++) {
         if (getBit(i) == 0) {
             tempBitArray.setBit(i);
-        } else
+        } 
+        else
             tempBitArray.clearBit(i);
     }
 
@@ -182,7 +195,8 @@ bool BitArray::operator == (const BitArray& bitArray) const {
             if (memoryBlocks[i] != bitArray.memoryBlocks[i])
                 return false;
       return true;
-    } else
+    } 
+    else
         return false;
 }
 
@@ -210,8 +224,7 @@ std::istream& operator >> (std::istream& istr, BitArray& bitArray) {
     char symbol;
     unsigned int i = 0;
     istr >> symbol;
-    while ((i < bitArray.nBlocks_) && ((symbol == '0') || (symbol == '1')))
-    {
+    while ((i < bitArray.nBlocks_) && ((symbol == '0') || (symbol == '1'))) {
         if (symbol == '0')
             bitArray.clearBit(i);
         else
