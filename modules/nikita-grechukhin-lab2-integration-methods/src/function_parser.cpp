@@ -105,7 +105,8 @@ double eval(Expression e) {
                 if (e.token == "*") return a * b;
                 if (e.token == "/") return a / b;
                 if (e.token == "**") return pow(a, b);
-                if (e.token == "mod") return static_cast<int>(a) % static_cast<int>(b);
+                if (e.token == "mod")
+                    return static_cast<int>(a) % static_cast<int>(b);
                 throw std::runtime_error("Unknown binary operator");
     }
 
