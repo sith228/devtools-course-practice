@@ -1,9 +1,11 @@
 // Copyright 2017 Grechukhin Nikita
 
 #include <gtest/gtest.h>
-#include "include/function_parser.h"
+
 #include <string>
 #include <cmath>
+
+#include "include/function_parser.h"
 
 TEST(EXPRESSION, can_create_number_expression) {
     std::string token = "1";
@@ -40,7 +42,7 @@ TEST(EXPRESSION, can_create_binary_expression) {
 
 TEST(PARSER, can_calculate) {
     std::string func = "45+15*sin(2*45) + cos(45)";
-    
+
     Parser parser(func.c_str());
     double actual = eval(parser.parse());
     double expected = 45 + 15*sin(2*45) + cos(45);
