@@ -25,9 +25,11 @@ double IntegrationMethod::calculate_function(std::string integrand) {
     return eval(parser.parse());
 }
 
-double IntegrationMethod::rectangle_method(std::string integrand, double low_limit,
+double IntegrationMethod::rectangle_method(std::string integrand,
+    double low_limit,
     double upper_limit, int quantity_of_steps) {
-    std::string func_in_low_limit = change_variable_to_value(integrand, low_limit);
+    std::string func_in_low_limit = change_variable_to_value(integrand,
+        low_limit);
     std::string func_in_upper_limit =
         change_variable_to_value(integrand, upper_limit);
 
@@ -46,7 +48,8 @@ double IntegrationMethod::rectangle_method(std::string integrand, double low_lim
     return result;
 }
 
-double IntegrationMethod::trapezoid_method(std::string integrand, double low_limit,
+double IntegrationMethod::trapezoid_method(std::string integrand,
+    double low_limit,
     double upper_limit, int quantity_of_steps) {
         double result = 0;
         if (quantity_of_steps > 1) {
@@ -69,13 +72,14 @@ double IntegrationMethod::trapezoid_method(std::string integrand, double low_lim
         return result;
 }
 
-double IntegrationMethod::simpson_method(std::string integrand, double low_limit,
+double IntegrationMethod::simpson_method(std::string integrand,
+    double low_limit,
     double upper_limit, double eps) {
         if (eps < 0)
             throw std::runtime_error("Epsilon has negative value");
         double integral = eps + 1;
         double integral1 = 0;
-        for (int n=2; (n <= 4) || (fabs(integral1-integral) > eps); n*=2) {
+     for (int n=2; (n <= 4) || (fabs(integral1-integral) > eps); n*=2) {
             double h, sum2 = 0, sum4 = 0, sum = 0;
             h = (upper_limit - low_limit)/(2*n);
             for (int i=1; i <= 2*n-1; i+=2) {
