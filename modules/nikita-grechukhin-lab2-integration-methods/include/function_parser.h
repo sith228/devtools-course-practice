@@ -7,12 +7,12 @@
 #include <string>
 
 struct Expression {
-    Expression(std::string token);
+    explicit Expression(std::string token);
     Expression(std::string token, Expression a);
     Expression(std::string token, Expression a, Expression b);
 
-    std::string token; // Операция или число
-    std::vector<Expression> args; // Выражения - аргументы операции
+    std::string token;
+    std::vector<Expression> args;
 };
 
 class Parser {
@@ -21,11 +21,11 @@ class Parser {
     Expression parse();
 
  private:
-    std::string parse_token(); // Парсит один токен
+    std::string parse_token();
     Expression parse_simple_expression();
     Expression parse_binary_expression(int min_priority);
 
-    const char* input; // Кусок строки, который еще не распарсили
+    const char* input;
 };
 
 double eval(Expression e);
