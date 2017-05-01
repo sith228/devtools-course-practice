@@ -17,7 +17,6 @@ class IntegrationMethod {
  private:
     std::string change_variable_to_value(std::string input, double value);
     double calculate_function(std::string input);
-
 };
 
 #endif  // MODULES_NIKITA_GRECHUKHIN_LAB2_INTEGRATION_METHODS_INCLUDE_INTEGRATION_METHODS_H_
