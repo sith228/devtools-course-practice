@@ -70,7 +70,7 @@ std::string Huffman::Decode(const std::string &_s,
     std::map<std::vector<bool>, char> reverse_table;
     std::map<char, std::vector<bool> >::iterator itr_table;
     for (itr_table = temp_table.begin(); itr_table != temp_table.end();
-         itr_table++)
+         ++itr_table)
         reverse_table[itr_table->second] = itr_table->first;
 
     return Decode_reverse_table(_s, &reverse_table);
@@ -103,7 +103,7 @@ void Huffman::CreateTree(std::list<Node*> *trees) {
         symbols[input_string[i]]++;
 
     std::map<char, int>::iterator itr_map;
-    for (itr_map = symbols.begin(); itr_map != symbols.end(); itr_map++) {
+    for (itr_map = symbols.begin(); itr_map != symbols.end(); ++itr_map) {
         Node *p = new Node(itr_map->first, itr_map->second);
         trees->push_back(p);
     }
