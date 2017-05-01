@@ -46,5 +46,5 @@ class Huffman {
                      std::map<char, std::vector<bool>> *table);
 
     std::string Decode_reverse_table(const std::string &str,
-                                     std::map<std::vector<bool>, char> &table);
+                                     std::map<std::vector<bool>, char> *table);
 };

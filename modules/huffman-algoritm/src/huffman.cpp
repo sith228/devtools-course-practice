@@ -68,7 +68,7 @@ std::string Huffman::Decode(const std::string &_s, const std::map<char, std::vec
     for (itr_table = temp_table.begin(); itr_table != temp_table.end(); itr_table++)
         reverse_table[itr_table->second] = itr_table->first;
 
-    return Decode_reverse_table(_s, reverse_table);
+    return Decode_reverse_table(_s, &reverse_table);
 }
 
 void Huffman::CheckInputEncode(const std::string& _string, const std::map<char, std::vector<bool>>* _table) {
@@ -131,7 +131,7 @@ void Huffman::CreateTable(Node *root, std::vector<bool> *code, std::map<char, st
         code->pop_back();
 }
 
-std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> &table) {
+std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> *table) {
     std::string out = "";
     std::vector<bool> code;
     int current_code;
@@ -141,8 +141,8 @@ std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::
         else
             current_code = 1;
         code.push_back(current_code);
-        if (table[code]) {
-            out += table[code];
+        if ((*table)[code]) {
+            out += (*table)[code];
             code.clear();
         }
     }
