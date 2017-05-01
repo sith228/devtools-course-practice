@@ -26,7 +26,7 @@ TEST(BitArray, bits_sum_of_new_array_is_zero) {
     BitArray bitArray(64);
     int sum = 0;
 
-    for (int i = 0; i < bitArray.getSize(); i++)
+    for (unsigned int i = 0; i < bitArray.getSize(); i++)
         sum += bitArray.getBit(i);
 
     EXPECT_EQ(sum, 0);
