@@ -50,8 +50,8 @@ std::string Huffman::Encode(const std::string &_string, std::map<char, std::vect
     CreateTable(root, code, *_table);
 
     std::string out = "";
-    for (int i = 0; i < input_string.length(); i++) {
-        for (int j = 0; j < (*_table)[input_string[i]].size(); j++) {
+    for (unsigned int i = 0; i < input_string.length(); i++) {
+        for (unsigned int j = 0; j < (*_table)[input_string[i]].size(); j++) {
             out += '0' + (*_table)[input_string[i]][j];
         }
     }
@@ -91,7 +91,7 @@ void Huffman::CheckInputDecode(const std::string& _string, const std::map<char, 
 
 void Huffman::CreateTree(std::list<Node*> *trees) {
     std::map<char, int> symbols;
-    for (int i = 0; i < input_string.length(); i++)
+    for (unsigned int i = 0; i < input_string.length(); i++)
         symbols[input_string[i]]++;
 
     std::map<char, int>::iterator itr_map;
@@ -135,7 +135,7 @@ std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::
     std::string out = "";
     std::vector<bool> code;
     int current_code;
-    for (int i = 0; i < str.length(); i++) {
+    for (unsigned int i = 0; i < str.length(); i++) {
         if (str[i] == '0')
             current_code = 0;
         else
