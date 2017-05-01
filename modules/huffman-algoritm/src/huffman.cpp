@@ -28,10 +28,6 @@ bool Node::operator == (Node const& a) const {
         return false;
     if (a.symbol != this->symbol)
         return false;
-    if (a.left != this->left)
-        return false;
-    if (a.right != this->right)
-        return false;
     return true;
 }
 

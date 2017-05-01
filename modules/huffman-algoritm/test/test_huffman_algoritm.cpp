@@ -38,6 +38,40 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Compare_Two_Nodes) {
     EXPECT_EQ(result, true);
 }
 
+TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Count) {
+    Node node_1;
+    Node node_2;
+    node_1.count = 2;
+    node_2.count = 4;
+    node_1.symbol = 'a';
+    node_2.symbol = 'a';
+    bool result;
+
+    if (node_1 == node_2)
+        result = true;
+    else
+        result = false;
+
+    EXPECT_NE(result, true);
+}
+
+TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Symbol) {
+    Node node_1;
+    Node node_2;
+    node_1.count = 2;
+    node_2.count = 2;
+    node_1.symbol = 'a';
+    node_2.symbol = 'b';
+    bool result;
+
+    if (node_1 == node_2)
+        result = true;
+    else
+        result = false;
+
+    EXPECT_NE(result, true);
+}
+
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node) {
     Node node('a', 1);
     Node expected_node;
