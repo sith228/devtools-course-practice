@@ -33,4 +33,4 @@ class ProgrammerCalculator {
     std::string cutUnnecessaryZeroes(const std::string &bin);
 };
 
-#endif  // MODULES_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
+#endif  //  MODULES_PROGRAMMER_CALCULATOR_INCLUDE_PROGRAMMER_CALCULATOR_H_
