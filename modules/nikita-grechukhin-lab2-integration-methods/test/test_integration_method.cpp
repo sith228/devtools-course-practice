@@ -23,7 +23,7 @@ TEST(INTEGRATION_METHOD, can_integrate_function_by_rectangle_method) {
     IntegrationMethod im;
     double actual = im.rectangle_method("x*x*x*x", 0, 1, 50);
     double expected = 0.2;
-    
+
     bool is_correct = (actual - 1e-3 < expected && expected < actual + 1e-3);
     EXPECT_EQ(true, is_correct);
 }
@@ -32,7 +32,7 @@ TEST(INTEGRATION_METHOD, can_integrate_function_with_cos_by_rectangle_method) {
     IntegrationMethod im;
     double actual = im.rectangle_method("x*x + 4*cos(x)", 0, 1, 50);
     double expected = 3.6992;
-    
+
     bool is_correct = (actual - 1e-3 < expected && expected < actual + 1e-3);
     EXPECT_EQ(true, is_correct);
 }
@@ -56,7 +56,7 @@ TEST(INTEGRATION_METHOD, can_integrate_function_by_trapezoid_method) {
     IntegrationMethod im;
     double actual = im.trapezoid_method("x*x*x", 1, 4, 150);
     double expected = (0.25)*(255);
-    
+
     bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
     EXPECT_EQ(true, is_correct);
 }
@@ -65,7 +65,7 @@ TEST(INTEGRATION_METHOD, can_integrate_function_with_sin_by_trapezoid_method) {
     IntegrationMethod im;
     double actual = im.trapezoid_method("x*sin(x)", 1, 4, 150);
     double expected = 1.5566;
-    
+
     bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
     EXPECT_EQ(true, is_correct);
 }
