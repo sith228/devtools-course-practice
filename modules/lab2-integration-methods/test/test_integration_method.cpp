@@ -118,5 +118,6 @@ TEST(INTEGRATION_METHOD,
     can_integrate_function_with_negative_eps_by_simpson_method) {
     IntegrationMethod im;
 
-    ASSERT_ANY_THROW(im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)", 5, 3, -1e-3));
+    ASSERT_ANY_THROW(im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)",
+        5, 3, -1e-3));
 }
