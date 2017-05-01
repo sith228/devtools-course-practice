@@ -58,7 +58,7 @@ double IntegrationMethod::trapezoid_method(std::string input, double low_limit,
             y = calculate_function(func_in_low_limit) +
                 calculate_function(func_in_upper_limit);
 
-            for (int i=1; i < quantity_of_steps; i++){
+            for (int i=1; i < quantity_of_steps; i++) {
                 double x = low_limit + dy*i;
                 std::string func = change_variable_to_value(input, x);
                 y+=2*calculate_function(func);
@@ -72,10 +72,10 @@ double IntegrationMethod::simpson_method(std::string input, double low_limit,
     double upper_limit, double eps) {
         double integral = eps + 1;
         double integral1 = 0;
-        for (int n=2; (n <= 4)||(fabs(integral1-integral) > eps); n*=2) {
-            double h, sum2=0, sum4=0, sum=0;
+        for (int n=2; (n <= 4) || (fabs(integral1-integral) > eps); n*=2) {
+            double h, sum2 = 0, sum4 = 0, sum = 0;
             h = (upper_limit - low_limit)/(2*n);
-            for (int i=1; i <= 2*n-1; i+=2){
+            for (int i=1; i <= 2*n-1; i+=2) {
                 double x1 = low_limit + h*i;
                 double x2 = low_limit + h*(i+1);
                 std::string func1 = change_variable_to_value(input, x1);
