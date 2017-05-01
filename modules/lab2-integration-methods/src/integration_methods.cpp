@@ -3,6 +3,7 @@
 #include "include/integration_methods.h"
 #include <string>
 #include <cmath>
+#include <stdexcept>
 #include "include/function_parser.h"
 
 std::string IntegrationMethod::change_variable_to_value(std::string integrand,
