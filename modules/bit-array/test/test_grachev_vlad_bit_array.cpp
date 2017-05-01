@@ -13,7 +13,7 @@ TEST(BitArray, cant_create_bit_array_with_size_zero) {
 }
 
 TEST(BitArray, cant_create_bit_array_with_negative_size) {
-    ASSERT_ANY_THROW(BitArray bitArray(0));
+    ASSERT_ANY_THROW(BitArray bitArray(-10));
 }
 
 TEST(BitArray, can_get_size) {
