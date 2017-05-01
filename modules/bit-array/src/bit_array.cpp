@@ -123,7 +123,9 @@ void BitArray::clearBit(const unsigned int bitNumber) {
 int BitArray::getBit(const unsigned int bitNumber) const {
     if ((bitNumber >= 0) && (bitNumber < size_)) {
         int bitValue;
-        bitValue = (memoryBlocks[getBlockNumber(bitNumber)] & getMask(bitNumber)) > 0 ? 1 : 0;
+        bitValue = memoryBlocks[getBlockNumber(bitNumber)] & getMask(bitNumber);
+        if (bitValue > 0)
+            bitValue = 1;
         return bitValue;
     } else {
         throw std::string("Incorrect index");
@@ -171,7 +173,7 @@ BitArray BitArray::operator ^ (const BitArray& bitArray) {
 
 
 
-BitArray BitArray::operator ~ () {
+BitArray BitArray::operator ~() {
     BitArray tempBitArray(*this);
 
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++) {
