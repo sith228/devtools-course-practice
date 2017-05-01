@@ -5,10 +5,8 @@
 #include <list>
 #include <map>
 
-using namespace std;
-
 class Node {
-public:
+ public:
     int count;
     char symbol;
     Node *left;
@@ -26,21 +24,21 @@ public:
 bool SortNode(const Node *a, const Node *b);
 
 class Huffman {
-public:
-    string Encode(string &_string, map<char, vector<bool> >* _table);
+ public:
+    std::string Encode(const std::string &_string, std::map<char, std::vector<bool> >* _table);
 
-    string Decode(string &_string, map<char, vector<bool> > &_table);
+    std::string Decode(const std::string &_string, const std::map<char, std::vector<bool> > &_table);
 
-private:
-    string input_string;
+ private:
+    std::string input_string;
 
-    void CheckInputEncode(string &_string, map<char, vector<bool> >* _table);
+    void CheckInputEncode(const std::string &_string, const std::map<char, std::vector<bool> >* _table);
 
-    void CheckInputDecode(string &_string, map<char, vector<bool> > &_table);
+    void CheckInputDecode(const std::string &_string, const std::map<char, std::vector<bool> > &_table);
 
-    void CreateTree(list<Node*> *trees);
+    void CreateTree(std::list<Node*> *trees);
 
-    void CreateTable(Node *root, vector<bool> &code, map<char, vector<bool>> &table);
+    void CreateTable(Node *root, std::vector<bool> &code, std::map<char, std::vector<bool>> &table);
 
-    string Decode_reverse_table(string &str, map<vector<bool>, char> &table);
+    std::string Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> &table);
 };

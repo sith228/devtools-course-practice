@@ -45,7 +45,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node_whith_branchs) {
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Sort_List_Nodes_counts) {
-    list<Node*> tree;
+    std::list<Node*> tree;
     Node *node_1 = new Node('a', 1);
     Node *node_2 = new Node('b', 2);
     tree.push_back(node_2);
@@ -62,69 +62,69 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Sort_List_Nodes_counts) {
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String) {
-    string input_string = "aaabbc";
-    map<char, vector<bool> > code_table;
+    std::string input_string = "aaabbc";
+    std::map<char, std::vector<bool> > code_table;
     Huffman ha;
-    string result_code = "000111110";
+    std::string result_code = "000111110";
 
-    string out_code = ha.Encode(input_string, &code_table);
+    std::string out_code = ha.Encode(input_string, &code_table);
 
     EXPECT_EQ(out_code, result_code);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Decode_Code) {
-    string input_code = "000111110";
-    map<char, vector<bool> > code_table;
-    vector<bool> vec_1;
+    std::string input_code = "000111110";
+    std::map<char, std::vector<bool> > code_table;
+    std::vector<bool> vec_1;
     vec_1.push_back(0);
-    vector<bool> vec_2;
+    std::vector<bool> vec_2;
     vec_2.push_back(1);
     vec_2.push_back(1);
-    vector<bool> vec_3;
+    std::vector<bool> vec_3;
     vec_3.push_back(1);
     vec_3.push_back(0);
     code_table['a'] = vec_1;
     code_table['b'] = vec_2;
     code_table['c'] = vec_3;
     Huffman ha;
-    string result_string= "aaabbc";
+    std::string result_string = "aaabbc";
 
-    string out_string = ha.Decode(input_code, code_table);
+    std::string out_string = ha.Decode(input_code, code_table);
 
     EXPECT_EQ(out_string, result_string);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_and_Decode) {
-    map<char, vector<bool> > code_table;
-    string input_string = "aaabbc";
-    string result_string = input_string;
+    std::map<char, std::vector<bool> > code_table;
+    std::string input_string = "aaabbc";
+    std::string result_string = input_string;
     Huffman ha;
     
-    string out_code = ha.Encode(input_string, &code_table);
-    string out_string = ha.Decode(out_code, code_table);
+    std::string out_code = ha.Encode(input_string, &code_table);
+    std::string out_string = ha.Decode(out_code, code_table);
 
     EXPECT_EQ(out_string, result_string);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_String_Encode) {
-    string input_string = "";
-    map<char, vector<bool> > code_table;
+    std::string input_string = "";
+    std::map<char, std::vector<bool> > code_table;
     Huffman ha;
 
     EXPECT_ANY_THROW(ha.Encode(input_string, &code_table));
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Null_Pointer_In_Table_Encode) {
-    string input_string = "aaabbc";
+    std::string input_string = "aaabbc";
     Huffman ha;
 
     EXPECT_ANY_THROW(ha.Encode(input_string, NULL));
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_Code_Decode) {
-    string input_code = "";
-    map<char, vector<bool> > code_table;
-    vector<bool> vec_1;
+    std::string input_code = "";
+    std::map<char, std::vector<bool> > code_table;
+    std::vector<bool> vec_1;
     vec_1.push_back(0);
     code_table['a'] = vec_1;
     Huffman ha;
@@ -133,8 +133,8 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_Code_Decode) {
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_Table_Decode) {
-    string input_code = "000011";
-    map<char, vector<bool> > code_table;
+    std::string input_code = "000011";
+    std::map<char, std::vector<bool> > code_table;
     Huffman ha;
 
     EXPECT_ANY_THROW(ha.Decode(input_code, code_table));

@@ -1,6 +1,7 @@
 // Copyright 2017 Bevzuk Semen
 
 #include <include/huffman.h>
+#include <map>
 
 Node::Node() {
     left = right = NULL;
@@ -35,20 +36,20 @@ bool SortNode(const Node *a, const Node *b) {
     return a->count < b->count;
 }
 
-string Huffman::Encode(string &_string, map<char, vector<bool>>* _table) {
+std::string Huffman::Encode(const std::string &_string, std::map<char, std::vector<bool>>* _table) {
 
     CheckInputEncode(_string, _table);
 
     input_string = _string;
 
-    list<Node*> trees;
+    std::list<Node*> trees;
     CreateTree(&trees);
 
     Node *root = trees.front();
-    vector<bool> code;
+    std::vector<bool> code;
     CreateTable(root, code, *_table);
 
-    string out = "";
+    std::string out = "";
     for (int i = 0; i < input_string.length(); i++) {
         for (int j = 0; j < (*_table)[input_string[i]].size(); j++) {
             out += '0' + (*_table)[input_string[i]][j];
@@ -58,41 +59,42 @@ string Huffman::Encode(string &_string, map<char, vector<bool>>* _table) {
     return out;
 }
 
-string Huffman::Decode(string &_s, map<char, vector<bool> > &_table) {
+std::string Huffman::Decode(const std::string &_s, const std::map<char, std::vector<bool> > &_table) {
     CheckInputDecode(_s, _table);
 
-    map<vector<bool>, char> reverse_table;
-    map<char, vector<bool> >::iterator itr_table;
-    for (itr_table = _table.begin(); itr_table != _table.end(); itr_table++)
+    std::map<char, std::vector<bool> > temp_table = _table;
+    std::map<std::vector<bool>, char> reverse_table;
+    std::map<char, std::vector<bool> >::iterator itr_table;
+    for (itr_table = temp_table.begin(); itr_table != temp_table.end(); itr_table++)
         reverse_table[itr_table->second] = itr_table->first;
 
     return Decode_reverse_table(_s, reverse_table);
 }
 
-void Huffman::CheckInputEncode(string& _string, map<char, vector<bool>>* _table) {
+void Huffman::CheckInputEncode(const std::string& _string, const std::map<char, std::vector<bool>>* _table) {
     if (_string == "") {
-        throw string("Empty line");
+        throw std::string("Empty line");
     }
     if (_table == nullptr) {
-        throw string("Empty table");
+        throw std::string("Empty table");
     }
 }
 
-void Huffman::CheckInputDecode(string& _string, map<char, vector<bool>>& _table) {
+void Huffman::CheckInputDecode(const std::string& _string, const std::map<char, std::vector<bool>>& _table) {
     if (_string == "") {
-        throw string("Empty line");
+        throw std::string("Empty line");
     }
     if (_table.empty()) {
-        throw string("Empty table");
+        throw std::string("Empty table");
     }
 }
 
-void Huffman::CreateTree(list<Node*> *trees) {
-    map<char, int> symbols;
+void Huffman::CreateTree(std::list<Node*> *trees) {
+    std::map<char, int> symbols;
     for (int i = 0; i < input_string.length(); i++)
         symbols[input_string[i]]++;
 
-    map<char, int>::iterator itr_map;
+    std::map<char, int>::iterator itr_map;
     for (itr_map = symbols.begin(); itr_map != symbols.end(); itr_map++) {
         Node *p = new Node(itr_map->first, itr_map->second); // first - char, second - count
         trees->push_back(p);
@@ -111,7 +113,7 @@ void Huffman::CreateTree(list<Node*> *trees) {
     }
 }
 
-void Huffman::CreateTable(Node *root, vector<bool> &code, map<char, vector<bool>> &table) {
+void Huffman::CreateTable(Node *root, std::vector<bool> &code, std::map<char, std::vector<bool>> &table) {
     if (root->left) {
         code.push_back(0); // left - 0
         CreateTable(root->left, code, table);
@@ -129,9 +131,9 @@ void Huffman::CreateTable(Node *root, vector<bool> &code, map<char, vector<bool>
         code.pop_back();
 }
 
-string Huffman::Decode_reverse_table(string &str, map<vector<bool>, char> &table) {
-    string out = "";
-    vector<bool> code;
+std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> &table) {
+    std::string out = "";
+    std::vector<bool> code;
     int current_code;
     for (int i = 0; i < str.length(); i++) {
         if (str[i] == '0')
