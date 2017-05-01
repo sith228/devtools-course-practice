@@ -3,9 +3,13 @@
 #include <gtest/gtest.h>
 
 #include "include/huffman.h"
+#include <map>
+#include <string>
+#include <list>
+#include <vector>
 
-void AddVector(std::map<char, std::vector<bool> >* table, char char_symbol, std::string input)
-{
+void AddVector(std::map<char, std::vector<bool> >* table,
+               char char_symbol, std::string input) {
     std::vector<bool> vec;
     for (unsigned int i = 0; i < input.length(); i++)
     {
@@ -31,7 +35,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Compare_Two_Nodes) {
         result = true;
     else
         result = false;
-   
+
     EXPECT_EQ(result, true);
 }
 
@@ -116,7 +120,8 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_String_Encode) {
     EXPECT_ANY_THROW(ha.Encode(input_string, &code_table));
 }
 
-TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Null_Pointer_In_Table_Encode) {
+TEST(Bevzuk_Semen_HuffmanAlgoritmTest,
+     Not_Accept_Null_Pointer_In_Table_Encode) {
     std::string input_string = "aaabbc";
     Huffman ha;
 

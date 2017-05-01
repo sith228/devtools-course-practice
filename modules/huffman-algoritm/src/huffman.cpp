@@ -1,7 +1,8 @@
 // Copyright 2017 Bevzuk Semen
 
 #include <include/huffman.h>
-#include <map>
+#include <string>
+#include <list>
 
 Node::Node() {
     left = right = NULL;
@@ -36,8 +37,8 @@ bool SortNode(const Node *a, const Node *b) {
     return a->count < b->count;
 }
 
-std::string Huffman::Encode(const std::string &_string, std::map<char, std::vector<bool>>* _table) {
-
+std::string Huffman::Encode(const std::string &_string,
+                            std::map<char, std::vector<bool>>* _table) {
     CheckInputEncode(_string, _table);
 
     input_string = _string;
@@ -59,7 +60,8 @@ std::string Huffman::Encode(const std::string &_string, std::map<char, std::vect
     return out;
 }
 
-std::string Huffman::Decode(const std::string &_s, const std::map<char, std::vector<bool> > &_table) {
+std::string Huffman::Decode(const std::string &_s,
+                            const std::map<char, std::vector<bool> > &_table) {
     CheckInputDecode(_s, _table);
 
     std::map<char, std::vector<bool> > temp_table = _table;
@@ -71,7 +73,8 @@ std::string Huffman::Decode(const std::string &_s, const std::map<char, std::vec
     return Decode_reverse_table(_s, &reverse_table);
 }
 
-void Huffman::CheckInputEncode(const std::string& _string, const std::map<char, std::vector<bool>>* _table) {
+void Huffman::CheckInputEncode(const std::string& _string,
+                               const std::map<char, std::vector<bool>>* _table) {
     if (_string == "") {
         throw std::string("Empty line");
     }
@@ -80,7 +83,8 @@ void Huffman::CheckInputEncode(const std::string& _string, const std::map<char, 
     }
 }
 
-void Huffman::CheckInputDecode(const std::string& _string, const std::map<char, std::vector<bool>>& _table) {
+void Huffman::CheckInputDecode(const std::string& _string, const std::map<char,
+                               std::vector<bool>>& _table) {
     if (_string == "") {
         throw std::string("Empty line");
     }
@@ -96,7 +100,7 @@ void Huffman::CreateTree(std::list<Node*> *trees) {
 
     std::map<char, int>::iterator itr_map;
     for (itr_map = symbols.begin(); itr_map != symbols.end(); itr_map++) {
-        Node *p = new Node(itr_map->first, itr_map->second); // first - char, second - count
+        Node *p = new Node(itr_map->first, itr_map->second);
         trees->push_back(p);
     }
 
@@ -113,7 +117,8 @@ void Huffman::CreateTree(std::list<Node*> *trees) {
     }
 }
 
-void Huffman::CreateTable(Node *root, std::vector<bool> *code, std::map<char, std::vector<bool>> *table) {
+void Huffman::CreateTable(Node *root, std::vector<bool> *code, 
+                          std::map<char, std::vector<bool>> *table) {
     if (root->left) {
         code->push_back(0); // left - 0
         CreateTable(root->left, code, table);
@@ -131,7 +136,8 @@ void Huffman::CreateTable(Node *root, std::vector<bool> *code, std::map<char, st
         code->pop_back();
 }
 
-std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> *table) {
+std::string Huffman::Decode_reverse_table(const std::string &str,
+                                          std::map<std::vector<bool>, char> *table) {
     std::string out = "";
     std::vector<bool> code;
     int current_code;
@@ -146,6 +152,5 @@ std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::
             code.clear();
         }
     }
-
     return out;
 }
