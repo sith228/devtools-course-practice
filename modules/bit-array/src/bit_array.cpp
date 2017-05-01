@@ -5,13 +5,14 @@
 
 BitArray::BitArray(const unsigned int size) {
     if (size > 0) {
-        nBlocks_ = size / sizeof(MemoryBlock);
+        size_ = size;
+        nBlocks_ = size / (sizeof(MemoryBlock) * 8);
         nBlocks_++;
         if (size % (sizeof(MemoryBlock) * 8) == 0)
             nBlocks_--;
         memoryBlocks = new MemoryBlock[nBlocks_];
         if (memoryBlocks != nullptr) {
-            for (unsigned int i = 0; i < size; i++)
+            for (unsigned int i = 0; i < nBlocks_; i++)
                 memoryBlocks[i] = 0;
         } else {
             throw std::string("Data has no memory");
@@ -71,7 +72,7 @@ unsigned int BitArray::getSize() const {
 unsigned int BitArray::getBlockNumber
                        (const unsigned int globalBitNumber) const {
     if (globalBitNumber < size_) {
-        return globalBitNumber / sizeof(MemoryBlock);
+        return globalBitNumber / (sizeof(MemoryBlock) * 8);
     } else {
         throw std::string("Incorrect index");
     }
