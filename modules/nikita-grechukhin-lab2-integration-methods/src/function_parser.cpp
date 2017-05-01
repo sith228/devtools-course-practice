@@ -2,7 +2,7 @@
 
 #include "include/function_parser.h"
 #include <cctype>
-#include <cstring>
+#include <string>
 #include <cmath>
 #include <stdexcept>
 #include <cstdlib>
@@ -15,7 +15,7 @@ int get_priority(const std::string& token) {
     if (token == "/") return 2;
     if (token == "mod") return 2;
     if (token == "**") return 3;
-    return 0; //¬озвращаем 0 если не бинарна€ операци€ (например ")")
+    return 0;
 }
 
 Expression::Expression(std::string token) : token(token) {}
@@ -34,7 +34,7 @@ std::string Parser::parse_token() {
     while (std::isspace(*input))
         ++input;
 
-    if (std::isdigit(*input)){
+    if (std::isdigit(*input)) {
         std::string number;
         while (std::isdigit(*input) || *input == '.')
             number.push_back(*input++);
@@ -64,7 +64,7 @@ Expression Parser::parse_simple_expression() {
     if (std::isdigit(token[0]))
         return Expression(token);
 
-    if (token == "("){
+    if (token == "(") {
         auto result = parse();
         if (parse_token() != ")") throw std::runtime_error("Expected ')'");
         return result;
@@ -104,7 +104,7 @@ double eval(Expression e) {
                 if (e.token == "*") return a * b;
                 if (e.token == "/") return a / b;
                 if (e.token == "**") return pow(a, b);
-                if (e.token == "mod") return (int)a % (int)b;
+                if (e.token == "mod") return static_cast<int>(a) % static_cast<int>(b);
                 throw std::runtime_error("Unknown binary operator");
     }
 
