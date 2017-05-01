@@ -46,7 +46,7 @@ TEST(BitArray, cant_get_bit_with_too_large_index) {
 
 TEST(BitArray, can_set_bit) {
     BitArray bitArray(8);
-    
+
     bitArray.setBit(4);
 
     EXPECT_EQ(bitArray.getBit(4), 1);
