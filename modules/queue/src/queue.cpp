@@ -1,7 +1,7 @@
 // Copyright 2017 Gvozdeva Viktoria
 
 #include <include/queue.h>
-
+template <class valType>
 Queue <valType> :: Queue( int _maxSize)
 {
     if ( _maxSize > 0) {
@@ -13,12 +13,12 @@ Queue <valType> :: Queue( int _maxSize)
     }
     else throw "Size is incorrect!";
 }
-
+template <class valType>
 Queue <valType> :: ~Queue()
 {
     delete[] queuePtr;
 }
-
+template <class valType>
 Queue <valType> :: Queue( const Queue & Q)
 {
     maxSize = Q.maxSize;
@@ -29,17 +29,17 @@ Queue <valType> :: Queue( const Queue & Q)
     for (int i=0; i<= len; i++)
     queuePtr[i] = Q.queuePtr[i]; 
 }
-
+template <class valType>
 bool Queue <valType> :: IsFull() const
 {
     return (len == maxSize);
 }
-
+template <class valType>
 bool Queue <valType> :: IsEmpty() const
 {
     return  ( len  == 0);
 }
-
+template <class valType>
 void Queue <valType> :: Push(const valType &elem)
 {
     if ( IsFull() ) throw "Queue is full!";
@@ -52,7 +52,7 @@ void Queue <valType> :: Push(const valType &elem)
                length++;
             }
 }
-
+template <class valType>
 valType Queue <valType> :: Pop()
 {
     if ( IsEmpty() ) throw "Queue is empty!";

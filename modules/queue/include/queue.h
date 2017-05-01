@@ -16,8 +16,7 @@ public:
     Queue();
     Queue(int _maxSize); 
     ~Queue();
-    Queue (const TQueue & ); 
-    TQueue &operator =(const Queue & ); 
+    Queue (const Queue & Q);  
     bool IsFull() const; 
     bool IsEmpty() const; 
     void Push(const valType & ); 
