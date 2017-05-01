@@ -13,7 +13,7 @@ private:
     valType *queuePtr;
 
 public:
-    Queue();
+    //Queue();
     Queue(int _maxSize); 
     ~Queue();
     Queue (const Queue & Q);  

@@ -7,9 +7,9 @@ Queue <valType> :: Queue( int _maxSize)
     if ( _maxSize > 0) {
         maxSize = _maxSize;
         queuePtr = new valType [maxSize];
-        len = 0;
-        begin = 0;
-        end = -1;
+        length = 0;
+        head = 0;
+        tail = -1;
     }
     else throw "Size is incorrect!";
 }
@@ -32,12 +32,12 @@ Queue <valType> :: Queue( const Queue & Q)
 template <class valType>
 bool Queue <valType> :: IsFull() const
 {
-    return (len == maxSize);
+    return (length == maxSize);
 }
 template <class valType>
 bool Queue <valType> :: IsEmpty() const
 {
-    return  ( len  == 0);
+    return  ( length  == 0);
 }
 template <class valType>
 void Queue <valType> :: Push(const valType &elem)
