@@ -93,3 +93,78 @@ TEST(BitArray, cant_clear_bit_with_too_large_index) {
 
     ASSERT_ANY_THROW(bitArray.clearBit(8));
 }
+
+TEST(BitArray, can_assign_bit_arrays_with_equal_size) {
+    BitArray bitArray1(4), bitArray2(4);
+    bool equalityOfBitArrays;
+
+    for (unsigned int i = 0; i < bitArray1.getSize(); i++)
+        bitArray1.setBit(i);
+    bitArray2 = bitArray1;
+    equalityOfBitArrays = true;
+    for (unsigned int i = 0; i < bitArray1.getSize(); i++) {
+        if (bitArray1.getBit(i) != bitArray2.getBit(i))
+            equalityOfBitArrays = false;
+    }
+
+    ASSERT_TRUE(equalityOfBitArrays);
+}
+
+TEST(BitArray, assing_operator_changes_bit_array_size) {
+    BitArray bitArray1(16), bitArray2(4);
+    bool equalityOfBitArrays;
+
+    bitArray2 = bitArray1;
+
+    EXPECT_EQ(bitArray2.getSize(), 16);
+}
+
+TEST(BitArray, can_assign_bit_arrays_with_non_equal_size) {
+    BitArray bitArray1(16), bitArray2(4);
+    bool equalityOfBitArrays;
+
+    for (unsigned int i = 0; i < bitArray1.getSize(); i++)
+        bitArray1.setBit(i);
+    bitArray2 = bitArray1;
+    equalityOfBitArrays = true;
+    for (unsigned int i = 0; i < bitArray1.getSize(); i++) {
+        if (bitArray1.getBit(i) != bitArray2.getBit(i))
+            equalityOfBitArrays = false;
+    }
+
+    ASSERT_TRUE(equalityOfBitArrays);
+}
+
+TEST(BitArray, or_operator_applied_to_bit_arrays_of_equal_size)
+{
+    BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
+    
+    bitArray1.setBit(2);
+    bitArray1.setBit(3);
+    
+    bitArray2.setBit(1);
+    bitArray2.setBit(3);
+    
+    expectedBitArray.setBit(1);
+    expectedBitArray.setBit(2);
+    expectedBitArray.setBit(3);
+
+    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+}
+
+TEST(BitArray, or_operator_applied_to_bitfields_of_non_equal_size)
+{
+    BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
+
+    bitArray1.setBit(2);
+    bitArray1.setBit(3);
+
+    bitArray2.setBit(1);
+    bitArray2.setBit(3);
+
+    expectedBitArray.setBit(1);
+    expectedBitArray.setBit(2);
+    expectedBitArray.setBit(3);
+
+    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+}
