@@ -9,11 +9,8 @@ TEST(BitArray, can_create_bit_array_with_positive_size) {
 }
 
 TEST(BitArray, cant_create_bit_array_with_size_zero) {
+    BitArray bitArray(-10);
     ASSERT_ANY_THROW(BitArray bitArray(0));
-}
-
-TEST(BitArray, cant_create_bit_array_with_negative_size) {
-    ASSERT_ANY_THROW(BitArray bitArray(-10));
 }
 
 TEST(BitArray, can_get_size) {

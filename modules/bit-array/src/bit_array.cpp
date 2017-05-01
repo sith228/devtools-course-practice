@@ -29,7 +29,7 @@ BitArray::BitArray(const BitArray& bitArray) {
     nBlocks_ = bitArray.nBlocks_;
     memoryBlocks = new MemoryBlock[nBlocks_];
     if (memoryBlocks != nullptr) {
-        for (unsigned int i = 0; i < size_; i++)
+        for (unsigned int i = 0; i < nBlocks_; i++)
             memoryBlocks[i] = bitArray.memoryBlocks[i];
     } else {
         throw std::string("Data has no memory");
@@ -52,7 +52,7 @@ BitArray& BitArray::operator = (const BitArray& bitArray) {
         nBlocks_ = bitArray.nBlocks_;
         memoryBlocks = new MemoryBlock[nBlocks_];
         if (memoryBlocks != nullptr) {
-            for (unsigned int i = 0; i < size_; i++)
+            for (unsigned int i = 0; i < nBlocks_; i++)
                 memoryBlocks[i] = bitArray.memoryBlocks[i];
         } else {
             throw std::string("Data has no memory");
