@@ -2,6 +2,7 @@
 
 #include "include/function_parser.h"
 #include <cctype>
+#include <cstring>
 #include <string>
 #include <cmath>
 #include <stdexcept>
