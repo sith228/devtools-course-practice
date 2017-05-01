@@ -26,7 +26,7 @@ double IntegrationMethod::calculate_function(std::string integrand) {
 
 double IntegrationMethod::rectangle_method(std::string integrand, double low_limit,
     double upper_limit, int quantity_of_steps) {
-	std::string func_in_low_limit = change_variable_to_value(integrand, low_limit);
+    std::string func_in_low_limit = change_variable_to_value(integrand, low_limit);
     std::string func_in_upper_limit =
         change_variable_to_value(integrand, upper_limit);
 
@@ -45,22 +45,22 @@ double IntegrationMethod::rectangle_method(std::string integrand, double low_lim
     return result;
 }
 
-double IntegrationMethod::trapezoid_method(std::string input, double low_limit,
+double IntegrationMethod::trapezoid_method(std::string integrand, double low_limit,
     double upper_limit, int quantity_of_steps) {
         double result = 0;
         if (quantity_of_steps > 1) {
             double y, dy;
             dy = (upper_limit - low_limit)/quantity_of_steps;
             std::string func_in_low_limit =
-                change_variable_to_value(input, low_limit);
+                change_variable_to_value(integrand, low_limit);
             std::string func_in_upper_limit =
-                change_variable_to_value(input, upper_limit);
+                change_variable_to_value(integrand, upper_limit);
             y = calculate_function(func_in_low_limit) +
                 calculate_function(func_in_upper_limit);
 
             for (int i=1; i < quantity_of_steps; i++) {
                 double x = low_limit + dy*i;
-                std::string func = change_variable_to_value(input, x);
+                std::string func = change_variable_to_value(integrand, x);
                 y+=2*calculate_function(func);
             }
             result = (upper_limit - low_limit) / (2*quantity_of_steps)*y;
@@ -68,7 +68,7 @@ double IntegrationMethod::trapezoid_method(std::string input, double low_limit,
         return result;
 }
 
-double IntegrationMethod::simpson_method(std::string input, double low_limit,
+double IntegrationMethod::simpson_method(std::string integrand, double low_limit,
     double upper_limit, double eps) {
         if (eps < 0)
             throw std::runtime_error("Epsilon has negative value");
@@ -80,16 +80,16 @@ double IntegrationMethod::simpson_method(std::string input, double low_limit,
             for (int i=1; i <= 2*n-1; i+=2) {
                 double x1 = low_limit + h*i;
                 double x2 = low_limit + h*(i+1);
-                std::string func1 = change_variable_to_value(input, x1);
-                std::string func2 = change_variable_to_value(input, x2);
+                std::string func1 = change_variable_to_value(integrand, x1);
+                std::string func2 = change_variable_to_value(integrand, x2);
 
                 sum4+=calculate_function(func1);
                 sum2+=calculate_function(func2);
             }
             std::string func_with_lower_limit =
-                change_variable_to_value(input, low_limit);
+                change_variable_to_value(integrand, low_limit);
             std::string func_with_upper_limit =
-                change_variable_to_value(input, upper_limit);
+                change_variable_to_value(integrand, upper_limit);
             sum = calculate_function(func_with_lower_limit) + 4*sum4 + 2*sum2-
                 calculate_function(func_with_upper_limit);
             integral = integral1;
