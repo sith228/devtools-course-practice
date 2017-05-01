@@ -112,7 +112,6 @@ TEST(BitArray, can_assign_bit_arrays_with_equal_size) {
 
 TEST(BitArray, assing_operator_changes_bit_array_size) {
     BitArray bitArray1(16), bitArray2(4);
-    bool equalityOfBitArrays;
 
     bitArray2 = bitArray1;
 
@@ -135,16 +134,15 @@ TEST(BitArray, can_assign_bit_arrays_with_non_equal_size) {
     ASSERT_TRUE(equalityOfBitArrays);
 }
 
-TEST(BitArray, or_operator_applied_to_bit_arrays_of_equal_size)
-{
+TEST(BitArray, or_operator_applied_to_bit_arrays_of_equal_size) {
     BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
-    
+
     bitArray1.setBit(2);
     bitArray1.setBit(3);
-    
+
     bitArray2.setBit(1);
     bitArray2.setBit(3);
-    
+
     expectedBitArray.setBit(1);
     expectedBitArray.setBit(2);
     expectedBitArray.setBit(3);
@@ -152,8 +150,37 @@ TEST(BitArray, or_operator_applied_to_bit_arrays_of_equal_size)
     EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
 }
 
-TEST(BitArray, or_operator_applied_to_bitfields_of_non_equal_size)
-{
+TEST(BitArray, or_operator_applied_to_bit_arrays_of_non_equal_size) {
+    BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
+
+    bitArray1.setBit(2);
+    bitArray1.setBit(3);
+
+    bitArray2.setBit(1);
+    bitArray2.setBit(3);
+
+    expectedBitArray.setBit(1);
+    expectedBitArray.setBit(2);
+    expectedBitArray.setBit(3);
+
+    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+}
+
+TEST(BitArray, and_operator_applied_to_bit_arrays_of_equal_size) {
+    BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
+
+    bitArray1.setBit(2);
+    bitArray1.setBit(3);
+
+    bitArray2.setBit(1);
+    bitArray2.setBit(3);
+
+    expectedBitArray.setBit(3);
+
+    EXPECT_EQ(expectedBitArray, bitArray1 & bitArray2);
+}
+
+TEST(BitArray, and_operator_applied_to_bit_arrays_of_non_equal_size) {
     BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
 
     bitArray1.setBit(2);
