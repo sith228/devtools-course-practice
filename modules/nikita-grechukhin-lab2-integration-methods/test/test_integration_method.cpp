@@ -95,7 +95,8 @@ TEST(INTEGRATION_METHOD, can_integrate_function_by_simpson_method) {
 
 TEST(INTEGRATION_METHOD, can_integrate_function_with_cos_by_simpson_method) {
     IntegrationMethod im;
-    double actual = im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)", 3, 5, 1e-3);
+    double actual =
+        im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)", 3, 5, 1e-3);
     double expected = 448.84;
 
     bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
