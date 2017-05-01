@@ -1,3 +1,5 @@
+// Copyright 2017 Bevzuk Semen
+
 #include <include/huffman.h>
 
 Node::Node() {
@@ -7,6 +9,7 @@ Node::Node() {
 Node::Node(char _symbol, int _count) {
     symbol = _symbol;
     count = _count;
+    left = right = NULL;
 }
 
 Node::Node(Node *_left, Node *_right) {
@@ -14,6 +17,18 @@ Node::Node(Node *_left, Node *_right) {
     left = _left;
     right = _right;
     count = _left->count + _right->count;
+}
+
+bool Node::operator == (Node const& a) const {
+    if (a.count != this->count)
+        return false;
+    if (a.symbol != this->symbol)
+        return false;
+    if (a.left != this->left)
+        return false;
+    if (a.right != this->right)
+        return false;
+    return true;
 }
 
 bool SortNode(const Node *a, const Node *b) {

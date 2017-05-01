@@ -1,3 +1,5 @@
+// Copyright 2017 Bevzuk Semen
+
 #include <iostream>
 #include <vector>
 #include <list>
@@ -17,6 +19,8 @@ public:
     Node(char _symbol, int _count);
 
     Node(Node *_left, Node *_right);
+
+    bool operator == (Node const & a) const;
 };
 
 bool SortNode(const Node *a, const Node *b);
