@@ -25,26 +25,26 @@ bool SortNode(const Node *a, const Node *b);
 
 class Huffman {
  public:
-    std::string Encode(const std::string &_string, 
+    std::string Encode(const std::string &_string,
                        std::map<char, std::vector<bool> >* _table);
 
-    std::string Decode(const std::string &_string, 
+    std::string Decode(const std::string &_string,
                        const std::map<char, std::vector<bool> > &_table);
 
  private:
     std::string input_string;
 
-    void CheckInputEncode(const std::string &_string, 
+    void CheckInputEncode(const std::string &_string,
                           const std::map<char, std::vector<bool> >* _table);
 
-    void CheckInputDecode(const std::string &_string, 
+    void CheckInputDecode(const std::string &_string,
                           const std::map<char, std::vector<bool> > &_table);
 
     void CreateTree(std::list<Node*> *trees);
 
-    void CreateTable(Node *root, std::vector<bool> &code, 
-                     std::map<char, std::vector<bool>> &table);
+    void CreateTable(Node *root, std::vector<bool> *code,
+                     std::map<char, std::vector<bool>> *table);
 
-    std::string Decode_reverse_table(const std::string &str, 
+    std::string Decode_reverse_table(const std::string &str,
                                      std::map<std::vector<bool>, char> &table);
 };

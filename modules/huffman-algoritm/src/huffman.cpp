@@ -47,7 +47,7 @@ std::string Huffman::Encode(const std::string &_string, std::map<char, std::vect
 
     Node *root = trees.front();
     std::vector<bool> code;
-    CreateTable(root, code, *_table);
+    CreateTable(root, &code, _table);
 
     std::string out = "";
     for (unsigned int i = 0; i < input_string.length(); i++) {
@@ -113,22 +113,22 @@ void Huffman::CreateTree(std::list<Node*> *trees) {
     }
 }
 
-void Huffman::CreateTable(Node *root, std::vector<bool> &code, std::map<char, std::vector<bool>> &table) {
+void Huffman::CreateTable(Node *root, std::vector<bool> *code, std::map<char, std::vector<bool>> *table) {
     if (root->left) {
-        code.push_back(0); // left - 0
+        code->push_back(0); // left - 0
         CreateTable(root->left, code, table);
     }
 
     if (root->right) {
-        code.push_back(1); // right - 1
+        code->push_back(1); // right - 1
         CreateTable(root->right, code, table);
     }
 
     if (root->symbol)
-        table[root->symbol] = code;
+        (*table)[root->symbol] = *code;
 
-    if (code.size())
-        code.pop_back();
+    if (code->size())
+        code->pop_back();
 }
 
 std::string Huffman::Decode_reverse_table(const std::string &str, std::map<std::vector<bool>, char> &table) {

@@ -4,6 +4,16 @@
 
 #include "include/huffman.h"
 
+void AddVector(std::map<char, std::vector<bool> >* table, char char_symbol, std::string input)
+{
+    std::vector<bool> vec;
+    for (unsigned int i = 0; i < input.length(); i++)
+    {
+        vec.push_back(input[i] - '0');
+    }
+    (*table)[char_symbol] = vec;
+}
+
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Empty_Node) {
     EXPECT_NO_THROW(Node node);
 }
@@ -75,17 +85,9 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String) {
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Decode_Code) {
     std::string input_code = "000111110";
     std::map<char, std::vector<bool> > code_table;
-    std::vector<bool> vec_1;
-    vec_1.push_back(0);
-    std::vector<bool> vec_2;
-    vec_2.push_back(1);
-    vec_2.push_back(1);
-    std::vector<bool> vec_3;
-    vec_3.push_back(1);
-    vec_3.push_back(0);
-    code_table['a'] = vec_1;
-    code_table['b'] = vec_2;
-    code_table['c'] = vec_3;
+    AddVector(&code_table, 'a', "0");
+    AddVector(&code_table, 'b', "11");
+    AddVector(&code_table, 'c', "10");
     Huffman ha;
     std::string result_string = "aaabbc";
 
