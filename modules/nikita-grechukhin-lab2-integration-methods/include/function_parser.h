@@ -16,11 +16,11 @@ struct Expression {
 };
 
 class Parser {
-public:
-    explicit Parser(const char* input) : input(input) {} // Конструктор, принимает строку с выражением
+ public:
+    explicit Parser(const char* input) : input(input) {}
     Expression parse();
 
-private:
+ private:
     std::string parse_token(); // Парсит один токен
     Expression parse_simple_expression();
     Expression parse_binary_expression(int min_priority);

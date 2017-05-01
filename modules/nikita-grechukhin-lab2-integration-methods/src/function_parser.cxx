@@ -15,7 +15,7 @@ int get_priority(const std::string& token) {
     if (token == "/") return 2;
     if (token == "mod") return 2;
     if (token == "**") return 3;
-    return 0; // ¬озвращаем 0 если токен - это не бинарна€ операци€ (например ")")
+    return 0; //¬озвращаем 0 если не бинарна€ операци€ (например ")")
 }
 
 Expression::Expression(std::string token) : token(token) {}
@@ -24,7 +24,8 @@ Expression::Expression(std::string token, Expression a) : token(token) {
     args.push_back(a);
 }
 
-Expression::Expression(std::string token, Expression a, Expression b) : token(token) {
+Expression::Expression(std::string token, Expression a, Expression b) :
+    token(token) {
     args.push_back(a);
     args.push_back(b);
 }
@@ -42,6 +43,7 @@ std::string Parser::parse_token() {
 
     static const std::string tokens[] =
     { "+", "-", "**", "*", "/", "mod", "abs", "sin", "cos", "(", ")" };
+
 
     for (auto &token : tokens) {
         if (std::strncmp(input, token.c_str(), token.size()) == 0) {
