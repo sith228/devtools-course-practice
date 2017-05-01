@@ -5,30 +5,30 @@
 #include <cmath>
 #include "include/function_parser.h"
 
-std::string IntegrationMethod::change_variable_to_value(std::string input,
+std::string IntegrationMethod::change_variable_to_value(std::string integrand,
     double value) {
-    int size = (input).size();
+    int size = (integrand).size();
     for (int i = 0; i < size; i++) {
-        if ((input).at(i) == 'x' || (input).at(i) == 'X') {
-            (input).replace(i, 1, std::to_string(value));
-            size = (input).size();
+        if ((integrand).at(i) == 'x' || (integrand).at(i) == 'X') {
+            (integrand).replace(i, 1, std::to_string(value));
+            size = (integrand).size();
         }
     }
-    return input;
+    return integrand;
 }
 
 IntegrationMethod::IntegrationMethod() {}
 
-double IntegrationMethod::calculate_function(std::string input) {
-    Parser parser(input.c_str());
+double IntegrationMethod::calculate_function(std::string integrand) {
+    Parser parser(integrand.c_str());
     return eval(parser.parse());
 }
 
-double IntegrationMethod::rectangle_method(std::string input, double low_limit,
+double IntegrationMethod::rectangle_method(std::string integrand, double low_limit,
     double upper_limit, int quantity_of_steps) {
-    std::string func_in_low_limit = change_variable_to_value(input, low_limit);
+	std::string func_in_low_limit = change_variable_to_value(integrand, low_limit);
     std::string func_in_upper_limit =
-        change_variable_to_value(input, upper_limit);
+        change_variable_to_value(integrand, upper_limit);
 
     double s = calculate_function(func_in_low_limit) +
         calculate_function(func_in_upper_limit);
@@ -37,7 +37,7 @@ double IntegrationMethod::rectangle_method(std::string input, double low_limit,
     double h = (upper_limit - low_limit) / quantity_of_steps;
     for (int i=1; i < quantity_of_steps; i++) {
         double x = low_limit + i*h;
-        std::string func = change_variable_to_value(input, x);
+        std::string func = change_variable_to_value(integrand, x);
         s+=calculate_function(func);
     }
 
@@ -70,6 +70,8 @@ double IntegrationMethod::trapezoid_method(std::string input, double low_limit,
 
 double IntegrationMethod::simpson_method(std::string input, double low_limit,
     double upper_limit, double eps) {
+        if (eps < 0)
+            throw std::runtime_error("Epsilon has negative value");
         double integral = eps + 1;
         double integral1 = 0;
         for (int n=2; (n <= 4) || (fabs(integral1-integral) > eps); n*=2) {

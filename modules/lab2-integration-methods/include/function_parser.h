@@ -17,7 +17,7 @@ struct Expression {
 
 class Parser {
  public:
-    explicit Parser(const char* input) : input(input) {}
+     explicit Parser(const char* input);
     Expression parse();
 
  private:

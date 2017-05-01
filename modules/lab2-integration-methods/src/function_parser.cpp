@@ -10,11 +10,8 @@
 #include <iomanip>
 
 int get_priority(const std::string& token) {
-    if (token == "+") return 1;
-    if (token == "-") return 1;
-    if (token == "*") return 2;
-    if (token == "/") return 2;
-    if (token == "mod") return 2;
+    if (token == "+" || token == "-") return 1;
+    if (token == "*" || token == "/" || token == "mod") return 2;
     if (token == "**") return 3;
     return 0;
 }
@@ -30,6 +27,8 @@ Expression::Expression(std::string token, Expression a, Expression b) :
     args.push_back(a);
     args.push_back(b);
 }
+
+Parser::Parser(const char *input) : input(input) {}
 
 std::string Parser::parse_token() {
     while (std::isspace(*input))

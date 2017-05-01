@@ -102,3 +102,21 @@ TEST(INTEGRATION_METHOD, can_integrate_function_with_cos_by_simpson_method) {
     bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
     EXPECT_EQ(true, is_correct);
 }
+
+TEST(INTEGRATION_METHOD,
+    can_integrate_func_with_raplaced_upper_and_lower_limits_by_simpson_method) {
+    IntegrationMethod im;
+    double actual =
+        im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)", 5, 3, 1e-3);
+    double expected = -448.84;
+
+    bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
+    EXPECT_EQ(true, is_correct);
+}
+
+TEST(INTEGRATION_METHOD,
+    can_integrate_function_with_negative_eps_by_simpson_method) {
+    IntegrationMethod im;
+
+    ASSERT_ANY_THROW(im.simpson_method("x+x*x+3*x*x*x + x*cos(10*x)", 5, 3, -1e-3));
+}

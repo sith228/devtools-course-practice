@@ -8,15 +8,15 @@
 class IntegrationMethod {
  public:
     IntegrationMethod();
-    double rectangle_method(std::string input, double low_limit,
+    double rectangle_method(std::string integrand, double low_limit,
         double upper_limit, int quantity_of_steps);
-    double trapezoid_method(std::string input, double low_limit,
+    double trapezoid_method(std::string integrand, double low_limit,
         double upper_limit, int quantity_of_steps);
-    double simpson_method(std::string input, double low_limit,
+    double simpson_method(std::string integrand, double low_limit,
         double upper_limit, double eps);
  private:
-    std::string change_variable_to_value(std::string input, double value);
-    double calculate_function(std::string input);
+     std::string change_variable_to_value(std::string integrand, double value);
+     double calculate_function(std::string integrand);
 };
 
 #endif  // MODULES_LAB2_INTEGRATION_METHODS_INCLUDE_INTEGRATION_METHODS_H_
