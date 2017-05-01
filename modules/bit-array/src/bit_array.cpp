@@ -102,7 +102,7 @@ MemoryBlock BitArray::getMask
 }
 
 void BitArray::setBit(const unsigned int bitNumber) {
-    if ((bitNumber >= 0) && (bitNumber < size_)) {
+    if (bitNumber < size_) {
         memoryBlocks[getBlockNumber(bitNumber)] |= getMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
@@ -112,7 +112,7 @@ void BitArray::setBit(const unsigned int bitNumber) {
 
 
 void BitArray::clearBit(const unsigned int bitNumber) {
-    if ((bitNumber >= 0) && (bitNumber < size_)) {
+    if (bitNumber < size_) {
         memoryBlocks[getBlockNumber(bitNumber)] &= ~getMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
@@ -121,7 +121,7 @@ void BitArray::clearBit(const unsigned int bitNumber) {
 
 
 int BitArray::getBit(const unsigned int bitNumber) const {
-    if ((bitNumber >= 0) && (bitNumber < size_)) {
+    if (bitNumber < size_) {
         int bitValue;
         bitValue = memoryBlocks[getBlockNumber(bitNumber)] & getMask(bitNumber);
         if (bitValue > 0)
