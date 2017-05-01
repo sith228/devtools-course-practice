@@ -47,7 +47,7 @@ double IntegrationMethod::rectangle_method(std::string input, double low_limit,
 
 double IntegrationMethod::trapezoid_method(std::string input, double low_limit,
     double upper_limit, int quantity_of_steps) {
-        double y, dy;
+        double y = 0, dy = 0;
         double result = 0;
         if (quantity_of_steps > 1) {
             dy = (upper_limit - low_limit)/quantity_of_steps;
