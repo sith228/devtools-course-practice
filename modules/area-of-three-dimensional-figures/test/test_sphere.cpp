@@ -1,20 +1,18 @@
 // Copyright 2017 Kulygina Julia
 
-#define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
 #include "include/three-dimensional-figures.h"
-#include <cmath>
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere) {
 	// Arrange
     double r = 2.0;
     Sphere z(r);
 
-	// Assert
+    // Assert
     EXPECT_NO_THROW(Sphere z2(z));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest,Sphere_Can_Create_getR) {
+TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Create_getR) {
     // Arrange
     double r = 2.0;
 
@@ -37,18 +35,18 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Create_getS) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Assert_Create_with_negative_radius) {
-	// Arrange
+    // Arrange
     double r = -2.0;
 
-	// Assert
+    // Assert
     EXPECT_ANY_THROW(Sphere z(r));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Create_sphere) {
-	// Arrange
+    // Arrange
     double r = 2.0;
 
-	// Assert
+    // Assert
     EXPECT_NO_THROW(Sphere z(r));
 }
 
@@ -56,19 +54,19 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_setR) {
     // Arrang
     Sphere z(0.2);
 
-	// Act
+    // Act
     z.setR(2.0);
 
-	// Assert
+    // Assert
     EXPECT_EQ(2.0, z.getR());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Assert_setR_with_negative_R) {
-	// Arrang
-	Sphere z(0.2);
+    // Arrang
+    Sphere z(0.2);
 
-	// Assert
-	EXPECT_ANY_THROW(z.setR(-2.0));
+    // Assert
+    EXPECT_ANY_THROW(z.setR(-2.0));
 }
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_setS) {
     // Arrang
@@ -79,10 +77,10 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_setS) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Assert_setS_with_negative_S) {
-	// Arrang
+    // Arrang
     Sphere z(0.2);
 
-	// Assert
+    // Assert
     EXPECT_ANY_THROW(z.setS(-2.0));
 }
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_CalculateS) {
