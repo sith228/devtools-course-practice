@@ -2,8 +2,8 @@
 
 #include <gtest/gtest.h>
 
-#include "include/bit_array.h"
 #include <string>
+#include "include/bit_array.h"
 
 TEST(BitArrayTest, Can_Create_Bit_Array_With_Positive_Size) {
     ASSERT_NO_THROW(BitArray bitArray(8));
@@ -314,8 +314,7 @@ TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     EXPECT_EQ(expectedBitArray, bitArray1 ^ bitArray2);
 }
 
-TEST(BitArrayTest,  Can_Invert_Bit_Array)
-{
+TEST(BitArrayTest,  Can_Invert_Bit_Array) {
     BitArray bf(2), negativeBitArray(2), expectedBitArray(2);
 
     bf.setBit(1);
@@ -326,8 +325,7 @@ TEST(BitArrayTest,  Can_Invert_Bit_Array)
     EXPECT_EQ(expectedBitArray, negativeBitArray);
 }
 
-TEST(BitArrayTest,  Can_Invert_Large_Bit_Array)
-{
+TEST(BitArrayTest,  Can_Invert_Large_Bit_Array) {
     const int size = 38;
     BitArray bf(size), negativeBitArray(size), expectedBitArray(size);
     bf.setBit(35);
@@ -340,8 +338,7 @@ TEST(BitArrayTest,  Can_Invert_Large_Bit_Array)
     EXPECT_EQ(expectedBitArray, negativeBitArray);
 }
 
-TEST(BitArrayTest, Can_Invert_Large_BitArray)
-{
+TEST(BitArrayTest, Can_Invert_Large_BitArray) {
     BitArray bitArray(128), negativeBitArray(128), expectedBitArray(128);
 
     for (unsigned int i = 0; i < bitArray.getSize(); i++) {
