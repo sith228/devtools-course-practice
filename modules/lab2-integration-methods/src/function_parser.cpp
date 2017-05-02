@@ -31,25 +31,30 @@ Expression::Expression(std::string token, Expression a, Expression b) :
 Parser::Parser(const char *input) : input(input) {}
 
 std::string Parser::parse_token() {
-    while (std::isspace(*input))
-        ++input;
+    if (input != nullptr) {
+        while (std::isspace(*input))
+            ++input;
 
-    if (std::isdigit(*input)) {
-        std::string number;
-        while (std::isdigit(*input) || *input == '.')
-            number.push_back(*input++);
-        return number;
-    }
-
-    static const std::string tokens[] =
-    { "+", "-", "**", "*", "/", "mod", "abs", "sin", "cos", "(", ")" };
-
-
-    for (auto &token : tokens) {
-        if (std::strncmp(input, token.c_str(), token.size()) == 0) {
-            input += token.size();
-            return token;
+        if (std::isdigit(*input)) {
+            std::string number;
+            while (std::isdigit(*input) || *input == '.')
+                number.push_back(*input++);
+            return number;
         }
+
+        static const std::string tokens[] =
+        { "+", "-", "**", "*", "/", "mod", "abs", "sin", "cos", "(", ")" };
+
+
+        for (auto &token : tokens) {
+            if (std::strncmp(input, token.c_str(), token.size()) == 0) {
+                input += token.size();
+                return token;
+            }
+        }
+    }
+    else {
+        throw std::runtime_error("Input is null");
     }
 
     return "";

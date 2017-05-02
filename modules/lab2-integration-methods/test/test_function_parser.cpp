@@ -78,3 +78,10 @@ TEST(PARSER, throw_exception_when_unknow_unary_operator) {
     Parser parser(func.c_str());
     ASSERT_ANY_THROW(eval(parser.parse()));
 }
+
+TEST(PARSER, can_create_with_null) {
+    const char *func = nullptr;
+
+    Parser parser(func);
+    ASSERT_ANY_THROW(parser.parse());
+}
