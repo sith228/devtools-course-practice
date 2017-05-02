@@ -32,7 +32,7 @@ float ConverterCurrency::CurrentToRubles(const float MoneySize,
 }
 
 float ConverterCurrency::RublesToTarget(const float MoneySize,
-                                       const Currency::CurrencyName TargetMoney) {
+                           const Currency::CurrencyName TargetMoney) {
     float ResultMoney = MoneySize;
     switch (TargetMoney) {
     case Currency::RUR:
