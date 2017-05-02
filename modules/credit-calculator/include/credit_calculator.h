@@ -6,7 +6,7 @@
 #include <math.h>
 
 class CreditCalculator {
-public:
+ public:
   CreditCalculator();
   bool check_data(int amount, int period, double interest);
   bool check_data(int amount, int period, double interest, int month_pas);
