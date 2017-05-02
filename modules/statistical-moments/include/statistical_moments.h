@@ -9,10 +9,11 @@
 class statisticalMoments {
 private:
     std::vector<double> values;
-    std::vector<double> chanced;
+    std::vector<double> chances;
+    bool isChangeValid();
+    bool isChangesDistributionRow();
 public:
-    statisticalMoments();
-    statisticalMoments(std::vector<double> values, std::vector<double> chanced);
+    statisticalMoments(std::vector<double> values, std::vector<double> chances);
     ~statisticalMoments();
     double getMoment(unsigned int order);
 };
