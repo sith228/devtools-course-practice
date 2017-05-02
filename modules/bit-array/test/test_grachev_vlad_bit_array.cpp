@@ -249,7 +249,7 @@ TEST(BitArrayTest, AND_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     expectedBitArray.setBit(2);
     expectedBitArray.setBit(3);
 
-    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+    EXPECT_EQ(expectedBitArray, bitArray2 | bitArray1);
 }
 
 TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
@@ -281,7 +281,7 @@ TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     expectedBitArray.setBit(2);
     expectedBitArray.setBit(3);
 
-    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+    EXPECT_EQ(expectedBitArray, bitArray2 | bitArray1);
 }
 
 TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
@@ -311,7 +311,7 @@ TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     expectedBitArray.setBit(1);
     expectedBitArray.setBit(2);
 
-    EXPECT_EQ(expectedBitArray, bitArray1 ^ bitArray2);
+    EXPECT_EQ(expectedBitArray, bitArray2 ^ bitArray1);
 }
 
 TEST(BitArrayTest,  Can_Invert_Bit_Array) {
