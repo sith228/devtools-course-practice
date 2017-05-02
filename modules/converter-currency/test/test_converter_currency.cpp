@@ -1,9 +1,7 @@
 // Copyright 2017 Dmitrichev Nikita
 
-//#include <gtest/gtest.h>
-#include "gtest.h"
-//#include "include/ConverterCurrency.h"
-#include "ConverterCurrency.h"
+#include <gtest/gtest.h>
+#include "include/ConverterCurrency.h"
 
 using Currency::CNY;
 using Currency::RUR;
