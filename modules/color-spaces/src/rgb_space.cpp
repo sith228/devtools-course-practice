@@ -2,6 +2,13 @@
 
 #include "../include/rgb_space.h"
 #include <string>
+#include <algorithm>
+
+void RGBSpace::swap(RGBSpace &rgb_space) {
+    std::swap(red, rgb_space.red);
+    std::swap(green, rgb_space.green);
+    std::swap(blue, rgb_space.blue);
+}
 
 RGBSpace::RGBSpace(const uint8_t red_,
                    const uint8_t green_,
@@ -27,6 +34,13 @@ RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
         green = rgb_space.green;
         blue = rgb_space.blue;
     }
+}
+
+RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
+    if (this != &rgb_space) {
+        RGBSpace(RGBSpace).swap(*this);
+    }
+    return *this;
 }
 
 uint8_t RGBSpace::GetRed() const {
