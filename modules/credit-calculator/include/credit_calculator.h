@@ -7,13 +7,13 @@
 
 class CreditCalculator {
 public:
-    CreditCalculator();
-    bool check_data(int amount, int period, double interest);
-    bool check_data(int amount, int period, double interest, int month_passed);
-    double overpayment_amount(int amount, int period, double interest);
-    double monthly_payment(int amount, int period, double interest);
-    double total_payout(int amount, int period, double interest);
-    double check_balance(int amount, int period, double interest, int month_passed);
+  CreditCalculator();
+  bool check_data(int amount,int period,double interest);
+  bool check_data(int amount,int period,double interest,int month_passed);
+  double overpayment_amount(int amount,int period,double interest);
+  double monthly_payment(int amount,int period,double interest);
+  double total_payout(int amount,int period,double interest);
+  double check_balance(int amount,int period,double interest,int month_passed);
 };
 
 #endif  // MODULES_CREDIT_CALCULATOR_INCLUDE_CREDIT_CALCULATOR_H_
