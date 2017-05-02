@@ -111,7 +111,7 @@ int BitArray::getBit(const unsigned int bitNumber) const {
 
 
 
-BitArray BitArray::operator & (const BitArray& bitArray) {
+BitArray BitArray::operator & (const BitArray& bitArray) const {
     int size = size_;
     if (size_ < bitArray.size_)
         size = bitArray.size_;
@@ -127,7 +127,7 @@ BitArray BitArray::operator & (const BitArray& bitArray) {
 
 
 
-BitArray BitArray::operator | (const BitArray& bitArray) {
+BitArray BitArray::operator | (const BitArray& bitArray) const {
     int size = size_;
     if (size_ < bitArray.size_)
         size = bitArray.size_;
@@ -143,7 +143,7 @@ BitArray BitArray::operator | (const BitArray& bitArray) {
 
 
 
-BitArray BitArray::operator ^ (const BitArray& bitArray) {
+BitArray BitArray::operator ^ (const BitArray& bitArray) const {
     int size = size_;
     if (size_ < bitArray.size_)
         size = bitArray.size_;
@@ -159,7 +159,7 @@ BitArray BitArray::operator ^ (const BitArray& bitArray) {
 
 
 
-BitArray BitArray::operator ~() {
+BitArray BitArray::operator ~() const {
     BitArray tempBitArray(*this);
 
     for (unsigned int i = 0; i < tempBitArray.size_; i++) {

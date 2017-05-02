@@ -245,11 +245,9 @@ TEST(BitArrayTest, AND_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     bitArray2.setBit(1);
     bitArray2.setBit(3);
 
-    expectedBitArray.setBit(1);
-    expectedBitArray.setBit(2);
     expectedBitArray.setBit(3);
 
-    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+    EXPECT_EQ(expectedBitArray, bitArray1 & bitArray2);
 }
 
 TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
