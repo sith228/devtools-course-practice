@@ -5,10 +5,12 @@
 #include <cmath>
 
 Sphere::Sphere(double _R) {
-    if (_R > 0)
-        R = _R;
-    else 
-        throw std::string("R <= 0");
+	if (_R > 0) {
+		R = _R;
+    }
+	else {
+		throw std::string("R <= 0");
+    }
     S = 0;
 }
 
@@ -21,17 +23,21 @@ double Sphere::getS() const {
 }
 
 void Sphere::setR(const double _R) {
-    if (_R > 0)
-        R = _R;
-    else
-        throw std::string("R <= 0");
+	if (_R > 0) {
+		R = _R;
+	}
+	else {
+		throw std::string("R <= 0");
+    }
 }
 
 void Sphere::setS(const double _S) {
-    if (_S >= 0)
-        S = _S;
-    else
-        throw std::string("S < 0");
+	if (_S >= 0) {
+		S = _S;
+	}
+	else {
+		throw std::string("S < 0");
+	}
 }
 
 double Sphere::CalculateS() {
