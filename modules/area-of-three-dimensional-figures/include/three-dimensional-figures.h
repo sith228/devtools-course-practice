@@ -9,7 +9,7 @@
 
 class Sphere {
  public:
-    Sphere(double _R);
+   explicit Sphere(double _R);
     double CalculateS();
     Sphere(const Sphere& z);
 
@@ -25,9 +25,9 @@ class Sphere {
 
 class Cube {
  public:
-	 Cube(double _h);
-	 double CalculateS();
-	 Cube(const Cube& z);
+     explicit Cube(double _h);
+     double CalculateS();
+     Cube(const Cube& z);
 
      double geth() const;
      double getS() const;
@@ -35,6 +35,24 @@ class Cube {
      void setS(const double _S);
  private:
      double h;
+     double S;
+};
+
+class Cone {
+ public:
+     Cone(double _r, double _l);
+     double CalculateS();
+     Cone(const Cone& z);
+
+     double getr() const;
+	 double getl() const;
+     double getS() const;
+     void setr(const double _r);
+     void setl(const double _l);
+     void setS(const double _S);
+ private:
+     double r;
+     double l;
      double S;
 };
 
