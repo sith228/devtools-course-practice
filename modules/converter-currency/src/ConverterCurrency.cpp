@@ -1,12 +1,11 @@
 // Copyright 2017 Dmitrichev Nikita
 
-#include "include/converter_currency.h"
+#include "include/ConverterCurrency.h"
 
-converter_currency::converter_currency() {
-}
+using namespace Currency;
 
-float converter_currency::CurrentToRubles(const float MoneySize,
-                                          Currency OldCurrency) {
+float ConverterCurrency::CurrentToRubles(const float MoneySize,
+                                         CurrencyName OldCurrency) {
     float ResultMoney = 0;
     switch (OldCurrency) {
     case RUR:
@@ -34,8 +33,8 @@ float converter_currency::CurrentToRubles(const float MoneySize,
     return ResultMoney;
 }
 
-float converter_currency::RublesToTarget(const float MoneySize,
-                                           const Currency TargetMoney) {
+float ConverterCurrency::RublesToTarget(const float MoneySize,
+                                           const CurrencyName TargetMoney) {
     float ResultMoney = MoneySize;
     switch (TargetMoney) {
     case RUR:
@@ -62,9 +61,9 @@ float converter_currency::RublesToTarget(const float MoneySize,
     return ResultMoney;
 }
 
-float converter_currency::Convert(const float MoneySize,
-                                 const Currency OldCurrency,
-                                 const Currency NewCurrency) {
+float ConverterCurrency::Convert(const float MoneySize,
+                                 const CurrencyName OldCurrency,
+                                 const CurrencyName NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoney;
         if (MoneySize == 0) {
