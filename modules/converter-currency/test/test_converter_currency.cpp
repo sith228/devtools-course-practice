@@ -1,10 +1,23 @@
 // Copyright 2017 Dmitrichev Nikita
 
-#include <gtest/gtest.h>
+//#include <gtest/gtest.h>
+#include "gtest.h"
+//#include "include/ConverterCurrency.h"
+#include "ConverterCurrency.h"
 
-#include "include/ConverterCurrency.h"
-
-using namespace Currency;
+using Currency::CNY;
+using Currency::RUR;
+using Currency::USD;
+using Currency::GBP;
+using Currency::UAH;
+using Currency::EUR;
+using Currency::JPY;
+using Currency::RURtoCNY;
+using Currency::RURtoEUR;
+using Currency::RURtoGBP;
+using Currency::RURtoJPY;
+using Currency::RURtoUAH;
+using Currency::RURtoUSD;
 
 TEST(ConverterCurrenciesTest, can_not_convert_if_money_size_less_then_zero) {
     EXPECT_ANY_THROW(ConverterCurrency::Convert(-1, RUR, EUR));

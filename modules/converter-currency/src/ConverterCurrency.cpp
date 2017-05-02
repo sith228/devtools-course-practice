@@ -2,68 +2,66 @@
 
 #include "include/ConverterCurrency.h"
 
-using namespace Currency;
-
 float ConverterCurrency::CurrentToRubles(const float MoneySize,
-                                         CurrencyName OldCurrency) {
+    Currency::CurrencyName OldCurrency) {
     float ResultMoney = 0;
     switch (OldCurrency) {
-    case RUR:
+    case Currency::RUR:
         ResultMoney = MoneySize;
         break;
-    case USD:
-        ResultMoney = MoneySize / RURtoUSD;
+    case Currency::USD:
+        ResultMoney = MoneySize / Currency::RURtoUSD;
         break;
-    case EUR:
-        ResultMoney = MoneySize / RURtoEUR;
+    case Currency::EUR:
+        ResultMoney = MoneySize / Currency::RURtoEUR;
         break;
-    case UAH:
-        ResultMoney = MoneySize / RURtoUAH;
+    case Currency::UAH:
+        ResultMoney = MoneySize / Currency::RURtoUAH;
         break;
-    case CNY:
-        ResultMoney = MoneySize / RURtoCNY;
+    case Currency::CNY:
+        ResultMoney = MoneySize / Currency::RURtoCNY;
         break;
-    case JPY:
-        ResultMoney = MoneySize / RURtoJPY;
+    case Currency::JPY:
+        ResultMoney = MoneySize / Currency::RURtoJPY;
         break;
-    case GBP:
-        ResultMoney = MoneySize / RURtoGBP;
+    case Currency::GBP:
+        ResultMoney = MoneySize / Currency::RURtoGBP;
         break;
     }
     return ResultMoney;
 }
 
 float ConverterCurrency::RublesToTarget(const float MoneySize,
-                                           const CurrencyName TargetMoney) {
+                                       const Currency::CurrencyName TargetMoney) {
     float ResultMoney = MoneySize;
     switch (TargetMoney) {
-    case RUR:
+    case Currency::RUR:
         break;
-    case USD:
-        ResultMoney *= RURtoUSD;
+    case Currency::USD:
+        ResultMoney *= Currency::RURtoUSD;
         break;
-    case EUR:
-        ResultMoney *= RURtoEUR;
+    case Currency::EUR:
+        ResultMoney *= Currency::RURtoEUR;
         break;
-    case UAH:
-        ResultMoney *= RURtoUAH;
+    case Currency::UAH:
+        ResultMoney *= Currency::RURtoUAH;
         break;
-    case CNY:
-        ResultMoney *= RURtoCNY;
+    case Currency::CNY:
+        ResultMoney *= Currency::RURtoCNY;
         break;
-    case JPY:
-        ResultMoney *= RURtoJPY;
+    case Currency::JPY:
+        ResultMoney *= Currency::RURtoJPY;
         break;
-    case GBP:
-        ResultMoney *= RURtoGBP;
+    case Currency::GBP:
+        ResultMoney *= Currency::RURtoGBP;
         break;
     }
     return ResultMoney;
 }
 
 float ConverterCurrency::Convert(const float MoneySize,
-                                 const CurrencyName OldCurrency,
-                                 const CurrencyName NewCurrency) {
+                                 const Currency::CurrencyName OldCurrency,
+                                 const Currency::CurrencyName NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoney;
         if (MoneySize == 0) {
@@ -76,6 +74,6 @@ float ConverterCurrency::Convert(const float MoneySize,
         }
         return ResultMoney;
     } else {
-        throw Error_1000;
+        throw Currency::Error_1000;
     }
 }
