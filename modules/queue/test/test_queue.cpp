@@ -63,14 +63,6 @@ TEST(Queue, cant_take_elem_from_empty_queue) {
 	EXPECT_ANY_THROW(Q.Pop());
 }
 
-TEST(Queue, can_delete_queue) {
-	// Arrange
-	Queue<int> Q(10);
-	// Act
-	Q.~Queue();
-	// Assert
-	EXPECT_ANY_THROW(Q.Pop());
-}
 
 TEST(Queue, can_create_copy_of_Queue)
 {
@@ -90,4 +82,13 @@ TEST(Queue, can_take_element_from_queue) {
 	// Assert
 	int expRes = 1;
 	EXPECT_EQ(Q.Pop(), expRes);
+}
+
+TEST(Queue, can_delete_queue) {
+	// Arrange
+	Queue<int> Q(10);
+	// Act
+	Q.~Queue();
+	// Assert
+	EXPECT_ANY_THROW(Q.Push(5));
 }

@@ -44,7 +44,7 @@ Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
 		for (int i = 0; i <= len; i++)
 			queuePtr[i] = Q.queuePtr[i];
 		return *this;
-	}
+}
 	
 template <class valType>
 Queue <valType> :: Queue()
@@ -56,7 +56,25 @@ Queue <valType> :: Queue()
 		tail = -1;
 }
 template <class valType>
-Queue <valType> :: ~Queue() {}
+//
+//	QueueNode<Q> * work;
+//
+//	while (BeginQ) {
+//		work = BeginQ->next;
+//		delete BeginQ;
+//		BeginQ = work;
+//	}
+//	BeginQ = 0;
+//	LastQ = 0;
+//	count = 0;
+//}
+Queue<valType> :: ~Queue() {
+		delete[] queuePtr;
+		queuePtr = NULL;
+	/*delete []queuePtr;
+	delete queuePtr;*/
+	//len = -1;
+}
 
 template <class valType>
 Queue <valType> :: Queue(const Queue& Q)
@@ -89,7 +107,9 @@ bool Queue <valType> :: IsEmpty() const
 template <class valType>
 void Queue <valType> :: Push(const valType &elem)
 {
+	if (queuePtr == NULL) throw "Queue was deleted!";
     if ( IsFull() ) throw "Queue is full!";
+
     else 
         if (tail == maxSize - 1) tail = 0;
         else 
@@ -102,6 +122,7 @@ void Queue <valType> :: Push(const valType &elem)
 template <class valType>
 valType Queue <valType> :: Pop()
 {
+	if (queuePtr == NULL) throw "Queue was deleted!";
     if ( IsEmpty() ) throw "Queue is empty!";
     else
     {
