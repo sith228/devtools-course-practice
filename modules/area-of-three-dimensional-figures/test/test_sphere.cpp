@@ -5,7 +5,7 @@
 #include "include/three-dimensional-figures.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere) {
-	// Arrange
+    // Arrange
     double r = 2.0;
     Sphere z(r);
 
@@ -35,7 +35,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Create_getS) {
     EXPECT_EQ(3.0, z.getS());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Assert_Create_with_negative_radius) {
+TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Assert_Create_with_neg_rad) {
     // Arrange
     double r = -2.0;
 

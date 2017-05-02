@@ -23,4 +23,19 @@ class Sphere {
     double S;
 };
 
+class Cube {
+ public:
+	 Cube(double _h);
+	 double CalculateS();
+	 Cube(const Cube& z);
+
+     double geth() const;
+     double getS() const;
+     void seth(const double _h);
+     void setS(const double _S);
+ private:
+     double h;
+     double S;
+};
+
 #endif  // MODULES_COMPLEX_NUMBER_INCLUDE_COMPLEX_CALCULATOR_H_
