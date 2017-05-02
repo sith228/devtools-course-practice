@@ -6,7 +6,7 @@
 
 Sphere::Sphere(double _R) {
     if (_R > 0)
-	    R = _R;
+        R = _R;
     else 
         throw std::string("R <= 0");
     S = 0;
@@ -33,7 +33,6 @@ void Sphere::setS(const double _S) {
     else
         throw std::string("S < 0");
 }
-
 
 double Sphere::CalculateS() {
     double _R = this->getR();
