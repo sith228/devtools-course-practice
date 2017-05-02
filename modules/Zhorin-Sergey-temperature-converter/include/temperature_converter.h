@@ -6,7 +6,7 @@
 class TemperatureConverter {
  public:
     TemperatureConverter();
-    TemperatureConverter(const double t);
+    explicit TemperatureConverter(const double t);
 
     void setTemperature(const double t);
     double getFahrenheit() const;
