@@ -28,7 +28,7 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     std::vector<double> changes) {
     this->values = values;
     this->chances = changes;
-    if (this->values.empty()&& this->chances.empty()) {
+    if (this->values.empty() && this->chances.empty()) {
         throw std::runtime_error("Both vectors are empty");
     }
     if (this->values.empty()) {
@@ -37,7 +37,10 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     if (this->chances.empty()) {
         throw std::runtime_error("vector \"changes\" is empty");
     }
-    //TODO: values and changes must have equals size!!!!!
+    //TODO: !!!!!
+    if (this->chances.size() != this->values.size()) {
+        throw std::runtime_error("values and changes must have equals size");
+    }
     if (!isChangeValid()) {
         throw std::runtime_error("One of changes is out in range [0,1]");
     }
@@ -46,9 +49,6 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     }
 }
 
-
-//проверить, чтобы сумма changes=1, иначе, беда
-//}
 statisticalMoments::~statisticalMoments() {
     //удалить вектора, если это нужно
 }
