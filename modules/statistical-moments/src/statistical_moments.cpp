@@ -28,14 +28,18 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     std::vector<double> changes) {
     this->values = values;
     this->chances = changes;
+    if (this->values.empty()&& this->chances.empty()) {
+        throw std::runtime_error("Both vectors are empty");
+    }
     if (this->values.empty()) {
-        throw std::runtime_error("vector \"values\" are empty");
+        throw std::runtime_error("vector \"values\" is empty");
     }
     if (this->chances.empty()) {
-        throw std::runtime_error("vector \"changes\" are empty");
+        throw std::runtime_error("vector \"changes\" is empty");
     }
+    //TODO: values and changes must have equals size!!!!!
     if (!isChangeValid()) {
-        throw std::runtime_error("One of changes is out if range [0,1] ");
+        throw std::runtime_error("One of changes is out in range [0,1]");
     }
     if (!isChangesDistributionRow()) {
         throw std::runtime_error("sum of changes isn't equals 1");
