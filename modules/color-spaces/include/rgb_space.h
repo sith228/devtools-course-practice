@@ -23,6 +23,11 @@ class RGBSpace {
     void SetRed(const uint8_t red_);
     void SetGreen(const uint8_t green_);
     void SetBlue(const uint8_t blue_);
+
+    friend bool operator==(const RGBSpace &rgb_space_left,
+                           const RGBSpace &rgb_space_right) const;
+    friend bool operator!=(const RGBSpace &rgb_space_left,
+                           const RGBSpace &rgb_space_right) const;
 };
 
 #endif  // MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_

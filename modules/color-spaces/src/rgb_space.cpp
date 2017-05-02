@@ -37,7 +37,7 @@ RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
 }
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
-    if (this != &rgb_space) {
+    if ((&rgb_space != nullptr) && (this != &rgb_space)) {
         RGBSpace(RGBSpace).swap(*this);
     }
     return *this;
@@ -65,4 +65,16 @@ void RGBSpace::SetGreen(const uint8_t green_) {
 
 void RGBSpace::SetBlue(const uint8_t blue_) {
     blue = blue_;
+}
+
+bool operator==(const RGBSpace &rgb_space_left,
+                const RGBSpace &rgb_space_right) const {
+    return ((rgb_space_left.red == rgb_space_right.red) &&
+            (rgb_space_left.green == rgb_space_right.green) &&
+            (rgb_space_left.blue == rgb_space_right.blue));
+}
+
+bool operator!=(const RGBSpace &rgb_space_left,
+                const RGBSpace &rgb_space_right) const {
+    return !(rgb_space_left == rgb_space_right);
 }
