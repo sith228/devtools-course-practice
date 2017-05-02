@@ -5,21 +5,25 @@
 
 CreditCalculator::CreditCalculator() {}
 
-bool CreditCalculator::check_data(int amount, int period, double interest, int month_pas) {
-    if (amount > 0 && period > 0 && period <= 60 && interest > 0 && interest < 100 && month_pas >= 0 && month_pas <= period)
+bool CreditCalculator::check_data(int amount, int period,
+    double interest, int month_pas) {
+    if (amount > 0 && period > 0 && period <= 60 && interest > 0 &&
+        interest < 100 && month_pas >= 0 && month_pas <= period)
         return true;
     else
         return false;
 }
 
-bool CreditCalculator::check_data(int amount, int period, double interest) {
+bool CreditCalculator::check_data(int amount, int period,
+    double interest) {
     if (amount > 0 && period > 0 && period <= 60 && interest > 0 && interest < 100)
         return true;
     else
         return false;
 }
 
-double CreditCalculator::monthly_payment(int amount, int period, double interest) {
+double CreditCalculator::monthly_payment(int amount, int period,
+    double interest) {
     if (!check_data(amount, period, interest))
         return -1;
     double month_pay;
@@ -28,21 +32,24 @@ double CreditCalculator::monthly_payment(int amount, int period, double interest
     return month_pay;
 }
 
-double CreditCalculator::total_payout(int amount, int period, double interest) {
+double CreditCalculator::total_payout(int amount, int period,
+    double interest) {
     if (!check_data(amount, period, interest))
         return -1;
     CreditCalculator tmp;
     return tmp.monthly_payment(amount, period, interest)*period;
 }
 
-double CreditCalculator::overpayment_amount(int amount, int period, double interest) {
+double CreditCalculator::overpayment_amount(int amount, int period,
+    double interest) {
     if (!check_data(amount, period, interest))
         return -1;
     CreditCalculator tmp;
     return tmp.total_payout(amount, period, interest) - amount;
 }
 
-double CreditCalculator::check_balance(int amount, int period, double interest, int month_pas) {
+double CreditCalculator::check_balance(int amount, int period,
+    double interest, int month_pas) {
     if (!check_data(amount, period, interest, month_pas))
         return -1;
     CreditCalculator tmp;
