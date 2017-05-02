@@ -4,11 +4,9 @@
 #include <string.h>
 #include <string>
 #include <vector>
-using namespace std;
 
-Intersection::Intersection()
-{
-    linex0=1.0;
+Intersection::Intersection() {
+    linex0 = 1.0;
     liney0 = 1.0;
     linez0 = 1.0;
     linem = 1.0;
@@ -20,7 +18,8 @@ Intersection::Intersection()
     planeD = 1.0;
 }
 
-void Intersection::SetLine(double x0, double y0, double z0, double m, double n, double p) {
+void Intersection::SetLine(double x0, double y0, double z0, 
+                           double m, double n, double p) {
     linex0 = x0;
     liney0 = y0;
     linez0 = z0;
@@ -29,7 +28,7 @@ void Intersection::SetLine(double x0, double y0, double z0, double m, double n, 
     linep = p;
 }
 
-vector<double> Intersection::GetLine() {
+std::vector<double> Intersection::GetLine() {
     vector<double> result(6);
     result[0] = linex0;
     result[1] = liney0;
@@ -40,7 +39,7 @@ vector<double> Intersection::GetLine() {
     return result;
 }
 
-vector<double> Intersection::GetPlane() {
+std::vector<double> Intersection::GetPlane() {
     vector<double> result(4);
     result[0] = planeA;
     result[1] = planeB;
@@ -56,7 +55,8 @@ void Intersection::SetPlane(double A, double B, double C, double D) {
     planeD = D;
 }
 
-Intersection::Intersection(double x0, double y0, double z0, double m, double n, double p, double A, double B, double C, double D) {
+Intersection::Intersection(double x0, double y0, double z0, double m, 
+    double n, double p, double A, double B, double C, double D) {
     linex0 = x0;
     liney0 = y0;
     linez0 = z0;
@@ -69,18 +69,18 @@ Intersection::Intersection(double x0, double y0, double z0, double m, double n, 
     planeD = D;
 }
 
-vector<double> Intersection::CalculateIntersection() {
-    double t, temp1, temp2;
+std::vector<double> Intersection::CalculateIntersection() {
+    double temp1, temp2;
     temp1 = planeA*linem + planeB*linen + planeC*linep;
     vector<double> result(3);
-    if (temp1==0) {
+    if (temp1 == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {
         temp2 = -1 * (planeA*linex0 + planeB*liney0 + planeC*linez0 + planeD);
-        t = temp2 / temp1;
-        result[0] = linex0 + linem*t;
-        result[1] = liney0 + linen*t;
-        result[2] = linez0 + linep*t;
+        temp1 = temp2 / temp1;
+        result[0] = linex0 + linem*temp1;
+        result[1] = liney0 + linen*temp1;
+        result[2] = linez0 + linep*temp1;
     }
     return result;
 }
