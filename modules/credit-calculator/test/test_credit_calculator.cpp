@@ -41,7 +41,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_period) {
     double interest = 22;
     bool result;
     CreditCalculator cred;
-    
+
     // Act
     result = cred.check_data(amount, period, interest);
 
@@ -97,7 +97,8 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_monthly_payment) {
     EXPECT_NEAR(moth_pay, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculator, get_month_payment_with_incorrect_param) {
+TEST(Simonyan_Vaginak_CreditCalculator,
+    get_month_payment_with_incorrect_param) {
     // Arrange
     int amount = -300000;
     int period = 12;
@@ -129,7 +130,8 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
     EXPECT_NEAR(payout, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout_with_incorrect_parametrs) {
+TEST(Simonyan_Vaginak_CreditCalculator,
+    get_total_payout_with_incorrect_parametrs) {
     // Arrange
     int amount = 300000;
     int period = -12;
