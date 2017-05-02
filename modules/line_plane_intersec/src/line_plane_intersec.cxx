@@ -19,7 +19,7 @@ Intersection::Intersection() {
 }
 
 void Intersection::SetLine(double x0, double y0, double z0, 
-                           double m, double n, double p) {
+double m, double n, double p) {
     linex0 = x0;
     liney0 = y0;
     linez0 = z0;
@@ -56,7 +56,7 @@ void Intersection::SetPlane(double A, double B, double C, double D) {
 }
 
 Intersection::Intersection(double x0, double y0, double z0, double m, 
-    double n, double p, double A, double B, double C, double D) {
+double n, double p, double A, double B, double C, double D) {
     linex0 = x0;
     liney0 = y0;
     linez0 = z0;
