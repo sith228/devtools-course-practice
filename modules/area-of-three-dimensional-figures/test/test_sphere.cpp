@@ -1,5 +1,6 @@
 // Copyright 2017 Kulygina Julia
 
+#define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
 #include "include/three-dimensional-figures.h"
 
