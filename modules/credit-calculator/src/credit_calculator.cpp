@@ -16,7 +16,7 @@ bool CreditCalculator::check_data(int amount, int period,
 
 bool CreditCalculator::check_data(int amount, int period,
     double interest) {
-    if (amount > 0 && period > 0 && period <= 60 && 
+    if (amount > 0 && period > 0 && period <= 60 &&
         interest > 0 && interest < 100)
         return true;
     else

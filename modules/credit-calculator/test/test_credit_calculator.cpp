@@ -4,14 +4,14 @@
 
 #include "include/credit_calculator.h"
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_all_parametrs_are_correct) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_correct_param) {
     // Arrange
     int amount = 300000;
     int period = 24;
     double interest = 22;
     bool result;
     CreditCalculator cred;
-    
+
     // Act
     result = cred.check_data(amount, period, interest);
 
@@ -19,14 +19,14 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_all_parametrs_are_co
     EXPECT_EQ(true, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_amount_parametr_is_incorrect) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_amount) {
     // Arrange
     int amount = -300000;
     int period = 24;
     double interest = 22;
     bool result;
     CreditCalculator cred;
-    
+
     // Act
     result = cred.check_data(amount, period, interest);
 
@@ -34,7 +34,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_amount_parametr_is_i
     EXPECT_EQ(false, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_period_parametr_is_incorrect) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_period) {
     // Arrange
     int amount = 300000;
     int period = -5;
@@ -49,14 +49,14 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_period_parametr_is_i
     EXPECT_EQ(false, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_interest_parametr_is_incorrect) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_interest) {
     // Arrange
     int amount = 300000;
     int period = -5;
     double interest = 105;
     bool result;
     CreditCalculator cred;
-    
+
     // Act
     result = cred.check_data(amount, period, interest);
 
@@ -64,7 +64,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_interest_parametr_is
     EXPECT_EQ(false, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_passed_parametr_is_incorrect) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_passed) {
     // Arrange
     int amount = 300000;
     int period = 12;
@@ -74,13 +74,13 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, check_data_when_passed_parametr_is_i
     CreditCalculator cred;
 
     // Act
-    result = cred.check_data(amount, period, interest,month_passed);
+    result = cred.check_data(amount, period, interest, month_passed);
 
     // Assert
     EXPECT_EQ(false, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_monthly_payment) {
+TEST(Simonyan_Vaginak_CreditCalculator, get_monthly_payment) {
     // Arrange
     int amount = 300000;
     int period = 12;
@@ -97,7 +97,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_monthly_payment) {
     EXPECT_NEAR(moth_pay, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_monthly_payment_with_incorrect_parametrs) {
+TEST(Simonyan_Vaginak_CreditCalculator, get_month_payment_with_incorrect_param) {
     // Arrange
     int amount = -300000;
     int period = 12;
@@ -112,7 +112,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_monthly_payment_with_incorrect_p
     EXPECT_EQ(-1, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_total_payout) {
+TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
     // Arrange
     int amount = 300000;
     int period = 12;
@@ -126,10 +126,10 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_total_payout) {
     result = cred.total_payout(amount, period, interest);
 
     // Assert
-    EXPECT_NEAR(payout, result,period*month_error);
+    EXPECT_NEAR(payout, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_total_payout_with_incorrect_parametrs) {
+TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout_with_incorrect_parametrs) {
     // Arrange
     int amount = 300000;
     int period = -12;
@@ -144,7 +144,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_total_payout_with_incorrect_para
     EXPECT_EQ(-1, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_overpayment_amount) {
+TEST(Simonyan_Vaginak_CreditCalculator, get_overpayment_amount) {
     // Arrange
     int amount = 300000;
     int period = 12;
@@ -161,7 +161,8 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_overpayment_amount) {
     EXPECT_NEAR(overpay, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, get_overpayment_amount_with_incorrect_parametrs) {
+TEST(Simonyan_Vaginak_CreditCalculator, 
+    get_overpayment_amount_with_incorrect_parametrs) {
     // Arrange
     int amount = 300000;
     int period = -12;
@@ -176,7 +177,7 @@ TEST(Simonyan_Vaginak_CreditCalculatorTest, get_overpayment_amount_with_incorrec
     EXPECT_EQ(-1, result);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculatorTest, check_balance) {
+TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
     // Arrange
     int amount = 300000;
     int period = 12;
