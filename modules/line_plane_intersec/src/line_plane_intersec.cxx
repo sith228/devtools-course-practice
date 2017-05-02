@@ -29,7 +29,7 @@ double m, double n, double p) {
 }
 
 std::vector<double> Intersection::GetLine() {
-    vector<double> result(6);
+    std::vector<double> result(6);
     result[0] = linex0;
     result[1] = liney0;
     result[2] = linez0;
@@ -40,7 +40,7 @@ std::vector<double> Intersection::GetLine() {
 }
 
 std::vector<double> Intersection::GetPlane() {
-    vector<double> result(4);
+    std::vector<double> result(4);
     result[0] = planeA;
     result[1] = planeB;
     result[2] = planeC;
@@ -72,7 +72,7 @@ double n, double p, double A, double B, double C, double D) {
 std::vector<double> Intersection::CalculateIntersection() {
     double temp1, temp2;
     temp1 = planeA*linem + planeB*linen + planeC*linep;
-    vector<double> result(3);
+    std::vector<double> result(3);
     if (temp1 == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {

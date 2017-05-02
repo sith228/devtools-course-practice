@@ -18,7 +18,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, Do_Throw_When_Line_Parallel_Plane) {
 TEST(Lapin_Artem_Line_Plane_Intersec_Test, CalculateIntersection_Returns_Correct_Result) {
     // Arrange
     Intersection Intersec(-1, -2, 3, -3, 2, -2, 1, 3, -5, 9);
-    vector<double> expected(3);
+    std::vector<double> expected(3);
     expected[0] = -4;
     expected[1] = 0;
     expected[2] = 1;
@@ -29,7 +29,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, CalculateIntersection_Returns_Correct
 TEST(Lapin_Artem_Line_Plane_Intersec_Test, GetLine_And_SetLine_Works_Correct) {
     // Arrange
     Intersection Intersec;
-    vector<double> expected(6);
+    std::vector<double> expected(6);
     expected[0] = 6;
     expected[1] = 5;
     expected[2] = 4;
@@ -45,7 +45,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, GetLine_And_SetLine_Works_Correct) {
 TEST(Lapin_Artem_Line_Plane_Intersec_Test, GetPlane_And_SetPlane_Works_Correct) {
     // Arrange
     Intersection Intersec;
-    vector<double> expected(4);
+    std::vector<double> expected(4);
     expected[0] = 6;
     expected[1] = 5;
     expected[2] = 4;
@@ -59,7 +59,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, GetPlane_And_SetPlane_Works_Correct) 
 TEST(Lapin_Artem_Line_Plane_Intersec_Test, More_Test_For_CalculateIntersection) {
     // Arrange
     Intersection Intersec(-3, 0, -2, -1, -3, 3, 1, -2, -1, 3);
-    vector<double> expected(3);
+    std::vector<double> expected(3);
     expected[0] = -2;
     expected[1] = 3;
     expected[2] = -5;
