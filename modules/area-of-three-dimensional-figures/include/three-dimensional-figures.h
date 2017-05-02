@@ -9,7 +9,7 @@
 
 class Sphere {
  public:
-   explicit Sphere(double _R);
+    explicit Sphere(double _R);
     double CalculateS();
     Sphere(const Sphere& z);
 
@@ -45,7 +45,7 @@ class Cone {
      Cone(const Cone& z);
 
      double getr() const;
-	 double getl() const;
+     double getl() const;
      double getS() const;
      void setr(const double _r);
      void setl(const double _l);
@@ -56,4 +56,22 @@ class Cone {
      double S;
 };
 
-#endif  // MODULES_COMPLEX_NUMBER_INCLUDE_COMPLEX_CALCULATOR_H_
+class Cylinder {
+ public:
+     Cylinder(double _r, double _h);
+     double CalculateS();
+     Cylinder(const Cylinder& z);
+
+     double getr() const;
+     double getl() const;
+     double getS() const;
+     void setr(const double _r);
+     void setl(const double _l);
+     void setS(const double _S);
+ private:
+     double r;
+     double l;
+     double S;
+};
+
+#endif  // MODULES_AREA_OF_THREE_DIMENSIONAL_FIGURES_INCLUDE_THREE_DIMENSIONAL_FIGURES_H_
