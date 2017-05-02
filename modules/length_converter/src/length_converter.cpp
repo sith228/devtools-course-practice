@@ -40,7 +40,8 @@ double Length::GetConvertCoef(LENGTH_TYPE type) const {
     else if (type == FURHLONG) return FURHLONG_TO_CM;
     else if (type == MILE) return MILE_TO_CM;
     else if (type == LEAGUE) return LEAGUE_TO_CM;
-    else return CENTIMETRE_TO_CM;
+    else
+        return CENTIMETRE_TO_CM;
 }
 
 double Length::ConvertTo(LENGTH_TYPE type) const {
