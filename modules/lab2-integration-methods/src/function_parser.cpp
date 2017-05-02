@@ -52,8 +52,7 @@ std::string Parser::parse_token() {
                 return token;
             }
         }
-    }
-    else {
+    } else {
         throw std::runtime_error("Input is null");
     }
 
