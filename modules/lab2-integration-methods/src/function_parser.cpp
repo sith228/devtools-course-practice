@@ -53,7 +53,7 @@ std::string Parser::parse_token() {
             }
         }
     } else {
-        throw std::runtime_error("Input is null");
+        throw std::runtime_error("Input fucntion is null");
     }
 
     return "";
