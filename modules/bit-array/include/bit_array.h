@@ -29,8 +29,7 @@ class BitArray {
     bool operator == (const BitArray& bitArray) const;
     bool operator != (const BitArray& bitArray) const;
 
-    std::string ToString();
-    friend std::istream& operator >> (std::istream& istr, BitArray& bitArray);
+    std::string toString();
 
  private:
     unsigned int getBlockNumber(const unsigned int globalBitNumber) const;

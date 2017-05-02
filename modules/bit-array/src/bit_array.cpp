@@ -136,10 +136,13 @@ int BitArray::getBit(const unsigned int bitNumber) const {
 
 
 BitArray BitArray::operator & (const BitArray& bitArray) {
-    BitArray tempBitArray(*this);
-    if (nBlocks_ < bitArray.nBlocks_)
-        tempBitArray = bitArray;
+    int size = size_;
+    if (size_ < bitArray.size_)
+        size = bitArray.size_;
+    BitArray tempBitArray(size);
 
+    for (unsigned int i = 0; i < nBlocks_; i++)
+        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
         tempBitArray.memoryBlocks[i] &= bitArray.memoryBlocks[i];
 
@@ -149,10 +152,13 @@ BitArray BitArray::operator & (const BitArray& bitArray) {
 
 
 BitArray BitArray::operator | (const BitArray& bitArray) {
-    BitArray tempBitArray(*this);
-    if (nBlocks_ < bitArray.nBlocks_)
-        tempBitArray = bitArray;
+    int size = size_;
+    if (size_ < bitArray.size_)
+        size = bitArray.size_;
+    BitArray tempBitArray(size);
 
+    for (unsigned int i = 0; i < nBlocks_; i++)
+        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
         tempBitArray.memoryBlocks[i] |= bitArray.memoryBlocks[i];
 
@@ -162,10 +168,13 @@ BitArray BitArray::operator | (const BitArray& bitArray) {
 
 
 BitArray BitArray::operator ^ (const BitArray& bitArray) {
-    BitArray tempBitArray(*this);
-    if (nBlocks_ < bitArray.nBlocks_)
-        tempBitArray = bitArray;
+    int size = size_;
+    if (size_ < bitArray.size_)
+        size = bitArray.size_;
+    BitArray tempBitArray(size);
 
+    for (unsigned int i = 0; i < nBlocks_; i++)
+        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
         tempBitArray.memoryBlocks[i] ^= bitArray.memoryBlocks[i];
 
@@ -177,7 +186,7 @@ BitArray BitArray::operator ^ (const BitArray& bitArray) {
 BitArray BitArray::operator ~() {
     BitArray tempBitArray(*this);
 
-    for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++) {
+    for (unsigned int i = 0; i < tempBitArray.size_; i++) {
         if (getBit(i) == 0) {
             tempBitArray.setBit(i);
         } else {
@@ -191,14 +200,13 @@ BitArray BitArray::operator ~() {
 
 
 bool BitArray::operator == (const BitArray& bitArray) const {
-    if (nBlocks_ == bitArray.nBlocks_) {
+    if (size_ == bitArray.size_) {
         for (unsigned int i = 0; i < nBlocks_; i++)
         if (memoryBlocks[i] != bitArray.memoryBlocks[i])
             return false;
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 
@@ -209,7 +217,7 @@ bool BitArray::operator != (const BitArray& bitArray) const {
 
 
 
-std::string BitArray::ToString() {
+std::string BitArray::toString() {
     std::string outputString;
     for (int i = size_ - 1; i >= 0; i--)
     if (getBit(i) == 1)
@@ -219,19 +227,3 @@ std::string BitArray::ToString() {
     return outputString;
 }
 
-
-
-std::istream& operator >> (std::istream& istr, BitArray& bitArray) {
-    char symbol;
-    unsigned int i = 0;
-    istr >> symbol;
-    while ((i < bitArray.nBlocks_) && ((symbol == '0') || (symbol == '1'))) {
-        if (symbol == '0')
-            bitArray.clearBit(i);
-        else
-            bitArray.setBit(i);
-        istr >> symbol;
-        i++;
-    }
-    return istr;
-}
