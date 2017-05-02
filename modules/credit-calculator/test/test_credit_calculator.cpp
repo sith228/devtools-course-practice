@@ -163,7 +163,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_overpayment_amount) {
     EXPECT_NEAR(overpay, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculator, 
+TEST(Simonyan_Vaginak_CreditCalculator,
     get_overpayment_amount_with_incorrect_parametrs) {
     // Arrange
     int amount = 300000;
