@@ -70,7 +70,7 @@ Expression Parser::parse_simple_expression() {
 
     if (token == "(") {
         auto result = parse();
-        if (parse_token() != ")") throw std::runtime_error("Expected ')'");
+        if (parse_token() != ")") throw std::runtime_error("Expected ')' ");
         return result;
     }
 
