@@ -1,7 +1,10 @@
 import os
 import re
 
-project_directory = os.path.dirname(os.getcwd()) + '/modules'
+print('=======================================')
+project_directory = os.path.dirname(os.path.dirname(os.getcwd())) + '/modules'
+print('Search directory:')
+print(project_directory)
 pattern_filename = r'test\w+\.*'
 pattern_testname = r'bugreport_([a-zA-Z]*)_([a-zA-Z]*)_'
 
