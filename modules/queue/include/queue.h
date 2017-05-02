@@ -6,20 +6,22 @@
 #include <iostream>
 
 template <class valType>
-
 class Queue {
 private:
-    int head, tail, length, maxSize; ;
+    int head, tail, len, maxSize; 
     valType *queuePtr;
 
 public:
-    //Queue();
+    Queue();
     Queue(int _maxSize); 
     ~Queue();
-    Queue (const Queue & Q);  
+    Queue(const Queue &);  
     bool IsFull() const; 
+	bool operator==(const Queue<valType>&) const;
+	Queue<valType>& operator=(const Queue<valType>&);
+	int GetMaxSize(void) const;
     bool IsEmpty() const; 
-    void Push(const valType & ); 
+    void Push(const valType&); 
     valType Pop(); 
 };
 
