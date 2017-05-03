@@ -14,7 +14,9 @@ TEST(Triangle_test, Can_create_via_constructor) {
     double point3_coordx = 0;
     double point3_coordy = 5.31;
 
-    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy, point3_coordx, point3_coordy);
+    Triangle t(point1_coordx, point1_coordy,
+        point2_coordx, point2_coordy,
+        point3_coordx, point3_coordy);
 
     EXPECT_EQ(point1_coordx, t.Get_coordX_point(1));
     EXPECT_EQ(point1_coordy, t.Get_coordY_point(1));
@@ -32,7 +34,8 @@ TEST(Triangle_test, Constructor_throw_exception) {
     double point3_coordx = 10.11;
     double point3_coordy = 10.11;
 
-    EXPECT_THROW(Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy, point3_coordx, point3_coordy), std::string);
+    EXPECT_THROW(Triangle t(point1_coordx, point1_coordy, point2_coordx,
+        point2_coordy, point3_coordx, point3_coordy), std::string);
 }
 
 TEST(Triangle_test, Can_create_via_copying) {
@@ -43,7 +46,8 @@ TEST(Triangle_test, Can_create_via_copying) {
     double point3_coordx = 0;
     double point3_coordy = 5.31;
 
-    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy, point3_coordx, point3_coordy);
+    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy,
+        point3_coordx, point3_coordy);
     Triangle copy_t = t;
 
     EXPECT_EQ(copy_t, t);
@@ -57,7 +61,8 @@ TEST(Triangle_test, Can_create_via_copy_constructor) {
     double point3_coordx = 0;
     double point3_coordy = 5.31;
 
-    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy, point3_coordx, point3_coordy);
+    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy,
+        point3_coordx, point3_coordy);
     Triangle copy_t(t);
 
     EXPECT_EQ(copy_t, t);
@@ -110,7 +115,7 @@ TEST(Triangle_test, Equal_triangle_are_equal) {
     Triangle t1(0, 0, 0, 3, 4, 0);
     Triangle t2(0, 1, 0, 4, 4, 1);
 
-    EXPECT_TRUE(t1==t2);
+    EXPECT_TRUE(t1 == t2);
 }
 
 TEST(Triangle_test, Different_trieangle_not_equal) {
