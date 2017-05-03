@@ -24,7 +24,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_Copy_Tetrahedron_bool) {
     double l = 5.0;
     Tetrahedron z(a, b, c, l);
 
-    //Act
+    // Act
     Tetrahedron z2(z);
 
     // Assert
@@ -39,7 +39,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_comparation_Tetrahedron)
     double l = 5.0;
     Tetrahedron z(a, b, c, l);
 
-    //Act
+    // Act
     Tetrahedron z2(3.0, 1.0, 1.0, 2.0);
 
     // Assert

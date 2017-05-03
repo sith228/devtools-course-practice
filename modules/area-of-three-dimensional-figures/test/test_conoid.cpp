@@ -22,7 +22,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Conoid_Can_Copy_Conoid_bool) {
     double l = 1.0;
     Conoid z(r1, r2, l);
 
-    //Act
+    // Act
     Conoid z2(z);
 
     // Assert
@@ -36,7 +36,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Conoid_Can_comparation_Conoid) {
     double l = 1.0;
     Conoid z(r1, r2, l);
 
-    //Act
+    // Act
     Conoid z2(3.0, 1.0, 1.0);
 
     // Assert

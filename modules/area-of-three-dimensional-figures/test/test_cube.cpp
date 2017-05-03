@@ -17,7 +17,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_Copy_Cube_bool) {
     double h = 2.0;
     Cube z(h);
 
-    //Act
+    // Act
     Cube z2(z);
 
     // Assert
@@ -29,7 +29,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_comparation_Cube) {
     double h = 2.0;
     Cube z(h);
 
-    //Act
+    // Act
     Cube z2(3.0);
 
     // Assert

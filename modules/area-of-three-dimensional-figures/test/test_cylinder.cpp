@@ -20,7 +20,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Copy_Cylinder_bool) {
     double l = 1.0;
     Cylinder z(r, l);
 
-    //Act
+    // Act
     Cylinder z2(z);
 
     // Assert
@@ -33,7 +33,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_comparation_Cylinder) {
     double l = 1.0;
     Cylinder z(r, l);
 
-    //Act
+    // Act
     Cylinder z2(3.0, 1.0);
 
     // Assert

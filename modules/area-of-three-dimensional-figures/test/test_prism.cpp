@@ -24,7 +24,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Copy_Prism_bool) {
     double h = 5.0;
     Prism z(a, b, c, h);
 
-    //Act
+    // Act
     Prism z2(z);
 
     // Assert
@@ -39,7 +39,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_comparation_Prism) {
     double h = 5.0;
     Prism z(a, b, c, h);
 
-    //Act
+    // Act
     Prism z2(3.0, 1.0, 1.0, 2.0);
 
     // Assert

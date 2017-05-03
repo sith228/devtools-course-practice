@@ -21,7 +21,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Copy_Pyramid_bool) {
     double l = 5.0;
     Pyramid z(a, b, l);
 
-    //Act
+    // Act
     Pyramid z2(z);
 
     // Assert
@@ -35,7 +35,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_comparation_Pyramid) {
     double l = 1.0;
     Pyramid z(a, b, l);
 
-    //Act
+    // Act
     Pyramid z2(3.0, 1.0, 1.0);
 
     // Assert

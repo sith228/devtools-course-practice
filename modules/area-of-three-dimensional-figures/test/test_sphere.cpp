@@ -18,7 +18,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere_bool) {
     double r = 2.0;
     Sphere z(r);
 
-    //Act
+    // Act
     Sphere z2(z);
 
     // Assert
@@ -30,7 +30,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_comparation_sphere) {
     double r = 2.0;
     Sphere z(r);
 
-    //Act
+    // Act
     Sphere z2(3.0);
 
     // Assert

@@ -20,7 +20,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cone_Can_Copy_Cone_bool) {
     double l = 1.0;
     Cone z(r, l);
 
-    //Act
+    // Act
     Cone z2(z);
 
     // Assert
@@ -33,7 +33,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cone_Can_comparation_Cone) {
     double l = 1.0;
     Cone z(r, l);
 
-    //Act
+    // Act
     Cone z2(3.0, 1.0);
 
     // Assert
