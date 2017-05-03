@@ -37,7 +37,7 @@ double IntegrationMethod::rectangle_method(std::string integrand,
     s /=2;
 
     double h = (upper_limit - low_limit) / quantity_of_steps;
-    for (int i=1; i < quantity_of_steps; i++) {
+    for (unsigned i=1; i < quantity_of_steps; i++) {
         double x = low_limit + i*h;
         std::string func = change_variable_to_value(integrand, x);
         s+=calculate_function(func);
@@ -61,7 +61,7 @@ double IntegrationMethod::trapezoid_method(std::string integrand,
             y = calculate_function(func_in_low_limit) +
                 calculate_function(func_in_upper_limit);
 
-            for (int i=1; i < quantity_of_steps; i++) {
+            for (unsigned i=1; i < quantity_of_steps; i++) {
                 double x = low_limit + dy*i;
                 std::string func = change_variable_to_value(integrand, x);
                 y+=2*calculate_function(func);
