@@ -204,7 +204,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_c) {
     z.set_c(2.0);
 
     // Assert
-    EXPECT_EQ(2.0, z.get_c());
+    EXPECT_EQ(z.get_c(), 2.0);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_CalculateS) {
@@ -216,7 +216,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_CalculateS) {
     double s1 = 6.0;
 
     // Assert
-    EXPECT_EQ(s1, s);
+    EXPECT_EQ(s, s1);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_CalculateS_2) {
