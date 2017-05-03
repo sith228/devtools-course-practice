@@ -5,11 +5,11 @@
 
 template <typename valType>
 class Queue {
-private:
+ private:
     int head, tail, len, maxSize;
     valType *queuePtr;
 
-public:
+ public:
     Queue();
     explicit Queue(int _maxSize);
     ~Queue();
@@ -31,8 +31,9 @@ Queue <valType> ::Queue(int _maxSize) {
         len = 0;
         head = 0;
         tail = -1;
-    } else
+    } else {
         throw "Size is incorrect!";
+    }
 }
 
 template <class valType>
@@ -66,8 +67,7 @@ template <class valType>
 bool Queue<valType> :: operator==(const Queue<valType>& Q) const {
     if (this == &Q) return true;
     if (len != Q.len) return false;
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         if (queuePtr[i] != Q.queuePtr[i])
             return false;
     }
@@ -102,8 +102,9 @@ bool Queue <valType> ::IsEmpty() const {
 template <class valType>
 void Queue <valType> ::Push(const valType &elem) {
     if (queuePtr == nullptr) throw "Queue was deleted!";
-    if (IsFull()) throw "Queue is full!";
-    else {
+    if (IsFull()) {
+        throw "Queue is full!";
+    } else {
         if (tail == maxSize - 1) tail = 0;
         else {
             tail++;
