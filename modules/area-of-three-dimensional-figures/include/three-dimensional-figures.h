@@ -94,7 +94,7 @@ class Conoid {
      Conoid(double _r1, double _r2, double _l);
      double CalculateS();
      Conoid(const Conoid& z);
-     
+
      double getr1() const;
      double getr2() const;
      double getl() const;
