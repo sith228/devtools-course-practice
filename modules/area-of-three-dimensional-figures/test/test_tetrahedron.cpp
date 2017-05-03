@@ -267,3 +267,20 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_CalculateS) {
     // Assert
     EXPECT_EQ(s1, s);
 }
+
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_CalculateS_1) {
+    // Arrang
+    Tetrahedron z(2.0, 3.0, 4.0, 5.0);
+
+    // Act
+    double s = z.CalculateS();
+    double heron_abc = sqrt(4.5* 2.5* 1.5 *0.5);
+    double heron_al = sqrt(6* 4);
+    double heron_bl = sqrt(6.5 * 3.5 * 1.5 * 1.5);
+    double heron_cl = sqrt(7 * 3 * 4);
+
+    double s1 = heron_abc + heron_al + heron_bl + heron_cl;
+
+    // Assert
+    EXPECT_EQ(s1, s);
+}

@@ -101,7 +101,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_getS) {
     EXPECT_EQ(3.0, z.getS());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_1) {
     // Arrange
     double a = -2.0;
 
@@ -109,7 +109,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
     EXPECT_ANY_THROW(Parallelepiped z(a, 0, 1.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_2) {
     // Arrange
     double b = -2.0;
 
@@ -117,7 +117,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
     EXPECT_ANY_THROW(Parallelepiped z(0, b, 1.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_3) {
     // Arrange
     double c = -2.0;
 
@@ -157,7 +157,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_b) {
     EXPECT_EQ(2.0, z.get_b());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_1) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
@@ -165,7 +165,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
     EXPECT_ANY_THROW(z.set_a(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_2) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
@@ -173,7 +173,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
     EXPECT_ANY_THROW(z.set_b(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_setS) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_setS_1) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
@@ -181,7 +181,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_setS) {
     EXPECT_NO_THROW(z.setS(2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setS) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setS_2) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 

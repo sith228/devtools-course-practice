@@ -92,13 +92,13 @@ double Tetrahedron::CalculateS() {
     double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
 
     double p_al = (_a + 2 * _l) / 2;
-    double heron_al = sqrt(p* (p - _a)*(p - _l)*(p - _l));
+    double heron_al = sqrt(p_al* (p_al - _a)*(p_al - _l) * (p_al - _l));
 
     double p_bl = (_b + 2 * _l) / 2;
-    double heron_bl = sqrt(p* (p - _b)*(p - _l)*(p - _l));
+    double heron_bl = sqrt(p_bl * (p_bl - _b) * (p_bl - _l) * (p_bl - _l));
 
     double p_cl = (_c + 2 * _l) / 2;
-    double heron_cl = sqrt(p* (p - _c)*(p - _l)*(p - _l));
+    double heron_cl = sqrt(p_cl * (p_cl - _c) * (p_cl - _l) * (p_cl - _l));
 
     this->setS(heron_abc + heron_al + heron_bl + heron_cl);
     return this->getS();
