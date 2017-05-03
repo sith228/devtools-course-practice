@@ -1,9 +1,7 @@
 // Copyright 2017 Gvozdeva Viktoria
-
 #include <gtest/gtest.h>
 
 #include "include/queue.h"
-//#include "src/queue.cpp"
 
 TEST(Queue, cant_create_queue_of_int_elements_with_negative_size) {
     // Arrange
@@ -23,7 +21,8 @@ TEST(Queue, can_create_queue_of_int_elements_without_parametrs) {
     // Arrange
     // Act
     //Assert
-    EXPECT_NO_THROW(Queue<int> Q());
+	//Q()
+	EXPECT_NO_THROW(Queue<int> Q);
 }
 
 TEST(Queue, can_be_equated_two_queues) {
