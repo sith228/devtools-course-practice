@@ -2,13 +2,6 @@
 
 #include "include/statistical_moments.h"
 
-using std::string;
-
-class StatisticalMomentsTest : public ::testing::Test {
-protected:
-    statisticalMoments moments;
-};
-
 TEST(Kiseleva_Olga_StatisticalMomentsTest,
     Do_Throw_When_Two_Vectors_Are_Empty) {
     // Arrange
@@ -52,7 +45,16 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest, Do_Throw_When_Sum_Change_Not_Equals_1
     // Act+Assert
     EXPECT_ANY_THROW(statisticalMoments(values, changes));
 }
-
+TEST(Kiseleva_Olga_StatisticalMomentsTest, Can_Count_Starting_Moment_With_1_order) {
+    // Arrange
+    std::vector<double> values = { 1,2,3,4 };
+    std::vector<double> changes = { 0.6,0.24,0.096,0.064 };
+    //Act
+    statisticalMoments test(values, changes);
+    double test_moment = test.getMoment(1);
+    //Assert
+    EXPECT_DOUBLE_EQ(1.624,test_moment);
+}
 
 
 

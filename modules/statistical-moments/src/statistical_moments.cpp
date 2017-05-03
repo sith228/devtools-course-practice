@@ -1,12 +1,13 @@
 // Copyright 2017 Olga Kiseleva
 
 #include "include/statistical_moments.h"
-
+#include <cmath>
 #include <iostream>
+#include <stdexcept>
 #include <vector>
 
 bool statisticalMoments::isChangeValid() {
-    for (int i = 0;i < statisticalMoments::chances.size();i++) {
+    for (unsigned int i = 0;i < statisticalMoments::chances.size();i++) {
         if ((statisticalMoments::chances[i] < 0) || (statisticalMoments::chances[i]>1))
             return false;
     }
@@ -53,6 +54,11 @@ statisticalMoments::~statisticalMoments() {
     //удалить вектора, если это нужно
 }
 double statisticalMoments::getMoment(unsigned int order) {
+    double result=0;
+    int a = 0; // для начальных моментов
+    for (unsigned int i = 0;i < statisticalMoments::chances.size();i++) {
+        result += pow(values[i] - a, order)*chances[i];
+    }
     //выдать момент порядка order, учитывая, что данные корректные
-    return 0;
+    return result;
 }
