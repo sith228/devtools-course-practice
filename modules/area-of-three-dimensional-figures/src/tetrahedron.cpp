@@ -11,8 +11,9 @@ Tetrahedron::Tetrahedron(double _a, double _b, double _c, double _l) {
         b = _b;
         c = _c;
         l = _l;
-    } else
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ l <= 0");
+    }
     S = 0;
 }
 
@@ -103,7 +104,11 @@ Tetrahedron::Tetrahedron(const Tetrahedron& z) {
 }
 
 bool Tetrahedron::operator == (const Tetrahedron& z) const {
-    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_c() == z.get_c()) && (this->get_l() == z.get_l()))
+    bool flag1 = (this->get_a() == z.get_a());
+    bool flag2 = (this->get_b() == z.get_b());
+    bool flag3 = (this->get_c() == z.get_c());
+    bool flag4 = (this->get_l() == z.get_l());
+    if ((flag1) && (flag2) && (flag3) && (flag4))
         return true;
     else
         return false;
