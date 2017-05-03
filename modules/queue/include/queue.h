@@ -1,17 +1,17 @@
 // Copyright 2017 Gvozdeva Viktoria
 
-#ifndef MODULES_GVOZDEVA_VIKTORIA_QUEUE_INCLUDE_QUEUE_H_
-#define MODULES_GVOZDEVA_VIKTORIA_QUEUE_INCLUDE_QUEUE_H_
+#ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
+#define MODULES_QUEUE_INCLUDE_QUEUE_H_
 
 template <typename valType>
 class Queue{
 private:
-    int head, tail, len, maxSize; 
+    int head, tail, len, maxSize;
     valType *queuePtr;
 
 public:
     Queue();
-    Queue(int _maxSize);
+    explicit Queue(int _maxSize);
     ~Queue();
     Queue(const Queue &);
     bool IsFull() const;
@@ -23,8 +23,7 @@ public:
 };
 
 template <class valType>
-Queue <valType> ::Queue(int _maxSize)
-{
+Queue <valType> ::Queue(int _maxSize){
     if (_maxSize > 0)
     {
         maxSize = _maxSize;
@@ -38,8 +37,7 @@ Queue <valType> ::Queue(int _maxSize)
 }
 
 template <class valType>
-Queue <valType> ::Queue()
-{
+Queue <valType> ::Queue(){
     maxSize = 10;
     queuePtr = new valType[maxSize];
     if (queuePtr == nullptr) throw "Memory was not allocated";
@@ -49,8 +47,7 @@ Queue <valType> ::Queue()
 }
 
 template <class valType>
-Queue <valType> ::Queue(const Queue& Q)
-{
+Queue <valType> ::Queue(const Queue& Q){
     maxSize = Q.maxSize;
     head = Q.head;
     tail = Q.tail;
@@ -62,14 +59,12 @@ Queue <valType> ::Queue(const Queue& Q)
 }
 
 template <class valType>
-Queue<valType> :: ~Queue()
-{
+Queue<valType> :: ~Queue(){
     delete[] queuePtr;
     queuePtr = nullptr;
 }
 template <class valType>
-bool Queue<valType> :: operator==(const Queue<valType>& Q) const
-{
+bool Queue<valType> :: operator==(const Queue<valType>& Q) const{
     if (this == &Q) return true;
     if (len != Q.len) return false;
     for (int i = 0; i < len; i++)
@@ -81,8 +76,7 @@ bool Queue<valType> :: operator==(const Queue<valType>& Q) const
 }
 
 template <class valType>
-Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
-{
+Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q){
     if (maxSize != Q.maxSize)
     {
         delete[] queuePtr;
@@ -98,19 +92,17 @@ Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
 }
 
 template <class valType>
-bool Queue <valType> ::IsFull() const
-{
+bool Queue <valType> ::IsFull() const{
     return (len == maxSize);
 }
 
 template <class valType>
-bool Queue <valType> ::IsEmpty() const
-{
+bool Queue <valType> ::IsEmpty() const{
     return  (len == 0);
 }
+
 template <class valType>
-void Queue <valType> ::Push(const valType &elem)
-{
+void Queue <valType> ::Push(const valType &elem){
     if (queuePtr == nullptr) throw "Queue was deleted!";
     if (IsFull()) throw "Queue is full!";
     else
@@ -122,9 +114,9 @@ void Queue <valType> ::Push(const valType &elem)
             len++;
         }
 }
+
 template <class valType>
-valType Queue <valType> ::Pop()
-{
+valType Queue <valType> ::Pop(){
     if (queuePtr == nullptr) throw "Queue was deleted!";
     if (IsEmpty()) throw "Queue is empty!";
     else
