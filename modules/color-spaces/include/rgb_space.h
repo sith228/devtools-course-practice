@@ -12,7 +12,7 @@ class RGBSpace {
 
  public:
     RGBSpace(): red(0), green(0), blue(0) {}
-    RGBSpace(const uint8_t red_, const uint8_t green_, const uint8_t blue_);
+    RGBSpace(const int red_, const int green_, const int blue_);
     RGBSpace(const RGBSpace &rgb_space);
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
@@ -25,9 +25,9 @@ class RGBSpace {
     void SetBlue(const uint8_t blue_);
 
     friend bool operator==(const RGBSpace &rgb_space_left,
-                           const RGBSpace &rgb_space_right) const;
+                           const RGBSpace &rgb_space_right);
     friend bool operator!=(const RGBSpace &rgb_space_left,
-                           const RGBSpace &rgb_space_right) const;
+                           const RGBSpace &rgb_space_right);
 };
 
 #endif  // MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
