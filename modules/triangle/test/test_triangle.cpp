@@ -69,14 +69,10 @@ TEST(Triangle_test, Can_create_via_copy_constructor) {
 }
 
 TEST(Triangle_test, Can_create_via_default_constructor) {
-    Triangle t;
+    Triangle t1;
+    Triangle t2(0, 0, 0, 1, 1, 0);
 
-    EXPECT_EQ(0, t.Get_coordX_point(1));
-    EXPECT_EQ(0, t.Get_coordY_point(1));
-    EXPECT_EQ(0, t.Get_coordX_point(2));
-    EXPECT_EQ(1, t.Get_coordY_point(2));
-    EXPECT_EQ(1, t.Get_coordX_point(3));
-    EXPECT_EQ(0, t.Get_coordY_point(3));
+    EXPECT_EQ(t1, t2);
 }
 
 TEST(Triangle_test, Can_calculate_square) {
@@ -113,7 +109,7 @@ TEST(Triangle_test, Can_calculate_medianY) {
 
 TEST(Triangle_test, Equal_triangle_are_equal) {
     Triangle t1(0, 0, 0, 3, 4, 0);
-    Triangle t2(0, 1, 0, 4, 4, 1);
+    Triangle t2(0, 0, 0, 3, 4, 0);
 
     EXPECT_EQ(t1, t2);
 }
@@ -123,12 +119,6 @@ TEST(Triangle_test, Different_trieangle_not_equal) {
     Triangle t2(0, 0, 0, 3.1, 4, 0);
 
     EXPECT_TRUE(t1 != t2);
-}
-
-TEST(Triangle_test, Triangle_is_equal_to_itself) {
-    Triangle t;
-
-    EXPECT_TRUE(t == t);
 }
 
 TEST(Triangle_test, Can_set_coordX) {
@@ -167,14 +157,14 @@ TEST(Triangle_test, Set_coordY_throw_exception_uncorrect_number) {
     Triangle t;
     double point_coordy = 10.11;
 
-    EXPECT_THROW(t.Set_coordX_point(point_coordy, 0), std::string);
+    EXPECT_THROW(t.Set_coordY_point(point_coordy, 0), std::string);
 }
 
 TEST(Triangle_test, Set_coordY_throw_exception_uncorrect_coord) {
     Triangle t(0, 0, 0, 1, 1, 0);
     double point_coordy = 1;
 
-    EXPECT_THROW(t.Set_coordX_point(point_coordy, 1), std::string);
+    EXPECT_THROW(t.Set_coordY_point(point_coordy, 1), std::string);
 }
 
 TEST(Triangle_test, Can_get_coordX) {
@@ -205,12 +195,28 @@ TEST(Triangle_test, Get_coordY_throw_exception) {
     EXPECT_THROW(t.Get_coordY_point(0), std::string);
 }
 
-TEST(Triangle_test, Can_calculate_side) {
+TEST(Triangle_test, Can_calculate_side1) {
     Triangle t(0, 0, 0, 3, 4, 0);
 
     double side = t.Calculate_side(1);
 
     EXPECT_EQ(5, side);
+}
+
+TEST(Triangle_test, Can_calculate_side2) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double side = t.Calculate_side(2);
+
+    EXPECT_EQ(4, side);
+}
+
+TEST(Triangle_test, Can_calculate_side3) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double side = t.Calculate_side(3);
+
+    EXPECT_EQ(3, side);
 }
 
 TEST(Triangle_test, Calculate_side_throw_exception) {
@@ -219,10 +225,26 @@ TEST(Triangle_test, Calculate_side_throw_exception) {
     EXPECT_THROW(t.Calculate_side(0), std::string);
 }
 
-TEST(Triangle_test, Can_calculate_corner) {
+TEST(Triangle_test, Can_calculate_corner1) {
     Triangle t(0, 0, 0, 3, 4, 0);
 
     double corner = t.Calculate_corner(1);
+
+    EXPECT_NEAR(1.57, corner, 0.001);
+}
+
+TEST(Triangle_test, Can_calculate_corner2) {
+    Triangle t(4, 0, 0, 0, 0, 3);
+
+    double corner = t.Calculate_corner(2);
+
+    EXPECT_NEAR(1.57, corner, 0.001);
+}
+
+TEST(Triangle_test, Can_calculate_corner3) {
+    Triangle t(0, 3, 4, 0, 0, 0);
+
+    double corner = t.Calculate_corner(3);
 
     EXPECT_NEAR(1.57, corner, 0.001);
 }

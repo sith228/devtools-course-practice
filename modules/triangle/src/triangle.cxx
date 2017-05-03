@@ -82,31 +82,12 @@ bool Triangle::isTriangle(const Triangle& t) const {
 }
 
 bool Triangle::operator == (const Triangle& t) const {
-    double side1, side2, side3, tside1, tside2, tside3;
-    bool result = false;
-    side1 = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
-        + pow(point1_coordy_ - point2_coordy_, 2));
-    side2 = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
-        + pow(point3_coordy_ - point2_coordy_, 2));
-    side3 = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
-        + pow(point1_coordy_ - point3_coordy_, 2));
-    tside1 = sqrt(pow(t.Get_coordX_point(1) - t.Get_coordX_point(2), 2)
-        + pow(t.Get_coordY_point(1) - t.Get_coordY_point(2), 2));
-    tside2 = sqrt(pow(t.Get_coordX_point(3) - t.Get_coordX_point(2), 2)
-        + pow(t.Get_coordY_point(3) - t.Get_coordY_point(2), 2));
-    tside3 = sqrt(pow(t.Get_coordX_point(1) - t.Get_coordX_point(3), 2)
-        + pow(t.Get_coordY_point(1) - t.Get_coordY_point(3), 2));
-
-    if (side1 == tside1)
-        if (((side2 == tside2) && (side3 == tside3)) ||
-            ((side2 == tside3) && (side3 == tside2))) result = true;
-    if (side1 == tside2)
-        if (((side2 == tside1) && (side3 == tside3)) ||
-            ((side2 == tside3) && (side3 == tside1))) result = true;
-    if (side1 == tside3)
-        if (((side2 == tside2) && (side3 == tside1)) ||
-            ((side2 == tside1) && (side3 == tside2))) result = true;
-    return result;
+    return ((point1_coordx_ == t.Get_coordX_point(1)) &&
+        (point1_coordy_ == t.Get_coordY_point(1))
+        && (point2_coordx_ == t.Get_coordX_point(2)) &&
+        (point2_coordy_ == t.Get_coordY_point(2))
+        && (point3_coordx_ == t.Get_coordX_point(3)) &&
+        (point3_coordy_ == t.Get_coordY_point(3)));
 }
 
 bool Triangle::operator != (const Triangle& t) const {
