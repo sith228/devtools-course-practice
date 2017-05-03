@@ -136,7 +136,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
     EXPECT_NEAR(balance, result, period*month_error);
 }
 
-TEST(Simonyan_Vaginak_CreditCalculator, 
+TEST(Simonyan_Vaginak_CreditCalculator,
     check_balance_with_incorrect_parametrs) {
     // Arrange
     int amount = -300000;
