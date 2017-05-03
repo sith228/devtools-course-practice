@@ -175,6 +175,8 @@ ArithmeticParser::Token ArithmeticParser::GetToken() {
                     ch = *++string_ptr_;
                 } while (isdigit(ch));
 
+                buffer_.push_back('\0');
+
                 double value = number + atof(buffer_.data());
                 return Token(T_NUMBER, value);
             } else {
