@@ -26,7 +26,7 @@ double IntegrationMethod::calculate_function(std::string integrand) {
 
 double IntegrationMethod::rectangle_method(std::string integrand,
     double low_limit,
-	double upper_limit, unsigned quantity_of_steps) {
+    double upper_limit, unsigned quantity_of_steps) {
     std::string func_in_low_limit = change_variable_to_value(integrand,
         low_limit);
     std::string func_in_upper_limit =
@@ -49,7 +49,7 @@ double IntegrationMethod::rectangle_method(std::string integrand,
 
 double IntegrationMethod::trapezoid_method(std::string integrand,
     double low_limit,
-	double upper_limit, unsigned quantity_of_steps) {
+    double upper_limit, unsigned quantity_of_steps) {
         double result = 0;
         if (quantity_of_steps > 1) {
             double y, dy;
