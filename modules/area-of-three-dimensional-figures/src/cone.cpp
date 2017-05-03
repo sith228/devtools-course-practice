@@ -67,7 +67,8 @@ Cone::Cone(const Cone& z) {
 bool Cone::operator == (const Cone& z) const {
     if ((this->getr() == z.getr()) && (this->getl() == z.getl()))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Cone::operator != (const Cone& z) const {

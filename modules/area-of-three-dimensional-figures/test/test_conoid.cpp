@@ -2,7 +2,7 @@
 
 #define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/conoid.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Conoid_Can_Copy_Conoid) {
     // Arrange

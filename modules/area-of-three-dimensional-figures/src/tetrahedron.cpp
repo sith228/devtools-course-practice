@@ -11,10 +11,8 @@ Tetrahedron::Tetrahedron(double _a, double _b, double _c, double _l) {
         b = _b;
         c = _c;
         l = _l;
-    }
-    else {
+    } else
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ l <= 0");
-    }
     S = 0;
 }
 
@@ -39,11 +37,10 @@ double Tetrahedron::getS() const {
 }
 
 void Tetrahedron::set_a(const double _a) {
-    if (_a > 0) {
+    if (_a > 0)
         a = _a;
-    } else {
+    else
         throw std::string("a <= 0");
-    }
 }
 
 void Tetrahedron::set_b(const double _b) {
@@ -55,27 +52,24 @@ void Tetrahedron::set_b(const double _b) {
 }
 
 void Tetrahedron::set_c(const double _c) {
-    if (_c > 0) {
+    if (_c > 0)
         c = _c;
-    } else {
+    else
         throw std::string("c <= 0");
-    }
 }
 
 void Tetrahedron::set_l(const double _l) {
-    if (_l > 0) {
+    if (_l > 0)
         l = _l;
-    } else {
+    else
         throw std::string("l <= 0");
-    }
 }
 
 void Tetrahedron::setS(const double _S) {
-    if (_S >= 0) {
+    if (_S >= 0)
         S = _S;
-    } else {
+    else
         throw std::string("S < 0");
-    }
 }
 
 double Tetrahedron::CalculateS() {
@@ -111,7 +105,8 @@ Tetrahedron::Tetrahedron(const Tetrahedron& z) {
 bool Tetrahedron::operator == (const Tetrahedron& z) const {
     if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_c() == z.get_c()) && (this->get_l() == z.get_l()))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Tetrahedron::operator != (const Tetrahedron& z) const {

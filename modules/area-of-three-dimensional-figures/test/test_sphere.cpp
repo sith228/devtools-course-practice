@@ -2,7 +2,7 @@
 
 #define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/sphere.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere) {
     // Arrange

@@ -1,7 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/pyramid.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Copy_Pyramid) {
     // Arrange

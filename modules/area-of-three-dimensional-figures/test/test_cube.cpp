@@ -1,7 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/cube.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_Copy_cube) {
     // Arrange

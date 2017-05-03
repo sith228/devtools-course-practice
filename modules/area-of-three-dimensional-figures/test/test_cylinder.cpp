@@ -2,7 +2,7 @@
 
 #define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/cylinder.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Copy_Cylinder) {
     // Arrange

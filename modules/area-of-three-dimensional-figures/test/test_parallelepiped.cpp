@@ -2,7 +2,7 @@
 
 #define _USE_MATH_DEFINES
 #include <gtest/gtest.h>
-#include "include/three-dimensional-figures.h"
+#include "include/parallelepiped.h"
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy) {
     // Arrange

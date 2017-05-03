@@ -47,7 +47,8 @@ Cube::Cube(const Cube& z) {
 bool Cube::operator == (const Cube& z) const {
     if (this->geth() == z.geth())
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Cube::operator != (const Cube& z) const {
