@@ -105,20 +105,22 @@ void Queue <valType> ::Push(const valType &elem) {
     if (IsFull()) {
         throw "Queue is full!";
     } else {
-        if (tail == maxSize - 1) tail = 0;
-        else {
+        if (tail == maxSize - 1) {
+            tail = 0;
+        } else {
             tail++;
             queuePtr[tail] = elem;
             len++;
-        }
+      }
    }
 }
 
 template <class valType>
 valType Queue <valType> ::Pop() {
     if (queuePtr == nullptr) throw "Queue was deleted!";
-    if (IsEmpty()) throw "Queue is empty!";
-    else {
+    if (IsEmpty()) {
+        throw "Queue is empty!";
+    } else {
         valType elem = queuePtr[head];
         if (head == maxSize - 1) head = 0;
         else
@@ -127,4 +129,4 @@ valType Queue <valType> ::Pop() {
         return elem;
     }
 }
-#endif  // MODULES_GVOZDEVA_VIKTORIA_QUEUE_INCLUDE_QUEUE_H_
+#endif  // MODULES_QUEUE_INCLUDE_QUEUE_H_
