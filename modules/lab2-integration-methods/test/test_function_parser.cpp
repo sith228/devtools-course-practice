@@ -89,7 +89,7 @@ TEST(PARSER, can_calculate_with_first_cos) {
 }
 
 TEST(PARSER, can_parse_with_deleted_pointer) {
-    std::string *func = new std::string("3+2");
+    std::string *func = new std::string("3+2+1");
     Parser parser(func->c_str());
     delete func;
     ASSERT_NO_THROW(parser.parse());
