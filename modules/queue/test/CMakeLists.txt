@@ -1,7 +1,8 @@
 set(target ${TESTS})
 
 file(GLOB srcs "*.cpp") 
-if(MSVC) add_definitions(/D _VARIADIC_MAX=10)
+if(MSVC) 
+add_definitions(/D _VARIADIC_MAX=10)
 endif()
 
 add_executable(${target} ${srcs} ${hdrs})
