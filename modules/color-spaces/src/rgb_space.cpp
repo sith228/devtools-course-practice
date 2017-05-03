@@ -20,9 +20,9 @@ RGBSpace::RGBSpace(const int red_,
     } else if ((blue_ < 0) || (blue_ > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {
-        red = red_;
-        green = green_;
-        blue = blue_;
+        red = (uint8_t) red_;
+        green = (uint8_t) green_;
+        blue = (uint8_t) blue_;
     }
 }
 
@@ -37,7 +37,7 @@ RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
 }
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
-    if ((&rgb_space != nullptr) && (this != &rgb_space)) {
+    if (this != &rgb_space) {
         RGBSpace(rgb_space).swap(*this);
     }
     return *this;
@@ -55,16 +55,28 @@ uint8_t RGBSpace::GetBlue() const {
     return blue;
 }
 
-void RGBSpace::SetRed(const uint8_t red_) {
-    red = red_;
+void RGBSpace::SetRed(const int red_) {
+    if ((red_ < 0) || (red_ > 255)) {
+        throw std::string("The index of red color isn't in the range 0-255");
+    } else {
+        red = (uint8_t) red_;
+    }
 }
 
-void RGBSpace::SetGreen(const uint8_t green_) {
-    green = green_;
+void RGBSpace::SetGreen(const int green_) {
+    if ((green_ < 0) || (green_ > 255)) {
+        throw std::string("The index of green color isn't in the range 0-255");
+    }  else {
+        green = (uint8_t) green_;
+    }
 }
 
-void RGBSpace::SetBlue(const uint8_t blue_) {
-    blue = blue_;
+void RGBSpace::SetBlue(const int blue_) {
+    if ((blue_ < 0) || (blue_ > 255)) {
+        throw std::string("The index of blue color isn't in the range 0-255");
+    } else {
+        blue = (uint8_t) blue_;
+    }
 }
 
 bool operator==(const RGBSpace &rgb_space_left,

@@ -20,9 +20,9 @@ class RGBSpace {
     uint8_t GetRed() const;
     uint8_t GetGreen() const;
     uint8_t GetBlue() const;
-    void SetRed(const uint8_t red_);
-    void SetGreen(const uint8_t green_);
-    void SetBlue(const uint8_t blue_);
+    void SetRed(const int red_);
+    void SetGreen(const int green_);
+    void SetBlue(const int blue_);
 
     friend bool operator==(const RGBSpace &rgb_space_left,
                            const RGBSpace &rgb_space_right);

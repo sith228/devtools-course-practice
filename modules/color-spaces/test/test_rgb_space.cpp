@@ -82,3 +82,125 @@ TEST(RGBSpaceTest, Can_Enter_Blue_Correct_Data_In_The_Constructor) {
     // Assert
     EXPECT_EQ(blue, space.GetBlue());
 }
+
+TEST(RGBSpaceTest, Can_Use_The_Copying_Constructor) {
+    // Arrange
+    RGBSpace space(203, 102, 59);
+    // Act
+    RGBSpace copy_space(space);
+    // Assert
+    EXPECT_EQ(space, copy_space);
+}
+
+TEST(RGBSpaceTest, Can_Copying_Object_With_Address_Nullptr) {
+    // Arrange
+    RGBSpace *space = nullptr;
+    // Act & Assert
+    EXPECT_ANY_THROW({ RGBSpace copy_space(*space); });
+}
+
+TEST(RGBSpaceTest, Can_Use_Assignment_Operator) {
+    // Arrange
+    RGBSpace space(102, 205, 69);
+    // Act
+    RGBSpace assigment_space = space;
+    // Assert
+    EXPECT_EQ(space, assigment_space);
+}
+
+TEST(RGBSpaceTest, Can_Set_Field_Red) {
+    // Arrange
+    int red = 127;
+    // Act
+    RGBSpace space;
+    space.SetRed(red);
+    // Assert
+    EXPECT_EQ(red, space.GetRed());
+}
+
+TEST(RGBSpaceTest, Can_Set_Field_Green) {
+    // Arrange
+    int green = 253;
+    // Act
+    RGBSpace space;
+    space.SetGreen(green);
+    // Assert
+    EXPECT_EQ(green, space.GetGreen());
+}
+
+TEST(RGBSpaceTest, Can_Set_Field_Blue) {
+    // Arrange
+    int blue = 127;
+    // Act
+    RGBSpace space;
+    space.SetBlue(blue);
+    // Assert
+    EXPECT_EQ(blue, space.GetBlue());
+}
+
+TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Red) {
+    // Arrange
+    int red = 257;
+    // Act
+    RGBSpace space;
+    // Assert
+    EXPECT_ANY_THROW({ space.SetRed(red);});
+}
+
+TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Green) {
+    // Arrange
+    int green = -2;
+    // Act
+    RGBSpace space;
+    // Assert
+    EXPECT_ANY_THROW({ space.SetGreen(green);});
+}
+
+TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
+    // Arrange
+    int blue = -258;
+    // Act
+    RGBSpace space;
+    // Assert
+    EXPECT_ANY_THROW({ space.SetBlue(blue);});
+}
+
+TEST(RGBSpaceTest, Can_Use_Equals_In_RGBSpace) {
+    // Arrange
+    int red = 127;
+    int green = 236;
+    int blue = 56;
+    // Act
+    RGBSpace left_space(red, green, blue);
+    RGBSpace right_space(red, green, blue);
+    bool result = (left_space == right_space);
+    // Assert
+    EXPECT_TRUE(result);
+}
+
+TEST(RGBSpaceTest, Can_Use_Equals_With_As) {
+    // Arrange
+    int red = 127;
+    int green = 236;
+    int blue = 56;
+    // Act
+    RGBSpace space(red, green, blue);
+    bool result = (space == space);
+    // Assert
+    EXPECT_TRUE(result);
+}
+
+
+TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
+    // Arrange
+    int red = 127;
+    int green = 236;
+    int blue = 56;
+    // Act
+    RGBSpace left_space(red, green, blue);
+    red++; green++; blue++;
+    RGBSpace right_space(red, green, blue);
+    bool result = (left_space != right_space);
+    // Assert
+    EXPECT_TRUE(result);
+}
