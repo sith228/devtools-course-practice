@@ -1,7 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/parallelepiped.h"
 #include <cmath>
 #include <string>
 

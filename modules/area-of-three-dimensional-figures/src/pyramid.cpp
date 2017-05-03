@@ -1,6 +1,6 @@
 // Copyright 2017 Kulygina Julia
 
-#include "include/three-dimensional-figures.h"
+#include "include/pyramid.h"
 #include <string>
 
 Pyramid::Pyramid(double _a, double _b, double _l) {

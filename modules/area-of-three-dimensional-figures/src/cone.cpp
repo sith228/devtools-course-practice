@@ -1,8 +1,9 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/cone.h"
 #include <cmath>
+#include <string>
 
 Cone::Cone(double _r, double _l) {
     if ((_r > 0) && (_l > 0)) {

@@ -1,8 +1,9 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/tetrahedron.h"
 #include <cmath>
+#include <string>
 
 Tetrahedron::Tetrahedron(double _a, double _b, double _c, double _l) {
     if ((_a > 0) && (_b > 0) && (_c > 0) && (_l > 0)) {

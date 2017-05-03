@@ -1,6 +1,6 @@
 // Copyright 2017 Kulygina Julia
 
-#include "include/three-dimensional-figures.h"
+#include "include/cube.h"
 #include <string>
 
 Cube::Cube(double _h) {

@@ -1,7 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/conoid.h"
 #include <string>
 
 Conoid::Conoid(double _r1, double _r2, double _l) {

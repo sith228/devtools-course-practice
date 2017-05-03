@@ -1,8 +1,9 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/sphere.h"
 #include <cmath>
+#include <string>
 
 Sphere::Sphere(double _R) {
     if (_R > 0) {

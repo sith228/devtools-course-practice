@@ -1,7 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #define _USE_MATH_DEFINES
-#include "include/three-dimensional-figures.h"
+#include "include/cylinder.h"
 #include <string>
 
 Cylinder::Cylinder(double _r, double _l) {
@@ -66,7 +66,8 @@ Cylinder::Cylinder(const Cylinder& z) {
 bool Cylinder::operator == (const Cylinder& z) const {
     if ((this->getr() == z.getr()) && (this->getl() == z.getl()))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Cylinder::operator != (const Cylinder& z) const {
