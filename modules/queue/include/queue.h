@@ -1,4 +1,4 @@
-// Copyright 2017 Gvozdeva Viktoria
+// Copyright 2017 Gvozdeva Viktoriia
 
 #ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_QUEUE_INCLUDE_QUEUE_H_
