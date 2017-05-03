@@ -135,3 +135,20 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
     // Assert
     EXPECT_NEAR(balance, result, period*month_error);
 }
+
+TEST(Simonyan_Vaginak_CreditCalculator, 
+    check_balance_with_incorrect_parametrs) {
+    // Arrange
+    int amount = -300000;
+    int period = 12;
+    int month_passed = 5;
+    double interest = 22;
+    double result;
+    CreditCalculator cred;
+
+    // Act
+    result = cred.check_balance(amount, period, interest, month_passed);
+
+    // Assert
+    EXPECT_EQ(-1, result);
+}
