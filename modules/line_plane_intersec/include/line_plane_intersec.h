@@ -21,7 +21,8 @@ class Intersection {
     Intersection();
     void SetLine(double linex0_, double liney0_, double linez0_,
     double linem_, double linen_, double linep_);
-    void SetPlane(double planeA_, double planeB_, double planeC_, double planeD_);
+    void SetPlane(double planeA_, double planeB_, double planeC_,
+    double planeD_);
     std::vector <double> GetLine(void);
     std::vector <double> GetPlane(void);
     Intersection(double x0, double y0, double z0,
