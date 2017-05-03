@@ -51,7 +51,8 @@ void Triangle::Set_coordX_point(const double x, const int number_point) {
     if (number_point == 1) point1_coordx_ = x;
     if (number_point == 2) point2_coordx_ = x;
     if (number_point == 3) point3_coordx_ = x;
-    if ((number_point != 1) && (number_point != 2) && (number_point != 3)) throw std::string("Unknown number of point");
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3))
+        throw std::string("Unknown number of point");
     if (!isTriangle(*this)) {
         throw std::string("New coordinates do not form a triangle.");
     }
@@ -61,7 +62,8 @@ void Triangle::Set_coordY_point(const double y, const int number_point) {
     if (number_point == 1) point1_coordy_ = y;
     if (number_point == 2) point2_coordy_ = y;
     if (number_point == 3) point3_coordy_ = y;
-    if ((number_point != 1) && (number_point != 2) && (number_point != 3)) throw std::string("Unknown number of point");
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3))
+        throw std::string("Unknown number of point");
     if (!isTriangle(*this)) {
         throw std::string("New coordinates do not form a triangle.");
     }
