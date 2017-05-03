@@ -16,19 +16,30 @@ int get_priority(const std::string& token) {
     return 0;
 }
 
-Expression::Expression(std::string token) : token(token) {}
+Expression::Expression(const std::string &token) : token(token) {}
 
-Expression::Expression(std::string token, Expression a) : token(token) {
+Expression::Expression(const std::string &token, Expression a) : token(token) {
     args.push_back(a);
 }
 
-Expression::Expression(std::string token, Expression a, Expression b) :
+Expression::Expression(const std::string &token, Expression a, Expression b) :
     token(token) {
     args.push_back(a);
     args.push_back(b);
 }
 
-Parser::Parser(const char *input) : input(input) {}
+Parser::Parser(const char *input) {
+    if (input != nullptr) {
+        int size = std::strlen(input);
+        this->input = new char[size+1];
+        for (int i=0; i<size; i++) {
+            this->input[i] = input[i];
+        }
+        this->input[size] = '\0';
+    } else {
+        throw std::runtime_error("Input should not be null");
+    }
+}
 
 std::string Parser::parse_token() {
     if (input != nullptr) {
@@ -98,33 +109,33 @@ Expression Parser::parse() {
     return parse_binary_expression(0);
 }
 
-double eval(Expression e) {
-    switch (e.args.size()) {
+double Expression::eval() {
+    switch (args.size()) {
     case 2: {
-                auto a = eval(e.args[0]);
-                auto b = eval(e.args[1]);
-                if (e.token == "+") return a + b;
-                if (e.token == "-") return a - b;
-                if (e.token == "*") return a * b;
-                if (e.token == "/") return a / b;
-                if (e.token == "**") return pow(a, b);
-                if (e.token == "mod")
+                auto a = args[0].eval();
+                auto b = args[1].eval();
+                if (token == "+") return a + b;
+                if (token == "-") return a - b;
+                if (token == "*") return a * b;
+                if (token == "/") return a / b;
+                if (token == "**") return pow(a, b);
+                if (token == "mod")
                     return static_cast<int>(a) % static_cast<int>(b);
                 throw std::runtime_error("Unknown binary operator");
     }
 
     case 1: {
-                auto a = eval(e.args[0]);
-                if (e.token == "+") return +a;
-                if (e.token == "-") return -a;
-                if (e.token == "abs") return fabs(a);
-                if (e.token == "sin") return sin(a);
-                if (e.token == "cos") return cos(a);
+                auto a = args[0].eval();
+                if (token == "+") return +a;
+                if (token == "-") return -a;
+                if (token == "abs") return fabs(a);
+                if (token == "sin") return sin(a);
+                if (token == "cos") return cos(a);
                 throw std::runtime_error("Unknown unary operator");
     }
 
     case 0:
-        return strtod(e.token.c_str(), nullptr);
+        return strtod(token.c_str(), nullptr);
     }
 
     throw std::runtime_error("Unknown expression type");

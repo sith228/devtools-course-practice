@@ -7,11 +7,10 @@
 
 class IntegrationMethod {
  public:
-    IntegrationMethod();
     double rectangle_method(std::string integrand, double low_limit,
-        double upper_limit, int quantity_of_steps);
+		double upper_limit, unsigned quantity_of_steps);
     double trapezoid_method(std::string integrand, double low_limit,
-        double upper_limit, int quantity_of_steps);
+		double upper_limit, unsigned quantity_of_steps);
     double simpson_method(std::string integrand, double low_limit,
         double upper_limit, double eps);
  private:

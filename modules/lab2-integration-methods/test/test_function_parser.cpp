@@ -44,7 +44,7 @@ TEST(PARSER, can_calculate) {
     std::string func = "45+15*sin(2*45) + cos(45)";
 
     Parser parser(func.c_str());
-    double actual = eval(parser.parse());
+    double actual = parser.parse().eval();
     double expected = 45 + 15*sin(2*45) + cos(45);
 
     EXPECT_EQ(expected, actual);
@@ -58,7 +58,7 @@ TEST(PARSER, throw_exception_when_input_empty) {
 }
 
 TEST(PARSER, throw_exception_when_input_invalid) {
-    std::string func = "10*(115+3";
+    std::string func = "10*(15+3";
 
     Parser parser(func.c_str());
     ASSERT_ANY_THROW(parser.parse());
@@ -69,19 +69,28 @@ TEST(PARSER, throw_exception_when_unknow_binary_operator) {
 
     Parser parser(func.c_str());
 
-    ASSERT_ANY_THROW(eval(parser.parse()));
+    ASSERT_ANY_THROW(parser.parse().eval());
 }
 
 TEST(PARSER, throw_exception_when_unknow_unary_operator) {
     std::string func = "qwe(2)";
 
     Parser parser(func.c_str());
-    ASSERT_ANY_THROW(eval(parser.parse()));
+    ASSERT_ANY_THROW(parser.parse().eval());
 }
 
-TEST(PARSER, can_create_with_null) {
-    const char *func = nullptr;
+TEST(PARSER, can_calculate_with_first_cos){
+    const char *func = "cos(180)";
 
     Parser parser(func);
-    ASSERT_ANY_THROW(parser.parse());
+
+    double expected = cos(180);
+    EXPECT_EQ(expected, parser.parse().eval());
+}
+
+TEST(PARSER, can_parse_with_deleted_pointer) {
+    std::string *func = new std::string("3+2");
+    Parser parser(func->c_str());
+    delete func;
+    ASSERT_NO_THROW(parser.parse());
 }

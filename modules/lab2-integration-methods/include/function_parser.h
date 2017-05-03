@@ -7,27 +7,26 @@
 #include <string>
 
 struct Expression {
-    explicit Expression(std::string token);
-    Expression(std::string token, Expression a);
-    Expression(std::string token, Expression a, Expression b);
+    explicit Expression(const std::string &token);
+    Expression(const std::string &token, Expression a);
+    Expression(const std::string &token, Expression a, Expression b);
 
     std::string token;
     std::vector<Expression> args;
+    double eval();
 };
 
 class Parser {
  public:
-     explicit Parser(const char* input);
+    explicit Parser(const char* input);
     Expression parse();
 
  private:
-    std::string parse_token();
-    Expression parse_simple_expression();
-    Expression parse_binary_expression(int min_priority);
+     std::string parse_token();
+     Expression parse_simple_expression();
+     Expression parse_binary_expression(int min_priority);
 
-    const char* input;
+    char* input;
 };
-
-double eval(Expression e);
 
 #endif  // MODULES_LAB2_INTEGRATION_METHODS_INCLUDE_FUNCTION_PARSER_H_
