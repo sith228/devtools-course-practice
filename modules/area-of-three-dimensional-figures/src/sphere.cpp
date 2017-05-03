@@ -7,8 +7,7 @@
 Sphere::Sphere(double _R) {
     if (_R > 0) {
         R = _R;
-    }
-    else {
+    } else {
         throw std::string("R <= 0");
     }
     S = 0;
@@ -25,8 +24,7 @@ double Sphere::getS() const {
 void Sphere::setR(const double _R) {
     if (_R > 0) {
         R = _R;
-    }
-    else {
+    } else {
         throw std::string("R <= 0");
     }
 }
@@ -34,8 +32,7 @@ void Sphere::setR(const double _R) {
 void Sphere::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }
@@ -54,7 +51,8 @@ Sphere::Sphere(const Sphere& z) {
 bool Sphere::operator == (const Sphere& z) const {
     if (this->getR() == z.getR())
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Sphere::operator != (const Sphere& z) const {

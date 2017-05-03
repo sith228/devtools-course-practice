@@ -1,6 +1,7 @@
 // Copyright 2017 Kulygina Julia
 
 #include "include/three-dimensional-figures.h"
+#include <string>
 
 Pyramid::Pyramid(double _a, double _b, double _l) {
     if ((_a > 0) && (_b > 0) && (_l > 0)) {
@@ -84,9 +85,12 @@ Pyramid::Pyramid(const Pyramid& z) {
 }
 
 bool Pyramid::operator == (const Pyramid& z) const {
-    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_l() == z.get_l())) {
+    bool flag1 = (this->get_a() == z.get_a());
+    bool flag2 = (this->get_b() == z.get_b());
+    bool flag3 = (this->get_l() == z.get_l());
+    if ((flag1) && (flag2) && (flag3))
         return true;
-    } else 
+    else
         return false;
 }
 

@@ -40,8 +40,7 @@ double Tetrahedron::getS() const {
 void Tetrahedron::set_a(const double _a) {
     if (_a > 0) {
         a = _a;
-    }
-    else {
+    } else {
         throw std::string("a <= 0");
     }
 }
@@ -49,8 +48,7 @@ void Tetrahedron::set_a(const double _a) {
 void Tetrahedron::set_b(const double _b) {
     if (_b > 0) {
         b = _b;
-    }
-    else {
+    } else {
         throw std::string("b <= 0");
     }
 }
@@ -58,8 +56,7 @@ void Tetrahedron::set_b(const double _b) {
 void Tetrahedron::set_c(const double _c) {
     if (_c > 0) {
         c = _c;
-    }
-    else {
+    } else {
         throw std::string("c <= 0");
     }
 }
@@ -67,8 +64,7 @@ void Tetrahedron::set_c(const double _c) {
 void Tetrahedron::set_l(const double _l) {
     if (_l > 0) {
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("l <= 0");
     }
 }
@@ -76,8 +72,7 @@ void Tetrahedron::set_l(const double _l) {
 void Tetrahedron::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }

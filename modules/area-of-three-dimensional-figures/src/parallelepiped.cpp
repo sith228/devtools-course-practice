@@ -3,14 +3,14 @@
 #define _USE_MATH_DEFINES
 #include "include/three-dimensional-figures.h"
 #include <cmath>
+#include <string>
 
 Parallelepiped::Parallelepiped(double _a, double _b, double _c) {
     if ((_a > 0) && (_b > 0) && (_c > 0)) {
         a = _a;
         b = _b;
         c = _c;
-    }
-    else {
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0");
     }
     S = 0;
@@ -35,8 +35,7 @@ double Parallelepiped::getS() const {
 void Parallelepiped::set_a(const double _a) {
     if (_a > 0) {
         a = _a;
-    }
-    else {
+    } else {
         throw std::string("a <= 0");
     }
 }
@@ -44,8 +43,7 @@ void Parallelepiped::set_a(const double _a) {
 void Parallelepiped::set_b(const double _b) {
     if (_b > 0) {
         b = _b;
-    }
-    else {
+    } else {
         throw std::string("b <= 0");
     }
 }
@@ -53,8 +51,7 @@ void Parallelepiped::set_b(const double _b) {
 void Parallelepiped::set_c(const double _c) {
     if (_c > 0) {
         c = _c;
-    }
-    else {
+    } else {
         throw std::string("c <= 0");
     }
 }
@@ -62,8 +59,7 @@ void Parallelepiped::set_c(const double _c) {
 void Parallelepiped::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }
@@ -84,9 +80,13 @@ Parallelepiped::Parallelepiped(const Parallelepiped& z) {
 }
 
 bool Parallelepiped::operator == (const Parallelepiped& z) const {
-    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_c() == z.get_c()))
+    bool flag1 = (this->get_a() == z.get_a());
+    bool flag2 = (this->get_b() == z.get_b());
+    bool flag3 = (this->get_c() == z.get_c());
+    if ((flag1) && (flag2) && (flag3))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Parallelepiped::operator != (const Parallelepiped& z) const {

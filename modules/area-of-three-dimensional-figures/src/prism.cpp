@@ -3,6 +3,7 @@
 #define _USE_MATH_DEFINES
 #include "include/three-dimensional-figures.h"
 #include <cmath>
+#include <string>
 
 Prism::Prism(double _a, double _b, double _c, double _h) {
     if ((_a > 0) && (_b > 0) && (_c > 0) && (_h > 0)) {
@@ -10,8 +11,7 @@ Prism::Prism(double _a, double _b, double _c, double _h) {
         b = _b;
         c = _c;
         h = _h;
-    }
-    else {
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ h <= 0");
     }
     S = 0;
@@ -40,8 +40,7 @@ double Prism::getS() const {
 void Prism::set_a(const double _a) {
     if (_a > 0) {
         a = _a;
-    }
-    else {
+    } else {
         throw std::string("a <= 0");
     }
 }
@@ -49,8 +48,7 @@ void Prism::set_a(const double _a) {
 void Prism::set_b(const double _b) {
     if (_b > 0) {
         b = _b;
-    }
-    else {
+    } else {
         throw std::string("b <= 0");
     }
 }
@@ -58,8 +56,7 @@ void Prism::set_b(const double _b) {
 void Prism::set_c(const double _c) {
     if (_c > 0) {
         c = _c;
-    }
-    else {
+    } else {
         throw std::string("c <= 0");
     }
 }
@@ -67,8 +64,7 @@ void Prism::set_c(const double _c) {
 void Prism::set_h(const double _h) {
     if (_h > 0) {
         h = _h;
-    }
-    else {
+    } else {
         throw std::string("h <= 0");
     }
 }
@@ -76,8 +72,7 @@ void Prism::set_h(const double _h) {
 void Prism::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }
@@ -103,9 +98,14 @@ Prism::Prism(const Prism& z) {
 }
 
 bool Prism::operator == (const Prism& z) const {
-    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_c() == z.get_c()) && (this->get_h() == z.get_h()))
+    bool flag1 = (this->get_a() == z.get_a());
+    bool flag2 = (this->get_b() == z.get_b());
+    bool flag3 = (this->get_c() == z.get_c());
+    bool flag4 = (this->get_h() == z.get_h());
+    if ((flag1) && (flag2) && (flag3) && (flag4))
         return true;
-    else return false;
+    else
+        return false;
 }
 
 bool Prism::operator != (const Prism& z) const {

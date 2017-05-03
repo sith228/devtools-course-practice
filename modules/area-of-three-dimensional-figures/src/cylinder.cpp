@@ -2,13 +2,13 @@
 
 #define _USE_MATH_DEFINES
 #include "include/three-dimensional-figures.h"
+#include <string>
 
 Cylinder::Cylinder(double _r, double _l) {
     if ((_r > 0) && (_l > 0)) {
         r = _r;
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("r <= 0 ~~ l <= 0");
     }
     S = 0;
@@ -29,8 +29,7 @@ double Cylinder::getS() const {
 void Cylinder::setr(const double _r) {
     if (_r > 0) {
         r = _r;
-    }
-    else {
+    } else {
         throw std::string("r <= 0");
     }
 }
@@ -38,8 +37,7 @@ void Cylinder::setr(const double _r) {
 void Cylinder::setl(const double _l) {
     if (_l > 0) {
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("l <= 0");
     }
 }
@@ -47,8 +45,7 @@ void Cylinder::setl(const double _l) {
 void Cylinder::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }

@@ -2,6 +2,7 @@
 
 #define _USE_MATH_DEFINES
 #include "include/three-dimensional-figures.h"
+#include <string>
 
 Conoid::Conoid(double _r1, double _r2, double _l) {
     if ((_r1 > 0) && (_l > 0) && (_r2 > 0)) {
@@ -78,9 +79,12 @@ Conoid::Conoid(const Conoid& z) {
 }
 
 bool Conoid::operator == (const Conoid& z) const {
-    if ((this->getr1() == z.getr1()) && (this->getr2() == z.getr2()) && (this->getl() == z.getl())) {
+    bool flag1 = (this->getr1() == z.getr1());
+    bool flag2 = (this->getr2() == z.getr2());
+    bool flag3 = (this->getl() == z.getl());
+    if ((flag1) && (flag2) && (flag3))
         return true;
-    } else 
+    else
         return false;
 }
 
