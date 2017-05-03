@@ -38,9 +38,9 @@ TEST(InterpolationSearch, Search_Works_Correctly) {
 
 
 TEST(InterpolationSearch, Throws_When_Array_Unsorted) {
-  const int length = 3;
-  int * unSortedArray = new int[length] {3, 2, 2};
-  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(unSortedArray, length));
+  const int len = 3;
+  int * unSortedArr = new int[len] {3, 2, 2};
+  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(unSortedArr, len));
 }
 
 TEST(InterpolationSearch, Search_Works_In_One_Elem_Array) {
