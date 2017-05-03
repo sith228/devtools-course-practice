@@ -9,11 +9,13 @@
 
 class Sort {
  public:
-    Sort(const int Array_[], int Length);
+    Sort(const int Array[], int Length);
     ~Sort();
     Sort(const Sort&) = delete;
     int operator[] (int i) const {return Array_[i]; }
     bool operator== (const Sort& z) const;
+    void QuickSort(int l, int m);
+    void PasteSort(void);
  private:
     int* Array_;
     int Length_;
