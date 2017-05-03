@@ -125,7 +125,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_3) {
     EXPECT_ANY_THROW(Parallelepiped z(1.0, 0.2, c));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_Parallelepiped) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create) {
     // Arrange
     double a = 2.0;
     double b = 3.0;
