@@ -106,5 +106,3 @@ TEST(Queue, can_push_element_in_queue) {
 	// Act & Assert
     EXPECT_NO_THROW(Q.Push(10));
 }
-
-
