@@ -79,7 +79,7 @@ TEST(PARSER, throw_exception_when_unknow_unary_operator) {
     ASSERT_ANY_THROW(parser.parse().eval());
 }
 
-TEST(PARSER, can_calculate_with_first_cos){
+TEST(PARSER, can_calculate_with_first_cos) {
     const char *func = "cos(180)";
 
     Parser parser(func);
