@@ -6,22 +6,22 @@
 
 class Intersection {
  private:
-    double linex0;
-    double liney0;
-    double linez0;
-    double linem;
-    double linen;
-    double linep;
-    double planeA;
-    double planeB;
-    double planeC;
-    double planeD;
+    double linex0_;
+    double liney0_;
+    double linez0_;
+    double linem_;
+    double linen_;
+    double linep_;
+    double planeA_;
+    double planeB_;
+    double planeC_;
+    double planeD_;
 
  public:
     Intersection();
-    void SetLine(double linex0, double liney0, double linez0,
-    double linem, double linen, double linep);
-    void SetPlane(double planeA, double planeB, double planeC, double planeD);
+    void SetLine(double linex0_, double liney0_, double linez0_,
+    double linem_, double linen_, double linep_);
+    void SetPlane(double planeA_, double planeB_, double planeC_, double planeD_);
     std::vector <double> GetLine(void);
     std::vector <double> GetPlane(void);
     Intersection(double x0, double y0, double z0,
