@@ -23,16 +23,6 @@ point1_coordx_(t.Get_coordX_point(1)), point1_coordy_(t.Get_coordY_point(1)),
 point2_coordx_(t.Get_coordX_point(2)), point2_coordy_(t.Get_coordY_point(2)),
 point3_coordx_(t.Get_coordX_point(3)), point3_coordy_(t.Get_coordY_point(3)) {}
 
-Triangle& Triangle::operator=(const Triangle& t) {
-    point1_coordx_ = t.Get_coordX_point(1);
-    point1_coordy_ = t.Get_coordY_point(1);
-    point2_coordx_ = t.Get_coordX_point(2);
-    point2_coordy_ = t.Get_coordY_point(2);
-    point3_coordx_ = t.Get_coordX_point(3);
-    point3_coordy_ = t.Get_coordY_point(3);
-    return *this;
-}
-
 double Triangle::Get_coordX_point(const int number_point) const {
     if (number_point == 1) return point1_coordx_;
     if (number_point == 2) return point2_coordx_;

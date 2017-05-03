@@ -11,7 +11,6 @@ class Triangle {
         const double point3_coordx, const double point3_coordy);
     Triangle(const Triangle& t);
 
-    Triangle& operator = (const Triangle& t);
     bool operator == (const Triangle& t) const;
     bool operator != (const Triangle& t) const;
 

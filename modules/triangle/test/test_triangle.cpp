@@ -38,21 +38,6 @@ TEST(Triangle_test, Constructor_throw_exception) {
         point2_coordy, point3_coordx, point3_coordy), std::string);
 }
 
-TEST(Triangle_test, Can_create_via_copying) {
-    double point1_coordx = 10.11;
-    double point1_coordy = 10.11;
-    double point2_coordx = 12.14;
-    double point2_coordy = 12.14;
-    double point3_coordx = 0;
-    double point3_coordy = 5.31;
-
-    Triangle t(point1_coordx, point1_coordy, point2_coordx, point2_coordy,
-        point3_coordx, point3_coordy);
-    Triangle copy_t = t;
-
-    EXPECT_EQ(copy_t, t);
-}
-
 TEST(Triangle_test, Can_create_via_copy_constructor) {
     double point1_coordx = 10.11;
     double point1_coordy = 10.11;
