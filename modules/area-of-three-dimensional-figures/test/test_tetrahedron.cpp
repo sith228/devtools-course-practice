@@ -31,7 +31,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_Copy_Tetrahedron_bool) {
     EXPECT_EQ(z, z2);
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_comparation_Tetrahedron) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_comparation) {
     // Arrange
     double a = 2.0;
     double b = 3.0;
@@ -186,7 +186,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_set_b) {
     EXPECT_EQ(2.0, z.get_b());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setr_with_negative_a) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_set_with_neg_a) {
     // Arrang
     Tetrahedron z(0.2, 0.3, 0.1, 0.5);
 
@@ -194,7 +194,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setr_with_negative_a)
     EXPECT_ANY_THROW(z.set_a(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setr_with_negative_b) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_set_with_neg_b) {
     // Arrang
     Tetrahedron z(0.2, 0.3, 0.1, 0.5);
 
@@ -210,7 +210,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Can_setS) {
     EXPECT_NO_THROW(z.setS(2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setS_with_negative_S) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_set_with_neg_S) {
     // Arrang
     Tetrahedron z(0.2, 0.3, 0.1, 0.5);
 
@@ -218,7 +218,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setS_with_negative_S)
     EXPECT_ANY_THROW(z.setS(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setl_with_negative_c) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_set_with_neg_c) {
     // Arrang
     Tetrahedron z(0.2, 0.3, 0.1, 0.5);
 
@@ -226,7 +226,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setl_with_negative_c)
     EXPECT_ANY_THROW(z.set_c(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_setl_with_negative_l) {
+TEST(AreaOfThreeDimensionalFiguresTest, Tetrahedron_Assert_set_with_neg_l) {
     // Arrang
     Tetrahedron z(0.2, 0.3, 0.1, 0.5);
 
