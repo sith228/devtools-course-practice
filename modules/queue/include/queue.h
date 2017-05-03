@@ -112,7 +112,7 @@ void Queue <valType> ::Push(const valType &elem) {
             queuePtr[tail] = elem;
             len++;
       }
-   }
+    }
 }
 
 template <class valType>
