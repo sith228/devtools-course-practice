@@ -115,7 +115,7 @@ TEST(Triangle_test, Equal_triangle_are_equal) {
     Triangle t1(0, 0, 0, 3, 4, 0);
     Triangle t2(0, 1, 0, 4, 4, 1);
 
-    EXPECT_TRUE(t1 == t2);
+    EXPECT_EQ(t1, t2);
 }
 
 TEST(Triangle_test, Different_trieangle_not_equal) {
@@ -123,6 +123,12 @@ TEST(Triangle_test, Different_trieangle_not_equal) {
     Triangle t2(0, 0, 0, 3.1, 4, 0);
 
     EXPECT_TRUE(t1 != t2);
+}
+
+TEST(Triangle_test, Triangle_is_equal_to_itself) {
+    Triangle t;
+
+    EXPECT_TRUE(t == t);
 }
 
 TEST(Triangle_test, Can_set_coordX) {
