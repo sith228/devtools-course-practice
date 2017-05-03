@@ -1,3 +1,5 @@
+// Copyright 2017 Olga Kiseleva
+
 #include <gtest/gtest.h>
 
 #include "include/statistical_moments.h"
@@ -35,6 +37,7 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest, Do_Throw_When_Sizes_Not_equals) {
     // Arrange
     std::vector<double> values = { 0,1,2,3 };
     std::vector<double> changes = { 0.25,0.1,0.35 };
+
     // Act+Assert
     EXPECT_ANY_THROW(statisticalMoments(values, changes));
 }
@@ -53,7 +56,7 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest, Can_Count_Starting_Moment_With_1_orde
     statisticalMoments test(values, changes);
     double test_moment = test.getMoment(1);
     //Assert
-    EXPECT_DOUBLE_EQ(1.624,test_moment);
+    EXPECT_DOUBLE_EQ(1.624, test_moment);
 }
 
 
