@@ -3,7 +3,6 @@
 #ifndef MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
 #define MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
 
-#include <iostream>
 #include <string>
 
 typedef unsigned int MemoryBlock;

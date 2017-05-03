@@ -1,7 +1,7 @@
 // Copyright 2017 Grachev Vlad
 
-#include "include/bit_array.h"
 #include <string>
+#include "include/bit_array.h"
 
 BitArray::BitArray(const int size) {
     if (size > 0) {
