@@ -9,7 +9,7 @@ class CreditCalculator {
  public:
   CreditCalculator();
   bool check_data(int amount, int period, double interest);
-  bool check_data(int amount, int period, double interest, int month_pas);
+  bool check_data2(int amount, int period, double interest, int month_pas);
   double overpayment_amount(int amount, int period, double interest);
   double monthly_payment(int amount, int period, double interest);
   double total_payout(int amount, int period, double interest);

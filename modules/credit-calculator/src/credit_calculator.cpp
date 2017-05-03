@@ -5,7 +5,7 @@
 
 CreditCalculator::CreditCalculator() {}
 
-bool CreditCalculator::check_data(int amount, int period,
+bool CreditCalculator::check_data2(int amount, int period,
     double interest, int month_pas) {
     if (amount > 0 && period > 0 && period <= 60 && interest > 0 &&
         interest < 100 && month_pas >= 0 && month_pas <= period)
@@ -51,7 +51,7 @@ double CreditCalculator::overpayment_amount(int amount, int period,
 
 double CreditCalculator::check_balance(int amount, int period,
     double interest, int month_pas) {
-    if (!check_data(amount, period, interest, month_pas))
+    if (!check_data2(amount, period, interest, month_pas))
         return -1;
     CreditCalculator tmp;
     double paid_out;

@@ -74,7 +74,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_incorrect_passed) {
     CreditCalculator cred;
 
     // Act
-    result = cred.check_data(amount, period, interest, month_passed);
+    result = cred.check_data2(amount, period, interest, month_passed);
 
     // Assert
     EXPECT_EQ(false, result);
