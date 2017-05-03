@@ -43,8 +43,7 @@ double IntegrationMethod::rectangle_method(std::string integrand,
         s+=calculate_function(func);
     }
 
-    double result = s*h;
-    return result;
+    return s*h;
 }
 
 double IntegrationMethod::trapezoid_method(std::string integrand,
