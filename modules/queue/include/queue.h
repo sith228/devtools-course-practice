@@ -24,16 +24,14 @@ public:
 
 template <class valType>
 Queue <valType> ::Queue(int _maxSize) {
-    if (_maxSize > 0)
-    {
+    if (_maxSize > 0) {
         maxSize = _maxSize;
         queuePtr = new valType[maxSize];
         if (queuePtr == nullptr) throw "Memory was not allocated";
         len = 0;
         head = 0;
         tail = -1;
-    }
-        else
+    } else
         throw "Size is incorrect!";
 }
 
@@ -107,21 +105,19 @@ void Queue <valType> ::Push(const valType &elem) {
     if (IsFull()) throw "Queue is full!";
     else {
         if (tail == maxSize - 1) tail = 0;
-        else
-        {
+        else {
             tail++;
             queuePtr[tail] = elem;
             len++;
         }
-    }
+   }
 }
 
 template <class valType>
 valType Queue <valType> ::Pop() {
     if (queuePtr == nullptr) throw "Queue was deleted!";
     if (IsEmpty()) throw "Queue is empty!";
-    else
-    {
+    else {
         valType elem = queuePtr[head];
         if (head == maxSize - 1) head = 0;
         else
