@@ -4,9 +4,11 @@
 #define MODULES_TRIANGLE_INCLUDE_TRIANGLE_H_
 
 class Triangle {
-public:
+public :
     Triangle();
-    Triangle(const double point1_coordx, const double point1_coordy, const double point2_coordx, const double point2_coordy, const double point3_coordx, const double point3_coordy);
+    Triangle(const double point1_coordx, const double point1_coordy,
+        const double point2_coordx, const double point2_coordy,
+        const double point3_coordx, const double point3_coordy);
     Triangle(const Triangle& t);
 
     Triangle& operator = (const Triangle& t);
@@ -28,7 +30,7 @@ public:
     double Get_coordX_median() const;
     double Get_coordY_median() const;
 
-private:
+private :
     bool isTriangle(const Triangle& t) const;
     double point1_coordx_;
     double point1_coordy_;

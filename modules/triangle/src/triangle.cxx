@@ -18,9 +18,9 @@ Triangle::Triangle(const double point1_coordx, const double point1_coordy,
     }
 }
 
-Triangle::Triangle(const Triangle& t) : 
-point1_coordx_(t.Get_coordX_point(1)), point1_coordy_(t.Get_coordY_point(1)), 
-point2_coordx_(t.Get_coordX_point(2)), point2_coordy_(t.Get_coordY_point(2)), 
+Triangle::Triangle(const Triangle& t) :
+point1_coordx_(t.Get_coordX_point(1)), point1_coordy_(t.Get_coordY_point(1)),
+point2_coordx_(t.Get_coordX_point(2)), point2_coordy_(t.Get_coordY_point(2)),
 point3_coordx_(t.Get_coordX_point(3)), point3_coordy_(t.Get_coordY_point(3)) {}
 
 Triangle& Triangle::operator=(const Triangle& t) {
@@ -38,7 +38,6 @@ double Triangle::Get_coordX_point(const int number_point) const {
     if (number_point == 2) return point2_coordx_;
     if (number_point == 3) return point3_coordx_;
     throw std::string("Unknown number of point");
-
 }
 
 double Triangle::Get_coordY_point(const int number_point) const {
@@ -50,12 +49,9 @@ double Triangle::Get_coordY_point(const int number_point) const {
 
 void Triangle::Set_coordX_point(const double x, const int number_point) {
     if (number_point == 1) point1_coordx_ = x;
-    else
-        if (number_point == 2) point2_coordx_ = x;
-        else
-            if (number_point == 3) point3_coordx_ = x;
-            else
-                throw std::string("Unknown number of point");
+    if (number_point == 2) point2_coordx_ = x;
+    if (number_point == 3) point3_coordx_ = x;
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3)) throw std::string("Unknown number of point");
     if (!isTriangle(*this)) {
         throw std::string("New coordinates do not form a triangle.");
     }
@@ -63,12 +59,9 @@ void Triangle::Set_coordX_point(const double x, const int number_point) {
 
 void Triangle::Set_coordY_point(const double y, const int number_point) {
     if (number_point == 1) point1_coordy_ = y;
-    else
-        if (number_point == 2) point2_coordy_ = y;
-        else
-            if (number_point == 3) point3_coordy_ = y;
-            else
-                throw std::string("Unknown number of point");
+    if (number_point == 2) point2_coordy_ = y;
+    if (number_point == 3) point3_coordy_ = y;
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3)) throw std::string("Unknown number of point");
     if (!isTriangle(*this)) {
         throw std::string("New coordinates do not form a triangle.");
     }
