@@ -76,8 +76,8 @@ std::vector<double> Intersection::CalculateIntersection() {
     if (temp == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {
-        temp = (-1 * (planeA_*linex0_ + planeB_*liney0_ + planeC_*linez0_ + planeD_))
-        / temp;
+        temp = (-1 * (planeA_*linex0_ + planeB_*liney0_ + planeC_*linez0_
+        + planeD_))/ temp;
         result[0] = linex0_ + linem_*temp;
         result[1] = liney0_ + linen_*temp;
         result[2] = linez0_ + linep_*temp;
