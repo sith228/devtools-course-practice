@@ -1,24 +1,28 @@
 // Copyright 2017 Gvozdeva Viktoria
 
 #include <gtest/gtest.h>
+
 #include "include/queue.h"
-#include "src/queue.cpp"
+//#include "src/queue.cpp"
 
 TEST(Queue, cant_create_queue_of_int_elements_with_negative_size) {
     // Arrange
-    // Act & Assert
+    // Act
+    //Assert
     EXPECT_ANY_THROW(Queue<int> Q(-3));
 }
 
 TEST(Queue, can_create_queue_of_int_elements_with_positive_size) {
     //Arrange
-    // Act & Assert
+    // Act
+    //Assert
     EXPECT_NO_THROW(Queue<int> Q(6));
 }
 
 TEST(Queue, can_create_queue_of_int_elements_without_parametrs) {
     // Arrange
-    // Act & Assert
+    // Act
+    //Assert
     EXPECT_NO_THROW(Queue<int> Q());
 }
 
@@ -58,7 +62,8 @@ TEST(Queue, cant_add_elem_into_full_queue) {
 TEST(Queue, cant_take_elem_from_empty_queue) {
     // Arrange
     Queue<int> Q(9);
-    // Act & Assert
+    // Act
+    //Assert
     EXPECT_ANY_THROW(Q.Pop());
 }
 
@@ -66,7 +71,8 @@ TEST(Queue, can_create_copy_of_Queue)
 {
     // Arrange
     Queue<int> Q(5);
-    //Act & Assert
+    //Act
+    //Assert
     ASSERT_NO_THROW(Queue<int> Q1(Q));
 }
 
@@ -103,6 +109,35 @@ TEST(Queue, cant_pop_element_from_deleted_queue) {
 TEST(Queue, can_push_element_in_queue) {
 	// Arrange
     Queue<int> Q(3);
-	// Act & Assert
+	// Act
+    //Assert
     EXPECT_NO_THROW(Q.Push(10));
+}
+
+TEST(Queue, check_is_full) {
+    // Arrange
+    Queue<int> Q(4);
+    // Act
+    for (int i = 0; i < 4; i++)
+        Q.Push(i);
+    // Assert
+    EXPECT_EQ(Q.IsFull(), true);
+}
+
+TEST(Queue, check_is_empty) {
+    // Arrange
+    Queue<int> Q(10);
+    // Act
+    // Assert
+    EXPECT_EQ(Q.IsEmpty(), true);
+}
+
+TEST(Queue, check_is_empty_after_push_and_pop) {
+    // Arrange
+    Queue<int> Q(3);
+    // Act
+    Q.Push(5);
+    Q.Pop();
+    // Assert
+    EXPECT_EQ(Q.IsEmpty(), true);
 }

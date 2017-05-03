@@ -3,8 +3,6 @@
 #ifndef MODULES_GVOZDEVA_VIKTORIA_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_GVOZDEVA_VIKTORIA_QUEUE_INCLUDE_QUEUE_H_
 
-#include <iostream>
-
 template <class valType>
 class Queue {
 private:
@@ -19,7 +17,6 @@ public:
     bool IsFull() const; 
 	bool operator==(const Queue<valType>&) const;
 	Queue<valType>& operator=(const Queue<valType>&);
-	int GetMaxSize(void) const;
     bool IsEmpty() const; 
     void Push(const valType&); 
     valType Pop(); 

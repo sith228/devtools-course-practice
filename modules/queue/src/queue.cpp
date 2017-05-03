@@ -1,5 +1,6 @@
 // Copyright 2017 Gvozdeva Viktoria
-#include <include/queue.h>
+
+#include "include/queue.h"
 
 template <class valType>
 Queue <valType> :: Queue(int _maxSize)
@@ -74,12 +75,6 @@ Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
     for (int i = 0; i <= len; i++)
         queuePtr[i] = Q.queuePtr[i];
     return *this;
-}
-
-template <class valType>
-int Queue <valType> :: GetMaxSize(void)const
-{
-    return maxSize;
 }
 
 template <class valType>
