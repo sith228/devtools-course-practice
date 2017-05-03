@@ -20,14 +20,7 @@ TEST(InterpolationSearch, Can_Set_Array) {
 
 TEST(InterpolationSearch, Cant_Create_Search_With_Null_Array) {
   const int length = 3;
-  int * sortedArray = new int[length] {1, 2, 3};
   ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(NULL, length));
-}
-
-TEST(InterpolationSearch, Cant_Create_Search_With_Null_Array_Lenght) {
-  const int length = 3;
-  int * sortedArray = new int[length] {1, 2, 3};
-  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(sortedArray, NULL));
 }
 
 TEST(InterpolationSearch, Cant_Create_Search_With_Negative_Array_Lenght) {
