@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include "include/three-dimensional-figures.h"
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy) {
     // Arrange
     double a = 2.0;
     double b = 3.0;
@@ -15,28 +15,28 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped) 
     EXPECT_NO_THROW(Parallelepiped z2(z));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped_bool) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_t1) {
     // Arrange
     double a = 2.0;
     double b = 3.0;
     double c = 1.0;
     Parallelepiped z(a, b, c);
 
-    //Act
+    // Act
     Parallelepiped z2(z);
 
     // Assert
     EXPECT_EQ(z, z2);
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_comparation_Parallelepiped) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_comparation) {
     // Arrange
     double a = 2.0;
     double b = 3.0;
     double c = 1.0;
     Parallelepiped z(a, b, c);
 
-    //Act
+    // Act
     Parallelepiped z2(3.0, 1.0, 1.0);
 
     // Assert
@@ -101,7 +101,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_getS) {
     EXPECT_EQ(3.0, z.getS());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_a) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
     // Arrange
     double a = -2.0;
 
@@ -109,7 +109,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_a)
     EXPECT_ANY_THROW(Parallelepiped z(a, 0, 1.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_b) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
     // Arrange
     double b = -2.0;
 
@@ -117,7 +117,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_b)
     EXPECT_ANY_THROW(Parallelepiped z(0, b, 1.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_c) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert) {
     // Arrange
     double c = -2.0;
 
@@ -157,7 +157,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_b) {
     EXPECT_EQ(2.0, z.get_b());
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative_a) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
@@ -165,7 +165,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative
     EXPECT_ANY_THROW(z.set_a(-2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative_b) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
@@ -181,14 +181,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_setS) {
     EXPECT_NO_THROW(z.setS(2.0));
 }
 
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setS_with_negative_S) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setS) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 
     // Assert
     EXPECT_ANY_THROW(z.setS(-2.0));
 }
-TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setl_with_negative_c) {
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setl) {
     // Arrang
     Parallelepiped z(0.2, 0.3, 0.1);
 

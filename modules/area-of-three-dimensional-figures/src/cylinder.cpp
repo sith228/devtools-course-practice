@@ -67,7 +67,7 @@ Cylinder::Cylinder(const Cylinder& z) {
 }
 
 bool Cylinder::operator == (const Cylinder& z) const {
-    if ((this->getr() == z.getr()) && (this->getl() == z.getl))
+    if ((this->getr() == z.getr()) && (this->getl() == z.getl()))
         return true;
     else return false;
 }
