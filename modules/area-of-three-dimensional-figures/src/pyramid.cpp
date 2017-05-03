@@ -7,8 +7,7 @@ Pyramid::Pyramid(double _a, double _b, double _l) {
         a = _a;
         b = _b;
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ l <= 0");
     }
     S = 0;
@@ -33,8 +32,7 @@ double Pyramid::getS() const {
 void Pyramid::set_a(const double _a) {
     if (_a > 0) {
         a = _a;
-    }
-    else {
+    } else {
         throw std::string("a <= 0");
     }
 }
@@ -42,8 +40,7 @@ void Pyramid::set_a(const double _a) {
 void Pyramid::set_b(const double _b) {
     if (_b > 0) {
         b = _b;
-    }
-    else {
+    } else {
         throw std::string("b <= 0");
     }
 }
@@ -51,8 +48,7 @@ void Pyramid::set_b(const double _b) {
 void Pyramid::set_l(const double _l) {
     if (_l > 0) {
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("l <= 0");
     }
 }
@@ -60,8 +56,7 @@ void Pyramid::set_l(const double _l) {
 void Pyramid::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }
@@ -89,9 +84,10 @@ Pyramid::Pyramid(const Pyramid& z) {
 }
 
 bool Pyramid::operator == (const Pyramid& z) const {
-    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_l() == z.get_l()))
+    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_l() == z.get_l())) {
         return true;
-    else return false;
+    } else 
+        return false;
 }
 
 bool Pyramid::operator != (const Pyramid& z) const {

@@ -2,15 +2,13 @@
 
 #define _USE_MATH_DEFINES
 #include "include/three-dimensional-figures.h"
-#include <cmath>
 
 Conoid::Conoid(double _r1, double _r2, double _l) {
     if ((_r1 > 0) && (_l > 0) && (_r2 > 0)) {
         r1 = _r1;
         r2 = _r2;
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("r <= 0 ~~ l <= 0");
     }
     S = 0;
@@ -35,8 +33,7 @@ double Conoid::getS() const {
 void Conoid::setr1(const double _r1) {
     if (_r1 > 0) {
         r1 = _r1;
-    }
-    else {
+    } else {
         throw std::string("r1 <= 0");
     }
 }
@@ -44,8 +41,7 @@ void Conoid::setr1(const double _r1) {
 void Conoid::setr2(const double _r2) {
     if (_r2 > 0) {
         r2 = _r2;
-    }
-    else {
+    } else {
         throw std::string("r2 <= 0");
     }
 }
@@ -53,8 +49,7 @@ void Conoid::setr2(const double _r2) {
 void Conoid::setl(const double _l) {
     if (_l > 0) {
         l = _l;
-    }
-    else {
+    } else {
         throw std::string("l <= 0");
     }
 }
@@ -62,8 +57,7 @@ void Conoid::setl(const double _l) {
 void Conoid::setS(const double _S) {
     if (_S >= 0) {
         S = _S;
-    }
-    else {
+    } else {
         throw std::string("S < 0");
     }
 }
@@ -84,9 +78,10 @@ Conoid::Conoid(const Conoid& z) {
 }
 
 bool Conoid::operator == (const Conoid& z) const {
-    if ((this->getr1() == z.getr1()) && (this->getr2() == z.getr2()) && (this->getl() == z.getl()))
+    if ((this->getr1() == z.getr1()) && (this->getr2() == z.getr2()) && (this->getl() == z.getl())) {
         return true;
-    else return false;
+    } else 
+        return false;
 }
 
 bool Conoid::operator != (const Conoid& z) const {
