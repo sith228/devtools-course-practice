@@ -25,3 +25,37 @@ bool Sort::operator==(const Sort & z) const {
         }
         return result;
 }
+
+void Sort::QuickSort(int l, int m) {
+    int x = Array_[l + (m - l) / 2];
+    int temp;
+    int i = l;
+    int j = m;
+    while (i <= j) {
+        while (Array_[i] < x) i++;
+        while (Array_[j] > x) j--;
+        if (i <= j) {
+            temp = Array_[i];
+            Array_[i] = Array_[j];
+            Array_[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    if (i < m)
+       QuickSort(i, m);
+    if (l < j)
+       QuickSort(l, j);
+}
+
+void Sort::PasteSort(void) {
+    int counter = 0;
+    for (int i = 1; i < Length_; i++) {
+        for (int j = i; j > 0 && Array_[j - 1] > Array_[j]; j--) {
+            counter++;
+            int tmp = Array_[j - 1];
+            Array_[j - 1] = Array_[j];
+            Array_[j] = tmp;
+        }
+    }
+}
