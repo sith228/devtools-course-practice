@@ -58,7 +58,7 @@ TEST(PARSER, throw_exception_when_input_empty) {
 }
 
 TEST(PARSER, throw_exception_when_input_invalid) {
-    std::string func = "10*(15+3";
+    std::string func = "10*(115+3";
 
     Parser parser(func.c_str());
     ASSERT_ANY_THROW(parser.parse());
