@@ -1,13 +1,14 @@
 // Copyright 2017 Gvozdeva Viktoria
-
 #include <include/queue.h>
 
 template <class valType>
 Queue <valType> :: Queue(int _maxSize)
 {
-    if ( _maxSize > 0) {
+    if (_maxSize > 0) 
+    {
         maxSize = _maxSize;
-        queuePtr = new valType [maxSize];
+        queuePtr = new valType[maxSize];
+        if (queuePtr == nullptr) throw "Memory was not allocated";
         len = 0;
         head = 0;
         tail = -1;
@@ -16,82 +17,69 @@ Queue <valType> :: Queue(int _maxSize)
 }
 
 template <class valType>
-bool Queue<valType> :: operator==(const Queue<valType>& Q) const
-{
-	if (this == &Q) return true;
-	if (len != Q.len) return false;
-
-	for (int i = 0; i < len; i++)
-	{
-		if (queuePtr[i] != Q.queuePtr[i])
-			return false;
-	}
-	return true;
-}
-
-template <class valType>
-Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
-{
-		if (maxSize != Q.maxSize)
-		{
-			delete[] queuePtr;
-			queuePtr = new valType[Q.maxSize];
-		}
-		maxSize = Q.maxSize;
-		head = Q.head;
-		tail = Q.tail;
-		len = Q.len;
-		for (int i = 0; i <= len; i++)
-			queuePtr[i] = Q.queuePtr[i];
-		return *this;
-}
-	
-template <class valType>
 Queue <valType> :: Queue()
 {
-		maxSize = 10;
-		queuePtr = new valType[maxSize];
-		len = 0;
-		head = 0;
-		tail = -1;
-}
-template <class valType>
-//
-//	QueueNode<Q> * work;
-//
-//	while (BeginQ) {
-//		work = BeginQ->next;
-//		delete BeginQ;
-//		BeginQ = work;
-//	}
-//	BeginQ = 0;
-//	LastQ = 0;
-//	count = 0;
-//}
-Queue<valType> :: ~Queue() {
-		delete[] queuePtr;
-		queuePtr = NULL;
-	/*delete []queuePtr;
-	delete queuePtr;*/
-	//len = -1;
+    maxSize = 10;
+    queuePtr = new valType[maxSize];
+    if (queuePtr == nullptr) throw "Memory was not allocated";
+    len = 0;
+    head = 0;
+    tail = -1;
 }
 
 template <class valType>
 Queue <valType> :: Queue(const Queue& Q)
 {
     maxSize = Q.maxSize;
-	head = Q.head;
-	tail = Q.tail;
+    head = Q.head;
+    tail = Q.tail;
     len = Q.len;
-    queuePtr = new valType [maxSize];
+    queuePtr = new valType[maxSize];
+    if (queuePtr == nullptr) throw "Memory was not allocated";
     for (int i=0; i<= len; i++)
     queuePtr[i] = Q.queuePtr[i]; 
 }
 
 template <class valType>
+Queue<valType> :: ~Queue() 
+{
+    delete[] queuePtr;
+    queuePtr = nullptr;
+}
+template <class valType>
+bool Queue<valType> :: operator==(const Queue<valType>& Q) const
+{
+    if (this == &Q) return true;
+    if (len != Q.len) return false;
+    for (int i = 0; i < len; i++)
+    {
+        if (queuePtr[i] != Q.queuePtr[i])
+           return false;
+    }
+    return true;
+}
+
+template <class valType>
+Queue<valType>& Queue<valType> :: operator=(const Queue<valType>& Q)
+{
+    if (maxSize != Q.maxSize)
+    {
+         delete[] queuePtr;
+         queuePtr = new valType[Q.maxSize];
+    }
+    maxSize = Q.maxSize;
+    head = Q.head;
+    tail = Q.tail;
+    len = Q.len;
+    for (int i = 0; i <= len; i++)
+        queuePtr[i] = Q.queuePtr[i];
+    return *this;
+}
+
+template <class valType>
 int Queue <valType> :: GetMaxSize(void)const
 {
-	return maxSize;
+    return maxSize;
 }
 
 template <class valType>
@@ -102,16 +90,15 @@ bool Queue <valType> :: IsFull() const
 template <class valType>
 bool Queue <valType> :: IsEmpty() const
 {
-    return  ( len  == 0);
+    return  (len  == 0);
 }
 template <class valType>
 void Queue <valType> :: Push(const valType &elem)
 {
-	if (queuePtr == NULL) throw "Queue was deleted!";
-    if ( IsFull() ) throw "Queue is full!";
-
-    else 
-        if (tail == maxSize - 1) tail = 0;
+    if (queuePtr == nullptr) throw "Queue was deleted!";
+	if (IsFull()) throw "Queue is full!";
+        else 
+           if (tail == maxSize - 1) tail = 0;
         else 
             {
                tail++;
@@ -122,14 +109,14 @@ void Queue <valType> :: Push(const valType &elem)
 template <class valType>
 valType Queue <valType> :: Pop()
 {
-	if (queuePtr == NULL) throw "Queue was deleted!";
-    if ( IsEmpty() ) throw "Queue is empty!";
+    if (queuePtr == nullptr) throw "Queue was deleted!";
+	if (IsEmpty()) throw "Queue is empty!";
     else
     {
         valType elem = queuePtr[head];
-        if ( head == maxSize - 1 ) head = 0;
+        if (head == maxSize - 1) head = 0;
         else 
-            head--;
+             head--;
         len--;
         return elem;
     }
