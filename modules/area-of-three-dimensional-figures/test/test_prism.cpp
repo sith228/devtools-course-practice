@@ -7,69 +7,107 @@
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Copy_Prism) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
+    double b = 3.0;
     double c = 1.0;
-	double h = 5.0;
+    double h = 5.0;
     Prism z(a, b, c, h);
 
     // Assert
     EXPECT_NO_THROW(Prism z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Copy_Prism_bool) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
+    Prism z(a, b, c, h);
+
+    //Act
+    Prism z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_comparation_Prism) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
+    Prism z(a, b, c, h);
+
+    //Act
+    Prism z2(3.0, 1.0, 1.0, 2.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Prism_Is_Equal_To_Itself) {
+    // Arrange
+    Prism z(26.0, 14.0, 5.0, 13.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_get_a) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
-	double h = 5.0;
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
 
     // Act
-	Prism z(a, b, c, h);
+    Prism z(a, b, c, h);
 
     // Assert
     EXPECT_EQ(2.0, z.get_a());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_get_b) {
-	// Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
-	double h = 5.0;
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
 
-	// Act
-	Prism z(a, b, c, h);
+    // Act
+    Prism z(a, b, c, h);
 
-	// Assert
-	EXPECT_EQ(3.0, z.get_b());
+    // Assert
+    EXPECT_EQ(3.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_get_c) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
-	double h = 5.0;
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
 
-	// Act
-	Prism z(a, b, c, h);
+    // Act
+    Prism z(a, b, c, h);
 
     // Assert
     EXPECT_EQ(1.0, z.get_c());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_get_h) {
-	// Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
-	double h = 5.0;
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
 
-	// Act
-	Prism z(a, b, c, h);
+    // Act
+    Prism z(a, b, c, h);
 
-	// Assert
-	EXPECT_EQ(5.0, z.get_h());
+    // Assert
+    EXPECT_EQ(5.0, z.get_h());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_getS) {
@@ -92,11 +130,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_Create_with_neg_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_Create_with_neg_b) {
-	// Arrange
-	double b = -2.0;
+    // Arrange
+    double b = -2.0;
 
-	// Assert
-	EXPECT_ANY_THROW(Prism z(0, b, 1.0, 1.0));
+    // Assert
+    EXPECT_ANY_THROW(Prism z(0, b, 1.0, 1.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_Create_with_neg_c) {
@@ -108,19 +146,19 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_Create_with_neg_c) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_Create_with_neg_h) {
-	// Arrange
-	double h = -2.0;
+    // Arrange
+    double h = -2.0;
 
-	// Assert
-	EXPECT_ANY_THROW(Prism z(1.0, 0.2, 1.0, h));
+    // Assert
+    EXPECT_ANY_THROW(Prism z(1.0, 0.2, 1.0, h));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_Create_Prism) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
-	double h = 5.0;
+    double b = 3.0;
+    double c = 1.0;
+    double h = 5.0;
 
     // Assert
     EXPECT_NO_THROW(Prism z(a, b, c, h));
@@ -138,14 +176,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_set_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_set_b) {
-	// Arrang
-	Prism z(0.2, 0.3, 0.1, 0.5);
+    // Arrang
+    Prism z(0.2, 0.3, 0.1, 0.5);
 
-	// Act
-	z.set_b(2.0);
+    // Act
+    z.set_b(2.0);
 
-	// Assert
-	EXPECT_EQ(2.0, z.get_b());
+    // Assert
+    EXPECT_EQ(2.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_setr_with_negative_a) {
@@ -157,11 +195,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_setr_with_negative_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_setr_with_negative_b) {
-	// Arrang
-	Prism z(0.2, 0.3, 0.1, 0.5);
+    // Arrang
+    Prism z(0.2, 0.3, 0.1, 0.5);
 
-	// Assert
-	EXPECT_ANY_THROW(z.set_b(-2.0));
+    // Assert
+    EXPECT_ANY_THROW(z.set_b(-2.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_setS) {
@@ -189,11 +227,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_setl_with_negative_c) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Assert_setl_with_negative_h) {
-	// Arrang
-	Prism z(0.2, 0.3, 0.1, 0.5);
+    // Arrang
+    Prism z(0.2, 0.3, 0.1, 0.5);
 
-	// Assert
-	EXPECT_ANY_THROW(z.set_h(-2.0));
+    // Assert
+    EXPECT_ANY_THROW(z.set_h(-2.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_set_c) {
@@ -201,21 +239,21 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_set_c) {
     Prism z(0.2, 0.3, 0.1, 0.5);
 
     // Act
-	z.set_c(2.0);
+    z.set_c(2.0);
 
     // Assert
-	EXPECT_EQ(2.0, z.get_c());
+    EXPECT_EQ(2.0, z.get_c());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_set_h) {
-	// Arrang
-	Prism z(0.2, 0.3, 0.1, 0.5);
+    // Arrang
+    Prism z(0.2, 0.3, 0.1, 0.5);
 
-	// Act
-	z.set_h(2.0);
+    // Act
+    z.set_h(2.0);
 
-	// Assert
-	EXPECT_EQ(2.0, z.get_h());
+    // Assert
+    EXPECT_EQ(2.0, z.get_h());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_CalculateS) {
@@ -224,7 +262,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Prism_Can_CalculateS) {
 
     // Act
     double s = z.CalculateS();
-    double s1 = 3 + sqrt(3)/2;
+    double s1 = 3 + sqrt(3) / 2;
 
     // Assert
     EXPECT_EQ(s1, s);

@@ -5,7 +5,7 @@
 Cube::Cube(double _h) {
     if (_h > 0)
         h = _h;
-    else 
+    else
         throw std::string("h <= 0");
     S = 0;
 }
@@ -41,4 +41,14 @@ double Cube::CalculateS() {
 Cube::Cube(const Cube& z) {
     this->seth(z.geth());
     this->setS(z.getS());
+}
+
+bool Cube::operator == (const Cube& z) const {
+    if (this->geth() == z.geth())
+        return true;
+    else return false;
+}
+
+bool Cube::operator != (const Cube& z) const {
+    return !(*this == z);
 }

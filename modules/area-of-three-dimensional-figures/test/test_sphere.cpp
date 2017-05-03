@@ -13,6 +13,38 @@ TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere) {
     EXPECT_NO_THROW(Sphere z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Copy_sphere_bool) {
+    // Arrange
+    double r = 2.0;
+    Sphere z(r);
+
+    //Act
+    Sphere z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_comparation_sphere) {
+    // Arrange
+    double r = 2.0;
+    Sphere z(r);
+
+    //Act
+    Sphere z2(3.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Is_Equal_To_Itself) {
+    // Arrange
+    Sphere z(26.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Sphere_Can_Create_getR) {
     // Arrange
     double r = 2.0;

@@ -14,10 +14,44 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Copy_Cylinder) {
     EXPECT_NO_THROW(Cylinder z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Copy_Cylinder_bool) {
+    // Arrange
+    double r = 2.0;
+    double l = 1.0;
+    Cylinder z(r, l);
+
+    //Act
+    Cylinder z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_comparation_Cylinder) {
+    // Arrange
+    double r = 2.0;
+    double l = 1.0;
+    Cylinder z(r, l);
+
+    //Act
+    Cylinder z2(3.0, 1.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Is_Equal_To_Itself) {
+    // Arrange
+    Cylinder z(26.0, 14.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Create_getr) {
     // Arrange
     double r = 2.0;
-	double l = 1.0;
+    double l = 1.0;
 
     // Act
     Cylinder z(r, l);
@@ -68,7 +102,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Assert_Create_with_neg_l) {
 TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_Create_Cylinder) {
     // Arrange
     double r = 2.0;
-	double l = 1.0;
+    double l = 1.0;
 
     // Assert
     EXPECT_NO_THROW(Cylinder z(r, l));
@@ -120,10 +154,10 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_setl) {
     Cylinder z(0.2, 0.1);
 
     // Act
-	z.setl(2.0);
+    z.setl(2.0);
 
     // Assert
-	EXPECT_EQ(2.0, z.getl());
+    EXPECT_EQ(2.0, z.getl());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Cylinder_Can_CalculateS) {

@@ -5,14 +5,14 @@
 #include <cmath>
 
 Tetrahedron::Tetrahedron(double _a, double _b, double _c, double _l) {
-	if ((_a > 0) && (_b > 0) && (_c > 0) && (_l > 0)) {
-		a = _a;
-		b = _b;
+    if ((_a > 0) && (_b > 0) && (_c > 0) && (_l > 0)) {
+        a = _a;
+        b = _b;
         c = _c;
-		l = _l;
+        l = _l;
     }
-	else {
-		throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ l <= 0");
+    else {
+        throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ l <= 0");
     }
     S = 0;
 }
@@ -22,7 +22,7 @@ double Tetrahedron::get_a() const {
 }
 
 double Tetrahedron::get_b() const {
-	return b;
+    return b;
 }
 
 double Tetrahedron::get_c() const {
@@ -30,7 +30,7 @@ double Tetrahedron::get_c() const {
 }
 
 double Tetrahedron::get_l() const {
-	return l;
+    return l;
 }
 
 double Tetrahedron::getS() const {
@@ -38,21 +38,21 @@ double Tetrahedron::getS() const {
 }
 
 void Tetrahedron::set_a(const double _a) {
-	if (_a > 0) {
-		a = _a;
-	}
-	else {
-		throw std::string("a <= 0");
+    if (_a > 0) {
+        a = _a;
+    }
+    else {
+        throw std::string("a <= 0");
     }
 }
 
 void Tetrahedron::set_b(const double _b) {
-	if (_b > 0) {
-		b = _b;
-	}
-	else {
-		throw std::string("b <= 0");
-	}
+    if (_b > 0) {
+        b = _b;
+    }
+    else {
+        throw std::string("b <= 0");
+    }
 }
 
 void Tetrahedron::set_c(const double _c) {
@@ -65,40 +65,40 @@ void Tetrahedron::set_c(const double _c) {
 }
 
 void Tetrahedron::set_l(const double _l) {
-	if (_l > 0) {
-		l = _l;
-	}
-	else {
-		throw std::string("l <= 0");
-	}
+    if (_l > 0) {
+        l = _l;
+    }
+    else {
+        throw std::string("l <= 0");
+    }
 }
 
 void Tetrahedron::setS(const double _S) {
-	if (_S >= 0) {
-		S = _S;
-	}
-	else {
-		throw std::string("S < 0");
-	}
+    if (_S >= 0) {
+        S = _S;
+    }
+    else {
+        throw std::string("S < 0");
+    }
 }
 
 double Tetrahedron::CalculateS() {
     double _a = this->get_a();
-	double _b = this->get_b();
-	double _c = this->get_c();
-	double _h = this->get_l();
+    double _b = this->get_b();
+    double _c = this->get_c();
+    double _l = this->get_l();
 
-	double p = (_a + _b + _c) / 2;
-	double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
+    double p = (_a + _b + _c) / 2;
+    double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
 
-	double p_al = (_a + 2 * l) / 2;
-	double heron_al = sqrt(p* (p - _a)*(p - l)*(p - l));
+    double p_al = (_a + 2 * _l) / 2;
+    double heron_al = sqrt(p* (p - _a)*(p - _l)*(p - _l));
 
-	double p_bl = (_b + 2 * l) / 2;
-	double heron_bl = sqrt(p* (p - _b)*(p - l)*(p - l));
+    double p_bl = (_b + 2 * _l) / 2;
+    double heron_bl = sqrt(p* (p - _b)*(p - _l)*(p - _l));
 
-	double p_cl = (_c + 2 * l) / 2;
-	double heron_cl = sqrt(p* (p - _c)*(p - l)*(p - l));
+    double p_cl = (_c + 2 * _l) / 2;
+    double heron_cl = sqrt(p* (p - _c)*(p - _l)*(p - _l));
 
     this->setS(heron_abc + heron_al + heron_bl + heron_cl);
     return this->getS();
@@ -106,8 +106,18 @@ double Tetrahedron::CalculateS() {
 
 Tetrahedron::Tetrahedron(const Tetrahedron& z) {
     this->set_a(z.get_a());
-	this->set_b(z.get_b());
-	this->set_c(z.get_c());
-	this->set_l(z.get_l());
+    this->set_b(z.get_b());
+    this->set_c(z.get_c());
+    this->set_l(z.get_l());
     this->setS(z.getS());
+}
+
+bool Tetrahedron::operator == (const Tetrahedron& z) const {
+    if ((this->get_a() == z.get_a()) && (this->get_b() == z.get_b()) && (this->get_c() == z.get_c()) && (this->get_l() == z.get_l()))
+        return true;
+    else return false;
+}
+
+bool Tetrahedron::operator != (const Tetrahedron& z) const {
+    return !(*this == z);
 }

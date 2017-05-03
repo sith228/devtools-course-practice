@@ -6,7 +6,7 @@
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Copy_Pyramid) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
+    double b = 3.0;
     double l = 1.0;
     Pyramid z(a, b, l);
 
@@ -14,40 +14,76 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Copy_Pyramid) {
     EXPECT_NO_THROW(Pyramid z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Copy_Pyramid_bool) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double l = 5.0;
+    Pyramid z(a, b, l);
+
+    //Act
+    Pyramid z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_comparation_Pyramid) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double l = 1.0;
+    Pyramid z(a, b, l);
+
+    //Act
+    Pyramid z2(3.0, 1.0, 1.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Is_Equal_To_Itself) {
+    // Arrange
+    Pyramid z(26.0, 14.0, 5.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Create_get_a) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double l = 1.0;
+    double a = 2.0;
+    double b = 3.0;
+    double l = 1.0;
 
     // Act
-	Pyramid z(a, b, l);
+    Pyramid z(a, b, l);
 
     // Assert
     EXPECT_EQ(2.0, z.get_a());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Create_get_b) {
-	// Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double l = 1.0;
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double l = 1.0;
 
-	// Act
-	Pyramid z(a, b, l);
+    // Act
+    Pyramid z(a, b, l);
 
-	// Assert
-	EXPECT_EQ(3.0, z.get_b());
+    // Assert
+    EXPECT_EQ(3.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Create_get_l) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double l = 1.0;
+    double a = 2.0;
+    double b = 3.0;
+    double l = 1.0;
 
-	// Act
-	Pyramid z(a, b, l);
+    // Act
+    Pyramid z(a, b, l);
 
     // Assert
     EXPECT_EQ(1.0, z.get_l());
@@ -73,11 +109,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_Create_with_neg_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_Create_with_neg_b) {
-	// Arrange
-	double b = -2.0;
+    // Arrange
+    double b = -2.0;
 
-	// Assert
-	EXPECT_ANY_THROW(Pyramid z(0, b, 1.0));
+    // Assert
+    EXPECT_ANY_THROW(Pyramid z(0, b, 1.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_Create_with_neg_l) {
@@ -91,8 +127,8 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_Create_with_neg_l) {
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_Create_Pyramid) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
-	double l = 1.0;
+    double b = 3.0;
+    double l = 1.0;
 
     // Assert
     EXPECT_NO_THROW(Pyramid z(a, b, l));
@@ -110,14 +146,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_set_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_set_b) {
-	// Arrang
-	Pyramid z(0.2, 0.3, 0.1);
+    // Arrang
+    Pyramid z(0.2, 0.3, 0.1);
 
-	// Act
-	z.set_b(2.0);
+    // Act
+    z.set_b(2.0);
 
-	// Assert
-	EXPECT_EQ(2.0, z.get_b());
+    // Assert
+    EXPECT_EQ(2.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_setr_with_negative_a) {
@@ -129,11 +165,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_setr_with_negative_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Assert_setr_with_negative_b) {
-	// Arrang
-	Pyramid z(0.2, 0.3, 0.1);
+    // Arrang
+    Pyramid z(0.2, 0.3, 0.1);
 
-	// Assert
-	EXPECT_ANY_THROW(z.set_b(-2.0));
+    // Assert
+    EXPECT_ANY_THROW(z.set_b(-2.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_setS) {
@@ -164,10 +200,10 @@ TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_set_l) {
     Pyramid z(0.2, 0.3, 0.1);
 
     // Act
-	z.set_l(2.0);
+    z.set_l(2.0);
 
     // Assert
-	EXPECT_EQ(2.0, z.get_l());
+    EXPECT_EQ(2.0, z.get_l());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Pyramid_Can_CalculateS) {

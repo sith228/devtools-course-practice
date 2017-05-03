@@ -7,7 +7,7 @@
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
+    double b = 3.0;
     double c = 1.0;
     Parallelepiped z(a, b, c);
 
@@ -15,40 +15,76 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped) 
     EXPECT_NO_THROW(Parallelepiped z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Copy_Parallelepiped_bool) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    Parallelepiped z(a, b, c);
+
+    //Act
+    Parallelepiped z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_comparation_Parallelepiped) {
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
+    Parallelepiped z(a, b, c);
+
+    //Act
+    Parallelepiped z2(3.0, 1.0, 1.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Is_Equal_To_Itself) {
+    // Arrange
+    Parallelepiped z(26.0, 14.0, 5.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_get_a) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
 
     // Act
-	Parallelepiped z(a, b, c);
+    Parallelepiped z(a, b, c);
 
     // Assert
     EXPECT_EQ(2.0, z.get_a());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_get_b) {
-	// Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
+    // Arrange
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
 
-	// Act
-	Parallelepiped z(a, b, c);
+    // Act
+    Parallelepiped z(a, b, c);
 
-	// Assert
-	EXPECT_EQ(3.0, z.get_b());
+    // Assert
+    EXPECT_EQ(3.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_get_c) {
     // Arrange
-	double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
+    double a = 2.0;
+    double b = 3.0;
+    double c = 1.0;
 
-	// Act
-	Parallelepiped z(a, b, c);
+    // Act
+    Parallelepiped z(a, b, c);
 
     // Assert
     EXPECT_EQ(1.0, z.get_c());
@@ -74,11 +110,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_a)
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_b) {
-	// Arrange
-	double b = -2.0;
+    // Arrange
+    double b = -2.0;
 
-	// Assert
-	EXPECT_ANY_THROW(Parallelepiped z(0, b, 1.0));
+    // Assert
+    EXPECT_ANY_THROW(Parallelepiped z(0, b, 1.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_c) {
@@ -92,8 +128,8 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_Create_with_neg_c)
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_Create_Parallelepiped) {
     // Arrange
     double a = 2.0;
-	double b = 3.0;
-	double c = 1.0;
+    double b = 3.0;
+    double c = 1.0;
 
     // Assert
     EXPECT_NO_THROW(Parallelepiped z(a, b, c));
@@ -111,14 +147,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_a) {
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_b) {
-	// Arrang
-	Parallelepiped z(0.2, 0.3, 0.1);
+    // Arrang
+    Parallelepiped z(0.2, 0.3, 0.1);
 
-	// Act
-	z.set_b(2.0);
+    // Act
+    z.set_b(2.0);
 
-	// Assert
-	EXPECT_EQ(2.0, z.get_b());
+    // Assert
+    EXPECT_EQ(2.0, z.get_b());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative_a) {
@@ -130,11 +166,11 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Assert_setr_with_negative_b) {
-	// Arrang
-	Parallelepiped z(0.2, 0.3, 0.1);
+    // Arrang
+    Parallelepiped z(0.2, 0.3, 0.1);
 
-	// Assert
-	EXPECT_ANY_THROW(z.set_b(-2.0));
+    // Assert
+    EXPECT_ANY_THROW(z.set_b(-2.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_setS) {
@@ -165,10 +201,10 @@ TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_set_c) {
     Parallelepiped z(0.2, 0.3, 0.1);
 
     // Act
-	z.set_c(2.0);
+    z.set_c(2.0);
 
     // Assert
-	EXPECT_EQ(2.0, z.get_c());
+    EXPECT_EQ(2.0, z.get_c());
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Parallelepiped_Can_CalculateS) {

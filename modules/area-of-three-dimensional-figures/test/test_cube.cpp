@@ -12,6 +12,38 @@ TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_Copy_cube) {
     EXPECT_NO_THROW(Cube z2(z));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_Copy_Cube_bool) {
+    // Arrange
+    double h = 2.0;
+    Cube z(h);
+
+    //Act
+    Cube z2(z);
+
+    // Assert
+    EXPECT_EQ(z, z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_comparation_Cube) {
+    // Arrange
+    double h = 2.0;
+    Cube z(h);
+
+    //Act
+    Cube z2(3.0);
+
+    // Assert
+    EXPECT_TRUE(z != z2);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Cube_Is_Equal_To_Itself) {
+    // Arrange
+    Cube z(26.0);
+
+    // Act & Assert
+    EXPECT_TRUE(z == z);
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Cube_Can_Create_getR) {
     // Arrange
     double r = 2.0;
