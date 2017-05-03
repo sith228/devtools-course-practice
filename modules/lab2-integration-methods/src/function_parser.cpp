@@ -32,7 +32,7 @@ Parser::Parser(const char *input) {
     if (input != nullptr) {
         int size = std::strlen(input);
         this->input = new char[size+1];
-        for (int i=0; i<size; i++) {
+        for (int i=0; i < size; i++) {
             this->input[i] = input[i];
         }
         this->input[size] = '\0';
