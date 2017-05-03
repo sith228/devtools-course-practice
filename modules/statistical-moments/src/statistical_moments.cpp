@@ -7,8 +7,9 @@
 #include <vector>
 
 bool statisticalMoments::isChangeValid() {
-    for (unsigned int i = 0;i < statisticalMoments::chances.size();i++) {
-        if ((statisticalMoments::chances[i] < 0) || (statisticalMoments::chances[i]>1))
+    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
+        if ((statisticalMoments::chances[i] < 0) ||
+            (statisticalMoments::chances[i] > 1))
             return false;
     }
     return true;
@@ -38,7 +39,6 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     if (this->chances.empty()) {
         throw std::runtime_error("vector \"changes\" is empty");
     }
-    //TODO: !!!!!
     if (this->chances.size() != this->values.size()) {
         throw std::runtime_error("values and changes must have equals size");
     }
@@ -51,14 +51,13 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
 }
 
 statisticalMoments::~statisticalMoments() {
-    //удалить вектора, если это нужно
+    //delete vector if it nessesary
 }
 double statisticalMoments::getMoment(unsigned int order) {
-    double result=0;
-    int a = 0; // для начальных моментов
-    for (unsigned int i = 0;i < statisticalMoments::chances.size();i++) {
+    double result = 0;
+    int a = 0;  // for start moments
+    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
         result += pow(values[i] - a, order)*chances[i];
     }
-    //выдать момент порядка order, учитывая, что данные корректные
     return result;
 }
