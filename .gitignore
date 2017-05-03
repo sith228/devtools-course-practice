@@ -3,7 +3,7 @@ build_cmake/
 code-build/
 Testing/
 dashboard/
-.idea/
+
 *.user
 
 .DS_Store
