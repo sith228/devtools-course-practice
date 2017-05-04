@@ -100,7 +100,8 @@ void BitArray::clearBit(const unsigned int bitNumber) {
 int BitArray::getBit(const unsigned int bitNumber) const {
     if (bitNumber < size_) {
         int bitValue;
-        bitValue = memoryBlocks_[getBlockNumber(bitNumber)] & getMask(bitNumber);
+        int blockNumber = getBlockNumber(bitNumber);
+        bitValue = memoryBlocks_[blockNumber] & getMask(bitNumber);
         if (bitValue > 0)
             bitValue = 1;
         return bitValue;
