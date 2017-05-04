@@ -85,8 +85,8 @@ double Calculator::Calculate_Prism(double _a, double _b, double _c, double _h) {
     if ((flag1) && (flag2) && (flag3) && (flag4)) {
         double heron_abc;
         if (Check_for_Heron(_a, _b, _c)) {
-        double p = (_a + _b + _c) / 2;
-        double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
+            double p = (_a + _b + _c) / 2;
+            heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
         } else {
             throw std::string("Triangle is not calc - abc");
         }
@@ -105,8 +105,8 @@ double Calculator::Calculate_Pyramid(double _a, double _b, double _l) {
     if ((flag1) && (flag2) && (flag3)) {
         double heron_al, heron_bl;
         if (Check_for_Heron(_a, _l, _l)) {
-        double p1 = (2 * _l + _a) / 2;
-        heron_al = sqrt(p1 * (p1 - _a) * (p1 - _l) * (p1 - _l));
+            double p1 = (2 * _l + _a) / 2;
+            heron_al = sqrt(p1 * (p1 - _a) * (p1 - _l) * (p1 - _l));
         } else {
             throw std::string("Triangle is not calc - all");
         }
@@ -134,28 +134,28 @@ double Calculator::Calc_Tetra(double _a, double _b, double _c, double _l) {
 
         if (Check_for_Heron(_a, _b, _c)) {
             double p = (_a + _b + _c) / 2;
-            double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
+            heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
         } else {
             throw std::string("Triangle is not calc - abc");
         }
 
         if (Check_for_Heron(_a, _l, _l)) {
             double p_al = (_a + 2 * _l) / 2;
-            double heron_al = sqrt(p_al* (p_al - _a)*(p_al - _l) * (p_al - _l));
+            heron_al = sqrt(p_al* (p_al - _a)*(p_al - _l) * (p_al - _l));
         } else {
             throw std::string("Triangle is not calc - all");
         }
 
         if (Check_for_Heron(_b, _l, _l)) {
             double p_bl = (_b + 2 * _l) / 2;
-            double heron_bl = sqrt(p_bl * (p_bl - _b) * (p_bl - _l) * (p_bl - _l));
+            heron_bl = sqrt(p_bl * (p_bl - _b) * (p_bl - _l) * (p_bl - _l));
         } else {
             throw std::string("Triangle is not calc - bll");
         }
 
         if (Check_for_Heron(_c, _l, _l)) {
-        double p_cl = (_c + 2 * _l) / 2;
-        double heron_cl = sqrt(p_cl * (p_cl - _c) * (p_cl - _l) * (p_cl - _l));
+            double p_cl = (_c + 2 * _l) / 2;
+            heron_cl = sqrt(p_cl * (p_cl - _c) * (p_cl - _l) * (p_cl - _l));
         } else {
             throw std::string("Triangle is not calc - bll");
         }
