@@ -164,7 +164,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
     // Assert
     EXPECT_ANY_THROW({ space.SetBlue(blue);});
 }
-
+/*
 TEST(RGBSpaceTest, Can_Use_Equals_In_RGBSpace) {
     // Arrange
     int red = 127;
@@ -205,3 +205,4 @@ TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
     // Assert
     EXPECT_TRUE(result);
 }
+*/
