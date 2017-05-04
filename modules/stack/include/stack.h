@@ -29,11 +29,13 @@ class TStack {
 template <class ValType>
 TStack<ValType>::TStack(int _size) {
 	if (_size < 0) {
-		throw "Negative size";
+        throw "Negative size";
     }
-	else if (_size > MAX_STACK_SIZE) {
-		throw "Size more than MAX_VECTOR_SIZE";
+
+    else if (_size > MAX_STACK_SIZE) {
+        throw "Size more than MAX_VECTOR_SIZE";
     }
+
     else {
         Top = -1;
         Size = _size;
@@ -52,8 +54,8 @@ TStack<ValType>::TStack(const TStack<ValType > &v) {
 
 template <class ValType>
 TStack<ValType>::~TStack() {
-	if (pVector != NULL) {
-		delete[]pVector;
+    if (pVector != NULL) {
+        delete[]pVector;
     }
 }
 
@@ -69,9 +71,10 @@ int TStack<ValType>::GetStackTop()const {
 
 template <class ValType>
 void TStack<ValType>::Include(const ValType elem) {
-	if (this->CheckFull()) {
-		throw "Full stack";
+    if (this->CheckFull()) {
+        throw "Full stack";
     }
+
     else {
         Top++;
         pVector[Top] = elem;
@@ -80,9 +83,10 @@ void TStack<ValType>::Include(const ValType elem) {
 
 template <class ValType>
 ValType TStack<ValType>::Exclude() {
-	if (this->CheckEmpty()) {
-		throw "Empty stack";
+    if (this->CheckEmpty()) {
+        throw "Empty stack";
     }
+
     else {
         ValType res;
         res = pVector[Top];
@@ -93,31 +97,34 @@ ValType TStack<ValType>::Exclude() {
 
 template <class ValType>
 ValType TStack<ValType>::Get() {
-	if (this->CheckEmpty()) {
-		throw "Empty stack";
+    if (this->CheckEmpty()) {
+        throw "Empty stack";
     }
-	else {
-		return pVector[Top];
+
+    else {
+        return pVector[Top];
     }
 }
 
 template <class ValType>
 bool TStack<ValType>::CheckFull() const {
-	if (Top == Size - 1) {
-		return true;
+    if (Top == Size - 1) {
+        return true;
     }
-	else {
-		return false;
+
+    else {
+        return false;
     }
 }
 
 template <class ValType>
 bool TStack<ValType>::CheckEmpty() const {
-	if (Top == (-1)) {
-		return true;
+    if (Top == (-1)) {
+        return true;
     }
-	else {
-		return false;
+
+    else {
+        return false;
     }
 }
 #endif  //  MODULES_STACK_INCLUDE_STACK_H_
