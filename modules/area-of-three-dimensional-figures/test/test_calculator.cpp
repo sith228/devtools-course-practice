@@ -6,7 +6,7 @@
 
 TEST(AreaOfThreeDimensionalFiguresTest, Can_create_calc) {
     // Arrange & Act & Assert
-    EXPECT_NO_THROW(z.Calculate);
+    EXPECT_NO_THROW(Calculator z);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Can_assert_calc_cone) {
