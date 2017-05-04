@@ -6,23 +6,22 @@
 TEST(Queue, cant_create_queue_of_int_elements_with_negative_size) {
     // Arrange
     // Act
-    //Assert
+    // Assert
     EXPECT_ANY_THROW(Queue<int> Q(-3));
 }
 
 TEST(Queue, can_create_queue_of_int_elements_with_positive_size) {
-    //Arrange
+    // Arrange
     // Act
-    //Assert
+    // Assert
     EXPECT_NO_THROW(Queue<int> Q(6));
 }
 
 TEST(Queue, can_create_queue_of_int_elements_without_parametrs) {
     // Arrange
     // Act
-    //Assert
-	//Q()
-	EXPECT_NO_THROW(Queue<int> Q());
+    // Assert
+    EXPECT_NO_THROW(Queue<int> Q());
 }
 
 TEST(Queue, can_be_equated_two_queues) {
@@ -62,15 +61,14 @@ TEST(Queue, cant_take_elem_from_empty_queue) {
     // Arrange
     Queue<int> Q(9);
     // Act
-    //Assert
+    // Assert
     EXPECT_ANY_THROW(Q.Pop());
 }
 
-TEST(Queue, can_create_copy_of_Queue)
-{
+TEST(Queue, can_create_copy_of_Queue) {
     // Arrange
     Queue<int> Q(5);
-    //Act
+    // Act
     //Assert
     ASSERT_NO_THROW(Queue<int> Q1(Q));
 }
@@ -106,10 +104,10 @@ TEST(Queue, cant_pop_element_from_deleted_queue) {
 }
 
 TEST(Queue, can_push_element_in_queue) {
-	// Arrange
+    // Arrange
     Queue<int> Q(3);
-	// Act
-    //Assert
+    // Act
+    // Assert
     EXPECT_NO_THROW(Q.Push(10));
 }
 
