@@ -1,4 +1,4 @@
-// Copyright 2017 Korniakov Kirill
+// Copyright 2017 Gvozdeva Viktoria
 
 #include <gtest/gtest.h>
 
