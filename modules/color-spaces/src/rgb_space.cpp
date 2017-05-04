@@ -1,9 +1,10 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/rgb_space.h"
+#include <cstdint>
 #include <string>
 #include <algorithm>
-#include <cstdint>
+
 
 void RGBSpace::swap(RGBSpace &rgb_space) {
     std::swap(red, rgb_space.red);
