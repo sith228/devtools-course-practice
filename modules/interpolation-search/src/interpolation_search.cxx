@@ -38,25 +38,25 @@ int InterpolationSearch::Search(int toFind) {
   if (isArraySorted(sortedArray_, length_)) {
     // Returns the index of an element with a value of toFind or -1,
     // if there is no such element
-    int low = 0;
-    int high = length_ - 1;
-    while (sortedArray_[low] < toFind && sortedArray_[high] > toFind) {
-      int mid = low + ((toFind - sortedArray_[low]) *
-        (high - low)) / (sortedArray_[high] - sortedArray_[low]);
-      if (sortedArray_[mid] < toFind)
-        low = mid + 1;
-      else if (sortedArray_[mid] > toFind)
-        high = mid - 1;
+    int low_ = 0;
+    int high_ = length_ - 1;
+    while (sortedArray_[low_] < toFind && sortedArray_[high_] > toFind) {
+      int mid_ = low_ + ((toFind - sortedArray_[low_]) *
+        (high_ - low_)) / (sortedArray_[high_] - sortedArray_[low_]);
+      if (sortedArray_[mid_] < toFind)
+        low_ = mid_ + 1;
+      else if (sortedArray_[mid_] > toFind)
+        high_ = mid_ - 1;
       else
-        return mid;
+        return mid_;
     }
-    if (sortedArray_[low] == toFind) {
-      return low;
+    if (sortedArray_[low_] == toFind) {
+      return low_;
     } else {
-      if (sortedArray_[high] == toFind)
-        return high;
+      if (sortedArray_[high_] == toFind)
+        return high_;
       else
-        return -1;  // Not found
+        return -1;
     }
   } else {
     throw "Array isn't valid";
