@@ -14,7 +14,6 @@ class statisticalMoments {
     bool isChangesDistributionRow();
  public:
     statisticalMoments(std::vector<double> values, std::vector<double> chances);
-    ~statisticalMoments();
     double getMoment(unsigned int order);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_

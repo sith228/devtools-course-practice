@@ -50,9 +50,6 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     }
 }
 
-statisticalMoments::~statisticalMoments() {
-    // delete vector if it nessesary
-}
 double statisticalMoments::getMoment(unsigned int order) {
     double result = 0;
     int a = 0;  // for start moments
