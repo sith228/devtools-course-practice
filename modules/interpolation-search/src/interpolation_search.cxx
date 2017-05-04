@@ -34,27 +34,27 @@ bool InterpolationSearch::isArraySorted(int * sortedArray, int length) {
   return false;
 }
 
-int InterpolationSearch::Search(int toFind) {
+int InterpolationSearch::Search(int search_elem) {
   if (isArraySorted(sortedArray_, length_)) {
     // Returns the index of an element with a value of toFind or -1,
     // if there is no such element
-    int low_ = 0;
-    int high_ = length_ - 1;
-    while (sortedArray_[low_] < toFind && sortedArray_[high_] > toFind) {
-      int mid_ = low_ + ((toFind - sortedArray_[low_]) *
-        (high_ - low_)) / (sortedArray_[high_] - sortedArray_[low_]);
-      if (sortedArray_[mid_] < toFind)
-        low_ = mid_ + 1;
-      else if (sortedArray_[mid_] > toFind)
-        high_ = mid_ - 1;
+    int top = length_ - 1;
+    int low = 0;
+	while (search_elem > sortedArray_[low] && search_elem < sortedArray_[top]) {
+      int middle = low + ((search_elem - sortedArray_[low]) *
+        (top - low)) / (sortedArray_[top] - sortedArray_[low]);
+	  if (search_elem > sortedArray_[middle])
+        low = middle + 1;
+	  else if (search_elem < sortedArray_[middle])
+        top = middle - 1;
       else
-        return mid_;
+        return middle;
     }
-    if (sortedArray_[low_] == toFind) {
-      return low_;
+    if (sortedArray_[low] == search_elem) {
+      return low;
     } else {
-      if (sortedArray_[high_] == toFind)
-        return high_;
+      if (sortedArray_[top] == search_elem)
+        return top;
       else
         return -1;
     }
