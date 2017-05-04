@@ -9,7 +9,7 @@ Calculator::Calculator() {
     S = 0;
 }
 
-bool Calculator::Is_positive_parametr( double _a) {
+bool Calculator::Is_positive_parametr(double _a) {
     if (_a <= 0)
         return false;
     else
@@ -79,8 +79,9 @@ double Calculator::Calculate_Prism(double _a, double _b, double _c, double _h) {
         double p = (_a + _b + _c) / 2;
         double heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
         S = 2 * heron_abc + _a*_h + _b*_h + _a*_h;
-    } else
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ h <= 0");
+    }
     return S;
 }
 
@@ -96,13 +97,13 @@ double Calculator::Calculate_Pyramid(double _a, double _b, double _l) {
         double heron_bl = sqrt(p2 * (p2 - _b) * (p2 - _l) * (p2 - _l));
 
         S = _a*_b + 2 * heron_al + 2 * heron_bl;
-    }
-    else
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ l <= 0");
+    }
     return S;
 }
 
-double Calculator::Calculate_Tetrahedron(double _a, double _b, double _c, double _l) {
+double Calculator::Calc_Tetra(double _a, double _b, double _c, double _l) {
     bool flag1 = Is_positive_parametr(_a);
     bool flag2 = Is_positive_parametr(_b);
     bool flag3 = Is_positive_parametr(_c);
@@ -121,8 +122,8 @@ double Calculator::Calculate_Tetrahedron(double _a, double _b, double _c, double
         double heron_cl = sqrt(p_cl * (p_cl - _c) * (p_cl - _l) * (p_cl - _l));
 
         S = heron_abc + heron_al + heron_bl + heron_cl;
-    }
-    else
+    } else {
         throw std::string("a <= 0 ~~ b <= 0 ~~ c <= 0 ~~ l <= 0");
+    }
     return S;
 }

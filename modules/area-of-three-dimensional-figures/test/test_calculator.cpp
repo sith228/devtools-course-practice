@@ -37,7 +37,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Can_assert_calc_cone_3) {
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_cone) {
     // Arrang
     Calculator z;
-    
+
     // Act
     double s = z.Calculate_Cone(1.0, 1.0);
     double s1 = M_PI;

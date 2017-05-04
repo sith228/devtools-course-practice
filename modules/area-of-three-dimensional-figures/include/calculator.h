@@ -19,7 +19,7 @@ class Calculator {
      double Calculate_Parallelepiped(double _a, double _b, double _c);
      double Calculate_Prism(double _a, double _b, double _c, double _h);
      double Calculate_Pyramid(double _a, double _b, double _l);
-     double Calculate_Tetrahedron(double _a, double _b, double _c, double _l);
+     double Calc_Tetra(double _a, double _b, double _c, double _l);
 
  private:
      double S;
