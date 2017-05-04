@@ -59,3 +59,16 @@ void Sort::PasteSort(void) {
         }
     }
 }
+
+void Sort::ChoiceSort(void) {
+    for (int i = 0; i < Length_; i++) {
+        int temp = Array_[0];
+        for (int j = i + 1; j < Length_; j++) {
+            if (Array_[i] > Array_[j]) {
+                temp = Array_[i];
+                Array_[i] = Array_[j];
+                Array_[j] = temp;
+            }
+        }
+    }
+}
