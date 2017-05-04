@@ -16,6 +16,7 @@ class Sort {
     bool operator== (const Sort& z) const;
     void QuickSort(int l, int m);
     void PasteSort(void);
+    void ChoiceSort(void);
  private:
     int* Array_;
     int Length_;
