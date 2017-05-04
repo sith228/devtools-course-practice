@@ -5,10 +5,11 @@
 
 class InterpolationSearch {
  public:
-    explicit InterpolationSearch(int x);
+    InterpolationSearch(int * sortedArray, int length);
 
  private:
-    int x_;
+    int * sortedArray_;
+    int length_;
 };
 
 #endif  // MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_
