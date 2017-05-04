@@ -12,8 +12,8 @@ class CreditCalculator {
   double check_balance(int amount, int period, double interest, int month_pas);
 
  private:
-  bool check_data(int amount, int period, double interest);
-  bool check_data(int amount, int period, double interest, int month_pas);
+  bool check_three_data(int amount, int period, double interest);
+  bool check_four_data(int amount, int period, double interest, int month_pas);
 };
 
 #endif  // MODULES_CREDIT_CALCULATOR_INCLUDE_CREDIT_CALCULATOR_H_
