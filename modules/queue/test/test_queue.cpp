@@ -17,13 +17,6 @@ TEST(Queue, can_create_queue_of_int_elements_with_positive_size) {
     EXPECT_NO_THROW(Queue<int> Q(6));
 }
 
-TEST(Queue, can_create_queue_of_int_elements_without_parametrs) {
-    // Arrange
-    // Act
-    // Assert
-    EXPECT_NO_THROW(Queue<int> Q());
-}
-
 TEST(Queue, can_be_equated_two_queues) {
     // Arrange
     Queue<int> Q1(10);
