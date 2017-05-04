@@ -47,11 +47,32 @@ TEST(InterpolationSearch, Can_Set_Array) {
   ASSERT_NO_THROW(interpolationSearch.SetArray(sortedArray2, length));
 }
 
-TEST(InterpolationSearch, Search_Works_Correctly) {
+TEST(InterpolationSearch, Search_Return_Missing) {
   const int length = 3;
   int * sortedArray = new int[length] {1, 2, 3};
   InterpolationSearch interpolationSearch(sortedArray, length);
-  EXPECT_EQ(2, interpolationSearch.Search(3));
+  EXPECT_EQ(-1, interpolationSearch.Search(4));
+}
+
+TEST(InterpolationSearch, Search_Return_Low) {
+  const int length = 3;
+  int * sortedArray = new int[length] {1, 2, 3};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(0, interpolationSearch.Search(1));
+}
+
+TEST(InterpolationSearch, Search_Return_Mid) {
+  const int length = 3;
+  int * sortedArray = new int[length] {1, 2, 3};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(1, interpolationSearch.Search(2));
+}
+
+TEST(InterpolationSearch, Search_Return_High) {
+	const int length = 3;
+	int * sortedArray = new int[length] {1, 2, 3};
+	InterpolationSearch interpolationSearch(sortedArray, length);
+	EXPECT_EQ(2, interpolationSearch.Search(3));
 }
 
 TEST(InterpolationSearch, Cant_Search_With_Unsorted_Array) {
