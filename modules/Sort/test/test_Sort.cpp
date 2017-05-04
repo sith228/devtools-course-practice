@@ -92,3 +92,33 @@ TEST(Sort, Can_Do_Quick_Sort_With_Duplicate_Elements) {
     const Sort expected_sort(expected_result, N);
     EXPECT_EQ(expected_sort, Array);
 }
+
+TEST(Sort, Can_Do_Quick_Sort_With_Negative_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { -111, -2321, -15, -43, -927, -432, -1 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.QuickSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { -2321, -927, -432, -111, -43, -15, -1 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Paste_Sort_With_Negative_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { -23, -14, -3, -63, -4, -8, -18 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.PasteSort();
+
+    // Assert
+    const int expected_result[N] = { -63, -23, -18, -14, -8, -4, -3 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
