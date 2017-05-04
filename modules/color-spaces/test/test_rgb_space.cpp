@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include "../include/rgb_space.h"
 
-/*
 TEST(RGBSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     // Arrange
     int sum = 0;
@@ -206,4 +205,3 @@ TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
     // Assert
     EXPECT_TRUE(result);
 }
-*/

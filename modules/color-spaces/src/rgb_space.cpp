@@ -3,6 +3,7 @@
 #include "../include/rgb_space.h"
 #include <string>
 #include <algorithm>
+#include <stdint.h>
 
 void RGBSpace::swap(RGBSpace &rgb_space) {
     std::swap(red, rgb_space.red);
