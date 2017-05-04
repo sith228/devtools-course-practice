@@ -71,12 +71,12 @@ double n, double p, double A, double B, double C, double D) {
 
 std::vector<double> Intersection::CalculateIntersection() {
     double parameterValue;
-	parameterValue = planeA_*linem_ + planeB_*linen_ + planeC_*linep_;
+    parameterValue = planeA_*linem_ + planeB_*linen_ + planeC_*linep_;
     std::vector<double> result(3);
     if (parameterValue == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {
-		parameterValue = (-1 * (planeA_*linex0_ + planeB_*liney0_ +
+        parameterValue = (-1 * (planeA_*linex0_ + planeB_*liney0_ +
         planeC_*linez0_ + planeD_))/ parameterValue;
         result[0] = linex0_ + linem_*parameterValue;
         result[1] = liney0_ + linen_*parameterValue;
