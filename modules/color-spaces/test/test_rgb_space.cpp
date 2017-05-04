@@ -178,20 +178,21 @@ TEST(RGBSpaceTest, Can_Use_Equals_In_RGBSpace) {
     EXPECT_TRUE(result);
 }
 
-TEST(RGBSpaceTest, DISABLED_Can_Use_Equals_With_As) {
+TEST(RGBSpaceTest, Can_Use_Equals_With_As) {
     // Arrange
     int red = 127;
     int green = 236;
     int blue = 56;
     // Act
-    RGBSpace space(red, green, blue);
-    bool result = (space == space);
+    RGBSpace *space = new RGBSpace(red, green, blue);
+    RGBSpace *other_space = space;
+    bool result = (space == other_space);
     // Assert
     EXPECT_TRUE(result);
 }
 
 
-TEST(RGBSpaceTest, DISABLED_Can_Use_Not_Equals_In_RGBSpace) {
+TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
     // Arrange
     int red = 127;
     int green = 236;
