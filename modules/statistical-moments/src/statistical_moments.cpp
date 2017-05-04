@@ -52,6 +52,9 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
 
 double statisticalMoments::getMoment(unsigned int order) {
     double result = 0;
+    if (order == 0) {
+        throw new std::runtime_error("Order must be more than zero");
+    }
     int a = 0;  // for start moments
     for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
         result += pow(values[i] - a, order)*chances[i];

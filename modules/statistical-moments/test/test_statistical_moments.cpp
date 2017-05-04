@@ -68,6 +68,16 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest,
     // Assert
     EXPECT_DOUBLE_EQ(1.624, test_moment);
 }
+TEST(Kiseleva_Olga_StatisticalMomentsTest,
+    Can_Count_Starting_Moment_With_Zero_Order) {
+    // Arrange
+    std::vector<double> values = { 1, 2, 3, 4 };
+    std::vector<double> changes = { 0.6, 0.24, 0.096, 0.064 };
+    // Act
+    statisticalMoments test(values, changes);
+    // Assert
+    EXPECT_ANY_THROW (test.getMoment(0));
+}
 
 
 
