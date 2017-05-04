@@ -21,3 +21,23 @@ TEST(InterpolationSearch, No_Throws_When_Array_Sorted) {
   int * sortedArr = new int[len] {1, 2, 3};
   ASSERT_NO_THROW(InterpolationSearch interpolationSearch(sortedArr, len));
 }
+
+TEST(InterpolationSearch, Cant_Create_Search_With_Null_Array) {
+  const int length = 3;
+  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(NULL, length));
+}
+
+TEST(InterpolationSearch, Cant_Create_Search_With_Negative_Array_Lenght) {
+  const int length = 3;
+  int * sortedArray = new int[length] {1, 2, 3};
+  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(sortedArray, -1));
+}
+
+TEST(InterpolationSearch, Can_Set_Array) {
+  const int length = 3;
+  int * sortedArray1 = new int[length] {1, 2, 3};
+  int * sortedArray2 = new int[length] {2, 3, 4};
+  InterpolationSearch interpolationSearch(sortedArray1, length);
+  ASSERT_NO_THROW(interpolationSearch.SetArray(sortedArray2, length));
+}
+

@@ -3,17 +3,21 @@
 #include "include/interpolation_search.h"
 
 InterpolationSearch::InterpolationSearch(int * sortedArray, int length) {
+  SetArray(sortedArray, length);
+}
+
+void InterpolationSearch::SetArray(int * sortedArray, int length) {
   if (isArraySorted(sortedArray, length)) {
     sortedArray_ = sortedArray;
     length_ = length;
   } else {
-    throw "array isn't sorted";
+    throw "Array isn't sorted";
   }
 }
 
 bool InterpolationSearch::isArraySorted(int * sortedArray, int length) {
   if (sortedArray == nullptr) {
-    throw "array is null";
+    throw "Array is null";
   } else {
     if (length < 1) {
       throw "length is null or negative";

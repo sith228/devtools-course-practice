@@ -6,6 +6,7 @@
 class InterpolationSearch {
  public:
     InterpolationSearch(int * sortedArray, int length);
+    void SetArray(int * sortedArray, int length);
 
  private:
     int * sortedArray_;
