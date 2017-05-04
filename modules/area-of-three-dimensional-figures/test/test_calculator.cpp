@@ -179,6 +179,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_prism_2) {
     EXPECT_EQ(s1, s);
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, Calc_prism_3) {
+    // Arrang
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(6.0, 2.0, 2.0, 1.5));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_pyramid) {
     // Arrang
     Calculator z;
@@ -201,6 +209,14 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_pyramid_2) {
 
     // Assert
     EXPECT_EQ(s1, s);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Calc_pyramid_3) {
+    // Arrang
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(6.0, 2.0, 2.0));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_sphere) {
@@ -254,4 +270,12 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_tetrahedron_2) {
 
     // Assert
     EXPECT_EQ(s1, s);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Calc_tetra_3) {
+    // Arrang
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(6.0, 2.0, 2.0, 1.5));
 }

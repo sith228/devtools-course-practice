@@ -25,7 +25,7 @@ class Calculator {
      double S;
 
      bool Is_positive_parametr(double _a);
-     // Methods for calculate
+     bool Check_for_Heron(double _a, double _b, double _c);
 };
 
 #endif  // MODULES_AREA_OF_THREE_DIMENSIONAL_FIGURES_INCLUDE_CALCULATOR_H_
