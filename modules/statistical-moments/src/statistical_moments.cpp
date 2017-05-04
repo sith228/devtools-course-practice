@@ -17,7 +17,7 @@ bool statisticalMoments::isChangeValid() {
 
 bool statisticalMoments::isChangesDistributionRow() {
     double tmp_sum = 0;
-    for (unsigned int i = 0;i < statisticalMoments::chances.size();i++) {
+    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
         tmp_sum += chances[i];
     }
     if (tmp_sum != 1) {
@@ -51,7 +51,7 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
 }
 
 statisticalMoments::~statisticalMoments() {
-    //delete vector if it nessesary
+    // delete vector if it nessesary
 }
 double statisticalMoments::getMoment(unsigned int order) {
     double result = 0;
