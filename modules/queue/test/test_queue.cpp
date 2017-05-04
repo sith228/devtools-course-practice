@@ -69,7 +69,7 @@ TEST(Queue, can_create_copy_of_Queue) {
     // Arrange
     Queue<int> Q(5);
     // Act
-    //Assert
+    // Assert
     ASSERT_NO_THROW(Queue<int> Q1(Q));
 }
 
