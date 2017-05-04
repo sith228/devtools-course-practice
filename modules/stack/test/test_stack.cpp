@@ -385,7 +385,7 @@ TEST(StackTest, Cant_Get_Element_When_Stack_Is_Empty_CHAR) {
     TStack <char> v(2);
 
     // Act & Assert
-	ASSERT_ANY_THROW(v.Get());
+    ASSERT_ANY_THROW(v.Get());
 }
 
 TEST(StackTest, Cant_Exclude_Element_When_Stack_Is_Empty_CHAR) {
