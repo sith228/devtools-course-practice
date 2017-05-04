@@ -136,3 +136,48 @@ TEST(Sort, Can_Right_Recording_Elements) {
     const int expected_value = 6;
     EXPECT_EQ(result_value, expected_value);
 }
+
+TEST(Sort, Can_Do_Choice_Sort) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 7, 11, 3, 228, 1, 1001, 4400 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.ChoiceSort();
+
+    // Assert
+    const int expected_result[N] = { 1, 3, 7, 11, 228, 1001, 4400 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Choice_Sort_With_Duplicate_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 7, 11, 3, 11, 1, 1, 4400 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.ChoiceSort();
+
+    // Assert
+    const int expected_result[N] = { 1, 1, 3, 7, 11, 11, 4400 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Choice_Sort_With_Negative_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { -7, -11, -3, -228, -1, -1001, -4400 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.ChoiceSort();
+
+    // Assert
+    const int expected_result[N] = { -4400, -1001, -228, -11, -7, -3, -1 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
