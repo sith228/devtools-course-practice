@@ -3,6 +3,8 @@
 #ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_QUEUE_INCLUDE_QUEUE_H_
 
+const int MAX_SIZE = 1000000;
+
 template <typename valType>
 class Queue {
  private:
@@ -24,21 +26,14 @@ class Queue {
 
 template <class valType>
 Queue <valType> ::Queue(int _maxSize) {
-    if (_maxSize > 0) {
-        maxSize = _maxSize;
-        queuePtr = new valType[maxSize];
-        if (queuePtr == nullptr) throw "Memory was not allocated";
-        len = 0;
-        head = 0;
-        tail = -1;
+	if (_maxSize > 0) {
+		maxSize = _maxSize;
+    }
+	else if (_maxSize > MAX_SIZE) {
+        maxSize = MAX_SIZE;
     } else {
         throw "Size is incorrect!";
     }
-}
-
-template <class valType>
-Queue <valType> ::Queue() {
-    maxSize = 10;
     queuePtr = new valType[maxSize];
     if (queuePtr == nullptr) throw "Memory was not allocated";
     len = 0;
