@@ -70,17 +70,17 @@ double n, double p, double A, double B, double C, double D) {
 }
 
 std::vector<double> Intersection::CalculateIntersection() {
-    double temp;
-    temp = planeA_*linem_ + planeB_*linen_ + planeC_*linep_;
+    double parameterValue;
+	parameterValue = planeA_*linem_ + planeB_*linen_ + planeC_*linep_;
     std::vector<double> result(3);
-    if (temp == 0) {
+    if (parameterValue == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {
-        temp = (-1 * (planeA_*linex0_ + planeB_*liney0_ + planeC_*linez0_
-        + planeD_))/ temp;
-        result[0] = linex0_ + linem_*temp;
-        result[1] = liney0_ + linen_*temp;
-        result[2] = linez0_ + linep_*temp;
+		parameterValue = (-1 * (planeA_*linex0_ + planeB_*liney0_ +
+        planeC_*linez0_ + planeD_))/ parameterValue;
+        result[0] = linex0_ + linem_*parameterValue;
+        result[1] = liney0_ + linen_*parameterValue;
+        result[2] = linez0_ + linep_*parameterValue;
     }
     return result;
 }
