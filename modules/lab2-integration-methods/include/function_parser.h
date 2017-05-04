@@ -9,7 +9,8 @@
 struct Expression {
     explicit Expression(const std::string &token);
     Expression(const std::string &token, const Expression &a);
-    Expression(const std::string &token, const Expression &a, const Expression &b);
+    Expression(const std::string &token, const Expression &a,
+        const Expression &b);
 
     std::string token;
     std::vector<Expression> args;

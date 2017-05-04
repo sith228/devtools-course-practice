@@ -18,11 +18,13 @@ int get_priority(const std::string& token) {
 
 Expression::Expression(const std::string &token) : token(token) {}
 
-Expression::Expression(const std::string &token, const Expression &a) : token(token) {
+Expression::Expression(const std::string &token,
+    const Expression &a) : token(token) {
     args.push_back(a);
 }
 
-Expression::Expression(const std::string &token, const Expression &a, const Expression &b) :
+Expression::Expression(const std::string &token,
+    const Expression &a, const Expression &b) :
     token(token) {
     args.push_back(a);
     args.push_back(b);

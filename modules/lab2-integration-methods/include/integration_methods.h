@@ -14,7 +14,8 @@ class IntegrationMethod {
     double simpson_method(const std::string &integrand, double low_limit,
         double upper_limit, double eps);
  private:
-     std::string change_variable_to_value(const std::string &integrand, double value);
+     std::string change_variable_to_value(const std::string &integrand,
+        double value);
      double calculate_function(const std::string &integrand);
 };
 
