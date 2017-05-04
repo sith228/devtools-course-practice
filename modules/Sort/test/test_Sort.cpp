@@ -32,3 +32,63 @@ TEST(Sort, Can_Compare_Result_False) {
     // Assert
     EXPECT_FALSE(expected_false);
 }
+
+TEST(Sort, Can_Do_Paste_Sort) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 23, 14, 12, 63, 127, 8, 412 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.PasteSort();
+
+    // Assert
+    const int expected_result[N] = { 8, 12, 14, 23, 63, 127, 412 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Quick_Sort) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 111, 2321, 15, 43, 927, 432, 1 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.QuickSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { 1, 15, 43, 111, 432, 927, 2321 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Paste_Sort_With_Duplicate_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 23, 14, 23, 63, 14, 8, 8 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.PasteSort();
+
+    // Assert
+    const int expected_result[N] = { 8, 8, 14, 14, 23, 23, 63 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Quick_Sort_With_Duplicate_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 111, 43, 15, 43, 111, 42, 1 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.QuickSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { 1, 15, 42, 43, 43, 111, 111 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
