@@ -141,4 +141,139 @@ TEST(StackTest, Can_Check_Full_Stack_INT) {
     EXPECT_TRUE(v.CheckFull());
 }
 
+//TESTS FOR DOUBLE
+
+TEST(StackTest, Can_Create_Stack_With_Positive_Length_DOUBLE) {
+    // Arrange & Act & Assert
+    ASSERT_NO_THROW(TStack<double> v(5));
+}
+
+TEST(StackTest, Cant_Create_Too_Large_Stack_DOUBLE) {
+    // Arrange & Act & Assert 
+    ASSERT_ANY_THROW(TStack<double> v(MAX_STACK_SIZE + 1));
+}
+
+TEST(StackTest, Cant_Create_Stack_With_Negative_Length_DOUBLE) {
+    // Arrange & Act & Assert
+    ASSERT_ANY_THROW(TStack<double> v(-5));
+}
+
+TEST(StackTest, Can_Create_Copied_Stack_DOUBLE) {
+    // Arrange  
+    TStack <double> v(10);
+
+    // Act & Assert
+    ASSERT_NO_THROW(TStack <double> v1(v));
+}
+
+TEST(StackTest, Can_Get_Stack_Size_DOUBLE) {
+    // Arrange 
+    TStack <double> v(10);
+
+    // Act & Assert
+    EXPECT_EQ(10, v.GetStackSize());
+}
+
+TEST(StackTest, Can_Get_Stack_Top_DOUBLE) {
+    // Arrange 
+    TStack <double> v(10);
+    v.Include(2.55);
+    v.Include(15.1);
+
+    // Act & Assert
+    EXPECT_EQ(1, v.GetStackTop());
+}
+
+TEST(StackTest, Can_Include_New_Element_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+
+    // Act
+    v.Include(5.25);
+
+    // Assert
+    EXPECT_EQ(5.25, v.Get());
+}
+
+TEST(StackTest, Cant_Include_Element_When_Stack_Is_Full_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+    v.Include(5.7);
+    v.Include(7.5);
+
+    // Act&Assert
+    ASSERT_ANY_THROW(v.Include(9.05));
+}
+
+TEST(StackTest, Can_Exclude_Element_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+    v.Include(5.1);
+
+    // Act&Assert
+    EXPECT_EQ(5.1, v.Exclude());
+}
+
+TEST(StackTest, Top_Decreases_When_Exclude_Element_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+    v.Include(5.1);
+
+    // Act & Assert
+    EXPECT_EQ(5.1, v.Exclude());
+    EXPECT_EQ(-1, v.GetStackTop());
+}
+
+TEST(StackTest, Can_Get_Element_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+    v.Include(5.1);
+
+    // Act&Assert
+    EXPECT_EQ(5.1, v.Get());
+}
+
+TEST(StackTest, Top_Does_Not_Change_When_Get_Element_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+    v.Include(5.1);
+
+    // Act & Assert
+    EXPECT_EQ(5.1, v.Get());
+    EXPECT_EQ(0, v.GetStackTop());
+}
+
+TEST(StackTest, Cant_Get_Element_When_Stack_Is_Empty_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+
+    // Act & Assert
+    ASSERT_ANY_THROW(v.Get());
+}
+
+TEST(StackTest, Cant_Exclude_Element_When_Stack_Is_Empty_DOUBLE) {
+    // Arrange
+    TStack <double> v(2);
+
+    // Act & Assert
+    ASSERT_ANY_THROW(v.Exclude());
+}
+
+TEST(StackTest, New_Stack_Is_Empty_DOUBLE) {
+    // Arrange
+    TStack<double> v(2);
+
+    // Act & Assert
+    EXPECT_TRUE(v.CheckEmpty());
+}
+
+TEST(StackTest, Can_Check_Full_Stack_DOUBLE) {
+    // Arrange
+    TStack<double> v(2);
+    v.Include(5.1);
+    v.Include(7.15);
+
+    // Act & Assert
+    EXPECT_TRUE(v.CheckFull());
+}
 
