@@ -10,9 +10,9 @@ BitArray::BitArray(const int size) {
         nBlocks_++;
         if (size % (sizeof(MemoryBlock) * 8) == 0)
             nBlocks_--;
-        memoryBlocks = new MemoryBlock[nBlocks_];
+        memoryBlocks_ = new MemoryBlock[nBlocks_];
         for (unsigned int i = 0; i < nBlocks_; i++)
-            memoryBlocks[i] = 0;
+            memoryBlocks_[i] = 0;
     } else {
         throw std::string("Incorrect array size");
     }
@@ -23,28 +23,28 @@ BitArray::BitArray(const int size) {
 BitArray::BitArray(const BitArray& bitArray) {
     size_ = bitArray.size_;
     nBlocks_ = bitArray.nBlocks_;
-    memoryBlocks = new MemoryBlock[nBlocks_];
+    memoryBlocks_ = new MemoryBlock[nBlocks_];
     for (unsigned int i = 0; i < nBlocks_; i++)
-        memoryBlocks[i] = bitArray.memoryBlocks[i];
+        memoryBlocks_[i] = bitArray.memoryBlocks_[i];
 }
 
 
 
 BitArray::~BitArray() {
-    delete [] memoryBlocks;
-    memoryBlocks = nullptr;
+    delete [] memoryBlocks_;
+    memoryBlocks_ = nullptr;
 }
 
 
 
 BitArray& BitArray::operator = (const BitArray& bitArray) {
     if (this != &bitArray) {
-        delete[] memoryBlocks;
+        delete[] memoryBlocks_;
         size_ = bitArray.size_;
         nBlocks_ = bitArray.nBlocks_;
-        memoryBlocks = new MemoryBlock[nBlocks_];
+        memoryBlocks_ = new MemoryBlock[nBlocks_];
         for (unsigned int i = 0; i < nBlocks_; i++)
-            memoryBlocks[i] = bitArray.memoryBlocks[i];
+            memoryBlocks_[i] = bitArray.memoryBlocks_[i];
     }
     return *this;
 }
@@ -80,7 +80,7 @@ MemoryBlock BitArray::getMask
 
 void BitArray::setBit(const unsigned int bitNumber) {
     if (bitNumber < size_) {
-        memoryBlocks[getBlockNumber(bitNumber)] |= getMask(bitNumber);
+        memoryBlocks_[getBlockNumber(bitNumber)] |= getMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
     }
@@ -90,7 +90,7 @@ void BitArray::setBit(const unsigned int bitNumber) {
 
 void BitArray::clearBit(const unsigned int bitNumber) {
     if (bitNumber < size_) {
-        memoryBlocks[getBlockNumber(bitNumber)] &= ~getMask(bitNumber);
+        memoryBlocks_[getBlockNumber(bitNumber)] &= ~getMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
     }
@@ -100,7 +100,7 @@ void BitArray::clearBit(const unsigned int bitNumber) {
 int BitArray::getBit(const unsigned int bitNumber) const {
     if (bitNumber < size_) {
         int bitValue;
-        bitValue = memoryBlocks[getBlockNumber(bitNumber)] & getMask(bitNumber);
+        bitValue = memoryBlocks_[getBlockNumber(bitNumber)] & getMask(bitNumber);
         if (bitValue > 0)
             bitValue = 1;
         return bitValue;
@@ -118,9 +118,9 @@ BitArray BitArray::operator & (const BitArray& bitArray) const {
     BitArray tempBitArray(size);
 
     for (unsigned int i = 0; i < nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] = memoryBlocks_[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] &= bitArray.memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] &= bitArray.memoryBlocks_[i];
 
     return tempBitArray;
 }
@@ -134,9 +134,9 @@ BitArray BitArray::operator | (const BitArray& bitArray) const {
     BitArray tempBitArray(size);
 
     for (unsigned int i = 0; i < nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] = memoryBlocks_[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] |= bitArray.memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] |= bitArray.memoryBlocks_[i];
 
     return tempBitArray;
 }
@@ -150,9 +150,9 @@ BitArray BitArray::operator ^ (const BitArray& bitArray) const {
     BitArray tempBitArray(size);
 
     for (unsigned int i = 0; i < nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] = memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] = memoryBlocks_[i];
     for (unsigned int i = 0; i < tempBitArray.nBlocks_; i++)
-        tempBitArray.memoryBlocks[i] ^= bitArray.memoryBlocks[i];
+        tempBitArray.memoryBlocks_[i] ^= bitArray.memoryBlocks_[i];
 
     return tempBitArray;
 }
@@ -178,7 +178,7 @@ BitArray BitArray::operator ~() const {
 bool BitArray::operator == (const BitArray& bitArray) const {
     if (size_ == bitArray.size_) {
         for (unsigned int i = 0; i < nBlocks_; i++)
-        if (memoryBlocks[i] != bitArray.memoryBlocks[i])
+        if (memoryBlocks_[i] != bitArray.memoryBlocks_[i])
             return false;
         return true;
     }

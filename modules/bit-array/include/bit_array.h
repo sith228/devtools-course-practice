@@ -36,7 +36,7 @@ class BitArray {
     MemoryBlock getMask(const unsigned int globalBitNumber) const;
 
     unsigned int size_;
-    MemoryBlock* memoryBlocks;
+    MemoryBlock* memoryBlocks_;
     unsigned int nBlocks_;
 };
 
