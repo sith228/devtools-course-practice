@@ -8,8 +8,8 @@
 
 struct Expression {
     explicit Expression(const std::string &token);
-    Expression(const std::string &token, Expression a);
-    Expression(const std::string &token, Expression a, Expression b);
+    Expression(const std::string &token, const Expression &a);
+    Expression(const std::string &token, const Expression &a, const Expression &b);
 
     std::string token;
     std::vector<Expression> args;
@@ -18,15 +18,15 @@ struct Expression {
 
 class Parser {
  public:
-    explicit Parser(const char* input);
-    Expression parse();
+     Expression parse(const char *input);
 
  private:
+     Expression parse2();
      std::string parse_token();
      Expression parse_simple_expression();
      Expression parse_binary_expression(int min_priority);
 
-    char* input;
+     const char* input;
 };
 
 #endif  // MODULES_LAB2_INTEGRATION_METHODS_INCLUDE_FUNCTION_PARSER_H_

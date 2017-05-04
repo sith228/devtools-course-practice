@@ -6,25 +6,27 @@
 #include <stdexcept>
 #include "include/function_parser.h"
 
-std::string IntegrationMethod::change_variable_to_value(std::string integrand,
+std::string IntegrationMethod::change_variable_to_value(
+    const std::string &integrand,
     double value) {
-    std::string string_format_value = std::to_string(value);
+    auto result = integrand;
+    auto string_format_value = std::to_string(value);
     int size = integrand.size();
     for (int i = 0; i < size; i++) {
-        if (integrand.at(i) == 'x' || integrand.at(i) == 'X') {
-            integrand.replace(i, 1, string_format_value);
-            size = integrand.size();
+        if (result.at(i) == 'x' || result.at(i) == 'X') {
+            result.replace(i, 1, string_format_value);
+            size = result.size();
         }
     }
-    return integrand;
+    return result;
 }
 
-double IntegrationMethod::calculate_function(std::string integrand) {
-    Parser parser(integrand.c_str());
-    return parser.parse().eval();
+double IntegrationMethod::calculate_function(const std::string &integrand) {
+    Parser parser;
+    return parser.parse(integrand.c_str()).eval();
 }
 
-double IntegrationMethod::rectangle_method(std::string integrand,
+double IntegrationMethod::rectangle_method(const std::string &integrand,
     double low_limit,
     double upper_limit, unsigned quantity_of_steps) {
     std::string func_in_low_limit = change_variable_to_value(integrand,
@@ -46,7 +48,7 @@ double IntegrationMethod::rectangle_method(std::string integrand,
     return s*h;
 }
 
-double IntegrationMethod::trapezoid_method(std::string integrand,
+double IntegrationMethod::trapezoid_method(const std::string &integrand,
     double low_limit,
     double upper_limit, unsigned quantity_of_steps) {
         double result = 0;
@@ -70,7 +72,7 @@ double IntegrationMethod::trapezoid_method(std::string integrand,
         return result;
 }
 
-double IntegrationMethod::simpson_method(std::string integrand,
+double IntegrationMethod::simpson_method(const std::string &integrand,
     double low_limit,
     double upper_limit, double eps) {
         if (eps < 0)

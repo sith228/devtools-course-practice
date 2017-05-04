@@ -18,27 +18,14 @@ int get_priority(const std::string& token) {
 
 Expression::Expression(const std::string &token) : token(token) {}
 
-Expression::Expression(const std::string &token, Expression a) : token(token) {
+Expression::Expression(const std::string &token, const Expression &a) : token(token) {
     args.push_back(a);
 }
 
-Expression::Expression(const std::string &token, Expression a, Expression b) :
+Expression::Expression(const std::string &token, const Expression &a, const Expression &b) :
     token(token) {
     args.push_back(a);
     args.push_back(b);
-}
-
-Parser::Parser(const char *input) {
-    if (input != nullptr) {
-        int size = std::strlen(input);
-        this->input = new char[size+1];
-        for (int i=0; i < size; i++) {
-            this->input[i] = input[i];
-        }
-        this->input[size] = '\0';
-    } else {
-        throw std::runtime_error("Input should not be null");
-    }
 }
 
 std::string Parser::parse_token() {
@@ -80,7 +67,7 @@ Expression Parser::parse_simple_expression() {
         return Expression(token);
 
     if (token == "(") {
-        auto result = parse();
+        auto result = parse2();
         if (parse_token() != ")") throw std::runtime_error("Expected ')' ");
         return result;
     }
@@ -105,8 +92,13 @@ Expression Parser::parse_binary_expression(int min_priority) {
     }
 }
 
-Expression Parser::parse() {
+Expression Parser::parse2() {
     return parse_binary_expression(0);
+}
+
+Expression Parser::parse(const char *input) {
+    this->input = input;
+    return parse2();
 }
 
 double Expression::eval() {
