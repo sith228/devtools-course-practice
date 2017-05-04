@@ -29,24 +29,24 @@ double CreditCalculator::total_payout(int amount, int period,
     double interest) {
     if (!check_data(amount, period, interest))
         return -1;
-    CreditCalculator creditCalculator;
-    return creditCalculator.monthly_payment(amount, period, interest)*period;
+    CreditCalculator creditCalc;
+    return creditCalc.monthly_payment(amount, period, interest)*period;
 }
 
 double CreditCalculator::overpayment_amount(int amount, int period,
     double interest) {
     if (!check_data(amount, period, interest))
         return -1;
-    CreditCalculator creditCalculator;
-    return creditCalculator.total_payout(amount, period, interest) - amount;
+    CreditCalculator creditCalc;
+    return creditCalc.total_payout(amount, period, interest) - amount;
 }
 
 double CreditCalculator::check_balance(int amount, int period,
     double interest, int month_pas) {
     if (!check_data(amount, period, interest, month_pas))
         return -1;
-    CreditCalculator creditCalculator;
+    CreditCalculator creditCalc;
     double paid_out;
-    paid_out = creditCalculator.monthly_payment(amount, period, interest)*month_pas;
-    return creditCalculator.total_payout(amount, period, interest) - paid_out;
+    paid_out = creditCalc.monthly_payment(amount, period, interest)*month_pas;
+    return creditCalc.total_payout(amount, period, interest) - paid_out;
 }
