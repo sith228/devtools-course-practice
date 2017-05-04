@@ -16,6 +16,15 @@ TEST(TemperatureConverterTest, Can_Create_Converter_And_Get_Fahrenheit) {
     EXPECT_EQ(p.getFahrenheit(), expectedFahrenheit);
 }
 
+TEST(TemperatureConverterTest, 
+    Cant_Create_Converter_With_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double temperature = -274;
+
+    //Act & Assert
+    EXPECT_THROW(TemperatureConverter p(temperature), std::string);
+}
+
 TEST(TemperatureConverterTest, Can_Create_Converter_And_Get_Newton) {
     // Arrange
     double temperature = 26.0;
