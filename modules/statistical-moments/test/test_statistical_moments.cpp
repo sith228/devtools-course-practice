@@ -76,7 +76,7 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest,
     // Act
     statisticalMoments test(values, changes);
     // Assert
-    EXPECT_ANY_THROW (test.getMoment(0));
+    EXPECT_ANY_THROW(test.getMoment(0));
 }
 
 
