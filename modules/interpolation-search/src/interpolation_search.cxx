@@ -63,4 +63,3 @@ int InterpolationSearch::Search(int search_elem) {
     return -1;
   }
 }
-	
