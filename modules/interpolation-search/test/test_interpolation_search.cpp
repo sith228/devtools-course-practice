@@ -69,10 +69,10 @@ TEST(InterpolationSearch, Search_Return_Mid) {
 }
 
 TEST(InterpolationSearch, Search_Return_High) {
-	const int length = 3;
-	int * sortedArray = new int[length] {1, 2, 3};
-	InterpolationSearch interpolationSearch(sortedArray, length);
-	EXPECT_EQ(2, interpolationSearch.Search(3));
+  const int length = 3;
+  int * sortedArray = new int[length] {1, 2, 3};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(2, interpolationSearch.Search(3));
 }
 
 TEST(InterpolationSearch, Cant_Search_With_Unsorted_Array) {
