@@ -34,9 +34,9 @@ TEST(InterpolationSearch, Cant_Create_Search_With_Negative_Array_Lenght) {
 }
 
 TEST(InterpolationSearch, Cant_Create_Search_With_Zero_Array_Lenght) {
-  const int length = 0;
-  int * sortedArray = new int[length];
-  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(sortedArray, length));
+  const int len = 0;
+  int * sortedArray = new int[len];
+  ASSERT_ANY_THROW(InterpolationSearch interpolationSearch(sortedArray, len));
 }
 
 TEST(InterpolationSearch, Can_Set_Array) {
