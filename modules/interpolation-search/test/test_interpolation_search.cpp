@@ -68,6 +68,20 @@ TEST(InterpolationSearch, Search_Return_Mid) {
   EXPECT_EQ(1, interpolationSearch.Search(2));
 }
 
+TEST(InterpolationSearch, Search_Return_Mid_From_Low) {
+  const int length = 4;
+  int * sortedArray = new int[length] {5, 6, 7, 20};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(2, interpolationSearch.Search(7));
+}
+
+TEST(InterpolationSearch, Search_Return_Mid_From_High) {
+  const int length = 4;
+  int * sortedArray = new int[length] {5, 17, 19, 20};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(1, interpolationSearch.Search(17));
+}
+
 TEST(InterpolationSearch, Search_Return_High) {
   const int length = 3;
   int * sortedArray = new int[length] {1, 2, 3};
