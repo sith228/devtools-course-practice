@@ -4,21 +4,6 @@
 
 #include "include/credit_calculator.h"
 
-TEST(Simonyan_Vaginak_CreditCalculator, check_data_with_correct_param) {
-    // Arrange
-    int amount = 300000;
-    int period = 24;
-    double interest = 22;
-    bool result;
-    CreditCalculator cred;
-
-    // Act
-    result = cred.check_data(amount, period, interest);
-
-    // Assert
-    EXPECT_EQ(true, result);
-}
-
 TEST(Simonyan_Vaginak_CreditCalculator, get_monthly_payment) {
     // Arrange
     int amount = 300000;
@@ -70,7 +55,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator,
-    get_total_payout_with_incorrect_parametrs) {
+    get_total_payout_with_incorrect_parameters) {
     // Arrange
     int amount = 300000;
     int period = -12;
@@ -103,7 +88,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_overpayment_amount) {
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator,
-    get_overpayment_amount_with_incorrect_parametrs) {
+    get_overpayment_amount_with_incorrect_parameters) {
     // Arrange
     int amount = 300000;
     int period = -12;
@@ -137,7 +122,7 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator,
-    check_balance_with_incorrect_parametrs) {
+    check_balance_with_incorrect_parameters) {
     // Arrange
     int amount = -300000;
     int period = 12;
