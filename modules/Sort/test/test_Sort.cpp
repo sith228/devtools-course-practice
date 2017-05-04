@@ -122,3 +122,17 @@ TEST(Sort, Can_Do_Paste_Sort_With_Negative_Elements) {
     const Sort expected_sort(expected_result, N);
     EXPECT_EQ(expected_sort, Array);
 }
+
+TEST(Sort, Can_Right_Recording_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 1, 2, 7, 4, 21, 18, 6 };
+    Sort Array(Arr, N);
+
+    // Act
+    const int result_value = Array[6];
+
+    // Assert
+    const int expected_value = 6;
+    EXPECT_EQ(result_value, expected_value);
+}
