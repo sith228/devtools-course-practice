@@ -26,10 +26,9 @@ class Queue {
 
 template <class valType>
 Queue <valType> ::Queue(int _maxSize) {
-	if (_maxSize > 0) {
-		maxSize = _maxSize;
-    }
-	else if (_maxSize > MAX_SIZE) {
+    if (_maxSize > 0) {
+        maxSize = _maxSize;
+    } else if (_maxSize > MAX_SIZE) {
         maxSize = MAX_SIZE;
     } else {
         throw "Size is incorrect!";
