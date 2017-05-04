@@ -1,14 +1,14 @@
 // Copyright 2017 Nesterov Alexander
 #ifndef MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
 #define MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
-#include <cstdint>
+#include <sys/types.h>
 #include <algorithm>
 
 class RGBSpace {
  private:
-    std::uint8_t red;
-    std::uint8_t green;
-    std::uint8_t blue;
+    u_int8_t red;
+    u_int8_t green;
+    u_int8_t blue;
     void swap(RGBSpace &rgb_space);
 
  public:
@@ -18,9 +18,9 @@ class RGBSpace {
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
 
-    std::uint8_t GetRed() const;
-    std::uint8_t GetGreen() const;
-    std::uint8_t GetBlue() const;
+    u_int8_t GetRed() const;
+    u_int8_t GetGreen() const;
+    u_int8_t GetBlue() const;
     void SetRed(const int red_);
     void SetGreen(const int green_);
     void SetBlue(const int blue_);

@@ -1,10 +1,9 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/rgb_space.h"
-#include <cstdint>
+#include <sys/types.h>
 #include <string>
 #include <algorithm>
-
 
 void RGBSpace::swap(RGBSpace &rgb_space) {
     std::swap(red, rgb_space.red);
@@ -22,9 +21,9 @@ RGBSpace::RGBSpace(const int red_,
     } else if ((blue_ < 0) || (blue_ > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {
-        red = (std::uint8_t) red_;
-        green = (std::uint8_t) green_;
-        blue = (std::uint8_t) blue_;
+        red = (u_int8_t) red_;
+        green = (u_int8_t) green_;
+        blue = (u_int8_t) blue_;
     }
 }
 
@@ -45,15 +44,15 @@ RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
     return *this;
 }
 
-std::uint8_t RGBSpace::GetRed() const {
+u_int8_t RGBSpace::GetRed() const {
     return red;
 }
 
-std::uint8_t RGBSpace::GetGreen() const {
+u_int8_t RGBSpace::GetGreen() const {
     return green;
 }
 
-std::uint8_t RGBSpace::GetBlue() const {
+u_int8_t RGBSpace::GetBlue() const {
     return blue;
 }
 
@@ -61,7 +60,7 @@ void RGBSpace::SetRed(const int red_) {
     if ((red_ < 0) || (red_ > 255)) {
         throw std::string("The index of red color isn't in the range 0-255");
     } else {
-        red = (std::uint8_t) red_;
+        red = (u_int8_t) red_;
     }
 }
 
@@ -69,7 +68,7 @@ void RGBSpace::SetGreen(const int green_) {
     if ((green_ < 0) || (green_ > 255)) {
         throw std::string("The index of green color isn't in the range 0-255");
     }  else {
-        green = (std::uint8_t) green_;
+        green = (u_int8_t) green_;
     }
 }
 
@@ -77,7 +76,7 @@ void RGBSpace::SetBlue(const int blue_) {
     if ((blue_ < 0) || (blue_ > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {
-        blue = (std::uint8_t) blue_;
+        blue = (u_int8_t) blue_;
     }
 }
 
