@@ -20,10 +20,7 @@ bool statisticalMoments::isChangesDistributionRow() {
     for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
         tmp_sum += chances[i];
     }
-    if (tmp_sum != 1) {
-        return false;
-    }
-    return true;
+    return (tmp_sum == 1);
 }
 
 statisticalMoments::statisticalMoments(std::vector<double> values,
