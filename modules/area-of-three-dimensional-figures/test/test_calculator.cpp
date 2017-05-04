@@ -232,7 +232,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_tetrahedron) {
     Calculator z;
 
     // Act
-    double s = z.Calculate_Tetrahedron(1.0, 1.0, 1.0, 1.0);
+    double s = z.Calc_Tetra(1.0, 1.0, 1.0, 1.0);
     double s1 = sqrt(3);
 
     // Assert
@@ -244,7 +244,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_tetrahedron_2) {
     Calculator z;
 
     // Act
-    double s = z.Calculate_Tetrahedron(2.0, 3.0, 4.0, 5.0);
+    double s = z.Calc_Tetra(2.0, 3.0, 4.0, 5.0);
     double heron_abc = sqrt(4.5* 2.5* 1.5 *0.5);
     double heron_al = sqrt(6 * 4);
     double heron_bl = sqrt(6.5 * 3.5 * 1.5 * 1.5);
