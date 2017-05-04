@@ -41,3 +41,9 @@ TEST(InterpolationSearch, Can_Set_Array) {
   ASSERT_NO_THROW(interpolationSearch.SetArray(sortedArray2, length));
 }
 
+TEST(InterpolationSearch, Search_Works_Correctly) {
+  const int length = 3;
+  int * sortedArray = new int[length] {1, 2, 3};
+  InterpolationSearch interpolationSearch(sortedArray, length);
+  EXPECT_EQ(2, interpolationSearch.Search(3));
+}

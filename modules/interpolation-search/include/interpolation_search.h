@@ -7,6 +7,7 @@ class InterpolationSearch {
  public:
     InterpolationSearch(int * sortedArray, int length);
     void SetArray(int * sortedArray, int length);
+    int Search(int toFind);
 
  private:
     int * sortedArray_;
