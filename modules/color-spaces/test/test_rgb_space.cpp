@@ -187,6 +187,7 @@ TEST(RGBSpaceTest, Can_Use_Equals_With_As) {
     RGBSpace *space = new RGBSpace(red, green, blue);
     RGBSpace *other_space = space;
     bool result = (space == other_space);
+    delete space;
     // Assert
     EXPECT_TRUE(result);
 }
