@@ -3,7 +3,7 @@
 #ifndef MODULES_COLOR_SPACES_INCLUDE_HSB_HSV_SPACE_H_
 #define MODULES_COLOR_SPACES_INCLUDE_HSB_HSV_SPACE_H_
 
-#include <cstdint>
+#include <stdint.h>
 #include <algorithm>
 
 class HSBHSVSpace {

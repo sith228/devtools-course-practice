@@ -1,7 +1,7 @@
 // Copyright 2017 Nesterov Alexander
 #ifndef MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
 #define MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
-#include <cstdint>
+#include <stdint.h>
 #include <algorithm>
 
 class RGBSpace {

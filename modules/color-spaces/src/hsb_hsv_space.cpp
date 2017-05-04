@@ -2,7 +2,7 @@
 
 #include "../include/hsb_hsv_space.h"
 
-#include <cstdint>
+#include <stdint.h>
 #include <string>
 #include <algorithm>
 
