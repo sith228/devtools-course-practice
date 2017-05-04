@@ -5,14 +5,10 @@
 
 class InterpolationSearch {
  public:
-    InterpolationSearch(int * sortedArray, int length);
-    int Search(int toFind);
-    void SetArray(int * sortedArray, int length);
+    InterpolationSearch(int x);
 
  private:
-    int * sortedArray_;
-    int length_;
-    bool isArraySorted(int * sortedArray, int length);
+    int x_;
 };
 
 #endif  // MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_
