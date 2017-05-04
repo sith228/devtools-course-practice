@@ -5,7 +5,7 @@
 
 class InterpolationSearch {
  public:
-    InterpolationSearch(int x);
+    explicit InterpolationSearch(int x);
 
  private:
     int x_;
