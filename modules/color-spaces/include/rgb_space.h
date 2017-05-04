@@ -4,11 +4,12 @@
 #include <sys/types.h>
 #include <algorithm>
 
+
 class RGBSpace {
  private:
-    u_int8_t red;
-    u_int8_t green;
-    u_int8_t blue;
+    __uint8_t red;
+    __uint8_t green;
+    __uint8_t blue;
     void swap(RGBSpace &rgb_space);
 
  public:
@@ -18,9 +19,9 @@ class RGBSpace {
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
 
-    u_int8_t GetRed() const;
-    u_int8_t GetGreen() const;
-    u_int8_t GetBlue() const;
+    __uint8_t GetRed() const;
+    __uint8_t GetGreen() const;
+    __uint8_t GetBlue() const;
     void SetRed(const int red_);
     void SetGreen(const int green_);
     void SetBlue(const int blue_);
