@@ -40,12 +40,12 @@ int InterpolationSearch::Search(int search_elem) {
     // if there is no such element
     int top = length_ - 1;
     int low = 0;
-	while (search_elem > sortedArray_[low] && search_elem < sortedArray_[top]) {
+    while (search_elem > sortedArray_[low] && search_elem < sortedArray_[top]) {
       int middle = low + ((search_elem - sortedArray_[low]) *
         (top - low)) / (sortedArray_[top] - sortedArray_[low]);
-	  if (search_elem > sortedArray_[middle])
+      if (search_elem > sortedArray_[middle])
         low = middle + 1;
-	  else if (search_elem < sortedArray_[middle])
+      else if (search_elem < sortedArray_[middle])
         top = middle - 1;
       else
         return middle;
@@ -63,3 +63,4 @@ int InterpolationSearch::Search(int search_elem) {
     return -1;
   }
 }
+	
