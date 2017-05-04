@@ -141,7 +141,7 @@ TEST(StackTest, Can_Check_Full_Stack_INT) {
     EXPECT_TRUE(v.CheckFull());
 }
 
-//TESTS FOR DOUBLE
+// TESTS FOR DOUBLE
 
 TEST(StackTest, Can_Create_Stack_With_Positive_Length_DOUBLE) {
     // Arrange & Act & Assert
@@ -149,7 +149,7 @@ TEST(StackTest, Can_Create_Stack_With_Positive_Length_DOUBLE) {
 }
 
 TEST(StackTest, Cant_Create_Too_Large_Stack_DOUBLE) {
-    // Arrange & Act & Assert 
+    // Arrange & Act & Assert
     ASSERT_ANY_THROW(TStack<double> v(MAX_STACK_SIZE + 1));
 }
 
@@ -159,7 +159,7 @@ TEST(StackTest, Cant_Create_Stack_With_Negative_Length_DOUBLE) {
 }
 
 TEST(StackTest, Can_Create_Copied_Stack_DOUBLE) {
-    // Arrange  
+    // Arrange
     TStack <double> v(10);
 
     // Act & Assert
@@ -167,7 +167,7 @@ TEST(StackTest, Can_Create_Copied_Stack_DOUBLE) {
 }
 
 TEST(StackTest, Can_Get_Stack_Size_DOUBLE) {
-    // Arrange 
+    // Arrange
     TStack <double> v(10);
 
     // Act & Assert
@@ -175,7 +175,7 @@ TEST(StackTest, Can_Get_Stack_Size_DOUBLE) {
 }
 
 TEST(StackTest, Can_Get_Stack_Top_DOUBLE) {
-    // Arrange 
+    // Arrange
     TStack <double> v(10);
     v.Include(2.55);
     v.Include(15.1);
