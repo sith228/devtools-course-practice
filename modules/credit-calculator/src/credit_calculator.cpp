@@ -9,7 +9,7 @@ CreditCalculator::CreditCalculator() {}
 bool CreditCalculator::check_data(int amount, int period,
     double interest, unsigned int month_pas) {
         return (amount > 0 && period > 0 && period <= 60 && interest > 0 &&
-            interest < 100 && month_pas <= period);
+            interest < 100 && month_pas <= (unsigned)period);
 }
 
 bool CreditCalculator::check_data(int amount, int period,
