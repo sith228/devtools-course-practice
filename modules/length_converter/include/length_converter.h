@@ -40,7 +40,7 @@ enum LENGTH_TYPE {
 class Length {
  public:
     Length(LENGTH_TYPE type, double value);
-	void SetValue(LENGTH_TYPE type, double value);
+    void SetValue(LENGTH_TYPE type, double value);
     double ConvertTo(LENGTH_TYPE type) const;
 
  private:
