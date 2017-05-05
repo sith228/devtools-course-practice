@@ -26,7 +26,7 @@ class Calculator {
 
      bool Is_positive_parameter(double _a);
      bool Check_for_Heron(double _a, double _b, double _c);
-     bool Check_positives(double massive_parameters[], int massive_size);
+     bool Check_positive(double massive_parameters[], int size);
      double Calc_Heron(double _a, double _b, double _c);
 };
 
