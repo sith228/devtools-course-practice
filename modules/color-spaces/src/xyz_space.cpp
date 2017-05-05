@@ -12,9 +12,9 @@ void XYZSpace::swap(XYZSpace &xyz_space) {
 }
 
 LABSpace XYZSpace::ToLABSpace() const {
-    double_t x_quote = static_cast<double_t>(x) / 95.05;
-    double_t y_quote = static_cast<double_t>(y) / 100;
-    double_t z_quote = static_cast<double_t>(z) / 108.9;
+    double x_quote = static_cast<double>(x) / 95.05;
+    double y_quote = static_cast<double>(y) / 100;
+    double z_quote = static_cast<double>(z) / 108.9;
 
     if (x_quote > 0.008856) {
         x_quote = pow(x_quote, 1.0/3);
@@ -65,12 +65,12 @@ XYZSpace::XYZSpace(const XYZSpace &xyz_space) {
 }
 
 XYZSpace::XYZSpace(const LABSpace &lab_space) {
-    double_t y_quote =
-        ((static_cast<double_t>(lab_space.GetLightness())) + 16.0) / 116.0;
-    double_t x_quote =
-        static_cast<double_t>(lab_space.GetA()) / 500 + y_quote;
-    double_t z_quote =
-        y_quote - static_cast<double_t>(lab_space.GetB()) / 200;
+    double y_quote =
+        ((static_cast<double>(lab_space.GetLightness())) + 16.0) / 116.0;
+    double x_quote =
+        static_cast<double>(lab_space.GetA()) / 500 + y_quote;
+    double z_quote =
+        y_quote - static_cast<double>(lab_space.GetB()) / 200;
 
     if (pow(y_quote, 3.0) > 0.008856) {
         y_quote = pow(y_quote, 3.0);

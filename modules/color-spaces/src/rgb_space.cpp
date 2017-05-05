@@ -16,8 +16,8 @@ HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
     double green_quote = static_cast<double>(green) / 255;
     double blue_quote = static_cast<double>(blue) / 255;
 
-    double_t min = std::min(red_quote, std::min(green_quote, blue_quote));
-    double_t max = std::max(red_quote, std::max(green_quote, blue_quote));
+    double min = std::min(red_quote, std::min(green_quote, blue_quote));
+    double max = std::max(red_quote, std::max(green_quote, blue_quote));
 
     uint16_t hue = 0, saturation, value_brightnes;
     if (max == min) {
@@ -46,9 +46,9 @@ HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
 }
 
 XYZSpace RGBSpace::ToXYZSpace() const {
-    double_t red_quote = static_cast<double_t >(red) / 255;
-    double_t green_quote = static_cast<double_t >(green) / 255;
-    double_t blue_quote = static_cast<double_t >(blue) / 255;
+    double red_quote = static_cast<double >(red) / 255;
+    double green_quote = static_cast<double >(green) / 255;
+    double blue_quote = static_cast<double >(blue) / 255;
 
     if (red_quote > 0.04045) {
         red_quote = pow((red_quote + 0.055) / 1.055, 2.4);
@@ -113,16 +113,16 @@ RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
     uint8_t index = static_cast<uint8_t>(
         floor(static_cast<double>(hue)/60)) % 6;
 
-    double_t v_min = ((100.0 - static_cast<double>(saturation))*
+    double v_min = ((100.0 - static_cast<double>(saturation))*
         value_brightnes) / 100;
 
-    double_t a = ((static_cast<double>(value_brightnes) - v_min))*
+    double a = ((static_cast<double>(value_brightnes) - v_min))*
         (static_cast<double>(hue % 60)/60);
 
-    double_t v_inc = v_min + a;
-    double_t v_dec = static_cast<double>(value_brightnes) - a;
+    double v_inc = v_min + a;
+    double v_dec = static_cast<double>(value_brightnes) - a;
 
-    double_t red_quote = 0, green_quote = 0, blue_quote = 0;
+    double red_quote = 0, green_quote = 0, blue_quote = 0;
 
     switch (index) {
         case 0:
@@ -163,15 +163,15 @@ RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
 }
 
 RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
-    double_t x_quote = static_cast<double_t>(xyz_space.GetX())/100;
-    double_t y_quote = static_cast<double_t>(xyz_space.GetY())/100;
-    double_t z_quote = static_cast<double_t>(xyz_space.GetZ())/100;
+    double x_quote = static_cast<double>(xyz_space.GetX())/100;
+    double y_quote = static_cast<double>(xyz_space.GetY())/100;
+    double z_quote = static_cast<double>(xyz_space.GetZ())/100;
 
-    double_t red_quote =
+    double red_quote =
         x_quote * 3.2404542  + y_quote*(-1.5371385) + z_quote*(-0.4985314);
-    double_t green_quote =
+    double green_quote =
         x_quote*(-0.9692660) + y_quote * 1.8760108  + z_quote * 0.0415560;
-    double_t blue_quote =
+    double blue_quote =
         x_quote * 0.0556434  + y_quote*(-0.2040259) + z_quote * 1.0572252;
 
     if (red_quote > 0.0031308) {
