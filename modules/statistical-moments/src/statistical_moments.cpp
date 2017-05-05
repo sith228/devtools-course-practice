@@ -47,7 +47,7 @@ void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
 }
 
 double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
-    const std::vector<double>& chances, unsigned int order, 
+    const std::vector<double>& chances, unsigned int order,
     unsigned int offset) {
     checkingInputDate(values, chances);
     double moment = 0;
@@ -64,14 +64,14 @@ double StatisticalMoments::getExpectancy(const std::vector<double>& values,
     checkingInputDate(values, chances);
     double expectansy = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
-        expectansy += values[i]*chances[i];
+        expectansy += values[i] * chances[i];
     }
     return expectansy;
 }
 double StatisticalMoments::getDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
     checkingInputDate(values, chances);
-    double expectansy = StatisticalMoments::getExpectancy(values,chances);
+    double expectansy = StatisticalMoments::getExpectancy(values, chances);
     double dispersion = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
         dispersion += pow(values[i] - expectansy, 2)*chances[i];
