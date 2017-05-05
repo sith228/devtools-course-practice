@@ -72,31 +72,35 @@ const Node* SearchTree::findNext(const double key) const {
 }
 
 const Node* SearchTree::findPrev(const Node* const node) const {
+    const Node* result;
     if (node->left != 0) {
-        return findMax(node->left);
+        result =  findMax(node->left);
+    } else {
+        const Node* currentNode = node;
+        const Node* currentParent = node->parent;
+        while (currentParent != 0 && currentNode == currentParent->left) {
+            currentNode = currentParent;
+            currentParent = currentParent->parent;
+        }
+        result = currentParent;
     }
-
-    const Node* currentNode = node;
-    const Node* currentParent = node->parent;
-    while (currentParent != 0 && currentNode == currentParent->left) {
-        currentNode = currentParent;
-        currentParent = currentParent->parent;
-    }
-    return currentParent;
+    return result;
 }
 
 const Node* SearchTree::findNext(const Node* const node) const {
+    const Node* result;
     if (node->right != 0) {
-        return findMin(node->right);
+        result = findMin(node->right);
+    } else {
+        const Node* currentNode = node;
+        const Node* currentParent = node->parent;
+        while (currentParent != 0 && currentNode == currentParent->right) {
+            currentNode = currentParent;
+            currentParent = currentParent->parent;
+        }
+        result = currentParent;
     }
-
-    const Node* currentNode = node;
-    const Node* currentParent = node->parent;
-    while (currentParent != 0 && currentNode == currentParent->right) {
-        currentNode = currentParent;
-        currentParent = currentParent->parent;
-    }
-    return currentParent;
+    return result;
 }
 
 void SearchTree::insert(const double key) {
@@ -148,7 +152,6 @@ void SearchTree::erase(const double key) {
             parent->right = 0;
         }
         delete dyingNode;
-        return;
     } else if (dyingNode->left == 0 || dyingNode->right == 0) {
         if (dyingNode->left == 0) {
             if (parent->left == dyingNode) {
@@ -166,7 +169,6 @@ void SearchTree::erase(const double key) {
             dyingNode->left->parent = parent;
         }
         delete dyingNode;
-        return;
     } else {
         Node* child = const_cast<Node*>(findNext(dyingNode));
         double newKey = child->key;
