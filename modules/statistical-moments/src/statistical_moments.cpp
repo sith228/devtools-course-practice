@@ -6,55 +6,62 @@
 #include <stdexcept>
 #include <vector>
 
-bool StatisticalMoments::isChanceValid() {
-    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
-        if ((StatisticalMoments::chances[i] < 0) ||
-            (StatisticalMoments::chances[i] > 1))
+bool StatisticalMoments::isChanceValid(const std::vector<double>& values,
+    const std::vector<double>& chances) {
+    for (unsigned int i = 0; i < chances.size(); i++) {
+        if ((chances[i] < 0) || (chances[i] > 1))
             return false;
     }
     return true;
 }
 
-bool StatisticalMoments::isChancesDistributionRow() {
+bool StatisticalMoments::isChancesDistributionRow(
+    const std::vector<double>& values, const std::vector<double>& chances) {
     double tmp_sum = 0;
-    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
+    for (unsigned int i = 0; i < chances.size(); i++) {
         tmp_sum += chances[i];
     }
     return (tmp_sum == 1);
 }
 
-StatisticalMoments::StatisticalMoments(const std::vector<double>& values,
+void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    this->values = values;
-    this->chances = chances;
-    if (this->values.empty() && this->chances.empty()) {
+    if (values.empty() && chances.empty()) {
         throw std::runtime_error("Both vectors are empty");
     }
-    if (this->values.empty()) {
+    if (values.empty()) {
         throw std::runtime_error("vector \"values\" is empty");
     }
-    if (this->chances.empty()) {
+    if (chances.empty()) {
         throw std::runtime_error("vector \"chances\" is empty");
     }
-    if (this->chances.size() != this->values.size()) {
+    if (chances.size() != values.size()) {
         throw std::runtime_error("values and chances must have equals size");
     }
-    if (!isChanceValid()) {
+    if (!isChanceValid(values, chances)) {
         throw std::runtime_error("One of chances is out in range [0,1]");
     }
-    if (!isChancesDistributionRow()) {
+    if (!isChancesDistributionRow(values, chances)) {
         throw std::runtime_error("sum of chances isn't equals 1");
     }
 }
 
-double StatisticalMoments::getMoment(unsigned int order) {
+double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
+    const std::vector<double>& chances, unsigned int order, 
+    unsigned int offset) {
     double result = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
     }
-    int a = 0;  // for start moments
-    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
-        result += pow(values[i] - a, order)*chances[i];
+    for (unsigned int i = 0; i < chances.size(); i++) {
+        result += pow(values[i] - offset, order)*chances[i];
     }
     return result;
 }
+double StatisticalMoments::getExpectancy(const std::vector<double>& values,
+    const std::vector<double>& chances) {
+}
+double StatisticalMoments::getDispersion(const std::vector<double>& values,
+    const std::vector<double>& chances) {
+}
+

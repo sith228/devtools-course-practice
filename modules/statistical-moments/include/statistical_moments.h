@@ -8,13 +8,19 @@
 
 class StatisticalMoments {
  public:
-    StatisticalMoments(const std::vector<double>& values,
+    static double getCustomMoment(const std::vector<double>& values,
+        const std::vector<double>& chances,unsigned int order,
+        unsigned int offset);
+    static double getExpectancy(const std::vector<double>& values,
         const std::vector<double>& chances);
-    double getMoment(unsigned int order);
+    static double getDispersion(const std::vector<double>& values,
+        const std::vector<double>& chances);
  private:
-    std::vector<double> values;
-    std::vector<double> chances;
-    bool isChanceValid();
-    bool isChancesDistributionRow();
+    void checkingInputDate(const std::vector<double>& values,
+        const std::vector<double>& chances);
+    bool isChanceValid(const std::vector<double>& values,
+        const std::vector<double>& chances);
+    bool isChancesDistributionRow(const std::vector<double>& values,
+        const std::vector<double>& chances);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_
