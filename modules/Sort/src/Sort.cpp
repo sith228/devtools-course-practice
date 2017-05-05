@@ -26,10 +26,10 @@ bool Sort::operator==(const Sort & z) const {
         return result;
 }
 
-void Sort::QuickSort(int left_border , int right_border) {
-    int x = Array_[left_border  + (right_border - left_border ) / 2];
+void Sort::QuickSort(int left_border, int right_border) {
+    int x = Array_[left_border + (right_border - left_border) / 2];
     int temp;
-    int i = left_border ;
+    int i = left_border;
     int j = right_border;
     while (i <= j) {
         while (Array_[i] < x) i++;
@@ -45,7 +45,7 @@ void Sort::QuickSort(int left_border , int right_border) {
     if (i < right_border)
        QuickSort(i, right_border);
     if (left_border  < j)
-       QuickSort(left_border , j);
+       QuickSort(left_border, j);
 }
 
 void Sort::PasteSort(void) {

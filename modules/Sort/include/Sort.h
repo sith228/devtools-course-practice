@@ -14,7 +14,7 @@ class Sort {
     Sort(const Sort&) = delete;
     int operator[] (int i) const {return Array_[i]; }
     bool operator== (const Sort& z) const;
-    void QuickSort(int left_border , int right_border);
+    void QuickSort(int left_border, int right_border);
     void PasteSort(void);
     void ChoiceSort(void);
     void MergeSort(int first, int last);
