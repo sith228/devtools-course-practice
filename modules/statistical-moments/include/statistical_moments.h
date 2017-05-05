@@ -10,8 +10,8 @@ class statisticalMoments {
  private:
     std::vector<double> values;
     std::vector<double> chances;
-    bool isChangeValid();
-    bool isChangesDistributionRow();
+    bool isChanceValid();
+    bool isChancesDistributionRow();
  public:
     statisticalMoments(std::vector<double> values, std::vector<double> chances);
     double getMoment(unsigned int order);
