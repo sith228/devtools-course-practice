@@ -240,6 +240,16 @@ TEST(XYZSpaceTest, Can_Convert_Lab_To_XYZ_Where_Var_Big) {
     EXPECT_EQ(correct_space, convert_space);
 }
 
+TEST(XYZSpaceTest, Can_Convert_Lab_To_XYZ_Where_Var_Very_Big) {
+    // Arrange
+    LABSpace space(56, 6, 6);
+    // Act
+    XYZSpace convert_space(space);
+    // Assert
+    XYZSpace correct_space(1, 23, 22);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
 TEST(XYZSpaceTest, Can_Use_Swap_Method) {
     // Arrange
     XYZSpace space1(1, 2, 3);

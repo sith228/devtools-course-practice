@@ -68,11 +68,11 @@ XYZSpace::XYZSpace(const XYZSpace &xyz_space) {
 
 XYZSpace::XYZSpace(const LABSpace &lab_space) {
     double y_quote =
-        ((static_cast<double>(lab_space.GetLightness())) + 16.0) / 116.0;
+        (((static_cast<double>(lab_space.GetLightness())) + 16.0) / 116.0);
     double x_quote =
-        static_cast<double>(lab_space.GetA()) / 500 + y_quote;
+        (static_cast<double>(lab_space.GetA()) / 500 + y_quote);
     double z_quote =
-        y_quote - static_cast<double>(lab_space.GetB()) / 200;
+        (y_quote - static_cast<double>(lab_space.GetB()) / 200);
 
     if (pow(y_quote, 3.0) > 0.008856) {
         y_quote = pow(y_quote, 3.0);
