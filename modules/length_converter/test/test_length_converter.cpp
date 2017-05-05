@@ -5,7 +5,7 @@
 
 TEST(LengthConverterTest, Can_Create_Length_Object) {
     // Arrange
-    LENGTH_TYPE type = KILOMETRE;
+    LENGTH_TYPE type = LENGTH_TYPE::KILOMETRE;
     double value = 11.7;
 
     // Act & Assert
@@ -246,7 +246,7 @@ TEST(LengthConverterTest, Can_Convert_Into_League) {
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
 }
 
-TEST(LengthConverterTest, Can_Do_Several_Convert) {
+TEST(LengthConverterTest, Can_Do_Several_Converts) {
     // Arrange
     LENGTH_TYPE type1 = MILLIMETRE, type2 = KILOMETRE, type3 = YARD;
     double value = 7.0;
@@ -254,9 +254,8 @@ TEST(LengthConverterTest, Can_Do_Several_Convert) {
 
     // Act
     Length length(type1, value);
-    value = length.ConvertTo(type2);
-    Length length2(type2, value);
-    converted_value = length2.ConvertTo(type3);
+    length.SetValue(type2, length.ConvertTo(type2));
+    converted_value = length.ConvertTo(type3);
 
     // Assert
     ASSERT_NEAR(converted_value, expected_value, 0.000001);
