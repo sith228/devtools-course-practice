@@ -11,7 +11,7 @@
 using std::string;
 
 class RomNumConverter {
-    public: 
+ public:
     string convert_arabic_to_rom(int temp);
     int convert_rom_to_arabic(string bufstr);
 };
