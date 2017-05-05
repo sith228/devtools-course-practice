@@ -36,9 +36,9 @@ HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
             60 * ((red_quote - green_quote)/(max - min)) + 240));
     }
 
-    s = (uint16_t) std::round((max == 0) ? 0 : (1 - min/max)*100);
+    s = (uint16_t) round((max == 0) ? 0 : (1 - min/max)*100);
 
-    v = (uint16_t) std::round(max * 100);
+    v = (uint16_t) round(max * 100);
 
     HSBHSVSpace hsbhsv_space(h, s, v);
 

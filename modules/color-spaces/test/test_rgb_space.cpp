@@ -288,9 +288,3 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Big) {
     XYZSpace correct_space(94, 99, 108);
     EXPECT_EQ(correct_space, convert_space);
 }
-
-
-
-
-
-
