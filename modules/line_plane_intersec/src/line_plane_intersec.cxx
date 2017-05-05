@@ -9,23 +9,54 @@ Intersection::Intersection() {
     linex0_ = 1.0;
     liney0_ = 1.0;
     linez0_ = 1.0;
-    linem_ = 1.0;
-    linen_ = 1.0;
-    linep_ = 1.0;
+    linedirx_ = 1.0;
+    linediry_ = 1.0;
+    linedirz_ = 1.0;
     planeA_ = 1.0;
     planeB_ = 1.0;
     planeC_ = 1.0;
     planeD_ = 1.0;
 }
 
+Intersection::Intersection(std::vector<double>lineStart,
+    std::vector<double>lineDirection, std::vector<double>plane) {
+    linex0_ = lineStart[0];
+    liney0_ = lineStart[1];
+    linez0_ = lineStart[2];
+    linedirx_ = lineDirection[0];
+    linediry_ = lineDirection[1];
+    linedirz_ = lineDirection[2];
+    planeA_ = plane[0];
+    planeB_ = plane[1];
+    planeC_ = plane[2];
+    planeD_ = plane[3];
+}
+
+void Intersection::SetLine(std::vector<double>lineStart,
+    std::vector<double>lineDirection) {
+    linex0_ = lineStart[0];
+    liney0_ = lineStart[1];
+    linez0_ = lineStart[2];
+    linedirx_ = lineDirection[0];
+    linediry_ = lineDirection[1];
+    linedirz_ = lineDirection[2];
+}
+
+void Intersection::SetPlane(std::vector<double>plane) {
+    planeA_ = plane[0];
+    planeB_ = plane[1];
+    planeC_ = plane[2];
+    planeD_ = plane[3];
+}
+
 void Intersection::SetLine(double x0, double y0, double z0,
-double m, double n, double p) {
+    double dirx, double diry, double dirz) {
     linex0_ = x0;
     liney0_ = y0;
     linez0_ = z0;
-    linem_ = m;
-    linen_ = n;
-    linep_ = p;
+    linedirx_ = dirx;
+    linediry_ = diry;
+    linedirz_ = dirz;
 }
 
 std::vector<double> Intersection::GetLine() {
@@ -33,9 +64,9 @@ std::vector<double> Intersection::GetLine() {
     result[0] = linex0_;
     result[1] = liney0_;
     result[2] = linez0_;
-    result[3] = linem_;
-    result[4] = linen_;
-    result[5] = linep_;
+    result[3] = linedirx_;
+    result[4] = linediry_;
+    result[5] = linedirz_;
     return result;
 }
 
@@ -55,14 +86,14 @@ void Intersection::SetPlane(double A, double B, double C, double D) {
     planeD_ = D;
 }
 
-Intersection::Intersection(double x0, double y0, double z0, double m,
-double n, double p, double A, double B, double C, double D) {
+Intersection::Intersection(double x0, double y0, double z0, double dirx,
+    double diry, double dirz, double A, double B, double C, double D) {
     linex0_ = x0;
     liney0_ = y0;
     linez0_ = z0;
-    linem_ = m;
-    linen_ = n;
-    linep_ = p;
+    linedirx_ = dirx;
+    linediry_ = diry;
+    linedirz_ = dirz;
     planeA_ = A;
     planeB_ = B;
     planeC_ = C;
@@ -71,16 +102,16 @@ double n, double p, double A, double B, double C, double D) {
 
 std::vector<double> Intersection::CalculateIntersection() {
     double parameterValue;
-    parameterValue = planeA_*linem_ + planeB_*linen_ + planeC_*linep_;
+    parameterValue = planeA_*linedirx_ + planeB_*linediry_ + planeC_*linedirz_;
     std::vector<double> result(3);
     if (parameterValue == 0) {
         throw std::string("Line and plane are parallel or line lies in plane");
     } else {
         parameterValue = (-1 * (planeA_*linex0_ + planeB_*liney0_ +
         planeC_*linez0_ + planeD_))/ parameterValue;
-        result[0] = linex0_ + linem_*parameterValue;
-        result[1] = liney0_ + linen_*parameterValue;
-        result[2] = linez0_ + linep_*parameterValue;
+        result[0] = linex0_ + linedirx_*parameterValue;
+        result[1] = liney0_ + linediry_*parameterValue;
+        result[2] = linez0_ + linedirz_*parameterValue;
     }
     return result;
 }

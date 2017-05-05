@@ -9,9 +9,9 @@ class Intersection {
     double linex0_;
     double liney0_;
     double linez0_;
-    double linem_;
-    double linen_;
-    double linep_;
+    double linedirx_;
+    double linediry_;
+    double linedirz_;
     double planeA_;
     double planeB_;
     double planeC_;
@@ -19,14 +19,23 @@ class Intersection {
 
  public:
     Intersection();
+    Intersection(double linex0, double liney0, double linez0,
+        double dirx0, double diry0, double dirz0, 
+        double planeA, double planeB, double planeC, double planeD);
+    Intersection(std::vector<double>lineStart,
+        std::vector<double>lineDirection, std::vector<double>plane);
+
     void SetLine(double linex0_, double liney0_, double linez0_,
-    double linem_, double linen_, double linep_);
+    double linedirx_, double linediry_, double linedirz_);
+    void SetLine(std::vector<double>lineStart,
+        std::vector<double>lineDirection);
+    void SetPlane(std::vector<double>plane);
     void SetPlane(double planeA_, double planeB_, double planeC_,
-    double planeD_);
+        double planeD_);
+
     std::vector <double> GetLine(void);
     std::vector <double> GetPlane(void);
-    Intersection(double x0, double y0, double z0,
-    double m, double n, double p, double A, double B, double C, double D);
+
     std::vector <double> CalculateIntersection(void);
 };
 
