@@ -239,3 +239,22 @@ TEST(XYZSpaceTest, Can_Convert_Lab_To_XYZ_Where_Var_Big) {
     XYZSpace correct_space(0, 0, 0);
     EXPECT_EQ(correct_space, convert_space);
 }
+
+TEST(XYZSpaceTest, Can_Use_Swap_Method) {
+    // Arrange
+    XYZSpace space1(1, 2, 3);
+    XYZSpace space2(3, 4, 5);
+    // Act
+    space1 = space2;
+    // Assert
+    EXPECT_EQ(space1, space2);
+}
+
+TEST(XYZSpaceTest, Can_Use_Compare_As) {
+    // Arrange
+    XYZSpace space(1, 2, 3);
+    // Act
+    bool result = (space == space);
+    // Assert
+    EXPECT_TRUE(result);
+}

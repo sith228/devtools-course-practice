@@ -54,9 +54,9 @@ XYZSpace::XYZSpace(const int x_,
     } else if ((z_ < 0) || (z_ > 108)) {
         throw std::string("The index of z isn't in the range 0-108");
     } else {
-        x = (uint8_t) x_;
-        y = (uint8_t) y_;
-        z = (uint8_t) z_;
+        x = static_cast<uint8_t>(x_);
+        y = static_cast<uint8_t> (y_);
+        z = static_cast<uint8_t> (z_);
     }
 }
 
@@ -120,7 +120,7 @@ void XYZSpace::SetX(const int x_) {
     if ((x_ < 0) || (x_ > 95)) {
         throw std::string("The index of x isn't in the range 0-95");
     } else {
-        x = (uint8_t) x_;
+        x = static_cast<uint8_t>(x_);
     }
 }
 
@@ -128,7 +128,7 @@ void XYZSpace::SetY(const int y_) {
     if ((y_ < 0) || (y_ > 100)) {
         throw std::string("The index of y isn't in the range 0-100");
     }  else {
-        y = (uint8_t) y_;
+        y = static_cast<uint8_t>(y_);
     }
 }
 
@@ -136,7 +136,7 @@ void XYZSpace::SetZ(const int z_) {
     if ((z_ < 0) || (z_ > 108)) {
         throw std::string("The index of z isn't in the range 0-108");
     } else {
-        z = (uint8_t) z_;
+        z = static_cast<uint8_t>(z_);
     }
 }
 

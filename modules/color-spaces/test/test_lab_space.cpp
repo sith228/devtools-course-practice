@@ -201,3 +201,22 @@ TEST(LABSpaceTest, Can_Use_Not_Equals_In_LABSpace) {
     // Assert
     EXPECT_TRUE(result);
 }
+
+TEST(LABSpaceTest, Can_Use_Swap_Method) {
+    // Arrange
+    LABSpace space1(1, 2, 3);
+    LABSpace space2(3, 4, 5);
+    // Act
+    space1 = space2;
+    // Assert
+    EXPECT_EQ(space1, space2);
+}
+
+TEST(LABSpaceTest, Can_Use_Compare_As) {
+    // Arrange
+    LABSpace space(1, 2, 3);
+    // Act
+    bool result = (space == space);
+    // Assert
+    EXPECT_TRUE(result);
+}

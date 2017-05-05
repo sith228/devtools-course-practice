@@ -262,3 +262,22 @@ TEST(HSBHSVSpaceTest, Can_Convert_HSBHSV_To_RGB_H_Interval_300_360) {
     RGBSpace correct_space(186, 80, 133);
     EXPECT_EQ(correct_space, convert_space);
 }
+
+TEST(HSBHSVSpaceTest, Can_Use_Swap_Method) {
+    // Arrange
+    HSBHSVSpace space1(1, 2, 3);
+    HSBHSVSpace space2(3, 4, 5);
+    // Act
+    space1 = space2;
+    // Assert
+    EXPECT_EQ(space1, space2);
+}
+
+TEST(HSBHSVSpaceTest, Can_Use_Compare_As) {
+    // Arrange
+    HSBHSVSpace space(1, 2, 3);
+    // Act
+    bool result = (space == space);
+    // Assert
+    EXPECT_TRUE(result);
+}

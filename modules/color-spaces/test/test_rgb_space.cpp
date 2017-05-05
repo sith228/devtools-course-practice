@@ -318,3 +318,22 @@ TEST(RGBSpaceTest, Can_Convert_XYZ_To_RGB_Where_Var_Big) {
     RGBSpace correct_space(253, 254, 254);
     EXPECT_EQ(correct_space, convert_space);
 }
+
+TEST(RGBSpaceTest, Can_Use_Swap_Method) {
+    // Arrange
+    RGBSpace space1(1, 2, 3);
+    RGBSpace space2(3, 4, 5);
+    // Act
+    space1 = space2;
+    // Assert
+    EXPECT_EQ(space1, space2);
+}
+
+TEST(RGBSpaceTest, Can_Use_Compare_As) {
+    // Arrange
+    RGBSpace space(1, 2, 3);
+    // Act
+    bool result = (space == space);
+    // Assert
+    EXPECT_TRUE(result);
+}
