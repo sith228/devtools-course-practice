@@ -31,6 +31,17 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     ASSERT_ANY_THROW(CreditCalculator::monthly_payment(amount, period, interest));
 }
 
+TEST(Simonyan_Vaginak_CreditCalculator,
+    get_month_payment_with_low_interest) {
+    // Arrange
+    int amount = 300000;
+    int period = 12;
+    double interest = 1e-15;
+
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::monthly_payment(amount, period, interest));
+}
+
 TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
     // Arrange
     int amount = 300000;

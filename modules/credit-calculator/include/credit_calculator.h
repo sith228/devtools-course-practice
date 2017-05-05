@@ -9,12 +9,12 @@ class CreditCalculator {
   static double overpayment_amount(int amount, int period, double interest);
   static double monthly_payment(int amount, int period, double interest);
   static double total_payout(int amount, int period, double interest);
-  static double check_balance(int amount, int period, 
+  static double check_balance(int amount, int period,
       double interest, int month_pas);
 
  private:
   static bool check_data(int amount, int period, double interest);
-  static bool check_data(int amount, int period, 
+  static bool check_data(int amount, int period,
       double interest, unsigned int month_pas);
 };
 
