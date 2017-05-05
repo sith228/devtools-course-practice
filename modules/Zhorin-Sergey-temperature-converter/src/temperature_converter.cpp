@@ -20,7 +20,7 @@ double TemperatureConverter::CelsiusToKelvin(const double t) {
     return(273.15 + t);
 }
 
-double TemperatureConverter::CelsiusToNewton(const double t){
+double TemperatureConverter::CelsiusToNewton(const double t) {
     if (t < -273.15) {
         throw std::string("Temperature can't be less than absolute zero");
     }
