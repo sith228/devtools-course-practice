@@ -49,6 +49,7 @@ void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
 double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
     const std::vector<double>& chances, unsigned int order, 
     unsigned int offset) {
+    checkingInputDate(values, chances);
     double moment = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
@@ -60,6 +61,7 @@ double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
 }
 double StatisticalMoments::getExpectancy(const std::vector<double>& values,
     const std::vector<double>& chances) {
+    checkingInputDate(values, chances);
     double expectansy = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
         expectansy += values[i]*chances[i];
@@ -68,6 +70,7 @@ double StatisticalMoments::getExpectancy(const std::vector<double>& values,
 }
 double StatisticalMoments::getDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
+    checkingInputDate(values, chances);
     double expectansy = StatisticalMoments::getExpectancy(values,chances);
     double dispersion = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {

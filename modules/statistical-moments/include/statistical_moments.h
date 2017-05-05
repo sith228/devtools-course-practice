@@ -6,14 +6,14 @@
 #include <vector>
 #include <string>
 
-class StatisticalMoments {
+static class StatisticalMoments {
  public:
-    static double getCustomMoment(const std::vector<double>& values,
+   double getCustomMoment(const std::vector<double>& values,
         const std::vector<double>& chances,unsigned int order,
         unsigned int offset);
-    static double getExpectancy(const std::vector<double>& values,
+   double getExpectancy(const std::vector<double>& values,
         const std::vector<double>& chances);
-    static double getDispersion(const std::vector<double>& values,
+   double getDispersion(const std::vector<double>& values,
         const std::vector<double>& chances);
  private:
     void checkingInputDate(const std::vector<double>& values,
