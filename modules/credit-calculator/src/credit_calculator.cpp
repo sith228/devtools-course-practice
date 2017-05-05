@@ -22,9 +22,10 @@ double CreditCalculator::monthly_payment(int amount, int period,
     if (!check_data(amount, period, interest))
         throw std::runtime_error("The entered data is incorrect");
     double month_inter = interest / 100 / 12;
-    if (!(1 - pow(1 + month_inter, -period)))
+    double denominator = (1 - pow(1 + month_inter, -period));
+    if (!denominator)
         throw std::runtime_error("You have entered an interest rate too low");
-    return (amount*(month_inter / (1 - pow(1 + month_inter, -period))));
+    return (amount*(month_inter / denominator));
 }
 
 double CreditCalculator::total_payout(int amount, int period,
