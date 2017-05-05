@@ -6,14 +6,14 @@
 #include <vector>
 #include <string>
 
-class statisticalMoments {
+class StatisticalMoments {
  private:
     std::vector<double> values;
     std::vector<double> chances;
     bool isChanceValid();
     bool isChancesDistributionRow();
  public:
-    statisticalMoments(std::vector<double> values, std::vector<double> chances);
+    StatisticalMoments(std::vector<double> values, std::vector<double> chances);
     double getMoment(unsigned int order);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_

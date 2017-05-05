@@ -6,24 +6,24 @@
 #include <stdexcept>
 #include <vector>
 
-bool statisticalMoments::isChanceValid() {
-    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
-        if ((statisticalMoments::chances[i] < 0) ||
-            (statisticalMoments::chances[i] > 1))
+bool StatisticalMoments::isChanceValid() {
+    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
+        if ((StatisticalMoments::chances[i] < 0) ||
+            (StatisticalMoments::chances[i] > 1))
             return false;
     }
     return true;
 }
 
-bool statisticalMoments::isChancesDistributionRow() {
+bool StatisticalMoments::isChancesDistributionRow() {
     double tmp_sum = 0;
-    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
+    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
         tmp_sum += chances[i];
     }
     return (tmp_sum == 1);
 }
 
-statisticalMoments::statisticalMoments(std::vector<double> values,
+StatisticalMoments::StatisticalMoments(std::vector<double> values,
     std::vector<double> chances) {
     this->values = values;
     this->chances = chances;
@@ -47,13 +47,13 @@ statisticalMoments::statisticalMoments(std::vector<double> values,
     }
 }
 
-double statisticalMoments::getMoment(unsigned int order) {
+double StatisticalMoments::getMoment(unsigned int order) {
     double result = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
     }
     int a = 0;  // for start moments
-    for (unsigned int i = 0; i < statisticalMoments::chances.size(); i++) {
+    for (unsigned int i = 0; i < StatisticalMoments::chances.size(); i++) {
         result += pow(values[i] - a, order)*chances[i];
     }
     return result;
