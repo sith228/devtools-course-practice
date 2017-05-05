@@ -1,11 +1,11 @@
-//Copyright 2017 Ivan Kochin
-//I 1
-//V 5
-//X 10
-//L 50
-//C 100
-//D 500
-//M 1000
+// Copyright 2017 Ivan Kochin
+// I 1
+// V 5
+// X 10
+// L 50
+// C 100
+// D 500
+// M 1000
 #include "include/rom_numbers_converter.h"
 
 string RomNumConverter::convert_arabic_to_rom(int temp) {
@@ -81,27 +81,27 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
 
 int RomNumConverter::convert_rom_to_arabic(string bufstr) {
     int result=0;
-    for (unsigned int i = 0; i<bufstr.length();i++) {
+    for (unsigned int i = 0 ; i < bufstr.length() ;i++) {
     switch (bufstr[i]) {
-        case 'I'://1
+        case 'I':// 1
             result += 1;
             break;
-        case 'V'://5
+        case 'V':// 5
             result += 5;
             break;
-        case 'X'://10
+        case 'X':// 10
             result += 10;
             break;
-        case 'L'://50
+        case 'L':// 50
             result += 50;
             break;
-        case 'C'://100
+        case 'C':// 100
             result += 100;
             break;
-        case 'D'://500
+        case 'D':// 500
             result += 500;
             break;
-        case 'M'://1000
+        case 'M':// 1000
             result += 1000;
             break;
         default:
@@ -110,18 +110,18 @@ int RomNumConverter::convert_rom_to_arabic(string bufstr) {
     }
 
     for (unsigned int i = 0; i < bufstr.length()-1;i++) {
-        if (bufstr[i] == 'I'&&bufstr[i + 1] == 'V')
+        if (bufstr[i] == 'I' && bufstr[i + 1] == 'V')
             result -= 2;
-        if (bufstr[i] == 'I'&&bufstr[i + 1] == 'X')
+        if (bufstr[i] == 'I' && bufstr[i + 1] == 'X')
             result -= 2;
-        if (bufstr[i] == 'X'&&bufstr[i + 1] == 'L')
+        if (bufstr[i] == 'X' && bufstr[i + 1] == 'L')
             result -= 20;
-        if (bufstr[i] == 'X'&&bufstr[i + 1] == 'C')
+        if (bufstr[i] == 'X' && bufstr[i + 1] == 'C')
             result -= 20;
-        if (bufstr[i] == 'C'&&bufstr[i + 1] == 'D')
+        if (bufstr[i] == 'C' && bufstr[i + 1] == 'D')
             result -= 200;
-        if (bufstr[i] == 'C'&&bufstr[i + 1] == 'M')
-            result -= 200;
+        if (bufstr[i] == 'C' && bufstr[i + 1] == 'M')
+            result -= 200 ;
 
     }
     return result;
