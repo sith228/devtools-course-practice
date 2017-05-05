@@ -20,7 +20,7 @@ class Intersection {
  public:
     Intersection();
     Intersection(double linex0, double liney0, double linez0,
-        double dirx0, double diry0, double dirz0, 
+        double dirx0, double diry0, double dirz0,
         double planeA, double planeB, double planeC, double planeD);
     Intersection(std::vector<double>lineStart,
         std::vector<double>lineDirection, std::vector<double>plane);
