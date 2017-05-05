@@ -8,9 +8,9 @@ TEST(HSBHSVSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     HSBHSVSpace space;
-    sum += space.GetHue();
-    sum += space.GetSaturation();
-    sum += space.GetValueBrightnes();
+    sum += space.getHue();
+    sum += space.getSaturation();
+    sum += space.getValueBrightnes();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -59,7 +59,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Hue_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(hue, space.GetHue());
+    EXPECT_EQ(hue, space.getHue());
 }
 
 TEST(HSBHSVSpaceTest, Can_Enter_Saturation_Correct_Data_In_The_Constructor) {
@@ -70,7 +70,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Saturation_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(saturation, space.GetSaturation());
+    EXPECT_EQ(saturation, space.getSaturation());
 }
 
 TEST(HSBHSVSpaceTest, Can_Enter_Brightness_Correct_Data_In_The_Constructor) {
@@ -81,7 +81,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Brightness_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(value_brightnes, space.GetValueBrightnes());
+    EXPECT_EQ(value_brightnes, space.getValueBrightnes());
 }
 
 TEST(HSBHSVSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -107,9 +107,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Hue) {
     int hue = 127;
     // Act
     HSBHSVSpace space;
-    space.SetHue(hue);
+    space.setHue(hue);
     // Assert
-    EXPECT_EQ(hue, space.GetHue());
+    EXPECT_EQ(hue, space.getHue());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Field_Saturation) {
@@ -117,9 +117,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Saturation) {
     int saturation = 25;
     // Act
     HSBHSVSpace space;
-    space.SetSaturation(saturation);
+    space.setSaturation(saturation);
     // Assert
-    EXPECT_EQ(saturation, space.GetSaturation());
+    EXPECT_EQ(saturation, space.getSaturation());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Field_Brightnes) {
@@ -127,9 +127,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Brightnes) {
     int value_brightnes = 69;
     // Act
     HSBHSVSpace space;
-    space.SetValueBrightnes(value_brightnes);
+    space.setValueBrightnes(value_brightnes);
     // Assert
-    EXPECT_EQ(value_brightnes, space.GetValueBrightnes());
+    EXPECT_EQ(value_brightnes, space.getValueBrightnes());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Hue) {
@@ -138,7 +138,7 @@ int hue = 720;
     // Act
 HSBHSVSpace space;
     // Assert
-EXPECT_ANY_THROW({ space.SetHue(hue);});
+EXPECT_ANY_THROW({ space.setHue(hue);});
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Saturation) {
@@ -147,7 +147,7 @@ TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Saturation) {
     // Act
     HSBHSVSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetSaturation(saturation); });
+    EXPECT_ANY_THROW({ space.setSaturation(saturation); });
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Brightnes) {
@@ -156,20 +156,16 @@ TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Brightnes) {
     // Act
     HSBHSVSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetValueBrightnes(value_brightnes); });
+    EXPECT_ANY_THROW({ space.setValueBrightnes(value_brightnes); });
 }
 
 TEST(HSBHSVSpaceTest, Can_Use_Equals_In_HSBHSVSpace) {
     // Arrange
-    int hue = 127;
-    int saturation = 41;
-    int value_brightnes = 78;
-    // Act
+    int hue = 127, saturation = 41, value_brightnes = 78;
     HSBHSVSpace left_space(hue, saturation, value_brightnes);
     HSBHSVSpace right_space(hue, saturation, value_brightnes);
-    bool result = (left_space == right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(left_space == right_space);
 }
 
 TEST(HSBHSVSpaceTest, Can_Use_Equals_With_As) {
@@ -192,15 +188,11 @@ TEST(HSBHSVSpaceTest, Can_Use_Not_Equals_In_HSBHSVSpace) {
     int hue = 127;
     int saturation = 41;
     int value_brightnes = 78;
-    // Act
+    // Act & Assert
     HSBHSVSpace left_space(hue, saturation, value_brightnes);
-    hue++;
-    saturation++;
-    value_brightnes++;
+    hue++; saturation++; value_brightnes++;
     HSBHSVSpace right_space(hue, saturation, value_brightnes);
-    bool result = (left_space != right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(left_space != right_space);
 }
 
 TEST(HSBHSVSpaceTest, Can_Convert_HSBHSV_To_RGB_H_Interval_0_60) {
@@ -276,8 +268,6 @@ TEST(HSBHSVSpaceTest, Can_Use_Swap_Method) {
 TEST(HSBHSVSpaceTest, Can_Use_Compare_As) {
     // Arrange
     HSBHSVSpace space(1, 2, 3);
-    // Act
-    bool result = (space == space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(space == space);
 }

@@ -7,9 +7,9 @@ TEST(LABSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     LABSpace space;
-    sum += space.GetLightness();
-    sum += space.GetA();
-    sum += space.GetB();
+    sum += space.getLightness();
+    sum += space.getA();
+    sum += space.getB();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -58,7 +58,7 @@ TEST(LABSpaceTest, Can_Enter_Lightness_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(lightness, space.GetLightness());
+    EXPECT_EQ(lightness, space.getLightness());
 }
 
 TEST(LABSpaceTest, Can_Enter_A_Correct_Data_In_The_Constructor) {
@@ -69,7 +69,7 @@ TEST(LABSpaceTest, Can_Enter_A_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(a, space.GetA());
+    EXPECT_EQ(a, space.getA());
 }
 
 TEST(LABSpaceTest, Can_Enter_B_Correct_Data_In_The_Constructor) {
@@ -80,7 +80,7 @@ TEST(LABSpaceTest, Can_Enter_B_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(b, space.GetB());
+    EXPECT_EQ(b, space.getB());
 }
 
 TEST(LABSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -106,9 +106,9 @@ TEST(LABSpaceTest, Can_Set_Field_Lightness) {
     int lightness = 89;
     // Act
     LABSpace space;
-    space.SetLightness(lightness);
+    space.setLightness(lightness);
     // Assert
-    EXPECT_EQ(lightness, space.GetLightness());
+    EXPECT_EQ(lightness, space.getLightness());
 }
 
 TEST(LABSpaceTest, Can_Set_Field_A) {
@@ -116,9 +116,9 @@ TEST(LABSpaceTest, Can_Set_Field_A) {
     int a = 14;
     // Act
     LABSpace space;
-    space.SetA(a);
+    space.setA(a);
     // Assert
-    EXPECT_EQ(a, space.GetA());
+    EXPECT_EQ(a, space.getA());
 }
 
 TEST(LABSpaceTest, Can_Set_Field_B) {
@@ -126,9 +126,9 @@ TEST(LABSpaceTest, Can_Set_Field_B) {
     int b = 75;
     // Act
     LABSpace space;
-    space.SetB(b);
+    space.setB(b);
     // Assert
-    EXPECT_EQ(b, space.GetB());
+    EXPECT_EQ(b, space.getB());
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_Lightness) {
@@ -137,7 +137,7 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_Lightness) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetLightness(lightness); });
+    EXPECT_ANY_THROW({ space.setLightness(lightness); });
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_A) {
@@ -146,7 +146,7 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_A) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetA(a); });
+    EXPECT_ANY_THROW({ space.setA(a); });
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_B) {
@@ -155,20 +155,16 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_B) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetB(b); });
+    EXPECT_ANY_THROW({ space.setB(b); });
 }
 
 TEST(LABSpaceTest, Can_Use_Equals_In_LABSpace) {
     // Arrange
-    int lightness = 88;
-    int a = 100;
-    int b = 105;
-    // Act
+    int lightness = 88, a = 100, b = 105;
     LABSpace left_space(lightness, a, b);
     LABSpace right_space(lightness, a, b);
-    bool result = (left_space == right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(left_space == right_space);
 }
 
 TEST(LABSpaceTest, Can_Use_Equals_With_As) {
@@ -191,15 +187,11 @@ TEST(LABSpaceTest, Can_Use_Not_Equals_In_LABSpace) {
     int lightness = 88;
     int a = 100;
     int b = 105;
-    // Act
+    // Act & Assert
     LABSpace left_space(lightness, a, b);
-    lightness++;
-    a++;
-    b++;
+    lightness++; a++; b++;
     LABSpace right_space(lightness, a, b);
-    bool result = (left_space != right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(left_space != right_space);
 }
 
 TEST(LABSpaceTest, Can_Use_Swap_Method) {
@@ -215,8 +207,6 @@ TEST(LABSpaceTest, Can_Use_Swap_Method) {
 TEST(LABSpaceTest, Can_Use_Compare_As) {
     // Arrange
     LABSpace space(1, 2, 3);
-    // Act
-    bool result = (space == space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(space == space);
 }

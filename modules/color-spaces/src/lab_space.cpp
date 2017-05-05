@@ -7,31 +7,31 @@
 #include <algorithm>
 
 void LABSpace::swap(LABSpace &lab_space) {
-    std::swap(lightness, lab_space.lightness);
-    std::swap(a, lab_space.a);
-    std::swap(b, lab_space.b);
+    std::swap(lightness_, lab_space.lightness_);
+    std::swap(a_, lab_space.a_);
+    std::swap(b_, lab_space.b_);
 }
 
-LABSpace::LABSpace(const int lightness_,
-                   const int a_,
-                   const int b_) {
-    if ((lightness_ < 0) || (lightness_ > 100)) {
+LABSpace::LABSpace(const int lightness,
+                   const int a,
+                   const int b) {
+    if ((lightness < 0) || (lightness > 100)) {
         throw std::string("The index of lightness isn't in the range 0-100");
-    } else if ((a_ < 0) || (a_ > 128)) {
+    } else if ((a < 0) || (a > 128)) {
         throw std::string("The index of a color isn't in the range 0-128");
-    } else if ((b_ < 0) || (b_ > 128)) {
+    } else if ((b < 0) || (b > 128)) {
         throw std::string("The index of b color isn't in the range 0-128");
     } else {
-        lightness = static_cast<uint8_t> (lightness_);
-        a = static_cast<uint8_t> (a_);
-        b = static_cast<uint8_t> (b_);
+        lightness_ = static_cast<uint8_t> (lightness);
+        a_ = static_cast<uint8_t> (a);
+        b_ = static_cast<uint8_t> (b);
     }
 }
 
 LABSpace::LABSpace(const LABSpace &lab_space) {
-    lightness = lab_space.lightness;
-    a = lab_space.a;
-    b = lab_space.b;
+    lightness_ = lab_space.lightness_;
+    a_ = lab_space.a_;
+    b_ = lab_space.b_;
 }
 
 LABSpace& LABSpace::operator=(const LABSpace &lab_space) {
@@ -41,39 +41,39 @@ LABSpace& LABSpace::operator=(const LABSpace &lab_space) {
     return *this;
 }
 
-uint8_t LABSpace::GetLightness() const {
-    return lightness;
+uint8_t LABSpace::getLightness() const {
+    return lightness_;
 }
 
-uint8_t LABSpace::GetA() const {
-    return a;
+uint8_t LABSpace::getA() const {
+    return a_;
 }
 
-uint8_t LABSpace::GetB() const {
-    return b;
+uint8_t LABSpace::getB() const {
+    return b_;
 }
 
-void LABSpace::SetLightness(const int lightness_) {
-    if ((lightness_ < 0) || (lightness_ > 100)) {
+void LABSpace::setLightness(const int lightness) {
+    if ((lightness < 0) || (lightness > 100)) {
         throw std::string("The index of lightness isn't in the range 0-100");
     } else {
-        lightness = static_cast<uint8_t> (lightness_);
+        lightness_ = static_cast<uint8_t> (lightness);
     }
 }
 
-void LABSpace::SetA(const int a_) {
-    if ((a_ < 0) || (a_ > 128)) {
+void LABSpace::setA(const int a) {
+    if ((a < 0) || (a > 128)) {
         throw std::string("The index of a color isn't in the range 0-128");
     }  else {
-        a = static_cast<uint8_t> (a_);
+        a_ = static_cast<uint8_t> (a);
     }
 }
 
-void LABSpace::SetB(const int b_) {
-    if ((b_ < 0) || (b_ > 128)) {
+void LABSpace::setB(const int b) {
+    if ((b < 0) || (b > 128)) {
         throw std::string("The index of b color isn't in the range 0-128");
     } else {
-        b = static_cast<uint8_t> (b_);
+        b_ = static_cast<uint8_t> (b);
     }
 }
 
@@ -82,9 +82,9 @@ bool operator==(const LABSpace &lab_space_left,
     if (&lab_space_left == &lab_space_right) {
         return true;
     } else {
-        return ((lab_space_left.lightness == lab_space_right.lightness) &&
-            (lab_space_left.a == lab_space_right.a) &&
-            (lab_space_left.b == lab_space_right.b));
+        return ((lab_space_left.lightness_ == lab_space_right.lightness_) &&
+            (lab_space_left.a_ == lab_space_right.a_) &&
+            (lab_space_left.b_ == lab_space_right.b_));
     }
 }
 

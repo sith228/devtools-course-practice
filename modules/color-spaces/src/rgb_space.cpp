@@ -6,15 +6,15 @@
 #include <algorithm>
 
 void RGBSpace::swap(RGBSpace &rgb_space) {
-    std::swap(red, rgb_space.red);
-    std::swap(green, rgb_space.green);
-    std::swap(blue, rgb_space.blue);
+    std::swap(red_, rgb_space.red_);
+    std::swap(green_, rgb_space.green_);
+    std::swap(blue_, rgb_space.blue_);
 }
 
 HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
-    double red_quote = static_cast<double>(red) / 255;
-    double green_quote = static_cast<double>(green) / 255;
-    double blue_quote = static_cast<double>(blue) / 255;
+    double red_quote = static_cast<double>(red_) / 255;
+    double green_quote = static_cast<double>(green_) / 255;
+    double blue_quote = static_cast<double>(blue_) / 255;
 
     double min = std::min(red_quote, std::min(green_quote, blue_quote));
     double max = std::max(red_quote, std::max(green_quote, blue_quote));
@@ -46,9 +46,9 @@ HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
 }
 
 XYZSpace RGBSpace::ToXYZSpace() const {
-    double red_quote = static_cast<double >(red) / 255;
-    double green_quote = static_cast<double >(green) / 255;
-    double blue_quote = static_cast<double >(blue) / 255;
+    double red_quote = static_cast<double >(red_) / 255;
+    double green_quote = static_cast<double >(green_) / 255;
+    double blue_quote = static_cast<double >(blue_) / 255;
 
     if (red_quote > 0.04045) {
         red_quote = pow((red_quote + 0.055) / 1.055, 2.4);
@@ -83,32 +83,32 @@ XYZSpace RGBSpace::ToXYZSpace() const {
     return xyz_space;
 }
 
-RGBSpace::RGBSpace(const int red_,
-                   const int green_,
-                   const int blue_) {
-    if ((red_ < 0) || (red_ > 255)) {
+RGBSpace::RGBSpace(const int red,
+                   const int green,
+                   const int blue) {
+    if ((red < 0) || (red > 255)) {
         throw std::string("The index of red color isn't in the range 0-255");
-    } else if ((green_ < 0) || (green_ > 255)) {
+    } else if ((green < 0) || (green > 255)) {
         throw std::string("The index of green color isn't in the range 0-255");
-    } else if ((blue_ < 0) || (blue_ > 255)) {
+    } else if ((blue < 0) || (blue > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {
-        red = static_cast<uint8_t>(red_);
-        green = static_cast<uint8_t>(green_);
-        blue = static_cast<uint8_t>(blue_);
+        red_ = static_cast<uint8_t>(red);
+        green_ = static_cast<uint8_t>(green);
+        blue_ = static_cast<uint8_t>(blue);
     }
 }
 
 RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
-    red = rgb_space.red;
-    green = rgb_space.green;
-    blue = rgb_space.blue;
+    red_ = rgb_space.red_;
+    green_ = rgb_space.green_;
+    blue_ = rgb_space.blue_;
 }
 
 RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
-    uint16_t hue = hsbhsv_space.GetHue();
-    uint16_t saturation = hsbhsv_space.GetSaturation();
-    uint16_t value_brightnes = hsbhsv_space.GetValueBrightnes();
+    uint16_t hue = hsbhsv_space.getHue();
+    uint16_t saturation = hsbhsv_space.getSaturation();
+    uint16_t value_brightnes = hsbhsv_space.getValueBrightnes();
 
     uint8_t index = static_cast<uint8_t>(
         floor(static_cast<double>(hue)/60)) % 6;
@@ -157,15 +157,15 @@ RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
             break;
     }
 
-    red = static_cast<uint8_t >(round(red_quote * 255 / 100));
-    green = static_cast<uint8_t >(round(green_quote * 255 / 100));
-    blue = static_cast<uint8_t >(round(blue_quote * 255 / 100));
+    red_ = static_cast<uint8_t >(round(red_quote * 255 / 100));
+    green_ = static_cast<uint8_t >(round(green_quote * 255 / 100));
+    blue_ = static_cast<uint8_t >(round(blue_quote * 255 / 100));
 }
 
 RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
-    double x_quote = static_cast<double>(xyz_space.GetX())/100;
-    double y_quote = static_cast<double>(xyz_space.GetY())/100;
-    double z_quote = static_cast<double>(xyz_space.GetZ())/100;
+    double x_quote = static_cast<double>(xyz_space.getX())/100;
+    double y_quote = static_cast<double>(xyz_space.getY())/100;
+    double z_quote = static_cast<double>(xyz_space.getZ())/100;
 
     double red_quote =
         x_quote * 3.2404542  + y_quote*(-1.5371385) + z_quote*(-0.4985314);
@@ -192,9 +192,9 @@ RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
         blue_quote = 12.92 * red_quote;
     }
 
-    red = static_cast<uint8_t>(round(red_quote*255));
-    green = static_cast<uint8_t>(round(green_quote*255));
-    blue = static_cast<uint8_t>(round(blue_quote*255));
+    red_ = static_cast<uint8_t>(round(red_quote*255));
+    green_ = static_cast<uint8_t>(round(green_quote*255));
+    blue_ = static_cast<uint8_t>(round(blue_quote*255));
 }
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
@@ -204,39 +204,39 @@ RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
     return *this;
 }
 
-uint8_t RGBSpace::GetRed() const {
-    return red;
+uint8_t RGBSpace::getRed() const {
+    return red_;
 }
 
-uint8_t RGBSpace::GetGreen() const {
-    return green;
+uint8_t RGBSpace::getGreen() const {
+    return green_;
 }
 
-uint8_t RGBSpace::GetBlue() const {
-    return blue;
+uint8_t RGBSpace::getBlue() const {
+    return blue_;
 }
 
-void RGBSpace::SetRed(const int red_) {
-    if ((red_ < 0) || (red_ > 255)) {
+void RGBSpace::setRed(const int red) {
+    if ((red < 0) || (red > 255)) {
         throw std::string("The index of red color isn't in the range 0-255");
     } else {
-        red = static_cast<uint8_t>(red_);
+        red_ = static_cast<uint8_t>(red);
     }
 }
 
-void RGBSpace::SetGreen(const int green_) {
-    if ((green_ < 0) || (green_ > 255)) {
+void RGBSpace::setGreen(const int green) {
+    if ((green < 0) || (green > 255)) {
         throw std::string("The index of green color isn't in the range 0-255");
     }  else {
-        green = static_cast<uint8_t>(green_);
+        green_ = static_cast<uint8_t>(green);
     }
 }
 
-void RGBSpace::SetBlue(const int blue_) {
-    if ((blue_ < 0) || (blue_ > 255)) {
+void RGBSpace::setBlue(const int blue) {
+    if ((blue < 0) || (blue > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {
-        blue = static_cast<uint8_t>(blue_);
+        blue_ = static_cast<uint8_t>(blue);
     }
 }
 
@@ -245,9 +245,9 @@ bool operator==(const RGBSpace &rgb_space_left,
     if (&rgb_space_left == &rgb_space_right) {
         return true;
     } else {
-        return ((rgb_space_left.red == rgb_space_right.red) &&
-            (rgb_space_left.green == rgb_space_right.green) &&
-            (rgb_space_left.blue == rgb_space_right.blue));
+        return ((rgb_space_left.red_ == rgb_space_right.red_) &&
+            (rgb_space_left.green_ == rgb_space_right.green_) &&
+            (rgb_space_left.blue_ == rgb_space_right.blue_));
     }
 }
 

@@ -6,9 +6,9 @@ TEST(RGBSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     RGBSpace space;
-    sum += space.GetRed();
-    sum += space.GetGreen();
-    sum += space.GetBlue();
+    sum += space.getRed();
+    sum += space.getGreen();
+    sum += space.getBlue();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -57,7 +57,7 @@ TEST(RGBSpaceTest, Can_Enter_Red_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(red, space.GetRed());
+    EXPECT_EQ(red, space.getRed());
 }
 
 TEST(RGBSpaceTest, Can_Enter_Green_Correct_Data_In_The_Constructor) {
@@ -68,7 +68,7 @@ TEST(RGBSpaceTest, Can_Enter_Green_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(green, space.GetGreen());
+    EXPECT_EQ(green, space.getGreen());
 }
 
 TEST(RGBSpaceTest, Can_Enter_Blue_Correct_Data_In_The_Constructor) {
@@ -79,7 +79,7 @@ TEST(RGBSpaceTest, Can_Enter_Blue_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(blue, space.GetBlue());
+    EXPECT_EQ(blue, space.getBlue());
 }
 
 TEST(RGBSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -105,9 +105,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Red) {
     int red = 127;
     // Act
     RGBSpace space;
-    space.SetRed(red);
+    space.setRed(red);
     // Assert
-    EXPECT_EQ(red, space.GetRed());
+    EXPECT_EQ(red, space.getRed());
 }
 
 TEST(RGBSpaceTest, Can_Set_Field_Green) {
@@ -115,9 +115,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Green) {
     int green = 253;
     // Act
     RGBSpace space;
-    space.SetGreen(green);
+    space.setGreen(green);
     // Assert
-    EXPECT_EQ(green, space.GetGreen());
+    EXPECT_EQ(green, space.getGreen());
 }
 
 TEST(RGBSpaceTest, Can_Set_Field_Blue) {
@@ -125,9 +125,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Blue) {
     int blue = 127;
     // Act
     RGBSpace space;
-    space.SetBlue(blue);
+    space.setBlue(blue);
     // Assert
-    EXPECT_EQ(blue, space.GetBlue());
+    EXPECT_EQ(blue, space.getBlue());
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Red) {
@@ -136,7 +136,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Red) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetRed(red);});
+    EXPECT_ANY_THROW({ space.setRed(red);});
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Green) {
@@ -145,7 +145,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Green) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetGreen(green);});
+    EXPECT_ANY_THROW({ space.setGreen(green);});
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
@@ -154,20 +154,16 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.SetBlue(blue);});
+    EXPECT_ANY_THROW({ space.setBlue(blue);});
 }
 
 TEST(RGBSpaceTest, Can_Use_Equals_In_RGBSpace) {
     // Arrange
-    int red = 127;
-    int green = 236;
-    int blue = 56;
-    // Act
+    int red = 127, green = 236, blue = 56;
     RGBSpace left_space(red, green, blue);
     RGBSpace right_space(red, green, blue);
-    bool result = (left_space == right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(left_space == right_space);
 }
 
 TEST(RGBSpaceTest, Can_Use_Equals_With_As) {
@@ -190,13 +186,11 @@ TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
     int red = 127;
     int green = 236;
     int blue = 56;
-    // Act
+    // Act & Assert
     RGBSpace left_space(red, green, blue);
     red++; green++; blue++;
     RGBSpace right_space(red, green, blue);
-    bool result = (left_space != right_space);
-    // Assert
-    EXPECT_TRUE(result);
+    EXPECT_TRUE(left_space != right_space);
 }
 
 TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Min) {
@@ -332,8 +326,6 @@ TEST(RGBSpaceTest, Can_Use_Swap_Method) {
 TEST(RGBSpaceTest, Can_Use_Compare_As) {
     // Arrange
     RGBSpace space(1, 2, 3);
-    // Act
-    bool result = (space == space);
-    // Assert
-    EXPECT_TRUE(result);
+    // Act & Assert
+    EXPECT_TRUE(space == space);
 }

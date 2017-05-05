@@ -8,15 +8,15 @@
 
 
 void XYZSpace::swap(XYZSpace &xyz_space) {
-    std::swap(x, xyz_space.x);
-    std::swap(y, xyz_space.y);
-    std::swap(z, xyz_space.z);
+    std::swap(x_, xyz_space.x_);
+    std::swap(y_, xyz_space.y_);
+    std::swap(z_, xyz_space.z_);
 }
 
 LABSpace XYZSpace::ToLABSpace() const {
-    double x_quote = static_cast<double>(x) / 95.05;
-    double y_quote = static_cast<double>(y) / 100;
-    double z_quote = static_cast<double>(z) / 108.9;
+    double x_quote = static_cast<double>(x_) / 95.05;
+    double y_quote = static_cast<double>(y_) / 100;
+    double z_quote = static_cast<double>(z_) / 108.9;
 
     if (x_quote > 0.008856) {
         x_quote = pow(x_quote, 1.0/3);
@@ -44,35 +44,35 @@ LABSpace XYZSpace::ToLABSpace() const {
     return lab_space;
 }
 
-XYZSpace::XYZSpace(const int x_,
-                   const int y_,
-                   const int z_) {
-    if ((x_ < 0) || (x_ > 95)) {
+XYZSpace::XYZSpace(const int x,
+                   const int y,
+                   const int z) {
+    if ((x < 0) || (x > 95)) {
         throw std::string("The index of x isn't in the range 0-95");
-    } else if ((y_ < 0) || (y_ > 100)) {
+    } else if ((y < 0) || (y > 100)) {
         throw std::string("The index of y isn't in the range 0-100");
-    } else if ((z_ < 0) || (z_ > 108)) {
+    } else if ((z < 0) || (z > 108)) {
         throw std::string("The index of z isn't in the range 0-108");
     } else {
-        x = static_cast<uint8_t>(x_);
-        y = static_cast<uint8_t> (y_);
-        z = static_cast<uint8_t> (z_);
+        x_ = static_cast<uint8_t>(x);
+        y_ = static_cast<uint8_t> (y);
+        z_ = static_cast<uint8_t> (z);
     }
 }
 
 XYZSpace::XYZSpace(const XYZSpace &xyz_space) {
-    x = xyz_space.x;
-    y = xyz_space.y;
-    z = xyz_space.z;
+    x_ = xyz_space.x_;
+    y_ = xyz_space.y_;
+    z_ = xyz_space.z_;
 }
 
 XYZSpace::XYZSpace(const LABSpace &lab_space) {
     double y_quote =
-        (((static_cast<double>(lab_space.GetLightness())) + 16.0) / 116.0);
+        (((static_cast<double>(lab_space.getLightness())) + 16.0) / 116.0);
     double x_quote =
-        (static_cast<double>(lab_space.GetA()) / 500 + y_quote);
+        (static_cast<double>(lab_space.getA()) / 500 + y_quote);
     double z_quote =
-        (y_quote - static_cast<double>(lab_space.GetB()) / 200);
+        (y_quote - static_cast<double>(lab_space.getB()) / 200);
 
     if (pow(y_quote, 3.0) > 0.008856) {
         y_quote = pow(y_quote, 3.0);
@@ -92,9 +92,9 @@ XYZSpace::XYZSpace(const LABSpace &lab_space) {
         z_quote = (z_quote - 16.0/116) / 7.787;
     }
 
-    x = static_cast<uint8_t>((x_quote * 95.05));
-    y = static_cast<uint8_t>((y_quote * 100));
-    z = static_cast<uint8_t>((z_quote * 108.9));
+    x_ = static_cast<uint8_t>((x_quote * 95.05));
+    y_ = static_cast<uint8_t>((y_quote * 100));
+    z_ = static_cast<uint8_t>((z_quote * 108.9));
 }
 
 XYZSpace& XYZSpace::operator=(const XYZSpace &xyz_space) {
@@ -104,39 +104,39 @@ XYZSpace& XYZSpace::operator=(const XYZSpace &xyz_space) {
     return *this;
 }
 
-uint8_t XYZSpace::GetX() const {
-    return x;
+uint8_t XYZSpace::getX() const {
+    return x_;
 }
 
-uint8_t XYZSpace::GetY() const {
-    return y;
+uint8_t XYZSpace::getY() const {
+    return y_;
 }
 
-uint8_t XYZSpace::GetZ() const {
-    return z;
+uint8_t XYZSpace::getZ() const {
+    return z_;
 }
 
-void XYZSpace::SetX(const int x_) {
-    if ((x_ < 0) || (x_ > 95)) {
+void XYZSpace::setX(const int x) {
+    if ((x < 0) || (x > 95)) {
         throw std::string("The index of x isn't in the range 0-95");
     } else {
-        x = static_cast<uint8_t>(x_);
+        x_ = static_cast<uint8_t>(x);
     }
 }
 
-void XYZSpace::SetY(const int y_) {
-    if ((y_ < 0) || (y_ > 100)) {
+void XYZSpace::setY(const int y) {
+    if ((y < 0) || (y > 100)) {
         throw std::string("The index of y isn't in the range 0-100");
     }  else {
-        y = static_cast<uint8_t>(y_);
+        y_ = static_cast<uint8_t>(y);
     }
 }
 
-void XYZSpace::SetZ(const int z_) {
-    if ((z_ < 0) || (z_ > 108)) {
+void XYZSpace::setZ(const int z) {
+    if ((z < 0) || (z > 108)) {
         throw std::string("The index of z isn't in the range 0-108");
     } else {
-        z = static_cast<uint8_t>(z_);
+        z_ = static_cast<uint8_t>(z);
     }
 }
 
@@ -145,9 +145,9 @@ bool operator==(const XYZSpace &xyz_space_left,
     if (&xyz_space_left == &xyz_space_right) {
         return true;
     } else {
-        return ((xyz_space_left.x == xyz_space_right.x) &&
-            (xyz_space_left.y == xyz_space_right.y) &&
-            (xyz_space_left.z == xyz_space_right.z));
+        return ((xyz_space_left.x_ == xyz_space_right.x_) &&
+            (xyz_space_left.y_ == xyz_space_right.y_) &&
+            (xyz_space_left.z_ == xyz_space_right.z_));
     }
 }
 
