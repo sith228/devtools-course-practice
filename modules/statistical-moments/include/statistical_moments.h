@@ -7,13 +7,13 @@
 #include <string>
 
 class StatisticalMoments {
+ public:
+    StatisticalMoments(std::vector<double> values,std::vector<double> chances);
+    double getMoment(unsigned int order);
  private:
     std::vector<double> values;
     std::vector<double> chances;
     bool isChanceValid();
     bool isChancesDistributionRow();
- public:
-    StatisticalMoments(std::vector<double> values, std::vector<double> chances);
-    double getMoment(unsigned int order);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_
