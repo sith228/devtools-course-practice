@@ -12,10 +12,9 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_monthly_payment) {
     double result;
     double moth_pay = 28078;
     double month_error = 0.2;
-    CreditCalculator cred;
 
     // Act
-    result = cred.monthly_payment(amount, period, interest);
+    result = CreditCalculator::monthly_payment(amount, period, interest);
 
     // Assert
     EXPECT_NEAR(moth_pay, result, period*month_error);
@@ -27,14 +26,9 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     int amount = -300000;
     int period = 12;
     double interest = 150;
-    double result;
-    CreditCalculator cred;
 
-    // Act
-    result = cred.monthly_payment(amount, period, interest);
-
-    // Assert
-    EXPECT_EQ(-1, result);
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::monthly_payment(amount, period, interest));
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
@@ -45,10 +39,9 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_total_payout) {
     double result;
     double payout = 336940;
     double month_error = 0.2;
-    CreditCalculator cred;
 
     // Act
-    result = cred.total_payout(amount, period, interest);
+    result = CreditCalculator::total_payout(amount, period, interest);
 
     // Assert
     EXPECT_NEAR(payout, result, period*month_error);
@@ -60,14 +53,9 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     int amount = 300000;
     int period = -12;
     double interest = 22;
-    double result;
-    CreditCalculator cred;
 
-    // Act
-    result = cred.total_payout(amount, period, interest);
-
-    // Assert
-    EXPECT_EQ(-1, result);
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::total_payout(amount, period, interest));
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator, get_overpayment_amount) {
@@ -78,10 +66,9 @@ TEST(Simonyan_Vaginak_CreditCalculator, get_overpayment_amount) {
     double result;
     double overpay = 36940;
     double month_error = 0.2;
-    CreditCalculator cred;
 
     // Act
-    result = cred.overpayment_amount(amount, period, interest);
+    result = CreditCalculator::overpayment_amount(amount, period, interest);
 
     // Assert
     EXPECT_NEAR(overpay, result, period*month_error);
@@ -93,14 +80,9 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     int amount = 300000;
     int period = -12;
     double interest = 22;
-    double result;
-    CreditCalculator cred;
 
-    // Act
-    result = cred.overpayment_amount(amount, period, interest);
-
-    // Assert
-    EXPECT_EQ(-1, result);
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::overpayment_amount(amount, period, interest));
 }
 
 TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
@@ -112,10 +94,9 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
     double result;
     double balance = 196550;
     double month_error = 0.2;
-    CreditCalculator cred;
 
     // Act
-    result = cred.check_balance(amount, period, interest, month_passed);
+    result = CreditCalculator::check_balance(amount, period, interest, month_passed);
 
     // Assert
     EXPECT_NEAR(balance, result, period*month_error);
@@ -128,12 +109,7 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     int period = 12;
     int month_passed = 5;
     double interest = 22;
-    double result;
-    CreditCalculator cred;
 
-    // Act
-    result = cred.check_balance(amount, period, interest, month_passed);
-
-    // Assert
-    EXPECT_EQ(-1, result);
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::check_balance(amount, period, interest, month_passed));
 }
