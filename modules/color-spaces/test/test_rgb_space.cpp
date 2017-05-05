@@ -1,7 +1,6 @@
 // Copyright 2017 Nesterov Alexander
 #include <gtest/gtest.h>
 #include "../include/rgb_space.h"
-
 TEST(RGBSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     // Arrange
     int sum = 0;
@@ -198,4 +197,64 @@ TEST(RGBSpaceTest, Can_Use_Not_Equals_In_RGBSpace) {
     bool result = (left_space != right_space);
     // Assert
     EXPECT_TRUE(result);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Min) {
+    // Arrange
+    RGBSpace space(10, 10, 10);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(0, 0, 4);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Red_And_G_more_B) {
+    // Arrange
+    RGBSpace space(150, 45, 37);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(4, 75, 59);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Red_And_B_more_G) {
+    // Arrange
+    RGBSpace space(150, 37, 45);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(356, 75, 59);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Green) {
+    // Arrange
+    RGBSpace space(37, 150, 45);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(124, 75, 59);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Blue) {
+    // Arrange
+    RGBSpace space(37, 45, 150);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(236, 75, 59);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Zero) {
+    // Arrange
+    RGBSpace space(0, 0, 0);
+    // Act
+    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    // Assert
+    HSBHSVSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
 }

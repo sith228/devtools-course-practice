@@ -1,7 +1,6 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/rgb_space.h"
-#include <stdint.h>
 #include <string>
 #include <algorithm>
 
@@ -9,6 +8,51 @@ void RGBSpace::swap(RGBSpace &rgb_space) {
     std::swap(red, rgb_space.red);
     std::swap(green, rgb_space.green);
     std::swap(blue, rgb_space.blue);
+}
+
+HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
+
+    double_t red_quote = (double_t)red / 255;
+    double_t green_quote = (double_t)green / 255;
+    double_t blue_quote = (double_t)blue / 255;
+
+    double_t min = std::min(red_quote, std::min(green_quote, blue_quote));
+    double_t max = std::max(red_quote, std::max(green_quote, blue_quote));
+
+    uint16_t h = 0, s, v;
+    if (max == min) {
+        h = 0;
+    } else if ((max == red_quote) && (green_quote >= blue_quote)) {
+        h = (uint16_t) std::round(
+            60 * ((green_quote - blue_quote)/(max - min)));
+    } else if ((max == red_quote) && (green_quote < blue_quote)) {
+        h = (uint16_t) std::round(
+            60 * ((green_quote - blue_quote)/(max - min)) + 360);
+    } else if (max == green_quote) {
+        h = (uint16_t) std::round(
+            60 * ((blue_quote - red_quote)/(max - min)) + 120);
+    } else if (max == blue_quote) {
+        h = (uint16_t) std::round(
+            60 * ((red_quote - green_quote)/(max - min)) + 240);
+    }
+
+    s = (uint16_t) std::round((max == 0) ? 0 : (1 - min/max)*100);
+
+    v = (uint16_t) std::round(max * 100);
+
+    HSBHSVSpace hsbhsv_space(h, s, v);
+
+    return hsbhsv_space;
+}
+
+XYZSpace RGBSpace::ToXYZSpace() const {
+    XYZSpace xyz_space;
+    return xyz_space;
+}
+
+LABSpace RGBSpace::ToLABSpace() const {
+    LABSpace lab_space;
+    return lab_space;
 }
 
 RGBSpace::RGBSpace(const int red_,

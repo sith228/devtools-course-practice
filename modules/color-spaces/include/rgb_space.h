@@ -3,6 +3,10 @@
 #define MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
 #include <stdint.h>
 #include <algorithm>
+#include "../include/lab_space.h"
+#include "../include/hsb_hsv_space.h"
+#include "../include/xyz_space.h"
+
 
 class RGBSpace {
  private:
@@ -10,6 +14,10 @@ class RGBSpace {
     uint8_t green;
     uint8_t blue;
     void swap(RGBSpace &rgb_space);
+    HSBHSVSpace ToHSBHSVSpace() const;
+    XYZSpace ToXYZSpace() const;
+    LABSpace ToLABSpace() const;
+
 
  public:
     RGBSpace(): red(0), green(0), blue(0) {}
@@ -29,6 +37,10 @@ class RGBSpace {
                            const RGBSpace &rgb_space_right);
     friend bool operator!=(const RGBSpace &rgb_space_left,
                            const RGBSpace &rgb_space_right);
+
+    operator HSBHSVSpace() const { return ToHSBHSVSpace(); }
+    operator XYZSpace() const { return ToXYZSpace(); }
+    operator LABSpace() const { return ToLABSpace(); }
 };
 
 #endif  // MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
