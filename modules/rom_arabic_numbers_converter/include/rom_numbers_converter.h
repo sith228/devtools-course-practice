@@ -2,17 +2,17 @@
 
 
 
-#ifndef ROM_NUMBERS_CONVERTER_H_
-#define ROM_NUMBERS_CONVERTER_H_
+#ifndef MODULES_ROM_ARABIC_NUMBERS_CONVERTER_INCLUDE_ROM_NUMBERS_CONVERTER_H_ 
+#define MODULES_ROM_ARABIC_NUMBERS_CONVERTER_INCLUDE_ROM_NUMBERS_CONVERTER_H_ 
 
 #include <string>
 #include <iostream>
 
-using namespace std;
+using std::string;
 
 class RomNumConverter {
-public:
+    public:
     string convert_arabic_to_rom(int temp);
     int convert_rom_to_arabic(string bufstr);
 };
-#endif  // ROM_NUMBERS_CONVERTER_H_
+#endif  // MODULES_ROM_ARABIC_NUMBERS_CONVERTER_INCLUDE_ROM_NUMBERS_CONVERTER_H_ 
