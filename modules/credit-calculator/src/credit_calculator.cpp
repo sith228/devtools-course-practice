@@ -4,7 +4,6 @@
 #include <math.h>
 #include <stdexcept>
 
-CreditCalculator::CreditCalculator() {}
 
 bool CreditCalculator::check_data(int amount, int period,
     double interest, unsigned int month_pas) {

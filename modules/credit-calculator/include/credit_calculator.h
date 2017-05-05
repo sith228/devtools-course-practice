@@ -5,7 +5,6 @@
 
 class CreditCalculator {
  public:
-  CreditCalculator();
   static double overpayment_amount(int amount, int period, double interest);
   static double monthly_payment(int amount, int period, double interest);
   static double total_payout(int amount, int period, double interest);
