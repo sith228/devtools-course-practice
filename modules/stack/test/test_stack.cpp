@@ -8,17 +8,17 @@
 
 TEST(StackTest, Can_Create_Stack_With_Positive_Length_INT) {
     // Arrange & Act & Assert
-    ASSERT_NO_THROW(TStack<int> v(5));
+    EXPECT_NO_THROW(TStack<int> v(5));
 }
 
 TEST(StackTest, Cant_Create_Too_Large_Stack_INT) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<int> v(MAX_STACK_SIZE + 1));
+    EXPECT_ANY_THROW(TStack<int> v(MAX_STACK_SIZE + 1));
 }
 
 TEST(StackTest, Cant_Create_Stack_With_Negative_Length_INT) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<int> v(-5));
+    EXPECT_ANY_THROW(TStack<int> v(-5));
 }
 
 TEST(StackTest, Can_Create_Copied_Stack_INT) {
@@ -26,7 +26,7 @@ TEST(StackTest, Can_Create_Copied_Stack_INT) {
     TStack <int> v(10);
 
     // Act & Assert
-    ASSERT_NO_THROW(TStack <int> v1(v));
+    EXPECT_NO_THROW(TStack <int> v1(v));
 }
 
 TEST(StackTest, Can_Get_Stack_Size_INT) {
@@ -66,7 +66,7 @@ TEST(StackTest, Cant_Push_When_Stack_Is_Full_INT) {
     v.Push(7);
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Push(9));
+    EXPECT_ANY_THROW(v.Push(9));
 }
 
 TEST(StackTest, Can_Pop_INT) {
@@ -112,7 +112,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_INT) {
     TStack <int> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.stTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_INT) {
@@ -120,7 +120,7 @@ TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_INT) {
     TStack <int> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Pop());
+    EXPECT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_INT) {
@@ -145,17 +145,17 @@ TEST(StackTest, Can_Check_Full_Stack_INT) {
 
 TEST(StackTest, Can_Create_Stack_With_Positive_Length_DOUBLE) {
     // Arrange & Act & Assert
-    ASSERT_NO_THROW(TStack<double> v(5));
+    EXPECT_NO_THROW(TStack<double> v(5));
 }
 
 TEST(StackTest, Cant_Create_Too_Large_Stack_DOUBLE) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<double> v(MAX_STACK_SIZE + 1));
+    EXPECT_ANY_THROW(TStack<double> v(MAX_STACK_SIZE + 1));
 }
 
 TEST(StackTest, Cant_Create_Stack_With_Negative_Length_DOUBLE) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<double> v(-5));
+    EXPECT_ANY_THROW(TStack<double> v(-5));
 }
 
 TEST(StackTest, Can_Create_Copied_Stack_DOUBLE) {
@@ -163,7 +163,7 @@ TEST(StackTest, Can_Create_Copied_Stack_DOUBLE) {
     TStack <double> v(10);
 
     // Act & Assert
-    ASSERT_NO_THROW(TStack <double> v1(v));
+    EXPECT_NO_THROW(TStack <double> v1(v));
 }
 
 TEST(StackTest, Can_Get_Stack_Size_DOUBLE) {
@@ -202,7 +202,7 @@ TEST(StackTest, Cant_Push_When_Stack_Is_Full_DOUBLE) {
     v.Push(7.5);
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Push(9.05));
+    EXPECT_ANY_THROW(v.Push(9.05));
 }
 
 TEST(StackTest, Can_Pop_DOUBLE) {
@@ -248,7 +248,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_DOUBLE) {
     TStack <double> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.stTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_DOUBLE) {
@@ -256,7 +256,7 @@ TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_DOUBLE) {
     TStack <double> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Pop());
+    EXPECT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_DOUBLE) {
@@ -281,17 +281,17 @@ TEST(StackTest, Can_Check_Full_Stack_DOUBLE) {
 
 TEST(StackTest, Can_Create_Stack_With_Positive_Length_CHAR) {
     // Arrange & Act & Assert
-    ASSERT_NO_THROW(TStack<char> v(5));
+    EXPECT_NO_THROW(TStack<char> v(5));
 }
 
 TEST(StackTest, Cant_Create_Too_Large_Stack_CHAR) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<char> v(MAX_STACK_SIZE + 1));
+    EXPECT_ANY_THROW(TStack<char> v(MAX_STACK_SIZE + 1));
 }
 
 TEST(StackTest, Cant_Create_Stack_With_Negative_Length_CHAR) {
     // Arrange & Act & Assert
-    ASSERT_ANY_THROW(TStack<char> v(-5));
+    EXPECT_ANY_THROW(TStack<char> v(-5));
 }
 
 TEST(StackTest, Can_Create_Copied_Stack_CHAR) {
@@ -299,7 +299,7 @@ TEST(StackTest, Can_Create_Copied_Stack_CHAR) {
     TStack <char> v(10);
 
     // Act & Assert
-    ASSERT_NO_THROW(TStack <char> v1(v));
+    EXPECT_NO_THROW(TStack <char> v1(v));
 }
 
 TEST(StackTest, Can_Get_Stack_Size_CHAR) {
@@ -339,7 +339,7 @@ TEST(StackTest, Cant_Push_When_Stack_Is_Full_CHAR) {
     v.Push('b');
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Push('c'));
+    EXPECT_ANY_THROW(v.Push('c'));
 }
 
 TEST(StackTest, Can_Pop_CHAR) {
@@ -385,7 +385,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_CHAR) {
     TStack <char> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.stTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_CHAR) {
@@ -393,7 +393,7 @@ TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_CHAR) {
     TStack <char> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Pop());
+    EXPECT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_CHAR) {
@@ -413,4 +413,3 @@ TEST(StackTest, Can_Check_Full_Stack_CHAR) {
     // Act & Assert
     EXPECT_TRUE(v.CheckFull());
 }
-
