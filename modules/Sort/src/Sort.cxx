@@ -72,3 +72,29 @@ void Sort::ChoiceSort(void) {
         }
     }
 }
+
+void Sort::Merge(int first, int last) {
+  int mi, st, e, j;
+  int *mas = new int[100];
+  mi = (first + last) / 2;
+  st = first;
+  e = mi + 1;
+  for (j = first; j <= last; j++)
+    if ((st <= mi) && ((e > last) || (Array_[st] < Array_[e]))) {
+        mas[j] = Array_[st];
+        st++;
+    } else {
+        mas[j] = Array_[e];
+        e++;
+    }
+  for (j = first; j <= last; j++) Array_[j] = mas[j];
+  delete[]mas;
+}
+
+void Sort::MergeSort(int first, int last) {
+     if (first < last) {
+         MergeSort(first, (first + last) / 2);
+         MergeSort((first + last) / 2 + 1, last);
+         Merge(first, last);
+     }
+}
