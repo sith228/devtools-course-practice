@@ -153,14 +153,6 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_String_Encode) {
     EXPECT_ANY_THROW(ha.Encode(input_string, &code_table));
 }
 
-TEST(Bevzuk_Semen_HuffmanAlgoritmTest,
-     Not_Accept_Null_Pointer_In_Table_Encode) {
-    std::string input_string = "aaabbc";
-    Huffman ha;
-
-    EXPECT_ANY_THROW(ha.Encode(input_string, NULL));
-}
-
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_Code_Decode) {
     std::string input_code = "";
     std::map<char, std::vector<bool> > code_table;

@@ -33,24 +33,24 @@ class Huffman {
                        std::map<char, std::vector<bool> >* _table);
 
     std::string Decode(const std::string &_string,
-                       const std::map<char, std::vector<bool> > &_table);
+                       const std::map<char, std::vector<bool> >& _table);
 
  private:
     std::string input_string;
 
     void CheckInputEncode(const std::string &_string,
-                          const std::map<char, std::vector<bool> >* _table);
+                          const std::map<char, std::vector<bool> >& _table);
 
     void CheckInputDecode(const std::string &_string,
-                          const std::map<char, std::vector<bool> > &_table);
+                          const std::map<char, std::vector<bool> >& _table);
 
-    void CreateTree(std::list<Node*> *trees);
+    void CreateTree(std::list<Node*>& trees);
 
-    void CreateTable(Node *root, std::vector<bool> *code,
-                     std::map<char, std::vector<bool>> *table);
+    void CreateTable(Node *root, std::vector<bool>& code,
+                     std::map<char, std::vector<bool> >& table);
 
     std::string Decode_reverse_table(const std::string &str,
-                                     std::map<std::vector<bool>, char> *table);
+                                     std::map<std::vector<bool>, char>& table);
 };
 
 #endif  // MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_H_
