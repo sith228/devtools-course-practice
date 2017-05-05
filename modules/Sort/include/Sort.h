@@ -17,9 +17,11 @@ class Sort {
     void QuickSort(int l, int m);
     void PasteSort(void);
     void ChoiceSort(void);
+    void MergeSort(int first, int last);
  private:
     int* Array_;
     int Length_;
+    void Merge(int first, int last);
 };
 
 #endif  // MODULES_SORT_INCLUDE_SORT_H_
