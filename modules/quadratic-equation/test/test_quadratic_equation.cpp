@@ -35,6 +35,17 @@ TEST(Pletnev_Nikita_QuadraticEquationTest, CoefA_Is_1_When_Set_As_0) {
     EXPECT_DOUBLE_EQ(1.0, e.getCoefA());
 }
 
+TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Set_Coefficients) {
+    QuadraticEquation e(2.1, 0.0, 4.8);
+
+    e.setCoefficients(3, 7, 1);
+
+    EXPECT_DOUBLE_EQ(3, e.getCoefA());
+    EXPECT_DOUBLE_EQ(7, e.getCoefB());
+    EXPECT_DOUBLE_EQ(1, e.getCoefC());
+}
+
+
 TEST(Pletnev_Nikita_QuadraticEquationTest, Number_Of_Solutions_Is_1) {
     QuadraticEquation e(2.1, 0, 0);
 
