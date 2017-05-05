@@ -7,11 +7,6 @@ const int MAX_STACK_SIZE = 100000000;
 
 template <class ValType>
 class TStack {
- private:
-    ValType *pVector;
-    int Size;
-    int Top;
-
  public:
     explicit TStack(int _size);
     TStack(const TStack &v);
@@ -19,11 +14,16 @@ class TStack {
 
     int GetStackSize()const;
     int GetStackTop() const;
-    void Include(const ValType elem);
-    ValType Exclude();
-    ValType Get();
+    void Push(const ValType elem);
+    ValType Pop();
+    ValType stTop();
     bool CheckFull() const;
     bool CheckEmpty() const;
+
+ private:
+    ValType *pVector;
+    int Size;
+    int Top;
 };
 
 template <class ValType>
@@ -66,7 +66,7 @@ int TStack<ValType>::GetStackTop()const {
 }
 
 template <class ValType>
-void TStack<ValType>::Include(const ValType elem) {
+void TStack<ValType>::Push(const ValType elem) {
     if (this->CheckFull()) {
         throw "Full stack";
     } else {
@@ -76,7 +76,7 @@ void TStack<ValType>::Include(const ValType elem) {
 }
 
 template <class ValType>
-ValType TStack<ValType>::Exclude() {
+ValType TStack<ValType>::Pop() {
     if (this->CheckEmpty()) {
         throw "Empty stack";
     } else {
@@ -88,7 +88,7 @@ ValType TStack<ValType>::Exclude() {
 }
 
 template <class ValType>
-ValType TStack<ValType>::Get() {
+ValType TStack<ValType>::stTop() {
     if (this->CheckEmpty()) {
         throw "Empty stack";
     } else {

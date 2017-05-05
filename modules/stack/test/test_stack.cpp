@@ -40,87 +40,87 @@ TEST(StackTest, Can_Get_Stack_Size_INT) {
 TEST(StackTest, Can_Get_Stack_Top_INT) {
     // Arrange
     TStack <int> v(10);
-    v.Include(2);
-    v.Include(15);
+    v.Push(2);
+    v.Push(15);
 
     // Act & Assert
     EXPECT_EQ(1, v.GetStackTop());
 }
 
 
-TEST(StackTest, Can_Include_New_Element_INT) {
+TEST(StackTest, Can_Push_INT) {
     // Arrange
     TStack <int> v(2);
 
     // Act
-    v.Include(5);
+    v.Push(5);
 
     // Assert
-    EXPECT_EQ(5, v.Get());
+    EXPECT_EQ(5, v.stTop());
 }
 
-TEST(StackTest, Cant_Include_Element_When_Stack_Is_Full_INT) {
+TEST(StackTest, Cant_Push_When_Stack_Is_Full_INT) {
     // Arrange
     TStack <int> v(2);
-    v.Include(5);
-    v.Include(7);
+    v.Push(5);
+    v.Push(7);
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Include(9));
+    ASSERT_ANY_THROW(v.Push(9));
 }
 
-TEST(StackTest, Can_Exclude_Element_INT) {
+TEST(StackTest, Can_Pop_INT) {
     // Arrange
     TStack <int> v(2);
-    v.Include(5);
+    v.Push(5);
 
     // Act&Assert
-    EXPECT_EQ(5, v.Exclude());
+    EXPECT_EQ(5, v.Pop());
 }
 
-TEST(StackTest, Top_Decreases_When_Exclude_Element_INT) {
+TEST(StackTest, Top_Decreases_When_Pop_INT) {
     // Arrange
     TStack <int> v(2);
-    v.Include(5);
+    v.Push(5);
 
     // Act & Assert
-    EXPECT_EQ(5, v.Exclude());
+    EXPECT_EQ(5, v.Pop());
     EXPECT_EQ(-1, v.GetStackTop());
 }
 
-TEST(StackTest, Can_Get_Element_INT) {
+TEST(StackTest, Can_stTop_INT) {
     // Arrange
     TStack <int> v(2);
-    v.Include(5);
+    v.Push(5);
 
     // Act&Assert
-    EXPECT_EQ(5, v.Get());
+    EXPECT_EQ(5, v.stTop());
 }
 
-TEST(StackTest, Top_Does_Not_Change_When_Get_Element_INT) {
+TEST(StackTest, Top_Does_Not_Change_When_stTop_INT) {
     // Arrange
     TStack <int> v(2);
-    v.Include(5);
+    v.Push(5);
 
     // Act & Assert
-    EXPECT_EQ(5, v.Get());
+    EXPECT_EQ(5, v.stTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
-TEST(StackTest, Cant_Get_Element_When_Stack_Is_Empty_INT) {
+TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_INT) {
     // Arrange
     TStack <int> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Get());
+    ASSERT_ANY_THROW(v.stTop());
 }
 
-TEST(StackTest, Cant_Exclude_Element_When_Stack_Is_Empty_INT) {
+TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_INT) {
     // Arrange
     TStack <int> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Exclude());
+    ASSERT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_INT) {
@@ -134,8 +134,8 @@ TEST(StackTest, New_Stack_Is_Empty_INT) {
 TEST(StackTest, Can_Check_Full_Stack_INT) {
     // Arrange
     TStack<int> v(2);
-    v.Include(5);
-    v.Include(7);
+    v.Push(5);
+    v.Push(7);
 
     // Act & Assert
     EXPECT_TRUE(v.CheckFull());
@@ -177,86 +177,86 @@ TEST(StackTest, Can_Get_Stack_Size_DOUBLE) {
 TEST(StackTest, Can_Get_Stack_Top_DOUBLE) {
     // Arrange
     TStack <double> v(10);
-    v.Include(2.55);
-    v.Include(15.1);
+    v.Push(2.55);
+    v.Push(15.1);
 
     // Act & Assert
     EXPECT_EQ(1, v.GetStackTop());
 }
 
-TEST(StackTest, Can_Include_New_Element_DOUBLE) {
+TEST(StackTest, Can_Push_DOUBLE) {
     // Arrange
     TStack <double> v(2);
 
     // Act
-    v.Include(5.25);
+    v.Push(5.25);
 
     // Assert
-    EXPECT_EQ(5.25, v.Get());
+    EXPECT_EQ(5.25, v.stTop());
 }
 
-TEST(StackTest, Cant_Include_Element_When_Stack_Is_Full_DOUBLE) {
+TEST(StackTest, Cant_Push_When_Stack_Is_Full_DOUBLE) {
     // Arrange
     TStack <double> v(2);
-    v.Include(5.7);
-    v.Include(7.5);
+    v.Push(5.7);
+    v.Push(7.5);
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Include(9.05));
+    ASSERT_ANY_THROW(v.Push(9.05));
 }
 
-TEST(StackTest, Can_Exclude_Element_DOUBLE) {
+TEST(StackTest, Can_Pop_DOUBLE) {
     // Arrange
     TStack <double> v(2);
-    v.Include(5.1);
+    v.Push(5.1);
 
     // Act&Assert
-    EXPECT_EQ(5.1, v.Exclude());
+    EXPECT_EQ(5.1, v.Pop());
 }
 
-TEST(StackTest, Top_Decreases_When_Exclude_Element_DOUBLE) {
+TEST(StackTest, Top_Decreases_When_Pop_DOUBLE) {
     // Arrange
     TStack <double> v(2);
-    v.Include(5.1);
+    v.Push(5.1);
 
     // Act & Assert
-    EXPECT_EQ(5.1, v.Exclude());
+    EXPECT_EQ(5.1, v.Pop());
     EXPECT_EQ(-1, v.GetStackTop());
 }
 
-TEST(StackTest, Can_Get_Element_DOUBLE) {
+TEST(StackTest, Can_stTop_DOUBLE) {
     // Arrange
     TStack <double> v(2);
-    v.Include(5.1);
+    v.Push(5.1);
 
     // Act&Assert
-    EXPECT_EQ(5.1, v.Get());
+    EXPECT_EQ(5.1, v.stTop());
 }
 
-TEST(StackTest, Top_Does_Not_Change_When_Get_Element_DOUBLE) {
+TEST(StackTest, Top_Does_Not_Change_When_stTop_DOUBLE) {
     // Arrange
     TStack <double> v(2);
-    v.Include(5.1);
+    v.Push(5.1);
 
     // Act & Assert
-    EXPECT_EQ(5.1, v.Get());
+    EXPECT_EQ(5.1, v.stTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
-TEST(StackTest, Cant_Get_Element_When_Stack_Is_Empty_DOUBLE) {
+TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_DOUBLE) {
     // Arrange
     TStack <double> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Get());
+    ASSERT_ANY_THROW(v.stTop());
 }
 
-TEST(StackTest, Cant_Exclude_Element_When_Stack_Is_Empty_DOUBLE) {
+TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_DOUBLE) {
     // Arrange
     TStack <double> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Exclude());
+    ASSERT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_DOUBLE) {
@@ -270,8 +270,8 @@ TEST(StackTest, New_Stack_Is_Empty_DOUBLE) {
 TEST(StackTest, Can_Check_Full_Stack_DOUBLE) {
     // Arrange
     TStack<double> v(2);
-    v.Include(5.1);
-    v.Include(7.15);
+    v.Push(5.1);
+    v.Push(7.15);
 
     // Act & Assert
     EXPECT_TRUE(v.CheckFull());
@@ -313,87 +313,87 @@ TEST(StackTest, Can_Get_Stack_Size_CHAR) {
 TEST(StackTest, Can_Get_Stack_Top_CHAR) {
     // Arrange
     TStack <char> v(10);
-    v.Include('s');
-    v.Include('a');
+    v.Push('s');
+    v.Push('a');
 
     // Act & Assert
     EXPECT_EQ(1, v.GetStackTop());
 }
 
 
-TEST(StackTest, Can_Include_New_Element_CHAR) {
+TEST(StackTest, Can_Push_CHAR) {
     // Arrange
     TStack <char> v(2);
 
     // Act
-    v.Include('a');
+    v.Push('a');
 
     // Assert
-    EXPECT_EQ('a', v.Get());
+    EXPECT_EQ('a', v.stTop());
 }
 
-TEST(StackTest, Cant_Include_Element_When_Stack_Is_Full_CHAR) {
+TEST(StackTest, Cant_Push_When_Stack_Is_Full_CHAR) {
     // Arrange
     TStack <char> v(2);
-    v.Include('a');
-    v.Include('b');
+    v.Push('a');
+    v.Push('b');
 
     // Act&Assert
-    ASSERT_ANY_THROW(v.Include('c'));
+    ASSERT_ANY_THROW(v.Push('c'));
 }
 
-TEST(StackTest, Can_Exclude_Element_CHAR) {
+TEST(StackTest, Can_Pop_CHAR) {
     // Arrange
     TStack <char> v(2);
-    v.Include('d');
+    v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.Exclude());
+    EXPECT_EQ('d', v.Pop());
 }
 
-TEST(StackTest, Top_Decreases_When_Exclude_Element_CHAR) {
+TEST(StackTest, Top_Decreases_When_Pop_CHAR) {
     // Arrange
     TStack <char> v(2);
-    v.Include('d');
+    v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.Exclude());
+    EXPECT_EQ('d', v.Pop());
     EXPECT_EQ(-1, v.GetStackTop());
 }
 
-TEST(StackTest, Can_Get_Element_CHAR) {
+TEST(StackTest, Can_stTop_CHAR) {
     // Arrange
     TStack <char> v(2);
-    v.Include('d');
+    v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.Get());
+    EXPECT_EQ('d', v.stTop());
 }
 
-TEST(StackTest, Top_Does_Not_Change_When_Get_Element_CHAR) {
+TEST(StackTest, Top_Does_Not_Change_When_stTop_CHAR) {
     // Arrange
     TStack <char> v(2);
-    v.Include('d');
+    v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.Get());
+    EXPECT_EQ('d', v.stTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
-TEST(StackTest, Cant_Get_Element_When_Stack_Is_Empty_CHAR) {
+TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_CHAR) {
     // Arrange
     TStack <char> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Get());
+    ASSERT_ANY_THROW(v.stTop());
 }
 
-TEST(StackTest, Cant_Exclude_Element_When_Stack_Is_Empty_CHAR) {
+TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_CHAR) {
     // Arrange
     TStack <char> v(2);
 
     // Act & Assert
-    ASSERT_ANY_THROW(v.Exclude());
+    ASSERT_ANY_THROW(v.Pop());
 }
 
 TEST(StackTest, New_Stack_Is_Empty_CHAR) {
@@ -407,8 +407,8 @@ TEST(StackTest, New_Stack_Is_Empty_CHAR) {
 TEST(StackTest, Can_Check_Full_Stack_CHAR) {
     // Arrange
     TStack<char> v(2);
-    v.Include('m');
-    v.Include('n');
+    v.Push('m');
+    v.Push('n');
 
     // Act & Assert
     EXPECT_TRUE(v.CheckFull());
