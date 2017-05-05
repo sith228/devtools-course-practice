@@ -18,8 +18,10 @@ double QuadraticEquation::discriminant() {
 }
 
 void QuadraticEquation::setCoefA(const double coefA) {
-    if (coefA != 0) coefA_ = coefA;
-    else coefA_ = 1;
+    if (coefA != 0)
+        coefA_ = coefA;
+    else
+        coefA_ = 1;
 }
 
 void QuadraticEquation::setCoefB(const double coefB) {
@@ -65,8 +67,10 @@ double QuadraticEquation::getX1(void) {
 
 double QuadraticEquation::getX2(void) {
     double result = 0;
-    if (numOfSolutions() < 2) result = getX1();
-    else result = (-coefB_ - sqrt(discriminant())) / 2 * coefA_;
+    if (numOfSolutions() < 2)
+        result = getX1();
+    else
+        result = (-coefB_ - sqrt(discriminant())) / 2 * coefA_;
     return result;
 }
 
