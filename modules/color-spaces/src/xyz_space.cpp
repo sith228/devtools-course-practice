@@ -11,6 +11,37 @@ void XYZSpace::swap(XYZSpace &xyz_space) {
     std::swap(z, xyz_space.z);
 }
 
+LABSpace XYZSpace::ToLABSpace() const {
+    double_t x_quote = static_cast<double_t>(x) / 95.05;
+    double_t y_quote = static_cast<double_t>(y) / 100;
+    double_t z_quote = static_cast<double_t>(z) / 108.9;
+
+    if (x_quote > 0.008856) {
+        x_quote = pow(x_quote, 1.0/3);
+    } else {
+        x_quote = (7.787 * x_quote) + (16.0/116);
+    }
+
+    if (y_quote > 0.008856) {
+        y_quote = pow(y_quote, 1.0/3);
+    } else {
+        y_quote = (7.787 * y_quote) + (16.0/116);
+    }
+
+    if (z_quote > 0.008856) {
+        z_quote = pow(z_quote, 1.0/3);
+    } else {
+        z_quote = (7.787 * z_quote) + (16.0/116);
+    }
+
+    uint8_t lightness = static_cast<uint8_t>(round((116.0*y_quote)-16.0));
+    uint8_t a = static_cast<uint8_t>(round(500.0 * (x_quote - y_quote)));
+    uint8_t b = static_cast<uint8_t>(round(200.0 * (y_quote - z_quote)));
+
+    LABSpace lab_space(lightness, a, b);
+    return lab_space;
+}
+
 XYZSpace::XYZSpace(const int x_,
                    const int y_,
                    const int z_) {
@@ -31,6 +62,37 @@ XYZSpace::XYZSpace(const XYZSpace &xyz_space) {
     x = xyz_space.x;
     y = xyz_space.y;
     z = xyz_space.z;
+}
+
+XYZSpace::XYZSpace(const LABSpace &lab_space) {
+    double_t y_quote =
+        ((static_cast<double_t>(lab_space.GetLightness())) + 16.0) / 116.0;
+    double_t x_quote =
+        static_cast<double_t>(lab_space.GetA()) / 500 + y_quote;
+    double_t z_quote =
+        y_quote - static_cast<double_t>(lab_space.GetB()) / 200;
+
+    if (pow(y_quote, 3.0) > 0.008856) {
+        y_quote = pow(y_quote, 3.0);
+    } else {
+        y_quote = (y_quote - 16.0/116) / 7.787;
+    }
+
+    if (pow(x_quote, 3.0) > 0.008856) {
+        x_quote = pow(y_quote, 3.0);
+    } else {
+        x_quote = (x_quote - 16.0/116) / 7.787;
+    }
+
+    if (pow(z_quote, 3.0) > 0.008856) {
+        z_quote = pow(z_quote, 3.0);
+    } else {
+        z_quote = (z_quote - 16.0/116) / 7.787;
+    }
+
+    x = static_cast<uint8_t>((x_quote * 95.05));
+    y = static_cast<uint8_t>((y_quote * 100));
+    z = static_cast<uint8_t>((z_quote * 108.9));
 }
 
 XYZSpace& XYZSpace::operator=(const XYZSpace &xyz_space) {

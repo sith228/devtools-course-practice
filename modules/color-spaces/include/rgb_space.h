@@ -3,7 +3,6 @@
 #define MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
 #include <stdint.h>
 #include <algorithm>
-#include "../include/lab_space.h"
 #include "../include/hsb_hsv_space.h"
 #include "../include/xyz_space.h"
 

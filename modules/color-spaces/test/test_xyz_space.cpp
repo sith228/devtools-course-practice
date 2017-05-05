@@ -193,11 +193,49 @@ TEST(XYZSpaceTest, Can_Use_Not_Equals_In_XYZSpace) {
     int z = 73;
     // Act
     XYZSpace left_space(x, y, z);
-    x++;
-    y++;
-    z++;
+    x++; y++; z++;
     XYZSpace right_space(x, y, z);
     bool result = (left_space != right_space);
     // Assert
     EXPECT_TRUE(result);
+}
+
+TEST(XYZSpaceTest, Can_Convert_XYZ_To_LAB_Where_Var_Small) {
+    // Arrange
+    XYZSpace space(0, 0, 0);
+    // Act
+    LABSpace convert_space(space);
+    // Assert
+    LABSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(XYZSpaceTest, Can_Convert_Lab_To_XYZ_Where_Var_Small) {
+    // Arrange
+    LABSpace space(0, 0, 0);
+    // Act
+    XYZSpace convert_space(space);
+    // Assert
+    XYZSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(XYZSpaceTest, Can_Convert_XYZ_To_LAB_Where_Var_Big) {
+    // Arrange
+    XYZSpace space(35, 34, 12);
+    // Act
+    LABSpace convert_space(space);
+    // Assert
+    LABSpace correct_space(65, 9, 44);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(XYZSpaceTest, Can_Convert_Lab_To_XYZ_Where_Var_Big) {
+    // Arrange
+    LABSpace space(6, 4, 2);
+    // Act
+    XYZSpace convert_space(space);
+    // Assert
+    XYZSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
 }
