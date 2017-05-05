@@ -25,7 +25,7 @@ class Queue {
 };
 
 template <class valType>
-Queue <valType> ::Queue(int _maxSize) {
+Queue <valType> ::Queue(int _maxSize = 10) {
     if (_maxSize > 0) {
         maxSize = _maxSize;
     } else if (_maxSize > MAX_SIZE) {
@@ -116,9 +116,11 @@ valType Queue <valType> ::Pop() {
         throw "Queue is empty!";
     } else {
         valType elem = queuePtr[head];
-        if (head == maxSize - 1) head = 0;
-        else
+        if (head == maxSize - 1) {
+            head = 0;
+        } else {
             head--;
+        }
         len--;
         return elem;
     }
