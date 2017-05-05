@@ -30,13 +30,9 @@ HSBHSVSpace::HSBHSVSpace(const int hue_,
 }
 
 HSBHSVSpace::HSBHSVSpace(const HSBHSVSpace &hsb_hsv_space) {
-    if (&hsb_hsv_space == NULL) {
-        throw std::string("Copying object is nullptr");
-    } else {
-        hue = hsb_hsv_space.hue;
-        saturation = hsb_hsv_space.saturation;
-        value_brightnes = hsb_hsv_space.value_brightnes;
-    }
+    hue = hsb_hsv_space.hue;
+    saturation = hsb_hsv_space.saturation;
+    value_brightnes = hsb_hsv_space.value_brightnes;
 }
 
 HSBHSVSpace& HSBHSVSpace::operator=(const HSBHSVSpace &hsb_hsv_space) {

@@ -28,13 +28,9 @@ RGBSpace::RGBSpace(const int red_,
 }
 
 RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
-    if (&rgb_space == NULL) {
-        throw std::string("Copying object is nullptr");
-    } else {
-        red = rgb_space.red;
-        green = rgb_space.green;
-        blue = rgb_space.blue;
-    }
+    red = rgb_space.red;
+    green = rgb_space.green;
+    blue = rgb_space.blue;
 }
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {

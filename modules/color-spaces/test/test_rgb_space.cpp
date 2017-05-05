@@ -92,13 +92,6 @@ TEST(RGBSpaceTest, Can_Use_The_Copying_Constructor) {
     EXPECT_EQ(space, copy_space);
 }
 
-TEST(RGBSpaceTest, Can_Copying_Object_With_Address_Nullptr) {
-    // Arrange
-    RGBSpace *space = NULL;
-    // Act & Assert
-    EXPECT_ANY_THROW({ RGBSpace copy_space(*space); });
-}
-
 TEST(RGBSpaceTest, Can_Use_Assignment_Operator) {
     // Arrange
     RGBSpace space(102, 205, 69);
