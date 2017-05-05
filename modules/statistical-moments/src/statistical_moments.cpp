@@ -23,8 +23,8 @@ bool StatisticalMoments::isChancesDistributionRow() {
     return (tmp_sum == 1);
 }
 
-StatisticalMoments::StatisticalMoments(std::vector<double> values,
-    std::vector<double> chances) {
+StatisticalMoments::StatisticalMoments(const std::vector<double>& values,
+    const std::vector<double>& chances) {
     this->values = values;
     this->chances = chances;
     if (this->values.empty() && this->chances.empty()) {

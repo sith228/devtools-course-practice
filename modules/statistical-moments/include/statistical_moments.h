@@ -8,7 +8,7 @@
 
 class StatisticalMoments {
  public:
-    StatisticalMoments(std::vector<double> values,std::vector<double> chances);
+    StatisticalMoments(const std::vector<double>& values,const std::vector<double>& chances);
     double getMoment(unsigned int order);
  private:
     std::vector<double> values;
