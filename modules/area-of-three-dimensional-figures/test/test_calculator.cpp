@@ -58,7 +58,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_cone) {
     double s1 = M_PI;
 
     // Assert
-    EXPECT_EQ(s, s1);
+    EXPECT_EQ(s1, s);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_cone_2) {
@@ -70,7 +70,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_cone_2) {
     double s1 = M_PI * 1.5 * 1.5;
 
     // Assert
-    EXPECT_EQ(s, s1);
+    EXPECT_EQ(s1, s);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_conoid) {
@@ -126,7 +126,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_conoid) {
     double s1 = 2 * M_PI;
 
     // Assert
-    EXPECT_EQ(s, s1);
+    EXPECT_EQ(s1, s);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_conoid_2) {
@@ -138,7 +138,7 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_conoid_2) {
     double s1 = M_PI * 3 * 1.5;
 
     // Assert
-    EXPECT_EQ(s, s1);
+    EXPECT_EQ(s1, s);
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_cube) {
