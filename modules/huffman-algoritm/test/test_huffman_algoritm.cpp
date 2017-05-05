@@ -39,7 +39,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Compare_Two_Nodes) {
         result = false;
 
     // Assert
-    EXPECT_EQ(result, true);
+    EXPECT_EQ(true, result);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Count) {
@@ -59,7 +59,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Count) {
         result = false;
 
     // Assert
-    EXPECT_NE(result, true);
+    EXPECT_NE(true, result);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Symbol) {
@@ -79,7 +79,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Compare_Two_Nodes_Symbol) {
         result = false;
 
     // Assert
-    EXPECT_NE(result, true);
+    EXPECT_NE(true, result);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node) {
@@ -90,7 +90,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node) {
     expected_node.symbol = 'a';
 
     // Act & Assert
-    EXPECT_EQ(node, expected_node);
+    EXPECT_EQ(expected_node, node);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node_whith_branchs) {
@@ -102,8 +102,8 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Create_Node_whith_branchs) {
     Node root(&node_left, &node_right);
 
     // Assert
-    EXPECT_EQ(*(root.left), node_left);
-    EXPECT_EQ(*(root.right), node_right);
+    EXPECT_EQ(node_left, *root.left);
+    EXPECT_EQ(node_right, *root.right);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Sort_List_Nodes_counts) {
@@ -122,7 +122,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Sort_List_Nodes_counts) {
     tree.pop_front();
 
     // Assert
-    ASSERT_LT(result_node_1->count, result_node_2->count);
+    EXPECT_LT(result_node_1->count, result_node_2->count);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String) {
@@ -136,7 +136,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String) {
     std::string out_code = ha.Encode(input_string, &code_table);
 
     // Assert
-    EXPECT_EQ(out_code, result_code);
+    EXPECT_EQ(result_code, out_code);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String_and_Generate_Table) {
@@ -152,7 +152,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_String_and_Generate_Table) {
     ha.Encode(input_string, &code_table);
 
     // Assert
-    EXPECT_EQ(code_table, result_table);
+    EXPECT_EQ(result_table, code_table);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Decode_Code) {
@@ -169,7 +169,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Decode_Code) {
     std::string out_string = ha.Decode(input_code, code_table);
 
     // Assert
-    EXPECT_EQ(out_string, result_string);
+    EXPECT_EQ(result_string, out_string);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_and_Decode) {
@@ -184,7 +184,7 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_and_Decode) {
     std::string out_string = ha.Decode(out_code, code_table);
 
     // Assert
-    EXPECT_EQ(out_string, result_string);
+    EXPECT_EQ(result_string, out_string);
 }
 
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Not_Accept_Empty_String_Encode) {
