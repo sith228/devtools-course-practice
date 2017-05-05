@@ -63,7 +63,6 @@ double Length::GetConvertCoef(LENGTH_TYPE type) const {
     default:
         return CENTIMETRE_TO_CM;
     }
-    
 }
 
 double Length::ConvertTo(LENGTH_TYPE type) const {
