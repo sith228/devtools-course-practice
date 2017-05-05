@@ -14,15 +14,15 @@ namespace Currency {
 };
 
 class ConverterCurrency {
+ public:
+    static float Convert(const float MoneySize,
+        const Currency::CurrencyName OldCurrency,
+        const Currency::CurrencyName NewCurrency);
  private:
      static float CurrentToRubles(const float MoneySize,
          Currency::CurrencyName OldCurrency);
      static float RublesToTarget(float OldMoney,
                                 const Currency::CurrencyName TargetMoney);
- public:
-     static float Convert(const float MoneySize,
-                  const Currency::CurrencyName OldCurrency,
-                  const Currency::CurrencyName NewCurrency);
 };
 
 #endif  // MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_

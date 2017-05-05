@@ -7,6 +7,7 @@
 float ConverterCurrency::CurrentToRubles(const float MoneySize,
     Currency::CurrencyName OldCurrency) {
     float ResultMoneySize = 0;
+
     switch (OldCurrency) {
     case Currency::RUR:
         ResultMoneySize = MoneySize;
@@ -30,12 +31,14 @@ float ConverterCurrency::CurrentToRubles(const float MoneySize,
         ResultMoneySize = MoneySize / Currency::RURtoGBP;
         break;
     }
+
     return ResultMoneySize;
 }
 
 float ConverterCurrency::RublesToTarget(const float MoneySize,
                                const Currency::CurrencyName TargetMoney) {
     float ResultMoneySize = MoneySize;
+
     switch (TargetMoney) {
     case Currency::RUR:
         break;
@@ -58,6 +61,7 @@ float ConverterCurrency::RublesToTarget(const float MoneySize,
         ResultMoneySize *= Currency::RURtoGBP;
         break;
     }
+
     return ResultMoneySize;
 }
 
@@ -66,6 +70,7 @@ float ConverterCurrency::Convert(const float MoneySize,
                                  const Currency::CurrencyName NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoneySize;
+
         if (MoneySize == 0) {
             ResultMoneySize = 0;
         } else if (OldCurrency == NewCurrency) {
@@ -74,6 +79,7 @@ float ConverterCurrency::Convert(const float MoneySize,
             ResultMoneySize = CurrentToRubles(MoneySize, OldCurrency);
             ResultMoneySize = RublesToTarget(ResultMoneySize, NewCurrency);
         }
+
         return ResultMoneySize;
     } else {
         throw ERROR_INVALIDMONEYSIZE;
