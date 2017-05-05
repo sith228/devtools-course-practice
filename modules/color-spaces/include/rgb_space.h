@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <algorithm>
 
-
 class RGBSpace {
  private:
     uint8_t red;
