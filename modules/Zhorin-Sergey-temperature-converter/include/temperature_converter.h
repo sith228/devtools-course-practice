@@ -6,19 +6,10 @@
 class TemperatureConverter {
  public:
     TemperatureConverter();
-    explicit TemperatureConverter(const double t);
 
-    void setTemperature(const double t);
-    double getFahrenheit() const;
-    double getNewton() const;
-    double getKelvin() const;
-    double getCelsius() const;
-
- private:
-    double Fahrenheit;
-    double Newton;
-    double Kelvin;
-    double Celsius;
+    double CelsiusToFahrenheit(const double t);
+    double CelsiusToNewton(const double t);
+    double CelsiusToKelvin(const double t);
 };
 
 #endif  // MODULES_ZHORIN_SERGEY_TEMPERATURE_CONVERTER_INCLUDE_TEMPERATURE_CONVERTER_H_
