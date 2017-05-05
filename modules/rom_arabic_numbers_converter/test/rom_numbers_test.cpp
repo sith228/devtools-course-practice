@@ -1,3 +1,5 @@
+// Copyright 2017 Kochin Ivan
+
 #include <gtest/gtest.h>
 #include <string>
 #include "include/rom_numbers_converter.h"
@@ -5,7 +7,7 @@
 using std::string;
 
 
-//ROM TO ARABIC
+// ROM TO ARABIC
 
 TEST(RomNumConverter, convetr_rom_to_arabic_I_1) {
     // Arrange
@@ -15,7 +17,7 @@ TEST(RomNumConverter, convetr_rom_to_arabic_I_1) {
     // Act
     temp = Convert.convert_rom_to_arabic(bufstr);
     // Assert
-    EXPECT_EQ(temp,1);
+    EXPECT_EQ(temp, 1);
 }
 
 TEST(RomNumConverter, convetr_rom_to_arabic_V_5) {
@@ -37,7 +39,7 @@ TEST(RomNumConverter, convetr_rom_to_arabic_IV_4) {
     // Act
     temp = Convert.convert_rom_to_arabic(bufstr);
     // Assert
-    EXPECT_EQ(temp,4);
+    EXPECT_EQ(temp, 4);
 }
 
 TEST(RomNumConverter, convetr_rom_to_arabic_X_10) {
@@ -185,12 +187,12 @@ TEST(RomNumConverter, convetr_rom_to_arabic__2345) {
 
 
 
-//ARABIC TO ROM
+// ARABIC TO ROM
 
 
 TEST(RomNumConverter, convetr_arabic_to_rom_I_1) {
     // Arrange
-    int temp=1;
+    int temp = 1;
     string bufstr;
     RomNumConverter Convert;
     // Act
@@ -301,7 +303,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_D_500) {
 TEST(RomNumConverter, convetr_arabic_to_rom_CD_400) {
     // Arrange
     int temp = 400;
-    string bufstr ;
+    string bufstr;
     RomNumConverter Convert;
     // Act
     bufstr = Convert.convert_arabic_to_rom(temp);
