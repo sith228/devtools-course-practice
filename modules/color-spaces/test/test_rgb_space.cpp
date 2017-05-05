@@ -288,3 +288,33 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Big) {
     XYZSpace correct_space(94, 99, 108);
     EXPECT_EQ(correct_space, convert_space);
 }
+
+TEST(RGBSpaceTest, Can_Convert_XYZ_To_RGB) {
+    // Arrange
+    XYZSpace space(8, 8, 5);
+    // Act
+    RGBSpace convert_space(space);
+    // Assert
+    RGBSpace correct_space(94, 77, 57);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_XYZ_To_RGB_Where_Var_Small) {
+    // Arrange
+    XYZSpace space(0, 0, 0);
+    // Act
+    RGBSpace convert_space(space);
+    // Assert
+    RGBSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_XYZ_To_RGB_Where_Var_Big) {
+    // Arrange
+    XYZSpace space(94, 99, 108);
+    // Act
+    RGBSpace convert_space(space);
+    // Assert
+    RGBSpace correct_space(253, 254, 254);
+    EXPECT_EQ(correct_space, convert_space);
+}

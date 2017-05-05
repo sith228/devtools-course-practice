@@ -162,7 +162,40 @@ RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
     blue = static_cast<uint8_t >(round(blue_quote * 255 / 100));
 }
 
-RGBSpace::RGBSpace(const XYZSpace &xyz_space) {}
+RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
+    double_t x_quote = static_cast<double_t>(xyz_space.GetX())/100;
+    double_t y_quote = static_cast<double_t>(xyz_space.GetY())/100;
+    double_t z_quote = static_cast<double_t>(xyz_space.GetZ())/100;
+
+    double_t red_quote =
+        x_quote * 3.2404542  + y_quote*(-1.5371385) + z_quote*(-0.4985314);
+    double_t green_quote =
+        x_quote*(-0.9692660) + y_quote * 1.8760108  + z_quote * 0.0415560;
+    double_t blue_quote =
+        x_quote * 0.0556434  + y_quote*(-0.2040259) + z_quote * 1.0572252;
+
+    if (red_quote > 0.0031308) {
+        red_quote = 1.055 * (pow(red_quote, 1/2.4)) - 0.055;
+    } else {
+        red_quote = 12.92 * red_quote;
+    }
+
+    if (green_quote > 0.0031308) {
+        green_quote = 1.055 * (pow(green_quote, 1/2.4)) - 0.055;
+    } else {
+        green_quote = 12.92 * green_quote;
+    }
+
+    if (blue_quote > 0.0031308) {
+        blue_quote = 1.055 * (pow(blue_quote, 1/2.4)) - 0.055;
+    } else {
+        blue_quote = 12.92 * red_quote;
+    }
+
+    red = static_cast<uint8_t>(round(red_quote*255));
+    green = static_cast<uint8_t>(round(green_quote*255));
+    blue = static_cast<uint8_t>(round(blue_quote*255));
+}
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
     if (this != &rgb_space) {
