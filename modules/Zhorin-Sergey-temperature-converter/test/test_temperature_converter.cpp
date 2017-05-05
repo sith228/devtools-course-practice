@@ -24,9 +24,10 @@ TEST(TemperatureConverterTest,
     // Arrange
     double Celsius = -274;
     TemperatureConverter p;
+    double Newton = 0;
 
     // Act & Assert
-    EXPECT_THROW(double Newton = p.CelsiusToNewton(Celsius), std::string);
+    EXPECT_THROW(Newton = p.CelsiusToNewton(Celsius), std::string);
 }
 
 TEST(TemperatureConverterTest,
@@ -34,19 +35,21 @@ TEST(TemperatureConverterTest,
     // Arrange
     double Celsius = -274;
     TemperatureConverter p;
+    double Fahrenheit = 0;
 
     // Act & Assert
-    EXPECT_THROW(double Fahrenheit = p.CelsiusToFahrenheit(Celsius), std::string);
+    EXPECT_THROW(Fahrenheit = p.CelsiusToFahrenheit(Celsius), std::string);
 }
 
 TEST(TemperatureConverterTest,
     Cant_Convert_To_Kelvin_Temeprature_Less_Than_Absolute_Zero) {
     // Arrange
     double Celsius = -274;
+    double Kelvin = 0;
     TemperatureConverter p;
 
     // Act & Assert
-    EXPECT_THROW(double Kelvin = p.CelsiusToKelvin(Celsius), std::string);
+    EXPECT_THROW(Kelvin = p.CelsiusToKelvin(Celsius), std::string);
 }
 
 TEST(TemperatureConverterTest, Can_Convert_Celsius_To_Newton) {
