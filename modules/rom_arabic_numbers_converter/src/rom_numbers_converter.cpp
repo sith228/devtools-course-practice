@@ -10,20 +10,18 @@
 
 string RomNumConverter::convert_arabic_to_rom(int temp) {
     int buf = temp;
-    string result="";
-    //thousands
+    string result = "";
+    // thousands
     while (buf >= 1000) {
         result += 'M';
         buf -= 1000;
     }
-    //houndreds
-    if (buf / 100 == 9)
-    {
+    // houndreds
+    if (buf / 100 == 9){
         result +="CM";
         buf -= 900;
     }
-    if (buf / 100 == 4)
-    {
+    if (buf / 100 == 4){
         result += "CD";
         buf -= 400;
     }
@@ -81,7 +79,7 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
 
 int RomNumConverter::convert_rom_to_arabic(string bufstr) {
     int result=0;
-    for (unsigned int i = 0 ; i < bufstr.length() ;i++) {
+    for (unsigned int i = 0 ; i < bufstr.length()  ;i++) {
     switch (bufstr[i]) {
         case 'I':// 1
             result += 1;
@@ -109,7 +107,7 @@ int RomNumConverter::convert_rom_to_arabic(string bufstr) {
     }
     }
 
-    for (unsigned int i = 0; i < bufstr.length()-1;i++) {
+    for (unsigned int i = 0; i < bufstr.length()-1; i++) {
         if (bufstr[i] == 'I' && bufstr[i + 1] == 'V')
             result -= 2;
         if (bufstr[i] == 'I' && bufstr[i + 1] == 'X')
