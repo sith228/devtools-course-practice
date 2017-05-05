@@ -9,6 +9,16 @@ TEST(AreaOfThreeDimensionalFiguresTest, Can_create_calc) {
     EXPECT_NO_THROW(Calculator z);
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_cone) {
+    // Arrange
+    double r = 2.0;
+    double l = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Cone(r, l));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Can_assert_calc_cone) {
     // Arrange
     double r = -2.0;
@@ -63,6 +73,49 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_cone_2) {
     EXPECT_EQ(s, s1);
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_conoid) {
+    // Arrange
+    double r1 = 2.0;
+    double r2 = 1.0;
+    double l = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Conoid(r1, r2, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_conoid) {
+    // Arrange
+    double r1 = -2.0;
+    double r2 = 1.0;
+    double l = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Conoid(r1, r2, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_conoid_2) {
+    // Arrange
+    double r1 = 2.0;
+    double r2 = -1.0;
+    double l = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Conoid(r1, r2, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Can_assert_calc_conoid_3) {
+    // Arrange
+    double r1 = 2.0;
+    double r2 = 1.0;
+    double l = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Conoid(r1, r2, l));
+}
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_conoid) {
     // Arrang
@@ -86,6 +139,33 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_conoid_2) {
 
     // Assert
     EXPECT_EQ(s, s1);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_cube) {
+    // Arrange
+    double h = 10.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Cube(h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_cube) {
+    // Arrange
+    double h = -2.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Cube(h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_cube_2) {
+    // Arrange
+    double h = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Cube(h));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_cube) {
@@ -112,6 +192,46 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_cube_2) {
     EXPECT_EQ(s1, s);
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_cylinder) {
+    // Arrange
+    double r = 3.0;
+    double h = 10.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Cylinder(r, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_cylinder) {
+    // Arrange
+    double r = -1.0;
+    double h = 2.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Cylinder(r, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_cylinder_2) {
+    // Arrange
+    double r = 1.0;
+    double h = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Cylinder(r, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_cylinder_3) {
+    // Arrange
+    double r = 1.0;
+    double h = -2.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Cylinder(r, h));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_cylinder) {
     // Arrang
     Calculator z;
@@ -136,6 +256,61 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_cylinder_2) {
     EXPECT_EQ(s1, s);
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_parallelepiped) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Parallelepiped(a, b, c));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_parallelepiped) {
+    // Arrange
+    double a = -3.0;
+    double b = 10.0;
+    double c = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Parallelepiped(a, b, c));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_parallelepiped_2) {
+    // Arrange
+    double a = 3.0;
+    double b = -10.0;
+    double c = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Parallelepiped(a, b, c));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_parallelepiped_3) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = -1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Parallelepiped(a, b, c));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_parallelepiped_4) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Parallelepiped(a, b, c));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_parallelepiped) {
     // Arrang
     Calculator z;
@@ -158,6 +333,90 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_parallelepiped_2) {
 
     // Assert
     EXPECT_EQ(s1, s);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_prism) {
+    // Arrange
+    double a = 3.0;
+    double b = 2.0;
+    double c = 1.0;
+    double h = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_prism) {
+    // Arrange
+    double a = -3.0;
+    double b = 10.0;
+    double c = 1.0;
+    double h = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_prism_2) {
+    // Arrange
+    double a = 3.0;
+    double b = -10.0;
+    double c = 1.0;
+    double h = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_prism_3) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = -1.0;
+    double h = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_prism_4) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 1.0;
+    double h = -5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_prism_5) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 1.0;
+    double h = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_heron_calc_prism) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 1.0;
+    double h = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Prism(a, b, c, h));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_prism) {
@@ -192,6 +451,73 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_prism_3) {
     EXPECT_ANY_THROW(z.Calculate_Prism(6.0, 2.0, 2.0, 1.5));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_pyramid) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_heron_calc_pyramid) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double l = 1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_pyramid) {
+    // Arrange
+    double a = -3.0;
+    double b = 10.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_pyramid_2) {
+    // Arrange
+    double a = 3.0;
+    double b = -10.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_pyramid_3) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double l = -1.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_pyramid_4) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double l = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Pyramid(a, b, l));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_pyramid) {
     // Arrang
     Calculator z;
@@ -224,6 +550,33 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_pyramid_3) {
     EXPECT_ANY_THROW(z.Calculate_Pyramid(6.0, 2.0, 2.0));
 }
 
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_sphere) {
+    // Arrange
+    double r = 3.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calculate_Sphere(r));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_sphere) {
+    // Arrange
+    double r = -3.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Sphere(r));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_sphere_2) {
+    // Arrange
+    double r = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calculate_Sphere(r));
+}
+
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_sphere) {
     // Arrang
     Calculator z;
@@ -246,6 +599,90 @@ TEST(AreaOfThreeDimensionalFiguresTest, Calc_sphere_2) {
 
     // Assert
     EXPECT_EQ(s1, s);
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, No_assert_calc_tetra) {
+    // Arrange
+    double a = 3.0;
+    double b = 2.0;
+    double c = 1.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_NO_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_heron_calc_tetra) {
+    // Arrange
+    double a = 3.0;
+    double b = 20.0;
+    double c = 1.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_tetra) {
+    // Arrange
+    double a = -3.0;
+    double b = 2.0;
+    double c = 1.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_tetra_2) {
+    // Arrange
+    double a = 3.0;
+    double b = -2.0;
+    double c = 1.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_tetra_3) {
+    // Arrange
+    double a = 3.0;
+    double b = 2.0;
+    double c = -1.0;
+    double l = 5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_tetra_4) {
+    // Arrange
+    double a = 3.0;
+    double b = 2.0;
+    double c = 1.0;
+    double l = -5.0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
+}
+
+TEST(AreaOfThreeDimensionalFiguresTest, Assert_calc_tetra_5) {
+    // Arrange
+    double a = 3.0;
+    double b = 10.0;
+    double c = 1.0;
+    double l = 0;
+    Calculator z;
+
+    // Act & Assert
+    EXPECT_ANY_THROW(z.Calc_Tetra(a, b, c, l));
 }
 
 TEST(AreaOfThreeDimensionalFiguresTest, Calc_tetrahedron) {

@@ -24,8 +24,10 @@ class Calculator {
  private:
      double S;
 
-     bool Is_positive_parametr(double _a);
+     bool Is_positive_parameter(double _a);
      bool Check_for_Heron(double _a, double _b, double _c);
+     bool Check_positives(double massive_parameters[], int massive_size);
+     double Calc_Heron(double _a, double _b, double _c);
 };
 
 #endif  // MODULES_AREA_OF_THREE_DIMENSIONAL_FIGURES_INCLUDE_CALCULATOR_H_
