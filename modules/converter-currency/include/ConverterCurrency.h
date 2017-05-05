@@ -11,7 +11,6 @@ namespace Currency {
     const float RURtoCNY = 0.121f;
     const float RURtoJPY = 1.9538f;
     const float RURtoGBP = 0.0136f;
-    const int Error_1000 = 1000;
 };
 
 class ConverterCurrency {
