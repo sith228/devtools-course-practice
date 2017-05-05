@@ -181,3 +181,63 @@ TEST(Sort, Can_Do_Choice_Sort_With_Negative_Elements) {
     const Sort expected_sort(expected_result, N);
     EXPECT_EQ(expected_sort, Array);
 }
+
+TEST(Sort, Can_Result_False) {
+  // Arrange
+    const int N = 5;
+    const int Arr1[N] = { 3, 7, 5, 12, 56 };
+    const int Arr2[N] = { 5, 2, 1, 4, 7 };
+    Sort Array1(Arr1, N);
+    Sort Array2(Arr2, N);
+
+    // Act
+    const bool expected_false = Array1 == Array2;
+
+    // Assert
+    EXPECT_FALSE(expected_false);
+}
+
+TEST(Sort, Can_Do_Merge_Sort) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 7, 13, 2, 64, 11, 923, 4 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.MergeSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { 2, 4, 7, 11, 13, 64, 923 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Merge_Sort_With_Duplicate_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { 7, 13, 2, 7, 14, 2, 13 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.MergeSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { 2, 2, 7, 7, 13, 13, 14 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(Sort, Can_Do_Merge_Sort_With_Negative_Elements) {
+    // Arrange
+    const int N = 7;
+    const int Arr[N] = { -7, -13, -2, -64, -11, -923, -4 };
+    Sort Array(Arr, N);
+
+    // Act
+    Array.MergeSort(0, N-1);
+
+    // Assert
+    const int expected_result[N] = { -923, -64, -13, -11, -7, -4, -2 };
+    const Sort expected_sort(expected_result, N);
+    EXPECT_EQ(expected_sort, Array);
+}
