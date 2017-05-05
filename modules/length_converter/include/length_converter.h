@@ -44,7 +44,7 @@ class Length {
     double ConvertTo(LENGTH_TYPE type) const;
 
  private:
-    double length_sm;  // Длина в сантиметрах
+    double length_cm;  // Длина в сантиметрах
     double GetConvertCoef(LENGTH_TYPE type) const;
 };
 

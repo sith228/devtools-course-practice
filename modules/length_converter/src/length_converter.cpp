@@ -25,7 +25,7 @@ Length::Length(LENGTH_TYPE type, double value) {
 }
 
 void Length::SetValue(LENGTH_TYPE type, double value) {
-    length_sm = value * GetConvertCoef(type);
+    length_cm = value * GetConvertCoef(type);
 }
 
 double Length::GetConvertCoef(LENGTH_TYPE type) const {
@@ -67,5 +67,5 @@ double Length::GetConvertCoef(LENGTH_TYPE type) const {
 }
 
 double Length::ConvertTo(LENGTH_TYPE type) const {
-    return length_sm / GetConvertCoef(type);
+    return length_cm / GetConvertCoef(type);
 }
