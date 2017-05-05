@@ -2,8 +2,7 @@
 
 #include "include/deque.h"
 
-Deque::Deque(int size) : Front(-1), Back(0)
-{
+Deque::Deque(int size) : Front(-1), Back(0) {
     DataCount = 0;
     MemSize = size;
     if (size < 0)
@@ -14,24 +13,20 @@ Deque::Deque(int size) : Front(-1), Back(0)
         pMem = new TElem[MemSize];
 }
 
-Deque::~Deque()
-{
+Deque::~Deque() {
     delete[] pMem;
     pMem = nullptr;
 }
 
-int Deque::GetNextFrontIndex(int index)
-{
+int Deque::GetNextFrontIndex(int index) {
     return ++index % MemSize;
 }
 
-int Deque::GetNextBackIndex(int index)
-{
+int Deque::GetNextBackIndex(int index) {
     return (index == 0) ? MemSize - 1 : --index;
 }
 
-void Deque::InsFront(TElem element)
-{
+void Deque::InsFront(TElem element) {
     if (pMem == nullptr)
         throw "DataNoMem";
     else if (IsFull())
@@ -44,8 +39,7 @@ void Deque::InsFront(TElem element)
     }
 }
 
-void Deque::InsBack(TElem element)
-{
+void Deque::InsBack(TElem element) {
     if (pMem == nullptr)
         throw "DataNoMem";
     else if (IsFull())
@@ -58,8 +52,7 @@ void Deque::InsBack(TElem element)
     }
 }
 
-TElem Deque::GetFront()
-{
+TElem Deque::GetFront() {
     if (pMem == nullptr)
         throw "DataNoMem";
     else if (IsEmpty())
@@ -73,8 +66,7 @@ TElem Deque::GetFront()
     }
 }
 
-TElem Deque::GetBack()
-{
+TElem Deque::GetBack() {
     if (pMem == nullptr)
         throw "DataNoMem";
     else if (IsEmpty())
@@ -88,12 +80,10 @@ TElem Deque::GetBack()
     }
 }
 
-bool Deque::IsEmpty(void) const
-{
+bool Deque::IsEmpty(void) const {
     return DataCount == 0;
 }
 
-bool Deque::IsFull(void) const
-{
+bool Deque::IsFull(void) const {
     return DataCount == MemSize;
 }
