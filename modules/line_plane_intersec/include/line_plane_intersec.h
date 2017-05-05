@@ -26,7 +26,7 @@ class Intersection {
         std::vector<double>lineDirection, std::vector<double>plane);
 
     void SetLine(double linex0_, double liney0_, double linez0_,
-    double linedirx_, double linediry_, double linedirz_);
+        double linedirx_, double linediry_, double linedirz_);
     void SetLine(std::vector<double>lineStart,
         std::vector<double>lineDirection);
     void SetPlane(std::vector<double>plane);
