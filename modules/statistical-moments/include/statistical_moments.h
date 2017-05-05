@@ -6,21 +6,21 @@
 #include <vector>
 #include <string>
 
-static class StatisticalMoments {
+class StatisticalMoments {
  public:
-   double getCustomMoment(const std::vector<double>& values,
+   static double getCustomMoment(const std::vector<double>& values,
         const std::vector<double>& chances,unsigned int order,
         unsigned int offset);
-   double getExpectancy(const std::vector<double>& values,
+   static double getExpectancy(const std::vector<double>& values,
         const std::vector<double>& chances);
-   double getDispersion(const std::vector<double>& values,
+   static double getDispersion(const std::vector<double>& values,
         const std::vector<double>& chances);
  private:
-    void checkingInputDate(const std::vector<double>& values,
+     static void checkingInputDate(const std::vector<double>& values,
         const std::vector<double>& chances);
-    bool isChanceValid(const std::vector<double>& values,
+     static bool isChanceValid(const std::vector<double>& values,
         const std::vector<double>& chances);
-    bool isChancesDistributionRow(const std::vector<double>& values,
+     static bool isChancesDistributionRow(const std::vector<double>& values,
         const std::vector<double>& chances);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_
