@@ -1,4 +1,4 @@
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 #include <string>
 #include "include/rom_numbers_converter.h"
 

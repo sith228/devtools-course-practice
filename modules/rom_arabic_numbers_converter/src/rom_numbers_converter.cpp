@@ -17,16 +17,15 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
         buf -= 1000;
     }
     // houndreds
-    if (buf / 100 == 9){
+    if (buf / 100 == 9) {
         result +="CM";
         buf -= 900;
     }
-    if (buf / 100 == 4){
+    if (buf / 100 == 4) {
         result += "CD";
         buf -= 400;
     }
-    if (buf / 100 == 5)
-    {
+    if (buf / 100 == 5) {
         result += 'D';
         buf -= 500;
     }
@@ -34,19 +33,16 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
         result += 'C';
         buf -= 100;
     }
-    //decade
-    if (buf / 10 == 9)
-    {
+    //  decade
+    if (buf / 10 == 9) {
         result += "XC";
         buf -= 90;
     }
-    if (buf / 10 == 4)
-    {
+    if (buf / 10 == 4) {
         result += "XL";
         buf -= 40;
     }
-    if (buf / 10 == 5)
-    {
+    if (buf / 10 == 5) {
         result += 'L';
         buf -= 50;
     }
@@ -54,19 +50,16 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
         result += 'X';
         buf -= 10;
     }
-    //units
-    if (buf == 9)
-    {
+    //  units
+    if (buf == 9) {
         result += "IX";
         buf -= 9;
     }
-    if (buf == 4)
-    {
+    if (buf == 4) {
         result += "IV";
         buf -= 4;
     }
-    if (buf  == 5)
-    {
+    if (buf == 5) {
         result += 'V';
         buf -= 5;
     }
@@ -78,28 +71,28 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
 }
 
 int RomNumConverter::convert_rom_to_arabic(string bufstr) {
-    int result=0;
-    for (unsigned int i = 0 ; i < bufstr.length()  ;i++) {
+    int result = 0;
+    for (unsigned int i = 0 ; i < bufstr.length() ; i++) {
     switch (bufstr[i]) {
-        case 'I':// 1
+        case 'I':  // 1
             result += 1;
             break;
-        case 'V':// 5
+        case 'V':  // 5
             result += 5;
             break;
-        case 'X':// 10
+        case 'X':  // 10
             result += 10;
             break;
-        case 'L':// 50
+        case 'L':  // 50
             result += 50;
             break;
-        case 'C':// 100
+        case 'C':  // 100
             result += 100;
             break;
-        case 'D':// 500
+        case 'D':  // 500
             result += 500;
             break;
-        case 'M':// 1000
+        case 'M':  // 1000
             result += 1000;
             break;
         default:
