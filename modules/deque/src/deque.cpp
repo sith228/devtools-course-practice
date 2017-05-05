@@ -27,10 +27,12 @@ int Deque::GetNextBackIndex(int index) {
 }
 
 void Deque::InsFront(TElem element) {
-    if (pMem == nullptr)
+    if (pMem == nullptr) {
         throw "DataNoMem";
-    else if (IsFull())
+    }
+    else if (IsFull()) {
         throw "DataFull";
+    }
     else {
         Front = GetNextFrontIndex(Front);
         pMem[Front] = element;
@@ -39,10 +41,12 @@ void Deque::InsFront(TElem element) {
 }
 
 void Deque::InsBack(TElem element) {
-    if (pMem == nullptr)
+    if (pMem == nullptr) {
         throw "DataNoMem";
-    else if (IsFull())
+    }
+    else if (IsFull()) {
         throw "DataFull";
+    }
     else {
         Back = GetNextBackIndex(Back);
         pMem[Back] = element;
@@ -51,10 +55,12 @@ void Deque::InsBack(TElem element) {
 }
 
 TElem Deque::GetFront() {
-    if (pMem == nullptr)
+    if (pMem == nullptr) {
         throw "DataNoMem";
-    else if (IsEmpty())
+    }
+    else if (IsEmpty()) {
         throw "DataEmpty";
+    }
     else {
         DataCount--;
         TData tmp = pMem[Front];
@@ -64,10 +70,12 @@ TElem Deque::GetFront() {
 }
 
 TElem Deque::GetBack() {
-    if (pMem == nullptr)
+    if (pMem == nullptr) {
         throw "DataNoMem";
-    else if (IsEmpty())
+    }
+    else if (IsEmpty()) {
         throw "DataEmpty";
+    }
     else {
         DataCount--;
         TData tmp = pMem[Back];
