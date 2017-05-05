@@ -82,7 +82,8 @@ TEST(Kiseleva_Olga_StatisticalMomentsTest,
     std::vector<double> values = { 1, 2, 3, 4 };
     std::vector<double> changes = { 0.6, 0.24, 0.096, 0.064 };
     // Assert
-    EXPECT_ANY_THROW(StatisticalMoments::getCustomMoment(values, changes, 0, 0));
+    EXPECT_ANY_THROW(StatisticalMoments::getCustomMoment(
+        values, changes, 0, 0));
 }
 TEST(Kiseleva_Olga_StatisticalMomentsTest,
     Can_Count_Custom_Moment) {
