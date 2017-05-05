@@ -16,7 +16,7 @@ bool Calculator::Is_positive_parameter(double _a) {
         return true;
 }
 
-bool Calculator::Check_positive(double massive_parameters[], int size) {
+bool Calculator::Check_positives(double massive_parameters[], int size) {
     for (int i = 0; i < size; i++) {
         if (!(Is_positive_parameter(massive_parameters[i]))) {
             throw std::string("parameters are negative");
