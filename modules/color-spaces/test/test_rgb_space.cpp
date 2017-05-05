@@ -203,7 +203,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Min) {
     // Arrange
     RGBSpace space(10, 10, 10);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(0, 0, 4);
     EXPECT_EQ(correct_space, convert_space);
@@ -213,7 +213,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Red_And_G_more_B) {
     // Arrange
     RGBSpace space(150, 45, 37);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(4, 75, 59);
     EXPECT_EQ(correct_space, convert_space);
@@ -223,7 +223,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Red_And_B_more_G) {
     // Arrange
     RGBSpace space(150, 37, 45);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(356, 75, 59);
     EXPECT_EQ(correct_space, convert_space);
@@ -233,7 +233,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Green) {
     // Arrange
     RGBSpace space(37, 150, 45);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(124, 75, 59);
     EXPECT_EQ(correct_space, convert_space);
@@ -243,7 +243,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Blue) {
     // Arrange
     RGBSpace space(37, 45, 150);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(236, 75, 59);
     EXPECT_EQ(correct_space, convert_space);
@@ -253,7 +253,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Zero) {
     // Arrange
     RGBSpace space(0, 0, 0);
     // Act
-    HSBHSVSpace convert_space = (HSBHSVSpace)space;
+    HSBHSVSpace convert_space(space);
     // Assert
     HSBHSVSpace correct_space(0, 0, 0);
     EXPECT_EQ(correct_space, convert_space);
@@ -263,7 +263,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ) {
     // Arrange
     RGBSpace space(88, 80, 55);
     // Act
-    XYZSpace convert_space = (XYZSpace)space;
+    XYZSpace convert_space(space);
     // Assert
     XYZSpace correct_space(8, 8, 5);
     EXPECT_EQ(correct_space, convert_space);
@@ -273,7 +273,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Small) {
     // Arrange
     RGBSpace space(9, 9, 9);
     // Act
-    XYZSpace convert_space = (XYZSpace)space;
+    XYZSpace convert_space(space);
     // Assert
     XYZSpace correct_space(0, 0, 0);
     EXPECT_EQ(correct_space, convert_space);
@@ -283,7 +283,7 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Big) {
     // Arrange
     RGBSpace space(254, 254, 254);
     // Act
-    XYZSpace convert_space = (XYZSpace)space;
+    XYZSpace convert_space(space);
     // Assert
     XYZSpace correct_space(94, 99, 108);
     EXPECT_EQ(correct_space, convert_space);

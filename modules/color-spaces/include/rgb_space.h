@@ -16,13 +16,13 @@ class RGBSpace {
     void swap(RGBSpace &rgb_space);
     HSBHSVSpace ToHSBHSVSpace() const;
     XYZSpace ToXYZSpace() const;
-    LABSpace ToLABSpace() const;
-
 
  public:
     RGBSpace(): red(0), green(0), blue(0) {}
     RGBSpace(const int red_, const int green_, const int blue_);
     RGBSpace(const RGBSpace &rgb_space);
+    explicit RGBSpace(const HSBHSVSpace &hsbhsv_space);
+    explicit RGBSpace(const XYZSpace &xyz_space);
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
 
@@ -40,7 +40,6 @@ class RGBSpace {
 
     operator HSBHSVSpace() const { return ToHSBHSVSpace(); }
     operator XYZSpace() const { return ToXYZSpace(); }
-    operator LABSpace() const { return ToLABSpace(); }
 };
 
 #endif  // MODULES_COLOR_SPACES_INCLUDE_RGB_SPACE_H_
