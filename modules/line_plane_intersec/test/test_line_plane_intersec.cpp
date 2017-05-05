@@ -89,7 +89,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, Test_Line_In_Vec_Constructor) {
     expected[3] = 4;
     expected[4] = 5;
     expected[5] = 6;
-    Intersection Intersec(lineStart,lineDir,plane);
+    Intersection Intersec(lineStart, lineDir, plane);
     // Act & Assert
     EXPECT_EQ(Intersec.GetLine(), expected);
 }
@@ -138,7 +138,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetLine_Vec_Works_Correct) {
     expected[4] = 2;
     expected[5] = 1;
     // Act
-    Intersec.SetLine(lineStart,lineDir);
+    Intersec.SetLine(lineStart, lineDir);
     // Assert
     EXPECT_EQ(Intersec.GetLine(), expected);
 }
