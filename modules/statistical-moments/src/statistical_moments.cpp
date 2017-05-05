@@ -74,6 +74,5 @@ double StatisticalMoments::getDispersion(const std::vector<double>& values,
         dispersion += pow(values[i] - expectansy, 2)*chances[i];
     }
     return dispersion;
-
 }
 
