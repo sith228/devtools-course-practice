@@ -1,7 +1,7 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/rgb_space.h"
-#include <sys/types.h>
+#include <stdint.h>
 #include <string>
 #include <algorithm>
 
