@@ -1,5 +1,6 @@
 // Copyright 2017 Blincov Sergey
 
+
 #include <gtest/gtest.h>
 #include <math.h>
 
