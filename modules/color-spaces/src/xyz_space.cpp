@@ -1,9 +1,11 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/xyz_space.h"
+#include <math.h>
 #include <stdint.h>
 #include <string>
 #include <algorithm>
+
 
 void XYZSpace::swap(XYZSpace &xyz_space) {
     std::swap(x, xyz_space.x);
