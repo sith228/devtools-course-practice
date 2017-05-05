@@ -12,7 +12,7 @@ class Queue {
     valType *queuePtr;
 
  public:
-    explicit Queue(int _maxSize);
+    explicit Queue(int _maxSize = 10);
     ~Queue();
     Queue(const Queue &);
     bool IsFull() const;
