@@ -7,9 +7,9 @@
 
 class RGBSpace {
  private:
-    __uint8_t red;
-    __uint8_t green;
-    __uint8_t blue;
+    unsigned char red;
+    unsigned char green;
+    unsigned char blue;
     void swap(RGBSpace &rgb_space);
 
  public:
@@ -19,9 +19,9 @@ class RGBSpace {
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
 
-    __uint8_t GetRed() const;
-    __uint8_t GetGreen() const;
-    __uint8_t GetBlue() const;
+    unsigned char GetRed() const;
+    unsigned char GetGreen() const;
+    unsigned char GetBlue() const;
     void SetRed(const int red_);
     void SetGreen(const int green_);
     void SetBlue(const int blue_);

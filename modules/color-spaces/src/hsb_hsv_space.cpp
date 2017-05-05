@@ -23,9 +23,9 @@ HSBHSVSpace::HSBHSVSpace(const int hue_,
     } else if ((value_brightnes_ < 0) || (value_brightnes_ > 100)) {
         throw std::string("The index of brightnes not in the range 0-100");
     } else {
-        hue = (__uint16_t) hue_;
-        saturation = (__uint16_t) saturation_;
-        value_brightnes = (__uint16_t) value_brightnes_;
+        hue = (unsigned int) hue_;
+        saturation = (unsigned int) saturation_;
+        value_brightnes = (unsigned int) value_brightnes_;
     }
 }
 
@@ -46,15 +46,15 @@ HSBHSVSpace& HSBHSVSpace::operator=(const HSBHSVSpace &hsb_hsv_space) {
     return *this;
 }
 
-__uint16_t HSBHSVSpace::GetHue() const {
+unsigned int HSBHSVSpace::GetHue() const {
     return hue;
 }
 
-__uint16_t HSBHSVSpace::GetSaturation() const {
+unsigned int HSBHSVSpace::GetSaturation() const {
     return saturation;
 }
 
-__uint16_t HSBHSVSpace::GetValueBrightnes() const {
+unsigned int HSBHSVSpace::GetValueBrightnes() const {
     return value_brightnes;
 }
 
@@ -62,7 +62,7 @@ void HSBHSVSpace::SetHue(const int hue_) {
     if ((hue_ < 0) || (hue_ > 360)) {
         throw std::string("The index of hue isn't in the range 0-360");
     } else {
-        hue = (__uint16_t) hue_;
+        hue = (unsigned int) hue_;
     }
 }
 
@@ -70,7 +70,7 @@ void HSBHSVSpace::SetSaturation(const int saturation_) {
     if ((saturation_ < 0) || (saturation_ > 100)) {
         throw std::string("The index of saturation isn't in the range 0-100");
     }  else {
-        saturation = (__uint16_t) saturation_;
+        saturation = (unsigned int) saturation_;
     }
 }
 
@@ -78,7 +78,7 @@ void HSBHSVSpace::SetValueBrightnes(const int value_brightnes_) {
     if ((value_brightnes_ < 0) || (value_brightnes_ > 100)) {
         throw std::string("The index of brightnes isn't in the range 0-100");
     } else {
-        value_brightnes = (__uint16_t) value_brightnes_;
+        value_brightnes = (unsigned int) value_brightnes_;
     }
 }
 

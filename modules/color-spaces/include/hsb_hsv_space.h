@@ -8,9 +8,9 @@
 
 class HSBHSVSpace {
  private:
-    __uint16_t hue;
-    __uint16_t saturation;
-    __uint16_t value_brightnes;
+    unsigned int hue;
+    unsigned int saturation;
+    unsigned int value_brightnes;
     void swap(HSBHSVSpace &hsb_hsv_space);
 
  public:
@@ -21,9 +21,9 @@ class HSBHSVSpace {
 
     HSBHSVSpace& operator=(const HSBHSVSpace &hsb_hsv_space);
 
-    __uint16_t GetHue() const;
-    __uint16_t GetSaturation() const;
-    __uint16_t GetValueBrightnes() const;
+    unsigned int GetHue() const;
+    unsigned int GetSaturation() const;
+    unsigned int GetValueBrightnes() const;
     void SetHue(const int hue_);
     void SetSaturation(const int saturation_);
     void SetValueBrightnes(const int value_brightnes_);
