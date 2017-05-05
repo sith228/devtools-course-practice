@@ -8,7 +8,7 @@ const int MAX_STACK_SIZE = 100000000;
 template <class ValType>
 class TStack {
  public:
-    explicit TStack(int _size);
+    explicit TStack(int _size = 0);
     TStack(const TStack &v);
     ~TStack();
 
