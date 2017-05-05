@@ -12,7 +12,7 @@ using namespace std;
 
 class RomNumConverter {
 public:
-	string convert_arabic_to_rom(int temp);
-	int convert_rom_to_arabic(string bufstr);
+    string convert_arabic_to_rom(int temp);
+    int convert_rom_to_arabic(string bufstr);
 };
 #endif  // ROM_NUMBERS_CONVERTER_H_
