@@ -60,11 +60,11 @@ double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
 }
 double StatisticalMoments::getExpectancy(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    double result = 0;
+    double expectansy = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
-        result += values[i]*chances[i];
+        expectansy += values[i]*chances[i];
     }
-    return result;
+    return expectansy;
 }
 double StatisticalMoments::getDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
