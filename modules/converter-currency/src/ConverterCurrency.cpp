@@ -1,6 +1,6 @@
 // Copyright 2017 Dmitrichev Nikita
 
-#define ERROR_INVALIDMONEYSIZE 1000 // MoneySize on Convert() can't be negative
+#define ERROR_INVALIDMONEYSIZE 1000  // MoneySize on Convert() can't be negative
 
 #include "include/ConverterCurrency.h"
 
