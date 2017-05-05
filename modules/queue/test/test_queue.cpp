@@ -21,7 +21,7 @@ TEST(Queue, can_create_queue_without_parametrs) {
     // Arrange
     // Act
     // Assert
-    EXPECT_NO_THROW(Queue<int> Q());
+    EXPECT_NO_THROW(Queue<int> Q);
 }
 TEST(Queue, can_be_equated_two_queues) {
     // Arrange
