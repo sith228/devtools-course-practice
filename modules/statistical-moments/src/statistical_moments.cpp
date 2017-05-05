@@ -49,14 +49,14 @@ void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
 double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
     const std::vector<double>& chances, unsigned int order, 
     unsigned int offset) {
-    double result = 0;
+    double moment = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
     }
     for (unsigned int i = 0; i < chances.size(); i++) {
-        result += pow(values[i] - offset, order)*chances[i];
+        moment += pow(values[i] - offset, order)*chances[i];
     }
-    return result;
+    return moment;
 }
 double StatisticalMoments::getExpectancy(const std::vector<double>& values,
     const std::vector<double>& chances) {
