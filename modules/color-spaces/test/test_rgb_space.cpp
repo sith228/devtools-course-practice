@@ -94,7 +94,7 @@ TEST(RGBSpaceTest, Can_Use_The_Copying_Constructor) {
 
 TEST(RGBSpaceTest, Can_Copying_Object_With_Address_Nullptr) {
     // Arrange
-    RGBSpace *space = nullptr;
+    RGBSpace *space = NULL;
     // Act & Assert
     EXPECT_ANY_THROW({ RGBSpace copy_space(*space); });
 }

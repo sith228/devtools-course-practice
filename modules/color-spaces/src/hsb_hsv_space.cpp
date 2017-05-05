@@ -2,7 +2,7 @@
 
 #include "../include/hsb_hsv_space.h"
 
-#include <sys/types.h>
+#include <stdint.h>
 #include <string>
 #include <algorithm>
 
@@ -23,14 +23,14 @@ HSBHSVSpace::HSBHSVSpace(const int hue_,
     } else if ((value_brightnes_ < 0) || (value_brightnes_ > 100)) {
         throw std::string("The index of brightnes not in the range 0-100");
     } else {
-        hue = (unsigned int) hue_;
-        saturation = (unsigned int) saturation_;
-        value_brightnes = (unsigned int) value_brightnes_;
+        hue = (uint16_t) hue_;
+        saturation = (uint16_t) saturation_;
+        value_brightnes = (uint16_t) value_brightnes_;
     }
 }
 
 HSBHSVSpace::HSBHSVSpace(const HSBHSVSpace &hsb_hsv_space) {
-    if (&hsb_hsv_space == nullptr) {
+    if (&hsb_hsv_space == NULL) {
         throw std::string("Copying object is nullptr");
     } else {
         hue = hsb_hsv_space.hue;
@@ -46,15 +46,15 @@ HSBHSVSpace& HSBHSVSpace::operator=(const HSBHSVSpace &hsb_hsv_space) {
     return *this;
 }
 
-unsigned int HSBHSVSpace::GetHue() const {
+uint16_t HSBHSVSpace::GetHue() const {
     return hue;
 }
 
-unsigned int HSBHSVSpace::GetSaturation() const {
+uint16_t HSBHSVSpace::GetSaturation() const {
     return saturation;
 }
 
-unsigned int HSBHSVSpace::GetValueBrightnes() const {
+uint16_t HSBHSVSpace::GetValueBrightnes() const {
     return value_brightnes;
 }
 
@@ -62,7 +62,7 @@ void HSBHSVSpace::SetHue(const int hue_) {
     if ((hue_ < 0) || (hue_ > 360)) {
         throw std::string("The index of hue isn't in the range 0-360");
     } else {
-        hue = (unsigned int) hue_;
+        hue = (uint16_t) hue_;
     }
 }
 
@@ -70,7 +70,7 @@ void HSBHSVSpace::SetSaturation(const int saturation_) {
     if ((saturation_ < 0) || (saturation_ > 100)) {
         throw std::string("The index of saturation isn't in the range 0-100");
     }  else {
-        saturation = (unsigned int) saturation_;
+        saturation = (uint16_t) saturation_;
     }
 }
 
@@ -78,7 +78,7 @@ void HSBHSVSpace::SetValueBrightnes(const int value_brightnes_) {
     if ((value_brightnes_ < 0) || (value_brightnes_ > 100)) {
         throw std::string("The index of brightnes isn't in the range 0-100");
     } else {
-        value_brightnes = (unsigned int) value_brightnes_;
+        value_brightnes = (uint16_t) value_brightnes_;
     }
 }
 

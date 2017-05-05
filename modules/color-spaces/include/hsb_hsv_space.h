@@ -3,14 +3,14 @@
 #ifndef MODULES_COLOR_SPACES_INCLUDE_HSB_HSV_SPACE_H_
 #define MODULES_COLOR_SPACES_INCLUDE_HSB_HSV_SPACE_H_
 
-#include <sys/types.h>
+#include <stdint.h>
 #include <algorithm>
 
 class HSBHSVSpace {
  private:
-    unsigned int hue;
-    unsigned int saturation;
-    unsigned int value_brightnes;
+    uint16_t hue;
+    uint16_t saturation;
+    uint16_t value_brightnes;
     void swap(HSBHSVSpace &hsb_hsv_space);
 
  public:
@@ -21,9 +21,9 @@ class HSBHSVSpace {
 
     HSBHSVSpace& operator=(const HSBHSVSpace &hsb_hsv_space);
 
-    unsigned int GetHue() const;
-    unsigned int GetSaturation() const;
-    unsigned int GetValueBrightnes() const;
+    uint16_t GetHue() const;
+    uint16_t GetSaturation() const;
+    uint16_t GetValueBrightnes() const;
     void SetHue(const int hue_);
     void SetSaturation(const int saturation_);
     void SetValueBrightnes(const int value_brightnes_);
