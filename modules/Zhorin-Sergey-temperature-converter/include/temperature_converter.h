@@ -7,9 +7,9 @@ class TemperatureConverter {
  public:
     TemperatureConverter();
 
-    double CelsiusToFahrenheit(const double t);
-    double CelsiusToNewton(const double t);
-    double CelsiusToKelvin(const double t);
+    void CelsiusToFahrenheit(const double t, double* F);
+    void CelsiusToNewton(const double t, double* N);
+    void CelsiusToKelvin(const double t, double* K);
 };
 
 #endif  // MODULES_ZHORIN_SERGEY_TEMPERATURE_CONVERTER_INCLUDE_TEMPERATURE_CONVERTER_H_

@@ -6,23 +6,23 @@
 
 TemperatureConverter::TemperatureConverter() {}
 
-double TemperatureConverter::CelsiusToFahrenheit(const double t) {
+void TemperatureConverter::CelsiusToFahrenheit(const double t, double* F) {
     if (t < -273.15) {
         throw std::string("Temperature can't be less than absolute zero");
     }
-    return(32 + t*(9.0 / 5.0));
+    *F = 32 + t*(9.0 / 5.0);
 }
 
-double TemperatureConverter::CelsiusToKelvin(const double t) {
+void TemperatureConverter::CelsiusToKelvin(const double t, double* K) {
     if (t < -273.15) {
         throw std::string("Temperature can't be less than absolute zero");
     }
-    return(273.15 + t);
+    *K = 273.15 + t;
 }
 
-double TemperatureConverter::CelsiusToNewton(const double t) {
+void TemperatureConverter::CelsiusToNewton(const double t, double* N) {
     if (t < -273.15) {
         throw std::string("Temperature can't be less than absolute zero");
     }
-    return(t*(33.0 / 100.0));
+     *N = t*(33.0 / 100.0);
 }
