@@ -21,11 +21,10 @@
 #define LEAGUE_TO_CM        482803.2
 
 Length::Length(LENGTH_TYPE type, double value) {
-	SetValue(type, value);
+    SetValue(type, value);
 }
 
-void Length::SetValue(LENGTH_TYPE type, double value)
-{
+void Length::SetValue(LENGTH_TYPE type, double value) {
     length_sm = value * GetConvertCoef(type);
 }
 
