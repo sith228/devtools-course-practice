@@ -7,7 +7,7 @@
 #include <string>
 
 class StatisticalMoments {
-public:
+ public:
     static double getCustomMoment(const std::vector<double>& values,
         const std::vector<double>& chances, unsigned int order,
         unsigned int offset);
@@ -15,7 +15,7 @@ public:
         const std::vector<double>& chances);
     static double getDispersion(const std::vector<double>& values,
         const std::vector<double>& chances);
-private:
+ private:
     static void checkingInputDate(const std::vector<double>& values,
         const std::vector<double>& chances);
     static bool isChanceValid(const std::vector<double>& values,
