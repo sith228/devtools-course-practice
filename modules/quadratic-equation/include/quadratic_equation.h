@@ -4,14 +4,14 @@
 #define MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQUATION_H_
 
 class QuadraticEquation {
-private:
+ private:
     double coefA_;
     double coefB_;
     double coefC_;
 
     double discriminant();
 
-public:
+ public:
     QuadraticEquation();
     QuadraticEquation(
         const double coefA, const double coefB, const double coefC);
@@ -29,7 +29,6 @@ public:
     int numOfSolutions(void);
     double getX1(void);
     double getX2(void);
-
 };
 
 #endif  // MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQUATION_H_
