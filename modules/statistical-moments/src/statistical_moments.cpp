@@ -68,5 +68,12 @@ double StatisticalMoments::getExpectancy(const std::vector<double>& values,
 }
 double StatisticalMoments::getDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
+    double expectansy = StatisticalMoments::getExpectancy(values,chances);
+    double dispersion = 0;
+    for (unsigned int i = 0; i < chances.size(); i++) {
+        dispersion += pow(values[i] - expectansy, 2)*chances[i];
+    }
+    return dispersion;
+
 }
 
