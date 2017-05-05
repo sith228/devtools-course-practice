@@ -1,6 +1,7 @@
 // Copyright 2017 Nesterov Alexander
 
 #include "../include/rgb_space.h"
+#include <math.h>
 #include <string>
 #include <algorithm>
 
@@ -11,7 +12,6 @@ void RGBSpace::swap(RGBSpace &rgb_space) {
 }
 
 HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
-
     double_t red_quote = (double_t)red / 255;
     double_t green_quote = (double_t)green / 255;
     double_t blue_quote = (double_t)blue / 255;
@@ -46,7 +46,40 @@ HSBHSVSpace RGBSpace::ToHSBHSVSpace() const {
 }
 
 XYZSpace RGBSpace::ToXYZSpace() const {
-    XYZSpace xyz_space;
+    double_t red_quote = (double_t)red / 255;
+    double_t green_quote = (double_t)green / 255;
+    double_t blue_quote = (double_t)blue / 255;
+
+    if (red_quote > 0.04045) {
+        red_quote = pow((red_quote + 0.055) / 1.055, 2.4);
+    } else {
+        red_quote /= 12.92;
+    }
+
+    if (green_quote > 0.04045) {
+        green_quote = pow((green_quote + 0.055) / 1.055, 2.4);
+    } else {
+        green_quote /= 12.92;
+    }
+
+    if (blue_quote > 0.04045) {
+        blue_quote = pow((blue_quote + 0.055) / 1.055, 2.4);
+    } else {
+        blue_quote /= 12.92;
+    }
+
+    red_quote *= 100;
+    green_quote *= 100;
+    blue_quote *= 100;
+
+    uint8_t x = (uint8_t)std::round(
+        red_quote *0.4124564 + green_quote*0.3575761 + blue_quote*0.1804375);
+    uint8_t y = (uint8_t)std::round(
+        red_quote *0.2126729 + green_quote*0.7151522 + blue_quote*0.0721750);
+    uint8_t z = (uint8_t)std::round(
+        red_quote *0.0193339 + green_quote*0.1191920 + blue_quote*0.9503041);
+
+    XYZSpace xyz_space(x, y, z);
     return xyz_space;
 }
 

@@ -258,3 +258,39 @@ TEST(RGBSpaceTest, Can_Convert_RGB_To_HSBHSV_Max_Eq_Zero) {
     HSBHSVSpace correct_space(0, 0, 0);
     EXPECT_EQ(correct_space, convert_space);
 }
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ) {
+    // Arrange
+    RGBSpace space(88, 80, 55);
+    // Act
+    XYZSpace convert_space = (XYZSpace)space;
+    // Assert
+    XYZSpace correct_space(8, 8, 5);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Small) {
+    // Arrange
+    RGBSpace space(9, 9, 9);
+    // Act
+    XYZSpace convert_space = (XYZSpace)space;
+    // Assert
+    XYZSpace correct_space(0, 0, 0);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+TEST(RGBSpaceTest, Can_Convert_RGB_To_XYZ_Where_Var_Big) {
+    // Arrange
+    RGBSpace space(254, 254, 254);
+    // Act
+    XYZSpace convert_space = (XYZSpace)space;
+    // Assert
+    XYZSpace correct_space(94, 99, 108);
+    EXPECT_EQ(correct_space, convert_space);
+}
+
+
+
+
+
+
