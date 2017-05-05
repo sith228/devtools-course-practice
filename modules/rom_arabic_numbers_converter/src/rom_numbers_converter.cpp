@@ -7,6 +7,7 @@
 // D 500
 // M 1000
 #include "include/rom_numbers_converter.h"
+#include <string>
 
 string RomNumConverter::convert_arabic_to_rom(int temp) {
     int buf = temp;
@@ -112,8 +113,7 @@ int RomNumConverter::convert_rom_to_arabic(string bufstr) {
         if (bufstr[i] == 'C' && bufstr[i + 1] == 'D')
             result -= 200;
         if (bufstr[i] == 'C' && bufstr[i + 1] == 'M')
-            result -= 200 ;
-
+            result -= 200;
     }
     return result;
 }
