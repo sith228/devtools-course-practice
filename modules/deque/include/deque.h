@@ -22,7 +22,7 @@ class Deque {
     int GetNextFrontIndex(int index);
     int GetNextBackIndex(int index);
  public:
-    Deque(int size = DefMemSize);
+    explicit Deque(int size = DefMemSize);
     ~Deque();
     void InsFront(TElem element);
     void InsBack(TElem element);
