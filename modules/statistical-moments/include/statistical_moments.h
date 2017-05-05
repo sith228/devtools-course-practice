@@ -7,20 +7,20 @@
 #include <string>
 
 class StatisticalMoments {
- public:
-   static double getCustomMoment(const std::vector<double>& values,
-        const std::vector<double>& chances,unsigned int order,
+public:
+    static double getCustomMoment(const std::vector<double>& values,
+        const std::vector<double>& chances, unsigned int order,
         unsigned int offset);
-   static double getExpectancy(const std::vector<double>& values,
+    static double getExpectancy(const std::vector<double>& values,
         const std::vector<double>& chances);
-   static double getDispersion(const std::vector<double>& values,
+    static double getDispersion(const std::vector<double>& values,
         const std::vector<double>& chances);
- private:
-     static void checkingInputDate(const std::vector<double>& values,
+private:
+    static void checkingInputDate(const std::vector<double>& values,
         const std::vector<double>& chances);
-     static bool isChanceValid(const std::vector<double>& values,
+    static bool isChanceValid(const std::vector<double>& values,
         const std::vector<double>& chances);
-     static bool isChancesDistributionRow(const std::vector<double>& values,
+    static bool isChancesDistributionRow(const std::vector<double>& values,
         const std::vector<double>& chances);
 };
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_MOMENTS_H_
