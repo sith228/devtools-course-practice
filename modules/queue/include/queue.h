@@ -12,7 +12,6 @@ class Queue {
     valType *queuePtr;
 
  public:
-    Queue();
     explicit Queue(int _maxSize);
     ~Queue();
     Queue(const Queue &);
