@@ -1,5 +1,8 @@
 // Copyright 2017 Vinogradova Ekaterina
 
+#ifndef DEQUE_H_
+#define DEQUE_H_
+
 #include <iostream>
 
 using namespace std;
@@ -31,3 +34,5 @@ public:
     bool IsEmpty(void) const;
     bool IsFull(void) const;
 };
+
+#endif  // DEQUE_H_
