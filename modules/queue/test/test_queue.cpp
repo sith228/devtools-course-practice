@@ -31,7 +31,7 @@ TEST(Queue, can_be_equated_two_queues) {
         Q1.Push(10);
     for (int j = 0; j < 5; j++)
         Q2.Push(9);
-    // Act 
+    // Act
     Q1 = Q2;
     // Assert
     EXPECT_EQ(true, Q1 == Q2);
@@ -51,7 +51,7 @@ TEST(Queue, cant_add_elem_into_full_queue) {
     Queue<int> Q(9);
     for (int i = 0; i < 9; i++)
         Q.Push(10);
-    // Act 
+    // Act
     // Assert
     EXPECT_ANY_THROW(Q.Push(11));
 }
@@ -139,15 +139,15 @@ TEST(Queue, check_is_empty_after_push_and_pop) {
 }
 
 TEST(Queue, can_return_begin_elem) {
-	// Arrange
-	Queue<int> Q(3);
-	int elem;
-	Q.Push(5);
-	Q.Push(2);
-	// Act
-	elem = Q.Top();
-	// Assert
-	EXPECT_EQ(5, elem);
+    // Arrange
+    Queue<int> Q(3);
+    int elem;
+    Q.Push(5);
+    Q.Push(2);
+    // Act
+    elem = Q.Top();
+    // Assert
+    EXPECT_EQ(5, elem);
 }
 
 TEST(Queue, can_return_begin_elem_without_changes) {
