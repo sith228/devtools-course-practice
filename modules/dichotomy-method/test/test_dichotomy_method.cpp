@@ -8,14 +8,9 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Function_Work) {
     EXPECT_NO_THROW(obj.findMin(1, 0, 0, -1, 1, 0.01));
 }
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Incorrect_Left_Border) {
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Incorrect_Borders) {
     Dichotomy obj;
-    EXPECT_ANY_THROW(obj.findMin(1, 0, 0, -0.5, -1, 0.01));
-}
-
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Incorrect_Right_Border) {
-    Dichotomy obj;
-    EXPECT_ANY_THROW(obj.findMin(1, 0, 0, 1, 0.5, 0.01));
+    EXPECT_ANY_THROW(obj.findMin(1, 0, 0, 10, 1, 0.01));
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Too_Close_Values) {
@@ -28,18 +23,14 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Throw_When_Function_Is_Zero) {
     EXPECT_ANY_THROW(obj.findMin(0, 1, 0, -1, 1, 0.01));
 }
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
-     Throw_When_Factor_Too_Large) {
-         Dichotomy obj;
-         EXPECT_ANY_THROW(obj.findMin(999999999 + 1, 999999999 + 1,
-             999999999 + 1, -1, 1, 0.01));
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, findMin_LBorder_Func_Is_Correct) {
+    Dichotomy obj;
+    EXPECT_EQ(obj.findMin(1, 0, 0, 0, 1, 0.01), 0.00390625);
 }
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
-     Throw_When_Factor_To_Small) {
-         Dichotomy obj;
-         EXPECT_ANY_THROW(obj.findMin(-999999999 + 1, -999999999 + 1,
-             -999999999 + 1, -1, 1, 0.01));
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, findMin_RBorder_Func_Is_Correct) {
+    Dichotomy obj;
+    EXPECT_EQ(obj.findMin(1, 0, 0, -1, 0, 0.01), -0.00390625);
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests, findMin_Is_Correct) {

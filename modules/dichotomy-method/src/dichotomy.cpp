@@ -7,29 +7,14 @@
 //За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
 double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
      double leftBorder, double rightBorder, double eps) {
-    double funcValueLBorder = afactor*(leftBorder+bfactor)*
-    (leftBorder+bfactor) + cfactor;
-    double funcValueRBorder = afactor*(rightBorder+bfactor)*
-    (rightBorder+bfactor) + cfactor;
-    double funcValueLBorderDX = afactor*(leftBorder+0.0001+bfactor)*
-    (leftBorder+0.0001+bfactor) + cfactor;
-    double funcValueRBorderDX = afactor*(rightBorder+0.0001+bfactor)*
-    (rightBorder+0.0001+bfactor) + cfactor;
-    if (funcValueLBorderDX > funcValueLBorder)
-        throw "Incorrect left border";
-    if (funcValueRBorderDX < funcValueRBorder)
-        throw "Incorrect right border";
+    if (rightBorder < leftBorder)
+        throw "Incorrect borders";
     if (std::abs(rightBorder-leftBorder) < 0.0001)
         throw "Too close values";
     if ((afactor == 0) && (cfactor == 0))
         throw "Function is ZERO";
     if (eps <=0)
         throw "Eps must be higher then zero";
-    if ( (afactor >= INT_MAX) || (bfactor >= INT_MAX) || (cfactor >= INT_MAX))
-        throw "Factor too large";
-    if ( (afactor <= INT_MIN) || (bfactor <= INT_MIN) ||
-         (cfactor <= INT_MIN))
-        throw "Factor too small";
     double c = (leftBorder + rightBorder)/2;
     double funcValueC = afactor*(c+bfactor)*(c+bfactor) + cfactor;
     while (rightBorder - leftBorder > eps) {
