@@ -1,9 +1,11 @@
 // Copyright 2017 Kuchkov Ivan
 
-#include "include/area_converter.h"
 #include <gtest/gtest.h>
-#include <vector>
+
 #include <math.h>
+#include <vector>
+
+#include "include/area_converter.h"
 
 static const double Neighbourhood = 0.0000001;
 
