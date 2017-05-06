@@ -27,3 +27,8 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Throw_when_function_is_zero) {
     Dichotomy obj;
     EXPECT_ANY_THROW(obj.findMin(0, 1, 0, -1, 1, 0.01));
 }
+
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, findMin_is_correct) {
+    Dichotomy obj;
+    EXPECT_EQ(obj.findMin(1, 0, 0, -1, 1, 0.01), 0);
+}
