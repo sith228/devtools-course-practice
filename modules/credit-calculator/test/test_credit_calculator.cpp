@@ -126,3 +126,16 @@ TEST(Simonyan_Vaginak_CreditCalculator,
     ASSERT_ANY_THROW(CreditCalculator::check_balance(amount, period,
         inter, month_pas));
 }
+
+TEST(Simonyan_Vaginak_CreditCalculator,
+    check_balance_with_incorrect_interest) {
+    // Arrange
+    int amount = 300000;
+    int period = 12;
+    int month_pas = 5;
+    double inter = 110;
+
+    // Act+Assert
+    ASSERT_ANY_THROW(CreditCalculator::check_balance(amount, period,
+        inter, month_pas));
+}
