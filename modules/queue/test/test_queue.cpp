@@ -149,16 +149,3 @@ TEST(Queue, can_return_begin_elem) {
     // Assert
     EXPECT_EQ(5, elem);
 }
-
-TEST(Queue, can_return_begin_elem_without_changes) {
-    // Arrange
-    Queue<int> Q(3);
-    int elem;
-    Q.Push(5);
-    Q.Push(2);
-    Q.Push(3);
-    elem = Q.Top();
-    // Act
-    // Assert
-    EXPECT_EQ(Q.IsFull(), true);
-}

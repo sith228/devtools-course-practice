@@ -135,4 +135,5 @@ valType Queue <valType> ::Top() {
         return queuePtr_[head_];
     }
 }
+
 #endif  // MODULES_QUEUE_INCLUDE_QUEUE_H_
