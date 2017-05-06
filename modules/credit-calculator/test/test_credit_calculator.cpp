@@ -117,9 +117,9 @@ TEST(Simonyan_Vaginak_CreditCalculator, check_balance) {
 TEST(Simonyan_Vaginak_CreditCalculator,
     check_balance_with_incorrect_parameters) {
     // Arrange
-    int amount = -300000;
+    int amount = 300000;
     int period = 12;
-    int month_pas = 5;
+    int month_pas = 15;
     double inter = 22;
 
     // Act+Assert

@@ -7,46 +7,53 @@
 
 bool CreditCalculator::check_data(int amount, int period,
     double interest, unsigned int month_pas) {
-        return (amount > 0 && period > 0 && period <= 60 && interest > 0 &&
-            interest < 100 && month_pas <= (unsigned)period);
+    check_data(amount, period, interest);
+    if (month_pas > (unsigned)period) {
+        throw std::runtime_error("Entered month_pas is incorrect");
+    }
+    return true;
 }
 
 bool CreditCalculator::check_data(int amount, int period,
     double interest) {
-        return (amount > 0 && period > 0 && period <= 60 &&
-            interest > 0 && interest < 100);
+    if (amount <= 0) {
+        throw std::runtime_error("Entered amount is incorrect");
+    }
+    if (period <= 0 || period > 60) {
+        throw std::runtime_error("Entered period is incorrect");
+    }
+    if (interest <= 0 || interest > 100) {
+        throw std::runtime_error("Entered interest is incorrect");
+    }
+    return true;
 }
 
 double CreditCalculator::monthly_payment(int amount, int period,
     double interest) {
-    if (!check_data(amount, period, interest))
-        throw std::runtime_error("The entered data is incorrect");
+    check_data(amount, period, interest);
     double month_inter = interest / 100 / 12;
     double denominator = (1 - pow(1 + month_inter, -period));
-    if (!denominator)
+    if (denominator == 0.0) {
         throw std::runtime_error("You have entered an interest rate too low");
+    }
     return (amount*(month_inter / denominator));
 }
 
 double CreditCalculator::total_payout(int amount, int period,
     double interest) {
-    if (!check_data(amount, period, interest))
-        throw std::runtime_error("The entered data is incorrect");
+    check_data(amount, period, interest);
     return monthly_payment(amount, period, interest)*period;
 }
 
 double CreditCalculator::overpayment_amount(int amount, int period,
     double interest) {
-    if (!check_data(amount, period, interest))
-        throw std::runtime_error("The entered data is incorrect");
+    check_data(amount, period, interest);
     return total_payout(amount, period, interest) - amount;
 }
 
 double CreditCalculator::check_balance(int amount, int period,
     double interest, int month_pas) {
-    if (!check_data(amount, period, interest, month_pas))
-        throw std::runtime_error("The entered data is incorrect");
-    double paid_out;
-    paid_out = monthly_payment(amount, period, interest)*month_pas;
+    check_data(amount, period, interest, month_pas);
+    double paid_out = monthly_payment(amount, period, interest)*month_pas;
     return total_payout(amount, period, interest) - paid_out;
 }
