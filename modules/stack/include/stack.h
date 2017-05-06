@@ -16,14 +16,16 @@ class TStack {
     int GetStackTop() const;
     void Push(const ValType elem);
     ValType Pop();
-    ValType stTop();
+    ValType StTop();
     bool CheckFull() const;
     bool CheckEmpty() const;
 
+    TStack& operator=(const TStack& s);
+
  private:
-    ValType *pVector;
-    int Size;
-    int Top;
+    ValType *pVector_;
+    int Size_;
+    int Top_;
 };
 
 template <class ValType>
@@ -33,36 +35,36 @@ TStack<ValType>::TStack(int _size) {
     } else if (_size > MAX_STACK_SIZE) {
         throw "Size more than MAX_VECTOR_SIZE";
     } else {
-        Top = -1;
-        Size = _size;
-        pVector = new ValType[Size];
+        Top_ = -1;
+        Size_ = _size;
+        pVector_ = new ValType[Size_];
     }
 }
 
 template <class ValType>
 TStack<ValType>::TStack(const TStack<ValType > &v) {
-    Size = v.GetStackSize();
-    Top = v.GetStackTop();
-    pVector = new ValType[Size];
-    for (int i = 0; i < Top; i++)
-        pVector[i] = v.pVector[i];
+    Size_ = v.GetStackSize();
+    Top_ = v.GetStackTop();
+    pVector_ = new ValType[Size_];
+    for (int i = 0; i < Top_; i++)
+        pVector_[i] = v.pVector_[i];
 }
 
 template <class ValType>
 TStack<ValType>::~TStack() {
-    if (pVector != NULL) {
-        delete[]pVector;
+    if (pVector_ != NULL) {
+        delete[]pVector_;
     }
 }
 
 template <class ValType>
 int TStack<ValType>::GetStackSize()const {
-    return Size;
+    return Size_;
 }
 
 template <class ValType>
 int TStack<ValType>::GetStackTop()const {
-    return Top;
+    return Top_;
 }
 
 template <class ValType>
@@ -70,8 +72,8 @@ void TStack<ValType>::Push(const ValType elem) {
     if (this->CheckFull()) {
         throw "Full stack";
     } else {
-        Top++;
-        pVector[Top] = elem;
+        Top_++;
+        pVector_[Top_] = elem;
     }
 }
 
@@ -81,24 +83,24 @@ ValType TStack<ValType>::Pop() {
         throw "Empty stack";
     } else {
         ValType res;
-        res = pVector[Top];
-        Top--;
+        res = pVector_[Top_];
+        Top_--;
         return res;
     }
 }
 
 template <class ValType>
-ValType TStack<ValType>::stTop() {
+ValType TStack<ValType>::StTop() {
     if (this->CheckEmpty()) {
         throw "Empty stack";
     } else {
-        return pVector[Top];
+        return pVector_[Top_];
     }
 }
 
 template <class ValType>
 bool TStack<ValType>::CheckFull() const {
-    if (Top == Size - 1) {
+    if (Top_ == Size_ - 1) {
         return true;
     } else {
         return false;
@@ -107,10 +109,25 @@ bool TStack<ValType>::CheckFull() const {
 
 template <class ValType>
 bool TStack<ValType>::CheckEmpty() const {
-    if (Top == (-1)) {
+    if (Top_ == (-1)) {
         return true;
     } else {
         return false;
     }
+}
+
+template <class ValType>
+TStack<ValType>& TStack<ValType>::operator=(const TStack<ValType>& s) {
+    if (pVector_ == s.pVector_) {
+        return *this;
+    }
+    Size_ = s.Size_;
+    Top_ = s.Top_;
+    delete[]pVector_;
+    pVector_ = new ValType[Size_];
+    for (int i = 0; i < Size_; i++) {
+        pVector_[i] = s.pVector_[i];
+    }
+    return *this;
 }
 #endif  //  MODULES_STACK_INCLUDE_STACK_H_

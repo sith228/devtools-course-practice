@@ -56,7 +56,7 @@ TEST(StackTest, Can_Push_INT) {
     v.Push(5);
 
     // Assert
-    EXPECT_EQ(5, v.stTop());
+    EXPECT_EQ(5, v.StTop());
 }
 
 TEST(StackTest, Cant_Push_When_Stack_Is_Full_INT) {
@@ -94,7 +94,7 @@ TEST(StackTest, Can_stTop_INT) {
     v.Push(5);
 
     // Act&Assert
-    EXPECT_EQ(5, v.stTop());
+    EXPECT_EQ(5, v.StTop());
 }
 
 TEST(StackTest, Top_Does_Not_Change_When_stTop_INT) {
@@ -103,7 +103,7 @@ TEST(StackTest, Top_Does_Not_Change_When_stTop_INT) {
     v.Push(5);
 
     // Act & Assert
-    EXPECT_EQ(5, v.stTop());
+    EXPECT_EQ(5, v.StTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
@@ -112,7 +112,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_INT) {
     TStack <int> v(2);
 
     // Act & Assert
-    EXPECT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.StTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_INT) {
@@ -192,7 +192,7 @@ TEST(StackTest, Can_Push_DOUBLE) {
     v.Push(5.25);
 
     // Assert
-    EXPECT_EQ(5.25, v.stTop());
+    EXPECT_EQ(5.25, v.StTop());
 }
 
 TEST(StackTest, Cant_Push_When_Stack_Is_Full_DOUBLE) {
@@ -230,7 +230,7 @@ TEST(StackTest, Can_stTop_DOUBLE) {
     v.Push(5.1);
 
     // Act&Assert
-    EXPECT_EQ(5.1, v.stTop());
+    EXPECT_EQ(5.1, v.StTop());
 }
 
 TEST(StackTest, Top_Does_Not_Change_When_stTop_DOUBLE) {
@@ -239,7 +239,7 @@ TEST(StackTest, Top_Does_Not_Change_When_stTop_DOUBLE) {
     v.Push(5.1);
 
     // Act & Assert
-    EXPECT_EQ(5.1, v.stTop());
+    EXPECT_EQ(5.1, v.StTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
@@ -248,7 +248,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_DOUBLE) {
     TStack <double> v(2);
 
     // Act & Assert
-    EXPECT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.StTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_DOUBLE) {
@@ -329,7 +329,7 @@ TEST(StackTest, Can_Push_CHAR) {
     v.Push('a');
 
     // Assert
-    EXPECT_EQ('a', v.stTop());
+    EXPECT_EQ('a', v.StTop());
 }
 
 TEST(StackTest, Cant_Push_When_Stack_Is_Full_CHAR) {
@@ -367,7 +367,7 @@ TEST(StackTest, Can_stTop_CHAR) {
     v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.stTop());
+    EXPECT_EQ('d', v.StTop());
 }
 
 TEST(StackTest, Top_Does_Not_Change_When_stTop_CHAR) {
@@ -376,7 +376,7 @@ TEST(StackTest, Top_Does_Not_Change_When_stTop_CHAR) {
     v.Push('d');
 
     // Act&Assert
-    EXPECT_EQ('d', v.stTop());
+    EXPECT_EQ('d', v.StTop());
     EXPECT_EQ(0, v.GetStackTop());
 }
 
@@ -385,7 +385,7 @@ TEST(StackTest, Cant_stTop_When_Stack_Is_Empty_CHAR) {
     TStack <char> v(2);
 
     // Act & Assert
-    EXPECT_ANY_THROW(v.stTop());
+    EXPECT_ANY_THROW(v.StTop());
 }
 
 TEST(StackTest, Cant_Pop_When_Stack_Is_Empty_CHAR) {
@@ -412,4 +412,17 @@ TEST(StackTest, Can_Check_Full_Stack_CHAR) {
 
     // Act & Assert
     EXPECT_TRUE(v.CheckFull());
+}
+TEST(StackTest, bugreport_gaivanuk_mironova_check_assign_operator) {
+    TStack<int> st(1);
+    st.Push(1);
+
+    {
+        TStack<int> st2(1);
+        st2 = st;
+    }
+
+    ASSERT_NO_FATAL_FAILURE(st.StTop());
+    ASSERT_NO_THROW(st.StTop());
+    EXPECT_EQ(1, st.StTop());
 }
