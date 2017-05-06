@@ -41,7 +41,6 @@ class BitArray {
     unsigned int nBlocks_;
     MemoryBlock* memoryBlocks_;
     const int blockSize_ = sizeof(MemoryBlock) * 8;
-
 };
 
 #endif  // MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
