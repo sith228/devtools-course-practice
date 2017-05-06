@@ -1,8 +1,8 @@
 // Copyright 2017 Kiparenko Ilya
 
-#include "include/symbolic_function.h"
-#include "gtest/gtest.h"
 #include <string>
+#include "gtest/gtest.h"
+#include "include/symbolic_function.h"
 
 TEST(symbolic_derivativeTest, Can_Parse_Simple_Expression) {
   EXPECT_NO_THROW(symbolic_function sym("a + b"));
