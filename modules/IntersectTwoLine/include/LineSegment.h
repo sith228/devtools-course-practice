@@ -22,22 +22,22 @@ class LineSegment2D {
         coeff_B = B;
         coeff_C = C;
     }
-    void Set_Coeff_A(double new_A) {
+    void Set_A(double new_A) {
         coeff_A = new_A;
     }
-    void Set_Coeff_B(double new_B) {
+    void Set_B(double new_B) {
         coeff_B = new_B;
     }
-    void Set_Coeff_C(double new_C) {
+    void Set_C(double new_C) {
         coeff_C = new_C;
     }
-    double Get_Coeff_A() {
+    double Get_A() {
         return coeff_A;
     }
-    double Get_Coeff_B() {
+    double Get_B() {
         return coeff_B;
     }
-    double Get_Coeff_C() {
+    double Get_C() {
         return coeff_C;
     }
     string checkIntersection(LineSegment2D lineSegment);
