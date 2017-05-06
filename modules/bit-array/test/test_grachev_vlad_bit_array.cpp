@@ -201,10 +201,10 @@ TEST(BitArrayTest, Assigned_Bit_Array_Has_Its_Own_Memory) {
 }
 
 TEST(BitArrayTest, Equal_Bit_Arrays_Are_Equal) {
-    //Arrange
+    // Arrange
     BitArray bitArray1(8), bitArray2(8);
 
-    //Act
+    // Act
     for (unsigned int i = 0; i < bitArray1.getSize(); i++) {
         if (i % 2 == 0) {
             bitArray1.setBit(i);
@@ -342,7 +342,7 @@ TEST(BitArrayTest, OR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     // Arrange
     BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
 
-    //Act
+    // Act
     bitArray1.setBit(2);
     bitArray1.setBit(3);
 
