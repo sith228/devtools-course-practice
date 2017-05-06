@@ -8,7 +8,7 @@ const int MAX_STACK_SIZE = 100000000;
 template <class ValType>
 class TStack {
  public:
-    explicit TStack(int _size = 0);
+    explicit TStack(int _size = MAX_STACK_SIZE );
     TStack(const TStack &v);
     ~TStack();
 
@@ -30,7 +30,7 @@ template <class ValType>
 TStack<ValType>::TStack(int _size) {
     if (_size < 0) {
         throw "Negative size";
-    } else if (_size > MAX_STACK_SIZE) {
+    } else if (_size > = MAX_STACK_SIZE) {
         throw "Size more than MAX_VECTOR_SIZE";
     } else {
         Top = -1;
