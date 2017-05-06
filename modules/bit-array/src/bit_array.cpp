@@ -6,9 +6,9 @@
 BitArray::BitArray(const int size) {
     if (size > 0) {
         size_ = size;
-        nBlocks_ = size / (blockSize_);
+        nBlocks_ = size / blockSize_;
         nBlocks_++;
-        if (size % (blockSize_) == 0)
+        if (size % blockSize_ == 0)
             nBlocks_--;
         memoryBlocks_ = new MemoryBlock[nBlocks_];
         for (unsigned int i = 0; i < nBlocks_; i++)
@@ -59,14 +59,14 @@ unsigned int BitArray::getSize() const {
 
 unsigned int BitArray::getBlockNumber
                        (const unsigned int globalBitNumber) const {
-    return globalBitNumber / (blockSize_);
+    return globalBitNumber / blockSize_;
 }
 
 
 
 unsigned int BitArray::getLocalBitNumber
                        (const unsigned int globalBitNumber) const {
-    return globalBitNumber % (blockSize_);
+    return globalBitNumber % blockSize_;
 }
 
 
