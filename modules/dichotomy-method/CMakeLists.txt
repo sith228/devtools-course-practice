@@ -17,4 +17,4 @@ add_subdirectory(test)
 ##### Testing
 #############################################
 
-include("CTestTests.txt")
+#include("CTestTests.txt")
