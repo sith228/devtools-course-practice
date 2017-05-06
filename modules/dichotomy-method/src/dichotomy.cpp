@@ -1,11 +1,9 @@
 // Copyright Kildishev Maxim 2017
 
 #include <include/dichotomy.h>
-#include <math.h>
 #include <iostream>
-
+#include <math.h>
 //За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
-
 double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
      double leftBorder, double rightBorder, double eps) {
     double funcValueLBorder = afactor*(leftBorder+bfactor)*
