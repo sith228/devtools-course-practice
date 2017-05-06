@@ -93,10 +93,10 @@ TEST(AreaConverterTest, check_meter_to_anything_convertion) {
         AreaConverter::yard)(temp));
 
     for (auto &v : r1) {
-        v = (std::trunc(v * Neighbourhood) / Neighbourhood);
+        v = static_cast<int>(v * Neighbourhood) / Neighbourhood;
     }
     for (auto &v : r2) {
-        v = (std::trunc(v * Neighbourhood) / Neighbourhood);
+        v = static_cast<int>(v * Neighbourhood) / Neighbourhood;
     }
 
     ASSERT_TRUE(r1 == r2);
