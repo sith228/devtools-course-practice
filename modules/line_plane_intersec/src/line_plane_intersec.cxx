@@ -18,6 +18,20 @@ Intersection::Intersection() {
     planeD_ = 1.0;
 }
 
+Intersection::Intersection(double x0, double y0, double z0, double dirx,
+    double diry, double dirz, double A, double B, double C, double D) {
+    linex0_ = x0;
+    liney0_ = y0;
+    linez0_ = z0;
+    linedirx_ = dirx;
+    linediry_ = diry;
+    linedirz_ = dirz;
+    planeA_ = A;
+    planeB_ = B;
+    planeC_ = C;
+    planeD_ = D;
+}
+
 Intersection::Intersection(std::vector<double>lineStart,
     std::vector<double>lineDirection, std::vector<double>plane) {
     linex0_ = lineStart[0];
@@ -32,6 +46,16 @@ Intersection::Intersection(std::vector<double>lineStart,
     planeD_ = plane[3];
 }
 
+void Intersection::SetLine(double x0, double y0, double z0,
+    double dirx, double diry, double dirz) {
+    linex0_ = x0;
+    liney0_ = y0;
+    linez0_ = z0;
+    linedirx_ = dirx;
+    linediry_ = diry;
+    linedirz_ = dirz;
+}
+
 void Intersection::SetLine(std::vector<double>lineStart,
     std::vector<double>lineDirection) {
     linex0_ = lineStart[0];
@@ -42,6 +66,21 @@ void Intersection::SetLine(std::vector<double>lineStart,
     linedirz_ = lineDirection[2];
 }
 
+void Intersection::SetLineWithTwoPoints(std::vector<double>point1,
+    std::vector<double>point2) {
+    if ((point1[0] == point2[0]) || (point1[1] == point2[1]) ||
+    (point1[2] == point2[2])) {
+        throw std::string("Incorrect input");
+    } else {
+        linex0_ = point1[0];
+        liney0_ = point1[1];
+        linez0_ = point1[2];
+        linedirx_ = point2[0]-point1[0];
+        linediry_ = point2[1]-point1[1];
+        linedirz_ = point2[2]-point1[2];
+    }
+}
+
 void Intersection::SetPlane(std::vector<double>plane) {
     planeA_ = plane[0];
     planeB_ = plane[1];
@@ -49,14 +88,40 @@ void Intersection::SetPlane(std::vector<double>plane) {
     planeD_ = plane[3];
 }
 
-void Intersection::SetLine(double x0, double y0, double z0,
-    double dirx, double diry, double dirz) {
-    linex0_ = x0;
-    liney0_ = y0;
-    linez0_ = z0;
-    linedirx_ = dirx;
-    linediry_ = diry;
-    linedirz_ = dirz;
+void Intersection::SetPlane(double A, double B, double C, double D) {
+    planeA_ = A;
+    planeB_ = B;
+    planeC_ = C;
+    planeD_ = D;
+}
+
+void Intersection::SetPlaneWithThreePoints(std::vector<double>point1,
+    std::vector<double>point2, std::vector<double>point3) {
+    std::vector<double> point12Vector(3);
+    std::vector<double> point13Vector(3);
+    std::vector<double> normalVec(3);
+    point12Vector[0] = point2[0]-point1[0];
+    point12Vector[1] = point2[1]-point1[1];
+    point12Vector[2] = point2[2]-point1[2];
+    point13Vector[0] = point3[0]-point1[0];
+    point13Vector[1] = point3[1]-point1[1];
+    point13Vector[2] = point3[2]-point1[2];
+    normalVec[0] = point12Vector[1]*point13Vector[2] -
+        point12Vector[2]*point13Vector[1];
+    normalVec[1] = point12Vector[0]*point13Vector[2] -
+        point12Vector[2]*point13Vector[0];
+    normalVec[2] = point12Vector[0]*point13Vector[1] -
+        point12Vector[1]*point13Vector[0];
+    if ((normalVec[0] == 0) && (normalVec[1] == 0) &&
+    (normalVec[2] == 0)) {
+        throw std::string("Incorrect input");
+    } else {
+        planeA_ = normalVec[0];
+        planeB_ = normalVec[1];
+        planeC_ = normalVec[2];
+        planeD_ = -normalVec[0]*point1[0] - normalVec[1]*point1[1] -
+            normalVec[2]*point1[2];
+    }
 }
 
 std::vector<double> Intersection::GetLine() {
@@ -77,27 +142,6 @@ std::vector<double> Intersection::GetPlane() {
     result[2] = planeC_;
     result[3] = planeD_;
     return result;
-}
-
-void Intersection::SetPlane(double A, double B, double C, double D) {
-    planeA_ = A;
-    planeB_ = B;
-    planeC_ = C;
-    planeD_ = D;
-}
-
-Intersection::Intersection(double x0, double y0, double z0, double dirx,
-    double diry, double dirz, double A, double B, double C, double D) {
-    linex0_ = x0;
-    liney0_ = y0;
-    linez0_ = z0;
-    linedirx_ = dirx;
-    linediry_ = diry;
-    linedirz_ = dirz;
-    planeA_ = A;
-    planeB_ = B;
-    planeC_ = C;
-    planeD_ = D;
 }
 
 std::vector<double> Intersection::CalculateIntersection() {

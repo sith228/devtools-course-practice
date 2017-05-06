@@ -156,3 +156,88 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetPlane_Vec_Works_Correct) {
     // Assert
     EXPECT_EQ(Intersec.GetPlane(), expected);
 }
+
+TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetLine_With_Two_Points_Correct) {
+    // Arrange
+    Intersection Intersec;
+    std::vector<double> expected(6);
+    std::vector<double> point1(3);
+    std::vector<double> point2(3);
+    point1[0] = 6;
+    point1[1] = 5;
+    point1[2] = 4;
+    point2[0] = 9;
+    point2[1] = 7;
+    point2[2] = 5;
+    expected[0] = 6;
+    expected[1] = 5;
+    expected[2] = 4;
+    expected[3] = 3;
+    expected[4] = 2;
+    expected[5] = 1;
+    // Act
+    Intersec.SetLineWithTwoPoints(point1, point2);
+    // Assert
+    EXPECT_EQ(Intersec.GetLine(), expected);
+}
+
+TEST(Lapin_Artem_Line_Plane_Intersec_Test, Do_Throw_When_Line_Input_Incorrect) {
+    // Arrange
+    Intersection Intersec;
+    std::vector<double> point1(3);
+    std::vector<double> point2(3);
+    point1[0] = 6;
+    point1[1] = 5;
+    point1[2] = 4;
+    point2[0] = 6;
+    point2[1] = 5;
+    point2[2] = 4;
+    // Act & Assert
+    EXPECT_THROW(Intersec.SetLineWithTwoPoints(point1, point2), std::string);
+}
+
+TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetPlane_With_Three_Points_Correct) {
+    // Arrange
+    Intersection Intersec;
+    std::vector<double> expected(4);
+    std::vector<double> point1(3);
+    std::vector<double> point2(3);
+    std::vector<double> point3(3);
+    point1[0] = -3;
+    point1[1] = 2;
+    point1[2] = -1;
+    point2[0] = -1;
+    point2[1] = 2;
+    point2[2] = 4;
+    point3[0] = 3;
+    point3[1] = 3;
+    point3[2] = -1;
+    expected[0] = -5;
+    expected[1] = 30;
+    expected[2] = 2;
+    expected[3] = -73;
+    // Act
+    Intersec.SetPlaneWithThreePoints(point1, point2, point3);
+    // Assert
+    EXPECT_EQ(Intersec.GetPlane(), expected);
+}
+
+TEST(Lapin_Artem_Line_Plane_Intersec_Test, Do_Throw_When_Plane_Input_Incorrect) {
+    // Arrange
+    Intersection Intersec;
+    std::vector<double> expected(4);
+    std::vector<double> point1(3);
+    std::vector<double> point2(3);
+    std::vector<double> point3(3);
+    point1[0] = 5;
+    point1[1] = -8;
+    point1[2] = -2;
+    point2[0] = 1;
+    point2[1] = -2;
+    point2[2] = 0;
+    point3[0] = -1;
+    point3[1] = 1;
+    point3[2] = 1;
+    // Act & Assert
+    EXPECT_THROW(Intersec.SetPlaneWithThreePoints(point1, point2, point3), std::string);
+}
