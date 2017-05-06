@@ -47,8 +47,7 @@ namespace Types {
 enum Type {
   SYMBOL   = 0,
   NUMBER   = 1,
-  FUNCTION = 2,
-  EMPTY    = 3
+  FUNCTION = 2
 };
 
 struct Node {

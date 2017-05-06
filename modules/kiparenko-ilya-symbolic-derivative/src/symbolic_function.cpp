@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stack>
 #include <string>
+#inlcude <utility>
 
 using std::string;
 using std::cout;
@@ -36,7 +37,7 @@ void symbolic_function::print_list(Node* root) {
 }
 
 void symbolic_function::print_node(Node* root) {
-  if (root == 0){
+  if (root == 0) {
     cout << "\t(\\0)\n";
   } else {
     cout << "\t(";
@@ -57,7 +58,7 @@ void symbolic_function::print_node(Node* root) {
 
 
 string symbolic_function::print_tree(Node* root) {
-  if (root != 0)
+  if (root != 0) {
     switch (root->type) {
       case NUMBER:
         return std::to_string(root->real_value);
@@ -67,13 +68,18 @@ string symbolic_function::print_tree(Node* root) {
         break;
       case FUNCTION:
         if (nargs.at(root->op_type) == 2)
-          return "(" + print_tree(root->left) + func_names.at(root->op_type) + print_tree(root->right) + ")";
+          return "(" + 
+                  print_tree(root->left) + 
+                  func_names.at(root->op_type) + 
+                  print_tree(root->right) + 
+                 ")";
         else
-          return func_names.at(root->op_type) + "(" + print_tree(root->right) + ")";
+          return func_names.at(root->op_type) +
+                "(" + print_tree(root->right) + ")";
         break;
     }
-  else
-    return "(\\0)";
+  } else
+    return "(0)";
 }
 
 symbolic_function::symbolic_function(string s) {
@@ -87,12 +93,10 @@ symbolic_function::~symbolic_function() {
 }
 
 symbolic_function::symbolic_function() {
-
 }
 
 symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
   root = copy_tree(sym.root);
-  cout << print_tree(root);
   symbols = sym.symbols;
   return (*this);
 }
@@ -109,7 +113,7 @@ symbolic_function symbolic_function::derivative(string variable) {
 Node* symbolic_function::parse(string s) {
   string ops_regex = "\\+|\\-|\\*|\\/|\\^|\\(|\\)|log|sin|cos";
 
-  s = regex_replace(s, std::regex("\\s+"), "");
+  s = regex_replace(s, std::regex("\\s+"), string(""));
 
   std::regex check_ops(ops_regex);
   std::regex check_symbol("[a-z]\\w*"), check_number("[\\d\\.]+");
@@ -176,7 +180,7 @@ Node* symbolic_function::to_postfix_form(Node* root) {
             st.pop();
           }
           if (top->op_type != L_BRACE)
-            throw string ("wrong braces");
+            throw string("wrong braces");
           break;
         }
         default: {
@@ -209,11 +213,11 @@ Node* symbolic_function::to_postfix_form(Node* root) {
   return out_t;
 }
 
-Node* my_pop(stack<Node*>& st) {
-  if (st.empty())
+Node* my_pop(stack<Node*>* st) {
+  if (st->empty()) {
     throw std::out_of_range("stack underlow");
-  else {
-    Node* t = st.top(); st.pop();
+  } else {
+    Node* t = st->top(); st->pop();
     return t;
   }
 }
@@ -226,10 +230,10 @@ Node* symbolic_function::postfix_to_AST(Node* root) {
     if (t->type == FUNCTION) {
       Node* new_token = t;
       t = t->left;
-      new_token->right = my_pop(st);
-      if (nargs.at(new_token->op_type) > 1) {
-        new_token->left = my_pop(st);
-      } else
+      new_token->right = my_pop(&st);
+      if (nargs.at(new_token->op_type) > 1)
+        new_token->left = my_pop(&st);
+      else
         new_token->left = 0;
       st.push(new_token);
 
@@ -240,7 +244,7 @@ Node* symbolic_function::postfix_to_AST(Node* root) {
       st.push(new_token);
     }
   }
-  out = my_pop(st);
+  out = my_pop(&st);
   if (!st.empty())
     throw string("syntax error");
   return out;
@@ -259,14 +263,15 @@ Node* symbolic_function::evaluate(Node* root) {
         st.push(new_pair);
         st.push(std::make_pair(next_token->left, 0));
         st.push(std::make_pair(next_token->right, 0));
-      } else
+      } else {
         if (next_token->type == FUNCTION) {
           Node* l = next_token->left;
           Node* r = next_token->right;
           if (r->type == NUMBER) {
             if (nargs.at(next_token->op_type) == 1) {
               double r_number = r->real_value;
-              double new_number = real_funcs.at(next_token->op_type)(r_number, 0);
+              double new_number = 
+                       real_funcs.at(next_token->op_type)(r_number, 0);
 
               next_token->type = NUMBER;
               next_token->real_value = new_number;
@@ -276,7 +281,8 @@ Node* symbolic_function::evaluate(Node* root) {
             } else if (l->type == NUMBER) {
               double l_number = l->real_value;
               double r_number = r->real_value;
-              double new_number = real_funcs.at(next_token->op_type)(l_number, r_number);
+              double new_number = 
+                       real_funcs.at(next_token->op_type)(l_number, r_number);
 
               next_token->type = NUMBER;
               next_token->real_value = new_number;
@@ -289,6 +295,7 @@ Node* symbolic_function::evaluate(Node* root) {
             next_token->right = r;
           }
         }
+      }
     }
   }
   return root;
@@ -311,11 +318,12 @@ Node* symbolic_function::copy_tree(Node* root) {
   if (root != 0) {
     Node* out = new Node();
     *out = *root;
-    out->left = copy_tree(root->left);
-    out->right= copy_tree(root->right);
+    out->left  = copy_tree(root->left);
+    out->right = copy_tree(root->right);
     return out;
-  } else
+  } else {
     return 0;
+  }
 }
 
 
@@ -342,11 +350,11 @@ Node* symbolic_function::derivative(Node* root, string variable) {
               return 0;
               break;
             case 1:  // a' = 0
-              if (root->op_type == SUB) {
+              if (root->op_type == SUB)
                 return cr_Op_node(MUL,
                          cr_Number_node(-1.0),
                          r_der);                // -b'
-              } else
+              else
                 return r_der;
               break;
             case 2:  // b' = 0
@@ -383,7 +391,7 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                   // del_tree(temp_l)
                   return cr_Op_node(DIV,
                            l_der,
-                           temp_r// a'/b
+                           temp_r  // a'/b
                          );
                   break;
                 case 1:  // a' = 0
@@ -391,13 +399,13 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                     cr_Op_node(DIV,
                       cr_Op_node(POW,
                         temp_r,
-                        cr_Number_node(2.0)      // b^2
-                      ),
+                        cr_Number_node(2.0))     // b^2
+                      ,  // )
                       cr_Op_node(MUL,
                         cr_Number_node(-1.0),
-                        cr_Op_node(MUL, temp_l, r_der)    // - a*b'
-                      )
-                    );
+                        cr_Op_node(MUL, temp_l, r_der)));    // - a*b'
+                      // )
+                    // );
                   break;
               }
               break;
@@ -407,8 +415,8 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                   return
                     cr_Op_node(ADD,
                       cr_Op_node(MUL, l_der, temp_r),  // a'* b
-                      cr_Op_node(MUL, temp_l, r_der)  // a * b'
-                    );
+                      cr_Op_node(MUL, temp_l, r_der));  // a * b'
+                    // );
                 case 2:  // b' = 0
                   // del_tree(temp_l)
                   return
@@ -428,14 +436,14 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                       cr_Op_node(ADD,
                         cr_Op_node(MUL,
                           r_der,
-                          cr_Op_node(LOG, 0, temp_l)  // b' * log(a)
-                        ),
+                          cr_Op_node(LOG, 0, temp_l))     // b' * log(a)
+                        ,  // ),
                         cr_Op_node(MUL,
                           temp_r,
-                          cr_Op_node(DIV, l_der, temp_l)  // b * a'/a
-                        )
-                      )
-                    );  // a^b * (b' * log(a) + b * a' / a)
+                          cr_Op_node(DIV, l_der, temp_l))));  // b * a'/a
+                        // )
+                      // )
+                    // );  // a^b * (b' * log(a) + b * a' / a)
                 case 2:  // b' = 0
                   return
                     cr_Op_node(MUL,
@@ -445,12 +453,12 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                           temp_l,
                           cr_Op_node(SUB,
                             temp_r,
-                            cr_Number_node(1.0)    // b - 1
-                          )
-                        ),
-                        l_der
-                      )
-                    );  // b * a^(b-1) * a'
+                            cr_Number_node(1.0)))    // b - 1
+                          //)
+                        ,  // ),
+                        l_der));
+                      // )
+                    // );  // b * a^(b-1) * a'
                 case 1:  // a' = 0
                   // del_tree(temp_r);
                   return
@@ -458,9 +466,9 @@ Node* symbolic_function::derivative(Node* root, string variable) {
                       copy_tree(root),
                       cr_Op_node(MUL,
                         r_der,
-                        cr_Op_node(LOG, 0, temp_l)  // b' * log(a)
-                      )
-                    );  // a^b * b' * log(a)
+                        cr_Op_node(LOG, 0, temp_l)));  // b' * log(a)
+                      // )
+                    // );  // a^b * b' * log(a)
               }
               break;
           }
@@ -479,8 +487,8 @@ Node* symbolic_function::derivative(Node* root, string variable) {
               new_root->left =
                 cr_Op_node(MUL,
                   cr_Number_node(-1.0),
-                  cr_Op_node(SIN, 0, temp_r)  // -sin(a)
-                );
+                  cr_Op_node(SIN, 0, temp_r));  // -sin(a)
+                // );
               break;
             case SIN:  // sin(a)
               new_root->left =
@@ -490,8 +498,8 @@ Node* symbolic_function::derivative(Node* root, string variable) {
               new_root->left =
                 cr_Op_node(DIV,
                   cr_Number_node(1.0),
-                  temp_r                 // 1/a
-                );
+                  temp_r);                 // 1/a
+                // );
               break;
           }
           // f'(a) * a';

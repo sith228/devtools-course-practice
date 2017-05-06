@@ -33,7 +33,7 @@ Node* Types::cr_Op_node(Op op_type, Node* left, Node* right) {
 
 Node* Types::cr_Empty_node(Node* left, Node* right) {
   Node* t = new Node();
-  t->type = EMPTY;
+  t->type = NUMBER;
   t->left = left;
   t->right = right;
   return t;

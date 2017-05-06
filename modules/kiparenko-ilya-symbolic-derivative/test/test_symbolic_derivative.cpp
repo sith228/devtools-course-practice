@@ -39,7 +39,7 @@ TEST(test_symbolic_derivative, Can_Parse_Its_Own_Representation) {
 
   EXPECT_EQ(sym_2.to_string(), sym.to_string());
 }
-/*
+
 TEST(test_symbolic_derivative, Derivative_Of_X_Is_One) {
   symbolic_function sym("x");
   symbolic_function sym_dx;
@@ -55,4 +55,3 @@ TEST(test_symbolic_derivative, Derivative_Of_Not_X_Is_Zero) {
   EXPECT_NO_THROW(sym_dx = sym.derivative("x"));
   EXPECT_EQ(stod(sym_dx.to_string()), 0.0);
 }
-*/
