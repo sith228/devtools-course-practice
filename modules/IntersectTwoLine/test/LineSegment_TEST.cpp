@@ -62,8 +62,8 @@ TEST(LineSegment, Get_B_Value_Works_Correctly) {
 
 TEST(LineSegment, Get_C_Value_Works_Correctly) {
   LineSegment2D line(-3.0, -4.0, 5.28);
-  double ch = line.Get_B();
-  ASSERT_DOUBLE_EQ(5.28, line.Get_C());
+  double ch = line.Get_C();
+  ASSERT_DOUBLE_EQ(5.28, ch);
 }
 
 TEST(LineSegment, Get_Value_Test) {
