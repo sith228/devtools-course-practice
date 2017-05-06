@@ -1,5 +1,6 @@
 
 #include <gtest/gtest.h>
+#include <vector>
 #include "include/area_converter.h"
 
 static const double Neighbourhood = 0.0000001;
@@ -37,4 +38,20 @@ TEST(AreaConverterTest, is_negative_size_area_works_correct)
     AreaConverter c = AreaConverter(AreaConverter::meter, AreaConverter::inch);
     
     EXPECT_ANY_THROW(c(-2.1718));
+}
+
+TEST(AreaConverterTest, check_convert_multiple_times_with_different_arguments)
+{
+    AreaConverter c = AreaConverter(AreaConverter::centimeter, AreaConverter::acr);
+    int size = 10;
+    double delta = 0.25;
+    std::vector<double> r1(size);
+    std::vector<double> r2(size);
+
+    for (int i = 0; i < size; ++i) {
+        r1.push_back(c(i * delta));
+        r2.push_back(AreaConverter(AreaConverter::centimeter, AreaConverter::acr)(i * delta));
+    }
+
+    ASSERT_TRUE(r1 == r2);
 }
