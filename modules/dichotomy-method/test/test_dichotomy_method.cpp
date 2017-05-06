@@ -18,7 +18,7 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Incorrect_Right_Border) {
     EXPECT_ANY_THROW(obj.findMin(1, 0, 0, 1, 0.5, 0.01));
 }
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Close_Values) {
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Too_Close_Values) {
     Dichotomy obj;
     EXPECT_ANY_THROW(obj.findMin(1, 0, 0, 0.5, 0.5, 0.01));
 }
@@ -29,14 +29,14 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Throw_When_Function_Is_Zero) {
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
-     Throw_When_Function_Args_Higher_Then_INTMAX) {
+     Throw_When_Factor_Too_Large) {
          Dichotomy obj;
          EXPECT_ANY_THROW(obj.findMin(999999999 + 1, 999999999 + 1,
              999999999 + 1, -1, 1, 0.01));
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
-     Throw_When_Function_Args_Lower_Then_INTMIN) {
+     Throw_When_Factor_To_Small) {
          Dichotomy obj;
          EXPECT_ANY_THROW(obj.findMin(-999999999 + 1, -999999999 + 1,
              -999999999 + 1, -1, 1, 0.01));
