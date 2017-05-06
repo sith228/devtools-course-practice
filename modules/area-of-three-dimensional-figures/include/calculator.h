@@ -22,11 +22,11 @@ class Calculator {
      double Calc_Tetra(double _a, double _b, double _c, double _l);
 
  private:
-     double S;
+     double S_;
 
-     bool Is_positive_parameter(double _a);
-     bool Check_for_Heron(double _a, double _b, double _c);
-     bool Check_positives(double massive_parameters[], int size);
+     bool Is_Positive_Parameter(double _a);
+     bool Check_For_Heron(double _a, double _b, double _c);
+     bool Check_Positives(double massive_parameters[], int size);
      double Calc_Heron(double _a, double _b, double _c);
 };
 
