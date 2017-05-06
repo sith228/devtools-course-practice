@@ -1,5 +1,7 @@
-#ifndef SYMBOLIC_FUNCTION_H
-#define SYMBOLIC_FUNCTION_H
+// Copyright 2017 Kiparenko Ilya
+
+#ifndef MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
+#define MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
 
 #include <string>
 #include <vector>
@@ -7,7 +9,9 @@
 
 #include "types_and_consts.h"
 
-using namespace std;
+using std::vector;
+using std::string;
+using Types::Node;
 
 using namespace Types;
 
@@ -39,4 +43,4 @@ private:
   string print_tree(Node* root);
 };
 
-#endif // SYMBOLIC_FUNCTION_H
+#endif // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_

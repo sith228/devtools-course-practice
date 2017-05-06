@@ -237,7 +237,6 @@ Node* symbolic_function::postfix_to_AST(Node* root) {
 
 Node* symbolic_function::evaluate(Node* root) {
   stack<pair<Node*, int> > st;
-  Node* out;
   st.push(make_pair(root, 0));
   while (!st.empty()) {
     pair<Node*, int> new_pair = st.top(); st.pop();
