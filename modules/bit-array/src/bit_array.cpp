@@ -194,7 +194,7 @@ bool BitArray::operator != (const BitArray& bitArray) const {
 
 
 
-std::string BitArray::toString() {
+std::string BitArray::toString() const {
     std::string outputString;
     for (int i = size_ - 1; i >= 0; i--)
     if (getBit(i) == 1)
