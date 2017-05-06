@@ -41,12 +41,11 @@ TEST(symbolic_derivativeTest, Can_Parse_Its_Own_Representation) {
 }
 
 TEST(symbolic_derivativeTest, Can_Parse_Really_Complex_Expression) {
-
-  symbolic_function sym(
-    "1 + 3/4/sin(x+log(x)/2.0)*cos(4.0)^(5.0-x) - \
-    (1-x)^(x) + sin(2*x*3*cos(2*x))");
+  std::string s = "1 + 3/4/sin(x+log(x)/2.0)*cos(4.0)^(5.0-x)";
+  s +=            "-(1-x)^(x) + sin(2*x*3*cos(2*x))";
+  symbolic_function sym(s);
   symbolic_function sym_2(sym.to_string());
-  std::cout << sym.to_string() << std::endl;
+
   EXPECT_EQ(sym_2.to_string(), sym.to_string());
 }
 

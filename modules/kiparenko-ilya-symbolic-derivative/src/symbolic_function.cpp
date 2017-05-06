@@ -2,7 +2,6 @@
 
 #include "include/symbolic_function.h"
 #include <cctype>
-#include <regex>
 #include <iostream>
 #include <stack>
 #include <string>
@@ -87,9 +86,9 @@ Node* symbolic_function::parse(string s) {
       i++;
     } else {
       if (token_state == -1) {
-        if (isalpha(ch))
+        if (isalpha(ch)) {
           token_type = 2;
-        else
+        } else {
           if (isdigit(ch) || ch == '.') {
             token_type = 1;
           } else {
@@ -104,12 +103,13 @@ Node* symbolic_function::parse(string s) {
               throw string("Unknown token");
             }
           }
+        }
         buf[buf_pos++] = ch;
         token_state = 0;
         i++;
       } else {
         if (token_type == 1) {
-          while(i < s.size() && isdigit(ch) || ch == '.') {
+          while (i < s.size() && isdigit(ch) || ch == '.') {
             buf[buf_pos++] = ch;
             i++;
             ch = s[i];
@@ -120,7 +120,7 @@ Node* symbolic_function::parse(string s) {
           buf_pos = 0;
           token_state = -1;
         } else {
-          while(i < s.size() && isalnum(ch)) {
+          while (i < s.size() && isalnum(ch)) {
             buf[buf_pos++] = ch;
             i++;
             ch = s[i];
