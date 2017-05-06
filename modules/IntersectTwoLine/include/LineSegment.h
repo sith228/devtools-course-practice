@@ -41,4 +41,4 @@ public:
     }
     string checkIntersection(LineSegment2D lineSegment);
 };
-#endif
+#endif // MODULES_LINESEGMENT_INCLUDE_LINESEGMENT_H_
