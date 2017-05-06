@@ -2,14 +2,14 @@
 
 #include "include/SearchTree.h"
 
-SearchTree::SearchTree() : root(0) {}
+SearchTree::SearchTree() : root_(0) {}
 
 SearchTree::~SearchTree() {
-    recursiveDeletion(&root);
+    recursiveDeletion(&root_);
 }
 
 const Node* SearchTree::search(const double key) const {
-    Node* currentNode = root;
+    Node* currentNode = root_;
     if (currentNode == 0) {
         throw "search: Tree is empty!";
     }
@@ -26,11 +26,11 @@ const Node* SearchTree::search(const double key) const {
 }
 
 const Node* SearchTree::findMin() const {
-    return findMin(root);
+    return findMin(root_);
 }
 
 const Node* SearchTree::findMax() const {
-    return findMax(root);
+    return findMax(root_);
 }
 
 const Node* SearchTree::findMin(const Node* const node) const {
@@ -110,15 +110,15 @@ void SearchTree::insert(const double key) {
     node->right = 0;
     node->parent = 0;
 
-    if (root == 0) {
-        root = node;
+    if (root_ == 0) {
+        root_ = node;
         return;
     }
     if (search(key) != 0) {
         throw "insert: Already have such key!";
     }
 
-    Node* currentNode = root;
+    Node* currentNode = root_;
     Node* tmpParentNode;
     while (currentNode != 0) {
         tmpParentNode = currentNode;
@@ -178,11 +178,11 @@ void SearchTree::erase(const double key) {
 }
 
 void SearchTree::clear() {
-    recursiveDeletion(&root);
+    recursiveDeletion(&root_);
 }
 
 bool SearchTree::isEmpty() const {
-    if (root != 0) {
+    if (root_ != 0) {
         return 0;
     } else {
         return 1;
@@ -190,7 +190,7 @@ bool SearchTree::isEmpty() const {
 }
 
 const int SearchTree::size() const {
-    return recursiveSize(root);
+    return recursiveSize(root_);
 }
 
 void SearchTree::recursiveDeletion(Node** const node) {

@@ -33,7 +33,7 @@ class SearchTree {
      const int size() const;
 
  protected:
-     Node* root;
+     Node* root_;
 
      const Node* findPrev(const Node* const node) const;
      const Node* findNext(const Node* const node) const;
