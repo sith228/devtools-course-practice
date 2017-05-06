@@ -20,12 +20,12 @@ class Node {
 
     Node(char _symbol, int _count);
 
-    Node(Node *_left, Node *_right);
+    Node(Node* _left, Node* _right);
 
     bool operator == (Node const & a) const;
 };
 
-bool SortNode(const Node *a, const Node *b);
+bool SortNode(const Node* a, const Node* b);
 
 class Huffman {
  public:
@@ -36,20 +36,20 @@ class Huffman {
                        const std::map<char, std::vector<bool> >& _table);
 
  private:
-    std::string input_string;
+    std::string input_string_;
 
-    void CheckInputEncode(const std::string &_string,
+    void CheckInputEncode(const std::string& _string,
                           const std::map<char, std::vector<bool> >& _table);
 
-    void CheckInputDecode(const std::string &_string,
+    void CheckInputDecode(const std::string& _string,
                           const std::map<char, std::vector<bool> >& _table);
 
     void CreateTree(std::list<Node*>* trees);
 
-    void CreateTable(Node *root, std::vector<bool>* code,
+    void CreateTable(Node* root, std::vector<bool>* code,
                      std::map<char, std::vector<bool> >* table);
 
-    std::string Decode_reverse_table(const std::string &str,
+    std::string DecodeReverseTable(const std::string& str,
                                      std::map<std::vector<bool>, char>* table);
 };
 
