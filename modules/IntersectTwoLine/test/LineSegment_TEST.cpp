@@ -67,7 +67,7 @@ TEST(LineSegment, Get_C_Value_Works_Correctly) {
 }
 
 TEST(LineSegment, Get_Value_Test) {
-  LineSegment2D line(4.22, 4.22, 4.22);
+  LineSegment2D line(2.22, 2.22, 2.22);
   double a = line.Get_A();
   double b = line.Get_B();
   double c = line.Get_C();
