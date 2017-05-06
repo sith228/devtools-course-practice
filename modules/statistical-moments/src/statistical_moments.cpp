@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <vector>
 
-bool StatisticalMoments::isChanceValid(const std::vector<double>& values,
+bool StatisticalMoments::IsChanceValid(const std::vector<double>& values,
     const std::vector<double>& chances) {
     for (unsigned int i = 0; i < chances.size(); i++) {
         if ((chances[i] < 0) || (chances[i] > 1))
@@ -16,7 +16,7 @@ bool StatisticalMoments::isChanceValid(const std::vector<double>& values,
     return true;
 }
 
-bool StatisticalMoments::isChancesDistributionRow(
+bool StatisticalMoments::IsChancesDistributionRow(
     const std::vector<double>& values, const std::vector<double>& chances) {
     double tmp_sum = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
@@ -25,7 +25,7 @@ bool StatisticalMoments::isChancesDistributionRow(
     return std::fabs(tmp_sum-1)<std::numeric_limits<double>::epsilon();
 }
 
-void StatisticalMoments::checkingInputData(const std::vector<double>& values,
+void StatisticalMoments::CheckingInputData(const std::vector<double>& values,
     const std::vector<double>& chances) {
     if (values.empty() && chances.empty()) {
         throw std::runtime_error("Both vectors are empty");
@@ -39,18 +39,18 @@ void StatisticalMoments::checkingInputData(const std::vector<double>& values,
     if (chances.size() != values.size()) {
         throw std::runtime_error("values and chances must have equals size");
     }
-    if (!isChanceValid(values, chances)) {
+    if (!IsChanceValid(values, chances)) {
         throw std::runtime_error("One of chances is out in range [0,1]");
     }
-    if (!isChancesDistributionRow(values, chances)) {
+    if (!IsChancesDistributionRow(values, chances)) {
         throw std::runtime_error("sum of chances isn't equals 1");
     }
 }
 
-double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
+double StatisticalMoments::GetCustomMoment(const std::vector<double>& values,
     const std::vector<double>& chances, unsigned int order,
     unsigned int offset) {
-    checkingInputData(values, chances);
+    CheckingInputData(values, chances);
     double moment = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
@@ -60,19 +60,19 @@ double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
     }
     return moment;
 }
-double StatisticalMoments::getExpectancy(const std::vector<double>& values,
+double StatisticalMoments::GetExpectancy(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    checkingInputData(values, chances);
+    CheckingInputData(values, chances);
     double expectansy = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
         expectansy += values[i] * chances[i];
     }
     return expectansy;
 }
-double StatisticalMoments::getDispersion(const std::vector<double>& values,
+double StatisticalMoments::GetDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    checkingInputData(values, chances);
-    double expectansy = StatisticalMoments::getExpectancy(values, chances);
+    CheckingInputData(values, chances);
+    double expectansy = StatisticalMoments::GetExpectancy(values, chances);
     double dispersion = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
         dispersion += pow(values[i] - expectansy, 2)*chances[i];
