@@ -20,7 +20,7 @@ class TStack {
     bool CheckFull() const;
     bool CheckEmpty() const;
 
-    TStack<ValType>& TStack<ValType>::operator=(const TStack& s);
+    TStack& operator=(const TStack& s);
 
  private:
     ValType *pVector_;
@@ -117,7 +117,7 @@ bool TStack<ValType>::CheckEmpty() const {
 }
 
 template <class ValType>
-TStack<ValType>& TStack<ValType>::operator=(const TStack& s) {
+TStack<ValType>& TStack<ValType>::operator=(const TStack<ValType>& s) {
     if (pVector_ == s.pVector_) {
         return *this;
     }
