@@ -22,7 +22,7 @@ class symbolic_function {
   ~symbolic_function();
 
  private:
-  Node* root_ = 0;
+  Node* root_;
   vector<string> symbols_;
 
   Node*  Parse(string s);

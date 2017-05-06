@@ -52,6 +52,7 @@ symbolic_function::~symbolic_function() {
 }
 
 symbolic_function::symbolic_function() {
+  root_ = 0;
 }
 
 symbolic_function& symbolic_function::operator=(symbolic_function sym) {
