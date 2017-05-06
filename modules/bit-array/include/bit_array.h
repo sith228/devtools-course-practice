@@ -6,6 +6,7 @@
 #include <string>
 
 typedef unsigned int MemoryBlock;
+const int blockSize = sizeof(MemoryBlock)* 8;
 
 class BitArray {
  public:
@@ -36,8 +37,11 @@ class BitArray {
     MemoryBlock getMask(const unsigned int globalBitNumber) const;
 
     unsigned int size_;
-    MemoryBlock* memoryBlocks_;
+
     unsigned int nBlocks_;
+    MemoryBlock* memoryBlocks_;
+    const int blockSize_ = sizeof(MemoryBlock) * 8;
+
 };
 
 #endif  // MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_
