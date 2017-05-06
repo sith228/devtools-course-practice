@@ -6,9 +6,9 @@
 
 
 bool CreditCalculator::check_data(int amount, int period,
-    double interest, int month_pas) {
+    double interest, unsigned int month_pas) {
     check_data(amount, period, interest);
-    if (month_pas > period) {
+    if (month_pas > (unsigned)period) {
         throw std::runtime_error("Entered month_pas is incorrect");
     }
 }
