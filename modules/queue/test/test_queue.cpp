@@ -27,14 +27,14 @@ TEST(Queue, can_be_equated_two_queues) {
     // Arrange
     Queue<int> Q1(10);
     Queue<int> Q2(5);
-    // Act
     for (int i = 0; i < 10; i++)
         Q1.Push(10);
     for (int j = 0; j < 5; j++)
         Q2.Push(9);
+    // Act 
     Q1 = Q2;
     // Assert
-    EXPECT_EQ(Q1 == Q2, true);
+    EXPECT_EQ(true, Q1 == Q2);
 }
 
 TEST(Queue, can_be_equated_by_itself) {
@@ -43,15 +43,15 @@ TEST(Queue, can_be_equated_by_itself) {
     // Act
     Q1 = Q1;
     // Assert
-    EXPECT_EQ(Q1 == Q1, true);
+    EXPECT_EQ(true, Q1 == Q1);
 }
 
 TEST(Queue, cant_add_elem_into_full_queue) {
     // Arrange
     Queue<int> Q(9);
-    // Act
     for (int i = 0; i < 9; i++)
         Q.Push(10);
+    // Act 
     // Assert
     EXPECT_ANY_THROW(Q.Push(11));
 }
@@ -75,13 +75,13 @@ TEST(Queue, can_create_copy_of_Queue) {
 TEST(Queue, can_take_element_from_queue) {
     // Arrange
     Queue<int> Q(3);
-    // Act
     Q.Push(1);
     Q.Push(2);
     Q.Push(3);
-    // Assert
+    // Act
     int expRes = 1;
-    EXPECT_EQ(Q.Pop(), expRes);
+    // Assert
+    EXPECT_EQ(expRes, Q.Pop());
 }
 
 TEST(Queue, cant_push_element_in_deleted_queue) {
@@ -113,11 +113,11 @@ TEST(Queue, can_push_element_in_queue) {
 TEST(Queue, check_is_full) {
     // Arrange
     Queue<int> Q(4);
-    // Act
     for (int i = 0; i < 4; i++)
         Q.Push(i);
+    // Act
     // Assert
-    EXPECT_EQ(Q.IsFull(), true);
+    EXPECT_EQ(true, Q.IsFull());
 }
 
 TEST(Queue, check_is_empty) {
@@ -125,15 +125,40 @@ TEST(Queue, check_is_empty) {
     Queue<int> Q(10);
     // Act
     // Assert
-    EXPECT_EQ(Q.IsEmpty(), true);
+    EXPECT_EQ(true, Q.IsEmpty());
 }
 
 TEST(Queue, check_is_empty_after_push_and_pop) {
     // Arrange
     Queue<int> Q(3);
-    // Act
     Q.Push(5);
     Q.Pop();
+    // Act
     // Assert
-    EXPECT_EQ(Q.IsEmpty(), true);
+    EXPECT_EQ(true, Q.IsEmpty());
+}
+
+TEST(Queue, can_return_begin_elem) {
+	// Arrange
+	Queue<int> Q(3);
+	int elem;
+	Q.Push(5);
+	Q.Push(2);
+	// Act
+	elem = Q.Top();
+	// Assert
+	EXPECT_EQ(5, elem);
+}
+
+TEST(Queue, can_return_begin_elem_without_changes) {
+    // Arrange
+    Queue<int> Q(3);
+    int elem;
+    Q.Push(5);
+    Q.Push(2);
+    Q.Push(3);
+    // Act
+    elem = Q.Top();
+    // Assert
+    EXPECT_EQ(Q.IsFull(), true);
 }
