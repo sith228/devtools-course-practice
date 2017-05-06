@@ -6,6 +6,12 @@
 
 static const double Neighbourhood = 0.0000001;
 
+TEST(AreaConverterTest, can_create_converter_unit) {
+    EXPECT_NO_THROW(new AreaConverter(AreaConverter::centimeter,
+        AreaConverter::meter));
+}
+
+
 TEST(AreaConverterTest, check_create_converter_unit) {
     AreaConverter c = AreaConverter(AreaConverter::centimeter,
                                     AreaConverter::meter);
@@ -51,6 +57,43 @@ TEST(AreaConverterTest, check_convert_multiple_times_with_different_arguments) {
         r1.push_back(c(i * delta));
         r2.push_back(AreaConverter(AreaConverter::centimeter,
                                     AreaConverter::acr)(i * delta));
+    }
+
+    ASSERT_TRUE(r1 == r2);
+}
+
+TEST(AreaConverterTest, check_meter_to_anything_convertion) {
+    std::vector<double> r1;
+    std::vector<double> r2;
+    double temp = 1;
+
+    r2.push_back(0.0002471054); //acr
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::acr)(temp));
+    r2.push_back(10000.);//centimeter
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::centimeter)(temp));
+    r2.push_back(100.);//decimeter
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::decimeter)(temp));
+    r2.push_back(0.0001);//hectare
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::hectare)(temp));
+    r2.push_back(1550.0031);//inch
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::inch)(temp));
+    r2.push_back(1.);//meter
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::meter)(temp));
+    r2.push_back(1.1959900463);//yard
+    r1.push_back(AreaConverter(AreaConverter::meter,
+        AreaConverter::yard)(temp));
+
+    for (auto &v : r1) {
+        v = (std::trunc(v * Neighbourhood) / Neighbourhood);
+    }
+    for (auto &v : r2) {
+        v = (std::trunc(v * Neighbourhood) / Neighbourhood);
     }
 
     ASSERT_TRUE(r1 == r2);
