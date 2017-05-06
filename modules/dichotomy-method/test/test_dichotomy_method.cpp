@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include "include/dichotomy.h"
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Function_Work) {
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests, function_work) {
     Dichotomy obj;
     EXPECT_NO_THROW(obj.findMin(1, 0, 0, -1, 1, 0.01));
 }
