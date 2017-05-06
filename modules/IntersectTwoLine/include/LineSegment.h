@@ -1,21 +1,22 @@
 // Copyright 2017 Lobanov Andrey
 
-#ifndef MODULES_LINESEGMENT_INCLUDE_LINESEGMENT_H_
-#define MODULES_LINESEGMENT_INCLUDE_LINESEGMENT_H_
+#ifndef MODULES_INTERSECTTWOLINE_INCLUDE_LINESEGMENT_H_
+#define MODULES_INTERSECTTWOLINE_INCLUDE_LINESEGMENT_H_
 
 #include <string>
 #include <sstream>
 
-using namespace std;
+using std::string;
 
 class LineSegment2D {
-protected:
+ protected:
     string str;
     double coeff_A;
     double coeff_B;
     double coeff_C;
     double Corrections(double value);
-public:
+
+ public:
     LineSegment2D(double A, double B, double C) {
         coeff_A = A;
         coeff_B = B;
@@ -36,9 +37,9 @@ public:
     double Get_Coeff_B() {
         return coeff_B;
     }
-	double Get_Coeff_C() {
+    double Get_Coeff_C() {
         return coeff_C;
     }
     string checkIntersection(LineSegment2D lineSegment);
 };
-#endif
+#endif  // MODULES_INTERSECTTWOLINE_INCLUDE_LINESEGMENT_H_

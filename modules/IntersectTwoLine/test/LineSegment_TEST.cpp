@@ -1,6 +1,6 @@
 // Copyright 2017 Lobanov Andrey
 
-#include <gtest.h>
+#include <gtest/gtest.h>
 #include "include/LineSegment.h"
 #include <string>
 
