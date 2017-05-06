@@ -1,9 +1,31 @@
-#ifndef TYPES_AND_CONSTS_H_INCLUDED
-#define TYPES_AND_CONSTS_H_INCLUDED
+//  Copyright 2017 Kiparenko Ilya
+
+#ifndef MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_
+#define MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_
 
 #include <unordered_map>
 #include <math.h>
-using namespace std;
+
+using std::string;
+using std::unordered_map;
+
+/*
+enum Types::Type : unsigned int;
+
+namespace std {
+  template<>
+  struct hash<Types::Type> {
+	typedef PNR argument_type;
+    typedef size_t result_type;
+
+    result_type operator () (const argument_type& x) const {
+      using type = typename std::underlying_type<argument_type>::type;
+      return std::hash<type>()(static_cast<type>(x));
+    }
+  };
+}
+
+*/
 
 namespace Types {
 
@@ -14,7 +36,7 @@ namespace Types {
     EMPTY    = 3
   };
 
-  enum Op {
+  enum Op : unsigned int{
     ADD     =  0,
     SUB     =  1,
     MUL     =  2,
@@ -118,4 +140,4 @@ namespace Types {
 
 }
 
-#endif // TYPES_AND_CONSTS_H_INCLUDED
+#endif //  MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_
