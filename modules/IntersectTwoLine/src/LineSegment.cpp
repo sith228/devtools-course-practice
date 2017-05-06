@@ -5,6 +5,7 @@
 #include <string>
 
 using std::string;
+using std::stringstream;
 
 string LineSegment2D::checkIntersection(LineSegment2D lineSegment) {
     string str1, str2, str3;
@@ -36,7 +37,6 @@ string LineSegment2D::checkIntersection(LineSegment2D lineSegment) {
         str3 += ")";
         str = str1 + str2 + str3;
     }
-    cout << str << endl;;
     return str;
 }
 
