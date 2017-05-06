@@ -3,6 +3,8 @@
 #include "gtest/gtest.h"
 #include "include/symbolic_function.h"
 
+#include <string>
+
 TEST(symbolic_derivativeTest, Can_Parse_Simple_Expression) {
   EXPECT_NO_THROW(symbolic_function sym("a + b"));
 }
