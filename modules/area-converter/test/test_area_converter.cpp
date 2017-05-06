@@ -1,3 +1,4 @@
+// Copyright 2017 Kuchkov Ivan
 
 #include <gtest/gtest.h>
 #include <vector>

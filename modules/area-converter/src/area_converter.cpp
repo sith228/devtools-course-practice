@@ -1,3 +1,4 @@
+// Copyright 2017 Kuchkov Ivan
 
 #include "include/area_converter.h"
 

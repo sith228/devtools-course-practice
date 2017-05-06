@@ -1,9 +1,10 @@
+// Copyright 2017 Kuchkov Ivan
+
 #ifndef MODULES_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
 #define MODULES_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
 
-class AreaConverter
-{
-public:
+class AreaConverter {
+ public:
     static constexpr double centimeter = 0.01;
     static constexpr double decimeter = 0.1;
     static constexpr double meter = 1.0;
@@ -15,7 +16,7 @@ public:
     AreaConverter(double, double);
     double operator()(double);
 
-private:
+ private:
     double ratio_;
     static double Square(double x) { return x * x; }
 };
