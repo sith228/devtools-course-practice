@@ -1,3 +1,5 @@
+//  Copyright 2017 Kiparenko Ilya
+
 #include "include/types_and_consts.h"
 
 using namespace Types;

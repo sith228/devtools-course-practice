@@ -1,4 +1,4 @@
-// Copyright 2017 Kiparenko Ilya
+//  Copyright 2017 Kiparenko Ilya
 
 #ifndef MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
 #define MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
@@ -7,17 +7,14 @@
 #include <vector>
 #include <unordered_map>
 
-#include "types_and_consts.h"
+#include "include/types_and_consts.h"
 
 using std::vector;
 using std::string;
 using Types::Node;
 
-using namespace Types;
-
-
 class symbolic_function {
-public:
+ public:
   symbolic_function(string s);
   string to_string();
   symbolic_function();
@@ -25,7 +22,7 @@ public:
   symbolic_function& operator=(symbolic_function& sym);
   ~symbolic_function();
 
-private:
+ private:
   Node* root;
   vector<string> symbols;
 
@@ -43,4 +40,4 @@ private:
   string print_tree(Node* root);
 };
 
-#endif // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
+#endif //  MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_

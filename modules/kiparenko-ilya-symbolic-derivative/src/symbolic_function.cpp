@@ -14,6 +14,8 @@ using std::to_string;
 
 using std::stack;
 
+using namespace Types;
+
 void symbolic_function::print_list(Node* root) {
   while (root != 0) {
     cout << "\t(";

@@ -1,3 +1,5 @@
+// Copyright 2017 Kiparenko Ilya
+
 #include "gtest/gtest.h"
 #include "include/symbolic_function.h"
 
