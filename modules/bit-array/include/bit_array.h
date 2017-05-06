@@ -6,7 +6,6 @@
 #include <string>
 
 typedef unsigned int MemoryBlock;
-const int blockSize = sizeof(MemoryBlock)* 8;
 
 class BitArray {
  public:
