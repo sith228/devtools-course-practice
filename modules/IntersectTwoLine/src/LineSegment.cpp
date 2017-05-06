@@ -17,7 +17,7 @@ string LineSegment2D::checkIntersection(LineSegment2D lineSegment) {
         lineSegment.Get_C() / Get_C())) {
             str = "Lines are coincide";
     }
-    else if (lineSegment.Get_A()/Get_A()==lineSegment.Get_B()/Get_B())
+    else if (lineSegment.Get_A()/Get_A() == lineSegment.Get_B()/Get_B())
         str = "Lines are parallel";
     else {
         coord_X = (-1) * (Get_C() * lineSegment.Get_B() -

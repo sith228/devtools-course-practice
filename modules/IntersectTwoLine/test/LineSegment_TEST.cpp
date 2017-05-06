@@ -1,8 +1,8 @@
 // Copyright 2017 Lobanov Andrey
 
-#include <gtest/gtest.h>
 #include "include/LineSegment.h"
 #include <string>
+#include <gtest/gtest.h>
 
 using std::string;
 
@@ -11,7 +11,7 @@ TEST(LineSegment, Can_Create_LineSegment_With_Initial_Values) {
 }
 
 TEST(LineSegment, Can_Set_Initial_A_Value) {
-  LineSegment2D line(0,0,0);
+  LineSegment2D line(0, 0, 0);
   ASSERT_NO_THROW(line.Set_A(3.3));
 }
 
@@ -20,7 +20,7 @@ TEST(LineSegment, Can_Set_Initial_B_Value) {
   ASSERT_NO_THROW(line.Set_B(3.3));
 }
 
-TEST(LineSegment, Can_Set_Initial_C_Value){
+TEST(LineSegment, Can_Set_Initial_C_Value) {
   LineSegment2D line(0, 0, 0);
   ASSERT_NO_THROW(line.Set_C(3.3));
 }
@@ -45,7 +45,9 @@ TEST(LineSegment, Set_Initial_Value_Work_Correctly) {
   line.Set_A(1.1);
   line.Set_B(10.3);
   line.Set_C(-3.5);
-  EXPECT_TRUE((1.1==line.Get_A())&&(10.3==line.Get_B())&&(-3.5==line.Get_C()));
+  EXPECT_TRUE((1.1 == line.Get_A()) &&
+             (10.3 == line.Get_B()) &&
+             (-3.5 == line.Get_C()));
 }
 
 TEST(LineSegmentFunction, Show_That_Lines_Are_Coincide) {
