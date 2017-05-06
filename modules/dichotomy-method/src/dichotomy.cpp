@@ -27,6 +27,9 @@ double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
         throw "Eps must be higher then zero";
     if ( (afactor >= INT_MAX) || (bfactor >= INT_MAX) || (cfactor >= INT_MAX))
         throw "Factor too large";
+        if ( (afactor <= INT_MIN) || (bfactor <= INT_MIN) ||
+         (cfactor <= INT_MIN))
+            throw "Factor too small";
     double c = (leftBorder + rightBorder)/2;
     double funcValueC = afactor*(c+bfactor)*(c+bfactor) + cfactor;
     while (rightBorder - leftBorder > eps) {

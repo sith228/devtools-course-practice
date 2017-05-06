@@ -29,10 +29,16 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Throw_When_Function_Is_Zero) {
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
-     Uncorrect_Result_When_Function_Args_Higher_Then_INTMAX) {
+     Throw_When_Function_Args_Higher_Then_INTMAX) {
          Dichotomy obj;
          EXPECT_ANY_THROW(obj.findMin(-1, 999999999 + 1, 0, -1, 1, 0.01));
-     }
+}
+
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
+     Throw_When_Function_Args_Lower_Then_INTMIN) {
+         Dichotomy obj;
+         EXPECT_ANY_THROW(obj.findMin(-9999999999, 1, 0, -1, 1, 0.01));
+}
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests, findMin_Is_Correct) {
     Dichotomy obj;
