@@ -15,23 +15,23 @@ using std::string;
 class symbolic_function {
  public:
   explicit symbolic_function(string s);
-  string to_string();
+  string ToString();
   symbolic_function();
-  symbolic_function derivative(string variable);
+  symbolic_function Derivative(string variable);
   symbolic_function& operator=(const symbolic_function& sym);
   ~symbolic_function();
 
  private:
-  Node* root;
-  vector<string> symbols;
+  Node* root_;
+  vector<string> symbols_;
 
-  Node* parse(string s);
-  Node* to_postfix_form(Node* root);
-  Node* postfix_to_AST(Node* root);
-  Node* derivative(Node* root, string);
-  void del_tree(Node* root);
-  Node* copy_tree(Node* root);
-  string print_tree(Node* root);
+  Node*  Parse(string s);
+  Node*  ToPostfixForm(Node* root);
+  Node*  PostfixToAst(Node* root);
+  Node*  Derivative(Node* root, string);
+  void   DelTree(Node* root);
+  Node*  CopyTree(Node* root);
+  string PrintTree(Node* root);
 };
 
 #endif  // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_

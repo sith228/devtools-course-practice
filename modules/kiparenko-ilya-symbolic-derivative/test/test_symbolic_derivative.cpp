@@ -1,8 +1,7 @@
 // Copyright 2017 Kiparenko Ilya
 
-#include "gtest/gtest.h"
 #include "include/symbolic_function.h"
-
+#include "gtest/gtest.h"
 #include <string>
 
 TEST(symbolic_derivativeTest, Can_Parse_Simple_Expression) {
@@ -37,32 +36,32 @@ TEST(symbolic_derivativeTest,
 
 TEST(symbolic_derivativeTest, Can_Parse_Its_Own_Representation) {
   symbolic_function sym("a/e + b*c^d");
-  symbolic_function sym_2(sym.to_string());
+  symbolic_function sym_2(sym.ToString());
 
-  EXPECT_EQ(sym_2.to_string(), sym.to_string());
+  EXPECT_EQ(sym_2.ToString(), sym.ToString());
 }
 
 TEST(symbolic_derivativeTest, Can_Parse_Really_Complex_Expression) {
   std::string s = "1 + 3/4/sin(x+log(x)/2.0)*cos(4.0)^(5.0-x)";
   s +=            "-(1-x)^(x) + sin(2*x*3*cos(2*x))";
   symbolic_function sym(s);
-  symbolic_function sym_2(sym.to_string());
+  symbolic_function sym_2(sym.ToString());
 
-  EXPECT_EQ(sym_2.to_string(), sym.to_string());
+  EXPECT_EQ(sym_2.ToString(), sym.ToString());
 }
 
 TEST(symbolic_derivativeTest, Derivative_Of_X_Is_One) {
   symbolic_function sym("x");
   symbolic_function sym_dx;
 
-  EXPECT_NO_THROW(sym_dx = sym.derivative("x"));
-  EXPECT_EQ(stod(sym_dx.to_string()), 1.0);
+  EXPECT_NO_THROW(sym_dx = sym.Derivative("x"));
+  EXPECT_EQ(stod(sym_dx.ToString()), 1.0);
 }
 
 TEST(symbolic_derivativeTest, Derivative_Of_Not_X_Is_Zero) {
   symbolic_function sym("a+b/c");
   symbolic_function sym_dx;
 
-  EXPECT_NO_THROW(sym_dx = sym.derivative("x"));
-  EXPECT_EQ(stod(sym_dx.to_string()), 0.0);
+  EXPECT_NO_THROW(sym_dx = sym.Derivative("x"));
+  EXPECT_EQ(stod(sym_dx.ToString()), 0.0);
 }

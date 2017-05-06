@@ -55,19 +55,19 @@ struct Node {
   Node* right;
 };
 
-Node* cr_Symbol_node(int   index = -1,
+Node* CrSymbolNode(int   index = -1,
                      Node* left  = 0,
                      Node* right = 0);
 
-Node* cr_Number_node(double real_value = 0.0,
+Node* CrNumberNode(double real_value = 0.0,
                      Node*  left       = 0,
                      Node*  right      = 0);
 
-Node* cr_Op_node(Op op_type = L_BRACE,
+Node* CrOpNode(Op op_type = L_BRACE,
                  Node* left  = 0,
                  Node* right = 0);
 
-Node* cr_Empty_node(Node* left  = 0,
+Node* CrEmptyNode(Node* left  = 0,
                     Node* right = 0);
 
 const unordered_map<string, Op> functions {
