@@ -1,8 +1,9 @@
-#include "symbolic_function.h"
+#include "include/symbolic_function.h"
 #include <regex>
 #include <iostream>
 #include <stack>
 #include <string>
+
 
 void symbolic_function::print_list(Node* root) {
   while (root != 0) {

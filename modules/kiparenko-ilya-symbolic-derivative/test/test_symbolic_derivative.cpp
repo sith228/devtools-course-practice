@@ -1,5 +1,5 @@
-#include "gtest.h"
-#include "symbolic_function.h"
+#include "gtest/gtest.h"
+#include "include/symbolic_function.h"
 
 TEST(test_symbolic_derivative, Can_Parse_Simple_Expression) {
   EXPECT_NO_THROW(symbolic_function sym("a + b"));
