@@ -371,7 +371,6 @@ TEST(RomNumConverter, convetr_arabic_to_rom_MMCCCXLV_2345) {
 TEST(RomNumConverter, wrong_litera_in_roman_number) {
     // Arrange
     RomNumConverter Convert;
-    
     // Assert
     ASSERT_ANY_THROW(Convert.convert_rom_to_arabic("AB"));
 }
