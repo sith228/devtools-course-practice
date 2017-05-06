@@ -26,15 +26,21 @@ string LineSegment2D::checkIntersection(LineSegment2D lineSegment) {
                 lineSegment.Get_A() * Get_C()) /
                 (Get_A() * lineSegment.Get_B() -
                 lineSegment.Get_A() * Get_B());
-      str1 = "Intersection point: (";
-      stream1 << coord_X;
-      stream1 >> str2;
-      str2 += "; ";
-      stream2 << coord_Y;
-      stream2 >> str3;
-      str3 += ")";
-      str = str1 + str2 + str3;
-    }
-    return str;
+    str1 = "Intersection point: (";
+    stream1 << Corrections_Coord(coord_X);
+    stream1 >> str2;
+    str2 += "; ";
+    stream2 << Corrections_Coord(coord_Y);
+    stream2 >> str3;
+    str3 += ")";
+    str = str1 + str2 + str3;
+  }
+  return str;
 }
 
+double LineSegment2D::Corrections_Coord(double value) {
+  if (value == -0)
+    return 0;
+  else
+    return value;
+}

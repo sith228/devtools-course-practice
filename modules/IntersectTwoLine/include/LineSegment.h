@@ -14,6 +14,7 @@ class LineSegment2D {
     double coeff_A;
     double coeff_B;
     double coeff_C;
+	double Corrections_Coord(double value);
 
  public:
     LineSegment2D(double A, double B, double C) {

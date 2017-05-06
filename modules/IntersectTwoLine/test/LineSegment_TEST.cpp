@@ -34,21 +34,36 @@ TEST(LineSegment, Can_Set_Initial_C_Value) {
 }
 
 TEST(LineSegment, Can_Get_A_Value) {
+  LineSegment2D line(3.0, 0, 0);
+  ASSERT_NO_THROW(line.Get_A());
+}
+
+TEST(LineSegment, Can_Get_B_Value) {
+  LineSegment2D line(3.0, 3.3, 0);
+  ASSERT_NO_THROW(line.Get_B());
+}
+
+TEST(LineSegment, Can_Get_C_Value) {
+  LineSegment2D line(3.0, 0, 4.7);
+  ASSERT_NO_THROW(line.Get_C());
+}
+
+TEST(LineSegment, Get_A_Value_Works_Correctly) {
   LineSegment2D line(-33.8, -4.8, 5.1);
   EXPECT_EQ(-33.8, line.Get_A());
 }
 
-TEST(LineSegment, Can_Get_B_Value) {
+TEST(LineSegment, Get_B_Value_Works_Correctly) {
   LineSegment2D line(-3.0, -4.47, 5.39);
   EXPECT_EQ(-4.47, line.Get_B());
 }
 
-TEST(LineSegment, Can_Get_C_Value) {
+TEST(LineSegment, Get_C_Value_Works_Correctly) {
   LineSegment2D line(-3.0, -4.0, 5.28);
   EXPECT_EQ(5.28, line.Get_C());
 }
 
-TEST(LineSegment, Set_Initial_Value_Work_Correctly) {
+TEST(LineSegment, Set_Initial_Value_Works_Correctly) {
   LineSegment2D line(0, 0, 0);
   line.Set_A(1.1);
   line.Set_B(10.3);
