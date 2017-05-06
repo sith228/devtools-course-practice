@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <vector>
+#include <math.h>
 #include "include/area_converter.h"
 
 static const double Neighbourhood = 0.0000001;
@@ -67,25 +68,25 @@ TEST(AreaConverterTest, check_meter_to_anything_convertion) {
     std::vector<double> r2;
     double temp = 1;
 
-    r2.push_back(0.0002471054); //acr
+    r2.push_back(0.0002471054);  // acr
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::acr)(temp));
-    r2.push_back(10000.);//centimeter
+    r2.push_back(10000.);  // centimeter
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::centimeter)(temp));
-    r2.push_back(100.);//decimeter
+    r2.push_back(100.);  // decimeter
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::decimeter)(temp));
-    r2.push_back(0.0001);//hectare
+    r2.push_back(0.0001);  // hectare
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::hectare)(temp));
-    r2.push_back(1550.0031);//inch
+    r2.push_back(1550.0031);  // inch
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::inch)(temp));
-    r2.push_back(1.);//meter
+    r2.push_back(1.);  // meter
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::meter)(temp));
-    r2.push_back(1.1959900463);//yard
+    r2.push_back(1.1959900463);  // yard
     r1.push_back(AreaConverter(AreaConverter::meter,
         AreaConverter::yard)(temp));
 
