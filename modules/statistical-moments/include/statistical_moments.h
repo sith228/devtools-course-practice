@@ -16,7 +16,7 @@ class StatisticalMoments {
     static double getDispersion(const std::vector<double>& values,
         const std::vector<double>& chances);
  private:
-    static void checkingInputDate(const std::vector<double>& values,
+    static void checkingInputData(const std::vector<double>& values,
         const std::vector<double>& chances);
     static bool isChanceValid(const std::vector<double>& values,
         const std::vector<double>& chances);

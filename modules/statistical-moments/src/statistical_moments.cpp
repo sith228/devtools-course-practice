@@ -3,6 +3,7 @@
 #include "include/statistical_moments.h"
 #include <cmath>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <vector>
 
@@ -21,10 +22,10 @@ bool StatisticalMoments::isChancesDistributionRow(
     for (unsigned int i = 0; i < chances.size(); i++) {
         tmp_sum += chances[i];
     }
-    return (tmp_sum == 1);
+    return std::fabs(tmp_sum-1)<std::numeric_limits<double>::epsilon();
 }
 
-void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
+void StatisticalMoments::checkingInputData(const std::vector<double>& values,
     const std::vector<double>& chances) {
     if (values.empty() && chances.empty()) {
         throw std::runtime_error("Both vectors are empty");
@@ -49,7 +50,7 @@ void StatisticalMoments::checkingInputDate(const std::vector<double>& values,
 double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
     const std::vector<double>& chances, unsigned int order,
     unsigned int offset) {
-    checkingInputDate(values, chances);
+    checkingInputData(values, chances);
     double moment = 0;
     if (order == 0) {
         throw new std::runtime_error("Order must be more than zero");
@@ -61,7 +62,7 @@ double StatisticalMoments::getCustomMoment(const std::vector<double>& values,
 }
 double StatisticalMoments::getExpectancy(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    checkingInputDate(values, chances);
+    checkingInputData(values, chances);
     double expectansy = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
         expectansy += values[i] * chances[i];
@@ -70,7 +71,7 @@ double StatisticalMoments::getExpectancy(const std::vector<double>& values,
 }
 double StatisticalMoments::getDispersion(const std::vector<double>& values,
     const std::vector<double>& chances) {
-    checkingInputDate(values, chances);
+    checkingInputData(values, chances);
     double expectansy = StatisticalMoments::getExpectancy(values, chances);
     double dispersion = 0;
     for (unsigned int i = 0; i < chances.size(); i++) {
