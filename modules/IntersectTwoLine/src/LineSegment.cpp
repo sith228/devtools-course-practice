@@ -1,6 +1,6 @@
 // Copyright 2017 Lobanov Andrey
 
-#include "LineSegment.h"
+#include "include/LineSegment.h"
 #include <iostream>
 
 using namespace std;

@@ -1,7 +1,7 @@
 // Copyright 2017 Lobanov Andrey
 
 #include <gtest.h>
-#include "LineSegmentFunction.h"
+#include "include/LineSegment.h"
 #include <string>
 
 using namespace std;
