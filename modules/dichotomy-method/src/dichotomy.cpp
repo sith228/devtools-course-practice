@@ -13,17 +13,17 @@ double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
         double funcValueX = afactor*(x+bfactor)*(x+bfactor) + cfactor;
         double y = (c + rightBorder)/2;
         double funcValueY = afactor*(y+bfactor)*(y+bfactor) + cfactor;
-        if ((funcValueX < funcValueY) && (funcValueX < funcValueC)){
-
+        if ((funcValueX < funcValueY) && (funcValueX < funcValueC)) {
                 rightBorder = c;
                 c = x;
                 funcValueC = funcValueX;
-            } else if ( (funcValueC < funcValueX) && (funcValueC < funcValueY) ) {
+            } else if ( (funcValueC < funcValueX)
+            && (funcValueC < funcValueY) ) {
                 leftBorder = x;
                 rightBorder = y;
             } else {
                 leftBorder = c;
-				c = y;
+                c = y;
                 funcValueC = funcValueY;
             }
         //Поскольку метод дихотомии должен вернуть отрезок, на котором
