@@ -11,6 +11,7 @@ bool CreditCalculator::check_data(int amount, int period,
     if (month_pas > (unsigned)period) {
         throw std::runtime_error("Entered month_pas is incorrect");
     }
+    return true;
 }
 
 bool CreditCalculator::check_data(int amount, int period,
@@ -24,6 +25,7 @@ bool CreditCalculator::check_data(int amount, int period,
     if (interest <= 0 || interest > 100) {
         throw std::runtime_error("Entered interest is incorrect");
     }
+    return true;
 }
 
 double CreditCalculator::monthly_payment(int amount, int period,
