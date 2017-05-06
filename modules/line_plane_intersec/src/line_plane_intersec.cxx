@@ -119,7 +119,7 @@ void Intersection::SetPlaneWithThreePoints(std::vector<double>point1,
         planeA_ = normalVec[0];
         planeB_ = normalVec[1];
         planeC_ = normalVec[2];
-        planeD_ = -normalVec[0]*point1[0] - normalVec[1]*point1[1] -
+        planeD_ = 0 - normalVec[0]*point1[0] - normalVec[1]*point1[1] -
             normalVec[2]*point1[2];
     }
 }

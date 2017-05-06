@@ -23,7 +23,7 @@ class Intersection {
     void SetPlane(double planeA_, double planeB_, double planeC_,
         double planeD_);
     void SetPlaneWithThreePoints(std::vector<double>point1,
-        std::vector<double>point2,std::vector<double>point3);
+        std::vector<double>point2, std::vector<double>point3);
 
     std::vector <double> GetLine(void);
     std::vector <double> GetPlane(void);
