@@ -114,9 +114,6 @@ void SearchTree::insert(const double key) {
         root_ = node;
         return;
     }
-    if (search(key) != 0) {
-        throw "insert: Already have such key!";
-    }
 
     Node* currentNode = root_;
     Node* tmpParentNode;
@@ -124,8 +121,10 @@ void SearchTree::insert(const double key) {
         tmpParentNode = currentNode;
         if (currentNode->key < node->key) {
             currentNode = currentNode->right;
-        } else {
+        } else if (currentNode->key > node->key) {
             currentNode = currentNode->left;
+        } else {
+            throw "insert: Already have such key!";
         }
     }
 
