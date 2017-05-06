@@ -2,9 +2,7 @@
 
 #include "include/types_and_consts.h"
 
-using namespace Types;
-
-Node* Types::cr_Symbol_node(int index, Node* left, Node* right) {
+Node* cr_Symbol_node(int index, Node* left, Node* right) {
   Node* t = new Node();
   t->type = SYMBOL;
   t->index = index;
@@ -13,7 +11,7 @@ Node* Types::cr_Symbol_node(int index, Node* left, Node* right) {
   return t;
 }
 
-Node* Types::cr_Number_node(double real_value, Node* left, Node* right) {
+Node* cr_Number_node(double real_value, Node* left, Node* right) {
   Node* t = new Node();
   t->type = NUMBER;
   t->real_value = real_value;
@@ -22,7 +20,7 @@ Node* Types::cr_Number_node(double real_value, Node* left, Node* right) {
   return t;
 }
 
-Node* Types::cr_Op_node(Op op_type, Node* left, Node* right) {
+Node* cr_Op_node(Op op_type, Node* left, Node* right) {
   Node* t = new Node();
   t->type = FUNCTION;
   t->op_type = op_type;
@@ -31,7 +29,7 @@ Node* Types::cr_Op_node(Op op_type, Node* left, Node* right) {
   return t;
 }
 
-Node* Types::cr_Empty_node(Node* left, Node* right) {
+Node* cr_Empty_node(Node* left, Node* right) {
   Node* t = new Node();
   t->type = NUMBER;
   t->left = left;

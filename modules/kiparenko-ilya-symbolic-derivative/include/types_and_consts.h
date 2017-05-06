@@ -10,8 +10,6 @@
 using std::string;
 using std::unordered_map;
 
-namespace Types {
-
 enum Op : unsigned int{
   ADD     =  0,
   SUB     =  1,
@@ -25,13 +23,11 @@ enum Op : unsigned int{
   R_BRACE =  9
 };
 
-}  // namespace Types
-
 namespace std {
 
 template<>
-struct hash<Types::Op> {
-  typedef Types::Op argument_type;
+struct hash<Op> {
+  typedef Op argument_type;
   typedef size_t result_type;
 
   result_type operator () (const argument_type& x) const {
@@ -41,8 +37,6 @@ struct hash<Types::Op> {
 };
 
 }  // namespace std
-
-namespace Types {
 
 enum Type {
   SYMBOL   = 0,
@@ -138,7 +132,5 @@ const unordered_map<Op, fun2args>
               {SIN,     [](double x, double y) {return sin(x);}    },
               {COS,     [](double x, double y) {return cos(x);}    }
 };
-
-}  // namespace Types
 
 #endif  // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_

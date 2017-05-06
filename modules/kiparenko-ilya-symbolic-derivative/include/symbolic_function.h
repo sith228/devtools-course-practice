@@ -11,7 +11,6 @@
 
 using std::vector;
 using std::string;
-using Types::Node;
 
 class symbolic_function {
  public:
@@ -25,8 +24,6 @@ class symbolic_function {
  private:
   Node* root;
   vector<string> symbols;
-
-
 
   Node* parse(string s);
   Node* to_postfix_form(Node* root);

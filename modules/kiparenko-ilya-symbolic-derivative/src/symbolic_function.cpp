@@ -1,6 +1,7 @@
 // Copyright 2017 Kiparenko Ilya
 
 #include "include/symbolic_function.h"
+#include <cctype>
 #include <regex>
 #include <iostream>
 #include <stack>
@@ -14,8 +15,6 @@ using std::stod;
 using std::to_string;
 
 using std::stack;
-
-using namespace Types;
 
 string symbolic_function::print_tree(Node* root) {
   if (root != 0) {
@@ -72,48 +71,78 @@ symbolic_function symbolic_function::derivative(string variable) {
 }
 
 Node* symbolic_function::parse(string s) {
-  string ops_regex = "\\+|\\-|\\*|\\/|\\^|\\(|\\)|log|sin|cos";
-
-  s = regex_replace(s, std::regex("\\s+"), string(""));
-
-  std::regex check_ops(ops_regex);
-  std::regex check_symbol("[a-z]\\w*"), check_number("[\\d\\.]+");
-  std::sregex_token_iterator rend;
-  int subs[] = {-1, 0};
-  std::sregex_token_iterator iter(s.begin(), s.end(), check_ops, subs);
   Node* out = cr_Empty_node();
   Node* out_t = out;
 
-  for ( ; iter != rend; iter++) {
-    std::smatch sm;
-    string match = *iter;
+  char buf[20];
+  int buf_pos = 0;
+  int token_type = -1;
+  int token_state = -1;
+  int i = 0;
+  string delimiters("+-*/^()");
 
-    if (match.length() > 0)  // not empty match
-      try {
-        Op op = functions.at(match);
-
-        out_t->left = cr_Op_node(op);
-        out_t = out_t->left;
-      } catch (std::out_of_range& e) {
-        regex_match(match, sm, check_symbol);
-
-        if (sm.size() > 0) {  // symbol
-          out_t->left = cr_Symbol_node(symbols.size());
-          out_t = out_t->left;
-
-          symbols.push_back(sm[0]);
-        } else {
-          regex_match(match, sm, check_number);
-          if (sm.size() > 0) {  // number
-            double real_value = stod(sm[0]);
-            out_t->left = cr_Number_node(real_value);
-            out_t = out_t->left;
+  while (i < s.size() || (i == s.size() && token_state == 0)) {
+    char ch = s[i];
+    if (isspace(ch)) {
+      i++;
+    } else {
+      if (token_state == -1) {
+        if (isalpha(ch))
+          token_type = 2;
+        else
+          if (isdigit(ch) || ch == '.') {
+            token_type = 1;
           } else {
-            throw string("Unknown token = " + match);
+            size_t index = delimiters.find(ch);
+            if (index != string::npos) {
+              out_t->left = cr_Op_node(functions.at(string(1, ch)));
+              out_t = out_t->left;
+              token_state = -1;
+              i++;
+              continue;
+            } else {
+              throw string("Unknown token");
+            }
           }
+        buf[buf_pos++] = ch;
+        token_state = 0;
+        i++;
+      } else {
+        if (token_type == 1) {
+          while(i < s.size() && isdigit(ch) || ch == '.') {
+            buf[buf_pos++] = ch;
+            i++;
+            ch = s[i];
+          }
+          buf[buf_pos] = 0;
+          out_t->left = cr_Number_node(stod(string(buf)));
+          out_t = out_t->left;
+          buf_pos = 0;
+          token_state = -1;
+        } else {
+          while(i < s.size() && isalnum(ch)) {
+            buf[buf_pos++] = ch;
+            i++;
+            ch = s[i];
+          }
+          buf[buf_pos] = 0;
+          Node* new_node;
+          string s_buf = string(buf);
+          try {
+            new_node = cr_Op_node(functions.at(s_buf));
+          } catch (std::out_of_range& e) {
+            new_node = cr_Symbol_node(symbols.size());
+            symbols.push_back(s_buf);
+          }
+          out_t->left = new_node;
+          out_t = out_t->left;
+          buf_pos = 0;
+          token_state = -1;
         }
       }
+    }
   }
+
   out_t = out->left;
   delete out;
   return out_t;
