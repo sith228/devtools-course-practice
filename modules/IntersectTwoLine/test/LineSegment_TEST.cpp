@@ -1,7 +1,7 @@
 // Copyright 2017 Lobanov Andrey
 
-#include "include/LineSegment.h"
-#include <gtest/gtest.h>
+#include "LineSegment.h"
+#include <gtest.h>
 #include <string>
 
 using std::string;
@@ -50,17 +50,17 @@ TEST(LineSegment, Can_Get_C_Value) {
 
 TEST(LineSegment, Get_A_Value_Works_Correctly) {
   LineSegment2D line(-33.8, -4.8, 5.1);
-  EXPECT_EQ(-33.8, line.Get_A());
+  ASSERT_DOUBLE_EQ(-33.8, line.Get_A());
 }
 
 TEST(LineSegment, Get_B_Value_Works_Correctly) {
   LineSegment2D line(-3.0, -4.47, 5.39);
-  EXPECT_EQ(-4.47, line.Get_B());
+  ASSERT_DOUBLE_EQ(-4.47, line.Get_B());
 }
 
 TEST(LineSegment, Get_C_Value_Works_Correctly) {
   LineSegment2D line(-3.0, -4.0, 5.28);
-  EXPECT_EQ(5.28, line.Get_C());
+  ASSERT_DOUBLE_EQ(5.28, line.Get_C());
 }
 
 TEST(LineSegment, Set_Initial_Value_Works_Correctly) {
