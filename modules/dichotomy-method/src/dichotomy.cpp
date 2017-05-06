@@ -1,7 +1,7 @@
 // Copyright Kildishev Maxim 2017
 
 #include <include/dichotomy.h>
-#include <math.h>
+#include <cmath>
 #include <iostream>
 //За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
 double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
@@ -18,7 +18,7 @@ double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
         throw "Incorrect left border";
     if (funcValueRBorderDX < funcValueRBorder)
         throw "Incorrect right border";
-    if (abs(rightBorder-leftBorder) < 0.0001)
+    if (std::abs(rightBorder-leftBorder) < 0.0001)
         throw "Too close values";
     if ((afactor == 0) && (cfactor == 0))
         throw "Function is ZERO";
