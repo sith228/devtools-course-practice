@@ -27,7 +27,7 @@ class TStack {
 };
 
 template <class ValType>
-TStack<ValType>::TStack(int _size = MAX_STACK_SIZE) {
+TStack<ValType>::TStack(int _size) {
     if (_size < 0) {
         throw "Negative size";
     } else if (_size > MAX_STACK_SIZE) {

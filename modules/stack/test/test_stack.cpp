@@ -11,11 +11,6 @@ TEST(StackTest, Can_Create_Stack_With_Positive_Length_INT) {
     EXPECT_NO_THROW(TStack<int> v(5));
 }
 
-TEST(StackTest, Can_Create_Default_Stack_INT) {
-    // Arrange & Act & Assert
-    EXPECT_NO_THROW(TStack<int> v);
-}
-
 TEST(StackTest, Cant_Create_Too_Large_Stack_INT) {
     // Arrange & Act & Assert
     EXPECT_ANY_THROW(TStack<int> v(MAX_STACK_SIZE + 1));
@@ -153,11 +148,6 @@ TEST(StackTest, Can_Create_Stack_With_Positive_Length_DOUBLE) {
     EXPECT_NO_THROW(TStack<double> v(5));
 }
 
-TEST(StackTest, Can_Create_Default_Stack_DOUBLE) {
-    // Arrange & Act & Assert
-    EXPECT_NO_THROW(TStack<double> v);
-}
-
 TEST(StackTest, Cant_Create_Too_Large_Stack_DOUBLE) {
     // Arrange & Act & Assert
     EXPECT_ANY_THROW(TStack<double> v(MAX_STACK_SIZE + 1));
@@ -292,11 +282,6 @@ TEST(StackTest, Can_Check_Full_Stack_DOUBLE) {
 TEST(StackTest, Can_Create_Stack_With_Positive_Length_CHAR) {
     // Arrange & Act & Assert
     EXPECT_NO_THROW(TStack<char> v(5));
-}
-
-TEST(StackTest, Can_Create_Default_Stack_CHAR) {
-    // Arrange & Act & Assert
-    EXPECT_NO_THROW(TStack<char> v);
 }
 
 TEST(StackTest, Cant_Create_Too_Large_Stack_CHAR) {
