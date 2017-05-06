@@ -4,7 +4,7 @@
 
 TEST(AreaConverterTest, check_create_converter_unit)
 {
-    area_converter c = area_converter(area_converter::centimeter, area_converter::meter);
+    AreaConverter c = AreaConverter(AreaConverter::centimeter, AreaConverter::meter);
 
     double r1 = c(123);
     double r2 = 0.0123;

@@ -1,12 +1,9 @@
 
 #include "include/area_converter.h"
 
-area_converter::area_converter(double from, double to)
-{
-    area_converter::ratio = square(from / to);
-}
+AreaConverter::AreaConverter(double from, double to)
+    : ratio_(Square(from / to)) {}
 
-double area_converter::operator()(double x)
-{
-    return x * area_converter::ratio;
+double AreaConverter::operator()(double x) {
+    return x * ratio_;
 }
