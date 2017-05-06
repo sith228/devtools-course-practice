@@ -157,8 +157,8 @@ TEST(Queue, can_return_begin_elem_without_changes) {
     Q.Push(5);
     Q.Push(2);
     Q.Push(3);
-    // Act
     elem = Q.Top();
+    // Act
     // Assert
     EXPECT_EQ(Q.IsFull(), true);
 }
