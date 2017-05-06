@@ -117,7 +117,7 @@ const unordered_map<Op, int> nargs {
                                       {POW,     2},
                                       {LOG,     1},
                                       {SIN,     1},
-                                      {COS,     1},
+                                      {COS,     1}
 };
 
 typedef double (*fun2args)(double, double);

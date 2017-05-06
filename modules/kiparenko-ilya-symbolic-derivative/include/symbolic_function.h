@@ -18,11 +18,11 @@ class symbolic_function {
   string ToString();
   symbolic_function();
   symbolic_function Derivative(string variable);
-  symbolic_function& operator=(const symbolic_function& sym);
+  symbolic_function& operator=(symbolic_function sym);
   ~symbolic_function();
 
  private:
-  Node* root_;
+  Node* root_ = 0;
   vector<string> symbols_;
 
   Node*  Parse(string s);

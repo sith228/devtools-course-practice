@@ -63,5 +63,15 @@ TEST(symbolic_derivativeTest, Derivative_Of_Not_X_Is_Zero) {
   symbolic_function sym_dx;
 
   EXPECT_NO_THROW(sym_dx = sym.Derivative("x"));
-  EXPECT_EQ(stod(sym_dx.ToString()), 0.0);
+
+  EXPECT_EQ(std::stod(sym_dx.ToString()), 0.0);
+}
+
+TEST(symbolic_derivativeTest, Can_Differentiate_Really_Complex_Expression) {
+  std::string s = "2^x*x + 3/4/sin(x+log(x)/2.0)*cos(4.0)^(5.0-x)";
+  s +=            "-(1-x)^(x) + sin(2*x*3*cos(2*x))-3+2*x-4";
+  symbolic_function sym(s);
+  symbolic_function sym_dx;
+
+  EXPECT_NO_THROW(sym_dx = sym.Derivative("x"));
 }

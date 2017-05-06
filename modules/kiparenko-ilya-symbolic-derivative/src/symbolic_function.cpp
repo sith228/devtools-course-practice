@@ -37,7 +37,7 @@ string symbolic_function::PrintTree(Node* root) {
         break;
     }
   } else {
-    return "(0)";
+    return "0";
   }
 }
 
@@ -54,9 +54,10 @@ symbolic_function::~symbolic_function() {
 symbolic_function::symbolic_function() {
 }
 
-symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
-  root_ = CopyTree(sym.root_);
+symbolic_function& symbolic_function::operator=(symbolic_function sym) {
+  DelTree(root_);
   symbols_ = sym.symbols_;
+  root_ = CopyTree(sym.root_);
   return (*this);
 }
 
@@ -65,7 +66,9 @@ string symbolic_function::ToString() {
 }
 
 symbolic_function symbolic_function::Derivative(string variable) {
-  symbolic_function sym(PrintTree(Derivative(root_, variable)));
+  symbolic_function sym;
+  sym.symbols_ = symbols_;
+  sym.root_ = CopyTree(Derivative(root_, variable));
   return sym;
 }
 
@@ -241,15 +244,17 @@ Node* symbolic_function::PostfixToAst(Node* root) {
 }
 
 void symbolic_function::DelTree(Node* root) {
-  stack<Node*> st;
-  st.push(root);
-  while (!st.empty()) {
-    root = st.top(); st.pop();
-    if (root->left != 0)
-      st.push(root->left);
-    if (root->right != 0)
-      st.push(root->right);
-    delete root;
+  if (root != 0) {
+    stack<Node*> st;
+    st.push(root);
+    while (!st.empty()) {
+      root = st.top(); st.pop();
+      if (root->left != 0)
+        st.push(root->left);
+      if (root->right != 0)
+        st.push(root->right);
+      delete root;
+    }
   }
 }
 
