@@ -28,7 +28,6 @@ string LineSegment2D::checkIntersection(LineSegment2D lineSegment) {
                   lineSegment.Get_Coeff_A() * Get_Coeff_C()) /
                   (Get_Coeff_A() * lineSegment.Get_Coeff_B() -
                   lineSegment.Get_Coeff_A() * Get_Coeff_B());
-
         str1 = "Intersection point: (";
         stream1 << Corrections(coord_X);
         stream1 >> str2;

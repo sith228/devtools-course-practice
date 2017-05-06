@@ -1,6 +1,7 @@
 // Copyright 2017 Lobanov Andrey
 
-#pragma once
+#ifndef MODULES_LINESEGMENT_INCLUDE_LINESEGMENT_H_
+#define MODULES_LINESEGMENT_INCLUDE_LINESEGMENT_H_
 
 #include <string>
 #include <sstream>
@@ -40,3 +41,4 @@ public:
     }
     string checkIntersection(LineSegment2D lineSegment);
 };
+#endif
