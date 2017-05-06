@@ -9,21 +9,21 @@ TEST(BitArrayTest, Can_Create_Bit_Array_With_Positive_Size) {
     ASSERT_NO_THROW(BitArray bitArray(8));
 }
 
-TEST(BitArrayTest,  Cant_Create_Bit_Array_With_Size_Zero) {
+TEST(BitArrayTest, Cant_Create_Bit_Array_With_Size_Zero) {
     ASSERT_ANY_THROW(BitArray bitArray(0));
 }
 
-TEST(BitArrayTest,  Cant_Create_Bit_Array_With_Negative_Size) {
+TEST(BitArrayTest, Cant_Create_Bit_Array_With_Negative_Size) {
     ASSERT_ANY_THROW(BitArray bitArray(0));
 }
 
-TEST(BitArrayTest,  Can_Get_Size) {
+TEST(BitArrayTest, Can_Get_Size) {
     BitArray bitArray(8);
 
     EXPECT_EQ(bitArray.getSize(), 8);
 }
 
-TEST(BitArrayTest,  Bits_Sum_Of_New_Array_Is_Zero) {
+TEST(BitArrayTest, Bits_Sum_Of_New_Array_Is_Zero) {
     BitArray bitArray(64);
     int sum = 0;
 
@@ -33,19 +33,19 @@ TEST(BitArrayTest,  Bits_Sum_Of_New_Array_Is_Zero) {
     EXPECT_EQ(sum, 0);
 }
 
-TEST(BitArrayTest,  Cant_Get_Bit_With_Negative_Index) {
+TEST(BitArrayTest, Cant_Get_Bit_With_Negative_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.getBit(-1));
 }
 
-TEST(BitArrayTest,  Cant_Get_Bit_With_Too_Large_Index) {
+TEST(BitArrayTest, Cant_Get_Bit_With_Too_Large_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.getBit(8));
 }
 
-TEST(BitArrayTest,  Can_Set_Bit) {
+TEST(BitArrayTest, Can_Set_Bit) {
     BitArray bitArray(8);
 
     bitArray.setBit(4);
@@ -53,19 +53,19 @@ TEST(BitArrayTest,  Can_Set_Bit) {
     EXPECT_EQ(bitArray.getBit(4), 1);
 }
 
-TEST(BitArrayTest,  Cant_Set_Bit_With_Negative_Index) {
+TEST(BitArrayTest, Cant_Set_Bit_With_Negative_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.setBit(-1));
 }
 
-TEST(BitArrayTest,  Cant_Set_Bit_With_Too_Large_Index) {
+TEST(BitArrayTest, Cant_Set_Bit_With_Too_Large_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.setBit(8));
 }
 
-TEST(BitArrayTest,  Can_Clear_Bit) {
+TEST(BitArrayTest, Can_Clear_Bit) {
     BitArray bitArray(8);
     int bitValueAftrerSet, bitValueAfterClear;
 
@@ -77,25 +77,25 @@ TEST(BitArrayTest,  Can_Clear_Bit) {
     EXPECT_NE(bitValueAftrerSet, bitValueAfterClear);
 }
 
-TEST(BitArrayTest,  Can_Clear_Bit_With_Zero_Value) {
+TEST(BitArrayTest, Can_Clear_Bit_With_Zero_Value) {
     BitArray bitArray(8);
 
     ASSERT_NO_THROW(bitArray.clearBit(5));
 }
 
-TEST(BitArrayTest,  Cant_Clear_Bit_With_Negative_Index) {
+TEST(BitArrayTest, Cant_Clear_Bit_With_Negative_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.clearBit(-1));
 }
 
-TEST(BitArrayTest,  Cant_Clear_Bit_With_Too_Large_Index) {
+TEST(BitArrayTest, Cant_Clear_Bit_With_Too_Large_Index) {
     BitArray bitArray(8);
 
     ASSERT_ANY_THROW(bitArray.clearBit(8));
 }
 
-TEST(BitArrayTest,  Can_Assign_Bit_Arrays_With_Equal_Size) {
+TEST(BitArrayTest, Can_Assign_Bit_Arrays_With_Equal_Size) {
     BitArray bitArray1(4), bitArray2(4);
     bool equalityOfBitArrays;
 
@@ -111,7 +111,7 @@ TEST(BitArrayTest,  Can_Assign_Bit_Arrays_With_Equal_Size) {
     ASSERT_TRUE(equalityOfBitArrays);
 }
 
-TEST(BitArrayTest,  Assing_Operator_Changes_Bit_Array_Size) {
+TEST(BitArrayTest, Assing_Operator_Changes_Bit_Array_Size) {
     BitArray bitArray1(16), bitArray2(4);
 
     bitArray2 = bitArray1;
@@ -119,7 +119,7 @@ TEST(BitArrayTest,  Assing_Operator_Changes_Bit_Array_Size) {
     EXPECT_EQ(bitArray2.getSize(), 16);
 }
 
-TEST(BitArrayTest,  Can_Assign_Bit_Arrays_With_Different_Size) {
+TEST(BitArrayTest, Can_Assign_Bit_Arrays_With_Different_Size) {
     BitArray bitArray1(16), bitArray2(4);
     bool equalityOfBitArrays;
 
@@ -167,7 +167,7 @@ TEST(BitArrayTest, Equal_Bit_Arrays_Are_Equal) {
     ASSERT_TRUE(bitArray1 == bitArray2);
 }
 
-TEST(BitArrayTest,  Bit_Arrays_Witn_Different_Size_Are_Not_Equal) {
+TEST(BitArrayTest, Bit_Arrays_Witn_Different_Size_Are_Not_Equal) {
     BitArray bitArray1(8), bitArray2(16);
     bool equalityOfBitArrays;
 
@@ -176,7 +176,7 @@ TEST(BitArrayTest,  Bit_Arrays_Witn_Different_Size_Are_Not_Equal) {
     ASSERT_TRUE(equalityOfBitArrays);
 }
 
-TEST(BitArrayTest,  Not_Equal_Bit_Arrays_Are_Not_Equal) {
+TEST(BitArrayTest, Not_Equal_Bit_Arrays_Are_Not_Equal) {
     BitArray bitArray1(8), bitArray2(8);
     bool equalityOfBitArrays;
 
@@ -250,7 +250,7 @@ TEST(BitArrayTest, AND_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     EXPECT_EQ(expectedBitArray, bitArray1 & bitArray2);
 }
 
-TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
+TEST(BitArrayTest, OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
     BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
 
     bitArray1.setBit(2);
@@ -266,7 +266,7 @@ TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
     EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
 }
 
-TEST(BitArrayTest,  OR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
+TEST(BitArrayTest, OR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
 
     bitArray1.setBit(2);
@@ -312,7 +312,7 @@ TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     EXPECT_EQ(expectedBitArray, bitArray1 ^ bitArray2);
 }
 
-TEST(BitArrayTest,  Can_Invert_Bit_Array) {
+TEST(BitArrayTest, Can_Invert_Bit_Array) {
     BitArray bf(2), negativeBitArray(2), expectedBitArray(2);
 
     bf.setBit(1);
@@ -323,7 +323,7 @@ TEST(BitArrayTest,  Can_Invert_Bit_Array) {
     EXPECT_EQ(expectedBitArray, negativeBitArray);
 }
 
-TEST(BitArrayTest,  Can_Invert_Large_Bit_Array) {
+TEST(BitArrayTest, Can_Invert_Large_Bit_Array) {
     const int size = 38;
     BitArray bf(size), negativeBitArray(size), expectedBitArray(size);
     bf.setBit(35);
