@@ -7,8 +7,7 @@ const int MAX_SIZE = 1000000;
 
 template <typename valType>
 class Queue {
-
-public:
+ public:
     explicit Queue(int _maxSize = 10);
     ~Queue();
     Queue(const Queue &);
@@ -18,9 +17,9 @@ public:
     bool IsEmpty() const;
     void Push(const valType&);
     valType Pop();
-	valType Top();
+    valType Top();
 
-private:
+ private:
     int head_, tail_, len_, maxSize_;
     valType *queuePtr_;
 };
