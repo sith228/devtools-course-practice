@@ -4,6 +4,7 @@
 #define MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_
 
 #include <math.h>
+#include <string>
 #include <unordered_map>
 
 using std::string;
@@ -24,10 +25,10 @@ enum Op : unsigned int{
   R_BRACE =  9
 };
 
-} //  namespace Types
+}  // namespace Types
 
 namespace std {
- 
+
 template<>
 struct hash<Types::Op> {
   typedef Types::Op argument_type;
@@ -39,7 +40,7 @@ struct hash<Types::Op> {
   }
 };
 
-}
+}  // namespace std
 
 namespace Types {
 
@@ -139,6 +140,6 @@ const unordered_map<Op, fun2args>
               {COS,     [](double x, double y) {return cos(x);}    }
 };
 
-} //  namespace Types
+}  // namespace Types
 
-#endif //  MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_
+#endif  // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_TYPES_AND_CONSTS_H_

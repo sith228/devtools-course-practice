@@ -1,4 +1,4 @@
-//  Copyright 2017 Kiparenko Ilya
+// Copyright 2017 Kiparenko Ilya
 
 #ifndef MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
 #define MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
@@ -15,11 +15,11 @@ using Types::Node;
 
 class symbolic_function {
  public:
-  symbolic_function(string s);
+  explicit symbolic_function(string s);
   string to_string();
   symbolic_function();
-  symbolic_function& derivative(string variable);
-  symbolic_function& operator=(symbolic_function& sym);
+  symbolic_function derivative(string variable);
+  symbolic_function& operator=(const symbolic_function& sym);
   ~symbolic_function();
 
  private:
@@ -40,4 +40,4 @@ class symbolic_function {
   string print_tree(Node* root);
 };
 
-#endif //  MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
+#endif  // MODULES_KIPARENKO_ILYA_SYMBOLIC_DERIVATIVE_INCLUDE_SYMBOLIC_FUNCTION_H_
