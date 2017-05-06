@@ -74,18 +74,18 @@ void Sort::ChoiceSort(void) {
 }
 
 void Sort::Merge(int first, int last) {
-  int mi, st, e, j;
+  int middle, start, end, j;
   int *mas = new int[100];
-  mi = (first + last) / 2;
-  st = first;
-  e = mi + 1;
+  middle = (first + last) / 2;
+  start = first;
+  end = middle + 1;
   for (j = first; j <= last; j++)
-    if ((st <= mi) && ((e > last) || (Array_[st] < Array_[e]))) {
-        mas[j] = Array_[st];
-        st++;
+    if ((start <= middle) && ((end > last) || (Array_[start] < Array_[end]))) {
+        mas[j] = Array_[start];
+        start++;
     } else {
-        mas[j] = Array_[e];
-        e++;
+        mas[j] = Array_[end];
+        end++;
     }
   for (j = first; j <= last; j++) Array_[j] = mas[j];
   delete[]mas;
