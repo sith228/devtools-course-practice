@@ -11,11 +11,11 @@ TEST(LineSegment, Can_Create_LineSegment_With_Initial_Values) {
 }
 
 TEST(LineSegment, Can_Create_LineSegment_With_Negative_Values) {
-	ASSERT_NO_THROW(LineSegment2D line(-13.17, -31.09, -44.229));
+  ASSERT_NO_THROW(LineSegment2D line(-13.17, -31.09, -44.229));
 }
 
 TEST(LineSegment, Can_Create_Zero_Segment_) {
-	ASSERT_NO_THROW(LineSegment2D line(0, 0, 0));
+  ASSERT_NO_THROW(LineSegment2D line(0, 0, 0));
 }
 
 TEST(LineSegment, Can_Set_Initial_A_Value) {
