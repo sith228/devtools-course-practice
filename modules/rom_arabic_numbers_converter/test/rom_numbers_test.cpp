@@ -370,10 +370,8 @@ TEST(RomNumConverter, convetr_arabic_to_rom_MMCCCXLV_2345) {
 // EXEPTION
 TEST(RomNumConverter, wrong_litera_in_roman_number) {
     // Arrange
-    int temp;
-    string bufstr = "AB";
     RomNumConverter Convert;
     
     // Assert
-    ASSERT_ANY_THROW(temp = Convert.convert_rom_to_arabic(bufstr));
+    ASSERT_ANY_THROW(Convert.convert_rom_to_arabic("AB"));
 }
