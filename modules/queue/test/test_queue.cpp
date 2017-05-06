@@ -69,7 +69,7 @@ TEST(Queue, can_create_copy_of_Queue) {
     Queue<int> Q(5);
     // Act
     // Assert
-    ASSERT_NO_THROW(Queue<int> Q1(Q));
+	EXPECT_NO_THROW(Queue<int> Q1(Q));
 }
 
 TEST(Queue, can_take_element_from_queue) {
