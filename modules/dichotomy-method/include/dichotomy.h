@@ -7,7 +7,7 @@
 class Dichotomy{
  public:
     double findMin(int afactor,int bfactor, int cfactor,
-         double leftBorder, double rightBorder, double eps);
+double leftBorder, double rightBorder, double eps);
 };
 
 #endif  // MODULES_DICHOTOMY_METHOD_INCLUDE_DICHOTOMY_H_
