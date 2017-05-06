@@ -222,7 +222,7 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetPlane_With_Three_Points_Correct) {
     EXPECT_EQ(Intersec.GetPlane(), expected);
 }
 
-TEST(Lapin_Artem_Line_Plane_Intersec_Test, 
+TEST(Lapin_Artem_Line_Plane_Intersec_Test,
     Do_Throw_When_Plane_Input_Incorrect) {
     // Arrange
     Intersection Intersec;
