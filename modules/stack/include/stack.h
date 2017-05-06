@@ -30,7 +30,7 @@ template <class ValType>
 TStack<ValType>::TStack(int _size) {
     if (_size < 0) {
         throw "Negative size";
-    } else if (_size > = MAX_STACK_SIZE) {
+    } else if (_size >= MAX_STACK_SIZE) {
         throw "Size more than MAX_VECTOR_SIZE";
     } else {
         Top = -1;
