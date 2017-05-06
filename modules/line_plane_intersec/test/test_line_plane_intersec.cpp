@@ -222,7 +222,8 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, SetPlane_With_Three_Points_Correct) {
     EXPECT_EQ(Intersec.GetPlane(), expected);
 }
 
-TEST(Lapin_Artem_Line_Plane_Intersec_Test, Do_Throw_When_Plane_Input_Incorrect) {
+TEST(Lapin_Artem_Line_Plane_Intersec_Test, 
+    Do_Throw_When_Plane_Input_Incorrect) {
     // Arrange
     Intersection Intersec;
     std::vector<double> expected(4);
@@ -239,5 +240,6 @@ TEST(Lapin_Artem_Line_Plane_Intersec_Test, Do_Throw_When_Plane_Input_Incorrect) 
     point3[1] = 1;
     point3[2] = 1;
     // Act & Assert
-    EXPECT_THROW(Intersec.SetPlaneWithThreePoints(point1, point2, point3), std::string);
+    EXPECT_THROW(Intersec.SetPlaneWithThreePoints(point1, point2, point3),
+        std::string);
 }

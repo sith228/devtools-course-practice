@@ -108,8 +108,8 @@ void Intersection::SetPlaneWithThreePoints(std::vector<double>point1,
     point13Vector[2] = point3[2]-point1[2];
     normalVec[0] = point12Vector[1]*point13Vector[2] -
         point12Vector[2]*point13Vector[1];
-    normalVec[1] = point12Vector[0]*point13Vector[2] -
-        point12Vector[2]*point13Vector[0];
+    normalVec[1] = -(point12Vector[0]*point13Vector[2] -
+        point12Vector[2]*point13Vector[0]);
     normalVec[2] = point12Vector[0]*point13Vector[1] -
         point12Vector[1]*point13Vector[0];
     if ((normalVec[0] == 0) && (normalVec[1] == 0) &&
