@@ -11,8 +11,8 @@ double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
         throw "Incorrect borders";
     if (std::abs(rightBorder-leftBorder) < 0.0001)
         throw "Too close values";
-    if ((afactor == 0) && (cfactor == 0))
-        throw "Function is ZERO";
+    if (afactor == 0)
+        throw "Function is not unimodal";
     if (eps <=0)
         throw "Eps must be higher then zero";
     double c = (leftBorder + rightBorder)/2;

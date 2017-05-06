@@ -18,7 +18,8 @@ TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Choose_Too_Close_Values) {
     EXPECT_ANY_THROW(obj.findMin(1, 0, 0, 0.5, 0.5, 0.01));
 }
 
-TEST(Kildishev_Maxim_Dichotomy_Method_Tests, Throw_When_Function_Is_Zero) {
+TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
+     Throw_When_Function_Is_Not_Unimodal) {
     Dichotomy obj;
     EXPECT_ANY_THROW(obj.findMin(0, 1, 0, -1, 1, 0.01));
 }
