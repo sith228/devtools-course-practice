@@ -2,6 +2,7 @@
 
 #include <include/dichotomy.h>
 #include <cmath>
+#include <climits>
 #include <iostream>
 //За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
 double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
@@ -24,6 +25,8 @@ double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
         throw "Function is ZERO";
     if (eps <=0)
         throw "Eps must be higher then zero";
+    if ( (afactor >= INT_MAX) || (bfactor >= INT_MAX) || (cfactor >= INT_MAX))
+        throw "Factor too large";
     double c = (leftBorder + rightBorder)/2;
     double funcValueC = afactor*(c+bfactor)*(c+bfactor) + cfactor;
     while (rightBorder - leftBorder > eps) {
