@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 
 #include "include/quadratic_equation.h"
+#include <string>
+#include <vector>
 
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Create_Quadratic_Equation) {

@@ -2,6 +2,8 @@
 
 #include "include/quadratic_equation.h"
 #include <math.h>
+#include <string>
+#include <vector>
 
 
 QuadraticEquation::QuadraticEquation() : coef_a_(1), coef_b_(0), coef_c_(0) {}
