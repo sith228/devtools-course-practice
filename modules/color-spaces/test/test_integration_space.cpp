@@ -1,3 +1,4 @@
+// Copyright 2017 Nesterov Alexander
 #include <gtest/gtest.h>
 #include "../include/hsb_hsv_space.h"
 #include "../include/rgb_space.h"
