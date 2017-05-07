@@ -106,13 +106,31 @@ TEST(Triangle_test, Different_trieangle_not_equal) {
     EXPECT_TRUE(t1 != t2);
 }
 
-TEST(Triangle_test, Can_set_coordX) {
+TEST(Triangle_test, Can_set_coordX_point1) {
     Triangle t;
     double point_coordx = 10.11;
 
     t.Set_coordX_point(point_coordx, 1);
 
     EXPECT_EQ(point_coordx, t.Get_coordX_point(1));
+}
+
+TEST(Triangle_test, Can_set_coordX_point2) {
+    Triangle t;
+    double point_coordx = 10.11;
+
+    t.Set_coordX_point(point_coordx, 2);
+
+    EXPECT_EQ(point_coordx, t.Get_coordX_point(2));
+}
+
+TEST(Triangle_test, Can_set_coordX_point3) {
+    Triangle t;
+    double point_coordx = 10.11;
+
+    t.Set_coordX_point(point_coordx, 3);
+
+    EXPECT_EQ(point_coordx, t.Get_coordX_point(3));
 }
 
 TEST(Triangle_test, Set_coordX_throw_exception_uncorrect_number) {
@@ -129,13 +147,31 @@ TEST(Triangle_test, Set_coordX_throw_exception_uncorrect_coord) {
     EXPECT_THROW(t.Set_coordX_point(point_coordx, 1), std::string);
 }
 
-TEST(Triangle_test, Can_set_coordY) {
+TEST(Triangle_test, Can_set_coordY_point1) {
     Triangle t;
     double point_coordy = 10.11;
 
     t.Set_coordY_point(point_coordy, 1);
 
     EXPECT_EQ(point_coordy, t.Get_coordY_point(1));
+}
+
+TEST(Triangle_test, Can_set_coordY_point2) {
+    Triangle t;
+    double point_coordy = 10.11;
+
+    t.Set_coordY_point(point_coordy, 2);
+
+    EXPECT_EQ(point_coordy, t.Get_coordY_point(2));
+}
+
+TEST(Triangle_test, Can_set_coordY_point3) {
+    Triangle t;
+    double point_coordy = 10.11;
+
+    t.Set_coordY_point(point_coordy, 3);
+
+    EXPECT_EQ(point_coordy, t.Get_coordY_point(3));
 }
 
 TEST(Triangle_test, Set_coordY_throw_exception_uncorrect_number) {
