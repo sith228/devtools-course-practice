@@ -1,10 +1,9 @@
 // Copyright 2017 Pletnev Nikita
 
-#include <gtest/gtest.h>
-
-#include "include/quadratic_equation.h"
 #include <string>
 #include <vector>
+#include <gtest/gtest.h>
+#include "include/quadratic_equation.h"
 
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Create_Quadratic_Equation) {
