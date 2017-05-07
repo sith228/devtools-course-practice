@@ -30,17 +30,23 @@ point2_coordx_(t.Get_coordX_point(2)), point2_coordy_(t.Get_coordY_point(2)),
 point3_coordx_(t.Get_coordX_point(3)), point3_coordy_(t.Get_coordY_point(3)) {}
 
 double Triangle::Get_coordX_point(const int number_point) const {
-    if (number_point == 1) return point1_coordx_;
-    if (number_point == 2) return point2_coordx_;
-    if (number_point == 3) return point3_coordx_;
-    throw std::string("Unknown number of point");
+    double result_coord = 0;
+    if (number_point == 1) result_coord = point1_coordx_;
+    if (number_point == 2) result_coord = point2_coordx_;
+    if (number_point == 3) result_coord = point3_coordx_;
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3))
+        throw std::string("Unknown number of point");
+    return result_coord;
 }
 
 double Triangle::Get_coordY_point(const int number_point) const {
-    if (number_point == 1) return point1_coordy_;
-    if (number_point == 2) return point2_coordy_;
-    if (number_point == 3) return point3_coordy_;
-    throw std::string("Unknown number of point");
+    double result_coord = 0;
+    if (number_point == 1) result_coord = point1_coordy_;
+    if (number_point == 2) result_coord = point2_coordy_;
+    if (number_point == 3) result_coord = point3_coordy_;
+    if ((number_point != 1) && (number_point != 2) && (number_point != 3))
+        throw std::string("Unknown number of point");
+    return result_coord;
 }
 
 void Triangle::Set_coordX_point(const double x, const int number_point) {
@@ -110,30 +116,36 @@ bool Triangle::operator != (const Triangle& t) const {
 }
 
 double Triangle::Calculate_side(const int number_side) const {
+    double result_side = 0;
     if (number_side == 1)
-        return sqrt(pow(point3_coordx_ - point2_coordx_, 2)
+        result_side = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
         + pow(point3_coordy_ - point2_coordy_, 2));
     if (number_side == 2)
-        return sqrt(pow(point1_coordx_ - point3_coordx_, 2)
+        result_side = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
         + pow(point1_coordy_ - point3_coordy_, 2));
     if (number_side == 3)
-        return sqrt(pow(point1_coordx_ - point2_coordx_, 2)
+        result_side = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
         + pow(point1_coordy_ - point2_coordy_, 2));
-    throw std::string("Unknown number of side");
+    if ((number_side != 1) && (number_side != 2) && (number_side != 3))
+        throw std::string("Unknown number of side");
+    return result_side;
 }
 
 double Triangle::Calculate_corner(const int number_corner) const {
+    double result_corner = 0;
     double side1, side2, side3;
     side1 = Calculate_side(1);
     side2 = Calculate_side(2);
     side3 = Calculate_side(3);
     if (number_corner == 1)
-        return acos((side2*side2 + side3*side3 - side1*side1) / (2 * side2*side3));
+        result_corner = acos((side2*side2 + side3*side3 - side1*side1) / (2 * side2*side3));
     if (number_corner == 2)
-        return acos((side1*side1 + side3*side3 - side2*side2) / (2 * side1*side3));
+        result_corner = acos((side1*side1 + side3*side3 - side2*side2) / (2 * side1*side3));
     if (number_corner == 3)
-        return acos((side2*side2 + side1*side1 - side3*side3) / (2 * side2*side1));
-    throw std::string("Unknown number of corner");
+        result_corner = acos((side2*side2 + side1*side1 - side3*side3) / (2 * side2*side1));
+    if ((number_corner != 1) && (number_corner != 2) && (number_corner != 3))
+        throw std::string("Unknown number of corner");
+    return result_corner;
 }
 
 double Triangle::Calculate_perimeter() const {
