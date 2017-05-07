@@ -327,7 +327,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                         CrNumberNode(2.0))  // b^2
                       ,  // ),
                       CrOpNode(SUB,
-                        CrOpNode(MUL, l_der, temp_r),
+                        CrOpNode(MUL, l_der, CopyTree(temp_r)),
                         CrOpNode(MUL, temp_l, r_der)));    // a'*b - a*b'
                       // )
                     // );
@@ -381,7 +381,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                       CrOpNode(ADD,
                         CrOpNode(MUL,
                           r_der,
-                          CrOpNode(LOG, 0, temp_l))     // b' * log(a)
+                          CrOpNode(LOG, 0, CopyTree(temp_l)))     // b' * log(a)
                         ,  // ),
                         CrOpNode(MUL,
                           temp_r,
@@ -397,7 +397,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                         CrOpNode(POW,
                           temp_l,
                           CrOpNode(SUB,
-                            temp_r,
+                            CopyTree(temp_r),
                             CrNumberNode(1.0)))    // b - 1
                           //)
                         ,  // ),
