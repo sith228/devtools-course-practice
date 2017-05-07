@@ -172,6 +172,20 @@ TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Decode_Code) {
     EXPECT_EQ(result_string, out_string);
 }
 
+TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Not_Decode_Whith_Incorrect_Table) {
+    // Arrang
+    std::string input_code = "000111110";
+    std::map<char, std::vector<bool> > code_table;
+    AddVector(&code_table, 'a', "110");
+    AddVector(&code_table, 'b', "10");
+    AddVector(&code_table, 'c', "11");
+    Huffman ha;
+    std::string result_string = "aaabbc";
+
+    // Act & Assert
+    EXPECT_ANY_THROW(ha.Decode(input_code, code_table));
+}
+
 TEST(Bevzuk_Semen_HuffmanAlgoritmTest, Can_Encode_and_Decode) {
     // Arrang
     std::map<char, std::vector<bool> > code_table;

@@ -50,7 +50,8 @@ class Huffman {
                      std::map<char, std::vector<bool> >* table);
 
     std::string DecodeReverseTable(const std::string& str,
-                                     std::map<std::vector<bool>, char>* table);
+                                     std::map<std::vector<bool>, char>* table,
+                                     unsigned int max_code_length);
 };
 
 #endif  // MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_H_

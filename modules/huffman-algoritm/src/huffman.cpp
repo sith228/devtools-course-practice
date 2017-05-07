@@ -59,17 +59,21 @@ std::string Huffman::Encode(const std::string& string,
 }
 
 std::string Huffman::Decode(const std::string& string,
-                            const std::map<char, std::vector<bool> > &table) {
+                            const std::map<char, std::vector<bool> >& table) {
     CheckInputDecode(string, table);
 
     std::map<char, std::vector<bool> > temp_table = table;
     std::map<std::vector<bool>, char> reverse_table;
     std::map<char, std::vector<bool> >::iterator itr_table;
+    unsigned int max_code_length = 0;
     for (itr_table = temp_table.begin(); itr_table != temp_table.end();
-         ++itr_table)
+         ++itr_table) {
         reverse_table[itr_table->second] = itr_table->first;
+        if (itr_table->second.size() > max_code_length)
+            max_code_length = itr_table->second.size();
+    }
 
-    return DecodeReverseTable(string, &reverse_table);
+    return DecodeReverseTable(string, &reverse_table, max_code_length);
 }
 
 void Huffman::CheckInputEncode(const std::string& string,
@@ -135,7 +139,8 @@ void Huffman::CreateTable(Node* root, std::vector<bool>* code,
 
 std::string Huffman::DecodeReverseTable(
     const std::string& string,
-    std::map<std::vector<bool>, char>* table) {
+    std::map<std::vector<bool>, char>* table,
+    unsigned int max_code_length) {
     std::string out = "";
     std::vector<bool> code;
     int current_code;
@@ -148,6 +153,10 @@ std::string Huffman::DecodeReverseTable(
         if ((*table)[code]) {
             out += (*table)[code];
             code.clear();
+        }
+        if (code.size() > max_code_length)
+        {
+            throw std::string("Incorrect table");
         }
     }
     return out;
