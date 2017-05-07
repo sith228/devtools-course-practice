@@ -1,8 +1,8 @@
 // Copyright 2017 Pletnev Nikita
 
+#include <gtest/gtest.h>
 #include <string>
 #include <vector>
-#include <gtest/gtest.h>
 #include "include/quadratic_equation.h"
 
 
