@@ -1,4 +1,4 @@
-+// Copyright Kildishev Maxim 2017
+// Copyright Kildishev Maxim 2017
 
 #include <gtest/gtest.h>
 #include "include/dichotomy.h"
