@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <include/Sort.h>
+#include <algorithm>
 
 TEST(Sort, Can_Compare_Result) {
     // Arrange
@@ -240,4 +241,21 @@ TEST(Sort, Can_Do_Merge_Sort_With_Negative_Elements) {
     const int expected_result[N] = { -923, -64, -13, -11, -7, -4, -2 };
     const Sort expected_sort(expected_result, N);
     EXPECT_EQ(expected_sort, Array);
+}
+
+TEST(SortTest, bugreport_gaivanuk_mitrokhin_check_assign_operator) {
+    const int N = 3;
+    const int arr[N] = {3, 1, 2};
+    const int expected_result[N] = {1, 2, 3};
+
+    Sort sort(arr, N);
+    Sort expected_sort(expected_result, N);
+
+    {
+        Sort sort2(arr, N);
+        sort2 = sort;
+    }
+
+    sort.PasteSort();
+    EXPECT_EQ(expected_sort, sort);
 }

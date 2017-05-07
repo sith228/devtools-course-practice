@@ -13,6 +13,19 @@ Sort::~Sort() {
     delete[] array_;
 }
 
+Sort& Sort::operator=(const Sort& p) {
+    if (array_ == p.array_) {
+        return *this;
+    }
+    length_ = p.length_;
+    delete[]array_;
+    array_ = new int[length_];
+    for (int i = 0; i < length_; i++) {
+        array_[i] = p.array_[i];
+    }
+    return *this;
+}
+
 bool Sort::operator==(const Sort & z) const {
         bool result = true;
         if (z.length_ != length_) {
