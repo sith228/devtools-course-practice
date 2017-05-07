@@ -9,7 +9,9 @@
 #include "include/rom_numbers_converter.h"
 #include <string>
 
-string RomNumConverter::convert_arabic_to_rom(int temp) {
+
+
+string RomNumConverter::ConvertArabicToRom(int temp) {
     int buf = temp;
     string result = "";
     // thousands
@@ -71,7 +73,7 @@ string RomNumConverter::convert_arabic_to_rom(int temp) {
     return result;
 }
 
-int RomNumConverter::convert_rom_to_arabic(string bufstr) {
+ int  RomNumConverter::ConvertRomToArabic(const string& bufstr){
     int result = 0;
     for (unsigned int i = 0 ; i < bufstr.length() ; i++) {
     switch (bufstr[i]) {
@@ -102,18 +104,12 @@ int RomNumConverter::convert_rom_to_arabic(string bufstr) {
     }
 
     for (unsigned int i = 0; i < bufstr.length()-1; i++) {
-        if (bufstr[i] == 'I' && bufstr[i + 1] == 'V')
-            result -= 2;
-        if (bufstr[i] == 'I' && bufstr[i + 1] == 'X')
-            result -= 2;
-        if (bufstr[i] == 'X' && bufstr[i + 1] == 'L')
-            result -= 20;
-        if (bufstr[i] == 'X' && bufstr[i + 1] == 'C')
-            result -= 20;
-        if (bufstr[i] == 'C' && bufstr[i + 1] == 'D')
-            result -= 200;
-        if (bufstr[i] == 'C' && bufstr[i + 1] == 'M')
-            result -= 200;
+        if (bufstr[i] == 'I' && bufstr[i + 1] == 'V') { result -= 2; }    
+        if (bufstr[i] == 'I' && bufstr[i + 1] == 'X') { result -= 2; }
+        if (bufstr[i] == 'X' && bufstr[i + 1] == 'L') { result -= 20; }
+        if (bufstr[i] == 'X' && bufstr[i + 1] == 'C') { result -= 20; }
+        if (bufstr[i] == 'C' && bufstr[i + 1] == 'D') { result -= 200; }
+        if (bufstr[i] == 'C' && bufstr[i + 1] == 'M') { result -= 200; }
     }
     return result;
 }

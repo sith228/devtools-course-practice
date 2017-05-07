@@ -16,7 +16,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_I_1) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "I");
 }
@@ -27,7 +27,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_V_5) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "V");
 }
@@ -38,7 +38,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_IV_4) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "IV");
 }
@@ -49,7 +49,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_X_10) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "X");
 }
@@ -60,7 +60,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_IX_9) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "IX");
 }
@@ -71,7 +71,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_L_50) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "L");
 }
@@ -82,7 +82,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_XL_40) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "XL");
 }
@@ -93,7 +93,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_XC_90) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "XC");
 }
@@ -104,7 +104,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_C_100) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "C");
 }
@@ -115,7 +115,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_D_500) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "D");
 }
@@ -126,7 +126,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_CD_400) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "CD");
 }
@@ -137,7 +137,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_CM_900) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "CM");
 }
@@ -148,7 +148,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_M_1000) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "M");
 }
@@ -159,7 +159,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_MMMCMXCIX_3999_maximum) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "MMMCMXCIX");
 }
@@ -170,7 +170,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_CDXLIV_444) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "CDXLIV");
 }
@@ -181,7 +181,7 @@ TEST(RomNumConverter, convetr_arabic_to_rom_MMCCCXLV_2345) {
     string bufstr;
     RomNumConverter Convert;
     // Act
-    bufstr = Convert.convert_arabic_to_rom(temp);
+    bufstr = Convert.ConvertArabicToRom(temp);
     // Assert
     EXPECT_EQ(bufstr, "MMCCCXLV");
 }
