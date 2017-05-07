@@ -61,12 +61,9 @@ void Triangle::Set_coordY_point(const double y, const int number_point) {
 
 bool Triangle::isTriangle(const Triangle& t) const {
     double side1, side2, side3;
-    side1 = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
-        + pow(point1_coordy_ - point2_coordy_, 2));
-    side2 = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
-        + pow(point3_coordy_ - point2_coordy_, 2));
-    side3 = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
-        + pow(point1_coordy_ - point3_coordy_, 2));
+    side1 = Calculate_side(1);
+    side2 = Calculate_side(2);
+    side3 = Calculate_side(3);
     return ((side1 < side2 + side3) &&
         (side2 < side1 + side3) && (side3 < side1 + side2));
 }
@@ -98,41 +95,32 @@ double Triangle::Calculate_side(const int number_side) const {
 }
 
 double Triangle::Calculate_corner(const int number_corner) const {
-    double s1, s2, s3;
-    s1 = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
-        + pow(point1_coordy_ - point2_coordy_, 2));
-    s2 = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
-        + pow(point3_coordy_ - point2_coordy_, 2));
-    s3 = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
-        + pow(point1_coordy_ - point3_coordy_, 2));
+    double side1, side2, side3;
+    side1 = Calculate_side(1);
+    side2 = Calculate_side(2);
+    side3 = Calculate_side(3);
     if (number_corner == 1)
-        return acos((s1*s1 + s3*s3 - s2*s2) / (2 * s1*s3));
+        return acos((side2*side2 + side3*side3 - side1*side1) / (2 * side2*side3));
     if (number_corner == 2)
-        return acos((s1*s1 + s2*s2 - s3*s3) / (2 * s1*s2));
+        return acos((side1*side1 + side3*side3 - side2*side2) / (2 * side1*side3));
     if (number_corner == 3)
-        return acos((s2*s2 + s3*s3 - s1*s1) / (2 * s2*s3));
+        return acos((side2*side2 + side1*side1 - side3*side3) / (2 * side2*side1));
     throw std::string("Unknown number of corner");
 }
 
 double Triangle::Calculate_perimeter() const {
     double side1, side2, side3;
-    side1 = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
-        + pow(point1_coordy_ - point2_coordy_, 2));
-    side2 = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
-        + pow(point3_coordy_ - point2_coordy_, 2));
-    side3 = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
-        + pow(point1_coordy_ - point3_coordy_, 2));
+    side1 = Calculate_side(1);
+    side2 = Calculate_side(2);
+    side3 = Calculate_side(3);
     return side1 + side2 + side3;
 }
 
 double Triangle::Calculate_square() const {
     double side1, side2, side3, per;
-    side1 = sqrt(pow(point1_coordx_ - point2_coordx_, 2)
-        + pow(point1_coordy_ - point2_coordy_, 2));
-    side2 = sqrt(pow(point3_coordx_ - point2_coordx_, 2)
-        + pow(point3_coordy_ - point2_coordy_, 2));
-    side3 = sqrt(pow(point1_coordx_ - point3_coordx_, 2)
-        + pow(point1_coordy_ - point3_coordy_, 2));
+    side1 = Calculate_side(1);
+    side2 = Calculate_side(2);
+    side3 = Calculate_side(3);
     per = (side1 + side2 + side3) / 2;
     return sqrt(per * (per - side1) * (per - side2) * (per - side3));
 }
