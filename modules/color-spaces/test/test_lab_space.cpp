@@ -181,7 +181,6 @@ TEST(LABSpaceTest, Can_Use_Equals_With_As) {
     EXPECT_TRUE(result);
 }
 
-
 TEST(LABSpaceTest, Can_Use_Not_Equals_In_LABSpace) {
     // Arrange
     int lightness = 88;
