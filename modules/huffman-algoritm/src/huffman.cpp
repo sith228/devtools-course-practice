@@ -23,16 +23,16 @@ Node::Node(Node* _left, Node* _right) {
     count = _left->count + _right->count;
 }
 
-bool Node::operator == (Node const& a) const {
-    if (a.count != this->count)
+bool Node::operator == (Node const& _a) const {
+    if (_a.count != this->count)
         return false;
-    if (a.symbol != this->symbol)
+    if (_a.symbol != this->symbol)
         return false;
     return true;
 }
 
-bool SortNode(const Node* a, const Node* b) {
-    return a->count < b->count;
+bool SortNode(const Node* _a, const Node* _b) {
+    return _a->count < _b->count;
 }
 
 std::string Huffman::Encode(const std::string& _string,
@@ -90,7 +90,7 @@ void Huffman::CheckInputDecode(const std::string& _string, const std::map<char,
     }
 }
 
-void Huffman::CreateTree(std::list<Node*>* trees) {
+void Huffman::CreateTree(std::list<Node*>* _trees) {
     std::map<char, int> symbols;
     for (unsigned int i = 0; i < input_string_.length(); i++)
         symbols[input_string_[i]]++;
@@ -98,55 +98,55 @@ void Huffman::CreateTree(std::list<Node*>* trees) {
     std::map<char, int>::iterator itr_map;
     for (itr_map = symbols.begin(); itr_map != symbols.end(); ++itr_map) {
         Node *p = new Node(itr_map->first, itr_map->second);
-        trees->push_back(p);
+        _trees->push_back(p);
     }
 
-    while (trees->size() != 1) {
-        trees->sort(SortNode);
+    while (_trees->size() != 1) {
+        _trees->sort(SortNode);
 
-        Node *l = trees->front();
-        trees->pop_front();
-        Node *r = trees->front();
-        trees->pop_front();
+        Node *l = _trees->front();
+        _trees->pop_front();
+        Node *r = _trees->front();
+        _trees->pop_front();
 
         Node *parent = new Node(l, r);
-        trees->push_back(parent);
+        _trees->push_back(parent);
     }
 }
 
-void Huffman::CreateTable(Node* root, std::vector<bool>* code,
-                          std::map<char, std::vector<bool> >* table) {
-    if (root->left) {
-        code->push_back(0);
-        CreateTable(root->left, code, table);
+void Huffman::CreateTable(Node* _root, std::vector<bool>* _code,
+                          std::map<char, std::vector<bool> >* _table) {
+    if (_root->left) {
+        _code->push_back(0);
+        CreateTable(_root->left, _code, _table);
     }
 
-    if (root->right) {
-        code->push_back(1);
-        CreateTable(root->right, code, table);
+    if (_root->right) {
+        _code->push_back(1);
+        CreateTable(_root->right, _code, _table);
     }
 
-    if (root->symbol)
-        (*table)[root->symbol] = *code;
+    if (_root->symbol)
+        (*_table)[_root->symbol] = *_code;
 
-    if (code->size())
-        code->pop_back();
+    if (_code->size())
+        _code->pop_back();
 }
 
 std::string Huffman::DecodeReverseTable(
-    const std::string &str,
-    std::map<std::vector<bool>, char>* table) {
+    const std::string& _str,
+    std::map<std::vector<bool>, char>* _table) {
     std::string out = "";
     std::vector<bool> code;
     int current_code;
-    for (unsigned int i = 0; i < str.length(); i++) {
-        if (str[i] == '0')
+    for (unsigned int i = 0; i < _str.length(); i++) {
+        if (_str[i] == '0')
             current_code = 0;
         else
             current_code = 1;
         code.push_back(current_code);
-        if ((*table)[code]) {
-            out += (*table)[code];
+        if ((*_table)[code]) {
+            out += (*_table)[code];
             code.clear();
         }
     }
