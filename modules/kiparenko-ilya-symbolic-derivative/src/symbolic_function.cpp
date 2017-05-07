@@ -55,7 +55,7 @@ symbolic_function::symbolic_function() {
   root_ = 0;
 }
 
-symbolic_function& symbolic_function::operator=(symbolic_function sym) {
+symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
   DelTree(root_);
   symbols_ = sym.symbols_;
   root_ = CopyTree(sym.root_);
@@ -69,7 +69,7 @@ string symbolic_function::ToString() {
 symbolic_function symbolic_function::Derivative(string variable) {
   symbolic_function sym;
   sym.symbols_ = symbols_;
-  sym.root_ = CopyTree(Derivative(root_, variable));
+  sym.root_ = Derivative(root_, variable);
   return sym;
 }
 
@@ -333,7 +333,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                     // );
                   break;
                 case 2:  // b' = 0
-                  // del_tree(temp_l)
+                  DelTree(temp_l);
                   return CrOpNode(DIV,
                            l_der,
                            temp_r);  // a'/b
@@ -363,11 +363,11 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                       CrOpNode(MUL, temp_l, r_der));  // a * b'
                     // );
                 case 2:  // b' = 0
-                  // del_tree(temp_l)
+                  DelTree(temp_l);
                   return
                     CrOpNode(MUL, l_der, temp_r);   // a'* b
                 case 1:  // a' = 0
-                  // del_tree(temp_r)
+                  DelTree(temp_r);
                   return
                     CrOpNode(MUL, temp_l, r_der);    // a * b'
               }
@@ -405,7 +405,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                       // )
                     // );  // b * a^(b-1) * a'
                 case 1:  // a' = 0
-                  // del_tree(temp_r);
+                  DelTree(temp_r);
                   return
                     CrOpNode(MUL,
                       CopyTree(root),
