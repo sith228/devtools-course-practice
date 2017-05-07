@@ -19,7 +19,7 @@ void Dichotomy::EnteredCorrectly(int a_factor, double left_border,
 double Dichotomy::FindMin(int a_factor, int b_factor, int c_factor,
      double left_border, double right_border, double eps) {
     EnteredCorrectly(a_factor, left_border, right_border, eps);
-    double c = (left_border + right_border)/2;
+    double middle = (left_border + right_border)/2;
     double func_value_c = a_factor*(c+b_factor)*(c+b_factor) + c_factor;
     while (right_border - left_border > eps) {
         double x = (left_border + c)/2;
