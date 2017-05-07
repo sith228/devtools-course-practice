@@ -51,36 +51,36 @@ BitArray& BitArray::operator = (const BitArray& bitArray) {
 
 
 
-unsigned int BitArray::getSize() const {
+unsigned int BitArray::GetSize() const {
     return size_;
 }
 
 
 
-unsigned int BitArray::getBlockNumber
+unsigned int BitArray::GetBlockNumber
                        (const unsigned int globalBitNumber) const {
     return globalBitNumber / blockSize_;
 }
 
 
 
-unsigned int BitArray::getLocalBitNumber
+unsigned int BitArray::GetLocalBitNumber
                        (const unsigned int globalBitNumber) const {
     return globalBitNumber % blockSize_;
 }
 
 
 
-MemoryBlock BitArray::getMask
+MemoryBlock BitArray::GetMask
                       (const unsigned int globalBitNumber) const {
     MemoryBlock mask = 1;
-    mask <<= getLocalBitNumber(globalBitNumber);
+    mask <<= GetLocalBitNumber(globalBitNumber);
     return mask;
 }
 
-void BitArray::setBit(const unsigned int bitNumber) {
+void BitArray::SetBit(const unsigned int bitNumber) {
     if (bitNumber < size_) {
-        memoryBlocks_[getBlockNumber(bitNumber)] |= getMask(bitNumber);
+        memoryBlocks_[GetBlockNumber(bitNumber)] |= GetMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
     }
@@ -88,20 +88,20 @@ void BitArray::setBit(const unsigned int bitNumber) {
 
 
 
-void BitArray::clearBit(const unsigned int bitNumber) {
+void BitArray::ClearBit(const unsigned int bitNumber) {
     if (bitNumber < size_) {
-        memoryBlocks_[getBlockNumber(bitNumber)] &= ~getMask(bitNumber);
+        memoryBlocks_[GetBlockNumber(bitNumber)] &= ~GetMask(bitNumber);
     } else {
         throw std::string("Incorrect index");
     }
 }
 
 
-int BitArray::getBit(const unsigned int bitNumber) const {
+int BitArray::GetBit(const unsigned int bitNumber) const {
     if (bitNumber < size_) {
         int bitValue;
-        int blockNumber = getBlockNumber(bitNumber);
-        bitValue = memoryBlocks_[blockNumber] & getMask(bitNumber);
+        int blockNumber = GetBlockNumber(bitNumber);
+        bitValue = memoryBlocks_[blockNumber] & GetMask(bitNumber);
         if (bitValue > 0)
             bitValue = 1;
         return bitValue;
@@ -164,10 +164,10 @@ BitArray BitArray::operator ~() const {
     BitArray tempBitArray(*this);
 
     for (unsigned int i = 0; i < tempBitArray.size_; i++) {
-        if (getBit(i) == 0) {
-            tempBitArray.setBit(i);
+        if (GetBit(i) == 0) {
+            tempBitArray.SetBit(i);
         } else {
-            tempBitArray.clearBit(i);
+            tempBitArray.ClearBit(i);
         }
     }
 
@@ -194,10 +194,10 @@ bool BitArray::operator != (const BitArray& bitArray) const {
 
 
 
-std::string BitArray::toString() const {
+std::string BitArray::ToString() const {
     std::string outputString;
     for (int i = size_ - 1; i >= 0; i--)
-    if (getBit(i) == 1)
+    if (GetBit(i) == 1)
         outputString+= '1';
     else
         outputString += '0';

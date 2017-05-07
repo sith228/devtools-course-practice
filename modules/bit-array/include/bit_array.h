@@ -15,10 +15,10 @@ class BitArray {
 
     BitArray& operator = (const BitArray& bitArray);
 
-    unsigned int getSize() const;
-    void setBit(const unsigned int bitNumber);
-    void clearBit(const unsigned int bitNumber);
-    int getBit(const unsigned int bitNumber) const;
+    unsigned int GetSize() const;
+    void SetBit(const unsigned int bitNumber);
+    void ClearBit(const unsigned int bitNumber);
+    int GetBit(const unsigned int bitNumber) const;
 
     BitArray operator & (const BitArray& bitArray) const;
     BitArray operator | (const BitArray& bitArray) const;
@@ -28,12 +28,12 @@ class BitArray {
     bool operator == (const BitArray& bitArray) const;
     bool operator != (const BitArray& bitArray) const;
 
-    std::string toString() const;
+    std::string ToString() const;
 
  private:
-    unsigned int getBlockNumber(const unsigned int globalBitNumber) const;
-    unsigned int getLocalBitNumber(const unsigned int globalBitNumber) const;
-    MemoryBlock getMask(const unsigned int globalBitNumber) const;
+    unsigned int GetBlockNumber(const unsigned int globalBitNumber) const;
+    unsigned int GetLocalBitNumber(const unsigned int globalBitNumber) const;
+    MemoryBlock GetMask(const unsigned int globalBitNumber) const;
 
     unsigned int size_;
 
