@@ -20,7 +20,10 @@ Triangle::Triangle(const double point1_coordx, const double point1_coordy,
         Set_coordY_point(1, 2);
         Set_coordX_point(1, 3);
         Set_coordY_point(0, 3);
-        throw std::string("These coordinates do not form a triangle. Created default triangle");
+        throw 
+          std::string(
+          "These coordinates do not form a triangle. Created default triangle"
+          );
     }
 }
 
@@ -138,11 +141,14 @@ double Triangle::Calculate_corner(const int number_corner) const {
     side2 = Calculate_side(2);
     side3 = Calculate_side(3);
     if (number_corner == 1)
-        result_corner = acos((side2*side2 + side3*side3 - side1*side1) / (2 * side2*side3));
+        result_corner =
+        acos((side2*side2 + side3*side3 - side1*side1) / (2 * side2*side3));
     if (number_corner == 2)
-        result_corner = acos((side1*side1 + side3*side3 - side2*side2) / (2 * side1*side3));
+        result_corner =
+        acos((side1*side1 + side3*side3 - side2*side2) / (2 * side1*side3));
     if (number_corner == 3)
-        result_corner = acos((side2*side2 + side1*side1 - side3*side3) / (2 * side2*side1));
+        result_corner =
+        acos((side2*side2 + side1*side1 - side3*side3) / (2 * side2*side1));
     if ((number_corner != 1) && (number_corner != 2) && (number_corner != 3))
         throw std::string("Unknown number of corner");
     return result_corner;
