@@ -3,19 +3,19 @@
 #include <gtest/gtest.h>
 #include "include/ConverterCurrency.h"
 
-using Currency::CNY;
-using Currency::RUR;
-using Currency::USD;
-using Currency::GBP;
-using Currency::UAH;
-using Currency::EUR;
-using Currency::JPY;
-using Currency::RURtoCNY;
-using Currency::RURtoEUR;
-using Currency::RURtoGBP;
-using Currency::RURtoJPY;
-using Currency::RURtoUAH;
-using Currency::RURtoUSD;
+using currency::CNY;
+using currency::RUR;
+using currency::USD;
+using currency::GBP;
+using currency::UAH;
+using currency::EUR;
+using currency::JPY;
+using currency::RURtoCNY;
+using currency::RURtoEUR;
+using currency::RURtoGBP;
+using currency::RURtoJPY;
+using currency::RURtoUAH;
+using currency::RURtoUSD;
 
 TEST(ConverterCurrenciesTest, can_not_convert_if_money_size_less_then_zero) {
     EXPECT_ANY_THROW(ConverterCurrency::Convert(-1, RUR, EUR));

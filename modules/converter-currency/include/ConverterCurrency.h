@@ -3,7 +3,7 @@
 #ifndef MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_
 #define MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_
 
-namespace Currency {
+namespace currency {
     enum CurrencyName { RUR, USD, EUR, UAH, CNY, JPY, GBP };
     const float RURtoUSD = 0.0175f;
     const float RURtoEUR = 0.0161f;
@@ -16,13 +16,13 @@ namespace Currency {
 class ConverterCurrency {
  public:
     static float Convert(const float MoneySize,
-        const Currency::CurrencyName OldCurrency,
-        const Currency::CurrencyName NewCurrency);
+        const currency::CurrencyName OldCurrency,
+        const currency::CurrencyName NewCurrency);
  private:
-     static float CurrentToRubles(const float MoneySize,
-         Currency::CurrencyName OldCurrency);
-     static float RublesToTarget(float OldMoney,
-                                const Currency::CurrencyName TargetMoney);
+     static float currentToRubles(const float MoneySize,
+        const currency::CurrencyName OldCurrency);
+     static float rublesToTarget(float OldMoney,
+        const currency::CurrencyName TargetMoney);
 };
 
 #endif  // MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_

@@ -1,64 +1,62 @@
 // Copyright 2017 Dmitrichev Nikita
 
-#define ERROR_INVALIDMONEYSIZE 1000  // MoneySize on Convert() can't be negative
-
 #include "include/ConverterCurrency.h"
 
-float ConverterCurrency::CurrentToRubles(const float MoneySize,
-    Currency::CurrencyName OldCurrency) {
+float ConverterCurrency::currentToRubles(const float MoneySize,
+                         const currency::CurrencyName OldCurrency) {
     float ResultMoneySize = 0;
 
     switch (OldCurrency) {
-    case Currency::RUR:
+    case currency::RUR:
         ResultMoneySize = MoneySize;
         break;
-    case Currency::USD:
-        ResultMoneySize = MoneySize / Currency::RURtoUSD;
+    case currency::USD:
+        ResultMoneySize = MoneySize / currency::RURtoUSD;
         break;
-    case Currency::EUR:
-        ResultMoneySize = MoneySize / Currency::RURtoEUR;
+    case currency::EUR:
+        ResultMoneySize = MoneySize / currency::RURtoEUR;
         break;
-    case Currency::UAH:
-        ResultMoneySize = MoneySize / Currency::RURtoUAH;
+    case currency::UAH:
+        ResultMoneySize = MoneySize / currency::RURtoUAH;
         break;
-    case Currency::CNY:
-        ResultMoneySize = MoneySize / Currency::RURtoCNY;
+    case currency::CNY:
+        ResultMoneySize = MoneySize / currency::RURtoCNY;
         break;
-    case Currency::JPY:
-        ResultMoneySize = MoneySize / Currency::RURtoJPY;
+    case currency::JPY:
+        ResultMoneySize = MoneySize / currency::RURtoJPY;
         break;
-    case Currency::GBP:
-        ResultMoneySize = MoneySize / Currency::RURtoGBP;
+    case currency::GBP:
+        ResultMoneySize = MoneySize / currency::RURtoGBP;
         break;
     }
 
     return ResultMoneySize;
 }
 
-float ConverterCurrency::RublesToTarget(const float MoneySize,
-                               const Currency::CurrencyName TargetMoney) {
+float ConverterCurrency::rublesToTarget(const float MoneySize,
+                         const currency::CurrencyName NewCurrency) {
     float ResultMoneySize = MoneySize;
 
-    switch (TargetMoney) {
-    case Currency::RUR:
+    switch (NewCurrency) {
+    case currency::RUR:
         break;
-    case Currency::USD:
-        ResultMoneySize *= Currency::RURtoUSD;
+    case currency::USD:
+        ResultMoneySize *= currency::RURtoUSD;
         break;
-    case Currency::EUR:
-        ResultMoneySize *= Currency::RURtoEUR;
+    case currency::EUR:
+        ResultMoneySize *= currency::RURtoEUR;
         break;
-    case Currency::UAH:
-        ResultMoneySize *= Currency::RURtoUAH;
+    case currency::UAH:
+        ResultMoneySize *= currency::RURtoUAH;
         break;
-    case Currency::CNY:
-        ResultMoneySize *= Currency::RURtoCNY;
+    case currency::CNY:
+        ResultMoneySize *= currency::RURtoCNY;
         break;
-    case Currency::JPY:
-        ResultMoneySize *= Currency::RURtoJPY;
+    case currency::JPY:
+        ResultMoneySize *= currency::RURtoJPY;
         break;
-    case Currency::GBP:
-        ResultMoneySize *= Currency::RURtoGBP;
+    case currency::GBP:
+        ResultMoneySize *= currency::RURtoGBP;
         break;
     }
 
@@ -66,8 +64,8 @@ float ConverterCurrency::RublesToTarget(const float MoneySize,
 }
 
 float ConverterCurrency::Convert(const float MoneySize,
-                                 const Currency::CurrencyName OldCurrency,
-                                 const Currency::CurrencyName NewCurrency) {
+                         const currency::CurrencyName OldCurrency,
+                         const currency::CurrencyName NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoneySize;
 
@@ -76,12 +74,12 @@ float ConverterCurrency::Convert(const float MoneySize,
         } else if (OldCurrency == NewCurrency) {
             ResultMoneySize = MoneySize;
         } else {
-            ResultMoneySize = CurrentToRubles(MoneySize, OldCurrency);
-            ResultMoneySize = RublesToTarget(ResultMoneySize, NewCurrency);
+            ResultMoneySize = currentToRubles(MoneySize, OldCurrency);
+            ResultMoneySize = rublesToTarget(ResultMoneySize, NewCurrency);
         }
 
         return ResultMoneySize;
     } else {
-        throw ERROR_INVALIDMONEYSIZE;
+        throw "First parameter can't be negative.";
     }
 }
