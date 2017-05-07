@@ -79,9 +79,9 @@ TEST(Queue, can_take_element_from_queue) {
     Q.Push(2);
     Q.Push(3);
     // Act
-    int expRes = 1;
+    int exp_res = 1;
     // Assert
-    EXPECT_EQ(expRes, Q.Pop());
+    EXPECT_EQ(exp_res, Q.Pop());
 }
 
 TEST(Queue, cant_push_element_in_deleted_queue) {
