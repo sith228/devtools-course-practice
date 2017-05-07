@@ -5,7 +5,7 @@
 
 //За унимодальную функцию примем y = a_factor*(x+b_factor)^2 + c_factor
 class Dichotomy{
-private:
+ private:
     void EnteredCorrectly(int a_factor, double left_border,
          double right_border, double eps);
  public:
