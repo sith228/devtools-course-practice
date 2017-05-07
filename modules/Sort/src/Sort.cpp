@@ -2,24 +2,24 @@
 
 #include "include/Sort.h"
 
-Sort::Sort(const int Array[], int Length) {
-    Array_ = new int[Length];
-    Length_ = Length;
-    for (int i = 0; i < Length_; i++)
-       Array_[i] = Array[i];
+Sort::Sort(const int array[], int length) {
+    array_ = new int[length];
+    length_ = length;
+    for (int i = 0; i < length_; i++)
+       array_[i] = array[i];
 }
 
 Sort::~Sort() {
-    delete[] Array_;
+    delete[] array_;
 }
 
 bool Sort::operator==(const Sort & z) const {
         bool result = true;
-        if (z.Length_ != Length_) {
+        if (z.length_ != length_) {
            result = false;
         } else {
-           for (int i = 0; i < Length_; i++) {
-                 if (Array_[i] != z.Array_[i])
+           for (int i = 0; i < length_; i++) {
+                 if (array_[i] != z.array_[i])
                     result = false;
             }
         }
@@ -27,17 +27,17 @@ bool Sort::operator==(const Sort & z) const {
 }
 
 void Sort::QuickSort(int left_border, int right_border) {
-    int x = Array_[left_border + (right_border - left_border) / 2];
+    int x = array_[left_border + (right_border - left_border) / 2];
     int temp;
     int i = left_border;
     int j = right_border;
     while (i <= j) {
-        while (Array_[i] < x) i++;
-        while (Array_[j] > x) j--;
+        while (array_[i] < x) i++;
+        while (array_[j] > x) j--;
         if (i <= j) {
-            temp = Array_[i];
-            Array_[i] = Array_[j];
-            Array_[j] = temp;
+            temp = array_[i];
+            array_[i] = array_[j];
+            array_[j] = temp;
             i++;
             j--;
         }
@@ -50,44 +50,44 @@ void Sort::QuickSort(int left_border, int right_border) {
 
 void Sort::PasteSort(void) {
     int counter = 0;
-    for (int i = 1; i < Length_; i++) {
-        for (int j = i; j > 0 && Array_[j - 1] > Array_[j]; j--) {
+    for (int i = 1; i < length_; i++) {
+        for (int j = i; j > 0 && array_[j - 1] > array_[j]; j--) {
             counter++;
-            int tmp = Array_[j - 1];
-            Array_[j - 1] = Array_[j];
-            Array_[j] = tmp;
+            int tmp = array_[j - 1];
+            array_[j - 1] = array_[j];
+            array_[j] = tmp;
         }
     }
 }
 
 void Sort::ChoiceSort(void) {
-    for (int i = 0; i < Length_; i++) {
-        int temp = Array_[0];
-        for (int j = i + 1; j < Length_; j++) {
-            if (Array_[i] > Array_[j]) {
-                temp = Array_[i];
-                Array_[i] = Array_[j];
-                Array_[j] = temp;
+    for (int i = 0; i < length_; i++) {
+        int temp = array_[0];
+        for (int j = i + 1; j < length_; j++) {
+            if (array_[i] > array_[j]) {
+                temp = array_[i];
+                array_[i] = array_[j];
+                array_[j] = temp;
             }
         }
     }
 }
 
-void Sort::Merge(int first, int last) {
+void Sort::merge(int first, int last) {
   int middle, start, end, j;
   int *mas = new int[100];
   middle = (first + last) / 2;
   start = first;
   end = middle + 1;
   for (j = first; j <= last; j++)
-    if ((start <= middle) && ((end > last) || (Array_[start] < Array_[end]))) {
-        mas[j] = Array_[start];
+    if ((start <= middle) && ((end > last) || (array_[start] < array_[end]))) {
+        mas[j] = array_[start];
         start++;
     } else {
-        mas[j] = Array_[end];
+        mas[j] = array_[end];
         end++;
     }
-  for (j = first; j <= last; j++) Array_[j] = mas[j];
+  for (j = first; j <= last; j++) array_[j] = mas[j];
   delete[]mas;
 }
 
@@ -95,6 +95,6 @@ void Sort::MergeSort(int first, int last) {
      if (first < last) {
          MergeSort(first, (first + last) / 2);
          MergeSort((first + last) / 2 + 1, last);
-         Merge(first, last);
+         merge(first, last);
      }
 }
