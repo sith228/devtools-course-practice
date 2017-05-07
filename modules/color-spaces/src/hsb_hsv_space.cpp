@@ -28,9 +28,9 @@ HSBHSVSpace::HSBHSVSpace(const int hue,
     } else if ((value_brightnes < 0) || (value_brightnes > 100)) {
         throw std::string("The index of brightnes not in the range 0-100");
     } else {
-        hue_ = (uint16_t) hue;
-        saturation_ = (uint16_t) saturation;
-        value_brightnes_ = (uint16_t) value_brightnes;
+        hue_ = static_cast<uint16_t>(hue);
+        saturation_ = static_cast<uint16_t>(saturation);
+        value_brightnes_ = static_cast<uint16_t>(value_brightnes);
     }
 }
 
@@ -63,7 +63,7 @@ void HSBHSVSpace::setHue(const int hue) {
     if ((hue < 0) || (hue > 360)) {
         throw std::string("The index of hue isn't in the range 0-360");
     } else {
-        hue_ = (uint16_t) hue;
+        hue_ = static_cast<uint16_t>(hue);
     }
 }
 
@@ -71,7 +71,7 @@ void HSBHSVSpace::setSaturation(const int saturation) {
     if ((saturation < 0) || (saturation > 100)) {
         throw std::string("The index of saturation isn't in the range 0-100");
     }  else {
-        saturation_ = (uint16_t) saturation;
+        saturation_ = static_cast<uint16_t>(saturation);
     }
 }
 
@@ -79,7 +79,7 @@ void HSBHSVSpace::setValueBrightnes(const int value_brightnes) {
     if ((value_brightnes < 0) || (value_brightnes > 100)) {
         throw std::string("The index of brightnes isn't in the range 0-100");
     } else {
-        value_brightnes_ = (uint16_t) value_brightnes;
+        value_brightnes_ = static_cast<uint16_t>(value_brightnes);
     }
 }
 

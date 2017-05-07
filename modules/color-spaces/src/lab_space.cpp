@@ -28,9 +28,9 @@ LABSpace::LABSpace(const int lightness,
     } else if ((b < 0) || (b > 128)) {
         throw std::string("The index of b color isn't in the range 0-128");
     } else {
-        lightness_ = static_cast<uint8_t> (lightness);
-        a_ = static_cast<uint8_t> (a);
-        b_ = static_cast<uint8_t> (b);
+        lightness_ = static_cast<uint8_t>(lightness);
+        a_ = static_cast<uint8_t>(a);
+        b_ = static_cast<uint8_t>(b);
     }
 }
 
@@ -63,7 +63,7 @@ void LABSpace::setLightness(const int lightness) {
     if ((lightness < 0) || (lightness > 100)) {
         throw std::string("The index of lightness isn't in the range 0-100");
     } else {
-        lightness_ = static_cast<uint8_t> (lightness);
+        lightness_ = static_cast<uint8_t>(lightness);
     }
 }
 
@@ -71,7 +71,7 @@ void LABSpace::setA(const int a) {
     if ((a < 0) || (a > 128)) {
         throw std::string("The index of a color isn't in the range 0-128");
     }  else {
-        a_ = static_cast<uint8_t> (a);
+        a_ = static_cast<uint8_t>(a);
     }
 }
 
@@ -79,7 +79,7 @@ void LABSpace::setB(const int b) {
     if ((b < 0) || (b > 128)) {
         throw std::string("The index of b color isn't in the range 0-128");
     } else {
-        b_ = static_cast<uint8_t> (b);
+        b_ = static_cast<uint8_t>(b);
     }
 }
 
