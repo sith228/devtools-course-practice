@@ -73,7 +73,7 @@ string RomNumConverter::ConvertArabicToRom(int temp) {
     return result;
 }
 
- int  RomNumConverter::ConvertRomToArabic(const string& bufstr){
+int  RomNumConverter::ConvertRomToArabic(const string& bufstr) {
     int result = 0;
     for (unsigned int i = 0 ; i < bufstr.length() ; i++) {
     switch (bufstr[i]) {
@@ -104,7 +104,7 @@ string RomNumConverter::ConvertArabicToRom(int temp) {
     }
 
     for (unsigned int i = 0; i < bufstr.length()-1; i++) {
-        if (bufstr[i] == 'I' && bufstr[i + 1] == 'V') { result -= 2; }    
+        if (bufstr[i] == 'I' && bufstr[i + 1] == 'V') { result -= 2; }
         if (bufstr[i] == 'I' && bufstr[i + 1] == 'X') { result -= 2; }
         if (bufstr[i] == 'X' && bufstr[i + 1] == 'L') { result -= 20; }
         if (bufstr[i] == 'X' && bufstr[i + 1] == 'C') { result -= 20; }
