@@ -11,23 +11,23 @@ class Calculator {
  public:
      Calculator();
 
-     double Calculate_Sphere(double _r);
-     double Calculate_Cone(double _r, double _l);
-     double Calculate_Conoid(double _r1, double _r2, double _l);
-     double Calculate_Cube(double _h);
-     double Calculate_Cylinder(double _r, double _h);
-     double Calculate_Parallelepiped(double _a, double _b, double _c);
-     double Calculate_Prism(double _a, double _b, double _c, double _h);
-     double Calculate_Pyramid(double _a, double _b, double _l);
-     double Calc_Tetra(double _a, double _b, double _c, double _l);
+     double Calculate_Sphere(double r);
+     double Calculate_Cone(double r, double l);
+     double Calculate_Conoid(double r1, double r2, double l);
+     double Calculate_Cube(double h);
+     double Calculate_Cylinder(double r, double h);
+     double Calculate_Parallelepiped(double a, double b, double c);
+     double Calculate_Prism(double a, double b, double c, double h);
+     double Calculate_Pyramid(double a, double b, double l);
+     double Calc_Tetra(double a, double b, double c, double l);
 
  private:
      double S_;
 
-     bool Is_Positive_Parameter(double _a);
-     bool Check_For_Heron(double _a, double _b, double _c);
+     bool Is_Positive_Parameter(double a);
+     bool Check_For_Heron(double a, double b, double c);
      bool Check_Positives(double massive_parameters[], int size);
-     double Calc_Heron(double _a, double _b, double _c);
+     double Calc_Heron(double a, double b, double c);
 };
 
 #endif  // MODULES_AREA_OF_THREE_DIMENSIONAL_FIGURES_INCLUDE_CALCULATOR_H_

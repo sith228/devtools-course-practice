@@ -9,8 +9,8 @@ Calculator::Calculator() {
     S_ = 0;
 }
 
-bool Calculator::Is_Positive_Parameter(double _a) {
-    if (_a <= 0)
+bool Calculator::Is_Positive_Parameter(double a) {
+    if (a <= 0)
         return false;
     else
         return true;
@@ -27,124 +27,124 @@ bool Calculator::Check_Positives(double massive_parameters[], int size) {
     return true;
 }
 
-bool Calculator::Check_For_Heron(double _a, double _b, double _c) {
-    if ((_a + _b >= _c) && (_b + _c >= _a) && (_a + _c >= _b))
+bool Calculator::Check_For_Heron(double a, double b, double c) {
+    if ((a + b >= c) && (b + c >= a) && (a + c >= b))
         return true;
     else
         return false;
 }
 
-double Calculator::Calc_Heron(double _a, double _b, double _c) {
-    double heron_abc;
-    if (Check_For_Heron(_a, _b, _c)) {
-        double p = (_a + _b + _c) / 2;
-        heron_abc = sqrt(p* (p - _a)*(p - _b)*(p - _c));
+double Calculator::Calc_Heron(double a, double b, double c) {
+    double heronabc;
+    if (Check_For_Heron(a, b, c)) {
+        double p = (a + b + c) / 2;
+        heronabc = sqrt(p* (p - a)*(p - b)*(p - c));
     } else {
         throw std::string("Triangle is not calc");
     }
-    return heron_abc;
+    return heronabc;
 }
 
-double Calculator::Calculate_Sphere(double _r) {
-    if (Is_Positive_Parameter(_r))
-        S_ = 4 * M_PI * _r * _r;
+double Calculator::Calculate_Sphere(double r) {
+    if (Is_Positive_Parameter(r))
+        S_ = 4 * M_PI * r * r;
     else
         throw std::string("r <== 0");
     return S_;
 }
 
-double Calculator::Calculate_Cone(double _r, double _l) {
+double Calculator::Calculate_Cone(double r, double l) {
     double *parameters_rl = new double[2];
-    parameters_rl[0] = _r;
-    parameters_rl[1] = _l;
+    parameters_rl[0] = r;
+    parameters_rl[1] = l;
     if (Check_Positives(parameters_rl, 2))
-        S_ = M_PI * _r * _l;
+        S_ = M_PI * r * l;
 
     return S_;
 }
 
-double Calculator::Calculate_Conoid(double _r1, double _r2, double _l) {
+double Calculator::Calculate_Conoid(double r1, double r2, double l) {
     double *parameters_rlr = new double[3];
-    parameters_rlr[0] = _r1;
-    parameters_rlr[1] = _r2;
-    parameters_rlr[2] = _l;
+    parameters_rlr[0] = r1;
+    parameters_rlr[1] = r2;
+    parameters_rlr[2] = l;
     if (Check_Positives(parameters_rlr, 3))
-        S_ = M_PI * (_r1 + _r2) * _l;
+        S_ = M_PI * (r1 + r2) * l;
 
     return S_;
 }
 
-double Calculator::Calculate_Cube(double _h) {
-    if (Is_Positive_Parameter(_h))
-        S_ = 6 * _h * _h;
+double Calculator::Calculate_Cube(double h) {
+    if (Is_Positive_Parameter(h))
+        S_ = 6 * h * h;
     else
         throw std::string("h <= 0");
     return S_;
 }
 
-double Calculator::Calculate_Cylinder(double _r, double _h) {
+double Calculator::Calculate_Cylinder(double r, double h) {
     double *parameters_rh = new double[2];
-    parameters_rh[0] = _r;
-    parameters_rh[1] = _h;
+    parameters_rh[0] = r;
+    parameters_rh[1] = h;
     if (Check_Positives(parameters_rh, 2))
-        S_ = 2 * M_PI * _r * _h;
+        S_ = 2 * M_PI * r * h;
 
     return S_;
 }
 
-double Calculator::Calculate_Parallelepiped(double _a, double _b, double _c) {
+double Calculator::Calculate_Parallelepiped(double a, double b, double c) {
     double *parameters_abc = new double[3];
-    parameters_abc[0] = _a;
-    parameters_abc[1] = _b;
-    parameters_abc[2] = _c;
+    parameters_abc[0] = a;
+    parameters_abc[1] = b;
+    parameters_abc[2] = c;
     if (Check_Positives(parameters_abc, 3))
-        S_ = 2 * (_a * _b + _b * _c + _a * _c);
+        S_ = 2 * (a * b + b * c + a * c);
 
     return S_;
 }
 
-double Calculator::Calculate_Prism(double _a, double _b, double _c, double _h) {
+double Calculator::Calculate_Prism(double a, double b, double c, double h) {
     double *parameters_abch = new double[4];
-    parameters_abch[0] = _a;
-    parameters_abch[1] = _b;
-    parameters_abch[2] = _c;
-    parameters_abch[3] = _h;
+    parameters_abch[0] = a;
+    parameters_abch[1] = b;
+    parameters_abch[2] = c;
+    parameters_abch[3] = h;
 
     if (Check_Positives(parameters_abch, 4)) {
-        double heron_abc = Calc_Heron(_a, _b, _c);
-        S_ = 2 * heron_abc + _a*_h + _b*_h + _a*_h;
+        double heron_abc = Calc_Heron(a, b, c);
+        S_ = 2 * heron_abc + a*h + b*h + a*h;
     }
 
     return S_;
 }
 
-double Calculator::Calculate_Pyramid(double _a, double _b, double _l) {
+double Calculator::Calculate_Pyramid(double a, double b, double l) {
     double *parameters_abl = new double[3];
-    parameters_abl[0] = _a;
-    parameters_abl[1] = _b;
-    parameters_abl[2] = _l;
+    parameters_abl[0] = a;
+    parameters_abl[1] = b;
+    parameters_abl[2] = l;
 
     if (Check_Positives(parameters_abl, 3)) {
-        double heron_al = Calc_Heron(_a, _l, _l);
-        double heron_bl = Calc_Heron(_b, _l, _l);
-        S_ = _a*_b + 2 * heron_al + 2 * heron_bl;
+        double heron_al = Calc_Heron(a, l, l);
+        double heron_bl = Calc_Heron(b, l, l);
+        S_ = a*b + 2 * heron_al + 2 * heron_bl;
     }
 
     return S_;
 }
 
-double Calculator::Calc_Tetra(double _a, double _b, double _c, double _l) {
+double Calculator::Calc_Tetra(double a, double b, double c, double l) {
     double *parameters_abcl = new double[4];
-    parameters_abcl[0] = _a;
-    parameters_abcl[1] = _b;
-    parameters_abcl[2] = _c;
-    parameters_abcl[3] = _l;
+    parameters_abcl[0] = a;
+    parameters_abcl[1] = b;
+    parameters_abcl[2] = c;
+    parameters_abcl[3] = l;
 
     if (Check_Positives(parameters_abcl, 4)) {
-        double heron_al = Calc_Heron(_a, _l, _l);
-        double heron_bl = Calc_Heron(_b, _l, _l);
-        double heron_abc = Calc_Heron(_a, _b, _c);
-        double heron_cl = Calc_Heron(_c, _l, _l);
+        double heron_al = Calc_Heron(a, l, l);
+        double heron_bl = Calc_Heron(b, l, l);
+        double heron_abc = Calc_Heron(a, b, c);
+        double heron_cl = Calc_Heron(c, l, l);
 
         S_ = heron_abc + heron_al + heron_bl + heron_cl;
     }
