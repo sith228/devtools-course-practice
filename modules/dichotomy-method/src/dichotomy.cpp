@@ -2,41 +2,45 @@
 
 #include <include/dichotomy.h>
 #include <cmath>
-#include <climits>
 #include <iostream>
-//За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
-double Dichotomy::findMin(int afactor, int bfactor, int cfactor,
-     double leftBorder, double rightBorder, double eps) {
-    if (rightBorder < leftBorder)
-        throw "Incorrect borders";
-    if (std::abs(rightBorder-leftBorder) < 0.0001)
-        throw "Too close values";
-    if (afactor == 0)
-        throw "Function is not unimodal";
-    if (eps <=0)
-        throw "Eps must be higher then zero";
-    double c = (leftBorder + rightBorder)/2;
-    double funcValueC = afactor*(c+bfactor)*(c+bfactor) + cfactor;
-    while (rightBorder - leftBorder > eps) {
-        double x = (leftBorder + c)/2;
-        double funcValueX = afactor*(x+bfactor)*(x+bfactor) + cfactor;
-        double y = (c + rightBorder)/2;
-        double funcValueY = afactor*(y+bfactor)*(y+bfactor) + cfactor;
-        if ((funcValueX < funcValueY) && (funcValueX < funcValueC)) {
-                rightBorder = c;
+
+void Dichotomy::EnteredCorrectly(int a_factor, double left_border,
+     double right_border, double eps) {
+         if (right_border < left_border)
+             throw "Incorrect borders";
+         if (std::abs(right_border-left_border) < 0.0001)
+             throw "Too close values";
+         if (a_factor == 0)
+             throw "Function is not unimodal";
+         if (eps <=0)
+             throw "Eps must be higher then zero";
+}
+
+double Dichotomy::FindMin(int a_factor, int b_factor, int c_factor,
+     double left_border, double right_border, double eps) {
+    EnteredCorrectly(a_factor, left_border, right_border, eps);
+    double c = (left_border + right_border)/2;
+    double func_value_c = a_factor*(c+b_factor)*(c+b_factor) + c_factor;
+    while (right_border - left_border > eps) {
+        double x = (left_border + c)/2;
+        double func_value_x = a_factor*(x+b_factor)*(x+b_factor) + c_factor;
+        double y = (c + right_border)/2;
+        double func_value_y = a_factor*(y+b_factor)*(y+b_factor) + c_factor;
+        if ((func_value_x < func_value_y) && (func_value_x < func_value_c)) {
+                right_border = c;
                 c = x;
-                funcValueC = funcValueX;
-            } else if ( (funcValueC < funcValueX)
-            && (funcValueC < funcValueY) ) {
-                leftBorder = x;
-                rightBorder = y;
+                func_value_c = func_value_x;
+            } else if ( (func_value_c < func_value_x)
+            && (func_value_c < func_value_y) ) {
+                left_border = x;
+                right_border = y;
             } else {
-                leftBorder = c;
+                left_border = c;
                 c = y;
-                funcValueC = funcValueY;
+                func_value_c = func_value_y;
             }
         //Поскольку метод дихотомии должен вернуть отрезок, на котором
         //должен находиться минимум, возьмём за оценку решения его середину
     }
-    return (leftBorder + rightBorder) / 2;
+    return (left_border + right_border) / 2;
 }

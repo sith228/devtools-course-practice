@@ -3,11 +3,14 @@
 #ifndef MODULES_DICHOTOMY_METHOD_INCLUDE_DICHOTOMY_H_
 #define MODULES_DICHOTOMY_METHOD_INCLUDE_DICHOTOMY_H_
 
-//За унимодальную функцию примем y = afactor*(x+bfactor)^2 + cfactor
+//За унимодальную функцию примем y = a_factor*(x+b_factor)^2 + c_factor
 class Dichotomy{
+private:
+    void EnteredCorrectly(int a_factor, double left_border,
+         double right_border, double eps);
  public:
-    double findMin(int afactor, int bfactor, int cfactor,
-        double leftBorder, double rightBorder, double eps);
+    double FindMin(int a_factor, int b_factor, int c_factor,
+        double left_border, double right_border, double eps);
 };
 
 #endif  // MODULES_DICHOTOMY_METHOD_INCLUDE_DICHOTOMY_H_
