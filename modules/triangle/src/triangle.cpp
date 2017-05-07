@@ -13,8 +13,14 @@ Triangle::Triangle(const double point1_coordx, const double point1_coordy,
     : point1_coordx_(point1_coordx), point1_coordy_(point1_coordy),
     point2_coordx_(point2_coordx), point2_coordy_(point2_coordy),
     point3_coordx_(point3_coordx), point3_coordy_(point3_coordy) {
-    if (!isTriangle(*this)) {
-        throw std::string("These coordinates do not form a triangle");
+    if (!isTriangle()) {
+        Set_coordX_point(0, 1);
+        Set_coordY_point(0, 1);
+        Set_coordX_point(0, 2);
+        Set_coordY_point(1, 2);
+        Set_coordX_point(1, 3);
+        Set_coordY_point(0, 3);
+        throw std::string("These coordinates do not form a triangle. Created default triangle");
     }
 }
 
@@ -38,28 +44,50 @@ double Triangle::Get_coordY_point(const int number_point) const {
 }
 
 void Triangle::Set_coordX_point(const double x, const int number_point) {
-    if (number_point == 1) point1_coordx_ = x;
-    if (number_point == 2) point2_coordx_ = x;
-    if (number_point == 3) point3_coordx_ = x;
+    double copy_coord = 0;
+    if (number_point == 1) {
+        copy_coord = point1_coordx_;
+        point1_coordx_ = x;
+    }
+    if (number_point == 2) {
+        copy_coord = point2_coordx_;
+        point2_coordx_ = x;
+    }
+    if (number_point == 3) {
+        copy_coord = point3_coordx_;
+        point3_coordx_ = x;
+    }
     if ((number_point != 1) && (number_point != 2) && (number_point != 3))
         throw std::string("Unknown number of point");
-    if (!isTriangle(*this)) {
+    if (!isTriangle()) {
+        Set_coordX_point(copy_coord, number_point);
         throw std::string("New coordinates do not form a triangle.");
     }
 }
 
 void Triangle::Set_coordY_point(const double y, const int number_point) {
-    if (number_point == 1) point1_coordy_ = y;
-    if (number_point == 2) point2_coordy_ = y;
-    if (number_point == 3) point3_coordy_ = y;
+    double copy_coord = 0;
+    if (number_point == 1) {
+        copy_coord = point1_coordy_;
+        point1_coordy_ = y;
+    }
+    if (number_point == 2) {
+        copy_coord = point2_coordy_;
+        point2_coordy_ = y;
+    }
+    if (number_point == 3) {
+        copy_coord = point3_coordy_;
+        point3_coordy_ = y;
+    }
     if ((number_point != 1) && (number_point != 2) && (number_point != 3))
         throw std::string("Unknown number of point");
-    if (!isTriangle(*this)) {
+    if (!isTriangle()) {
+        Set_coordY_point(copy_coord, number_point);
         throw std::string("New coordinates do not form a triangle.");
     }
 }
 
-bool Triangle::isTriangle(const Triangle& t) const {
+bool Triangle::isTriangle() const {
     double side1, side2, side3;
     side1 = Calculate_side(1);
     side2 = Calculate_side(2);

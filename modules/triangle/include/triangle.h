@@ -30,7 +30,7 @@ class Triangle {
     double Get_coordY_median() const;
 
  private:
-    bool isTriangle(const Triangle& t) const;
+    bool isTriangle() const;
     double point1_coordx_;
     double point1_coordy_;
     double point2_coordx_;
