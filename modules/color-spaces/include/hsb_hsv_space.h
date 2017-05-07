@@ -8,7 +8,7 @@
 
 class HSBHSVSpace {
  public:
-    HSBHSVSpace(): hue_(0), saturation_(0), value_brightnes_(0) {}
+    HSBHSVSpace();
     HSBHSVSpace(const int hue, const int saturation,
                 const int value_brightnes);
     HSBHSVSpace(const HSBHSVSpace &hsb_hsv_space);

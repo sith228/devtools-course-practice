@@ -83,6 +83,12 @@ XYZSpace RGBSpace::ToXYZSpace() const {
     return xyz_space;
 }
 
+RGBSpace::RGBSpace() {
+    red_ = 0;
+    green_ = 0;
+    blue_ = 0;
+}
+
 RGBSpace::RGBSpace(const int red,
                    const int green,
                    const int blue) {

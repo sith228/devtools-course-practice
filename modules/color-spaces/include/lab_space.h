@@ -7,7 +7,7 @@
 
 class LABSpace {
  public:
-    LABSpace(): lightness_(0), a_(0), b_(0) {}
+    LABSpace();
     LABSpace(const int lightness, const int a, const int b);
     LABSpace(const LABSpace &lab_space);
 

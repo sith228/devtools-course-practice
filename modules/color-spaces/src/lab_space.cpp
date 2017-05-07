@@ -12,6 +12,12 @@ void LABSpace::swap(LABSpace &lab_space) {
     std::swap(b_, lab_space.b_);
 }
 
+LABSpace::LABSpace() {
+    lightness_ = 0;
+    a_ = 0;
+    b_ = 0;
+}
+
 LABSpace::LABSpace(const int lightness,
                    const int a,
                    const int b) {

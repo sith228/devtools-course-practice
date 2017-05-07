@@ -44,6 +44,12 @@ LABSpace XYZSpace::ToLABSpace() const {
     return lab_space;
 }
 
+XYZSpace::XYZSpace() {
+    x_ = 0;
+    y_ = 0;
+    z_ = 0;
+}
+
 XYZSpace::XYZSpace(const int x,
                    const int y,
                    const int z) {

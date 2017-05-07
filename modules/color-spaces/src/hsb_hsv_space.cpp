@@ -6,11 +6,16 @@
 #include <string>
 #include <algorithm>
 
-
 void HSBHSVSpace::swap(HSBHSVSpace &hsb_hsv_space) {
     std::swap(hue_, hsb_hsv_space.hue_);
     std::swap(saturation_, hsb_hsv_space.saturation_);
     std::swap(value_brightnes_, hsb_hsv_space.value_brightnes_);
+}
+
+HSBHSVSpace::HSBHSVSpace() {
+    hue_ = 0;
+    saturation_ = 0;
+    value_brightnes_ = 0;
 }
 
 HSBHSVSpace::HSBHSVSpace(const int hue,
