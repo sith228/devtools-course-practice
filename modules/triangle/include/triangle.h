@@ -14,20 +14,20 @@ class Triangle {
     bool operator == (const Triangle& t) const;
     bool operator != (const Triangle& t) const;
 
-    double Get_coordX_point(const int number_point) const;
-    double Get_coordY_point(const int number_point) const;
+    double GetCoordxPoint(const int number_point) const;
+    double GetCoordyPoint(const int number_point) const;
 
-    void Set_coordX_point(const double x, const int number_point);
-    void Set_coordY_point(const double y, const int number_point);
+    void SetCoordxPoint(const double x, const int number_point);
+    void SetCoordyPoint(const double y, const int number_point);
 
-    double Calculate_side(const int number_side) const;
-    double Calculate_corner(const int number_corner) const;
+    double CalculateSide(const int number_side) const;
+    double CalculateCorner(const int number_corner) const;
 
-    double Calculate_perimeter() const;
-    double Calculate_square() const;
+    double CalculatePerimeter() const;
+    double CalculateSquare() const;
 
-    double Get_coordX_median() const;
-    double Get_coordY_median() const;
+    double GetCoordxMedian() const;
+    double GetCoordyMedian() const;
 
  private:
     bool isTriangle() const;
