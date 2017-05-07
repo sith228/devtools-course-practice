@@ -259,3 +259,32 @@ TEST(SortTest, bugreport_gaivanuk_mitrokhin_check_assign_operator) {
     sort.PasteSort();
     EXPECT_EQ(expected_sort, sort);
 }
+
+TEST(Sort, Can_Assign) {
+    // Arrange
+    const int N = 5;
+    const int Arr1[N] = { 3, 7, 5, 12, 56 };
+    const int Arr2[N] = { 5, 2, 1, 4, 7 };
+    Sort expected_sort(Arr1, N);
+    Sort sort(Arr2, N);
+
+    // Act
+    sort = expected_sort;
+
+    // Assert
+    EXPECT_EQ(expected_sort, sort);
+}
+
+TEST(Sort, Can_Assign_Yourself) {
+    // Arrange
+    const int N = 5;
+    const int Arr1[N] = { 3, 7, 5, 12, 56 };
+    Sort expected_sort(Arr1, N);
+    Sort sort(Arr1, N);
+
+    // Act
+    sort = sort;
+
+    // Assert
+    EXPECT_EQ(expected_sort, sort);
+}
