@@ -27,7 +27,8 @@ double Dichotomy::FindMin(int a_factor, int b_factor, int c_factor,
         double func_value_x = a_factor*(x+b_factor)*(x+b_factor) + c_factor;
         double y = (middle + right_border)/2;
         double func_value_y = a_factor*(y+b_factor)*(y+b_factor) + c_factor;
-        if ((func_value_x < func_value_y) && (func_value_x < func_value_middle)) {
+        if ((func_value_x < func_value_y) &&
+         (func_value_x < func_value_middle)) {
                 right_border = middle;
                 middle = x;
                 func_value_middle = func_value_x;
