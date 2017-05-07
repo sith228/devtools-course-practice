@@ -14,16 +14,15 @@ Triangle::Triangle(const double point1_coordx, const double point1_coordy,
     point2_coordx_(point2_coordx), point2_coordy_(point2_coordy),
     point3_coordx_(point3_coordx), point3_coordy_(point3_coordy) {
     if (!isTriangle()) {
-        Set_coordX_point(0, 1);
-        Set_coordY_point(0, 1);
-        Set_coordX_point(0, 2);
-        Set_coordY_point(1, 2);
-        Set_coordX_point(1, 3);
-        Set_coordY_point(0, 3);
-        throw 
+        point1_coordx_ = 0;
+        point1_coordy_ = 0;
+        point2_coordx_ = 0;
+        point2_coordy_ = 1;
+        point3_coordx_ = 1;
+        point3_coordy_ = 0;
+        throw
           std::string(
-          "These coordinates do not form a triangle. Created default triangle"
-          );
+          "These coordinates do not form a triangle.Created default triangle");
     }
 }
 
