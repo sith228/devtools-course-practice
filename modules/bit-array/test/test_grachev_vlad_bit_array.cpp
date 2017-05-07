@@ -29,7 +29,7 @@ TEST(BitArrayTest, Can_Get_Size) {
     realArraySize = bitArray.GetSize();
 
     // Assert
-    EXPECT_EQ(realArraySize, expectedArraySize);
+    EXPECT_EQ(expectedArraySize, realArraySize);
 }
 
 TEST(BitArrayTest, Bits_Sum_Of_New_Array_Is_Zero) {
