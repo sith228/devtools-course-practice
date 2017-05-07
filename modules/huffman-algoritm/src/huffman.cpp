@@ -154,8 +154,7 @@ std::string Huffman::DecodeReverseTable(
             out += (*table)[code];
             code.clear();
         }
-        if (code.size() > max_code_length)
-        {
+        if (code.size() > max_code_length) {
             throw std::string("Incorrect table");
         }
     }
