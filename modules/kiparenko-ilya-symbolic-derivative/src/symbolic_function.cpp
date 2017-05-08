@@ -56,9 +56,12 @@ symbolic_function::symbolic_function() {
 }
 
 symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
+  cout << "start = \n";
   DelTree(root_);
   symbols_ = sym.symbols_;
+  cout << "start copy = \n";
   root_ = CopyTree(sym.root_);
+  cout << "end = \n";
   return (*this);
 }
 
@@ -69,7 +72,9 @@ string symbolic_function::ToString() {
 symbolic_function symbolic_function::Derivative(string variable) {
   symbolic_function sym;
   sym.symbols_ = symbols_;
+  cout << "start derv = \n";
   sym.root_ = Derivative(root_, variable);
+  cout << "end derv = \n";
   return sym;
 }
 
@@ -245,6 +250,7 @@ Node* symbolic_function::PostfixToAst(Node* root) {
 }
 
 void symbolic_function::DelTree(Node* root) {
+  cout << "start del = \n";
   if (root != 0) {
     stack<Node*> st;
     st.push(root);
@@ -257,14 +263,17 @@ void symbolic_function::DelTree(Node* root) {
       delete root;
     }
   }
+  cout << "end del = \n";
 }
 
 Node* symbolic_function::CopyTree(Node* root) {
+  cout << "start copy = \n";
   if (root != 0) {
     Node* out = new Node();
     *out = *root;
     out->left  = CopyTree(root->left);
     out->right = CopyTree(root->right);
+    cout << "end copy level = \n";
     return out;
   } else {
     return 0;
@@ -353,7 +362,6 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                       // );
                     break;
                 }
-                break;
               case MUL:  // a*b
                 switch (flag) {
                   case 3:  // a' != 0 && b' != 0
@@ -371,7 +379,6 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                     return
                       CrOpNode(MUL, temp_l, r_der);    // a * b'
                 }
-                break;
               case POW:  // a^b = exp(b*log(a))
                 switch (flag) {
                   case 3:  // a' != 0 && b' != 0
@@ -415,7 +422,6 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                         // )
                       // );  // a^b * b' * log(a)
                 }
-                break;
             }
           } else {
             return 0;

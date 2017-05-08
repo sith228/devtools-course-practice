@@ -23,6 +23,8 @@ enum Op : unsigned int{
   R_BRACE =  9
 };
 
+#ifdef __GNUC__
+
 namespace std {
 
 template<>
@@ -37,6 +39,8 @@ struct hash<Op> {
 };
 
 }  // namespace std
+
+#endif
 
 enum Type {
   SYMBOL   = 0,
