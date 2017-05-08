@@ -2,9 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <math.h>
-#include <string>
-
 #include "include/newton-method.h"
 
 class newton_methodTest : public ::testing::Test {
@@ -22,12 +19,12 @@ float f3(float x) {
     return 2;
 }
 
-TEST_F(newton_methodTest, Can_set_conditions) {
+TEST_F(newton_methodTest, Can_set_conditions_one) {
     // Assert
     ASSERT_NO_THROW(nMet.setAB(0.0, 1.0));
 }
 
-TEST_F(newton_methodTest, Can_set_conditions) {
+TEST_F(newton_methodTest, Can_set_conditions_two) {
     // Assert
     ASSERT_NO_THROW(nMet.setAccuracy(0.01));
 }
