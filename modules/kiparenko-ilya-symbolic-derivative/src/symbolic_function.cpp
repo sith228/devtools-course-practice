@@ -455,5 +455,4 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
         }
     }
   }
-  return 0;
 }

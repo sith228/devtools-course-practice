@@ -31,7 +31,7 @@ struct hash<Op> {
   typedef size_t result_type;
 
   result_type operator () (const argument_type& x) const {
-    using type = typename std::underlying_type<argument_type>::type;
+    using type = std::underlying_type<argument_type>::type;
     return std::hash<type>()(static_cast<type>(x));
   }
 };

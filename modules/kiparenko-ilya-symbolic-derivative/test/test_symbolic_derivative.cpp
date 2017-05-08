@@ -21,7 +21,7 @@ TEST(symbolic_derivativeTest, Can_Parse_Expression_With_Right_Braces) {
 }
 
 TEST(symbolic_derivativeTest, Cant_Parse_Expression_With_Wrong_Braces) {
-  EXPECT_ANY_THROW(symbolic_function sym("(a + b"));
+  EXPECT_ANY_THROW(symbolic_function sym("a + b)"));
 }
 
 TEST(symbolic_derivativeTest,
@@ -69,7 +69,8 @@ TEST(symbolic_derivativeTest, Derivative_Of_Not_X_Is_Zero) {
 
 TEST(symbolic_derivativeTest, Can_Differentiate_Really_Complex_Expression) {
   std::string s = "2^x*x + 3/4/sin(x+log(x)/2.0)*cos(4.0)^(5.0-x)";
-  s +=            "-(1-x)^(x) + sin(2*x*3*cos(2*x))-3+2*x-4";
+  s +=            "-(1-x)^(x) + sin(2*x*3*cos(2*x))-3+2*x-4+(1+x)";
+  s +=            "-x/(2-x^4)";
   symbolic_function sym(s);
   symbolic_function sym_dx;
 
