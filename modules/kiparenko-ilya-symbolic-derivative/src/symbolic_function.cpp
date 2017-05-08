@@ -81,7 +81,7 @@ Node* symbolic_function::Parse(string s) {
   int buf_pos = 0;
   int token_type = -1;
   int token_state = -1;
-  int i = 0;
+  unsigned int i = 0;
   string delimiters("+-*/^()");
 
   while (i < s.size() || (i == s.size() && token_state == 0)) {
@@ -455,4 +455,5 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
         }
     }
   }
+  return 0;
 }

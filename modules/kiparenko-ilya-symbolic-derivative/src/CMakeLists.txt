@@ -9,8 +9,11 @@ add_library(${target} STATIC ${srcs} ${hdrs})
 set_target_properties(${target} PROPERTIES
     OUTPUT_NAME ${MODULE}
     LABELS "${MODULE};Library")
-	
-target_compile_options(${target} PRIVATE -Wno-error)
+
+if(NOT MSVC)
+    target_compile_options(${target} PRIVATE -Wno-error)
+endif()
+
 
 if (UNIX)
   target_link_libraries(${target} ${CMAKE_THREAD_LIBS_INIT})
