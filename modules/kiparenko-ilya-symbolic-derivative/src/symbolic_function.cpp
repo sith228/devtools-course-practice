@@ -48,7 +48,9 @@ symbolic_function::symbolic_function(string s) {
 }
 
 symbolic_function::~symbolic_function() {
+  cout << "destruct start\n";
   DelTree(root_);
+  cout << "destruct end\n";
 }
 
 symbolic_function::symbolic_function() {
@@ -58,7 +60,9 @@ symbolic_function::symbolic_function() {
 symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
   DelTree(root_);
   symbols_ = sym.symbols_;
+  cout << "copy start\n";
   root_ = CopyTree(sym.root_);
+  cout << "copy end\n";
   return (*this);
 }
 
@@ -70,6 +74,7 @@ symbolic_function symbolic_function::Derivative(string variable) {
   symbolic_function sym;
   sym.symbols_ = symbols_;
   sym.root_ = Derivative(root_, variable);
+  cout << "derivative end\n"'
   return sym;
 }
 
@@ -308,149 +313,149 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
             case 3:  // a' != 0 && b' != 0
               return CrOpNode(root->op_type, l_der, r_der);
               break;
+          }
         }
-      }
-      case DIV:
-      case POW:
-      case MUL: {
-        if (flag > 0) {
-          Node* temp_l = CopyTree(root->left);
-          Node* temp_r = CopyTree(root->right);
-          switch (root->op_type) {
-            case DIV:  // a/b
-              switch (flag) {
-                case 3:  // a' != 0 && b' != 0
-                  return
-                    CrOpNode(DIV,
-                      CrOpNode(POW,
-                        temp_r,
-                        CrNumberNode(2.0))  // b^2
-                      ,  // ),
-                      CrOpNode(SUB,
-                        CrOpNode(MUL, l_der, CopyTree(temp_r)),
-                        CrOpNode(MUL, temp_l, r_der)));    // a'*b - a*b'
-                      // )
-                    // );
-                  break;
-                case 2:  // b' = 0
-                  DelTree(temp_l);
-                  return CrOpNode(DIV,
-                           l_der,
-                           temp_r);  // a'/b
-                         // );
-                  break;
-                case 1:  // a' = 0
-                  return
-                    CrOpNode(DIV,
-                      CrOpNode(POW,
-                        temp_r,
-                        CrNumberNode(2.0))     // b^2
-                      ,  // )
-                      CrOpNode(MUL,
-                        CrNumberNode(-1.0),
-                        CrOpNode(MUL, temp_l, r_der)));    // - a*b'
-                      // )
-                    // );
-                  break;
-              }
-              break;
-            case MUL:  // a*b
-              switch (flag) {
-                case 3:  // a' != 0 && b' != 0
-                  return
-                    CrOpNode(ADD,
-                      CrOpNode(MUL, l_der, temp_r),  // a'* b
-                      CrOpNode(MUL, temp_l, r_der));  // a * b'
-                    // );
-                case 2:  // b' = 0
-                  DelTree(temp_l);
-                  return
-                    CrOpNode(MUL, l_der, temp_r);   // a'* b
-                case 1:  // a' = 0
-                  DelTree(temp_r);
-                  return
-                    CrOpNode(MUL, temp_l, r_der);    // a * b'
-              }
-              break;
-            case POW:  // a^b = exp(b*log(a))
-              switch (flag) {
-                case 3:  // a' != 0 && b' != 0
-                  return
-                    CrOpNode(MUL,
-                      CopyTree(root),
+        case DIV:
+        case POW:
+        case MUL: {
+          if (flag > 0) {
+            Node* temp_l = CopyTree(root->left);
+            Node* temp_r = CopyTree(root->right);
+            switch (root->op_type) {
+              case DIV:  // a/b
+                switch (flag) {
+                  case 3:  // a' != 0 && b' != 0
+                    return
+                      CrOpNode(DIV,
+                        CrOpNode(POW,
+                          temp_r,
+                          CrNumberNode(2.0))  // b^2
+                        ,  // ),
+                        CrOpNode(SUB,
+                          CrOpNode(MUL, l_der, CopyTree(temp_r)),
+                          CrOpNode(MUL, temp_l, r_der)));    // a'*b - a*b'
+                        // )
+                      // );
+                    break;
+                  case 2:  // b' = 0
+                    DelTree(temp_l);
+                    return CrOpNode(DIV,
+                             l_der,
+                             temp_r);  // a'/b
+                           // );
+                    break;
+                  case 1:  // a' = 0
+                    return
+                      CrOpNode(DIV,
+                        CrOpNode(POW,
+                          temp_r,
+                          CrNumberNode(2.0))     // b^2
+                        ,  // )
+                        CrOpNode(MUL,
+                          CrNumberNode(-1.0),
+                          CrOpNode(MUL, temp_l, r_der)));    // - a*b'
+                        // )
+                      // );
+                    break;
+                }
+                break;
+              case MUL:  // a*b
+                switch (flag) {
+                  case 3:  // a' != 0 && b' != 0
+                    return
                       CrOpNode(ADD,
+                        CrOpNode(MUL, l_der, temp_r),  // a'* b
+                        CrOpNode(MUL, temp_l, r_der));  // a * b'
+                      // );
+                  case 2:  // b' = 0
+                    DelTree(temp_l);
+                    return
+                      CrOpNode(MUL, l_der, temp_r);   // a'* b
+                  case 1:  // a' = 0
+                    DelTree(temp_r);
+                    return
+                      CrOpNode(MUL, temp_l, r_der);    // a * b'
+                }
+                break;
+              case POW:  // a^b = exp(b*log(a))
+                switch (flag) {
+                  case 3:  // a' != 0 && b' != 0
+                    return
+                      CrOpNode(MUL,
+                        CopyTree(root),
+                        CrOpNode(ADD,
+                          CrOpNode(MUL,
+                            r_der,
+                            CrOpNode(LOG, 0, CopyTree(temp_l)))     // b' * log(a)
+                          ,  // ),
+                          CrOpNode(MUL,
+                            temp_r,
+                            CrOpNode(DIV, l_der, temp_l))));  // b * a'/a
+                          // )
+                        // )
+                      // );  // a^b * (b' * log(a) + b * a' / a)
+                  case 2:  // b' = 0
+                    return
+                      CrOpNode(MUL,
+                        temp_r,
+                        CrOpNode(MUL,
+                          CrOpNode(POW,
+                            temp_l,
+                            CrOpNode(SUB,
+                              CopyTree(temp_r),
+                              CrNumberNode(1.0)))    // b - 1
+                            //)
+                          ,  // ),
+                          l_der));
+                        // )
+                      // );  // b * a^(b-1) * a'
+                  case 1:  // a' = 0
+                    DelTree(temp_r);
+                    return
+                      CrOpNode(MUL,
+                        CopyTree(root),
                         CrOpNode(MUL,
                           r_der,
-                          CrOpNode(LOG, 0, CopyTree(temp_l)))     // b' * log(a)
-                        ,  // ),
-                        CrOpNode(MUL,
-                          temp_r,
-                          CrOpNode(DIV, l_der, temp_l))));  // b * a'/a
+                          CrOpNode(LOG, 0, temp_l)));  // b' * log(a)
                         // )
-                      // )
-                    // );  // a^b * (b' * log(a) + b * a' / a)
-                case 2:  // b' = 0
-                  return
-                    CrOpNode(MUL,
-                      temp_r,
-                      CrOpNode(MUL,
-                        CrOpNode(POW,
-                          temp_l,
-                          CrOpNode(SUB,
-                            CopyTree(temp_r),
-                            CrNumberNode(1.0)))    // b - 1
-                          //)
-                        ,  // ),
-                        l_der));
-                      // )
-                    // );  // b * a^(b-1) * a'
-                case 1:  // a' = 0
-                  DelTree(temp_r);
-                  return
-                    CrOpNode(MUL,
-                      CopyTree(root),
-                      CrOpNode(MUL,
-                        r_der,
-                        CrOpNode(LOG, 0, temp_l)));  // b' * log(a)
-                      // )
-                    // );  // a^b * b' * log(a)
-              }
-              break;
+                      // );  // a^b * b' * log(a)
+                }
+                break;
+            }
+          } else {
+            return 0;
           }
-        } else {
-          return 0;
         }
-      }
-      case COS:
-      case SIN:
-      case LOG:  // f(a)
-        if (flag) {
-          Node* temp_r = CopyTree(root->right);
-          Node* new_root = CrOpNode(MUL, 0, r_der);  // ??? * a'
-          switch (root->op_type) {
-            case COS:  // cos(a)
-              new_root->left =
-                CrOpNode(MUL,
-                  CrNumberNode(-1.0),
-                  CrOpNode(SIN, 0, temp_r));  // -sin(a)
-                // );
-              break;
-            case SIN:  // sin(a)
-              new_root->left =
-                CrOpNode(COS, 0, temp_r);  // cos(a)
-              break;
-            case LOG:  // log(a)
-              new_root->left =
-                CrOpNode(DIV,
-                  CrNumberNode(1.0),
-                  temp_r);                 // 1/a
-                // );
-              break;
+        case COS:
+        case SIN:
+        case LOG:  // f(a)
+          if (flag) {
+            Node* temp_r = CopyTree(root->right);
+            Node* new_root = CrOpNode(MUL, 0, r_der);  // ??? * a'
+            switch (root->op_type) {
+              case COS:  // cos(a)
+                new_root->left =
+                  CrOpNode(MUL,
+                    CrNumberNode(-1.0),
+                    CrOpNode(SIN, 0, temp_r));  // -sin(a)
+                  // );
+                break;
+              case SIN:  // sin(a)
+                new_root->left =
+                  CrOpNode(COS, 0, temp_r);  // cos(a)
+                break;
+              case LOG:  // log(a)
+                new_root->left =
+                  CrOpNode(DIV,
+                    CrNumberNode(1.0),
+                    temp_r);                 // 1/a
+                  // );
+                break;
+            }
+            // f'(a) * a';
+            return new_root;
           }
-          // f'(a) * a';
-          return new_root;
         }
-      }
     }
   }
 }
