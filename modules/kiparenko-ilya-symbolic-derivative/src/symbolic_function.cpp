@@ -295,7 +295,7 @@ Node* symbolic_function::CopyTree(Node* root) {
           cout << symbols_[root->index];
           break;
       }
-      cout << " : " << root << "\n";
+      cout << " : " << root << " -> " << out << "\n";
     *out = *root;
     out->left  = CopyTree(root->left);
     out->right = CopyTree(root->right);
@@ -307,6 +307,19 @@ Node* symbolic_function::CopyTree(Node* root) {
 
 
 Node* symbolic_function::Derivative(Node* root, string variable) {
+  cout << "deriv root (" << root->type << " ";
+      switch (root->type) {
+        case FUNCTION:
+          cout << func_names.at(root->op_type);
+          break;
+        case NUMBER:
+          cout << root->real_value;
+          break;
+        case SYMBOL:
+          cout << symbols_[root->index];
+          break;
+      }
+      cout << " : " << root << "\n";
   switch (root->type) {
     case NUMBER:
       return 0;
@@ -318,7 +331,9 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
         return 0;
       break;
     case FUNCTION: {
+      cout << "go right deriv\n";
       Node* r_der = Derivative(root->right, variable);
+      cout << "go left deriv\n";
       Node* l_der = (root->left == 0) ? 0 : Derivative(root->left, variable);
       int flag = (l_der != 0)*2 + (r_der != 0);
       switch (root->op_type) {
