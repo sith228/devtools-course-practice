@@ -335,6 +335,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
       Node* r_der = Derivative(root->right, variable);
       cout << "go left deriv\n";
       Node* l_der = (root->left == 0) ? 0 : Derivative(root->left, variable);
+      cout << "end all erivatives \n";
       int flag = (l_der != 0)*2 + (r_der != 0);
       switch (root->op_type) {
         case SUB:
@@ -498,6 +499,8 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
             }
             // f'(a) * a';
             return new_root;
+          } else {
+            return 0;
           }
         }
     }
