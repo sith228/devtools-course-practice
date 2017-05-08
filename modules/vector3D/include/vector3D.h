@@ -1,20 +1,20 @@
 // Copyright 2017 Zorina Ekaterina
 
-#ifndef __VECTOR3D_H__
-#define __VECTOR3D_H__
+#ifndef MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
+#define MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
 
 #include <iostream>
 #include <cmath>
 
 
-// Вектор в трёхмерном пространстве
+// Vector in 3-dimensional space
 class Vector3D {
-protected: 
+ protected:
     double x;
     double y;
     double z;
-public: 
-    Vector3D(double _x = 0.0, double _y = 0.0, double _z = 0.0);
+ public:
+    explicit Vector3D(double _x = 0.0, double _y = 0.0, double _z = 0.0);
     Vector3D(const Vector3D &v);                // copy constructor
     double GetX() const { return x; }            // access
     double GetY() const { return y; }
@@ -35,4 +35,4 @@ public:
 };
 
 
-#endif // MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
+#endif    // MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
