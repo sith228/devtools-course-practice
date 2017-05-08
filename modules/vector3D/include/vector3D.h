@@ -33,18 +33,6 @@ public:
     Vector3D Normalize();                // normalization vector
     double  operator*(const Vector3D &v);     // scalar product
     Vector3D  operator^(const Vector3D &v);    // vector product v(v1, v2)
-
-                                              // input-output
-    friend istream& operator>>(istream &in, Vector3D &v) {
-        in >> v.x >> v.y >> v.z;
-
-        return in;
-    }
-    friend ostream& operator<<(ostream &out, const Vector3D &v) {
-        out << "(" << v.x << ", " << v.y << ", " << v.z << ")" << endl;
-
-        return out;
-    }
 };
 
 
