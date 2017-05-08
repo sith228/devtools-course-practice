@@ -1,6 +1,4 @@
-// Copyright 2017 Zorina Ekaterina
-
-#include "include/vector3D.h"
+#include "vector3D.h"
 
 
 Vector3D::Vector3D(double _x, double _y, double _z) {
@@ -24,17 +22,6 @@ bool Vector3D::operator==(const Vector3D &v) const {
 
 bool Vector3D::operator!=(const Vector3D &v) const {
     return !(*this == v);
-}
-
-bool Vector3D::IsCloseTo(const Vector3D & v) const {
-    double epsilon = 0.00000000000001;    // 14 decimal places
-
-    if ((abs(x - v.x) < epsilon) &&
-        (abs(y - v.y) < epsilon) &&
-        (abs(z - v.z) < epsilon))
-        return true;
-    else
-        return false;
 }
 
 Vector3D& Vector3D::operator=(const Vector3D &v) {

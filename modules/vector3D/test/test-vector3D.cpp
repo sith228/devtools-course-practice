@@ -1,6 +1,5 @@
-// Copyright 2017 Zorina Ekaterina
-
-#include "include/vector3D.h"
+#pragma once
+#include "vector3D.h"
 #include <gtest/gtest.h>
 
 TEST(Vector3D, can_create_vector) {
@@ -99,39 +98,18 @@ TEST(Vector3D, compare_not_equal_vectors_returns_false) {
     EXPECT_TRUE(!(v1 == v2) && (v1 != v2));
 }
 
-TEST(Vector3D, equal_vectors_are_close_to_each_other) {
-
-    Vector3D v1(3.345, 5.097, 0.1), v2(3.345, 5.097, 0.1);
-
-    EXPECT_TRUE(v1.IsCloseTo(v2));
-}
-
-TEST(Vector3D, almost_equal_vectors_are_close) {
-
-    Vector3D v1(3.34500000000000123, 5.097, 0.1), v2(3.345, 5.097, 0.1);
-
-    EXPECT_TRUE(v1.IsCloseTo(v2));
-}
-
-TEST(Vector3D, not_equal_vectors_are_not_close) {
-
-    Vector3D v1(3.3450000000001, 5.097, 0.1), v2(3.345, 5.097, 0.1);
-
-    EXPECT_FALSE(v1.IsCloseTo(v2));
-}
-
 TEST(Vector3D, can_add_vectors) {
 
     Vector3D v1(1.0, 3.2, 4.7), v2(-3.6, 5.23, -4.7), vt(-2.6, 8.43, 0.0);
 
-    EXPECT_TRUE(vt.IsCloseTo(v1 + v2));
+    EXPECT_EQ(vt, (v1 + v2));
 }
 
 TEST(Vector3D, can_subtract_vectors) {
 
-    Vector3D v1(1.0, 3.2, 4.7), v2(-3.6, 5.23, -4.7), vt(4.6, -2.03, 9.4);
+    Vector3D v1(1.0, 0.0, 4.7), v2(-3.6, 1.1, 4.7), vt(4.6, -1.1, 0.0);
 
-    EXPECT_TRUE(vt.IsCloseTo(v1 - v2));
+    EXPECT_EQ(vt, (v1 - v2));
 }
 
 TEST(Vector3D, can_get_vectors_norm) {
@@ -165,7 +143,7 @@ TEST(Vector3D, can_vector_multiply_vectors) {
     Vector3D vt(11.8, -8.0, -5.5);
     Vector3D vmult = v1 ^ v2;
 
-    EXPECT_TRUE(vt.IsCloseTo(vmult));
+    EXPECT_EQ(vt, vmult);
 }
 
 
@@ -175,6 +153,6 @@ TEST(Vector3D, vector_multiply_of_collinear_vectors_is_zero_vector) {
     Vector3D vt(0.0, 0.0, 0.0);
     Vector3D vmult = v1 ^ v2;
 
-    EXPECT_TRUE(vt.IsCloseTo(vmult));
+    EXPECT_EQ(vt, vmult);
 }
 

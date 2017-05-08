@@ -22,8 +22,7 @@ public:
 
     bool operator==(const Vector3D &v) const;  // comparison
     bool operator!=(const Vector3D &v) const;  // comparison
-    bool IsCloseTo(const Vector3D &v) const;    // approximate comparison
-                                                // to check calculations
+
     Vector3D& operator=(const Vector3D &v);     // assigment
 
                                               // vector operations
