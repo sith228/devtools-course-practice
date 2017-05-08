@@ -45,6 +45,7 @@ symbolic_function::symbolic_function(string s) {
   root_ = Parse(s);
   root_ = ToPostfixForm(root_);
   root_ = PostfixToAst(root_);
+  cout << "construct end\n";
 }
 
 symbolic_function::~symbolic_function() {
@@ -73,8 +74,9 @@ string symbolic_function::ToString() {
 symbolic_function symbolic_function::Derivative(string variable) {
   symbolic_function sym;
   sym.symbols_ = symbols_;
+  cout << "derivative start\n";
   sym.root_ = Derivative(root_, variable);
-  cout << "derivative end\n"'
+  cout << "derivative end\n";
   return sym;
 }
 
