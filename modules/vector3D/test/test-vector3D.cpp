@@ -1,3 +1,5 @@
+// Copyright 2017 Zorina Ekaterina
+
 #pragma once
 #include "vector3D.h"
 #include <gtest\gtest.h>

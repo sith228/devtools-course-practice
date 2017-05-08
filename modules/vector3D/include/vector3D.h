@@ -1,3 +1,5 @@
+// Copyright 2017 Zorina Ekaterina
+
 #ifndef __VECTOR3D_H__
 #define __VECTOR3D_H__
 

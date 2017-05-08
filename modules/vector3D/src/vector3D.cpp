@@ -1,3 +1,5 @@
+// Copyright 2017 Zorina Ekaterina
+
 #include "vector3D.h"
 
 
