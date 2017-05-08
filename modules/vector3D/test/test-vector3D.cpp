@@ -1,5 +1,4 @@
-#pragma once
-#include "vector3D.h"
+#include "include/vector3D.h"
 #include <gtest/gtest.h>
 
 TEST(Vector3D, can_create_vector) {
