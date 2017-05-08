@@ -1,7 +1,7 @@
 // Copyright 2017 Zorina Ekaterina
 
 #include "include/vector3D.h"
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 
 TEST(Vector3D, can_create_vector) {
 

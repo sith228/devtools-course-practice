@@ -4,6 +4,7 @@
 #define __VECTOR3D_H__
 
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 // Вектор в трёхмерном пространстве
