@@ -261,6 +261,19 @@ void symbolic_function::DelTree(Node* root) {
         st.push(root->left);
       if (root->right != 0)
         st.push(root->right);
+      cout << "delete (" << root->type;
+      switch (root->type) {
+        case FUNCTION:
+          cout << func_names.at(root->op_type);
+          break;
+        case NUMBER:
+          cout << root->real_value;
+          break;
+        case SYMBOL:
+          cout << symbols_[root->index];
+          break;
+      }
+      cout << ")\n";
       delete root;
     }
   }
