@@ -10,7 +10,7 @@
 
 class newton_methodTest : public ::testing::Test {
  protected:
-    newton_method nMet;  
+    newton_method nMet;
 };
 
 float f1(float x) {
