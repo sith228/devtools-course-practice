@@ -261,7 +261,7 @@ void symbolic_function::DelTree(Node* root) {
         st.push(root->left);
       if (root->right != 0)
         st.push(root->right);
-      cout << "delete (" << root->type;
+      cout << "delete (" << root->type << " ";
       switch (root->type) {
         case FUNCTION:
           cout << func_names.at(root->op_type);
@@ -273,8 +273,9 @@ void symbolic_function::DelTree(Node* root) {
           cout << symbols_[root->index];
           break;
       }
-      cout << ")\n";
+      cout << " : " << root << " ";
       delete root;
+      cout << "deleted\n";
     }
   }
 }
@@ -282,6 +283,19 @@ void symbolic_function::DelTree(Node* root) {
 Node* symbolic_function::CopyTree(Node* root) {
   if (root != 0) {
     Node* out = new Node();
+    cout << "copy (" << root->type << " ";
+      switch (root->type) {
+        case FUNCTION:
+          cout << func_names.at(root->op_type);
+          break;
+        case NUMBER:
+          cout << root->real_value;
+          break;
+        case SYMBOL:
+          cout << symbols_[root->index];
+          break;
+      }
+      cout << " : " << root << "\n";
     *out = *root;
     out->left  = CopyTree(root->left);
     out->right = CopyTree(root->right);
@@ -401,7 +415,7 @@ Node* symbolic_function::Derivative(Node* root, string variable) {
                         CrOpNode(ADD,
                           CrOpNode(MUL,
                             r_der,
-                            CrOpNode(LOG, 0, CopyTree(temp_l)))     // b' * log(a)
+                            CrOpNode(LOG, 0, CopyTree(temp_l)))  //b' * log(a)
                           ,  // ),
                           CrOpNode(MUL,
                             temp_r,
