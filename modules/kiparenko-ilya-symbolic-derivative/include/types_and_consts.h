@@ -10,7 +10,7 @@
 using std::string;
 using std::unordered_map;
 
-enum Op : unsigned int{
+enum Op {
   ADD     =  0,
   SUB     =  1,
   MUL     =  2,
@@ -24,7 +24,7 @@ enum Op : unsigned int{
 };
 
 #ifdef __GNUC__
-
+/*
 namespace std {
 
 template<>
@@ -39,7 +39,7 @@ struct hash<Op> {
 };
 
 }  // namespace std
-
+*/
 #endif
 
 enum Type {
