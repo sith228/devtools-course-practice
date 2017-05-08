@@ -42,7 +42,7 @@ TEST(BitArrayTest, Bits_Sum_Of_New_Array_Is_Zero) {
         sum += bitArray.GetBit(i);
 
     // Assert
-    EXPECT_EQ(sum, 0);
+    EXPECT_EQ(0, sum);
 }
 
 TEST(BitArrayTest, Cant_Get_Bit_With_Negative_Index) {
