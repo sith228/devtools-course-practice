@@ -21,4 +21,5 @@ private:
     float Acc;
     bool IsMonotone(float(*fun)(float));
 };
-#endif  // MODULES_ARITHMETIC_PARSER_INCLUDE_ARITHMETIC_PARSER_H_
+#endif
+
