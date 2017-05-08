@@ -11,25 +11,25 @@ class Doronin_Maxim_SearchTree_Test_F : public ::testing::Test {
     void SetUp() {
         tree = new SearchTree();
 
-        tree->insert(11.0);
+        tree->Insert(11.0);
 
-        tree->insert(7.0);
-        tree->insert(3.0);
-        tree->insert(10.0);
-        tree->insert(2.0);
-        tree->insert(5.0);
-        tree->insert(8.0);
-        tree->insert(1.0);
-        tree->insert(4.0);
-        tree->insert(6.0);
-        tree->insert(9.0);
+        tree->Insert(7.0);
+        tree->Insert(3.0);
+        tree->Insert(10.0);
+        tree->Insert(2.0);
+        tree->Insert(5.0);
+        tree->Insert(8.0);
+        tree->Insert(1.0);
+        tree->Insert(4.0);
+        tree->Insert(6.0);
+        tree->Insert(9.0);
 
-        tree->insert(15.0);
-        tree->insert(13.0);
-        tree->insert(16.0);
-        tree->insert(12.0);
-        tree->insert(14.0);
-        tree->insert(17.0);
+        tree->Insert(15.0);
+        tree->Insert(13.0);
+        tree->Insert(16.0);
+        tree->Insert(12.0);
+        tree->Insert(14.0);
+        tree->Insert(17.0);
     }
 
     void TearDown() {
@@ -51,7 +51,7 @@ TEST(Doronin_Maxim_SearchTree_Test, can_delete_not_empty_tree) {
     SearchTree *tree = new SearchTree();
     double key = 111.111;
 
-    tree->insert(key);
+    tree->Insert(key);
 
     ASSERT_NO_THROW(delete tree);
 }
@@ -60,7 +60,7 @@ TEST(Doronin_Maxim_SearchTree_Test, can_insert_element_in_empty_tree) {
     SearchTree *tree = new SearchTree();
     double key = 111.111;
 
-    ASSERT_NO_THROW(tree->insert(key));
+    ASSERT_NO_THROW(tree->Insert(key));
     delete tree;
 }
 
@@ -68,22 +68,22 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, can_insert_element_in_not_empty_tree) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 111.111;
 
-    ASSERT_NO_THROW(tree->insert(key));
+    ASSERT_NO_THROW(tree->Insert(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, throws_when_try_insert_nounique_elem) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 7.0;
 
-    ASSERT_ANY_THROW(tree->insert(key));
+    ASSERT_ANY_THROW(tree->Insert(key));
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, can_search_element) {
     SearchTree *tree = new SearchTree();
     double key = 111.111;
 
-    tree->insert(key);
-    ASSERT_NO_THROW(tree->search(key));
+    tree->Insert(key);
+    ASSERT_NO_THROW(tree->Search(key));
     delete tree;
 }
 
@@ -91,8 +91,8 @@ TEST(Doronin_Maxim_SearchTree_Test, can_search_inserted_element) {
     SearchTree *tree = new SearchTree();
     double key = 111.111;
 
-    tree->insert(key);
-    const Node* node = tree->search(key);
+    tree->Insert(key);
+    const Node* node = tree->Search(key);
 
     EXPECT_EQ(node->key, key);
     delete tree;
@@ -102,7 +102,7 @@ TEST(Doronin_Maxim_SearchTree_Test, throws_when_try_search_in_empty_tree) {
     SearchTree *tree = new SearchTree();
     double key = 111.111;
 
-    ASSERT_ANY_THROW(tree->search(key));
+    ASSERT_ANY_THROW(tree->Search(key));
     delete tree;
 }
 
@@ -110,7 +110,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, search_returns_0_when_element_missed) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 111.111;
 
-    const Node* node = tree->search(key);
+    const Node* node = tree->Search(key);
 
     EXPECT_EQ(node, (Node*)0);
 }
@@ -120,9 +120,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, inserted_element_is_correct_child) {
     double key = 7.5;
     double expectedParentKey = 8.0;
 
-    tree->insert(key);
-    const Node* node = tree->search(key);
-    const Node* expectedParent = tree->search(expectedParentKey);
+    tree->Insert(key);
+    const Node* node = tree->Search(key);
+    const Node* expectedParent = tree->Search(expectedParentKey);
 
     EXPECT_EQ(node, expectedParent->left);
 }
@@ -132,9 +132,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, inserted_element_has_correct_parent) {
     double key = 7.5;
     double expectedParentKey = 8.0;
 
-    tree->insert(key);
-    const Node* node = tree->search(key);
-    const Node* expectedParent = tree->search(expectedParentKey);
+    tree->Insert(key);
+    const Node* node = tree->Search(key);
+    const Node* expectedParent = tree->Search(expectedParentKey);
 
     EXPECT_EQ(node->parent, expectedParent);
 }
@@ -142,49 +142,49 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, inserted_element_has_correct_parent) {
 TEST_F(Doronin_Maxim_SearchTree_Test_F, can_findMin) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    ASSERT_NO_THROW(tree->findMin());
+    ASSERT_NO_THROW(tree->FindMin());
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, can_findMax) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    ASSERT_NO_THROW(tree->findMax());
+    ASSERT_NO_THROW(tree->FindMax());
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, throw_when_try_findMin_in_empty_tree) {
     SearchTree *tree = new SearchTree();
 
-    ASSERT_ANY_THROW(tree->findMin());
+    ASSERT_ANY_THROW(tree->FindMin());
     delete tree;
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, throw_when_try_findMax_in_empty_tree) {
     SearchTree *tree = new SearchTree();
 
-    ASSERT_ANY_THROW(tree->findMin());
+    ASSERT_ANY_THROW(tree->FindMin());
     delete tree;
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, throw_when_try_findMin_in_0_subtree) {
-    ASSERT_ANY_THROW(tree->findMin(0));
+    ASSERT_ANY_THROW(tree->FindMin(0));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, throw_when_try_findMax_in_0_subtree) {
-    ASSERT_ANY_THROW(tree->findMax(0));
+    ASSERT_ANY_THROW(tree->FindMax(0));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMin_in_whole_tree_correct) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double minKey = 1.0;
 
-    EXPECT_EQ(tree->findMin()->key, minKey);
+    EXPECT_EQ(tree->FindMin()->key, minKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMax_in_whole_tree_correct) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double maxKey = 17.0;
 
-    EXPECT_EQ(tree->findMax()->key, maxKey);
+    EXPECT_EQ(tree->FindMax()->key, maxKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMin_in_subtree_correct) {
@@ -192,9 +192,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findMin_in_subtree_correct) {
     double minKeyInSubTree = 12.0;
     double subRootKey = 15.0;
 
-    const Node* subRoot = tree->search(subRootKey);
+    const Node* subRoot = tree->Search(subRootKey);
 
-    EXPECT_EQ(tree->findMin(subRoot)->key, minKeyInSubTree);
+    EXPECT_EQ(tree->FindMin(subRoot)->key, minKeyInSubTree);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMax_in_subtree_correct) {
@@ -202,9 +202,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findMax_in_subtree_correct) {
     double maxKeyInSubTree = 10.0;
     double subRootKey = 7.0;
 
-    const Node* subRoot = tree->search(subRootKey);
+    const Node* subRoot = tree->Search(subRootKey);
 
-    EXPECT_EQ(tree->findMax(subRoot)->key, maxKeyInSubTree);
+    EXPECT_EQ(tree->FindMax(subRoot)->key, maxKeyInSubTree);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMin_works_correct_when_no_left) {
@@ -212,9 +212,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findMin_works_correct_when_no_left) {
     double minKeyInSubTree = 8.0;
     double subRootKey = 8.0;
 
-    const Node* subRoot = tree->search(subRootKey);
+    const Node* subRoot = tree->Search(subRootKey);
 
-    EXPECT_EQ(tree->findMin(subRoot)->key, minKeyInSubTree);
+    EXPECT_EQ(tree->FindMin(subRoot)->key, minKeyInSubTree);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findMax_works_correct_when_no_right) {
@@ -222,23 +222,23 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findMax_works_correct_when_no_right) {
     double maxKeyInSubTree = 2.0;
     double subRootKey = 2.0;
 
-    const Node* subRoot = tree->search(subRootKey);
+    const Node* subRoot = tree->Search(subRootKey);
 
-    EXPECT_EQ(tree->findMax(subRoot)->key, maxKeyInSubTree);
+    EXPECT_EQ(tree->FindMax(subRoot)->key, maxKeyInSubTree);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_throws_when_key_is_missed) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 111.111;
 
-    ASSERT_ANY_THROW(tree->findPrev(key));
+    ASSERT_ANY_THROW(tree->FindPrev(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_throws_when_key_is_missed) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 111.111;
 
-    ASSERT_ANY_THROW(tree->findNext(key));
+    ASSERT_ANY_THROW(tree->FindNext(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_works_correctly_when_left) {
@@ -246,7 +246,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_works_correctly_when_left) {
     double key = 7.0;
     double expectPrevKey = 6.0;
 
-    EXPECT_EQ(tree->findPrev(key)->key, expectPrevKey);
+    EXPECT_EQ(tree->FindPrev(key)->key, expectPrevKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_works_correctly_when_right) {
@@ -254,7 +254,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_works_correctly_when_right) {
     double key = 7.0;
     double expectNextKey = 8.0;
 
-    EXPECT_EQ(tree->findNext(key)->key, expectNextKey);
+    EXPECT_EQ(tree->FindNext(key)->key, expectNextKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_works_correctly_when_noleft) {
@@ -262,7 +262,7 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_works_correctly_when_noleft) {
     double key = 8.0;
     double expectPrevKey = 7.0;
 
-    EXPECT_EQ(tree->findPrev(key)->key, expectPrevKey);
+    EXPECT_EQ(tree->FindPrev(key)->key, expectPrevKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_works_correctly_when_noright) {
@@ -270,28 +270,28 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_works_correctly_when_noright) {
     double key = 10.0;
     double expectNextKey = 11.0;
 
-    EXPECT_EQ(tree->findNext(key)->key, expectNextKey);
+    EXPECT_EQ(tree->FindNext(key)->key, expectNextKey);
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findPrev_return_0_when_no_prev) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 1.0;
 
-    EXPECT_EQ((Node*)0, tree->findPrev(key));
+    EXPECT_EQ((Node*)0, tree->FindPrev(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, findNext_return_0_when_no_next) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 17.0;
 
-    EXPECT_EQ((Node*)0, tree->findNext(key));
+    EXPECT_EQ((Node*)0, tree->FindNext(key));
 }
 
 TEST(Doronin_Maxim_SearchTree_Test, findPrev_throws_when_tree_is_empty) {
     SearchTree *tree = new SearchTree();
     double key = 0.0;
 
-    ASSERT_ANY_THROW(tree->findPrev(key));
+    ASSERT_ANY_THROW(tree->FindPrev(key));
     delete tree;
 }
 
@@ -299,7 +299,7 @@ TEST(Doronin_Maxim_SearchTree_Test, findNext_throws_when_tree_is_empty) {
     SearchTree *tree = new SearchTree();
     double key = 0.0;
 
-    ASSERT_ANY_THROW(tree->findNext(key));
+    ASSERT_ANY_THROW(tree->FindNext(key));
     delete tree;
 }
 
@@ -308,23 +308,23 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 111.111;
 
-    ASSERT_ANY_THROW(tree->erase(key));
+    ASSERT_ANY_THROW(tree->Erase(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, can_erase_actual_element) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double key = 15.0;
 
-    ASSERT_NO_THROW(tree->erase(key));
+    ASSERT_NO_THROW(tree->Erase(key));
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_left_leaf_correct_for_parent) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 4.0;
     double parentKey = 5.0;
-    const Node* parent = tree->search(parentKey);
+    const Node* parent = tree->Search(parentKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ((Node*)0, parent->left);
 }
@@ -333,8 +333,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, no_left_leaf_after_erasing) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 4.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -343,9 +343,9 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, erase_right_leaf_correct_for_parent) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 6.0;
     double parentKey = 5.0;
-    const Node* parent = tree->search(parentKey);
+    const Node* parent = tree->Search(parentKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ((Node*)0, parent->right);
 }
@@ -354,8 +354,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F, no_right_leaf_after_erasing) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 6.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -367,10 +367,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 8.0;
     double parentKey = 10.0;
     double rightChildKey = 9.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* rightChild = tree->search(rightChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* rightChild = tree->Search(rightChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(rightChild, parent->left);
 }
@@ -381,10 +381,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 8.0;
     double parentKey = 10.0;
     double rightChildKey = 9.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* rightChild = tree->search(rightChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* rightChild = tree->Search(rightChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(rightChild->parent, parent);
 }
@@ -394,8 +394,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 8.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -406,10 +406,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 10.0;
     double parentKey = 7.0;
     double leftChildKey = 8.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* leftChild = tree->search(leftChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* leftChild = tree->Search(leftChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(leftChild, parent->right);
 }
@@ -420,10 +420,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 10.0;
     double parentKey = 7.0;
     double leftChildKey = 8.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* leftChild = tree->search(leftChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* leftChild = tree->Search(leftChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(leftChild->parent, parent);
 }
@@ -433,8 +433,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 10.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -445,10 +445,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 2.0;
     double parentKey = 3.0;
     double leftChildKey = 1.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* leftChild = tree->search(leftChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* leftChild = tree->Search(leftChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(leftChild, parent->left);
 }
@@ -459,10 +459,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 2.0;
     double parentKey = 3.0;
     double leftChildKey = 1.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* leftChild = tree->search(leftChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* leftChild = tree->Search(leftChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(leftChild->parent, parent);
 }
@@ -472,8 +472,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 2.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -486,12 +486,12 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double leftChildKey = 3.0;
     double rightChildKey = 10.0;
     double parentKey = 11.0;
-    const Node* parent = tree->search(parentKey);
-    const Node* leftChild = tree->search(leftChildKey);
-    const Node* rightChild = tree->search(rightChildKey);
+    const Node* parent = tree->Search(parentKey);
+    const Node* leftChild = tree->Search(leftChildKey);
+    const Node* rightChild = tree->Search(rightChildKey);
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(nextKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(nextKey);
 
     EXPECT_EQ(node->parent, parent);
     EXPECT_EQ(node->left, leftChild);
@@ -504,10 +504,10 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     double eraseKey = 7.0;
     double nextParentKey = 10.0;
     double nextLeftChildKey = 9.0;
-    const Node* nextParent = tree->search(nextParentKey);
-    const Node* nextLeftChild = tree->search(nextLeftChildKey);
+    const Node* nextParent = tree->Search(nextParentKey);
+    const Node* nextLeftChild = tree->Search(nextLeftChildKey);
 
-    tree->erase(eraseKey);
+    tree->Erase(eraseKey);
 
     EXPECT_EQ(nextLeftChild->parent, nextParent);
     EXPECT_EQ(nextParent->left, nextLeftChild);
@@ -518,8 +518,8 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
     double eraseKey = 7.0;
 
-    tree->erase(eraseKey);
-    const Node* node = tree->search(eraseKey);
+    tree->Erase(eraseKey);
+    const Node* node = tree->Search(eraseKey);
 
     EXPECT_EQ((Node*)0, node);
 }
@@ -527,33 +527,33 @@ TEST_F(Doronin_Maxim_SearchTree_Test_F,
 TEST_F(Doronin_Maxim_SearchTree_Test_F, isEmpty_returns_false_when_not_empty) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    EXPECT_FALSE(tree->isEmpty());
+    EXPECT_FALSE(tree->IsEmpty());
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, isEmpty_returns_true_when_empty) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    tree->clear();
+    tree->Clear();
 
-    EXPECT_TRUE(tree->isEmpty());
+    EXPECT_TRUE(tree->IsEmpty());
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, size_returns_not_0_when_not_empty) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    EXPECT_NE(0, tree->size());
+    EXPECT_NE(0, tree->Size());
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, size_returns_0_when_empty) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    tree->clear();
+    tree->Clear();
 
-    EXPECT_EQ(0, tree->size());
+    EXPECT_EQ(0, tree->Size());
 }
 
 TEST_F(Doronin_Maxim_SearchTree_Test_F, size_returns_actual_size) {
     // SetUP() in Doronin_Maxim_SearchTree_Test_F
 
-    EXPECT_EQ(17, tree->size());
+    EXPECT_EQ(17, tree->Size());
 }

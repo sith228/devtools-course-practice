@@ -17,29 +17,29 @@ class SearchTree {
      SearchTree();
      ~SearchTree();
 
-     const Node* search(const double key) const;
-     const Node* findMin() const;
-     const Node* findMax() const;
-     const Node* findMin(const Node* const node) const;
-     const Node* findMax(const Node* const node) const;
-     const Node* findPrev(const double key) const;
-     const Node* findNext(const double key) const;
+     const Node* Search(const double key) const;
+     const Node* FindMin() const;
+     const Node* FindMax() const;
+     const Node* FindMin(const Node* const node) const;
+     const Node* FindMax(const Node* const node) const;
+     const Node* FindPrev(const double key) const;
+     const Node* FindNext(const double key) const;
 
-     void insert(const double key);
-     void erase(const double key);
-     void clear();
+     void Insert(const double key);
+     void Erase(const double key);
+     void Clear();
 
-     bool isEmpty() const;
-     const int size() const;
+     bool IsEmpty() const;
+     const int Size() const;
 
  protected:
      Node* root_;
 
-     const Node* findPrev(const Node* const node) const;
-     const Node* findNext(const Node* const node) const;
+     const Node* FindPrev(const Node* const node) const;
+     const Node* FindNext(const Node* const node) const;
 
-     void recursiveDeletion(Node** const node);  // for destructor
-     const int recursiveSize(const Node* const node) const;
+     void RecursiveDeletion(Node** const node);  // for destructor
+     const int RecursiveSize(const Node* const node) const;
 };
 
 #endif  // MODULES_SEARCH_TREE_INCLUDE_SEARCHTREE_H_

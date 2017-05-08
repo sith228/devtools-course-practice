@@ -5,13 +5,13 @@
 SearchTree::SearchTree() : root_(0) {}
 
 SearchTree::~SearchTree() {
-    recursiveDeletion(&root_);
+    RecursiveDeletion(&root_);
 }
 
-const Node* SearchTree::search(const double key) const {
+const Node* SearchTree::Search(const double key) const {
     Node* currentNode = root_;
     if (currentNode == 0) {
-        throw "search: Tree is empty!";
+        throw "Search: Tree is empty!";
     }
 
     while (currentNode != 0 && currentNode->key != key) {
@@ -25,15 +25,15 @@ const Node* SearchTree::search(const double key) const {
     return currentNode;
 }
 
-const Node* SearchTree::findMin() const {
-    return findMin(root_);
+const Node* SearchTree::FindMin() const {
+    return FindMin(root_);
 }
 
-const Node* SearchTree::findMax() const {
-    return findMax(root_);
+const Node* SearchTree::FindMax() const {
+    return FindMax(root_);
 }
 
-const Node* SearchTree::findMin(const Node* const node) const {
+const Node* SearchTree::FindMin(const Node* const node) const {
     const Node* currentNode = node;
     if (currentNode == 0) {
         throw "searchMin: Tree is empty!";
@@ -44,7 +44,7 @@ const Node* SearchTree::findMin(const Node* const node) const {
     return currentNode;
 }
 
-const Node* SearchTree::findMax(const Node* const node) const {
+const Node* SearchTree::FindMax(const Node* const node) const {
     const Node* currentNode = node;
     if (currentNode == 0) {
         throw "searchMax: Tree is empty!";
@@ -55,26 +55,26 @@ const Node* SearchTree::findMax(const Node* const node) const {
     return currentNode;
 }
 
-const Node* SearchTree::findPrev(const double key) const {
-    const Node* currentNode = search(key);
+const Node* SearchTree::FindPrev(const double key) const {
+    const Node* currentNode = Search(key);
     if (currentNode == 0) {
-        throw "findPrev: there is no element with such key!";
+        throw "FindPrev: there is no element with such key!";
     }
-    return findPrev(currentNode);
+    return FindPrev(currentNode);
 }
 
-const Node* SearchTree::findNext(const double key) const {
-    const Node* currentNode = search(key);
+const Node* SearchTree::FindNext(const double key) const {
+    const Node* currentNode = Search(key);
     if (currentNode == 0) {
-        throw "findNext: there is no element with such key!";
+        throw "FindNext: there is no element with such key!";
     }
-    return findNext(currentNode);
+    return FindNext(currentNode);
 }
 
-const Node* SearchTree::findPrev(const Node* const node) const {
+const Node* SearchTree::FindPrev(const Node* const node) const {
     const Node* result;
     if (node->left != 0) {
-        result =  findMax(node->left);
+        result =  FindMax(node->left);
     } else {
         const Node* currentNode = node;
         const Node* currentParent = node->parent;
@@ -87,10 +87,10 @@ const Node* SearchTree::findPrev(const Node* const node) const {
     return result;
 }
 
-const Node* SearchTree::findNext(const Node* const node) const {
+const Node* SearchTree::FindNext(const Node* const node) const {
     const Node* result;
     if (node->right != 0) {
-        result = findMin(node->right);
+        result = FindMin(node->right);
     } else {
         const Node* currentNode = node;
         const Node* currentParent = node->parent;
@@ -103,7 +103,7 @@ const Node* SearchTree::findNext(const Node* const node) const {
     return result;
 }
 
-void SearchTree::insert(const double key) {
+void SearchTree::Insert(const double key) {
     Node* node = new Node;
     node->key = key;
     node->left = 0;
@@ -124,7 +124,7 @@ void SearchTree::insert(const double key) {
         } else if (currentNode->key > node->key) {
             currentNode = currentNode->left;
         } else {
-            throw "insert: Already have such key!";
+            throw "Insert: Already have such key!";
         }
     }
 
@@ -136,10 +136,10 @@ void SearchTree::insert(const double key) {
     }
 }
 
-void SearchTree::erase(const double key) {
-    Node* dyingNode = const_cast<Node*>(search(key));
+void SearchTree::Erase(const double key) {
+    Node* dyingNode = const_cast<Node*>(Search(key));
     if (dyingNode == 0) {
-        throw "erase: no such element in the tree";
+        throw "Erase: no such element in the tree";
     }
 
     Node* parent = dyingNode->parent;
@@ -169,18 +169,18 @@ void SearchTree::erase(const double key) {
         }
         delete dyingNode;
     } else {
-        Node* child = const_cast<Node*>(findNext(dyingNode));
+        Node* child = const_cast<Node*>(FindNext(dyingNode));
         double newKey = child->key;
-        erase(child->key);
+        Erase(child->key);
         dyingNode->key = newKey;
     }
 }
 
-void SearchTree::clear() {
-    recursiveDeletion(&root_);
+void SearchTree::Clear() {
+    RecursiveDeletion(&root_);
 }
 
-bool SearchTree::isEmpty() const {
+bool SearchTree::IsEmpty() const {
     if (root_ != 0) {
         return 0;
     } else {
@@ -188,25 +188,25 @@ bool SearchTree::isEmpty() const {
     }
 }
 
-const int SearchTree::size() const {
-    return recursiveSize(root_);
+const int SearchTree::Size() const {
+    return RecursiveSize(root_);
 }
 
-void SearchTree::recursiveDeletion(Node** const node) {
+void SearchTree::RecursiveDeletion(Node** const node) {
     if (*node == 0) {
         return;
     }
-    recursiveDeletion(&((*node)->left));
-    recursiveDeletion(&((*node)->left));
+    RecursiveDeletion(&((*node)->left));
+    RecursiveDeletion(&((*node)->left));
     delete *node;
     *node = 0;
 }
 
-const int SearchTree::recursiveSize(const Node* const node) const {
+const int SearchTree::RecursiveSize(const Node* const node) const {
     if (node == 0) {
         return 0;
     }
-    int size;
-    size = recursiveSize(node->left) + recursiveSize(node->right);
-    return size + 1;
+    int Size;
+    Size = RecursiveSize(node->left) + RecursiveSize(node->right);
+    return Size + 1;
 }
