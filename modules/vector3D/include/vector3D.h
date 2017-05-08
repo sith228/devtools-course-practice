@@ -5,36 +5,36 @@
 
 #include <iostream>
 #include <cmath>
-using namespace std;
+
 
 // Вектор в трёхмерном пространстве
 class Vector3D {
-protected:
+protected: 
     double x;
     double y;
     double z;
-public:
+public: 
     Vector3D(double _x = 0.0, double _y = 0.0, double _z = 0.0);
-    Vector3D(const Vector3D &v);                // конструктор копирования
-    double GetX() const { return x; };            // доступ
-    double GetY() const { return y; };
-    double GetZ() const { return z; };
+    Vector3D(const Vector3D &v);                // copy constructor
+    double GetX() const { return x; }            // access
+    double GetY() const { return y; }
+    double GetZ() const { return z; }
 
-    bool operator==(const Vector3D &v) const;  // сравнение
-    bool operator!=(const Vector3D &v) const;  // сравнение
-    bool IsCloseTo(const Vector3D &v) const;    // приближённое сравнение
-                                                // для проверки вычислений
-    Vector3D& operator=(const Vector3D &v);     // присваивание
+    bool operator==(const Vector3D &v) const;  // comparison
+    bool operator!=(const Vector3D &v) const;  // comparison
+    bool IsCloseTo(const Vector3D &v) const;    // approximate comparison
+                                                // to check calculations
+    Vector3D& operator=(const Vector3D &v);     // assigment
 
-                                              // векторные операции
-    Vector3D  operator+(const Vector3D &v);     // сложение
-    Vector3D  operator-(const Vector3D &v);     // вычитание
-    double Norm();                        // норма вектора
-    Vector3D Normalize();                // нормализация вектора
-    double  operator*(const Vector3D &v);     // скалярное произведение
-    Vector3D  operator^(const Vector3D &v);    // векторное произв-е v(v1, v2)
+                                              // vector operations
+    Vector3D  operator+(const Vector3D &v);     // addition
+    Vector3D  operator-(const Vector3D &v);     // subtraction
+    double Norm();                        // vector norm
+    Vector3D Normalize();                // normalization vector
+    double  operator*(const Vector3D &v);     // scalar product
+    Vector3D  operator^(const Vector3D &v);    // vector product v(v1, v2)
 
-                                              // ввод-вывод
+                                              // input-output
     friend istream& operator>>(istream &in, Vector3D &v) {
         in >> v.x >> v.y >> v.z;
 
@@ -48,4 +48,4 @@ public:
 };
 
 
-#endif
+#endif // MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_

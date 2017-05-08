@@ -27,7 +27,7 @@ bool Vector3D::operator!=(const Vector3D &v) const {
 }
 
 bool Vector3D::IsCloseTo(const Vector3D & v) const {
-    double epsilon = 0.00000000000001;    // 14 знаков после запятой
+    double epsilon = 0.00000000000001;    // 14 decimal places
 
     if ((abs(x - v.x) < epsilon) &&
         (abs(y - v.y) < epsilon) &&
