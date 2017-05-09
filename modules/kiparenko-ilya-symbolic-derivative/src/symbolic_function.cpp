@@ -48,9 +48,7 @@ symbolic_function::symbolic_function(string s) {
 }
 
 symbolic_function::~symbolic_function() {
-  cout << "start destruct\n";
   DelTree(root_);
-  cout << "end destruct\n";
 }
 
 symbolic_function::symbolic_function() {
@@ -58,12 +56,9 @@ symbolic_function::symbolic_function() {
 }
 
 symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
-  cout << "start = \n";
   DelTree(root_);
   symbols_ = sym.symbols_;
-  cout << "start copy = \n";
   root_ = CopyTree(sym.root_);
-  cout << "end = \n";
   return (*this);
 }
 
@@ -74,9 +69,7 @@ string symbolic_function::ToString() {
 symbolic_function& symbolic_function::Derivative(string variable) {
   symbolic_function* sym = new symbolic_function;
   sym->symbols_ = symbols_;
-  cout << "start derv = \n";
   sym->root_ = Derivative(root_, variable);
-  cout << "end derv = \n";
   return *sym;
 }
 
@@ -252,7 +245,6 @@ Node* symbolic_function::PostfixToAst(Node* root) {
 }
 
 void symbolic_function::DelTree(Node* root) {
-  cout << "start del = \n";
   if (root != 0) {
     stack<Node*> st;
     st.push(root);
@@ -262,21 +254,17 @@ void symbolic_function::DelTree(Node* root) {
         st.push(root->left);
       if (root->right != 0)
         st.push(root->right);
-      cout << "del = " << root << "\n";
       delete root;
     }
   }
-  cout << "end del = \n";
 }
 
 Node* symbolic_function::CopyTree(Node* root) {
-  cout << "start copytree " << root << "= \n";
   if (root != 0) {
     Node* out = new Node();
     *out = *root;
     out->left  = CopyTree(root->left);
     out->right = CopyTree(root->right);
-    cout << "end copy level = \n";
     return out;
   } else {
     return 0;

@@ -23,8 +23,6 @@ enum Op {
   R_BRACE =  9
 };
 
-// #ifdef __GNUC__
-#include <iostream>
 namespace std {
 
 template<>
@@ -34,14 +32,11 @@ struct hash<Op> {
 
   result_type operator () (const argument_type& x) const {
     using type = std::underlying_type<argument_type>::type;
-    std::cout << "hash call " << ((int)x) << "\n";
     return std::hash<type>()(static_cast<type>(x));
   }
 };
 
 }  // namespace std
-
-// #endif
 
 enum Type {
   SYMBOL   = 0,
