@@ -20,9 +20,9 @@ TEST(TemperatureConverterTest, Can_Convert_Celsius_To_Fahrenheit) {
 }
 
 TEST(TemperatureConverterTest,
-    Cant_Convert_To_Newton_Temeprature_Less_Than_Absolute_Zero) {
+    Cant_Convert_Celsius_To_Newton_Temeprature_Less_Than_Absolute_Zero) {
     // Arrange
-    double Celsius = -274;
+    double Celsius = -274.0;
     TemperatureConverter p;
 
     // Act & Assert
@@ -30,9 +30,9 @@ TEST(TemperatureConverterTest,
 }
 
 TEST(TemperatureConverterTest,
-    Cant_Convert_To_Fahrenheit_Temeprature_Less_Than_Absolute_Zero) {
+    Cant_Convert_Celsius_To_Fahrenheit_Temeprature_Less_Than_Absolute_Zero) {
     // Arrange
-    double Celsius = -274;
+    double Celsius = -274.0;
     TemperatureConverter p;
 
     // Act & Assert
@@ -40,9 +40,9 @@ TEST(TemperatureConverterTest,
 }
 
 TEST(TemperatureConverterTest,
-    Cant_Convert_To_Kelvin_Temeprature_Less_Than_Absolute_Zero) {
+    Cant_Convert_Celsius_To_Kelvin_Temeprature_Less_Than_Absolute_Zero) {
     // Arrange
-    double Celsius = -274;
+    double Celsius = -274.0;
     TemperatureConverter p;
 
     // Act & Assert
@@ -182,4 +182,94 @@ TEST(TemperatureConverterTest, Can_Convert_Fahrenheit_To_Celsius) {
     // Assert
     double expectedCelsius = (5.0 / 9.0)*(26.0 - 32.0);
     EXPECT_EQ(Celsius, expectedCelsius);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Fahrenheit_To_Newton_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Fahrenheit = -460.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.FahrenheitToNewton(Fahrenheit), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Fahrenheit_To_Celsius_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Fahrenheit = -460.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.FahrenheitToCelsius(Fahrenheit), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Fahrenheit_To_Kelvin_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Fahrenheit = -460.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.FahrenheitToKelvin(Fahrenheit), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Newton_To_Celsius_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Newton = -91.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.NewtonToCelsius(Newton), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Newton_To_Fahrenheit_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Newton = -91.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.NewtonToFahrenheit(Newton), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Newton_To_Kelvin_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Newton = -91.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.NewtonToKelvin(Newton), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Kelvin_To_Newton_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Kelvin = -1.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.KelvinToNewton(Kelvin), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Kelvin_To_Fahrenheit_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Kelvin = -1.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.KelvinToFahrenheit(Kelvin), std::string);
+}
+
+TEST(TemperatureConverterTest,
+    Cant_Convert_Kelvin_To_Celsius_Temeprature_Less_Than_Absolute_Zero) {
+    // Arrange
+    double Kelvin = -1.0;
+    TemperatureConverter p;
+
+    // Act & Assert
+    EXPECT_THROW(p.KelvinToCelsius(Kelvin), std::string);
 }
