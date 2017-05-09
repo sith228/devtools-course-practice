@@ -22,12 +22,9 @@ bool InterpolationSearch::isArraySorted(int * sortedArray, int length) {
     if (length < 1) {
       throw "length is null or negative";
     } else {
-      int i = 1;
-      while (i < length) {
+      for (int i = 1; i < length; i++)
         if (sortedArray[i] < sortedArray[i - 1])
           return false;
-        i++;
-      }
       return true;
     }
   }
