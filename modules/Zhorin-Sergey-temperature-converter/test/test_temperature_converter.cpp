@@ -74,3 +74,112 @@ TEST(TemperatureConverterTest, Can_Convert_Celsius_To_Kelvin) {
     double expectedKelvin = 273.15 + 26.0;
     EXPECT_EQ(Kelvin, expectedKelvin);
 }
+
+TEST(TemperatureConverterTest, Can_Convert_Kelvin_To_Newton) {
+    // Arrange
+    double Kelvin = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Newton = p.KelvinToNewton(Kelvin);
+
+    // Assert
+    double expectedNewton = (26.0 - 273.15)*(33.0 / 100.0);
+    EXPECT_EQ(Newton, expectedNewton);
+}
+TEST(TemperatureConverterTest, Can_Convert_Kelvin_To_Celsius) {
+    // Arrange
+    double Kelvin = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Celsius = p.KelvinToCelsius(Kelvin);
+
+    // Assert
+    double expectedCelsius = 26.0 - 273.15;
+    EXPECT_EQ(Celsius, expectedCelsius);
+}
+TEST(TemperatureConverterTest, Can_Convert_Kelvin_To_Fahrenheit) {
+    // Arrange
+    double Kelvin = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Fahrenheit = p.KelvinToFahrenheit(Kelvin);
+
+    // Assert
+    double expectedFahrenheit = 32.0 + (26.0 - 273.15)*(9.0 / 5.0);
+    EXPECT_EQ(Fahrenheit, expectedFahrenheit);
+}
+TEST(TemperatureConverterTest, Can_Convert_Newton_To_Kelvin) {
+    // Arrange
+    double Newton = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Kelvin = p.NewtonToKelvin(Newton);
+
+    // Assert
+    double expectedKelvin = 26.0*(100.0 / 33.0) + 273.15;
+    EXPECT_EQ(Kelvin, expectedKelvin);
+}
+TEST(TemperatureConverterTest, Can_Convert_Newton_To_Celsius) {
+    // Arrange
+    double Newton = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Celsius = p.NewtonToCelsius(Newton);
+
+    // Assert
+    double expectedCelsius = 26.0*(100.0 / 33.0);
+    EXPECT_EQ(Celsius, expectedCelsius);
+}
+TEST(TemperatureConverterTest, Can_Convert_Newton_To_Fahrenheit) {
+    // Arrange
+    double Newton = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Fahrenheit = p.NewtonToFahrenheit(Newton);
+
+    // Assert
+    double expectedFahrenheit = 26.0*(100.0 / 33.0)*(9.0 / 5.0) + 32.0;
+    EXPECT_EQ(Fahrenheit, expectedFahrenheit);
+}
+TEST(TemperatureConverterTest, Can_Convert_Fahrenheit_To_Kelvin) {
+    // Arrange
+    double Fahrenheit = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Kelvin = p.FahrenheitToKelvin(Fahrenheit);
+
+    // Assert
+    double expectedKelvin = (5.0 / 9.0)*(26.0 - 32.0) + 273.15;
+    EXPECT_EQ(Kelvin, expectedKelvin);
+}
+TEST(TemperatureConverterTest, Can_Convert_Fahrenheit_To_Newton) {
+    // Arrange
+    double Fahrenheit = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Newton = p.FahrenheitToNewton(Fahrenheit);
+
+    // Assert
+    double expectedNewton = (5.0 / 9.0)*(26.0 - 32.0)*(33.0 / 100.0);
+    EXPECT_EQ(Newton, expectedNewton);
+}
+TEST(TemperatureConverterTest, Can_Convert_Fahrenheit_To_Celsius) {
+    // Arrange
+    double Fahrenheit = 26.0;
+    TemperatureConverter p;
+
+    // Act
+    double Celsius = p.FahrenheitToCelsius(Fahrenheit);
+
+    // Assert
+    double expectedCelsius = (5.0 / 9.0)*(26.0 - 32.0);
+    EXPECT_EQ(Celsius, expectedCelsius);
+}
