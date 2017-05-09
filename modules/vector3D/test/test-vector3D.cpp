@@ -62,7 +62,7 @@ TEST(Vector3D, can_assign_vector_to_itself) {
 }
 
 TEST(Vector3D, can_assign_vectors) {
-    Vector3D v(2.55, 6.25, 0.99), vt(2.55, 6.25, 0.99);
+    Vector3D v(3.4, 6.2, 0.0), vt(2.55, 6.25, 0.99);
 
     v = vt;
 
