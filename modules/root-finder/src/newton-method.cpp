@@ -2,10 +2,9 @@
 
 #include "include/newton-method.h"
 
+#include <algorithm>
 #include <iostream>
 #include <cmath>
-
-using namespace std;
 
 bool newton_method::IsMonotone(float(*fun)(float)) {
     if (A > B) {
@@ -20,8 +19,7 @@ bool newton_method::IsMonotone(float(*fun)(float)) {
             i = temp_i;
             temp_i += Acc;
             }
-    }
-    else if (fun(A) < fun(B)) {
+    } else if (fun(A) < fun(B)) {
         float i = A;
         float temp_i = i;
         while (temp_i < B) {
@@ -32,17 +30,16 @@ bool newton_method::IsMonotone(float(*fun)(float)) {
         }
     }
     if (A == B) {
-        //throw("its a point, not a line segment");
         return false;
     }
     if (fun(A) == fun(B)) {
-        throw("its not monotone or its a line");
         return false;
     }
     return true;
 }
             
-float newton_method::FindRoot(float(*fun)(float), float(*deriv_fun)(float), float(*deriv2_fun)(float)) {
+float newton_method::FindRoot(float(*fun)(float),
+    float(*deriv_fun)(float), float(*deriv2_fun)(float)) {
     if (IsMonotone(fun)) {
         float xn = fun(A)*deriv2_fun(A) > 0 ? A : B;
         float x1 = xn - fun(xn) / deriv_fun(xn);
