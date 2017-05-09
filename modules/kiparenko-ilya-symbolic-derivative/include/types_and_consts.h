@@ -23,8 +23,8 @@ enum Op {
   R_BRACE =  9
 };
 
-#ifdef __GNUC__
-
+// #ifdef __GNUC__
+#include <iostream>
 namespace std {
 
 template<>
@@ -32,15 +32,16 @@ struct hash<Op> {
   typedef Op argument_type;
   typedef size_t result_type;
 
-  //result_type operator () (const argument_type& x) const {
-  //  using type = std::underlying_type<argument_type>::type;
-  //  return std::hash<type>()(static_cast<type>(x));
-  // }
+  result_type operator () (const argument_type& x) const {
+    using type = std::underlying_type<argument_type>::type;
+    std::cout << "hash call " << ((int)x) << "\n";
+    return std::hash<type>()(static_cast<type>(x));
+  }
 };
 
 }  // namespace std
 
-#endif
+// #endif
 
 enum Type {
   SYMBOL   = 0,
@@ -60,19 +61,19 @@ struct Node {
 };
 
 Node* CrSymbolNode(int   index = -1,
-                     Node* left  = 0,
-                     Node* right = 0);
+                   Node* left  = 0,
+                   Node* right = 0);
 
 Node* CrNumberNode(double real_value = 0.0,
-                     Node*  left       = 0,
-                     Node*  right      = 0);
+                   Node*  left       = 0,
+                   Node*  right      = 0);
 
-Node* CrOpNode(Op op_type = L_BRACE,
-                 Node* left  = 0,
-                 Node* right = 0);
+Node* CrOpNode(Op op_type  = L_BRACE,
+               Node* left  = 0,
+               Node* right = 0);
 
 Node* CrEmptyNode(Node* left  = 0,
-                    Node* right = 0);
+                  Node* right = 0);
 
 const unordered_map<string, Op> functions {
                                       {"+",   ADD},

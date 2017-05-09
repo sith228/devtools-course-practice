@@ -48,7 +48,9 @@ symbolic_function::symbolic_function(string s) {
 }
 
 symbolic_function::~symbolic_function() {
+  cout << "start destruct\n";
   DelTree(root_);
+  cout << "end destruct\n";
 }
 
 symbolic_function::symbolic_function() {
