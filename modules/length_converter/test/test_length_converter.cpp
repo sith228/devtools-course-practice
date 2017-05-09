@@ -5,7 +5,7 @@
 
 TEST(LengthConverterTest, Can_Create_Length_Object) {
     // Arrange
-    LENGTH_TYPE type = LENGTH_TYPE::KILOMETRE;
+    LengthType type = KILOMETRE;
     double value = 11.7;
 
     // Act & Assert
@@ -14,7 +14,7 @@ TEST(LengthConverterTest, Can_Create_Length_Object) {
 
 TEST(LengthConverterTest, Can_Conver_Into_SM) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 11.7;
 
     // Act
@@ -26,7 +26,7 @@ TEST(LengthConverterTest, Can_Conver_Into_SM) {
 
 TEST(LengthConverterTest, Can_Convert_Into_SM_Not_Equal) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 11.7;
 
     // Act
@@ -38,7 +38,7 @@ TEST(LengthConverterTest, Can_Convert_Into_SM_Not_Equal) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Micrometre) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 0.0117;
     double expected_value = 117.0, converted_value;
 
@@ -52,7 +52,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Micrometre) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Millimetre) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 11.7;
     double expected_value = 117.0, converted_value;
 
@@ -66,7 +66,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Millimetre) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Decimetre) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 11.7;
     double expected_value = 1.17, converted_value;
 
@@ -80,7 +80,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Decimetre) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Metre) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 117.0;
     double expected_value = 1.17, converted_value;
 
@@ -94,7 +94,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Metre) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Kilometre) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 117.0;
     double expected_value = 0.00117, converted_value;
 
@@ -108,7 +108,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Kilometre) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Inch) {  // дюйм
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 1.17;
     double expected_value = 0.4606299, converted_value;
 
@@ -122,7 +122,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Inch) {  // дюйм
 
 TEST(LengthConverterTest, Can_Convert_Into_Hand) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 45.0;
     double expected_value = 4.429133858, converted_value;
 
@@ -136,7 +136,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Hand) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Link) {
     // Arrange
-    LENGTH_TYPE type = CENTIMETRE;
+    LengthType type = CENTIMETRE;
     double value = 11.7;
     double expected_value = 0.581603, converted_value;
 
@@ -150,7 +150,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Link) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Foot) {
     // Arrange
-    LENGTH_TYPE type = METRE;
+    LengthType type = METRE;
     double value = 6.7;
     double expected_value = 21.981627, converted_value;
 
@@ -164,7 +164,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Foot) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Yard) {
     // Arrange
-    LENGTH_TYPE type = METRE;
+    LengthType type = METRE;
     double value = 6.7;
     double expected_value = 7.327209, converted_value;
 
@@ -178,7 +178,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Yard) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Rod) {
     // Arrange
-    LENGTH_TYPE type = METRE;
+    LengthType type = METRE;
     double value = 6.7;
     double expected_value = 1.3322198, converted_value;
 
@@ -192,7 +192,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Rod) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Chain) {
     // Arrange
-    LENGTH_TYPE type = KILOMETRE;
+    LengthType type = KILOMETRE;
     double value = 6.7;
     double expected_value = 333.054959, converted_value;
 
@@ -206,7 +206,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Chain) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Furhlong) {
     // Arrange
-    LENGTH_TYPE type = KILOMETRE;
+    LengthType type = KILOMETRE;
     double value = 1.17;
     double expected_value = 5.816034, converted_value;
 
@@ -220,7 +220,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Furhlong) {
 
 TEST(LengthConverterTest, Can_Convert_Into_Mile) {
     // Arrange
-    LENGTH_TYPE type = KILOMETRE;
+    LengthType type = KILOMETRE;
     double value = 11.7;
     double expected_value = 7.2700429, converted_value;
 
@@ -234,7 +234,7 @@ TEST(LengthConverterTest, Can_Convert_Into_Mile) {
 
 TEST(LengthConverterTest, Can_Convert_Into_League) {
     // Arrange
-    LENGTH_TYPE type = KILOMETRE;
+    LengthType type = KILOMETRE;
     double value = 7.0;
     double expected_value = 1.449866, converted_value;
 
@@ -248,7 +248,7 @@ TEST(LengthConverterTest, Can_Convert_Into_League) {
 
 TEST(LengthConverterTest, Can_Do_Several_Converts) {
     // Arrange
-    LENGTH_TYPE type1 = MILLIMETRE, type2 = KILOMETRE, type3 = YARD;
+    LengthType type1 = MILLIMETRE, type2 = KILOMETRE, type3 = YARD;
     double value = 7.0;
     double expected_value = 0.007655, converted_value;
 
