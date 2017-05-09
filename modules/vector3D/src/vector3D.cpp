@@ -27,8 +27,7 @@ bool Vector3D::operator!=(const Vector3D &v) const {
 }
 
 Vector3D& Vector3D::operator=(const Vector3D &v) {
-    if (*this != v)
-    {
+    if (*this != v) {
         x = v.x;
         y = v.y;
         z = v.z;
@@ -60,8 +59,7 @@ double Vector3D::Norm() {
 
 Vector3D Vector3D::Normalize() {
     double norm = Norm();
-    if (norm != 0.0)
-    {
+    if (norm != 0.0) {
         x = x / norm;
         y = y / norm;
         z = z / norm;
@@ -76,13 +74,12 @@ double Vector3D::operator*(const Vector3D & v) {
 
 Vector3D Vector3D::operator^(const Vector3D & v) {
     Vector3D vt(*this);
-    if (vt.x != 0 || vt.y != 0 || vt.z != 0)
-        if (v.x != 0 || v.y != 0 || v.z != 0)
-        {
+    if (vt.x != 0 || vt.y != 0 || vt.z != 0) {
+        if (v.x != 0 || v.y != 0 || v.z != 0) {
             x = vt.y*v.z - vt.z*v.y;
             y = vt.z*v.x - vt.x*v.z;
             z = vt.x*v.y - vt.y*v.x;
         }
-
+    }
     return *this;
 }
