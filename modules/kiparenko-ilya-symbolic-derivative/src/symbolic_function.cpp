@@ -71,13 +71,13 @@ string symbolic_function::ToString() {
   return PrintTree(root_);
 }
 
-symbolic_function symbolic_function::Derivative(string variable) {
-  symbolic_function sym;
-  sym.symbols_ = symbols_;
+symbolic_function& symbolic_function::Derivative(string variable) {
+  symbolic_function* sym = new symbolic_function;
+  sym->symbols_ = symbols_;
   cout << "start derv = \n";
-  sym.root_ = Derivative(root_, variable);
+  sym->root_ = Derivative(root_, variable);
   cout << "end derv = \n";
-  return sym;
+  return *sym;
 }
 
 Node* symbolic_function::Parse(string s) {

@@ -17,7 +17,7 @@ class symbolic_function {
   explicit symbolic_function(string s);
   string ToString();
   symbolic_function();
-  symbolic_function Derivative(string variable);
+  symbolic_function& Derivative(string variable);
   symbolic_function& operator=(const symbolic_function& sym);
   ~symbolic_function();
 
