@@ -37,23 +37,22 @@ bool newton_method::IsMonotone(float(*fun)(float)) {
     }
     return true;
 }
-            
+
 float newton_method::FindRoot(float(*fun)(float),
     float(*deriv_fun)(float), float(*deriv2_fun)(float)) {
     if (IsMonotone(fun)) {
         float xn = fun(A)*deriv2_fun(A) > 0 ? A : B;
         float x1 = xn - fun(xn) / deriv_fun(xn);
         float x0 = xn;
-        float xsum = abs(x0 - x1);
+        float xsum = std::abs(x0 - x1);
         while (xsum > Acc) {
             if (x1 < A || x1 > B)
                 throw("segment have not desidion");
             x0 = x1;
             x1 = x1 - fun(x1) / deriv_fun(x1);
-            xsum = abs(x0 - x1);
+            xsum = std::abs(x0 - x1);
         }
         return x1;
-    }
-    else
+    } else
         throw("function isnot monotone or its point");
 }
