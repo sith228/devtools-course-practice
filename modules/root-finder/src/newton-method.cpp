@@ -53,6 +53,7 @@ float newton_method::FindRoot(float(*fun)(float),
             xsum = std::abs(x0 - x1);
         }
         return x1;
-    } else
+    } else {
         throw("function isnot monotone or its point");
+    }
 }
