@@ -57,6 +57,5 @@ int InterpolationSearch::Search(int toFind) {
     }
   } else {
     throw "Array isn't valid";
-    return -1;
   }
 }
