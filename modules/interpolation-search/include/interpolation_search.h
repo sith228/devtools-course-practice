@@ -11,7 +11,7 @@ class InterpolationSearch {
 
  private:
     int * sortedArray_;
-    int length_;
+    unsigned int length_;
     bool isArraySorted(int * sortedArray, int length);
 };
 
