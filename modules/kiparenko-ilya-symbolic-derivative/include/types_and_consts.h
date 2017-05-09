@@ -24,7 +24,7 @@ enum Op {
 };
 
 #ifdef __GNUC__
-/*
+
 namespace std {
 
 template<>
@@ -32,14 +32,14 @@ struct hash<Op> {
   typedef Op argument_type;
   typedef size_t result_type;
 
-  result_type operator () (const argument_type& x) const {
-    using type = std::underlying_type<argument_type>::type;
-    return std::hash<type>()(static_cast<type>(x));
-  }
+  //result_type operator () (const argument_type& x) const {
+  //  using type = std::underlying_type<argument_type>::type;
+  //  return std::hash<type>()(static_cast<type>(x));
+  // }
 };
 
 }  // namespace std
-*/
+
 #endif
 
 enum Type {

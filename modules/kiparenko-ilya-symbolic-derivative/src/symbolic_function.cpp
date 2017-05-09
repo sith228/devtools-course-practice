@@ -260,6 +260,7 @@ void symbolic_function::DelTree(Node* root) {
         st.push(root->left);
       if (root->right != 0)
         st.push(root->right);
+      cout << "del = " << root << "\n";
       delete root;
     }
   }
@@ -267,7 +268,7 @@ void symbolic_function::DelTree(Node* root) {
 }
 
 Node* symbolic_function::CopyTree(Node* root) {
-  cout << "start copy = \n";
+  cout << "start copytree " << root << "= \n";
   if (root != 0) {
     Node* out = new Node();
     *out = *root;
