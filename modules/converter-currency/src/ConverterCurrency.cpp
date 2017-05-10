@@ -2,29 +2,23 @@
 
 #include "include/ConverterCurrency.h"
 
-float ConverterCurrency::getConvertCoeff(
-                         const currency::CurrencyName Currency) {
-    switch (Currency) {
-    case currency::RUR:
-        return currency::RURtoRUR;
-    case currency::USD:
-        return currency::RURtoUSD;
-    case currency::EUR:
-        return currency::RURtoEUR;
-    case currency::UAH:
-        return currency::RURtoUAH;
-    case currency::CNY:
-        return currency::RURtoCNY;
-    case currency::JPY:
-        return currency::RURtoJPY;
-    case currency::GBP:
-        return currency::RURtoGBP;
-    }
-}
+const std::vector<double> ConverterCurrency::convert_coefficients_ = {
+    30.84,  // BYN to RUR
+    8.413,  // CNY to RUR
+    2.368,  // CZK to RUR
+    63.26,  // EUR to RUR
+    75.41,  // GBP to RUR
+    0.1824,  // KZT to RUR
+    1.0,  // RUR to RUR
+    58.08,  // USD to RUR
+    2.194,  // UAH to RUR
+    0.521197,  // JPY to RUR
+    0.05118,  // KRW to RUR
+};
 
-float ConverterCurrency::Convert(const float MoneySize,
-                         const currency::CurrencyName OldCurrency,
-                         const currency::CurrencyName NewCurrency) {
+double ConverterCurrency::Convert(const double MoneySize,
+                         const CurrencyName OldCurrency,
+                         const CurrencyName NewCurrency) {
     if (MoneySize >= 0) {
         float ResultMoneySize;
 
@@ -33,8 +27,8 @@ float ConverterCurrency::Convert(const float MoneySize,
         } else if (OldCurrency == NewCurrency) {
             ResultMoneySize = MoneySize;
         } else {
-            ResultMoneySize = MoneySize /
-                getConvertCoeff(OldCurrency) * getConvertCoeff(NewCurrency);
+            ResultMoneySize = MoneySize * convert_coefficients_[OldCurrency]
+                / convert_coefficients_[NewCurrency];
         }
 
         return ResultMoneySize;

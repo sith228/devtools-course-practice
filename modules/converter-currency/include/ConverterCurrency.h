@@ -3,24 +3,18 @@
 #ifndef MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_
 #define MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_
 
-namespace currency {
-    enum CurrencyName { RUR, USD, EUR, UAH, CNY, JPY, GBP };
-    const float RURtoRUR = 1.0f;
-    const float RURtoUSD = 0.0175f;
-    const float RURtoEUR = 0.0161f;
-    const float RURtoUAH = 0.4658f;
-    const float RURtoCNY = 0.121f;
-    const float RURtoJPY = 1.9538f;
-    const float RURtoGBP = 0.0136f;
-};
+#include <vector>
+
+// Names were taken from "svali.ru/currency/index.htm"
+enum CurrencyName { BYN, CNY, CZK, EUR, GBP, KZT, RUR, USD, UAH, JPY, KRW};
 
 class ConverterCurrency {
  public:
-    static float Convert(const float MoneySize,
-        const currency::CurrencyName OldCurrency,
-        const currency::CurrencyName NewCurrency);
+    static double Convert(const double MoneySize,
+        const CurrencyName OldCurrency,
+        const CurrencyName NewCurrency);
  private:
-     static float getConvertCoeff(const currency::CurrencyName Currency);
+     static const std::vector<double> convert_coefficients_;
 };
 
 #endif  // MODULES_CONVERTER_CURRENCY_INCLUDE_CONVERTERCURRENCY_H_
