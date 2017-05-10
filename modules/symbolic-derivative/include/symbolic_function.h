@@ -12,14 +12,14 @@
 using std::vector;
 using std::string;
 
-class symbolic_function {
+class SymbolicFunction {
  public:
-  explicit symbolic_function(string s);
+  explicit SymbolicFunction(string s);
   string ToString();
-  symbolic_function();
-  symbolic_function& Derivative(string variable);
-  symbolic_function& operator=(const symbolic_function& sym);
-  ~symbolic_function();
+  SymbolicFunction();
+  SymbolicFunction& Derivative(string variable);
+  SymbolicFunction& operator=(const SymbolicFunction& sym);
+  ~SymbolicFunction();
 
  private:
   Node* root_;

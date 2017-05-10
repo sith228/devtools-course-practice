@@ -15,7 +15,7 @@ using std::to_string;
 
 using std::stack;
 
-string symbolic_function::PrintTree(Node* root) {
+string SymbolicFunction::PrintTree(Node* root) {
   if (root != 0) {
     switch (root->type) {
       case NUMBER:
@@ -41,39 +41,39 @@ string symbolic_function::PrintTree(Node* root) {
   }
 }
 
-symbolic_function::symbolic_function(string s) {
+SymbolicFunction::SymbolicFunction(string s) {
   root_ = Parse(s);
   root_ = ToPostfixForm(root_);
   root_ = PostfixToAst(root_);
 }
 
-symbolic_function::~symbolic_function() {
+SymbolicFunction::~SymbolicFunction() {
   DelTree(root_);
 }
 
-symbolic_function::symbolic_function() {
+SymbolicFunction::SymbolicFunction() {
   root_ = 0;
 }
 
-symbolic_function& symbolic_function::operator=(const symbolic_function& sym) {
+SymbolicFunction& SymbolicFunction::operator=(const SymbolicFunction& sym) {
   DelTree(root_);
   symbols_ = sym.symbols_;
   root_ = CopyTree(sym.root_);
   return (*this);
 }
 
-string symbolic_function::ToString() {
+string SymbolicFunction::ToString() {
   return PrintTree(root_);
 }
 
-symbolic_function& symbolic_function::Derivative(string variable) {
-  symbolic_function* sym = new symbolic_function;
+SymbolicFunction& SymbolicFunction::Derivative(string variable) {
+  SymbolicFunction* sym = new SymbolicFunction;
   sym->symbols_ = symbols_;
   sym->root_ = Derivative(root_, variable);
   return *sym;
 }
 
-Node* symbolic_function::Parse(string s) {
+Node* SymbolicFunction::Parse(string s) {
   Node* out = CrEmptyNode();
   Node* out_t = out;
 
@@ -152,7 +152,7 @@ Node* symbolic_function::Parse(string s) {
   return out_t;
 }
 
-Node* symbolic_function::ToPostfixForm(Node* root) {
+Node* SymbolicFunction::ToPostfixForm(Node* root) {
   Node* out = CrEmptyNode();
   Node* out_t = out;
   stack<Node*> st;
@@ -216,7 +216,7 @@ Node* MyPop(stack<Node*>* st) {
   }
 }
 
-Node* symbolic_function::PostfixToAst(Node* root) {
+Node* SymbolicFunction::PostfixToAst(Node* root) {
   stack<Node*> st;
   Node* out;
   Node* t = root;
@@ -244,7 +244,7 @@ Node* symbolic_function::PostfixToAst(Node* root) {
   return out;
 }
 
-void symbolic_function::DelTree(Node* root) {
+void SymbolicFunction::DelTree(Node* root) {
   if (root != 0) {
     stack<Node*> st;
     st.push(root);
@@ -259,7 +259,7 @@ void symbolic_function::DelTree(Node* root) {
   }
 }
 
-Node* symbolic_function::CopyTree(Node* root) {
+Node* SymbolicFunction::CopyTree(Node* root) {
   if (root != 0) {
     Node* out = new Node();
     *out = *root;
@@ -272,7 +272,7 @@ Node* symbolic_function::CopyTree(Node* root) {
 }
 
 
-Node* symbolic_function::Derivative(Node* root, string variable) {
+Node* SymbolicFunction::Derivative(Node* root, string variable) {
   switch (root->type) {
     case NUMBER:
       return 0;
