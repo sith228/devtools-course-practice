@@ -35,4 +35,4 @@ class Salary {
      int workday_;  // Норма рабочего дня
 };
 
-#endif // ! MODULES_SALARY_CALCULATION_INCLUDE_SALARY_CACULATIONL_H_
+#endif  // MODULES_SALARY_CALCULATION_INCLUDE_SALARY_CACULATIONL_H_
