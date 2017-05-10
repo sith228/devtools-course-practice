@@ -9,17 +9,17 @@
 TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Create_Quadratic_Equation) {
     QuadraticEquation e;
 
-    EXPECT_EQ(1, e.get_coef_a());
-    EXPECT_EQ(0, e.get_coef_b());
-    EXPECT_EQ(0, e.get_coef_c());
+    EXPECT_EQ(1, e.GetCoefA());
+    EXPECT_EQ(0, e.GetCoefB());
+    EXPECT_EQ(0, e.GetCoefC());
 }
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Create_Equat_With_Coefficients) {
     QuadraticEquation e(2.1, 0.0, 4.8);
 
-    EXPECT_DOUBLE_EQ(2.1, e.get_coef_a());
-    EXPECT_DOUBLE_EQ(0.0, e.get_coef_b());
-    EXPECT_DOUBLE_EQ(4.8, e.get_coef_c());
+    EXPECT_DOUBLE_EQ(2.1, e.GetCoefA());
+    EXPECT_DOUBLE_EQ(0.0, e.GetCoefB());
+    EXPECT_DOUBLE_EQ(4.8, e.GetCoefC());
 }
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Cant_Create_Coef_A_As_0) {
@@ -29,27 +29,27 @@ TEST(Pletnev_Nikita_QuadraticEquationTest, Cant_Create_Coef_A_As_0) {
 TEST(Pletnev_Nikita_QuadraticEquationTest, Cant_Set_Coef_A_As_0) {
     QuadraticEquation e(2.1, 0.0, 4.8);
 
-    EXPECT_THROW(e.set_coef_a(0), std::string);
+    EXPECT_THROW(e.SetCoefA(0), std::string);
 }
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Set_Coefficients) {
     QuadraticEquation e(2.1, 0.0, 4.8);
 
-    e.set_coefficients(3, 7, 1);
+    e.SetCoefficients(3, 7, 1);
 
-    EXPECT_DOUBLE_EQ(3, e.get_coef_a());
-    EXPECT_DOUBLE_EQ(7, e.get_coef_b());
-    EXPECT_DOUBLE_EQ(1, e.get_coef_c());
+    EXPECT_DOUBLE_EQ(3, e.GetCoefA());
+    EXPECT_DOUBLE_EQ(7, e.GetCoefB());
+    EXPECT_DOUBLE_EQ(1, e.GetCoefC());
 }
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Can_Get_Coefficients) {
     QuadraticEquation e(2.1, 0.0, 4.8);
 
-    std::vector<double> coefs(e.get_coefficients());
+    std::vector<double> coefs(e.GetCoefficients());
 
-    EXPECT_DOUBLE_EQ(coefs[0], e.get_coef_a());
-    EXPECT_DOUBLE_EQ(coefs[1], e.get_coef_b());
-    EXPECT_DOUBLE_EQ(coefs[2], e.get_coef_c());
+    EXPECT_DOUBLE_EQ(coefs[0], e.GetCoefA());
+    EXPECT_DOUBLE_EQ(coefs[1], e.GetCoefB());
+    EXPECT_DOUBLE_EQ(coefs[2], e.GetCoefC());
 }
 
 TEST(Pletnev_Nikita_QuadraticEquationTest, Number_Of_Solutions_Is_1) {

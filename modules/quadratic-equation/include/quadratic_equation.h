@@ -11,16 +11,16 @@ class QuadraticEquation {
     QuadraticEquation(
         const double coef_a, const double coef_b, const double coef_c);
 
-    void set_coef_a(const double coef_a);
-    void set_coef_b(const double coef_b);
-    void set_coef_c(const double coef_c);
-    void set_coefficients(
+    void SetCoefA(const double coef_a);
+    void SetCoefB(const double coef_b);
+    void SetCoefC(const double coef_c);
+    void SetCoefficients(
         const double coef_a, const double coef_b, const double coef_c);
 
-    double get_coef_a(void) const;
-    double get_coef_b(void) const;
-    double get_coef_c(void) const;
-    std::vector<double> get_coefficients(void) const;
+    double GetCoefA(void) const;
+    double GetCoefB(void) const;
+    double GetCoefC(void) const;
+    std::vector<double> GetCoefficients(void) const;
 
     int NumOfSolutions(void) const;
     double GetX1(void) const;
