@@ -10,36 +10,36 @@ typedef unsigned int MemoryBlock;
 class BitArray {
  public:
     explicit BitArray(const int size);
-    BitArray(const BitArray& bitArray);
+    BitArray(const BitArray& bit_array);
     ~BitArray();
 
-    BitArray& operator = (const BitArray& bitArray);
+    BitArray& operator = (const BitArray& bit_array);
 
     unsigned int GetSize() const;
-    void SetBit(const unsigned int bitNumber);
-    void ClearBit(const unsigned int bitNumber);
-    int GetBit(const unsigned int bitNumber) const;
+    void SetBit(const unsigned int bit_number);
+    void ClearBit(const unsigned int bit_number);
+    int GetBit(const unsigned int bit_number) const;
 
-    BitArray operator & (const BitArray& bitArray) const;
-    BitArray operator | (const BitArray& bitArray) const;
-    BitArray operator ^ (const BitArray& bitArray) const;
+    BitArray operator & (const BitArray& bit_array) const;
+    BitArray operator | (const BitArray& bit_array) const;
+    BitArray operator ^ (const BitArray& bit_array) const;
     BitArray operator ~() const;
 
-    bool operator == (const BitArray& bitArray) const;
-    bool operator != (const BitArray& bitArray) const;
+    bool operator == (const BitArray& bit_array) const;
+    bool operator != (const BitArray& bit_array) const;
 
     std::string ToString() const;
 
  private:
-    unsigned int GetBlockNumber(const unsigned int globalBitNumber) const;
-    unsigned int GetLocalBitNumber(const unsigned int globalBitNumber) const;
-    MemoryBlock GetMask(const unsigned int globalBitNumber) const;
+    unsigned int GetBlockNumber(const unsigned int global_bit_number) const;
+    unsigned int GetLocalBitNumber(const unsigned int global_bit_number) const;
+    MemoryBlock GetMask(const unsigned int global_bit_number) const;
 
     unsigned int size_;
 
-    unsigned int nBlocks_;
-    MemoryBlock* memoryBlocks_;
-    const int blockSize_ = sizeof(MemoryBlock) * 8;
+    unsigned int nblocks_;
+    MemoryBlock* memory_blocks_;
+    const int block_size_ = sizeof(MemoryBlock) * 8;
 };
 
 #endif  // MODULES_BIT_ARRAY_INCLUDE_BIT_ARRAY_H_

@@ -7,39 +7,40 @@
 
 TEST(BitArrayTest, Can_Create_Bit_Array_With_Positive_Size) {
     // Assert
-    ASSERT_NO_THROW(BitArray bitArray(8));
+    ASSERT_NO_THROW(BitArray bit_array(8));
 }
 
 TEST(BitArrayTest, Cant_Create_Bit_Array_With_Size_Zero) {
     // Assert
-    ASSERT_ANY_THROW(BitArray bitArray(0));
+    ASSERT_ANY_THROW(BitArray bit_array(0));
 }
 
 TEST(BitArrayTest, Cant_Create_Bit_Array_With_Negative_Size) {
     // Assert
-    ASSERT_ANY_THROW(BitArray bitArray(0));
+    ASSERT_ANY_THROW(BitArray bit_array(0));
 }
 
 TEST(BitArrayTest, Can_Get_Size) {
     // Arrange
-    BitArray bitArray(8);
-    unsigned int expectedArraySize = 8, realArraySize;
+    BitArray bit_array(8);
+    unsigned int expected_array_size = 8;
+    unsigned int real_array_size;
 
     // Act
-    realArraySize = bitArray.GetSize();
+    real_array_size = bit_array.GetSize();
 
     // Assert
-    EXPECT_EQ(expectedArraySize, realArraySize);
+    EXPECT_EQ(expected_array_size, real_array_size);
 }
 
 TEST(BitArrayTest, Bits_Sum_Of_New_Array_Is_Zero) {
     // Arrange
-    BitArray bitArray(64);
+    BitArray bit_array(64);
     int sum = 0;
 
     // Act
-    for (unsigned int i = 0; i < bitArray.GetSize(); i++)
-        sum += bitArray.GetBit(i);
+    for (unsigned int i = 0; i < bit_array.GetSize(); i++)
+        sum += bit_array.GetBit(i);
 
     // Assert
     EXPECT_EQ(0, sum);
@@ -47,394 +48,394 @@ TEST(BitArrayTest, Bits_Sum_Of_New_Array_Is_Zero) {
 
 TEST(BitArrayTest, Cant_Get_Bit_With_Negative_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.GetBit(-1));
+    ASSERT_ANY_THROW(bit_array.GetBit(-1));
 }
 
 TEST(BitArrayTest, Cant_Get_Bit_With_Too_Large_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.GetBit(8));
+    ASSERT_ANY_THROW(bit_array.GetBit(8));
 }
 
 TEST(BitArrayTest, Can_Set_Bit) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Act
-    bitArray.SetBit(4);
+    bit_array.SetBit(4);
 
     // Assert
-    EXPECT_EQ(bitArray.GetBit(4), 1);
+    EXPECT_EQ(bit_array.GetBit(4), 1);
 }
 
 TEST(BitArrayTest, Cant_Set_Bit_With_Negative_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.SetBit(-1));
+    ASSERT_ANY_THROW(bit_array.SetBit(-1));
 }
 
 TEST(BitArrayTest, Cant_Set_Bit_With_Too_Large_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.SetBit(8));
+    ASSERT_ANY_THROW(bit_array.SetBit(8));
 }
 
 TEST(BitArrayTest, Can_Clear_Bit) {
     // Arrange
-    BitArray bitArray(8);
-    int bitValueAftrerSet, bitValueAfterClear;
+    BitArray bit_array(8);
+    int bit_value_aftrer_set, bit_value_after_clear;
 
     // Act
-    bitArray.SetBit(5);
-    bitValueAftrerSet = bitArray.GetBit(5);
-    bitArray.ClearBit(5);
-    bitValueAfterClear = bitArray.GetBit(5);
+    bit_array.SetBit(5);
+    bit_value_aftrer_set = bit_array.GetBit(5);
+    bit_array.ClearBit(5);
+    bit_value_after_clear = bit_array.GetBit(5);
 
     // Assert
-    EXPECT_NE(bitValueAftrerSet, bitValueAfterClear);
+    EXPECT_NE(bit_value_aftrer_set, bit_value_after_clear);
 }
 
 TEST(BitArrayTest, Can_Clear_Bit_With_Zero_Value) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_NO_THROW(bitArray.ClearBit(5));
+    ASSERT_NO_THROW(bit_array.ClearBit(5));
 }
 
 TEST(BitArrayTest, Cant_Clear_Bit_With_Negative_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.ClearBit(-1));
+    ASSERT_ANY_THROW(bit_array.ClearBit(-1));
 }
 
 TEST(BitArrayTest, Cant_Clear_Bit_With_Too_Large_Index) {
     // Arrange
-    BitArray bitArray(8);
+    BitArray bit_array(8);
 
     // Assert
-    ASSERT_ANY_THROW(bitArray.ClearBit(8));
+    ASSERT_ANY_THROW(bit_array.ClearBit(8));
 }
 
 TEST(BitArrayTest, Can_Assign_Bit_Arrays_With_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(4);
-    bool equalityOfBitArrays;
+    BitArray bit_array1(4), bit_array2(4);
+    bool equality_of_bit_arrays;
 
     // Act
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++)
-        bitArray1.SetBit(i);
-    bitArray2 = bitArray1;
-    equalityOfBitArrays = true;
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
-        if (bitArray1.GetBit(i) != bitArray2.GetBit(i))
-            equalityOfBitArrays = false;
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++)
+        bit_array1.SetBit(i);
+    bit_array2 = bit_array1;
+    equality_of_bit_arrays = true;
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
+        if (bit_array1.GetBit(i) != bit_array2.GetBit(i))
+            equality_of_bit_arrays = false;
     }
 
     // Assert
-    ASSERT_TRUE(equalityOfBitArrays);
+    ASSERT_TRUE(equality_of_bit_arrays);
 }
 
 TEST(BitArrayTest, Assing_Operator_Changes_Bit_Array_Size) {
     // Arrange
-    BitArray bitArray1(16), bitArray2(4);
-    unsigned int expectedArraySize = 16, realArraylSize;
+    BitArray bit_array1(16), bit_array2(4);
+    unsigned int expected_array_size = 16, realArraylSize;
 
     // Act
-    bitArray2 = bitArray1;
-    realArraylSize = bitArray2.GetSize();
+    bit_array2 = bit_array1;
+    realArraylSize = bit_array2.GetSize();
 
     // Assert
-    EXPECT_EQ(realArraylSize, expectedArraySize);
+    EXPECT_EQ(realArraylSize, expected_array_size);
 }
 
 TEST(BitArrayTest, Can_Assign_Bit_Arrays_With_Different_Size) {
     // Arrange
-    BitArray bitArray1(16), bitArray2(4);
-    bool equalityOfBitArrays;
+    BitArray bit_array1(16), bit_array2(4);
+    bool equality_of_bit_arrays;
 
     // Act
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++)
-        bitArray1.SetBit(i);
-    bitArray2 = bitArray1;
-    equalityOfBitArrays = true;
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
-        if (bitArray1.GetBit(i) != bitArray2.GetBit(i))
-            equalityOfBitArrays = false;
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++)
+        bit_array1.SetBit(i);
+    bit_array2 = bit_array1;
+    equality_of_bit_arrays = true;
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
+        if (bit_array1.GetBit(i) != bit_array2.GetBit(i))
+            equality_of_bit_arrays = false;
     }
 
     // Assert
-    ASSERT_TRUE(equalityOfBitArrays);
+    ASSERT_TRUE(equality_of_bit_arrays);
 }
 
 TEST(BitArrayTest, Assigned_Bit_Array_Has_Its_Own_Memory) {
     // Arrange
-    BitArray bitArray1(5), bitArray2(8);
-    bool equalityOfBitArrays;
+    BitArray bit_array1(5), bit_array2(8);
+    bool equality_of_bit_arrays;
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(4);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(4);
 
-    bitArray2 = bitArray1;
-    bitArray1.ClearBit(4);
-    bitArray1.SetBit(0);
+    bit_array2 = bit_array1;
+    bit_array1.ClearBit(4);
+    bit_array1.SetBit(0);
 
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
-        if (bitArray1.GetBit(i) != bitArray2.GetBit(i))
-            equalityOfBitArrays = false;
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
+        if (bit_array1.GetBit(i) != bit_array2.GetBit(i))
+            equality_of_bit_arrays = false;
     }
 
     // Assert
-    ASSERT_FALSE(equalityOfBitArrays);
+    ASSERT_FALSE(equality_of_bit_arrays);
 }
 
 TEST(BitArrayTest, Equal_Bit_Arrays_Are_Equal) {
     // Arrange
-    BitArray bitArray1(8), bitArray2(8);
+    BitArray bit_array1(8), bit_array2(8);
 
     // Act
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
         if (i % 2 == 0) {
-            bitArray1.SetBit(i);
-            bitArray2.SetBit(i);
+            bit_array1.SetBit(i);
+            bit_array2.SetBit(i);
         }
     }
 
     // Assert
-    ASSERT_TRUE(bitArray1 == bitArray2);
+    ASSERT_TRUE(bit_array1 == bit_array2);
 }
 
 TEST(BitArrayTest, Bit_Arrays_Witn_Different_Size_Are_Not_Equal) {
     // Arrange
-    BitArray bitArray1(8), bitArray2(16);
-    bool equalityOfBitArrays;
+    BitArray bit_array1(8), bit_array2(16);
+    bool equality_of_bit_arrays;
 
     // Act
-    equalityOfBitArrays = !(bitArray1 == bitArray2) && (bitArray1 != bitArray2);
+    equality_of_bit_arrays = !(bit_array1 == bit_array2) && (bit_array1 != bit_array2);
 
     // Assert
-    ASSERT_TRUE(equalityOfBitArrays);
+    ASSERT_TRUE(equality_of_bit_arrays);
 }
 
 TEST(BitArrayTest, Not_Equal_Bit_Arrays_Are_Not_Equal) {
     // Arrange
-    BitArray bitArray1(8), bitArray2(8);
-    bool equalityOfBitArrays;
+    BitArray bit_array1(8), bit_array2(8);
+    bool equality_of_bit_arrays;
 
     // Act
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
         if (i % 2 == 0)
-            bitArray1.SetBit(i);
+            bit_array1.SetBit(i);
         else
-            bitArray2.SetBit(i);
+            bit_array2.SetBit(i);
     }
-    equalityOfBitArrays = !(bitArray1 == bitArray2) || (bitArray1 != bitArray2);
+    equality_of_bit_arrays = !(bit_array1 == bit_array2) && (bit_array1 != bit_array2);
 
     // Assert
-    ASSERT_TRUE(equalityOfBitArrays);
+    ASSERT_TRUE(equality_of_bit_arrays);
 }
 
 TEST(BitArrayTest, Can_Copy_Bit_Array) {
     // Arrange
-    BitArray bitArray1(8);
+    BitArray bit_array1(8);
 
     // Assert
-    ASSERT_NO_THROW(BitArray bitArray2(bitArray1));
+    ASSERT_NO_THROW(BitArray bit_array2(bit_array1));
 }
 
 TEST(BitArrayTest, Copied_Bit_Array_Is_Equal_Original) {
     // Arrange
-    BitArray bitArray1(8);
+    BitArray bit_array1(8);
 
     // Act
-    for (unsigned int i = 0; i < bitArray1.GetSize(); i++) {
+    for (unsigned int i = 0; i < bit_array1.GetSize(); i++) {
         if (i % 2 == 0)
-            bitArray1.SetBit(i);
+            bit_array1.SetBit(i);
     }
-    BitArray bitArray2(bitArray1);
+    BitArray bit_array2(bit_array1);
 
     // Assert
-    EXPECT_EQ(bitArray1, bitArray2);
+    EXPECT_EQ(bit_array1, bit_array2);
 }
 
 TEST(BitArrayTest, Copied_Bit_Array_Has_Its_Own_Memory) {
     // Arrange
-    BitArray bitArray1(5);
+    BitArray bit_array1(5);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(4);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(4);
 
-    BitArray bitArray2(bitArray1);
-    bitArray1.ClearBit(4);
-    bitArray1.SetBit(0);
+    BitArray bit_array2(bit_array1);
+    bit_array1.ClearBit(4);
+    bit_array1.SetBit(0);
 
     // Assert
-    EXPECT_NE(bitArray1, bitArray2);
+    EXPECT_NE(bit_array1, bit_array2);
 }
 
 TEST(BitArrayTest, AND_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
+    BitArray bit_array1(4), bit_array2(4), expected_bit_array(4);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(3);
+    expected_bit_array.SetBit(3);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 & bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 & bit_array2);
 }
 
 TEST(BitArrayTest, AND_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
+    BitArray bit_array1(4), bit_array2(5), expected_bit_array(5);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(3);
+    expected_bit_array.SetBit(3);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 & bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 & bit_array2);
 }
 
 TEST(BitArrayTest, OR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
+    BitArray bit_array1(4), bit_array2(4), expected_bit_array(4);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(1);
-    expectedBitArray.SetBit(2);
-    expectedBitArray.SetBit(3);
+    expected_bit_array.SetBit(1);
+    expected_bit_array.SetBit(2);
+    expected_bit_array.SetBit(3);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 | bit_array2);
 }
 
 TEST(BitArrayTest, OR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
+    BitArray bit_array1(4), bit_array2(5), expected_bit_array(5);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(1);
-    expectedBitArray.SetBit(2);
-    expectedBitArray.SetBit(3);
+    expected_bit_array.SetBit(1);
+    expected_bit_array.SetBit(2);
+    expected_bit_array.SetBit(3);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 | bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 | bit_array2);
 }
 
 TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(4), expectedBitArray(4);
+    BitArray bit_array1(4), bit_array2(4), expected_bit_array(4);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(1);
-    expectedBitArray.SetBit(2);
+    expected_bit_array.SetBit(1);
+    expected_bit_array.SetBit(2);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 ^ bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 ^ bit_array2);
 }
 
 TEST(BitArrayTest, XOR_Operator_Applied_To_Bit_Arrays_Of_Non_Equal_Size) {
     // Arrange
-    BitArray bitArray1(4), bitArray2(5), expectedBitArray(5);
+    BitArray bit_array1(4), bit_array2(5), expected_bit_array(5);
 
     // Act
-    bitArray1.SetBit(2);
-    bitArray1.SetBit(3);
+    bit_array1.SetBit(2);
+    bit_array1.SetBit(3);
 
-    bitArray2.SetBit(1);
-    bitArray2.SetBit(3);
+    bit_array2.SetBit(1);
+    bit_array2.SetBit(3);
 
-    expectedBitArray.SetBit(1);
-    expectedBitArray.SetBit(2);
+    expected_bit_array.SetBit(1);
+    expected_bit_array.SetBit(2);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, bitArray1 ^ bitArray2);
+    EXPECT_EQ(expected_bit_array, bit_array1 ^ bit_array2);
 }
 
 TEST(BitArrayTest, Can_Invert_Bit_Array) {
     // Arrange
-    BitArray bf(2), negativeBitArray(2), expectedBitArray(2);
+    BitArray bf(2), negativeBitArray(2), expected_bit_array(2);
 
     // Act
     bf.SetBit(1);
     negativeBitArray = ~bf;
 
-    expectedBitArray.SetBit(0);
+    expected_bit_array.SetBit(0);
 
     // Assert
-    EXPECT_EQ(expectedBitArray, negativeBitArray);
+    EXPECT_EQ(expected_bit_array, negativeBitArray);
 }
 
 TEST(BitArrayTest, Can_Invert_Large_BitArray) {
     // Arrange
-    BitArray bitArray(128), negativeBitArray(128), expectedBitArray(128);
+    BitArray bit_array(128), negativeBitArray(128), expected_bit_array(128);
 
     // Act
-    for (unsigned int i = 0; i < bitArray.GetSize(); i++) {
+    for (unsigned int i = 0; i < bit_array.GetSize(); i++) {
         if (i % 2 == 0)
-            bitArray.SetBit(i);
+            bit_array.SetBit(i);
         else
-            expectedBitArray.SetBit(i);
+            expected_bit_array.SetBit(i);
     }
-    negativeBitArray = ~bitArray;
+    negativeBitArray = ~bit_array;
 
     // Assert
-    EXPECT_EQ(expectedBitArray, negativeBitArray);
+    EXPECT_EQ(expected_bit_array, negativeBitArray);
 }
 
 TEST(BitArrayTest, Can_Transform_Bit_Array_Into_Strign) {
     // Arrange
-    BitArray bitArray(8);
-    std::string resultString, expectedStrign = "00011010";
+    BitArray bit_array(8);
+    std::string result_string, expected_strign = "00011010";
 
     // Act
-    bitArray.SetBit(1);
-    bitArray.SetBit(3);
-    bitArray.SetBit(4);
-    resultString = bitArray.ToString();
+    bit_array.SetBit(1);
+    bit_array.SetBit(3);
+    bit_array.SetBit(4);
+    result_string = bit_array.ToString();
 
     // Assert
-    EXPECT_EQ(expectedStrign, resultString);
+    EXPECT_EQ(expected_strign, result_string);
 }
