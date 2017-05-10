@@ -275,3 +275,35 @@ TEST(TriangleTest, Calculate_Corner_Throw_Exception) {
 
     EXPECT_THROW(t.CalculateCorner(0), std::string);
 }
+
+TEST(TriangleTest, Can_Calculate_—ircumscribed—ircleX) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double x = t.GetCoordX—ircumscribed—ircle();
+
+    EXPECT_EQ(2, x);
+}
+
+TEST(TriangleTest, Can_Calculate_—ircumscribed—ircleY) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double y = t.GetCoordY—ircumscribed—ircle();
+
+    EXPECT_EQ(1.5, y);
+}
+
+TEST(TriangleTest, Can_Calculate_Inscribed—ircleX) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double x = t.GetCoordXInscribed—ircle();
+
+    EXPECT_EQ(1, x);
+}
+
+TEST(TriangleTest, Can_Calculate_Inscribed—ircleY) {
+    Triangle t(0, 0, 0, 3, 4, 0);
+
+    double y = t.GetCoordYInscribed—ircle();
+
+    EXPECT_EQ(1, y);
+}

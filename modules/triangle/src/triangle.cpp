@@ -177,3 +177,59 @@ double Triangle::GetCoordXMedian() const {
 double Triangle::GetCoordYMedian() const {
     return (point1_coordy_ + point2_coordy_ + point3_coordy_) / 3;
 }
+
+double Triangle::GetCoordX—ircumscribed—ircle() const {
+    double result_coordX = 0;
+    double length_vector1 = pow(point1_coordx_, 2) + pow(point1_coordy_, 2);
+    double length_vector2 = pow(point2_coordx_, 2) + pow(point2_coordy_, 2);
+    double length_vector3 = pow(point3_coordx_, 2) + pow(point3_coordy_, 2);
+    double koeff =
+        (point1_coordx_ - point2_coordx_)*(point3_coordy_ - point1_coordy_) -
+        (point1_coordy_ - point2_coordy_)*(point3_coordx_ - point1_coordx_);
+    double radius_vectorX =
+        (point1_coordy_ - point2_coordy_)*length_vector3 +
+        (point2_coordy_ - point3_coordy_)*length_vector1 +
+        (point3_coordy_ - point1_coordy_)*length_vector2;
+    result_coordX = (-1)*radius_vectorX / (2 * koeff);
+    return result_coordX;
+}
+
+double Triangle::GetCoordY—ircumscribed—ircle() const {
+    double result_coordY = 0;
+    double length_vector1 = pow(point1_coordx_, 2) + pow(point1_coordy_, 2);
+    double length_vector2 = pow(point2_coordx_, 2) + pow(point2_coordy_, 2);
+    double length_vector3 = pow(point3_coordx_, 2) + pow(point3_coordy_, 2);
+    double koeff =
+        (point1_coordx_ - point2_coordx_)*(point3_coordy_ - point1_coordy_) -
+        (point1_coordy_ - point2_coordy_)*(point3_coordx_ - point1_coordx_);
+    double radius_vectorY =
+        (point1_coordx_ - point2_coordx_)*length_vector3 +
+        (point2_coordx_ - point3_coordx_)*length_vector1 +
+        (point3_coordx_ - point1_coordx_)*length_vector2;
+    result_coordY = radius_vectorY / (2 * koeff);
+    return result_coordY;
+}
+
+double Triangle::GetCoordXInscribed—ircle() const {
+    double result_coordX = 0;
+    double side1, side2, side3;
+    side1 = CalculateSide(1);
+    side2 = CalculateSide(2);
+    side3 = CalculateSide(3);
+    result_coordX = (point1_coordx_ * side1 +
+        point2_coordx_ * side2 + point3_coordx_ * side3) /
+        (side1 + side2 + side3);
+    return result_coordX;
+}
+
+double Triangle::GetCoordYInscribed—ircle() const {
+    double result_coordY = 0;
+    double side1, side2, side3;
+    side1 = CalculateSide(1);
+    side2 = CalculateSide(2);
+    side3 = CalculateSide(3);
+    result_coordY = (point1_coordy_ * side1 +
+        point2_coordy_ * side2 + point3_coordy_ * side3) /
+        (side1 + side2 + side3);
+    return result_coordY;
+}
