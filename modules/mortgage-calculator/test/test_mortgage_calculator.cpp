@@ -11,7 +11,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, throws_if_amount_less_than_zero) {
     double interest = 10;
 
     // Act & Assert
-    ASSERT_ANY_THROW(MortgageCalculator::mortgage_calculator(amount, 
+    ASSERT_ANY_THROW(MortgageCalculator::mortgage_calculator(amount,
         period, interest));
 }
 
