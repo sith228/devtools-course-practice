@@ -2,65 +2,24 @@
 
 #include "include/ConverterCurrency.h"
 
-float ConverterCurrency::currentToRubles(const float MoneySize,
-                         const currency::CurrencyName OldCurrency) {
-    float ResultMoneySize = 0;
-
-    switch (OldCurrency) {
+float ConverterCurrency::getConvertCoeff(
+                         const currency::CurrencyName Currency) {
+    switch (Currency) {
     case currency::RUR:
-        ResultMoneySize = MoneySize;
-        break;
+        return currency::RURtoRUR;
     case currency::USD:
-        ResultMoneySize = MoneySize / currency::RURtoUSD;
-        break;
+        return currency::RURtoUSD;
     case currency::EUR:
-        ResultMoneySize = MoneySize / currency::RURtoEUR;
-        break;
+        return currency::RURtoEUR;
     case currency::UAH:
-        ResultMoneySize = MoneySize / currency::RURtoUAH;
-        break;
+        return currency::RURtoUAH;
     case currency::CNY:
-        ResultMoneySize = MoneySize / currency::RURtoCNY;
-        break;
+        return currency::RURtoCNY;
     case currency::JPY:
-        ResultMoneySize = MoneySize / currency::RURtoJPY;
-        break;
+        return currency::RURtoJPY;
     case currency::GBP:
-        ResultMoneySize = MoneySize / currency::RURtoGBP;
-        break;
+        return currency::RURtoGBP;
     }
-
-    return ResultMoneySize;
-}
-
-float ConverterCurrency::rublesToTarget(const float MoneySize,
-                         const currency::CurrencyName NewCurrency) {
-    float ResultMoneySize = MoneySize;
-
-    switch (NewCurrency) {
-    case currency::RUR:
-        break;
-    case currency::USD:
-        ResultMoneySize *= currency::RURtoUSD;
-        break;
-    case currency::EUR:
-        ResultMoneySize *= currency::RURtoEUR;
-        break;
-    case currency::UAH:
-        ResultMoneySize *= currency::RURtoUAH;
-        break;
-    case currency::CNY:
-        ResultMoneySize *= currency::RURtoCNY;
-        break;
-    case currency::JPY:
-        ResultMoneySize *= currency::RURtoJPY;
-        break;
-    case currency::GBP:
-        ResultMoneySize *= currency::RURtoGBP;
-        break;
-    }
-
-    return ResultMoneySize;
 }
 
 float ConverterCurrency::Convert(const float MoneySize,
@@ -74,12 +33,12 @@ float ConverterCurrency::Convert(const float MoneySize,
         } else if (OldCurrency == NewCurrency) {
             ResultMoneySize = MoneySize;
         } else {
-            ResultMoneySize = currentToRubles(MoneySize, OldCurrency);
-            ResultMoneySize = rublesToTarget(ResultMoneySize, NewCurrency);
+            ResultMoneySize = MoneySize /
+                getConvertCoeff(OldCurrency) * getConvertCoeff(NewCurrency);
         }
 
         return ResultMoneySize;
     } else {
-        throw "First parameter can't be negative.";
+        throw ("First parameter can't be negative.");
     }
 }
