@@ -15,7 +15,7 @@ class Salary {
      void SetWorkDay(int val);
      void SetPenalty(int val);
      void CalculateSalary();
-     int GetSalary() { return salary; }
+     int GetSalary() { return salary_; }
      int GetAdminRest() { return admin_rest_; }
      int GetOvertimeBonus() { return overtime_bonus_; }
      int GetSalaryPerHour() { return salary_per_hour_; }
@@ -25,7 +25,7 @@ class Salary {
      int GetPenalty() { return penalty_; }
 
  private:
-	 int salary;  //  Месячная зарплата
+	 int salary_;  //  Месячная зарплата
      int salary_per_hour_;  // Почасовой оклад
      int work_hours_;  // Отработанные часы
      int overtime_bonus_;  // Сверхурочные
