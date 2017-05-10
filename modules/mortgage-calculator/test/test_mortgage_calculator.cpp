@@ -64,7 +64,7 @@ TEST(Bakalin_Andrey_MortgageCalculator,
 
 TEST(Bakalin_Andrey_MortgageCalculator, throws_if_interest_less_than_zero) {
     // Arrange
-    double amount = -1000.0;
+    double amount = 1000000.0;
     int period = 240;
     double interest = -10;
 
@@ -75,7 +75,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, throws_if_interest_less_than_zero) {
 
 TEST(Bakalin_Andrey_MortgageCalculator, throws_if_interest_is_equal_to_zero) {
     // Arrange
-    double amount = -1000.0;
+    double amount = 1000000.0;
     int period = 240;
     double interest = 0;
 
@@ -87,7 +87,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, throws_if_interest_is_equal_to_zero) {
 TEST(Bakalin_Andrey_MortgageCalculator,
     throws_if_interest_more_than_one_hundred) {
     // Arrange
-    double amount = -1000.0;
+    double amount = 1000000.0;
     int period = 240;
     double interest = 146;
 
@@ -99,7 +99,7 @@ TEST(Bakalin_Andrey_MortgageCalculator,
 TEST(Bakalin_Andrey_MortgageCalculator,
     throws_if_interest_is_equal_to_one_hundred) {
     // Arrange
-    double amount = -1000.0;
+    double amount = 1000000.0;
     int period = 240;
     double interest = 100;
 
