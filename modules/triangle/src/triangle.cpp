@@ -27,11 +27,11 @@ Triangle::Triangle(const double point1_coordx, const double point1_coordy,
 }
 
 Triangle::Triangle(const Triangle& t) :
-point1_coordx_(t.GetCoordxPoint(1)), point1_coordy_(t.GetCoordyPoint(1)),
-point2_coordx_(t.GetCoordxPoint(2)), point2_coordy_(t.GetCoordyPoint(2)),
-point3_coordx_(t.GetCoordxPoint(3)), point3_coordy_(t.GetCoordyPoint(3)) {}
+point1_coordx_(t.GetCoordXPoint(1)), point1_coordy_(t.GetCoordYPoint(1)),
+point2_coordx_(t.GetCoordXPoint(2)), point2_coordy_(t.GetCoordYPoint(2)),
+point3_coordx_(t.GetCoordXPoint(3)), point3_coordy_(t.GetCoordYPoint(3)) {}
 
-double Triangle::GetCoordxPoint(const int number_point) const {
+double Triangle::GetCoordXPoint(const int number_point) const {
     double result_coord = 0;
     if (number_point == 1) result_coord = point1_coordx_;
     if (number_point == 2) result_coord = point2_coordx_;
@@ -41,7 +41,7 @@ double Triangle::GetCoordxPoint(const int number_point) const {
     return result_coord;
 }
 
-double Triangle::GetCoordyPoint(const int number_point) const {
+double Triangle::GetCoordYPoint(const int number_point) const {
     double result_coord = 0;
     if (number_point == 1) result_coord = point1_coordy_;
     if (number_point == 2) result_coord = point2_coordy_;
@@ -51,7 +51,7 @@ double Triangle::GetCoordyPoint(const int number_point) const {
     return result_coord;
 }
 
-void Triangle::SetCoordxPoint(const double x, const int number_point) {
+void Triangle::SetCoordXPoint(const double x, const int number_point) {
     double copy_coord = 0;
     if (number_point == 1) {
         copy_coord = point1_coordx_;
@@ -68,12 +68,12 @@ void Triangle::SetCoordxPoint(const double x, const int number_point) {
     if ((number_point != 1) && (number_point != 2) && (number_point != 3))
         throw std::string("Unknown number of point");
     if (!isTriangle()) {
-        SetCoordxPoint(copy_coord, number_point);
+        SetCoordXPoint(copy_coord, number_point);
         throw std::string("New coordinates do not form a triangle.");
     }
 }
 
-void Triangle::SetCoordyPoint(const double y, const int number_point) {
+void Triangle::SetCoordYPoint(const double y, const int number_point) {
     double copy_coord = 0;
     if (number_point == 1) {
         copy_coord = point1_coordy_;
@@ -90,7 +90,7 @@ void Triangle::SetCoordyPoint(const double y, const int number_point) {
     if ((number_point != 1) && (number_point != 2) && (number_point != 3))
         throw std::string("Unknown number of point");
     if (!isTriangle()) {
-        SetCoordyPoint(copy_coord, number_point);
+        SetCoordYPoint(copy_coord, number_point);
         throw std::string("New coordinates do not form a triangle.");
     }
 }
@@ -105,12 +105,12 @@ bool Triangle::isTriangle() const {
 }
 
 bool Triangle::operator == (const Triangle& t) const {
-    return ((point1_coordx_ == t.GetCoordxPoint(1)) &&
-        (point1_coordy_ == t.GetCoordyPoint(1))
-        && (point2_coordx_ == t.GetCoordxPoint(2)) &&
-        (point2_coordy_ == t.GetCoordyPoint(2))
-        && (point3_coordx_ == t.GetCoordxPoint(3)) &&
-        (point3_coordy_ == t.GetCoordyPoint(3)));
+    return ((point1_coordx_ == t.GetCoordXPoint(1)) &&
+        (point1_coordy_ == t.GetCoordYPoint(1))
+        && (point2_coordx_ == t.GetCoordXPoint(2)) &&
+        (point2_coordy_ == t.GetCoordYPoint(2))
+        && (point3_coordx_ == t.GetCoordXPoint(3)) &&
+        (point3_coordy_ == t.GetCoordYPoint(3)));
 }
 
 bool Triangle::operator != (const Triangle& t) const {
@@ -170,10 +170,10 @@ double Triangle::CalculateSquare() const {
     return sqrt(per * (per - side1) * (per - side2) * (per - side3));
 }
 
-double Triangle::GetCoordxMedian() const {
+double Triangle::GetCoordXMedian() const {
     return (point1_coordx_ + point2_coordx_ + point3_coordx_) / 3;
 }
 
-double Triangle::GetCoordyMedian() const {
+double Triangle::GetCoordYMedian() const {
     return (point1_coordy_ + point2_coordy_ + point3_coordy_) / 3;
 }
