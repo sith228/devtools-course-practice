@@ -5,15 +5,15 @@
 
 class CreditCalculator {
  public:
-  static double overpayment_amount(int amount, int period, double interest);
-  static double monthly_payment(int amount, int period, double interest);
-  static double total_payout(int amount, int period, double interest);
-  static double check_balance(int amount, int period,
+  static double OverpaymentAmount(int amount, int period, double interest);
+  static double MonthlyPayment(int amount, int period, double interest);
+  static double TotalPayout(int amount, int period, double interest);
+  static double CheckBalance(int amount, int period,
       double interest, int month_pas);
 
  private:
-  static bool check_data(int amount, int period, double interest);
-  static bool check_data(int amount, int period,
+  static bool CheckData(int amount, int period, double interest);
+  static bool CheckData(int amount, int period,
       double interest, unsigned int month_pas);
 };
 

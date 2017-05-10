@@ -1,36 +1,36 @@
 // Copyright 2017 Simonyan Vaginak
 
-#include "include/credit_calculator.h"
 #include <math.h>
 #include <stdexcept>
 
+#include "include/credit_calculator.h"
 
-bool CreditCalculator::check_data(int amount, int period,
+bool CreditCalculator::CheckData(int amount, int period,
     double interest, unsigned int month_pas) {
-    check_data(amount, period, interest);
+    CheckData(amount, period, interest);
     if (month_pas > (unsigned)period) {
         throw std::runtime_error("Entered month_pas is incorrect");
     }
     return true;
 }
 
-bool CreditCalculator::check_data(int amount, int period,
+bool CreditCalculator::CheckData(int amount, int period,
     double interest) {
-    if (amount <= 0) {
+    if (amount <= 0 || amount > 10000000) {
         throw std::runtime_error("Entered amount is incorrect");
     }
-    if (period <= 0 || period > 60) {
+    if (period <= 0 || period > 240) {
         throw std::runtime_error("Entered period is incorrect");
     }
-    if (interest <= 0 || interest > 100) {
+    if (interest <= 0 || interest > 500) {
         throw std::runtime_error("Entered interest is incorrect");
     }
     return true;
 }
 
-double CreditCalculator::monthly_payment(int amount, int period,
+double CreditCalculator::MonthlyPayment(int amount, int period,
     double interest) {
-    check_data(amount, period, interest);
+    CheckData(amount, period, interest);
     double month_inter = interest / 100 / 12;
     double denominator = (1 - pow(1 + month_inter, -period));
     if (denominator == 0.0) {
@@ -39,21 +39,21 @@ double CreditCalculator::monthly_payment(int amount, int period,
     return (amount*(month_inter / denominator));
 }
 
-double CreditCalculator::total_payout(int amount, int period,
+double CreditCalculator::TotalPayout(int amount, int period,
     double interest) {
-    check_data(amount, period, interest);
-    return monthly_payment(amount, period, interest)*period;
+    CheckData(amount, period, interest);
+    return MonthlyPayment(amount, period, interest)*period;
 }
 
-double CreditCalculator::overpayment_amount(int amount, int period,
+double CreditCalculator::OverpaymentAmount(int amount, int period,
     double interest) {
-    check_data(amount, period, interest);
-    return total_payout(amount, period, interest) - amount;
+    CheckData(amount, period, interest);
+    return TotalPayout(amount, period, interest) - amount;
 }
 
-double CreditCalculator::check_balance(int amount, int period,
+double CreditCalculator::CheckBalance(int amount, int period,
     double interest, int month_pas) {
-    check_data(amount, period, interest, month_pas);
-    double paid_out = monthly_payment(amount, period, interest)*month_pas;
-    return total_payout(amount, period, interest) - paid_out;
+    CheckData(amount, period, interest, month_pas);
+    double paid_out = MonthlyPayment(amount, period, interest)*month_pas;
+    return TotalPayout(amount, period, interest) - paid_out;
 }
