@@ -178,7 +178,7 @@ double Triangle::GetCoordYMedian() const {
     return (point1_coordy_ + point2_coordy_ + point3_coordy_) / 3;
 }
 
-double Triangle::GetCoordX—ircumscribed—ircle() const {
+double Triangle::GetCoordXCircumscribedCircle() const {
     double result_coordX = 0;
     double length_vector1 = pow(point1_coordx_, 2) + pow(point1_coordy_, 2);
     double length_vector2 = pow(point2_coordx_, 2) + pow(point2_coordy_, 2);
@@ -194,7 +194,7 @@ double Triangle::GetCoordX—ircumscribed—ircle() const {
     return result_coordX;
 }
 
-double Triangle::GetCoordY—ircumscribed—ircle() const {
+double Triangle::GetCoordYCircumscribedCircle() const {
     double result_coordY = 0;
     double length_vector1 = pow(point1_coordx_, 2) + pow(point1_coordy_, 2);
     double length_vector2 = pow(point2_coordx_, 2) + pow(point2_coordy_, 2);
@@ -210,7 +210,7 @@ double Triangle::GetCoordY—ircumscribed—ircle() const {
     return result_coordY;
 }
 
-double Triangle::GetCoordXInscribed—ircle() const {
+double Triangle::GetCoordXInscribedCircle() const {
     double result_coordX = 0;
     double side1, side2, side3;
     side1 = CalculateSide(1);
@@ -222,7 +222,7 @@ double Triangle::GetCoordXInscribed—ircle() const {
     return result_coordX;
 }
 
-double Triangle::GetCoordYInscribed—ircle() const {
+double Triangle::GetCoordYInscribedCircle() const {
     double result_coordY = 0;
     double side1, side2, side3;
     side1 = CalculateSide(1);

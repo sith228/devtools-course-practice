@@ -29,11 +29,11 @@ class Triangle {
     double GetCoordXMedian() const;
     double GetCoordYMedian() const;
 
-    double GetCoordX—ircumscribed—ircle() const;
-    double GetCoordY—ircumscribed—ircle() const;
+    double GetCoordXCircumscribedCircle() const;
+    double GetCoordYCircumscribedCircle() const;
 
-    double GetCoordXInscribed—ircle() const;
-    double GetCoordYInscribed—ircle() const;
+    double GetCoordXInscribedCircle() const;
+    double GetCoordYInscribedCircle() const;
 
  private:
     bool isTriangle() const;
