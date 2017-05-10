@@ -39,6 +39,6 @@ float ConverterCurrency::Convert(const float MoneySize,
 
         return ResultMoneySize;
     } else {
-        throw ("First parameter can't be negative.");
+        throw "First parameter can't be negative.";
     }
 }
