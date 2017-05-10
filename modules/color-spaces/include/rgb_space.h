@@ -17,12 +17,12 @@ class RGBSpace {
 
     RGBSpace& operator=(const RGBSpace &rgb_space);
 
-    uint8_t getRed() const;
-    uint8_t getGreen() const;
-    uint8_t getBlue() const;
-    void setRed(const int red_);
-    void setGreen(const int green_);
-    void setBlue(const int blue_);
+    uint8_t GetRed() const;
+    uint8_t GetGreen() const;
+    uint8_t GetBlue() const;
+    void SetRed(const int red_);
+    void SetGreen(const int green_);
+    void SetBlue(const int blue_);
 
     friend bool operator==(const RGBSpace &rgb_space_left,
                            const RGBSpace &rgb_space_right);
@@ -36,7 +36,7 @@ class RGBSpace {
     uint8_t red_;
     uint8_t green_;
     uint8_t blue_;
-    void swap(RGBSpace &rgb_space);
+    void Swap(RGBSpace &rgb_space);
     HSBHSVSpace ToHSBHSVSpace() const;
     XYZSpace ToXYZSpace() const;
 };

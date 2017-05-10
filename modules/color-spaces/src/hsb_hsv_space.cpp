@@ -6,7 +6,7 @@
 #include <string>
 #include <algorithm>
 
-void HSBHSVSpace::swap(HSBHSVSpace &hsb_hsv_space) {
+void HSBHSVSpace::Swap(HSBHSVSpace &hsb_hsv_space) {
     std::swap(hue_, hsb_hsv_space.hue_);
     std::swap(saturation_, hsb_hsv_space.saturation_);
     std::swap(value_brightnes_, hsb_hsv_space.value_brightnes_);
@@ -42,24 +42,24 @@ HSBHSVSpace::HSBHSVSpace(const HSBHSVSpace &hsb_hsv_space) {
 
 HSBHSVSpace& HSBHSVSpace::operator=(const HSBHSVSpace &hsb_hsv_space) {
     if (this != &hsb_hsv_space) {
-        HSBHSVSpace(hsb_hsv_space).swap(*this);
+        HSBHSVSpace(hsb_hsv_space).Swap(*this);
     }
     return *this;
 }
 
-uint16_t HSBHSVSpace::getHue() const {
+uint16_t HSBHSVSpace::GetHue() const {
     return hue_;
 }
 
-uint16_t HSBHSVSpace::getSaturation() const {
+uint16_t HSBHSVSpace::GetSaturation() const {
     return saturation_;
 }
 
-uint16_t HSBHSVSpace::getValueBrightnes() const {
+uint16_t HSBHSVSpace::GetValueBrightnes() const {
     return value_brightnes_;
 }
 
-void HSBHSVSpace::setHue(const int hue) {
+void HSBHSVSpace::SetHue(const int hue) {
     if ((hue < 0) || (hue > 360)) {
         throw std::string("The index of hue isn't in the range 0-360");
     } else {
@@ -67,7 +67,7 @@ void HSBHSVSpace::setHue(const int hue) {
     }
 }
 
-void HSBHSVSpace::setSaturation(const int saturation) {
+void HSBHSVSpace::SetSaturation(const int saturation) {
     if ((saturation < 0) || (saturation > 100)) {
         throw std::string("The index of saturation isn't in the range 0-100");
     }  else {
@@ -75,7 +75,7 @@ void HSBHSVSpace::setSaturation(const int saturation) {
     }
 }
 
-void HSBHSVSpace::setValueBrightnes(const int value_brightnes) {
+void HSBHSVSpace::SetValueBrightnes(const int value_brightnes) {
     if ((value_brightnes < 0) || (value_brightnes > 100)) {
         throw std::string("The index of brightnes isn't in the range 0-100");
     } else {

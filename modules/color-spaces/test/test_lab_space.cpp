@@ -7,9 +7,9 @@ TEST(LABSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     LABSpace space;
-    sum += space.getLightness();
-    sum += space.getA();
-    sum += space.getB();
+    sum += space.GetLightness();
+    sum += space.GetA();
+    sum += space.GetB();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -58,7 +58,7 @@ TEST(LABSpaceTest, Can_Enter_Lightness_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(lightness, space.getLightness());
+    EXPECT_EQ(lightness, space.GetLightness());
 }
 
 TEST(LABSpaceTest, Can_Enter_A_Correct_Data_In_The_Constructor) {
@@ -69,7 +69,7 @@ TEST(LABSpaceTest, Can_Enter_A_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(a, space.getA());
+    EXPECT_EQ(a, space.GetA());
 }
 
 TEST(LABSpaceTest, Can_Enter_B_Correct_Data_In_The_Constructor) {
@@ -80,7 +80,7 @@ TEST(LABSpaceTest, Can_Enter_B_Correct_Data_In_The_Constructor) {
     // Act
     LABSpace space(lightness, a, b);
     // Assert
-    EXPECT_EQ(b, space.getB());
+    EXPECT_EQ(b, space.GetB());
 }
 
 TEST(LABSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -106,9 +106,9 @@ TEST(LABSpaceTest, Can_Set_Field_Lightness) {
     int lightness = 89;
     // Act
     LABSpace space;
-    space.setLightness(lightness);
+    space.SetLightness(lightness);
     // Assert
-    EXPECT_EQ(lightness, space.getLightness());
+    EXPECT_EQ(lightness, space.GetLightness());
 }
 
 TEST(LABSpaceTest, Can_Set_Field_A) {
@@ -116,9 +116,9 @@ TEST(LABSpaceTest, Can_Set_Field_A) {
     int a = 14;
     // Act
     LABSpace space;
-    space.setA(a);
+    space.SetA(a);
     // Assert
-    EXPECT_EQ(a, space.getA());
+    EXPECT_EQ(a, space.GetA());
 }
 
 TEST(LABSpaceTest, Can_Set_Field_B) {
@@ -126,9 +126,9 @@ TEST(LABSpaceTest, Can_Set_Field_B) {
     int b = 75;
     // Act
     LABSpace space;
-    space.setB(b);
+    space.SetB(b);
     // Assert
-    EXPECT_EQ(b, space.getB());
+    EXPECT_EQ(b, space.GetB());
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_Lightness) {
@@ -137,7 +137,7 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_Lightness) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setLightness(lightness); });
+    EXPECT_ANY_THROW({ space.SetLightness(lightness); });
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_A) {
@@ -146,7 +146,7 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_A) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setA(a); });
+    EXPECT_ANY_THROW({ space.SetA(a); });
 }
 
 TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_B) {
@@ -155,7 +155,7 @@ TEST(LABSpaceTest, Can_Set_Not_Correct_Data_In_Field_B) {
     // Act
     LABSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setB(b); });
+    EXPECT_ANY_THROW({ space.SetB(b); });
 }
 
 TEST(LABSpaceTest, Can_Use_Equals_In_LABSpace) {

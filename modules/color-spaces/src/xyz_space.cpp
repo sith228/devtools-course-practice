@@ -7,7 +7,7 @@
 #include <algorithm>
 
 
-void XYZSpace::swap(XYZSpace &xyz_space) {
+void XYZSpace::Swap(XYZSpace &xyz_space) {
     std::swap(x_, xyz_space.x_);
     std::swap(y_, xyz_space.y_);
     std::swap(z_, xyz_space.z_);
@@ -74,11 +74,11 @@ XYZSpace::XYZSpace(const XYZSpace &xyz_space) {
 
 XYZSpace::XYZSpace(const LABSpace &lab_space) {
     double y_quote =
-        (((static_cast<double>(lab_space.getLightness())) + 16.0) / 116.0);
+        (((static_cast<double>(lab_space.GetLightness())) + 16.0) / 116.0);
     double x_quote =
-        (static_cast<double>(lab_space.getA()) / 500 + y_quote);
+        (static_cast<double>(lab_space.GetA()) / 500 + y_quote);
     double z_quote =
-        (y_quote - static_cast<double>(lab_space.getB()) / 200);
+        (y_quote - static_cast<double>(lab_space.GetB()) / 200);
 
     if (pow(y_quote, 3.0) > 0.008856) {
         y_quote = pow(y_quote, 3.0);
@@ -105,24 +105,24 @@ XYZSpace::XYZSpace(const LABSpace &lab_space) {
 
 XYZSpace& XYZSpace::operator=(const XYZSpace &xyz_space) {
     if (this != &xyz_space) {
-        XYZSpace(xyz_space).swap(*this);
+        XYZSpace(xyz_space).Swap(*this);
     }
     return *this;
 }
 
-uint8_t XYZSpace::getX() const {
+uint8_t XYZSpace::GetX() const {
     return x_;
 }
 
-uint8_t XYZSpace::getY() const {
+uint8_t XYZSpace::GetY() const {
     return y_;
 }
 
-uint8_t XYZSpace::getZ() const {
+uint8_t XYZSpace::GetZ() const {
     return z_;
 }
 
-void XYZSpace::setX(const int x) {
+void XYZSpace::SetX(const int x) {
     if ((x < 0) || (x > 95)) {
         throw std::string("The index of x isn't in the range 0-95");
     } else {
@@ -130,7 +130,7 @@ void XYZSpace::setX(const int x) {
     }
 }
 
-void XYZSpace::setY(const int y) {
+void XYZSpace::SetY(const int y) {
     if ((y < 0) || (y > 100)) {
         throw std::string("The index of y isn't in the range 0-100");
     }  else {
@@ -138,7 +138,7 @@ void XYZSpace::setY(const int y) {
     }
 }
 
-void XYZSpace::setZ(const int z) {
+void XYZSpace::SetZ(const int z) {
     if ((z < 0) || (z > 108)) {
         throw std::string("The index of z isn't in the range 0-108");
     } else {

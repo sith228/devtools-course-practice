@@ -6,9 +6,9 @@ TEST(RGBSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     RGBSpace space;
-    sum += space.getRed();
-    sum += space.getGreen();
-    sum += space.getBlue();
+    sum += space.GetRed();
+    sum += space.GetGreen();
+    sum += space.GetBlue();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -57,7 +57,7 @@ TEST(RGBSpaceTest, Can_Enter_Red_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(red, space.getRed());
+    EXPECT_EQ(red, space.GetRed());
 }
 
 TEST(RGBSpaceTest, Can_Enter_Green_Correct_Data_In_The_Constructor) {
@@ -68,7 +68,7 @@ TEST(RGBSpaceTest, Can_Enter_Green_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(green, space.getGreen());
+    EXPECT_EQ(green, space.GetGreen());
 }
 
 TEST(RGBSpaceTest, Can_Enter_Blue_Correct_Data_In_The_Constructor) {
@@ -79,7 +79,7 @@ TEST(RGBSpaceTest, Can_Enter_Blue_Correct_Data_In_The_Constructor) {
     // Act
     RGBSpace space(red, green, blue);
     // Assert
-    EXPECT_EQ(blue, space.getBlue());
+    EXPECT_EQ(blue, space.GetBlue());
 }
 
 TEST(RGBSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -105,9 +105,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Red) {
     int red = 127;
     // Act
     RGBSpace space;
-    space.setRed(red);
+    space.SetRed(red);
     // Assert
-    EXPECT_EQ(red, space.getRed());
+    EXPECT_EQ(red, space.GetRed());
 }
 
 TEST(RGBSpaceTest, Can_Set_Field_Green) {
@@ -115,9 +115,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Green) {
     int green = 253;
     // Act
     RGBSpace space;
-    space.setGreen(green);
+    space.SetGreen(green);
     // Assert
-    EXPECT_EQ(green, space.getGreen());
+    EXPECT_EQ(green, space.GetGreen());
 }
 
 TEST(RGBSpaceTest, Can_Set_Field_Blue) {
@@ -125,9 +125,9 @@ TEST(RGBSpaceTest, Can_Set_Field_Blue) {
     int blue = 127;
     // Act
     RGBSpace space;
-    space.setBlue(blue);
+    space.SetBlue(blue);
     // Assert
-    EXPECT_EQ(blue, space.getBlue());
+    EXPECT_EQ(blue, space.GetBlue());
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Red) {
@@ -136,7 +136,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Red) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setRed(red);});
+    EXPECT_ANY_THROW({ space.SetRed(red);});
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Green) {
@@ -145,7 +145,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Green) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setGreen(green);});
+    EXPECT_ANY_THROW({ space.SetGreen(green);});
 }
 
 TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
@@ -154,7 +154,7 @@ TEST(RGBSpaceTest, Can_Set_Not_Correct_Data_In_Field_Blue) {
     // Act
     RGBSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setBlue(blue);});
+    EXPECT_ANY_THROW({ space.SetBlue(blue);});
 }
 
 TEST(RGBSpaceTest, Can_Use_Equals_In_RGBSpace) {

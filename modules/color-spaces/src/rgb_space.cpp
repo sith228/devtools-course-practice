@@ -5,7 +5,7 @@
 #include <string>
 #include <algorithm>
 
-void RGBSpace::swap(RGBSpace &rgb_space) {
+void RGBSpace::Swap(RGBSpace &rgb_space) {
     std::swap(red_, rgb_space.red_);
     std::swap(green_, rgb_space.green_);
     std::swap(blue_, rgb_space.blue_);
@@ -112,9 +112,9 @@ RGBSpace::RGBSpace(const RGBSpace &rgb_space) {
 }
 
 RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
-    uint16_t hue = hsbhsv_space.getHue();
-    uint16_t saturation = hsbhsv_space.getSaturation();
-    uint16_t value_brightnes = hsbhsv_space.getValueBrightnes();
+    uint16_t hue = hsbhsv_space.GetHue();
+    uint16_t saturation = hsbhsv_space.GetSaturation();
+    uint16_t value_brightnes = hsbhsv_space.GetValueBrightnes();
 
     uint8_t index = static_cast<uint8_t>(
         floor(static_cast<double>(hue)/60)) % 6;
@@ -169,9 +169,9 @@ RGBSpace::RGBSpace(const HSBHSVSpace &hsbhsv_space) {
 }
 
 RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
-    double x_quote = static_cast<double>(xyz_space.getX())/100;
-    double y_quote = static_cast<double>(xyz_space.getY())/100;
-    double z_quote = static_cast<double>(xyz_space.getZ())/100;
+    double x_quote = static_cast<double>(xyz_space.GetX())/100;
+    double y_quote = static_cast<double>(xyz_space.GetY())/100;
+    double z_quote = static_cast<double>(xyz_space.GetZ())/100;
 
     double red_quote =
         x_quote * 3.2404542  + y_quote*(-1.5371385) + z_quote*(-0.4985314);
@@ -205,24 +205,24 @@ RGBSpace::RGBSpace(const XYZSpace &xyz_space) {
 
 RGBSpace& RGBSpace::operator=(const RGBSpace &rgb_space) {
     if (this != &rgb_space) {
-        RGBSpace(rgb_space).swap(*this);
+        RGBSpace(rgb_space).Swap(*this);
     }
     return *this;
 }
 
-uint8_t RGBSpace::getRed() const {
+uint8_t RGBSpace::GetRed() const {
     return red_;
 }
 
-uint8_t RGBSpace::getGreen() const {
+uint8_t RGBSpace::GetGreen() const {
     return green_;
 }
 
-uint8_t RGBSpace::getBlue() const {
+uint8_t RGBSpace::GetBlue() const {
     return blue_;
 }
 
-void RGBSpace::setRed(const int red) {
+void RGBSpace::SetRed(const int red) {
     if ((red < 0) || (red > 255)) {
         throw std::string("The index of red color isn't in the range 0-255");
     } else {
@@ -230,7 +230,7 @@ void RGBSpace::setRed(const int red) {
     }
 }
 
-void RGBSpace::setGreen(const int green) {
+void RGBSpace::SetGreen(const int green) {
     if ((green < 0) || (green > 255)) {
         throw std::string("The index of green color isn't in the range 0-255");
     }  else {
@@ -238,7 +238,7 @@ void RGBSpace::setGreen(const int green) {
     }
 }
 
-void RGBSpace::setBlue(const int blue) {
+void RGBSpace::SetBlue(const int blue) {
     if ((blue < 0) || (blue > 255)) {
         throw std::string("The index of blue color isn't in the range 0-255");
     } else {

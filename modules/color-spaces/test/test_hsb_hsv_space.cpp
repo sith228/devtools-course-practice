@@ -8,9 +8,9 @@ TEST(HSBHSVSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     HSBHSVSpace space;
-    sum += space.getHue();
-    sum += space.getSaturation();
-    sum += space.getValueBrightnes();
+    sum += space.GetHue();
+    sum += space.GetSaturation();
+    sum += space.GetValueBrightnes();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -59,7 +59,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Hue_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(hue, space.getHue());
+    EXPECT_EQ(hue, space.GetHue());
 }
 
 TEST(HSBHSVSpaceTest, Can_Enter_Saturation_Correct_Data_In_The_Constructor) {
@@ -70,7 +70,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Saturation_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(saturation, space.getSaturation());
+    EXPECT_EQ(saturation, space.GetSaturation());
 }
 
 TEST(HSBHSVSpaceTest, Can_Enter_Brightness_Correct_Data_In_The_Constructor) {
@@ -81,7 +81,7 @@ TEST(HSBHSVSpaceTest, Can_Enter_Brightness_Correct_Data_In_The_Constructor) {
     // Act
     HSBHSVSpace space(hue, saturation, value_brightnes);
     // Assert
-    EXPECT_EQ(value_brightnes, space.getValueBrightnes());
+    EXPECT_EQ(value_brightnes, space.GetValueBrightnes());
 }
 
 TEST(HSBHSVSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -107,9 +107,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Hue) {
     int hue = 127;
     // Act
     HSBHSVSpace space;
-    space.setHue(hue);
+    space.SetHue(hue);
     // Assert
-    EXPECT_EQ(hue, space.getHue());
+    EXPECT_EQ(hue, space.GetHue());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Field_Saturation) {
@@ -117,9 +117,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Saturation) {
     int saturation = 25;
     // Act
     HSBHSVSpace space;
-    space.setSaturation(saturation);
+    space.SetSaturation(saturation);
     // Assert
-    EXPECT_EQ(saturation, space.getSaturation());
+    EXPECT_EQ(saturation, space.GetSaturation());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Field_Brightnes) {
@@ -127,9 +127,9 @@ TEST(HSBHSVSpaceTest, Can_Set_Field_Brightnes) {
     int value_brightnes = 69;
     // Act
     HSBHSVSpace space;
-    space.setValueBrightnes(value_brightnes);
+    space.SetValueBrightnes(value_brightnes);
     // Assert
-    EXPECT_EQ(value_brightnes, space.getValueBrightnes());
+    EXPECT_EQ(value_brightnes, space.GetValueBrightnes());
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Hue) {
@@ -138,7 +138,7 @@ int hue = 720;
     // Act
 HSBHSVSpace space;
     // Assert
-EXPECT_ANY_THROW({ space.setHue(hue);});
+EXPECT_ANY_THROW({ space.SetHue(hue);});
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Saturation) {
@@ -147,7 +147,7 @@ TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Saturation) {
     // Act
     HSBHSVSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setSaturation(saturation); });
+    EXPECT_ANY_THROW({ space.SetSaturation(saturation); });
 }
 
 TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Brightnes) {
@@ -156,7 +156,7 @@ TEST(HSBHSVSpaceTest, Can_Set_Not_Correct_Data_In_Field_Brightnes) {
     // Act
     HSBHSVSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setValueBrightnes(value_brightnes); });
+    EXPECT_ANY_THROW({ space.SetValueBrightnes(value_brightnes); });
 }
 
 TEST(HSBHSVSpaceTest, Can_Use_Equals_In_HSBHSVSpace) {

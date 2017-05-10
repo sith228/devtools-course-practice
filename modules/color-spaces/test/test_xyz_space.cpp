@@ -7,9 +7,9 @@ TEST(XYZSpaceTest, Can_Initiliaze_Variable_With_The_Default_Constructor) {
     int sum = 0;
     // Act
     XYZSpace space;
-    sum += space.getX();
-    sum += space.getY();
-    sum += space.getZ();
+    sum += space.GetX();
+    sum += space.GetY();
+    sum += space.GetZ();
     // Assert
     EXPECT_EQ(0, sum);
 }
@@ -58,7 +58,7 @@ TEST(XYZSpaceTest, Can_Enter_X_Correct_Data_In_The_Constructor) {
     // Act
     XYZSpace space(x, y, z);
     // Assert
-    EXPECT_EQ(x, space.getX());
+    EXPECT_EQ(x, space.GetX());
 }
 
 TEST(XYZSpaceTest, Can_Enter_Y_Correct_Data_In_The_Constructor) {
@@ -69,7 +69,7 @@ TEST(XYZSpaceTest, Can_Enter_Y_Correct_Data_In_The_Constructor) {
     // Act
     XYZSpace space(x, y, z);
     // Assert
-    EXPECT_EQ(y, space.getY());
+    EXPECT_EQ(y, space.GetY());
 }
 
 TEST(XYZSpaceTest, Can_Enter_Z_Correct_Data_In_The_Constructor) {
@@ -80,7 +80,7 @@ TEST(XYZSpaceTest, Can_Enter_Z_Correct_Data_In_The_Constructor) {
     // Act
     XYZSpace space(x, y, z);
     // Assert
-    EXPECT_EQ(z, space.getZ());
+    EXPECT_EQ(z, space.GetZ());
 }
 
 TEST(XYZSpaceTest, Can_Use_The_Copying_Constructor) {
@@ -106,9 +106,9 @@ TEST(XYZSpaceTest, Can_Set_Field_X) {
     int x = 77;
     // Act
     XYZSpace space;
-    space.setX(x);
+    space.SetX(x);
     // Assert
-    EXPECT_EQ(x, space.getX());
+    EXPECT_EQ(x, space.GetX());
 }
 
 TEST(XYZSpaceTest, Can_Set_Field_Y) {
@@ -116,9 +116,9 @@ TEST(XYZSpaceTest, Can_Set_Field_Y) {
     int y = 88;
     // Act
     XYZSpace space;
-    space.setY(y);
+    space.SetY(y);
     // Assert
-    EXPECT_EQ(y, space.getY());
+    EXPECT_EQ(y, space.GetY());
 }
 
 TEST(XYZSpaceTest, Can_Set_Field_Z) {
@@ -126,9 +126,9 @@ TEST(XYZSpaceTest, Can_Set_Field_Z) {
     int z = 99;
     // Act
     XYZSpace space;
-    space.setZ(z);
+    space.SetZ(z);
     // Assert
-    EXPECT_EQ(z, space.getZ());
+    EXPECT_EQ(z, space.GetZ());
 }
 
 TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_X) {
@@ -137,7 +137,7 @@ TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_X) {
     // Act
     XYZSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setX(x); });
+    EXPECT_ANY_THROW({ space.SetX(x); });
 }
 
 TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_Y) {
@@ -146,7 +146,7 @@ TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_Y) {
     // Act
     XYZSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setY(y); });
+    EXPECT_ANY_THROW({ space.SetY(y); });
 }
 
 TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_Z) {
@@ -155,7 +155,7 @@ TEST(XYZSpaceTest, Can_Set_Not_Correct_Data_In_Field_Z) {
     // Act
     XYZSpace space;
     // Assert
-    EXPECT_ANY_THROW({ space.setZ(z); });
+    EXPECT_ANY_THROW({ space.SetZ(z); });
 }
 
 TEST(XYZSpaceTest, Can_Use_Equals_In_XYZSpace) {
