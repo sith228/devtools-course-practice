@@ -1,6 +1,7 @@
 // Copyright 2017 Dmitrichev Nikita
 
 #include <gtest/gtest.h>
+
 #include "include/ConverterCurrency.h"
 
 using currency::CNY;
