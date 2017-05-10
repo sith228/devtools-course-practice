@@ -25,7 +25,7 @@ class Salary {
      int GetPenalty() { return penalty_; }
 
  private:
-     int salary_;  // Месячная зарплата
+     int salary_;  //  Месячная зарплата
      int salary_per_hour_;  // Почасовой оклад
      int work_hours_;  // Отработанные часы
      int overtime_bonus_;  // Сверхурочные
