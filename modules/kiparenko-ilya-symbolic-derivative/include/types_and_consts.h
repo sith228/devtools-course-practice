@@ -9,6 +9,7 @@
 
 using std::string;
 using std::unordered_map;
+using std::hash;
 
 enum Op {
   ADD     =  0,
@@ -22,21 +23,6 @@ enum Op {
   L_BRACE =  8,
   R_BRACE =  9
 };
-
-namespace std {
-
-template<>
-struct hash<Op> {
-  typedef Op argument_type;
-  typedef size_t result_type;
-
-  result_type operator () (const argument_type& x) const {
-    using type = std::underlying_type<argument_type>::type;
-    return std::hash<type>()(static_cast<type>(x));
-  }
-};
-
-}  // namespace std
 
 enum Type {
   SYMBOL   = 0,
@@ -83,7 +69,7 @@ const unordered_map<string, Op> functions {
                                       {")",   R_BRACE}
 };
 
-const unordered_map<Op, string> func_names {
+const unordered_map<Op, string, hash<int> > func_names {
                                       {ADD,     "+"},
                                       {SUB,     "-"},
                                       {MUL,     "*"},
@@ -96,7 +82,7 @@ const unordered_map<Op, string> func_names {
                                       {R_BRACE, ")"}
 };
 
-const unordered_map<Op, int> precendence {
+const unordered_map<Op, int, hash<int> > precendence {
                                       {ADD,     2},
                                       {SUB,     2},
                                       {MUL,     3},
@@ -109,7 +95,7 @@ const unordered_map<Op, int> precendence {
                                       {R_BRACE, 9}
 };
 
-const unordered_map<Op, int> nargs {
+const unordered_map<Op, int, hash<int> > nargs {
                                       {ADD,     2},
                                       {SUB,     2},
                                       {MUL,     2},
@@ -121,7 +107,7 @@ const unordered_map<Op, int> nargs {
 };
 
 typedef double (*fun2args)(double, double);
-const unordered_map<Op, fun2args>
+const unordered_map<Op, fun2args, hash<int> >
   real_funcs {
               {ADD,     [](double x, double y) {return x + y;}     },
               {SUB,     [](double x, double y) {return x - y;}     },
