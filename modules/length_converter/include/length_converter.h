@@ -33,7 +33,8 @@ enum LengthType {
     CHAIN,          // чейн = 20.1168 м
     FURHLONG,       // фурлонг = 201.16 м
     MILE,           // миля = 1,609344 км
-    LEAGUE          // лига = 4,828032 км
+    LEAGUE,         // лига = 4,828032 км
+    _LENGTH_END_    // фиктивный член - конец enum'а
 };
 
 
@@ -47,7 +48,9 @@ class Length {
     double length_cm_;  // Длина в сантиметрах
     double GetConvertCoef(LengthType type) const;
 
-    static const double micrometre_to_cm_;
+    static const double convert_coef_[_LENGTH_END_];
+
+    /*static const double micrometre_to_cm_;
     static const double millimetre_to_cm_;
     static const double centimetre_to_cm_;
     static const double decimetre_to_cm_;
@@ -62,7 +65,7 @@ class Length {
     static const double chain_to_cm_;
     static const double furhlong_to_cm_;
     static const double mile_to_cm_;
-    static const double league_to_cm_;
+    static const double league_to_cm_;*/
 };
 
 #endif  // MODULES_LENGTH_CONVERTER_INCLUDE_LENGTH_CONVERTER_H_
