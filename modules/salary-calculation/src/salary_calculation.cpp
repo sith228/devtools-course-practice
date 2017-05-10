@@ -1,6 +1,6 @@
 // Copyright 2017 Bilkovsky Alexander
 
-#include "include/Salary_cal.h"
+#include "include/salary_caculationl.h"
 
 Salary::Salary(int salary_per_hour, int needed_hours, int work_hours, int workday) {
     if (salary_per_hour < 0 || needed_hours < 0 || work_hours < 0 || workday <= 0)

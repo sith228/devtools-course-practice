@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "include/Salary_cal.h"
+#include "include/salary_caculationl.h"
 
 TEST(Bilkovsky_Alexander_SalaryTest, throw_when_incorrect_input) {
     // Arrange & Assert
