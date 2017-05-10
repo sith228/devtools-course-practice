@@ -18,11 +18,11 @@ TEST(ConverterCurrenciesTest, if_zero_money_size_was_converted_its_zero) {
 }
 
 TEST(ConverterCurrenciesTest, can_convert_if_target_equal_to_old) {
-    double expected = 111.1;
-    EXPECT_NEAR(expected, ConverterCurrency::Convert(expected, EUR, EUR),0.01);
+    double exp = 111.1;
+    EXPECT_NEAR(exp, ConverterCurrency::Convert(exp, EUR, EUR), 0.01);
 }
 
 TEST(ConverterCurrenciesTest, converter_works_right) {
     double expected = 2647.32;  // 100 usd to uah
-    EXPECT_NEAR(expected, ConverterCurrency::Convert(100.0, USD, UAH),0.5);
+    EXPECT_NEAR(expected, ConverterCurrency::Convert(100.0, USD, UAH), 0.5);
 }

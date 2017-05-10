@@ -1,5 +1,6 @@
 // Copyright 2017 Dmitrichev Nikita
 
+#include <vector>
 #include "include/ConverterCurrency.h"
 
 const std::vector<double> ConverterCurrency::convert_coefficients_ = {
