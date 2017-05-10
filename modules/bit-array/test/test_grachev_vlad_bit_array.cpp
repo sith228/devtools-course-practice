@@ -223,7 +223,8 @@ TEST(BitArrayTest, Bit_Arrays_Witn_Different_Size_Are_Not_Equal) {
     bool equality_of_bit_arrays;
 
     // Act
-    equality_of_bit_arrays = !(bit_array1 == bit_array2) && (bit_array1 != bit_array2);
+    equality_of_bit_arrays = !(bit_array1 == bit_array2)
+                           && (bit_array1 != bit_array2);
 
     // Assert
     ASSERT_TRUE(equality_of_bit_arrays);
@@ -241,7 +242,8 @@ TEST(BitArrayTest, Not_Equal_Bit_Arrays_Are_Not_Equal) {
         else
             bit_array2.SetBit(i);
     }
-    equality_of_bit_arrays = !(bit_array1 == bit_array2) && (bit_array1 != bit_array2);
+    equality_of_bit_arrays = !(bit_array1 == bit_array2)
+                           && (bit_array1 != bit_array2);
 
     // Assert
     ASSERT_TRUE(equality_of_bit_arrays);
