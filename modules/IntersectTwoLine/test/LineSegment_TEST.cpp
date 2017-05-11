@@ -6,15 +6,23 @@
 
 using std::string;
 
+TEST(LineSegment, Can_Create_LineSegment) {
+  // Arrange and Assert
+  ASSERT_NO_THROW(LineSegment2D line());
+}
+
 TEST(LineSegment, Can_Create_LineSegment_With_Initial_Values) {
+  // Arrange and Assert
   ASSERT_NO_THROW(LineSegment2D line(2.0, 3.1, 4.2));
 }
 
 TEST(LineSegment, Can_Create_LineSegment_With_Negative_Values) {
+  // Arrange and Assert
   ASSERT_NO_THROW(LineSegment2D line(-13.17, -31.09, -44.229));
 }
 
 TEST(LineSegment, Can_Create_Zero_Segment_) {
+  // Arrange and Assert
   ASSERT_NO_THROW(LineSegment2D line(0.0, 0.0, 0.0));
 }
 
