@@ -18,11 +18,10 @@ calculator_result MortgageCalculator::mortgage_calculator(double amount,
 
     calculator_result result;
     double month_interest = interest / (100 * 12);
-    
+
     if ((1 - pow(1 + interest, -period)) == 0) {
         throw std::invalid_argument("Interest can't be so low");
-    }
-    else {
+    } else {
     result.monthly_payment = amount * month_interest /
         (1 - pow(1 + month_interest, -period));
     }
