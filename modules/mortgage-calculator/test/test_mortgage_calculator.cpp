@@ -36,7 +36,7 @@ TEST(Bakalin_Andrey_MortgageCalculator,
     // Act & Assert
     ASSERT_ANY_THROW(MortgageCalculator::mortgage_calculator(amount,
         period, interest));
- -}
+}
 
 TEST(Bakalin_Andrey_MortgageCalculator,
     throws_if_period_is_equal_to_zero) {
