@@ -26,7 +26,7 @@ class LineSegment2D {
         coeff_B = 0;
         coeff_C = 0;
     }
-	void Set_A(double new_A) {
+        void Set_A(double new_A) {
         coeff_A = new_A;
     }
     void Set_B(double new_B) {
