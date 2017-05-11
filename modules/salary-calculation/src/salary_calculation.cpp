@@ -2,8 +2,10 @@
 
 #include "include/salary_caculationl.h"
 
-Salary::Salary(int salary_per_hour, int needed_hours, int work_hours, int workday) {
-    if (salary_per_hour < 0 || needed_hours < 0 || work_hours < 0 || workday <= 0)
+Salary::Salary(int salary_per_hour, int needed_hours,
+               int work_hours, int workday) {
+    if (salary_per_hour < 0 || needed_hours < 0 ||
+        work_hours < 0 || workday <= 0)
         throw("Incorrect data");
     salary_ = 0;
     penalty_ = 0;
