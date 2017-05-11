@@ -4,6 +4,7 @@
 #include <math.h>
 #include <string>
 #include <vector>
+#include "../modules/complex-number/include/complex_number.h"
 
 
 QuadraticEquation::QuadraticEquation() : coef_a_(1), coef_b_(0), coef_c_(0) {}
@@ -61,26 +62,42 @@ std::vector<double> QuadraticEquation::GetCoefficients(void) const {
     return result;
 }
 
-int QuadraticEquation::NumOfSolutions(void) const {
+int QuadraticEquation::NumOfRealSolutions(void) const {
     int result = 1;
     if (Discriminant() < 0) result = 0;
     if (Discriminant() > 0) result = 2;
     return result;
 }
 
-double QuadraticEquation::GetX1(void) const {
+double QuadraticEquation::GetRealX1(void) const {
     double result = 0;
-    if (NumOfSolutions() > 0)
+    if (NumOfRealSolutions() > 0)
         result = (-coef_b_ + sqrt(Discriminant())) / 2 * coef_a_;
+    else
+        result = -coef_b_ / 2 * coef_a_;
     return result;
 }
 
-double QuadraticEquation::GetX2(void) const {
+double QuadraticEquation::GetRealX2(void) const {
     double result = 0;
-    if (NumOfSolutions() < 2)
-        result = GetX1();
+    if (NumOfRealSolutions() < 2)
+        result = GetRealX1();
     else
         result = (-coef_b_ - sqrt(Discriminant())) / 2 * coef_a_;
+    return result;
+}
+
+ComplexNumber QuadraticEquation::GetComplexX1(void) const {
+    ComplexNumber result(GetRealX1(), 0);
+    if (NumOfRealSolutions() == 0)
+        result.setIm(sqrt(-Discriminant()) / 2 * coef_a_);
+    return result;
+}
+
+ComplexNumber QuadraticEquation::GetComplexX2(void) const {
+    ComplexNumber result(GetRealX2(), 0);
+    if (NumOfRealSolutions() == 0)
+        result.setIm(-sqrt(-Discriminant()) / 2 * coef_a_);
     return result;
 }
 

@@ -4,6 +4,7 @@
 #define MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQUATION_H_
 
 #include <vector>
+#include "../modules/complex-number/include/complex_number.h"
 
 class QuadraticEquation {
  public:
@@ -22,9 +23,11 @@ class QuadraticEquation {
     double GetCoefC(void) const;
     std::vector<double> GetCoefficients(void) const;
 
-    int NumOfSolutions(void) const;
-    double GetX1(void) const;
-    double GetX2(void) const;
+    int NumOfRealSolutions(void) const;
+    double GetRealX1(void) const;
+    double GetRealX2(void) const;
+    ComplexNumber GetComplexX1(void) const;
+    ComplexNumber GetComplexX2(void) const;
 
  private:
     double coef_a_;
