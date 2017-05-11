@@ -27,18 +27,6 @@ TEST(Bakalin_Andrey_MortgageCalculator, throws_if_amount_is_equal_to_zero) {
 }
 
 TEST(Bakalin_Andrey_MortgageCalculator,
-    throws_if_period_less_than_zero) {
-    // Arrange
-    double amount = 1000000.0;
-    int period = -240;
-    double interest = 10;
-
-    // Act & Assert
-    ASSERT_ANY_THROW(MortgageCalculator::mortgage_calculator(amount,
-        period, interest));
-}
-
-TEST(Bakalin_Andrey_MortgageCalculator,
     throws_if_period_is_equal_to_zero) {
     // Arrange
     double amount = 1000000.0;
@@ -125,14 +113,15 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_monthly_payment) {
     int period = 240;
     double interest = 12;
     double right_mothly_payment = 33033.0;
-    double error = 0.2;
+    double month_error = 0.2;
+	double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
         period, interest);
 
     // Assert
-    EXPECT_NEAR(right_mothly_payment, result.monthly_payment, error * period);
+    EXPECT_NEAR(right_mothly_payment, result.monthly_payment, total_error);
 }
 
 TEST(Bakalin_Andrey_MortgageCalculator, can_get_total_payout) {
@@ -141,14 +130,15 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_total_payout) {
     int period = 300;
     double interest = 11;
     double right_total_payout = 7350900.0;
-    double error = 0.2;
+    double month_error = 0.2;
+	double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
         period, interest);
 
     // Assert
-    EXPECT_NEAR(right_total_payout, result.total_payout, error * period);
+    EXPECT_NEAR(right_total_payout, result.total_payout, total_error);
 }
 
 TEST(Bakalin_Andrey_MortgageCalculator, can_get_overpayment_amount) {
@@ -157,7 +147,8 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_overpayment_amount) {
     int period = 120;
     double interest = 15;
     double right_overpayment_amount = 4024880.0;
-    double error = 0.2;
+    double month_error = 0.2;
+	double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
@@ -165,5 +156,5 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_overpayment_amount) {
 
     // Assert
     EXPECT_NEAR(right_overpayment_amount, result.overpayment_amount,
-        error * period);
+        total_error);
 }
