@@ -114,7 +114,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_monthly_payment) {
     double interest = 12;
     double right_mothly_payment = 33033.0;
     double month_error = 0.2;
-	double total_error = month_error * period;
+    double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
@@ -131,7 +131,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_total_payout) {
     double interest = 11;
     double right_total_payout = 7350900.0;
     double month_error = 0.2;
-	double total_error = month_error * period;
+    double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
@@ -148,7 +148,7 @@ TEST(Bakalin_Andrey_MortgageCalculator, can_get_overpayment_amount) {
     double interest = 15;
     double right_overpayment_amount = 4024880.0;
     double month_error = 0.2;
-	double total_error = month_error * period;
+    double total_error = month_error * period;
 
     // Act
     calculator_result result = MortgageCalculator::mortgage_calculator(amount,
