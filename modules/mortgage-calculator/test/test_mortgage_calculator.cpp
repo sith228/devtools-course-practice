@@ -27,6 +27,18 @@ TEST(Bakalin_Andrey_MortgageCalculator, throws_if_amount_is_equal_to_zero) {
 }
 
 TEST(Bakalin_Andrey_MortgageCalculator,
+    throws_if_period_less_than_zero) {
+    // Arrange
+    double amount = 1000000.0;
+    int period = -240;
+    double interest = 10;
+
+    // Act & Assert
+    ASSERT_ANY_THROW(MortgageCalculator::mortgage_calculator(amount,
+        period, interest));
+ -}
+
+TEST(Bakalin_Andrey_MortgageCalculator,
     throws_if_period_is_equal_to_zero) {
     // Arrange
     double amount = 1000000.0;

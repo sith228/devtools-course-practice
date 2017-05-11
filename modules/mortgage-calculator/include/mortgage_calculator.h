@@ -12,7 +12,7 @@ struct calculator_result {
 class MortgageCalculator {
  public:
      static calculator_result mortgage_calculator(double amount,
-         unsigned period, double interest);
+         int period, double interest);
 };
 
 #endif  // MODULES_MORTGAGE_CALCULATOR_INCLUDE_MORTGAGE_CALCULATOR_H_

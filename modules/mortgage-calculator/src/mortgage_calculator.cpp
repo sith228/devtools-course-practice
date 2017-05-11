@@ -5,11 +5,11 @@
 #include <cmath>
 
 calculator_result MortgageCalculator::mortgage_calculator(double amount,
-    unsigned period, double interest) {
+    int period, double interest) {
     if (amount <= 0) {
         throw std::invalid_argument("Amount was entered incorrectly");
     }
-    if (period == 0 || period > 600) {
+    if (period <= 0 || period > 600) {
         throw std::invalid_argument("Period was entered incorrectly");
     }
     if (interest <= 0 || interest >= 100) {
