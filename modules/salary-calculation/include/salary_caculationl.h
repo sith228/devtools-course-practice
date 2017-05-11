@@ -25,14 +25,14 @@ class Salary {
      int GetPenalty() { return penalty_; }
 
  private:
-	 int salary_;  //  Месячная зарплата
-     int salary_per_hour_;  // Почасовой оклад
-     int work_hours_;  // Отработанные часы
-     int overtime_bonus_;  // Сверхурочные
-     int admin_rest_;  // Дни административного отпуска
-     int needed_hours_;  // Часы которые нужно отработать по плану
-     int penalty_;  // Штраф за недоработку
-     int workday_;  // Норма рабочего дня
+     int salary_;
+     int salary_per_hour_;
+     int work_hours_;
+     int overtime_bonus_;
+     int admin_rest_;
+     int needed_hours_;
+     int penalty_;
+     int workday_;
 };
 
 #endif  // MODULES_SALARY_CALCULATION_INCLUDE_SALARY_CACULATIONL_H_
