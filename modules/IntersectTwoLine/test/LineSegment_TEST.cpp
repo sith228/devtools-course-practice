@@ -8,7 +8,7 @@ using std::string;
 
 TEST(LineSegment, Can_Create_LineSegment) {
   // Arrange and Assert
-  ASSERT_NO_THROW(LineSegment2D line());
+  ASSERT_NO_THROW(LineSegment2D line);
 }
 
 TEST(LineSegment, Can_Create_LineSegment_With_Initial_Values) {
