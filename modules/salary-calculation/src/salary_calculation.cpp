@@ -17,14 +17,14 @@ Salary::Salary(int salary_per_hour, int needed_hours,
     workday_ = workday;
 }
 void Salary::SetAdminRest(int val) {
-    if(val < 0)
+    if( val < 0)
         throw("Incorrect data");
     admin_rest_ = val;
 }
 void Salary::SetOvertimeBonus(int val) {
     if (val < 0)
         throw("Incorrect data");
-   overtime_bonus_ = val;
+    overtime_bonus_ = val;
 }
 void Salary::SetWorkHours(int val) {
     if (val < 0)
@@ -58,8 +58,9 @@ void Salary::CalculateSalary() {
             salary_ -= (needed_hours_ - work_hours_) * penalty_;
         else
             if (work_hours_ < needed_hours_ - admin_rest_ * workday_)
-                salary_ -= (needed_hours_ - work_hours_ - admin_rest_ * workday_) * penalty_;
-    }
-    else
-        salary_ += needed_hours_ * salary_per_hour_ + (work_hours_ - needed_hours_) * overtime_bonus_;
+                salary_ -= (needed_hours_ - work_hours_
+                            - admin_rest_ * workday_) * penalty_;
+    }else
+        salary_ += needed_hours_ * salary_per_hour_ +
+        (work_hours_ - needed_hours_) * overtime_bonus_;
 }
