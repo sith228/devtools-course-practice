@@ -1,6 +1,7 @@
 ﻿// Copyright 2017 Kazakov Andrew
 
-#pragma once
+#ifndef MODULES_REGEX_SEARCH_INCLUDE_REGEX_SEARCH_H_
+#define MODULES_REGEX_SEARCH_INCLUDE_REGEX_SEARCH_H_
 
 #include <iostream>
 #include <fstream>
@@ -11,9 +12,9 @@
 typedef std::vector<unsigned int> RegexSearchResult;
 
 class RegexSearch {
-public:
+ public:
     RegexSearch();
-    RegexSearch(const std::string);
+    explicit RegexSearch(const std::string);
     RegexSearch(const RegexSearch&);
     RegexSearch& operator=(const RegexSearch&);
 
@@ -23,6 +24,8 @@ public:
     RegexSearchResult Find(std::string str);
     RegexSearchResult FindInFile(std::string filename);
 
-protected:
+ protected:
     std::string regex_;
 };
+
+#endif
