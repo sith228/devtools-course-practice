@@ -46,11 +46,13 @@ RegexSearchResult RegexSearch::FindInFile(std::string filename) {
     std::smatch matches;
     std::regex regex(regex_);
     RegexSearchResult res;
-    std::string str;
+    std::string str, temp_str;
     std::ifstream file;
 
     file.open(filename);
-    std::getline(file, str);
+    while (std::getline(file, temp_str)) {
+        str += temp_str + "\n";
+    }
     file.close();
 
     while (std::regex_search(str, matches, regex)) {

@@ -136,7 +136,7 @@ TEST(RegexSearchTest, it_finds_all_matches_in_text) {
     text = "Some test text.";
 
     // Assert
-    ASSERT_EQ(rs.Find(text).size(), 2);
+    ASSERT_EQ(rs.Find(text).size(), 4);
 }
 
 TEST(RegexSearchTest, it_finds_all_matches_in_file) {
@@ -148,5 +148,5 @@ TEST(RegexSearchTest, it_finds_all_matches_in_file) {
     text = "test_data.txt";
 
     // Assert
-    ASSERT_EQ(rs.Find(text).size(), 6);
+    ASSERT_EQ(rs.FindInFile(text).size(), 12);
 }
