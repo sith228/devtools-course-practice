@@ -29,26 +29,27 @@ std::string RegexSearch::GetRegex() const {
 }
 
 RegexSearchResult RegexSearch::Find(std::string str) {
+    RegexSearchResult result;
     std::smatch matches;
     std::regex regex(regex_);
-    RegexSearchResult res;
 
     while (std::regex_search(str, matches, regex)) {
-        res.push_back(matches.length());
-        res.push_back(matches.position());
+        result.push_back(matches.length());
+        result.push_back(matches.position());
         str = matches.suffix().str();
     }
 
-    return res;
+    return result;
 }
 
 RegexSearchResult RegexSearch::FindInFile(std::string filename) {
+    RegexSearchResult result;
     std::smatch matches;
     std::regex regex(regex_);
-    RegexSearchResult res;
+    int current_position = 0;
+
     std::string str, temp_str;
     std::ifstream file;
-
     file.open(filename);
     while (std::getline(file, temp_str)) {
         str += temp_str + "\n";
@@ -56,10 +57,10 @@ RegexSearchResult RegexSearch::FindInFile(std::string filename) {
     file.close();
 
     while (std::regex_search(str, matches, regex)) {
-        res.push_back(matches.length());
-        res.push_back(matches.position());
+        result.push_back(matches.length());
+        result.push_back(current_position += matches.position());
         str = matches.suffix().str();
     }
 
-    return res;
+    return result;
 }
