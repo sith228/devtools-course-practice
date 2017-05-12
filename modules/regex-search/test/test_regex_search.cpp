@@ -105,11 +105,11 @@ TEST(RegexSearchTest, operator_equal_works_properly) {
 
 TEST(RegexSearchTest, can_use_find) {
     // Arrange
-    RegexSearch rs("^abc$");
+    RegexSearch rs("\\b(te)([^ ]*)");
     std::string text;
 
     // Act
-    text = "abc";
+    text = "Some test text.";
 
     // Assert
     ASSERT_NO_THROW(rs.Find(text));
