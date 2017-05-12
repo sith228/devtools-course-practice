@@ -117,7 +117,7 @@ TEST(RegexSearchTest, can_use_find) {
 
 TEST(RegexSearchTest, can_use_find_in_file) {
     // Arrange
-    RegexSearch rs("\b(te)([^ ]*)");
+    RegexSearch rs("\\b(te)([^ ]*)");
     std::string text;
 
     // Act
@@ -129,7 +129,7 @@ TEST(RegexSearchTest, can_use_find_in_file) {
 
 TEST(RegexSearchTest, it_finds_all_matches_in_text) {
     // Arrange
-    RegexSearch rs("\b(te)([^ ]*)");
+    RegexSearch rs("\\b(te)([^ ]*)");
     std::string text;
 
     // Act
@@ -141,7 +141,7 @@ TEST(RegexSearchTest, it_finds_all_matches_in_text) {
 
 TEST(RegexSearchTest, it_finds_all_matches_in_file) {
     // Arrange
-    RegexSearch rs("\b(te)([^ ]*)");
+    RegexSearch rs("\\b(te)([^ ]*)");
     std::string text;
 
     // Act
