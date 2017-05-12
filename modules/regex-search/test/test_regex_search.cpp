@@ -143,10 +143,12 @@ TEST(RegexSearchTest, it_finds_all_matches_in_file) {
     // Arrange
     RegexSearch rs("\\b(te)([^ ]*)");
     std::string text;
+    std::ofstream out("test_regex-search_data.txt");
 
     // Act
-    text = "test_data.txt";
+    out << "This is a test text. Test text, text test." << std::endl;
+    text = "test_regex-search_data.txt";
 
     // Assert
-    ASSERT_EQ(rs.FindInFile(text).size(), 12);
+    ASSERT_EQ(rs.FindInFile(text).size(), 10);
 }
