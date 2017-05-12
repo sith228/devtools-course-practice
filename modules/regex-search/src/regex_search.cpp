@@ -1,6 +1,10 @@
-// Copyright 2017 Kazakov Andrew
+﻿// Copyright 2017 Kazakov Andrew
 
 #include "include/regex_search.h"
+
+RegexSearch::RegexSearch() {
+    regex_ = std::regex(std::string(""));
+}
 
 RegexSearch::RegexSearch(const std::string regex) {
     regex_ = std::regex(regex);

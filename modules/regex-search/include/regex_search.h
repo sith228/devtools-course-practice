@@ -1,4 +1,4 @@
-// Copyright 2017 Kazakov Andrew
+﻿// Copyright 2017 Kazakov Andrew
 
 #pragma once
 
@@ -12,7 +12,8 @@ typedef std::vector<unsigned int> RegexSearchResult;
 
 class RegexSearch {
 public:
-    RegexSearch(const std::string = "");
+    RegexSearch();
+    RegexSearch(const std::string);
     RegexSearch(const RegexSearch&);
     RegexSearch& operator=(const RegexSearch&);
 

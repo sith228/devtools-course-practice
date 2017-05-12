@@ -1,4 +1,4 @@
-// Copyright 2017 Kazakov Andrew
+﻿// Copyright 2017 Kazakov Andrew
 
 #include <gtest/gtest.h>
 
@@ -28,7 +28,7 @@ TEST(RegexSearchTest, can_use_copy_constructor) {
 
 TEST(RegexSearchTest, can_use_operator_equal) {
     // Arrange
-    RegexSearch rs1, rs2("^abc$")
+    RegexSearch rs1, rs2("^abc$");
 
     // Act & Assert
     ASSERT_NO_THROW(rs1 = rs2);
