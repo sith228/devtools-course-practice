@@ -10,7 +10,7 @@
 
 TEST(RegexSearchTest, can_initialize_with_empty_regexp) {
     // Assert
-    ASSERT_NO_THROW(RegexSearch rs(""));
+    ASSERT_NO_THROW(RegexSearch rs);
 }
 
 TEST(RegexSearchTest, can_initialize_with_not_empty_regexp) {
@@ -28,7 +28,7 @@ TEST(RegexSearchTest, can_use_copy_constructor) {
 
 TEST(RegexSearchTest, can_use_operator_equal) {
     // Arrange
-    RegexSearch rs1(""), rs2("^abc$")
+    RegexSearch rs1, rs2("^abc$")
 
     // Act & Assert
     ASSERT_NO_THROW(rs1 = rs2);
@@ -48,7 +48,7 @@ TEST(RegexSearchTest, can_get_regexp) {
 
 TEST(RegexSearchTest, can_set_regex) {
     // Arrange
-    RegexSearch rs("");
+    RegexSearch rs;
 
     // Act & Assert
     ASSERT_NO_THROW(rs.SetRegex("^abc$"));
@@ -68,7 +68,7 @@ TEST(RegexSearchTest, get_regex_works_properly) {
 
 TEST(RegexSearchTest, set_regex_works_properly) {
     // Arrange
-    RegexSearch rs("");
+    RegexSearch rs;
 
     // Act
     rs.SetRegex("^abc$");

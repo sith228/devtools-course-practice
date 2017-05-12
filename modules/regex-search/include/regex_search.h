@@ -12,7 +12,7 @@ typedef std::vector<unsigned int> RegexSearchResult;
 
 class RegexSearch {
 public:
-    RegexSearch(const std::string);
+    RegexSearch(const std::string = "");
     RegexSearch(const RegexSearch&);
     RegexSearch& operator=(const RegexSearch&);
 
