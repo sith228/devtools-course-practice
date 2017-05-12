@@ -3,7 +3,7 @@
 #ifndef MODULES_MORTGAGE_CALCULATOR_INCLUDE_MORTGAGE_CALCULATOR_H_
 #define MODULES_MORTGAGE_CALCULATOR_INCLUDE_MORTGAGE_CALCULATOR_H_
 
-struct calculator_result {
+struct CalculatorResult {
     double monthly_payment;
     double overpayment_amount;
     double total_payout;
@@ -11,8 +11,8 @@ struct calculator_result {
 
 class MortgageCalculator {
  public:
-     static calculator_result mortgage_calculator(double amount,
-         int period, double interest);
+     static CalculatorResult Calculate(double amount,
+         int period, double year_interest);
 };
 
 #endif  // MODULES_MORTGAGE_CALCULATOR_INCLUDE_MORTGAGE_CALCULATOR_H_
