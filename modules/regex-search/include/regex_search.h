@@ -18,11 +18,11 @@ public:
     RegexSearch& operator=(const RegexSearch&);
 
     void SetRegex(const std::string);
-    std::regex GetRegex(void) const;
+    std::string GetRegex(void) const;
 
     RegexSearchResult Find(std::string str);
     RegexSearchResult FindInFile(std::string filename);
 
 protected:
-    std::regex regex_;
+    std::string regex_;
 };

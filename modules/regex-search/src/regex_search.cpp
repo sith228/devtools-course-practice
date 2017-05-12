@@ -3,11 +3,11 @@
 #include "include/regex_search.h"
 
 RegexSearch::RegexSearch() {
-    regex_ = std::regex(std::string(""));
+    regex_ = std::string("");
 }
 
 RegexSearch::RegexSearch(const std::string regex) {
-    regex_ = std::regex(regex);
+    regex_ = regex;
 }
 
 RegexSearch::RegexSearch(const RegexSearch& regex) {
@@ -24,15 +24,16 @@ void RegexSearch::SetRegex(const std::string regex) {
     regex_ = regex;
 }
 
-std::regex RegexSearch::GetRegex() const {
+std::string RegexSearch::GetRegex() const {
     return regex_;
 }
 
 RegexSearchResult RegexSearch::Find(std::string str) {
     std::smatch matches;
+    std::regex regex(regex_);
     RegexSearchResult res;
 
-    while (std::regex_search(str, matches, regex_)) {
+    while (std::regex_search(str, matches, regex)) {
         res.push_back(matches.length());
         res.push_back(matches.position());
         str = matches.suffix().str();
@@ -43,6 +44,7 @@ RegexSearchResult RegexSearch::Find(std::string str) {
 
 RegexSearchResult RegexSearch::FindInFile(std::string filename) {
     std::smatch matches;
+    std::regex regex(regex_);
     RegexSearchResult res;
     std::string str;
     std::ifstream file;
@@ -51,7 +53,7 @@ RegexSearchResult RegexSearch::FindInFile(std::string filename) {
     std::getline(file, str);
     file.close();
 
-    while (std::regex_search(str, matches, regex_)) {
+    while (std::regex_search(str, matches, regex)) {
         res.push_back(matches.length());
         res.push_back(matches.position());
         str = matches.suffix().str();
