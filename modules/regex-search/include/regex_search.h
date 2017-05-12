@@ -15,7 +15,6 @@ public:
     RegexSearch(const std::string);
     RegexSearch(const RegexSearch&);
     RegexSearch& operator=(const RegexSearch&);
-    ~RegexSearch(void);
 
     void SetRegex(const std::string);
     std::regex GetRegex(void) const;
