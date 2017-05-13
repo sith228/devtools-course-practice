@@ -76,3 +76,69 @@ TEST(SymbolicDerivativeTest, Can_Differentiate_Really_Complex_Expression) {
 
   EXPECT_NO_THROW(sym_dx = sym.Derivative("x"));
 }
+
+TEST(SymbolicDerivativeTest, Correct_Working_Sum_Rule) {
+  std::string exp1 = "(sin(3*x)-a*2 + 1/(1-x)^2)";  // a
+  std::string exp2 = "(x^x - 4*cos(3.14/x) + b)";   // b
+  SymbolicFunction sym1(exp1);
+  SymbolicFunction sym2(exp2);
+  SymbolicFunction sym3(exp1 + "+" + exp2);         // a + b
+
+  SymbolicFunction sym1_dx = sym1.Derivative("x");
+  SymbolicFunction sym2_dx = sym2.Derivative("x");
+  SymbolicFunction sym3_dx = sym3.Derivative("x");  // a' + b'
+
+  std::string dx1 = sym1_dx.ToString();
+  std::string dx2 = sym2_dx.ToString();
+  std::string dx3 = std::string("(") +
+                       dx1 + "+" + dx2 +
+                    std::string(")");
+
+  EXPECT_EQ(sym3_dx.ToString(), dx3);
+}
+
+TEST(SymbolicDerivativeTest, Correct_Working_Product_Rule) {
+  std::string exp1 = "(sin(3*x)-a*2 + 1/(1-x)^2)";  // a
+  std::string exp2 = "(x^x - 4*cos(3.14/x) + b)";   // b
+  SymbolicFunction sym1(exp1);
+  SymbolicFunction sym2(exp2);
+  SymbolicFunction sym3(exp1 + "*" + exp2);         // a * b
+
+  exp1 = sym1.ToString();
+  exp2 = sym2.ToString();
+
+  SymbolicFunction sym1_dx = sym1.Derivative("x");
+  SymbolicFunction sym2_dx = sym2.Derivative("x");
+  SymbolicFunction sym3_dx = sym3.Derivative("x");  // a' * b + a * b'
+
+  std::string dx1 = sym1_dx.ToString();
+  std::string dx2 = sym2_dx.ToString();
+  std::string dx3 = std::string("(") +
+                       "(" + dx1 + "*" + exp2 + ")" +
+                       "+" +
+                       "(" + exp1 + "*" + dx2 + ")" +
+                    std::string(")");
+
+  EXPECT_EQ(sym3_dx.ToString(), dx3);
+}
+
+TEST(SymbolicDerivativeTest, Correct_Working_Chain_Rule) {
+  std::string exp = "(sin(3*x)-a*2 + 1/(1-x)^2)";  // a
+
+  SymbolicFunction sym1(exp);
+  SymbolicFunction sym2("sin" + exp);  // sin(a)
+
+  exp = sym1.ToString();
+
+  SymbolicFunction sym1_dx = sym1.Derivative("x");
+  SymbolicFunction sym2_dx = sym2.Derivative("x");  // cos(a) * a'
+
+  std::string dx1 = sym1_dx.ToString();
+  std::string dx2 = std::string("(") +
+                         "cos" + "(" + exp + ")" +
+                      "*" +
+                         dx1 +
+                    std::string(")");
+
+  EXPECT_EQ(sym2_dx.ToString(), dx2);
+}
