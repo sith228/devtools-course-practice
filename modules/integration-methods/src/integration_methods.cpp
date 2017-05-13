@@ -95,7 +95,8 @@ double IntegrationMethod::SimpsonMethod(const std::string &integrand,
                 ChangeVariableToValue(integrand, low_limit);
             std::string func_with_upper_limit =
                 ChangeVariableToValue(integrand, upper_limit);
-            sum = CalculateFunction(func_with_lower_limit) + 4 * sum4 + 2 * sum2 -
+            sum = CalculateFunction(func_with_lower_limit) + 4 * sum4
+                + 2 * sum2 -
                 CalculateFunction(func_with_upper_limit);
             integral = integral1;
             integral1 = (h/3)*sum;
