@@ -7,18 +7,18 @@ class TemperatureConverter {
  public:
     TemperatureConverter();
 
-    double CelsiusToFahrenheit(const double t);
-    double CelsiusToNewton(const double t);
-    double CelsiusToKelvin(const double t);
-    double FahrenheitToCelsius(const double t);
-    double FahrenheitToNewton(const double t);
-    double FahrenheitToKelvin(const double t);
-    double NewtonToFahrenheit(const double t);
-    double NewtonToCelsius(const double t);
-    double NewtonToKelvin(const double t);
-    double KelvinToFahrenheit(const double t);
-    double KelvinToNewton(const double t);
-    double KelvinToCelsius(const double t);
+    static double CelsiusToFahrenheit(const double t);
+    static double CelsiusToNewton(const double t);
+    static double CelsiusToKelvin(const double t);
+    static double FahrenheitToCelsius(const double t);
+    static double FahrenheitToNewton(const double t);
+    static double FahrenheitToKelvin(const double t);
+    static double NewtonToFahrenheit(const double t);
+    static double NewtonToCelsius(const double t);
+    static double NewtonToKelvin(const double t);
+    static double KelvinToFahrenheit(const double t);
+    static double KelvinToNewton(const double t);
+    static double KelvinToCelsius(const double t);
 };
 
 #endif  // MODULES_TEMPERATURE_CONVERTER_INCLUDE_TEMPERATURE_CONVERTER_H_
