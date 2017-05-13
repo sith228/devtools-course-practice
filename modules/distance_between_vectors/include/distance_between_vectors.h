@@ -2,7 +2,7 @@
 #ifndef MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
 #define MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
 
-#include <ñmath>
+#include <cmath>
 #include <vector>
 
 enum TypeMetric { L1 = 1, L2, L3, L4, LInf };
