@@ -1,5 +1,5 @@
 // Copyright 2017 Gorozhanin Mihail
-#include <distance_between_vectors.h>
+#include <include/distance_between_vectors.h>
 
 float DistanceBetweenVectors::CalculateDistance(float *vector1,
 	float *vector2, int TypeM, int SizeV)
