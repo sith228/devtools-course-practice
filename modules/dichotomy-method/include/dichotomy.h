@@ -6,7 +6,8 @@
 
 class Dichotomy{
  public:
-     double FindMin(double (*func)(double x),double left_border, double right_border, double eps);
+     double FindMin(double (*func)(double x),
+        double left_border, double right_border, double eps);
  private:
      void EnteredCorrectly(double left_border,
          double right_border, double eps);
