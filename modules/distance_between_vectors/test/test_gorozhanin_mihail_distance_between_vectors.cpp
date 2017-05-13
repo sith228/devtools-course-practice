@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "include/distance_between_vectors.h"
-TEST(Gorozhanin_Mihail_DistanceBetweenVectorsTest, Different_Size_Vectors) {
+TEST(DistanceBetweenVectors, Different_Size_Vectors) {
 	float Vector1[5];
 	for (int i = 0; i < 5; i++) {
 		Vector1[i] = (float)(i + 1);
@@ -16,7 +16,7 @@ TEST(Gorozhanin_Mihail_DistanceBetweenVectorsTest, Different_Size_Vectors) {
 	FLOAT_EXPECT_EQ(result, 0.0f);
 }
 
-TEST(Gorozhanin_Mihail_DistanceBetweenVectorsTest, Different_Size_Vectors_With_Size) {
+TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Size) {
 	float Vector1[5];
 	for (int i = 0; i < 5; i++) {
 		Vector1[i] = (float)(i + 1);
@@ -29,7 +29,7 @@ TEST(Gorozhanin_Mihail_DistanceBetweenVectorsTest, Different_Size_Vectors_With_S
 	FLOAT_EXPECT_EQ(result, 0.0f);
 }
 
-TEST(Gorozhanin_Mihail_DistanceBetweenVectorsTest, Equal_Size_Vectors_With_Size) {
+TEST(DistanceBetweenVectors, Equal_Size_Vectors_With_Size) {
 	float Vector1[5];
 	for (int i = 0; i < 5; i++) {
 		Vector1[i] = (float)(i + 1);
