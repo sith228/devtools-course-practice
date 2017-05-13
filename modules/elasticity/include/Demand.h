@@ -17,6 +17,6 @@ class Demand {
        double revenue;
    public:
       Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand);
-      int ñheckforelasticity();
+      int checkforelasticity();
       double revenuechange(double revenue);
 };

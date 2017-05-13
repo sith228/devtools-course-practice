@@ -2,7 +2,7 @@
 
 #include "../include/Demand.h"
 
-Demand::Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand) {
+Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand) {
    if((_oldprice>=0)&&(_newprice>=0)&&(_olddemand>=0)&&(_newdemand>=0)){
       oldprice=_oldprice;
       olddemand=_olddemand;
@@ -16,7 +16,7 @@ Demand::Demand(double _oldprice, double _newprice, double _olddemand, double _ne
       throw "Error";
 }
 
-int Demand::ñheckforelasticity() {
+int Demand:: checkforelasticity() {
     if(coeffofdemand==1.0){
         cout<<"Coefficient of unit elasticity"<<endl;
         return UnitElastic;
@@ -32,7 +32,7 @@ int Demand::ñheckforelasticity() {
     cout << coeffofdemand << endl;
 }
 
-double Demand::revenuechange(double revenue) {
+double Demand:: revenuechange(double revenue) {
     cout<<revenue<<endl;
     if(coeffofdemand>=1.0){
         for (int time = 0;time < 30; time++){
