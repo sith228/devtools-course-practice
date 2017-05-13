@@ -43,7 +43,7 @@ TEST(TemperatureConverterTest,
     double Celsius = -274.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::CelsiusToKelvin(Celsius),std::string);
+    EXPECT_THROW(TemperatureConverter::CelsiusToKelvin(Celsius), std::string);
 }
 
 TEST(TemperatureConverterTest, Can_Convert_Celsius_To_Newton) {
