@@ -78,8 +78,8 @@ TEST(Queue, can_take_element_from_queue) {
     Q.Push(1);
     Q.Push(2);
     Q.Push(3);
-    // Act
     int exp_res = 1;
+    // Act
     // Assert
     EXPECT_EQ(exp_res, Q.Pop());
 }
