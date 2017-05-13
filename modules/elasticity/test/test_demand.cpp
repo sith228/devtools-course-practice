@@ -7,7 +7,7 @@ TEST(Demand,Can_Return_Value_Of_Check){
    Demand dem1(13.0,16.4,6.4,3.4);
    Demand dem2(13.0, 16.4, 6.4, 3.4);
 
-   EXPECT_EQ(dem1.ñheckforelasticity(),dem2.ñheckforelasticity());
+   EXPECT_EQ(dem1.checkforelasticity(),dem2.checkforelasticity());
 }
 
 TEST(Demand,Can_Create_Obj_With_Positive_Values){
