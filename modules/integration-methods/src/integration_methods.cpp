@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include "include/function_parser.h"
 
-std::string IntegrationMethod::change_variable_to_value(
+std::string IntegrationMethod::ChangeVariableToValue(
     const std::string &integrand,
     double value) {
     auto result = integrand;
@@ -21,34 +21,34 @@ std::string IntegrationMethod::change_variable_to_value(
     return result;
 }
 
-double IntegrationMethod::calculate_function(const std::string &integrand) {
+double IntegrationMethod::CalculateFunction(const std::string &integrand) {
     Parser parser;
-    return parser.parse(integrand.c_str()).eval();
+    return parser.Parse(integrand.c_str()).eval();
 }
 
-double IntegrationMethod::rectangle_method(const std::string &integrand,
+double IntegrationMethod::RectangleMethod(const std::string &integrand,
     double low_limit,
     double upper_limit, unsigned quantity_of_steps) {
-    std::string func_in_low_limit = change_variable_to_value(integrand,
+    std::string func_in_low_limit = ChangeVariableToValue(integrand,
         low_limit);
     std::string func_in_upper_limit =
-        change_variable_to_value(integrand, upper_limit);
+        ChangeVariableToValue(integrand, upper_limit);
 
-    double s = calculate_function(func_in_low_limit) +
-        calculate_function(func_in_upper_limit);
+    double s = CalculateFunction(func_in_low_limit) +
+        CalculateFunction(func_in_upper_limit);
     s /=2;
 
     double h = (upper_limit - low_limit) / quantity_of_steps;
     for (unsigned i=1; i < quantity_of_steps; i++) {
         double x = low_limit + i*h;
-        std::string func = change_variable_to_value(integrand, x);
-        s+=calculate_function(func);
+        std::string func = ChangeVariableToValue(integrand, x);
+        s += CalculateFunction(func);
     }
 
     return s*h;
 }
 
-double IntegrationMethod::trapezoid_method(const std::string &integrand,
+double IntegrationMethod::TrapezoidMethod(const std::string &integrand,
     double low_limit,
     double upper_limit, unsigned quantity_of_steps) {
         double result = 0;
@@ -56,23 +56,23 @@ double IntegrationMethod::trapezoid_method(const std::string &integrand,
             double y, dy;
             dy = (upper_limit - low_limit)/quantity_of_steps;
             std::string func_in_low_limit =
-                change_variable_to_value(integrand, low_limit);
+                ChangeVariableToValue(integrand, low_limit);
             std::string func_in_upper_limit =
-                change_variable_to_value(integrand, upper_limit);
-            y = calculate_function(func_in_low_limit) +
-                calculate_function(func_in_upper_limit);
+                ChangeVariableToValue(integrand, upper_limit);
+            y = CalculateFunction(func_in_low_limit) +
+                CalculateFunction(func_in_upper_limit);
 
             for (unsigned i=1; i < quantity_of_steps; i++) {
                 double x = low_limit + dy*i;
-                std::string func = change_variable_to_value(integrand, x);
-                y+=2*calculate_function(func);
+                std::string func = ChangeVariableToValue(integrand, x);
+                y += 2 * CalculateFunction(func);
             }
             result = (upper_limit - low_limit) / (2*quantity_of_steps)*y;
         }
         return result;
 }
 
-double IntegrationMethod::simpson_method(const std::string &integrand,
+double IntegrationMethod::SimpsonMethod(const std::string &integrand,
     double low_limit,
     double upper_limit, double eps) {
         if (eps < 0)
@@ -85,18 +85,18 @@ double IntegrationMethod::simpson_method(const std::string &integrand,
             for (int i=1; i <= 2*n-1; i+=2) {
                 double x1 = low_limit + h*i;
                 double x2 = low_limit + h*(i+1);
-                std::string func1 = change_variable_to_value(integrand, x1);
-                std::string func2 = change_variable_to_value(integrand, x2);
+                std::string func1 = ChangeVariableToValue(integrand, x1);
+                std::string func2 = ChangeVariableToValue(integrand, x2);
 
-                sum4+=calculate_function(func1);
-                sum2+=calculate_function(func2);
+                sum4 += CalculateFunction(func1);
+                sum2 += CalculateFunction(func2);
             }
             std::string func_with_lower_limit =
-                change_variable_to_value(integrand, low_limit);
+                ChangeVariableToValue(integrand, low_limit);
             std::string func_with_upper_limit =
-                change_variable_to_value(integrand, upper_limit);
-            sum = calculate_function(func_with_lower_limit) + 4*sum4 + 2*sum2-
-                calculate_function(func_with_upper_limit);
+                ChangeVariableToValue(integrand, upper_limit);
+            sum = CalculateFunction(func_with_lower_limit) + 4 * sum4 + 2 * sum2 -
+                CalculateFunction(func_with_upper_limit);
             integral = integral1;
             integral1 = (h/3)*sum;
         }

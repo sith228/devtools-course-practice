@@ -30,15 +30,15 @@ Expression::Expression(const std::string &token,
     args.push_back(b);
 }
 
-std::string Parser::parse_token() {
-    if (input != nullptr) {
-        while (std::isspace(*input))
-            ++input;
+std::string Parser::ParseToken() {
+    if (input_ != nullptr) {
+        while (std::isspace(*input_))
+            ++input_;
 
-        if (std::isdigit(*input)) {
+        if (std::isdigit(*input_)) {
             std::string number;
-            while (std::isdigit(*input) || *input == '.')
-                number.push_back(*input++);
+            while (std::isdigit(*input_) || *input_ == '.')
+                number.push_back(*input_++);
             return number;
         }
 
@@ -47,8 +47,8 @@ std::string Parser::parse_token() {
 
 
         for (auto &token : tokens) {
-            if (std::strncmp(input, token.c_str(), token.size()) == 0) {
-                input += token.size();
+            if (std::strncmp(input_, token.c_str(), token.size()) == 0) {
+                input_ += token.size();
                 return token;
             }
         }
@@ -59,8 +59,8 @@ std::string Parser::parse_token() {
     return "";
 }
 
-Expression Parser::parse_simple_expression() {
-    auto token = parse_token();
+Expression Parser::ParseSimpleExpression() {
+    auto token = ParseToken();
 
     if (token.empty())
         throw std::runtime_error("Invalid input");
@@ -69,38 +69,38 @@ Expression Parser::parse_simple_expression() {
         return Expression(token);
 
     if (token == "(") {
-        auto result = parse2();
-        if (parse_token() != ")") throw std::runtime_error("Expected ')' ");
+        auto result = Parse2();
+        if (ParseToken() != ")") throw std::runtime_error("Expected ')' ");
         return result;
     }
 
-    auto arg = parse_simple_expression();
+    auto arg = ParseSimpleExpression();
     return Expression(token, arg);
 }
 
-Expression Parser::parse_binary_expression(int min_priority) {
-    auto left_expr = parse_simple_expression();
+Expression Parser::ParseBinaryExpression(int min_priority) {
+    auto left_expr = ParseSimpleExpression();
 
     for (;;) {
-        auto op = parse_token();
+        auto op = ParseToken();
         auto priority = get_priority(op);
         if (priority <= min_priority) {
-            input -= op.size();
+            input_ -= op.size();
             return left_expr;
         }
 
-        auto right_expr = parse_binary_expression(priority);
+        auto right_expr = ParseBinaryExpression(priority);
         left_expr = Expression(op, left_expr, right_expr);
     }
 }
 
-Expression Parser::parse2() {
-    return parse_binary_expression(0);
+Expression Parser::Parse2() {
+    return ParseBinaryExpression(0);
 }
 
-Expression Parser::parse(const char *input) {
-    this->input = input;
-    return parse2();
+Expression Parser::Parse(const char *input) {
+    input_ = input;
+    return Parse2();
 }
 
 double Expression::eval() {
