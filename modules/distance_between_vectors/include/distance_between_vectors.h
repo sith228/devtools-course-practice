@@ -2,8 +2,8 @@
 #ifndef MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
 #define MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
 
-#include <./ñmath>
-#include <./vector>
+#include <ñmath>
+#include <vector>
 
 enum TypeMetric { L1 = 1, L2, L3, L4, LInf };
 
@@ -23,4 +23,4 @@ class DistanceBetweenVectors {
   float *vector2, TypeMetric TypeM, int SizeV);
 };
 
-#endif // MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
+#endif  // MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
