@@ -40,17 +40,9 @@ TEST(InterpolationSearch, Cant_Search_With_Negative_Array_Length) {
 TEST(InterpolationSearch, Cant_Create_Search_With_Zero_Array_Length) {
   // Arrange
   const int len = 0;
-  int * sortedArray = new int[len] {1, 2, 3};
+  int * sortedArray = new int[len];
   // Assert
   ASSERT_ANY_THROW(interpolationSearch.Search(1, sortedArray, len));
-}
-
-TEST(InterpolationSearch, Cant_Create_Search_With_Null_Array_Length) {
-  // Arrange
-  const int len = 3;
-  int * sortedArray = new int[len] {1, 2, 3};
-  // Assert
-  ASSERT_ANY_THROW(interpolationSearch.Search(1, sortedArray, NULL));
 }
 
 TEST(InterpolationSearch, Search_Return_Missing) {
