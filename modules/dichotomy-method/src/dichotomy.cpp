@@ -14,11 +14,11 @@ void Dichotomy::EnteredCorrectly(double left_border,
              throw "Eps must be higher then zero";
 }
 
-double Dichotomy::FindMin(double(*func)(double x),double left_border,
+double Dichotomy::FindMin(double(*func)(double x), double left_border,
     double right_border, double eps) {
     EnteredCorrectly(left_border, right_border, eps);
     double middle = (left_border + right_border)/2;
-	double func_value_middle = func(middle);
+    double func_value_middle = func(middle);
     while (right_border - left_border > eps) {
         double x = (left_border + middle)/2;
         double func_value_x = func(x);
