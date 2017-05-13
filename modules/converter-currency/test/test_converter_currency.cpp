@@ -36,7 +36,7 @@ TEST(ConverterCurrenciesTest,
     EXPECT_ANY_THROW(ConverterCurrency::SetExchangeRateToRUR(USD, 0));
 }
 
-TEST(ConverterCurrenciesTest,there_is_no_throw_if_currency_is_RUR) {
+TEST(ConverterCurrenciesTest, there_is_no_throw_if_currency_is_RUR) {
     EXPECT_NO_THROW(ConverterCurrency::SetExchangeRateToRUR(RUR, 4));
 }
 
