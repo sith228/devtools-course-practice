@@ -3,9 +3,8 @@
 #include <gtest/gtest.h>
 #include "include/dichotomy.h"
 
-double func(double x)
-{
-	return x*x;
+double func(double x) {
+    return x*x;
 }
 
 TEST(Kildishev_Maxim_Dichotomy_Method_Tests,
