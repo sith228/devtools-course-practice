@@ -33,7 +33,8 @@ TEST(TemperatureConverterTest,
     double Celsius = -274.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::CelsiusToFahrenheit(Celsius), std::string);
+    EXPECT_THROW(TemperatureConverter::CelsiusToFahrenheit(Celsius),
+        std::string);
 }
 
 TEST(TemperatureConverterTest,
@@ -42,7 +43,7 @@ TEST(TemperatureConverterTest,
     double Celsius = -274.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::CelsiusToKelvin(Celsius), std::string);
+    EXPECT_THROW(TemperatureConverter::CelsiusToKelvin(Celsius),std::string);
 }
 
 TEST(TemperatureConverterTest, Can_Convert_Celsius_To_Newton) {
@@ -175,7 +176,8 @@ TEST(TemperatureConverterTest,
     double Fahrenheit = -460.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::FahrenheitToNewton(Fahrenheit), std::string);
+    EXPECT_THROW(TemperatureConverter::FahrenheitToNewton(Fahrenheit),
+        std::string);
 }
 
 TEST(TemperatureConverterTest,
@@ -184,7 +186,8 @@ TEST(TemperatureConverterTest,
     double Fahrenheit = -460.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::FahrenheitToCelsius(Fahrenheit), std::string);
+    EXPECT_THROW(TemperatureConverter::FahrenheitToCelsius(Fahrenheit),
+        std::string);
 }
 
 TEST(TemperatureConverterTest,
@@ -193,7 +196,8 @@ TEST(TemperatureConverterTest,
     double Fahrenheit = -460.0;
 
     // Act & Assert
-    EXPECT_THROW(TemperatureConverter::FahrenheitToKelvin(Fahrenheit), std::string);
+    EXPECT_THROW(TemperatureConverter::FahrenheitToKelvin(Fahrenheit),
+        std::string);
 }
 
 TEST(TemperatureConverterTest,
