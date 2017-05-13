@@ -3,7 +3,7 @@
 #include <vector>
 #include "include/ConverterCurrency.h"
 
-const std::vector<double> ConverterCurrency::convert_coefficients_ = {
+std::vector<double> ConverterCurrency::convert_coefficients_ = {
     30.84,  // BYN to RUR
     8.413,  // CNY to RUR
     2.368,  // CZK to RUR
@@ -17,19 +17,29 @@ const std::vector<double> ConverterCurrency::convert_coefficients_ = {
     0.05118,  // KRW to RUR
 };
 
-double ConverterCurrency::Convert(const double MoneySize,
-                         const CurrencyName OldCurrency,
-                         const CurrencyName NewCurrency) {
-    if (MoneySize >= 0) {
-        float ResultMoneySize;
+void ConverterCurrency::SetExchangeRateToRUR(CurrencyName target_currency,
+                        double exchange_rate_to_rur) {
+    if (exchange_rate_to_rur > 0) {
+        if (target_currency != RUR)
+            convert_coefficients_[target_currency] = exchange_rate_to_rur;
+    } else {
+        throw "Second parameter has to be more than 0";
+    }
+}
 
-        if (MoneySize == 0) {
+double ConverterCurrency::Convert(double money_size,
+                          CurrencyName old_currency,
+                          CurrencyName new_currency) {
+    if (money_size >= 0) {
+        double ResultMoneySize;
+
+        if (money_size == 0) {
             ResultMoneySize = 0;
-        } else if (OldCurrency == NewCurrency) {
-            ResultMoneySize = MoneySize;
+        } else if (old_currency == new_currency) {
+            ResultMoneySize = money_size;
         } else {
-            ResultMoneySize = MoneySize * convert_coefficients_[OldCurrency]
-                / convert_coefficients_[NewCurrency];
+            ResultMoneySize = money_size * convert_coefficients_[old_currency]
+                / convert_coefficients_[new_currency];
         }
 
         return ResultMoneySize;
