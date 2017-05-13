@@ -4,29 +4,26 @@
 #include <cmath>
 #include <iostream>
 
-void Dichotomy::EnteredCorrectly(int a_factor, double left_border,
+void Dichotomy::EnteredCorrectly(double left_border,
      double right_border, double eps) {
          if (right_border < left_border)
              throw "Incorrect borders";
          if (std::abs(right_border-left_border) < 0.0001)
              throw "Too close values";
-         if (a_factor == 0)
-             throw "Function is not unimodal";
          if (eps <=0)
              throw "Eps must be higher then zero";
 }
 
-double Dichotomy::FindMin(int a_factor, int b_factor, int c_factor,
-     double left_border, double right_border, double eps) {
-    EnteredCorrectly(a_factor, left_border, right_border, eps);
+double Dichotomy::FindMin(double(*func)(double x),double left_border,
+    double right_border, double eps) {
+    EnteredCorrectly(left_border, right_border, eps);
     double middle = (left_border + right_border)/2;
-    double func_value_middle = a_factor*(middle+b_factor)
-    *(middle+b_factor) + c_factor;
+	double func_value_middle = func(middle);
     while (right_border - left_border > eps) {
         double x = (left_border + middle)/2;
-        double func_value_x = a_factor*(x+b_factor)*(x+b_factor) + c_factor;
+        double func_value_x = func(x);
         double y = (middle + right_border)/2;
-        double func_value_y = a_factor*(y+b_factor)*(y+b_factor) + c_factor;
+        double func_value_y = func(y);
         if ((func_value_x < func_value_y) &&
          (func_value_x < func_value_middle)) {
                 right_border = middle;
