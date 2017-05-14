@@ -17,23 +17,24 @@ Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _n
 }
 
 int Demand:: checkforelasticity() {
+    int elasticity;
     if(coeffofdemand==1.0){
         cout<<"Coefficient of unit elasticity"<<endl;
-        return UnitElastic;
+        elasticity = UnitElastic;
      }
     else if(coeffofdemand>1.0){
           cout<<"Demand is elastic"<<endl;
-          return Elastic;
+          elasticity = Elastic;
      }
     else if(coeffofdemand<1.0){
           cout<<"Demand is not elastic"<<endl;
-          return NoElastic;
+          elasticity = NoElastic;
     }
-    cout << coeffofdemand << endl;
+    return elasticity;
 }
 
 double Demand:: revenuechange(double revenue) {
-    cout<<revenue<<endl;
+    cout<<"Old revenue: "<<revenue<<endl;
     if(coeffofdemand>=1.0){
         for (int time = 0;time < 30; time++){
         //30 days of work
@@ -42,19 +43,19 @@ double Demand:: revenuechange(double revenue) {
             else if(newprice<oldprice)
                revenue++;
             else
-               revenue;
+              return 0;
         }
     }
     if(coeffofdemand<1.0){
         for(int time=0;time<30;time++){
             if (newprice>oldprice)
-                revenue--;
-            else if (newprice<oldprice)
                 revenue++;
+            else if (newprice<oldprice)
+                revenue--;
             else
-                revenue;
+              return 0;
         }
     }
-    cout << revenue << endl;
+    cout <<"New revenue: "<<revenue << endl;
     return revenue;
 }
