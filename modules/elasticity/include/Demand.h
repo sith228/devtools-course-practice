@@ -1,17 +1,15 @@
 // Copyright 2017 Zemlyanskiy Nikita
 
-#pragma once
+#ifndef MODULES_ELASTICITY_INCLUDE_DEMAND_H_
+#define MODULES_ELASTICITY_INCLUDE_DEMAND_H_
 
-#include <iostream>
-using namespace std;
+enum Elasticity{Elastic, UnitElastic, NoElastic};
 
-enum Elasticity{Elastic,UnitElastic,NoElastic};
-
-class Demand {
-   protected:
+class Demand{ 
+   protected: 
        double coeffofdemand;
-       double oldprice,newprice;
-       double olddemand,newdemand;
+       double oldprice, newprice;
+       double olddemand, newdemand;
        double deltaprice;
        double deltademand;
        double revenue;
@@ -20,3 +18,4 @@ class Demand {
       int checkforelasticity();
       double revenuechange(double revenue);
 };
+#endif

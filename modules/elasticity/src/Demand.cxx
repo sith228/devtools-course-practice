@@ -2,8 +2,8 @@
 
 #include "../include/Demand.h"
 
-Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand) {
-   if((_oldprice>=0)&&(_newprice>=0)&&(_olddemand>=0)&&(_newdemand>=0)){
+Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand){ 
+   if((_oldprice>=0)&&(_newprice>=0)&&(_olddemand>=0)&&(_newdemand>=0)){ 
       oldprice=_oldprice;
       olddemand=_olddemand;
       newprice=_newprice;
@@ -16,27 +16,27 @@ Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _n
       throw "Error";
 }
 
-int Demand:: checkforelasticity() {
+int Demand:: checkforelasticity(){ 
     int elasticity;
     if(coeffofdemand==1.0){
-        cout<<"Coefficient of unit elasticity"<<endl;
+        //Coefficient of unit elasticity
         elasticity = UnitElastic;
      }
-    else if(coeffofdemand>1.0){
-          cout<<"Demand is elastic"<<endl;
+    else if(coeffofdemand>1.0){ 
+          //Demand is elastic
           elasticity = Elastic;
      }
-    else if(coeffofdemand<1.0){
-          cout<<"Demand is not elastic"<<endl;
+    else if(coeffofdemand<1.0){ 
+          //Demand is not elastic
           elasticity = NoElastic;
     }
     return elasticity;
 }
 
-double Demand:: revenuechange(double revenue) {
-    cout<<"Old revenue: "<<revenue<<endl;
-    if(coeffofdemand>=1.0){
-        for (int time = 0;time < 30; time++){
+double Demand:: revenuechange(double revenue){ 
+    //Old revenue
+    if(coeffofdemand>=1.0){ 
+        for (int time = 0;time < 30; time++){ 
         //30 days of work
             if(newprice>oldprice)
                revenue--;
@@ -46,8 +46,8 @@ double Demand:: revenuechange(double revenue) {
               return 0;
         }
     }
-    if(coeffofdemand<1.0){
-        for(int time=0;time<30;time++){
+    if(coeffofdemand<1.0){ 
+        for(int time=0;time<30;time++){ 
             if (newprice>oldprice)
                 revenue++;
             else if (newprice<oldprice)
@@ -56,6 +56,6 @@ double Demand:: revenuechange(double revenue) {
               return 0;
         }
     }
-    cout <<"New revenue: "<<revenue << endl;
+    //New revenue
     return revenue;
 }
