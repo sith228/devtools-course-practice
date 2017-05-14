@@ -64,16 +64,30 @@ TEST(Demand, Can_Not_Create_Obj_With_ALL_Negative_Values) {
   ASSERT_ANY_THROW(Demand dem1(-13.0, -9.0, -6.4, -3.4));
 }
 
-TEST(Demand, Can_Inc_Revenue_No_Elastic) {
+TEST(Demand, Inc_And_Red_Revenue_No_Elastic) {
   Demand dem1(5.0, 2.5, 2.3, 3.3);
   Demand dem2(5.0, 7.5, 2.3, 3.3);
 
   EXPECT_TRUE(dem1.revenuechange(12.2) < dem2.revenuechange(12.2));
 }
 
-TEST(Demand, Can_Inc_Revenue_Elastic) {
-    Demand dem1(5.0, 2.5, 16.3, 10.3);
-    Demand dem2(5.0, 7.5, 5.3, 10.3);
+TEST(Demand, Inc_And_Red_Revenue_Elastic) {
+  Demand dem1(5.0, 2.5, 16.3, 10.3);
+  Demand dem2(5.0, 7.5, 5.3, 10.3);
 
-    EXPECT_TRUE(dem1.revenuechange(12.2) > dem2.revenuechange(12.2));
+  EXPECT_TRUE(dem1.revenuechange(12.2) > dem2.revenuechange(12.2));
+}
+
+TEST(Demand, Same_Revenue_No_Elastic) {
+  Demand dem1(5.0, 8.5, 2.3, 3.3);
+  Demand dem2(5.0, 7.5, 2.3, 3.3);
+
+  EXPECT_TRUE(dem1.revenuechange(12.2) == dem2.revenuechange(12.2));
+}
+
+TEST(Demand, Same_Revenue_Elastic) {
+  Demand dem1(2.5, 5.0, 10.3, 15.3);
+  Demand dem2(7.5, 10.5, 5.3, 10.3);
+
+  EXPECT_TRUE(dem1.revenuechange(12.2) == dem2.revenuechange(12.2));
 }
