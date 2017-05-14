@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-#define DefMemSize   25
+const int DefMemSize = 25;
 
 typedef double    TElem;
 typedef TElem*    PTElem;
