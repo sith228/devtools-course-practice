@@ -106,3 +106,20 @@ TEST(Demand, Same_Revenue_Unit_Elastic) {
   EXPECT_TRUE(dem1.revenuechange(12.2) == dem2.revenuechange(12.2));
 }
 
+TEST(Demand, Test_Of_Return_Value_Check_Unit) {
+  Demand dem(2.5, 3.5, 10.3, 11.3);
+
+  EXPECT_EQ(dem.checkforelasticity(), 1);
+}
+
+TEST(Demand, Test_Of_Return_Value_Check_No) {
+  Demand dem(5.0, 8.5, 2.3, 3.3);
+
+  EXPECT_EQ(dem.checkforelasticity(), 2);
+}
+
+TEST(Demand, Test_Of_Return_Value_Check_Ela) {
+  Demand dem(2.5, 5.0, 10.3, 15.3);
+
+  EXPECT_EQ(dem.checkforelasticity(), 0);
+}
