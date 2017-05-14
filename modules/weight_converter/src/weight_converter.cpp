@@ -11,22 +11,22 @@ const double WeightConverter::ratio[] = {
     0.0002
 };  // Weight/Kilogram ratio
 
-WeightConverter::WeightConverter(double weight = 0.0, Weights type = KG) {
+WeightConverter::WeightConverter(double weight, Weights type) {
     setWeight(weight, type);
 }
 
 void WeightConverter::setWeight(double weight, Weights type) {
-    Weight = weight / ratio[type];
+    Weight = weight * ratio[type];
 }
 
 double WeightConverter::getWeight() {
     return Weight;
 }
 
-double WeightConverter::Convert(Weights from, Weights to, double val){
-    return ratio[to]/ratio[from] * val;
+double WeightConverter::Convert(Weights to){
+    return Weight / ratio[to];
 }
 
-double WeightConverter::Convert(Weights to){
-    return ratio[to] * Weight;
+double WeightConverter::Convert(Weights from, Weights to, double val){
+    return ratio[to]/ratio[from] * val;
 }

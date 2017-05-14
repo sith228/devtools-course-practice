@@ -17,7 +17,7 @@ enum Weights{
 
 class WeightConverter{
 public:
-    WeightConverter(double weight, Weights type);
+    WeightConverter(double weight = 0.0, Weights type = KG);
     void setWeight(double weight, Weights type);
     double getWeight();
 
