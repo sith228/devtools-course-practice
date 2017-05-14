@@ -1,3 +1,5 @@
+// Copyright 2017 Buldakov Vladislav
+
 #include "include/weight_converter.h"
 
 const double WeightConverter::ratio[] = {
@@ -23,10 +25,10 @@ double WeightConverter::getWeight() {
     return Weight;
 }
 
-double WeightConverter::Convert(Weights to){
+double WeightConverter::Convert(Weights to) {
     return Weight / ratio[to];
 }
 
-double WeightConverter::Convert(double weight, Weights from, Weights to){
+double WeightConverter::Convert(double weight, Weights from, Weights to) {
     return ratio[from] / ratio[to] * weight;
 }
