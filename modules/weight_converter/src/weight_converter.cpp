@@ -27,6 +27,6 @@ double WeightConverter::Convert(Weights to){
     return Weight / ratio[to];
 }
 
-double WeightConverter::Convert(double val, Weights from, Weights to){
-    return ratio[from] / ratio[to] * val;
+double WeightConverter::Convert(double weight, Weights from, Weights to){
+    return ratio[from] / ratio[to] * weight;
 }
