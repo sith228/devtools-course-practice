@@ -23,7 +23,7 @@ class WeightConverter{
     double getWeight();
 
     double Convert(Weights to);
-    double Convert(Weights from, Weights to, double val);
+    double Convert(double weight, Weights from, Weights to);
  private:
     double Weight;    // kg
     static const double ratio[END];
