@@ -13,8 +13,9 @@ class Demand {
     double deltaprice;
     double deltademand;
     double revenue;
+    int elasticity;
  public:
-    Demand(double _oldprice, double _newprice, 
+    Demand(double _oldprice, double _newprice,
            double _olddemand, double _newdemand);
     int checkforelasticity();
     double revenuechange(double revenue);

@@ -11,13 +11,14 @@ Demand:: Demand(double _oldprice, double _newprice, double _olddemand, double _n
       deltaprice = newprice - oldprice;
       deltademand = newdemand - olddemand;
       coeffofdemand = deltademand/deltaprice;
+      revenue = 0;
+      elasticity = 0;
     }
     else
       throw "Error";
 }
 
 int Demand:: checkforelasticity() {
-    int elasticity;
     if(coeffofdemand==1.0) {
         //Coefficient of unit elasticity
         elasticity = UnitElastic;
@@ -26,7 +27,7 @@ int Demand:: checkforelasticity() {
           //Demand is elastic
           elasticity = Elastic;
      }
-    else if(coeffofdemand<1.0) {
+    else {
           //Demand is not elastic
           elasticity = NoElastic;
     }
