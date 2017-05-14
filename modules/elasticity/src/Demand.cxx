@@ -2,12 +2,14 @@
 
 #include "../include/Demand.h"
 
-Demand::Demand(double _oldprice, double _newprice, double _olddemand, double _newdemand) {
-  if((_oldprice>=0)&&(_newprice>=0)&&(_olddemand>=0)&&(_newdemand>=0)) {
-    oldprice=_oldprice;
-    olddemand=_olddemand;
-    newprice=_newprice;
-    newdemand=_newdemand;
+Demand::Demand(double _oldprice, double _newprice,
+               double _olddemand, double _newdemand) {
+  if((_oldprice >= 0) && (_newprice >= 0) && 
+     (_olddemand >= 0) && (_newdemand >= 0)) {
+    oldprice = _oldprice;
+    olddemand = _olddemand;
+    newprice = _newprice;
+    newdemand = _newdemand;
     deltaprice = newprice - oldprice;
     deltademand = newdemand - olddemand;
     coeffofdemand = deltademand/deltaprice;
@@ -19,11 +21,11 @@ Demand::Demand(double _oldprice, double _newprice, double _olddemand, double _ne
 }
 
 int Demand::checkforelasticity() {
-  if(coeffofdemand==1.0) {
+  if(coeffofdemand == 1.0) {
     //Coefficient of unit elasticity
     elasticity = UnitElastic;
   }
-  else if(coeffofdemand>1.0) {
+  else if(coeffofdemand > 1.0) {
     //Demand is elastic
     elasticity = Elastic;
   }
@@ -36,22 +38,22 @@ int Demand::checkforelasticity() {
 
 double Demand::revenuechange(double revenue) { 
   //Old revenue
-  if(coeffofdemand>=1.0) { 
+  if(coeffofdemand >= 1.0) { 
     for (int time = 0;time < 30; time++) { 
     //30 days of work
-      if(newprice>oldprice)
+      if(newprice > oldprice)
         revenue--;
-      else if(newprice<oldprice)
+      else if(newprice < oldprice)
         revenue++;
       else
         return 0;
     }
   }
-  if(coeffofdemand<1.0) { 
-    for(int time=0;time<30;time++) { 
-      if (newprice>oldprice)
+  if(coeffofdemand < 1.0) { 
+    for(int time=0;time < 30;time++) { 
+      if (newprice > oldprice)
         revenue++;
-      else if (newprice<oldprice)
+      else if (newprice < oldprice)
         revenue--;
       else
         return 0;
