@@ -27,7 +27,7 @@ TEST(Demand, Can_Create_Obj_With_Positive_Values) {
   ASSERT_NO_THROW(Demand dem(13.0, 16.4, 6.4, 3.4));
 }
 
-TEST(Demand, Can_Not_Create_Obj_With_Negative_Values) {
+TEST(Demand, Can_Not_Create_Obj_With_One_Negative_Value) {
   ASSERT_ANY_THROW(Demand dem(-1.0, 3.4, 5.6, 9.0));
 }
 
@@ -58,4 +58,22 @@ TEST(Demand, Can_Return_Value_Of_Revenue) {
   Demand dem(12.2, 10.3, 6.7, 2.3);
 
   ASSERT_NO_THROW(dem.revenuechange(12.2));
+}
+
+TEST(Demand, Can_Not_Create_Obj_With_ALL_Negative_Values) {
+  ASSERT_ANY_THROW(Demand dem1(-13.0, -9.0, -6.4, -3.4));
+}
+
+TEST(Demand, Can_Inc_Revenue_No_Elastic) {
+  Demand dem1(5.0, 2.5, 2.3, 3.3);
+  Demand dem2(5.0, 7.5, 2.3, 3.3);
+  
+  EXPECT_TRUE(dem1.revenuechange(12.2) < dem2.revenuechange(12.2));
+}
+
+TEST(Demand, Can_Inc_Revenue_Elastic) {
+    Demand dem1(5.0, 2.5, 16.3, 10.3);
+    Demand dem2(5.0, 7.5, 5.3, 10.3);
+
+    EXPECT_TRUE(dem1.revenuechange(12.2) > dem2.revenuechange(12.2));
 }
