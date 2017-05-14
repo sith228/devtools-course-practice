@@ -67,7 +67,7 @@ TEST(Demand, Can_Not_Create_Obj_With_ALL_Negative_Values) {
 TEST(Demand, Can_Inc_Revenue_No_Elastic) {
   Demand dem1(5.0, 2.5, 2.3, 3.3);
   Demand dem2(5.0, 7.5, 2.3, 3.3);
-  
+
   EXPECT_TRUE(dem1.revenuechange(12.2) < dem2.revenuechange(12.2));
 }
 
