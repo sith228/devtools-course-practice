@@ -10,6 +10,9 @@ Demand::Demand(double _oldprice, double _newprice,
     olddemand = _olddemand;
     newprice = _newprice;
     newdemand = _newdemand;
+    if (newprice == oldprice) {
+      throw "Error";
+    }
     deltaprice = newprice - oldprice;
     deltademand = newdemand - olddemand;
     coeffofdemand = deltademand/deltaprice;
@@ -43,9 +46,7 @@ double Demand::revenuechange(double revenue) {
         revenue--;
       } else if (newprice < oldprice) {
           revenue++;
-        } else {
-            return 0;
-          }
+        }
     }
   }
   if (coeffofdemand < 1.0) {
@@ -54,9 +55,7 @@ double Demand::revenuechange(double revenue) {
         revenue++;
       } else if (newprice < oldprice) {
           revenue--;
-        } else {
-            return 0;
-          }
+        }
     }
   }
   // New revenue
