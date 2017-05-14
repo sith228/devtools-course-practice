@@ -31,18 +31,18 @@ double ConverterCurrency::Convert(double money_size,
                           CurrencyName old_currency,
                           CurrencyName new_currency) {
     if (money_size >= 0) {
-        double ResultMoneySize;
+        double result_money_size;
 
         if (money_size == 0) {
-            ResultMoneySize = 0;
+            result_money_size = 0;
         } else if (old_currency == new_currency) {
-            ResultMoneySize = money_size;
+            result_money_size = money_size;
         } else {
-            ResultMoneySize = money_size * convert_coefficients_[old_currency]
+            result_money_size = money_size * convert_coefficients_[old_currency]
                 / convert_coefficients_[new_currency];
         }
 
-        return ResultMoneySize;
+        return result_money_size;
     } else {
         throw "First parameter can't be negative.";
     }
