@@ -10,9 +10,3 @@ include_directories("./")
 # Add all submodules
 add_subdirectory(src)
 add_subdirectory(test)
-
-#############################################
-##### Testing
-#############################################
-
-include("CTestTests.txt")
