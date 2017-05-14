@@ -91,3 +91,18 @@ TEST(Demand, Same_Revenue_Elastic) {
 
   EXPECT_TRUE(dem1.revenuechange(12.2) == dem2.revenuechange(12.2));
 }
+
+TEST(Demand, Inc_And_Red_Revenue_Unit_Elastic) {
+  Demand dem1(5.0, 4.0, 10.3, 9.3);
+  Demand dem2(5.5, 7.5, 8.3, 10.3);
+
+  EXPECT_TRUE(dem1.revenuechange(12.2) > dem2.revenuechange(12.2));
+}
+
+TEST(Demand, Same_Revenue_Unit_Elastic) {
+  Demand dem1(2.5, 3.5, 10.3, 11.3);
+  Demand dem2(7.5, 8.5, 5.3, 6.3);
+
+  EXPECT_TRUE(dem1.revenuechange(12.2) == dem2.revenuechange(12.2));
+}
+
