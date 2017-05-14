@@ -57,9 +57,5 @@ TEST(Demand, Can_Return_Diff_Values_Of_Check) {
 TEST(Demand, Can_Return_Value_Of_Revenue) {
   Demand dem(12.2, 10.3, 6.7, 2.3);
 
-  ASSERT_NO_THROW(dem.revenuechange(12.2)); 
-}
-
-TEST(Demand, ) {
-  
+  ASSERT_NO_THROW(dem.revenuechange(12.2));
 }
