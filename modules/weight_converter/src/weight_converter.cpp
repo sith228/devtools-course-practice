@@ -11,7 +11,7 @@ const double WeightConverter::ratio[] = {
     0.0002
 };  // Weight/Kilogram ratio
 
-WeightConverter::WeightConverter(double weight, Weights type) {
+WeightConverter::WeightConverter(double weight = 0.0, Weights type = KG) {
     setWeight(weight, type);
 }
 
