@@ -4,13 +4,19 @@
 #include "include/Demand.h"
 
 TEST(Demand, Can_Return_Value_Of_Check) {
+  Demand dem(2.3, 3.2, 4.4, 8.9);
+
+  ASSERT_NO_THROW(dem.checkforelasticity());
+}
+
+TEST(Demand, Can_Return_Same_Values_Of_Check) {
   Demand dem1(13.0, 16.4, 6.4, 3.4);
   Demand dem2(13.0, 16.4, 6.4, 3.4);
 
   EXPECT_EQ(dem1.checkforelasticity(), dem2.checkforelasticity());
 }
 
-TEST(Demand, Can_Return_Value_Of_Revenue) {
+TEST(Demand, Can_Return_Same_Values_Of_Revenue) {
   Demand dem1(13.0, 16.4, 6.4, 3.4);
   Demand dem2(13.0, 16.4, 6.4, 3.4);
 
@@ -46,4 +52,14 @@ TEST(Demand, Can_Return_Diff_Values_Of_Check) {
   Demand dem2(10.0, 8.0 , 5.6, 3.2);
 
   EXPECT_NE(dem1.checkforelasticity(), dem2.checkforelasticity());
+}
+
+TEST(Demand, Can_Return_Value_Of_Revenue) {
+  Demand dem(12.2, 10.3, 6.7, 2.3);
+
+  ASSERT_NO_THROW(dem.revenuechange(12.2)); 
+}
+
+TEST(Demand, ) {
+  
 }
