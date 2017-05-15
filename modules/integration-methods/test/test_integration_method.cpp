@@ -32,7 +32,7 @@ TEST(INTEGRATION_METHOD, can_integrate_function_with_cos_by_rectangle_method) {
     double actual = im.RectangleMethod("x*x + 4*cos(x)", 0, 1, 50);
     double expected = 3.6992;
 
-    EXPECT_NEAR(expected, expected, 1e-2);
+    EXPECT_NEAR(expected, actual, 1e-2);
 }
 
 
@@ -94,7 +94,6 @@ TEST(INTEGRATION_METHOD, can_integrate_function_with_cos_by_simpson_method) {
         im.SimpsonMethod("x+x*x+3*x*x*x + x*cos(10*x)", 3, 5, 1e-3);
     double expected = 448.84;
 
-    bool is_correct = (actual - 1e-2 < expected && expected < actual + 1e-2);
     EXPECT_NEAR(expected, actual, 1e-2);
 }
 
