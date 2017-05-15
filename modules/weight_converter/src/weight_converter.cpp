@@ -2,7 +2,7 @@
 
 #include "include/weight_converter.h"
 
-const double WeightConverter::ratio[] = {
+const double WeightConverter::kRatio_[] = {
     1.0,
     0.000001,
     0.001,
@@ -18,17 +18,17 @@ WeightConverter::WeightConverter(double weight, Weights type) {
 }
 
 void WeightConverter::setWeight(double weight, Weights type) {
-    Weight = weight * ratio[type];
+    Weight_ = weight * kRatio_[type];
 }
 
 double WeightConverter::getWeight() {
-    return Weight;
+    return Weight_;
 }
 
 double WeightConverter::Convert(Weights to) {
-    return Weight / ratio[to];
+    return Weight_ / kRatio_[to];
 }
 
 double WeightConverter::Convert(double weight, Weights from, Weights to) {
-    return ratio[from] / ratio[to] * weight;
+    return kRatio_[from] / kRatio_[to] * weight;
 }

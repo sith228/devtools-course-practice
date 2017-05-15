@@ -25,8 +25,8 @@ class WeightConverter{
     double Convert(Weights to);
     double Convert(double weight, Weights from, Weights to);
  private:
-    double Weight;    // kg
-    static const double ratio[END];
+    double Weight_;    // kg
+    static const double kRatio_[END];
 };
 
 #endif  // MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_H_

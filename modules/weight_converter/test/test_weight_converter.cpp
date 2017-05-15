@@ -6,21 +6,21 @@
 
 const double EPS = 0.00001;
 
-TEST(WeightConverterTest, Can_create_with_default_constructor) {
+TEST(WeightConverterTest, Can_Create_With_Default_Constructor) {
     // Arrange
     // Act
     // Assert
     ASSERT_NO_THROW(WeightConverter wc);
 }
 
-TEST(WeightConverterTest, Can_create_with_data) {
+TEST(WeightConverterTest, Can_Create_With_Data) {
     // Arrange
     // Act
     // Assert
     ASSERT_NO_THROW(WeightConverter wc(1.0, G));
 }
 
-TEST(WeightConverterTest, Can_get_weight) {
+TEST(WeightConverterTest, Can_Get_Weight) {
     // Arrange
     double weight = 1.0;
     double weight_kg = 0.001;
@@ -30,7 +30,7 @@ TEST(WeightConverterTest, Can_get_weight) {
     ASSERT_NEAR(weight_kg, wc.getWeight(), EPS);
 }
 
-TEST(WeightConverterTest, Can_set_weight) {
+TEST(WeightConverterTest, Can_Set_Weight) {
     // Arrange
     double weight = 1.0;
     double weight_kg = 0.001;
@@ -41,7 +41,7 @@ TEST(WeightConverterTest, Can_set_weight) {
     ASSERT_NEAR(weight_kg, wc.getWeight(), EPS);
 }
 
-TEST(WeightConverterTest, Can_convert_inner_value) {
+TEST(WeightConverterTest, Can_Convert_Inner_Value) {
     // Arrange
     double weight = 1.0;
     double weight_kg = 0.001;
@@ -52,7 +52,7 @@ TEST(WeightConverterTest, Can_convert_inner_value) {
     ASSERT_NEAR(weight, converted_weight, EPS);
 }
 
-TEST(WeightConverterTest, Can_convert_outer_value) {
+TEST(WeightConverterTest, Can_Convert_Outer_Value) {
     // Arrange
     WeightConverter wc;
     double actual_weight = 0.625;
