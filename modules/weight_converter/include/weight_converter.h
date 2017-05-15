@@ -19,8 +19,7 @@ enum Weights{
 };
 
 struct WeightsMap{
-    static std::map<Weights, double> CreateMap()
-    {
+    static std::map<Weights, double> CreateMap(){
         std::map<Weights, double> m;
         m[KG] = 1.0;
         m[MG] = 0.000001;
@@ -44,7 +43,7 @@ class WeightConverter{
     double Convert(Weights to);
     double Convert(double weight, Weights from, Weights to);
  private:
-    double Weight_;    // kg  
+    double Weight_;    // kg
 };
 
 #endif  // MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_H_
