@@ -91,17 +91,3 @@ TEST(WeightConverterTest, Can_Convert_DR_to_GR) {
     // Assert
     ASSERT_NEAR(weight_gr, weight_gr_conv, EPS);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

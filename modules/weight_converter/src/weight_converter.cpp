@@ -2,23 +2,14 @@
 
 #include "include/weight_converter.h"
 
-const double WeightConverter::kRatio_[] = {
-    1.0,
-    0.000001,
-    0.001,
-    0.00006479891,
-    0.00177185,
-    0.0283495,
-    0.453592,
-    0.0002
-};  // Weight/Kilogram ratio
+const std::map<Weights, double> WeightsMap::kWeights_ratio = WeightsMap::CreateMap();
 
 WeightConverter::WeightConverter(double weight, Weights type) {
     setWeight(weight, type);
 }
 
 void WeightConverter::setWeight(double weight, Weights type) {
-    Weight_ = weight * kRatio_[type];
+    Weight_ = weight * WeightsMap::kWeights_ratio.at(type);
 }
 
 double WeightConverter::getWeight() {
@@ -26,9 +17,9 @@ double WeightConverter::getWeight() {
 }
 
 double WeightConverter::Convert(Weights to) {
-    return Weight_ / kRatio_[to];
+    return Weight_ / WeightsMap::kWeights_ratio.at(to);
 }
 
 double WeightConverter::Convert(double weight, Weights from, Weights to) {
-    return kRatio_[from] / kRatio_[to] * weight;
+    return WeightsMap::kWeights_ratio.at(from) / WeightsMap::kWeights_ratio.at(to) * weight;
 }
