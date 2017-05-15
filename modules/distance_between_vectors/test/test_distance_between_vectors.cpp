@@ -30,10 +30,10 @@ TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Different_Metric) {
 	{
 		V2[i] = static_cast<float>(i+2);
 	};
-	Metric::TypeMetric Type = Metric::L2;
-	float result1 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
-	Metric::TypeMetric Type = Metric::LInf;
-	float result2 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
+	Metric::TypeMetric Type1 = Metric::L2;
+	float result1 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type1);
+	Metric::TypeMetric Type2 = Metric::LInf;
+	float result2 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type2);
 	EXPECT_FLOAT_EQ(result1, result2);
 }
 
