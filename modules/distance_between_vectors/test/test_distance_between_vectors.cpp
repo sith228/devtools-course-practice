@@ -3,6 +3,8 @@
 #include <gtest/gtest.h>
 #include "include/distance_between_vectors.h"
 
+using namespace Distance;
+
 TEST(DistanceBetweenVectors, Different_Size_Vectors) {
 	vector<float> V1(4);
 	for (int i = 0; i < 4; i++)

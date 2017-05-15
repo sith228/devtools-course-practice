@@ -1,9 +1,11 @@
 // Copyright 2017 Gorozhanin Mihail
 #include "include/distance_between_vectors.h"
-#include <vector>
 
-float DistanceBetweenVectors::CalculateDistance(vector<float> vector1, vector<float> vector2, TypeMetric TypeM) {
-	float distance;
+using namespace Distance;
+
+float DistanceBetweenVectors::CalculateDistance(vector<float> vector1,
+vector<float> vector2, TypeMetric TypeM) {
+  float distance;
 	int size;
 	if (vector1.size() == vector2.size()) {
 		vector<float>vect1 = vector1;
@@ -31,3 +33,4 @@ float DistanceBetweenVectors::CalculateDistance(vector<float> vector1, vector<fl
 		return 0;
 	}
 }
+

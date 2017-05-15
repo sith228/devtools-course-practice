@@ -4,21 +4,25 @@
 
 #include <cmath>
 #include <vector>
-
-enum TypeMetric { L1 = 1, L2, L3, L4, LInf };
+#include <iostream>
 
 using namespace std;
 
-// Metric or the distance measure is non-negative, symmetric.
-// The Minkowski metric (L3, L4).
-// The Euclidean metric (L2).
-// Manhattan distance (L1).
-// The metric Chebyshev (LInf).
+namespace Distance {
+
+	enum TypeMetric { L1 = 1, L2, L3, L4, LInf };
+
+	// Metric or the distance measure is non-negative, symmetric.
+	// The Minkowski metric (L3, L4).
+	// The Euclidean metric (L2).
+	// Manhattan distance (L1).
+	// The metric Chebyshev (LInf).
 
 
-class DistanceBetweenVectors {
-public:
-	static float CalculateDistance(vector<float> vector1, vector<float> vector2, TypeMetric TypeM);
-};
-
+	class DistanceBetweenVectors {
+	public:
+		static float CalculateDistance(vector<float> vector1,
+    vector<float> vector2, TypeMetric TypeM);
+	};
+}
 #endif  // MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_
