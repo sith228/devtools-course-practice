@@ -54,7 +54,6 @@ TEST(Vector3D, can_get_z) {
 }
 
 TEST(Vector3D, can_set_x) {
-
     double x = 21.54;
     Vector3D v, vt(x, 0.0, 0.0);
 
@@ -64,7 +63,6 @@ TEST(Vector3D, can_set_x) {
 }
 
 TEST(Vector3D, can_set_y) {
-
     double y = -34.979;
     Vector3D v, vt(0.0, y, 0.0);
 
@@ -74,7 +72,6 @@ TEST(Vector3D, can_set_y) {
 }
 
 TEST(Vector3D, can_set_z) {
-
     double z = 65.4633;
     Vector3D v, vt(0.0, 0.0, z);
 
