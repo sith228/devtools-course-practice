@@ -14,7 +14,7 @@ TEST(DistanceBetweenVectors, Different_Size_Vectors) {
 	{
 		V2[i] = static_cast<float>(i+2);
 	}
-	Metric::TypeMetric Type = L2;
+	Metric::TypeMetric Type = Metric::L2;
 	float result = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 	EXPECT_FLOAT_EQ(result, 0.0f);
 }
@@ -30,9 +30,9 @@ TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Different_Metric) {
 	{
 		V2[i] = static_cast<float>(i+2);
 	};
-	Metric::TypeMetric Type = L2;
+	Metric::TypeMetric Type = Metric::L2;
 	float result1 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
-	Metric::TypeMetric Type = LInf;
+	Metric::TypeMetric Type = Metric::LInf;
 	float result2 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 	EXPECT_FLOAT_EQ(result1, result2);
 }
@@ -48,7 +48,7 @@ TEST(DistanceBetweenVectors, Equal_Size_Vectors_Final) {
 	{
 		V2[i] = static_cast<float>(i);
 	};
-	Metric::TypeMetric Type = L1;
+	Metric::TypeMetric Type = Metric::L1;
 	float result = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 	EXPECT_FLOAT_EQ(result, 8.0f);
 }
@@ -64,7 +64,7 @@ TEST(DistanceBetweenVectors, Equal_Size_Vectors_Inf) {
 	{
 		V2[i] = static_cast<float>(i);
 	};
-	Metric::TypeMetric Type = LInf;
+	Metric::TypeMetric Type = Metric::LInf;
 	float result = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 	EXPECT_FLOAT_EQ(result, 2.0f);
 }
