@@ -13,6 +13,7 @@ class Vector3D {
     double x;
     double y;
     double z;
+
  public:
     explicit Vector3D(double _x = 0.0, double _y = 0.0, double _z = 0.0);
     Vector3D(const Vector3D &v);                // copy constructor
