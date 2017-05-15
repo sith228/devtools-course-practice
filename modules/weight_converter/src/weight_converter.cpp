@@ -1,8 +1,9 @@
 // Copyright 2017 Buldakov Vladislav
 
 #include "include/weight_converter.h"
+#include <map>
 
-const std::map<Weights, double> WeightsMap::kWeights_ratio = 
+const std::map<Weights, double> WeightsMap::kWeights_ratio =
     WeightsMap::CreateMap();
 
 WeightConverter::WeightConverter(double weight, Weights type) {
@@ -22,6 +23,6 @@ double WeightConverter::Convert(Weights to) {
 }
 
 double WeightConverter::Convert(double weight, Weights from, Weights to) {
-    return WeightsMap::kWeights_ratio.at(from) / 
+    return WeightsMap::kWeights_ratio.at(from) /
         WeightsMap::kWeights_ratio.at(to) * weight;
 }
