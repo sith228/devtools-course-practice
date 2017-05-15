@@ -6,20 +6,20 @@
 
 #include "include/programmer_calculator.h"
 
-std::vector<std::string> ProgrammerCalculator::triades =
+std::vector<std::string> ProgrammerCalculator::triades_ =
     { "000", "001", "010", "011", "100", "101", "110", "111" };
 
-std::vector<std::string> ProgrammerCalculator::tetrads =
+std::vector<std::string> ProgrammerCalculator::tetrads_ =
     { "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111",
       "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"};
 
-std::vector<std::string> ProgrammerCalculator::charsSet =
+std::vector<std::string> ProgrammerCalculator::charsSet_ =
 { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
     "a", "b", "c", "d", "e", "f" };
 
 ProgrammerCalculator::ProgrammerCalculator() {}
 
-std::string ProgrammerCalculator::convertDecToBin(int dec) {
+std::string ProgrammerCalculator::ConvertDecToBin(int dec) {
     if (dec < 0) {
         return "-1";
     }
@@ -37,21 +37,21 @@ std::string ProgrammerCalculator::convertDecToBin(int dec) {
     return result;
 }
 
-std::string ProgrammerCalculator::convertDecToOct(int dec) {
+std::string ProgrammerCalculator::ConvertDecToOct(int dec) {
     if (dec < 0) {
         return "-1";
     }
-    return convertBinToOct(convertDecToBin(dec));
+    return ConvertBinToOct(ConvertDecToBin(dec));
 }
 
-std::string ProgrammerCalculator::convertDecToHex(int dec) {
+std::string ProgrammerCalculator::ConvertDecToHex(int dec) {
     if (dec < 0) {
         return "-1";
     }
-    return convertBinToHex(convertDecToBin(dec));
+    return ConvertBinToHex(ConvertDecToBin(dec));
 }
 
-std::string ProgrammerCalculator::convertBinToOct(const std::string &bin) {
+std::string ProgrammerCalculator::ConvertBinToOct(const std::string &bin) {
     if (bin.find_first_not_of("01") != std::string::npos) {
         return "-1";
     }
@@ -79,7 +79,7 @@ std::string ProgrammerCalculator::convertBinToOct(const std::string &bin) {
     return result;
 }
 
-int ProgrammerCalculator::convertBinToDec(const std::string &bin) {
+int ProgrammerCalculator::ConvertBinToDec(const std::string &bin) {
     if (bin.find_first_not_of("01") != std::string::npos) {
         return -1;
     }
@@ -95,7 +95,7 @@ int ProgrammerCalculator::convertBinToDec(const std::string &bin) {
     return result;
 }
 
-std::string ProgrammerCalculator::convertBinToHex(const std::string &bin) {
+std::string ProgrammerCalculator::ConvertBinToHex(const std::string &bin) {
     if (bin.find_first_not_of("01") != std::string::npos) {
         return "-1";
     }
@@ -114,14 +114,14 @@ std::string ProgrammerCalculator::convertBinToHex(const std::string &bin) {
 
     for (int i = 0; i < tetradsCount; i++) {
         std::string tetrad = binCopy.substr(4 * (tetradsCount - 1 - i), 4);
-        result = charsSet[(tetrad[0] - '0') * 8 + (tetrad[1] - '0') * 4 +
+        result = charsSet_[(tetrad[0] - '0') * 8 + (tetrad[1] - '0') * 4 +
             (tetrad[2] - '0') * 2 + (tetrad[3] - '0')] + result;
     }
 
     return result;
 }
 
-std::string ProgrammerCalculator::convertOctToBin(const std::string &oct) {
+std::string ProgrammerCalculator::ConvertOctToBin(const std::string &oct) {
     if (oct.find_first_not_of("01234567") != std::string::npos) {
         return "-1";
     }
@@ -129,27 +129,27 @@ std::string ProgrammerCalculator::convertOctToBin(const std::string &oct) {
     int lengthOfOct = oct.length();
 
     for (int i = 0; i < lengthOfOct; i++) {
-        result += triades[oct[i] - '0'];
+        result += triades_[oct[i] - '0'];
     }
 
-    return cutUnnecessaryZeroes(result);
+    return CutUnnecessaryZeroes(result);
 }
 
-int ProgrammerCalculator::convertOctToDec(const std::string &oct) {
+int ProgrammerCalculator::ConvertOctToDec(const std::string &oct) {
     if (oct.find_first_not_of("01234567") != std::string::npos) {
         return -1;
     }
-    return convertBinToDec(convertOctToBin(oct));
+    return ConvertBinToDec(ConvertOctToBin(oct));
 }
 
-std::string ProgrammerCalculator::convertOctToHex(const std::string &oct) {
+std::string ProgrammerCalculator::ConvertOctToHex(const std::string &oct) {
     if (oct.find_first_not_of("01234567") != std::string::npos) {
         return "-1";
     }
-    return convertBinToHex(convertOctToBin(oct));
+    return ConvertBinToHex(ConvertOctToBin(oct));
 }
 
-std::string ProgrammerCalculator::convertHexToBin(const std::string &hex) {
+std::string ProgrammerCalculator::ConvertHexToBin(const std::string &hex) {
     if (hex.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
         return "-1";
     }
@@ -158,33 +158,33 @@ std::string ProgrammerCalculator::convertHexToBin(const std::string &hex) {
 
     for (int i = 0; i < lengthOfHex; i++) {
         if (hex[i] >= '0' && hex[i] <= '9') {
-            result += tetrads[hex[i] - '0'];
+            result += tetrads_[hex[i] - '0'];
         } else if (hex[i] >= 'a' && hex[i] <= 'f') {
-            result += tetrads[10 + hex[i] - 'a'];
+            result += tetrads_[10 + hex[i] - 'a'];
         } else if (hex[i] >= 'A' && hex[i] <= 'F') {
-            result += tetrads[10 + hex[i] - 'A'];
+            result += tetrads_[10 + hex[i] - 'A'];
         }
     }
 
-    return cutUnnecessaryZeroes(result);
+    return CutUnnecessaryZeroes(result);
 }
 
-std::string ProgrammerCalculator::convertHexToOct(const std::string &hex) {
+std::string ProgrammerCalculator::ConvertHexToOct(const std::string &hex) {
     if (hex.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
         return "-1";
     }
-    return convertBinToOct(convertHexToBin(hex));
+    return ConvertBinToOct(ConvertHexToBin(hex));
 }
 
-int ProgrammerCalculator::convertHexToDec(const std::string &hex) {
+int ProgrammerCalculator::ConvertHexToDec(const std::string &hex) {
     if (hex.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
         return -1;
     }
-    return convertBinToDec(convertHexToBin(hex));
+    return ConvertBinToDec(ConvertHexToBin(hex));
 }
 
 
-std::string ProgrammerCalculator::cutUnnecessaryZeroes(const std::string &bin) {
+std::string ProgrammerCalculator::CutUnnecessaryZeroes(const std::string &bin) {
     std::string binCopy = bin;
     int lengthOfBin = binCopy.length();
     int positionOfTheFirstOne = binCopy.find("1");
