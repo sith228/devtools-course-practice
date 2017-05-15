@@ -35,7 +35,7 @@ Vector3D& Vector3D::operator=(const Vector3D &v) {
     return *this;
 }
 
-Vector3D Vector3D::operator+(const Vector3D &v) {
+Vector3D Vector3D::operator+(const Vector3D &v) const {
     Vector3D temp;
     temp.x = x + v.x;
     temp.y = y + v.y;
@@ -44,7 +44,7 @@ Vector3D Vector3D::operator+(const Vector3D &v) {
     return temp;
 }
 
-Vector3D Vector3D::operator-(const Vector3D &v) {
+Vector3D Vector3D::operator-(const Vector3D &v) const {
     Vector3D temp;
     temp.x = x - v.x;
     temp.y = y - v.y;
@@ -68,7 +68,7 @@ Vector3D Vector3D::Normalize() {
     return *this;
 }
 
-double Vector3D::operator*(const Vector3D & v) {
+double Vector3D::operator*(const Vector3D & v) const {
     return x*v.x + y*v.y + z*v.z;
 }
 
