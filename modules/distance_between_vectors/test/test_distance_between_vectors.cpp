@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 #include "include/distance_between_vectors.h"
-#include <vector>
 
 TEST(DistanceBetweenVectors, Different_Size_Vectors) {
   std::vector<float> V1(4);

@@ -28,5 +28,5 @@ std::vector<float> vector2, Metric::TypeMetric TypeM) {
     return distance;
   } else {
     return 0;
-  } 
+  }
 }
