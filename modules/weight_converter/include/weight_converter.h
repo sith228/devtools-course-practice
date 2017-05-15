@@ -37,8 +37,8 @@ struct WeightsMap{
 class WeightConverter{
  public:
     explicit WeightConverter(double weight = 0.0, Weights type = KG);
-    void setWeight(double weight, Weights type);
-    double getWeight();
+    void SetWeight(double weight, Weights type);
+    double GetWeight();
 
     double Convert(Weights to);
     double Convert(double weight, Weights from, Weights to);

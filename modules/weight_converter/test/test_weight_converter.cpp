@@ -27,7 +27,7 @@ TEST(WeightConverterTest, Can_Get_Weight) {
     WeightConverter wc(weight_g, G);
     // Act
     // Assert
-    ASSERT_NEAR(weight_kg, wc.getWeight(), EPS);
+    ASSERT_NEAR(weight_kg, wc.GetWeight(), EPS);
 }
 
 TEST(WeightConverterTest, Can_Set_Weight) {
@@ -36,9 +36,9 @@ TEST(WeightConverterTest, Can_Set_Weight) {
     double weight_kg = 0.001;
     WeightConverter wc;
     // Act
-    wc.setWeight(weight_g, G);
+    wc.SetWeight(weight_g, G);
     // Assert
-    ASSERT_NEAR(weight_kg, wc.getWeight(), EPS);
+    ASSERT_NEAR(weight_kg, wc.GetWeight(), EPS);
 }
 
 TEST(WeightConverterTest, Can_Convert_Inner_Value) {

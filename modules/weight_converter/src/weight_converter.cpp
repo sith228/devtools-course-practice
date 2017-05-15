@@ -5,14 +5,14 @@
 const std::map<Weights, double> WeightsMap::kWeights_ratio = WeightsMap::CreateMap();
 
 WeightConverter::WeightConverter(double weight, Weights type) {
-    setWeight(weight, type);
+    SetWeight(weight, type);
 }
 
-void WeightConverter::setWeight(double weight, Weights type) {
+void WeightConverter::SetWeight(double weight, Weights type) {
     Weight_ = weight * WeightsMap::kWeights_ratio.at(type);
 }
 
-double WeightConverter::getWeight() {
+double WeightConverter::GetWeight() {
     return Weight_;
 }
 
