@@ -72,14 +72,14 @@ double Vector3D::operator*(const Vector3D & v) {
     return x*v.x + y*v.y + z*v.z;
 }
 
-Vector3D Vector3D::operator^(const Vector3D & v) {
-    Vector3D vt(*this);
+Vector3D Vector3D::operator^(const Vector3D & v) const {
+    Vector3D vt(*this), temp;
     if (vt.x != 0 || vt.y != 0 || vt.z != 0) {
         if (v.x != 0 || v.y != 0 || v.z != 0) {
-            x = vt.y*v.z - vt.z*v.y;
-            y = vt.z*v.x - vt.x*v.z;
-            z = vt.x*v.y - vt.y*v.x;
+            temp.x = vt.y*v.z - vt.z*v.y;
+            temp.y = vt.z*v.x - vt.x*v.z;
+            temp.z = vt.x*v.y - vt.y*v.x;
         }
     }
-    return *this;
+    return temp;
 }
