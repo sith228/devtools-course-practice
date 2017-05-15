@@ -20,6 +20,10 @@ class Vector3D {
     double GetY() const { return y; }
     double GetZ() const { return z; }
 
+    void SetX(double _x) { x = _x; }
+    void SetY(double _y) { y = _y; }
+    void SetZ(double _z) { z = _z; }
+
     bool operator==(const Vector3D &v) const;  // comparison
     bool operator!=(const Vector3D &v) const;  // comparison
 

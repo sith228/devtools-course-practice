@@ -53,6 +53,36 @@ TEST(Vector3D, can_get_z) {
     EXPECT_EQ(z, v.GetZ());
 }
 
+TEST(Vector3D, can_set_x) {
+
+    double x = 21.54;
+    Vector3D v, vt(x, 0.0, 0.0);
+
+    v.SetX(x);
+
+    EXPECT_EQ(v, vt);
+}
+
+TEST(Vector3D, can_set_y) {
+
+    double y = -34.979;
+    Vector3D v, vt(0.0, y, 0.0);
+
+    v.SetY(y);
+
+    EXPECT_EQ(v, vt);
+}
+
+TEST(Vector3D, can_set_z) {
+
+    double z = 65.4633;
+    Vector3D v, vt(0.0, 0.0, z);
+
+    v.SetZ(z);
+
+    EXPECT_EQ(v, vt);
+}
+
 TEST(Vector3D, can_assign_vector_to_itself) {
     Vector3D v(2.55, 6.25, 0.99), vt(2.55, 6.25, 0.99);
 
