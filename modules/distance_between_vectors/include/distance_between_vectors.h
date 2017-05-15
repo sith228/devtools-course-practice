@@ -6,12 +6,11 @@
 #include <vector>
 #include <iostream>
 
-using namespace std;
 
-namespace Distance {
 
+namespace Metric {
 	enum TypeMetric { L1 = 1, L2, L3, L4, LInf };
-
+}
 	// Metric or the distance measure is non-negative, symmetric.
 	// The Minkowski metric (L3, L4).
 	// The Euclidean metric (L2).
@@ -19,10 +18,10 @@ namespace Distance {
 	// The metric Chebyshev (LInf).
 
 
-	class DistanceBetweenVectors {
-	public:
-		static float CalculateDistance(vector<float> vector1,
-    vector<float> vector2, TypeMetric TypeM);
-	};
-}
+class DistanceBetweenVectors {
+public:
+	static float CalculateDistance(std::vector<float> vector1,
+  std::vector<float> vector2, Metric::TypeMetric TypeM);
+};
+
 #endif  // MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_

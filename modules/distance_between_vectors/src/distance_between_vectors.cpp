@@ -1,17 +1,15 @@
 // Copyright 2017 Gorozhanin Mihail
 #include "include/distance_between_vectors.h"
 
-using namespace Distance;
-
-float DistanceBetweenVectors::CalculateDistance(vector<float> vector1,
-vector<float> vector2, TypeMetric TypeM) {
-  float distance;
+float DistanceBetweenVectors::CalculateDistance(std::vector<float> vector1,
+std::vector<float> vector2, Metric::TypeMetric TypeM) {
+	float distance;
 	int size;
 	if (vector1.size() == vector2.size()) {
-		vector<float>vect1 = vector1;
-		vector<float>vect2 = vector2;
+		std::vector<float>vect1 = vector1;
+		std::vector<float>vect2 = vector2;
 		size = vector1.size();
-		if (TypeM == LInf) {
+		if (TypeM == Metric::LInf) {
 			float max = 0;
 			for (int i = 0; i < size; i++)
 				if (max < fabs(vect1[i] - vect2[i]))
@@ -33,4 +31,3 @@ vector<float> vector2, TypeMetric TypeM) {
 		return 0;
 	}
 }
-
