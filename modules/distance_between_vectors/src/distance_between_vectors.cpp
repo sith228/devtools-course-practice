@@ -4,9 +4,9 @@
 
 float DistanceBetweenVectors::CalculateDistance(std::vector<float> vector1,
 std::vector<float> vector2, Metric::TypeMetric TypeM) {
-  float distance;
-  int size;
   if (vector1.size() == vector2.size()) {
+    float distance;
+    int size;
     std::vector<float>vect1 = vector1;
     std::vector<float>vect2 = vector2;
     size = vector1.size();
