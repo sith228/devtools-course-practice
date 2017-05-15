@@ -47,7 +47,7 @@ TEST(PARSER, can_calculate) {
     double actual = parser.Parse(func.c_str()).eval();
     double expected = 45 + 15*sin(2*45) + cos(45);
 
-    EXPECT_EQ(expected, actual);
+    EXPECT_NEAR(expected, actual, 1e-2);
 }
 
 TEST(PARSER, throw_exception_when_input_empty) {
@@ -85,5 +85,5 @@ TEST(PARSER, can_calculate_with_first_cos) {
     Parser parser;
 
     double expected = cos(180);
-    EXPECT_EQ(expected, parser.Parse(func).eval());
+    EXPECT_NEAR(expected, parser.Parse(func).eval(), 1e-2);
 }
