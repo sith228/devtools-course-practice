@@ -1,6 +1,7 @@
 // Copyright 2017 Gorozhanin Mihail
 
 #include <gtest/gtest.h>
+#include <vector>
 #include "include/distance_between_vectors.h"
 
 TEST(DistanceBetweenVectors, Different_Size_Vectors) {
