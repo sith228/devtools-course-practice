@@ -1,5 +1,6 @@
 // Copyright 2017 Gorozhanin Mihail
 #include "include/distance_between_vectors.h"
+#include <vector>
 
 float DistanceBetweenVectors::CalculateDistance(std::vector<float> vector1,
 std::vector<float> vector2, Metric::TypeMetric TypeM) {
@@ -27,5 +28,5 @@ std::vector<float> vector2, Metric::TypeMetric TypeM) {
     return distance;
   } else {
     return 0;
-  }  
+  } 
 }
