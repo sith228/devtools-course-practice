@@ -4,40 +4,51 @@
 #include "include/distance_between_vectors.h"
 
 TEST(DistanceBetweenVectors, Different_Size_Vectors) {
-	float Vector1[5];
-	for (int i = 0; i < 5; i++) {
-		Vector1[i] = (float)(i + 1);
+	vector<float> V1(4);
+	for (int i = 0; i < 4; i++)
+	{
+		V1[i] = static_cast<float>(i*(0.3+0.01*i));
 	}
-	float Vector2[6];
-	for (int i = 0; i < 6; i++) {
-		Vector1[i] = (float)(i * 2 + 1);
+	vector<float> V2(5);
+	for (int i = 0; i < 5; i++)
+	{
+		V2[i] = static_cast<float>(i+2);
 	}
-	float result = DistanceBetweenVectors::CalculateDistance(Vector1, Vector2, 2, 5);
+	TypeMetric Type = L2;
+	float result = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 	EXPECT_FLOAT_EQ(result, 0.0f);
 }
 
-TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Size) {
-	float Vector1[5];
-	for (int i = 0; i < 5; i++) {
-		Vector1[i] = (float)(i + 1);
+TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Different_Metric) {
+	vector<float> V1(4);
+	for (int i = 0; i < 4; i++)
+	{
+		V1[i] = static_cast<float>(i*(0.3+0.01*i));
 	}
-	float Vector2[5];
-	for (int i = 0; i < 6; i++) {
-		Vector1[i] = (float)(i * 2 + 1);
-	}
-	float result = DistanceBetweenVectors::CalculateDistance(Vector1, Vector2, 2, 15);
-	EXPECT_FLOAT_EQ(result, 0.0f);
+	vector<float> V2(5);
+	for (int i = 0; i < 5; i++)
+	{
+		V2[i] = static_cast<float>(i+2);
+	};
+	TypeMetric Type = L2;
+	float result1 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
+	TypeMetric Type = LInf;
+	float result2 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
+	EXPECT_FLOAT_EQ(result1, result2);
 }
 
-TEST(DistanceBetweenVectors, Equal_Size_Vectors_With_Size) {
-	float Vector1[5];
-	for (int i = 0; i < 5; i++) {
-		Vector1[i] = (float)(i + 1);
+TEST(DistanceBetweenVectors, Equal_Size_Vectors_Final) {
+	vector<float> V1(4);
+	for (int i = 0; i < 4; i++)
+	{
+		V1[i] = static_cast<float>(i+2);
 	}
-	float Vector2[5];
-	for (int i = 0; i < 5; i++) {
-		Vector1[i] = (float)(i * 2 + 1);
-	}
-	float result = DistanceBetweenVectors::CalculateDistance(Vector1, Vector2, 5, 5);
-	EXPECT_FLOAT_EQ(result, 4.0f);
+	vector<float> V2(4);
+	for (int i = 0; i < 4; i++)
+	{
+		V2[i] = static_cast<float>(i);
+	};
+	TypeMetric Type = L1;
+	float result2 = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
+	EXPECT_FLOAT_EQ(result, 8.0f);
 }
