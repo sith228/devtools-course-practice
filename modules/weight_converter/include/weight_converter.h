@@ -19,7 +19,7 @@ enum Weights{
 };
 
 struct WeightsMap{
-    static std::map<Weights, double> CreateMap(){
+    static std::map<Weights, double> CreateMap() {
         std::map<Weights, double> m;
         m[KG] = 1.0;
         m[MG] = 0.000001;
