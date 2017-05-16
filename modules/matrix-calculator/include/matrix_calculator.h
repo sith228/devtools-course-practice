@@ -12,7 +12,7 @@
 
 class MatrixCalculator {
  public:
-    MatrixCalculator(int rows = 0, int columns = 0);
+    explicit MatrixCalculator(int rows = 0, int columns = 0);
     MatrixCalculator(const MatrixCalculator&);
     ~MatrixCalculator();
 
