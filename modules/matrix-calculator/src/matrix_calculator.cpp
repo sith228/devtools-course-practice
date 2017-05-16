@@ -24,7 +24,7 @@ bool MatrixCalculator::size_comp(const MatrixCalculator& p) const {
     return result;
 }
 
-MatrixCalculator::MatrixCalculator(int rows = 0, int columns = 0) {
+MatrixCalculator::MatrixCalculator(int rows, int columns) {
     if (rows < 0 || columns < 0) {
         throw INVALID_ARGS;
     }
