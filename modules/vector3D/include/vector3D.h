@@ -25,13 +25,12 @@ class Vector3D {
 
     Vector3D& operator=(const Vector3D &v);     // assigment
 
-                                                                                                          // vector operations
     Vector3D  operator+(const Vector3D &v) const;     // addition
     Vector3D  operator-(const Vector3D &v) const;     // subtraction
     double Norm();                        // vector norm
     Vector3D Normalize();                // normalization vector
     double  operator*(const Vector3D &v) const;     // scalar product
-    Vector3D  operator^(const Vector3D &v) const;    // vector product v1 ^ v2
+    Vector3D  operator^(const Vector3D &v) const;   // vector product v1 ^ v2
 
  protected:
     double x_;
