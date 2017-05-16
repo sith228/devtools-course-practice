@@ -11,7 +11,6 @@
 #define DIV_BY_ZERO -4
 
 class MatrixCalculator {
-
  public:
     MatrixCalculator(int, int);
     MatrixCalculator(const MatrixCalculator&);
