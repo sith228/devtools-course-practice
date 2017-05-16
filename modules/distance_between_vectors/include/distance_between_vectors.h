@@ -19,7 +19,7 @@ namespace Metric {
 class DistanceBetweenVectors {
  public:
   static float CalculateDistance(std::vector<float> vector1,
-  std::vector<float> vector2, Metric::TypeMetric TypeM);
+  std::vector<float> vector2, Metric::TypeMetric typemetric);
 };
 
 #endif  // MODULES_DISTANCE_BETWEEN_VECTORS_INCLUDE_DISTANCE_BETWEEN_VECTORS_H_

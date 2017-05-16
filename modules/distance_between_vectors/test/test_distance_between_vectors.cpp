@@ -15,9 +15,8 @@ TEST(DistanceBetweenVectors, Different_Size_Vectors) {
   for (int i = 0; i < 5; i++) {
     V2[i] = static_cast<float>(i+2);
   }
-  float result = DistanceBetweenVectors::CalculateDistance(V1, V2, Type);
 
-  EXPECT_FLOAT_EQ(result, 0.0f);
+  EXPECT_ANY_THROW(DistanceBetweenVectors::CalculateDistance(V1, V2, Type););
 }
 
 TEST(DistanceBetweenVectors, Different_Size_Vectors_With_Different_Metric) {
