@@ -29,7 +29,7 @@ class ProgrammerCalculator {
  private:
     static std::vector<std::string> triades_;
     static std::vector<std::string> tetrads_;
-    static std::vector<std::string> charsSet_;
+    static std::vector<std::string> chars_set_;
     std::string CutUnnecessaryZeroes(const std::string &bin);
 };
 
