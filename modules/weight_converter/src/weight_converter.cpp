@@ -11,15 +11,15 @@ WeightConverter::WeightConverter(double weight, Weights type) {
 }
 
 void WeightConverter::SetWeight(double weight, Weights type) {
-    Weight_ = weight * WeightsMap::kWeights_ratio.at(type);
+    weight_ = weight * WeightsMap::kWeights_ratio.at(type);
 }
 
 double WeightConverter::GetWeight() {
-    return Weight_;
+    return weight_;
 }
 
 double WeightConverter::Convert(Weights to) {
-    return Weight_ / WeightsMap::kWeights_ratio.at(to);
+    return weight_ / WeightsMap::kWeights_ratio.at(to);
 }
 
 double WeightConverter::Convert(double weight, Weights from, Weights to) {

@@ -5,7 +5,7 @@
 #ifndef MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_H_
 #define MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_H_
 
-enum Weights{
+enum Weights {
     KG,    // kilogram
     MG,    // milligram
     G,     // gram
@@ -18,7 +18,7 @@ enum Weights{
     END
 };
 
-struct WeightsMap{
+struct WeightsMap {
     static std::map<Weights, double> CreateMap() {
         std::map<Weights, double> m;
         m[KG] = 1.0;
@@ -34,7 +34,7 @@ struct WeightsMap{
     static const std::map<Weights, double> kWeights_ratio;
 };
 
-class WeightConverter{
+class WeightConverter {
  public:
     explicit WeightConverter(double weight = 0.0, Weights type = KG);
     void SetWeight(double weight, Weights type);
@@ -43,7 +43,7 @@ class WeightConverter{
     double Convert(Weights to);
     double Convert(double weight, Weights from, Weights to);
  private:
-    double Weight_;    // kg
+    double weight_;    // kg
 };
 
 #endif  // MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_H_
