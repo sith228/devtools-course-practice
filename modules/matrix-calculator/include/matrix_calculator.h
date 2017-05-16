@@ -22,7 +22,7 @@ class MatrixCalculator {
     MatrixCalculator operator *(const MatrixCalculator&) const;
 
     double Determinant() const;
-    void SetMatrix(std::vector<std::vector<double>> &);
+    void SetMat(std::vector<std::vector<double>> &);
 
  protected:
     bool operator ==(const MatrixCalculator&) const;
