@@ -1,5 +1,4 @@
-#include "include/matrix.h"
-#include <math.h>
+#include "include/matrix_calculator.h"
 #include <iostream>
 
 bool MatrixCalculator::operator ==(const MatrixCalculator& p) const {

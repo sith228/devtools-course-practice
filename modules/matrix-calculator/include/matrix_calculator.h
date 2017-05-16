@@ -11,29 +11,26 @@
 #define DIV_BY_ZERO -4
 
 class MatrixCalculator {
-	
-public:
 
-	MatrixCalculator(int, int);
-	MatrixCalculator(const MatrixCalculator&);
-	~MatrixCalculator();
+ public:
+    MatrixCalculator(int, int);
+    MatrixCalculator(const MatrixCalculator&);
+    ~MatrixCalculator();
 
-	MatrixCalculator& operator =(const MatrixCalculator&);
-	MatrixCalculator operator +(const MatrixCalculator&) const;
-	MatrixCalculator operator -(const MatrixCalculator&) const;
-	MatrixCalculator operator *(const MatrixCalculator&) const;
+    MatrixCalculator& operator =(const MatrixCalculator&);
+    MatrixCalculator operator +(const MatrixCalculator&) const;
+    MatrixCalculator operator -(const MatrixCalculator&) const;
+    MatrixCalculator operator *(const MatrixCalculator&) const;
 
-	double Determinant() const;
-	void SetMatrix(std::vector<std::vector<double>> &);
+    double Determinant() const;
+    void SetMatrix(std::vector<std::vector<double>> &);
 
-protected:
+ protected:
+    bool operator ==(const MatrixCalculator&) const;
+    bool size_comp(const MatrixCalculator&) const;
 
-	bool operator ==(const MatrixCalculator&) const;
-	bool size_comp(const MatrixCalculator&) const;
-
-private:
-
-	std::vector<std::vector<double > > matrix_;
+ private:
+    std::vector<std::vector<double > > matrix_;
 };
 
-#endif // MODULES_MATRIX_CALCULATOR_INCLUDE_MATRIX_CALCULATOR_H_
+#endif  // MODULES_MATRIX_CALCULATOR_INCLUDE_MATRIX_CALCULATOR_H_
