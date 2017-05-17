@@ -125,7 +125,7 @@ TEST(MatrixCalculatorTest, first_elem_is_zero) {
     std::vector<std::vector<double>> v1 = {
         { 0.0, 2.0, 5.0 },
         { 3.0, 2.0, 5.0 },
-        { 5.0, 3.0, 1.0 } };    
+        { 5.0, 3.0, 1.0 } };
 
     MatrixCalculator m1;
     m1.SetMat(v1);
@@ -137,7 +137,7 @@ TEST(MatrixCalculatorTest, cant_calc_determinant_in_rect_matrix) {
     std::vector<std::vector<double>> v1 = {
         { 1.0, 2.0, 5.0, 3.0 },
         { 3.0, 2.0, 5.0, 2.0 },
-        { 5.0, 3.0, 1.0, 4.0 } };    
+        { 5.0, 3.0, 1.0, 4.0 } };
 
     MatrixCalculator m1;
     m1.SetMat(v1);
@@ -154,4 +154,15 @@ TEST(MatrixCalculatorTest, size_comp_is_correctly) {
     m2.SetMat(v2);
 
     EXPECT_FALSE(m1.size_comp(m2));
+}
+
+TEST(MatrixCalculatorTest, set_matrix_works_correctly) {
+    std::vector<std::vector<double>> v1(3);
+    for(size_t i = 0; i < v1.size(); ++i) {
+        v1[i] = std::vector<double>(i+1);
+    }
+
+    MatrixCalculator m1;   
+
+    EXPECT_ANY_THROW(m1.SetMat(v1));
 }
