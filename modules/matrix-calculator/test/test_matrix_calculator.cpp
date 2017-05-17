@@ -158,11 +158,11 @@ TEST(MatrixCalculatorTest, size_comp_is_correctly) {
 
 TEST(MatrixCalculatorTest, set_matrix_works_correctly) {
     std::vector<std::vector<double>> v1(3);
-    for(size_t i = 0; i < v1.size(); ++i) {
+    for (size_t i = 0; i < v1.size(); ++i) {
         v1[i] = std::vector<double>(i+1);
     }
 
-    MatrixCalculator m1;   
+    MatrixCalculator m1;
 
     EXPECT_ANY_THROW(m1.SetMat(v1));
 }
