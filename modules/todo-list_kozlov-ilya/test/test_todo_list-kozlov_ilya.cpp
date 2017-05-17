@@ -25,9 +25,8 @@ TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreated) {
     // Arrange
     TODOList ListToTest;
     // Act
-    ListToTest.NewTask();
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.NewTask());
 }
 
 TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreatedWithStringArg) {
@@ -35,9 +34,8 @@ TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreatedWithStringArg) {
     TODOList ListToTest;
     const std::string testname = "To test the constructor";
     // Act
-    ListToTest.NewTask(testname);
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.NewTask(testname););
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TaskCanBeDeletedInTODOList) {
@@ -45,9 +43,8 @@ TEST(Kozlov_Ilya_TODOListTest, TaskCanBeDeletedInTODOList) {
     TODOList ListToTest;
     // Act
     ListToTest.NewTask();
-    ListToTest.DeleteTask(1);
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.DeleteTask(1));
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeCleared) {
@@ -55,9 +52,8 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeCleared) {
     TODOList ListToTest;
     // Act
     ListToTest.NewTask();
-    ListToTest.ClearList();
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.ClearList());
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TaskCanBeRenamedInTODOList) {
@@ -66,18 +62,16 @@ TEST(Kozlov_Ilya_TODOListTest, TaskCanBeRenamedInTODOList) {
     TODOList ListToTest;
     // Act
     ListToTest.NewTask();
-    ListToTest.RenameTask(1, testname);
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.RenameTask(1, testname););
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShown) {
     // Arrange
     TODOList ListToTest;
     // Act
-    ListToTest.ShowTODOList();
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
@@ -87,7 +81,10 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
     ListToTest.LimitTasksCount(1);
     ListToTest.UnlimitTasksCount();
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE ({
+        ListToTest.LimitTasksCount(1);
+        ListToTest.UnlimitTasksCount();
+    });
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeSetDoneAndUndone) {
@@ -95,10 +92,11 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeSetDoneAndUndone) {
     TODOList ListToTest;
     // Act
     ListToTest.NewTask();
-    ListToTest.SetTaskDone(1);
-    ListToTest.SetTaskUndone(1);
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE ({
+        ListToTest.SetTaskDone(1);
+        ListToTest.SetTaskUndone(1);
+    });
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TasksPosCanBeChangedInTODOList) {
@@ -108,8 +106,7 @@ TEST(Kozlov_Ilya_TODOListTest, TasksPosCanBeChangedInTODOList) {
     ListToTest.NewTask();
     ListToTest.NewTask();
     // Assert
-    ListToTest.ChangeTasksPosition(1, 2);
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE(ListToTest.ChangeTasksPosition(1, 2));
 }
 
 TEST(Kozlov_Ilya_TODOListTest, ParamsCanBeGot) {
@@ -117,13 +114,14 @@ TEST(Kozlov_Ilya_TODOListTest, ParamsCanBeGot) {
     TODOList ListToTest;
     ListToTest.NewTask();
     // Act
-    ListToTest.GetCurrentTasksValue();
-    ListToTest.GetMaxTaskValue();
-    ListToTest.GetTaskStatus(1);
-    ListToTest.GetTaskName(1);
-    ListToTest.GetTODOListName();
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE ({
+        ListToTest.GetCurrentTasksValue();
+        ListToTest.GetMaxTaskValue();
+        ListToTest.GetTaskStatus(1);
+        ListToTest.GetTaskName(1);
+        ListToTest.GetTODOListName();
+    });
 }
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListParamConstrIsWorkingCorrectly) {
@@ -234,32 +232,30 @@ TEST(Kozlov_Ilya_TODOListTest, ForbiddenParamsForMethods) {
     const int toolow = -42;
     TODOList ListToTest;
     ListToTest.NewTask();
-
     // Act
-
-        // deleting
-    ListToTest.DeleteTask(toolarge);
-    ListToTest.DeleteTask(toolow);
-        // renaming
-    ListToTest.RenameTask(toolarge, tasknameparam);
-    ListToTest.RenameTask(toolow, tasknameparam);
-        // limiting
-    ListToTest.LimitTasksCount(toolarge);
-    ListToTest.LimitTasksCount(toolow);
-        // setting done
-    ListToTest.SetTaskDone(toolarge);
-    ListToTest.SetTaskDone(toolow);
-        // setting undone
-    ListToTest.SetTaskUndone(toolarge);
-    ListToTest.SetTaskUndone(toolow);
-        // changing position
-    ListToTest.ChangeTasksPosition(toolarge, toolow);
-    ListToTest.ChangeTasksPosition(toolow, toolarge);
-    ListToTest.ChangeTasksPosition(toolarge, toolarge);
-    ListToTest.ChangeTasksPosition(toolow, toolow);
-
     // Assert
-    ASSERT_NO_FATAL_FAILURE();
+    ASSERT_NO_FATAL_FAILURE({
+        // deleting
+        ListToTest.DeleteTask(toolarge);
+        ListToTest.DeleteTask(toolow);
+        // renaming
+        ListToTest.RenameTask(toolarge, tasknameparam);
+        ListToTest.RenameTask(toolow, tasknameparam);
+        // limiting
+        ListToTest.LimitTasksCount(toolarge);
+        ListToTest.LimitTasksCount(toolow);
+        // setting done
+        ListToTest.SetTaskDone(toolarge);
+        ListToTest.SetTaskDone(toolow);
+        // setting undone
+        ListToTest.SetTaskUndone(toolarge);
+        ListToTest.SetTaskUndone(toolow);
+        // changing position
+        ListToTest.ChangeTasksPosition(toolarge, toolow);
+        ListToTest.ChangeTasksPosition(toolow, toolarge);
+        ListToTest.ChangeTasksPosition(toolarge, toolarge);
+        ListToTest.ChangeTasksPosition(toolow, toolow);
+    });
 }
 
 TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly) {
