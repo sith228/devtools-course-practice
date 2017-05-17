@@ -2,6 +2,7 @@
 
 #include "include/todo_list_kozlov_ilya.h"
 #include <string>
+#include <algorithm>
 
 TODOList::TODOTask::TODOTask() {
 }

@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 enum TaskStatus { UNDONE_TASK, DONE_TASK };
 

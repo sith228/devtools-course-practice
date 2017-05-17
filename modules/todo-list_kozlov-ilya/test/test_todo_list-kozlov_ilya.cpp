@@ -1,8 +1,9 @@
-// Copyright 2017 Kozlov Ilya
+    // Copyright 2017 Kozlov Ilya
 
 #include <gtest/gtest.h>
 
 #include <string>
+#include <algorithm>
 
 #include "include/todo_list_kozlov_ilya.h"
 
