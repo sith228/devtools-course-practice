@@ -3,20 +3,22 @@
 #ifndef MODULES_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
 #define MODULES_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
 
+#include <cmath>
+
 class AreaConverter {
- public:
-    static constexpr double centimeter = 0.01;
-    static constexpr double decimeter = 0.1;
-    static constexpr double meter = 1.0;
-    static constexpr double yard = 0.9144;
-    static constexpr double inch = 0.0254;
-    static constexpr double acr = 63.6149072341;
-    static constexpr double hectare = 100;
+public:
+    static constexpr double kCentimeter = 0.01;
+    static constexpr double kDecimeter = 0.1;
+    static constexpr double kMeter = 1.0;
+    static constexpr double kYard = 0.9144;
+    static constexpr double kInch = 0.0254;
+    static constexpr double kAcr = 63.614907234075253345955341654644;
+    static constexpr double kHectare = 100;
 
-    AreaConverter(double, double);
-    double operator()(double);
+    AreaConverter(double from, double to);
+    double operator()(double x);
 
- private:
+private:
     double ratio_;
     static double Square(double x) { return x * x; }
 };
