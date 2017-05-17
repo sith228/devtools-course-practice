@@ -1,7 +1,7 @@
 // Copyright 2017 Israfilov Marat
 
 #include <gtest/gtest.h>
-#include "include/MatrixCalculator.h"
+#include "include/matrix_calculator.h"
 
 TEST(MatrixCalculatorTest, cant_create_matrix_with_negativ_sizes) {
     EXPECT_ANY_THROW(MatrixCalculator matrix(-1, -1));

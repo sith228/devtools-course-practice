@@ -2,6 +2,7 @@
 
 #include "include/matrix_calculator.h"
 #include <iostream>
+#include <vector>
 
 bool MatrixCalculator::operator ==(const MatrixCalculator& p) const {
     return this->matrix_ == p.matrix_;
@@ -27,7 +28,7 @@ MatrixCalculator::MatrixCalculator(int rows, int columns) {
         throw "Invalid arguments";
     }
 
-    matrix_ = std::vector<std::vector<double > >(rows, 
+    matrix_ = std::vector<std::vector<double > >(rows,
               std::vector<double>(columns, 0.0));
 }
 
