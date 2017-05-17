@@ -2,7 +2,7 @@
 
 #include "include/interpolation_search.h"
 
-bool InterpolationSearch::isArrayValid(int * sortedArray, int length) {
+bool InterpolationSearch::isArrayValid_(int * sortedArray, int length) {
   if (sortedArray == nullptr) {
     throw "Array is null";
   } else {
@@ -19,7 +19,7 @@ bool InterpolationSearch::isArrayValid(int * sortedArray, int length) {
 }
 
 int InterpolationSearch::Search(int toFind, int * sortedArray, int length) {
-  if (isArrayValid(sortedArray, length)) {
+  if (isArrayValid_(sortedArray, length)) {
     // Returns the index of an element with a value of toFind or -1,
     // if there is no such element
     int low = 0;

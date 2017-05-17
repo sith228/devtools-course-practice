@@ -8,7 +8,7 @@ class InterpolationSearch {
     int Search(int toFind, int * sortedArray, int length);
 
  private:
-    bool isArrayValid(int * sortedArray, int length);
+    bool isArrayValid_(int * sortedArray, int length);
 };
 
 #endif  // MODULES_INTERPOLATION_SEARCH_INCLUDE_INTERPOLATION_SEARCH_H_
