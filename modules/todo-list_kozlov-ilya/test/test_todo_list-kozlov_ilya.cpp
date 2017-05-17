@@ -81,7 +81,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
     ListToTest.LimitTasksCount(1);
     ListToTest.UnlimitTasksCount();
     // Assert
-    ASSERT_NO_FATAL_FAILURE ({
+    ASSERT_NO_FATAL_FAILURE({
         ListToTest.LimitTasksCount(1);
         ListToTest.UnlimitTasksCount();
     });
@@ -93,7 +93,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeSetDoneAndUndone) {
     // Act
     ListToTest.NewTask();
     // Assert
-    ASSERT_NO_FATAL_FAILURE ({
+    ASSERT_NO_FATAL_FAILURE({
         ListToTest.SetTaskDone(1);
         ListToTest.SetTaskUndone(1);
     });
@@ -115,7 +115,7 @@ TEST(Kozlov_Ilya_TODOListTest, ParamsCanBeGot) {
     ListToTest.NewTask();
     // Act
     // Assert
-    ASSERT_NO_FATAL_FAILURE ({
+    ASSERT_NO_FATAL_FAILURE({
         ListToTest.GetCurrentTasksValue();
         ListToTest.GetMaxTaskValue();
         ListToTest.GetTaskStatus(1);
