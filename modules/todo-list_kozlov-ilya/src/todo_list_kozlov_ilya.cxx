@@ -65,7 +65,7 @@ void TODOList::ClearList() {
 void TODOList::RenameTask(const std::size_t _task_index,
                           const std::string _new_task_name) {
     if ((_task_index <= data_list.size()) && (_task_index > 0)) {
-        data_list[_task_index - 1] = _new_task_name;
+        data_list[_task_index - 1].Rename(_new_task_name);
     }
 }
 
@@ -74,7 +74,7 @@ void TODOList::ShowTODOList() {
     std::cout << "Available tasks count: " << max_tasks_value << std::endl;
     std::cout << "Current tasks count: " << data_list.size() << std::endl;
     std::cout << std::endl;
-    for (int i = 0; i < data_list.size(); i++) {
+    for (unsigned int i = 0; i < data_list.size(); i++) {
         std::cout << i + 1 << ": " << data_list[i].GetTaskName();
         std::cout << " - " << data_list[i].GetTaskStatus() << std::endl;
     }
@@ -133,19 +133,17 @@ const std::size_t TODOList::GetCurrentTasksValue() {
 }
 
 std::string TODOList::GetTaskName(const std::size_t _task_index) {
-    if (_task_index <= data_list.size()) {
-        return data_list[_task_index - 1].GetTaskName();
-    } else if (_task_index > data_list.size()) {
+    if (_task_index > data_list.size()) {
         throw "The index is out of range! The function can't return anything";
     }
+    return data_list[_task_index - 1].GetTaskName();
 }
 
 TaskStatus TODOList::GetTaskStatus(const std::size_t _task_index) {
-    if (_task_index <= data_list.size()) {
-        return data_list[_task_index - 1].GetTaskStatus();
-    } else if (_task_index > data_list.size()) {
+    if (_task_index > data_list.size()) {
         throw "The index is out of range! The function can't return anything";
     }
+    return data_list[_task_index - 1].GetTaskStatus();
 }
 
 std::string TODOList::GetTODOListName() {
