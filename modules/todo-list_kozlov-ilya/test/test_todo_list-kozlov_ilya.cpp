@@ -280,9 +280,8 @@ TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetName) {
     const int wrong = 42;
     TODOList ListToTest;
     // Act
-    ListToTest.GetTaskName(wrong);
     // Assert
-    ASSERT_ANY_THROW();
+    ASSERT_ANY_THROW(ListToTest.GetTaskName(wrong));
 }
 
 TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetStatus) {
@@ -290,7 +289,6 @@ TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetStatus) {
     const int wrong = 42;
     TODOList ListToTest;
     // Act
-    ListToTest.GetTaskStatus(wrong);
     // Assert
-    ASSERT_ANY_THROW();
+    ASSERT_ANY_THROW(ListToTest.GetTaskStatus(wrong));
 }

@@ -134,14 +134,14 @@ const std::size_t TODOList::GetCurrentTasksValue() {
 }
 
 std::string TODOList::GetTaskName(const std::size_t _task_index) {
-    if (_task_index > data_list.size()) {
+    if (_task_index > data_list.size() || _task_index < 1)) {
         throw "The index is out of range! The function can't return anything";
     }
     return data_list[_task_index - 1].GetTaskName();
 }
 
 TaskStatus TODOList::GetTaskStatus(const std::size_t _task_index) {
-    if (_task_index > data_list.size()) {
+    if (_task_index > data_list.size() || _task_index < 1) {
         throw "The index is out of range! The function can't return anything";
     }
     return data_list[_task_index - 1].GetTaskStatus();
