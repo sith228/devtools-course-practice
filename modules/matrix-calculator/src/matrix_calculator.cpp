@@ -99,7 +99,25 @@ MatrixCalculator MatrixCalculator::operator *(const MatrixCalculator& p) const {
 }
 
 double MatrixCalculator::Determinant() const {
-    return 0.0;
+    if(matrix_.size() != matrix_[0].size()) {
+        throw "Invalid sizes";
+    }
+
+    double tmp, det = 1;
+    MatrixCalculator temp(*this);
+
+        for (int i = 0; i < temp.matrix_.size(); ++i) {
+            for (int j = i + 1; j < temp.matrix_.size(); ++j) {
+                if (matrix_[i][i] == 0)
+                    throw "Division by zero!";
+                tmp = temp.matrix_[j][i] / temp.matrix_[i][i];
+                for (int k = i; k < temp.matrix_.size(); k++) {
+                    temp.matrix_[j][k] -= temp.matrix_[i][k] * tmp;
+                }
+            }
+            det *= temp.matrix_[i][i];
+        }
+    return det;
 }
 
 void MatrixCalculator::SetMat(std::vector<std::vector<double>> &input_matrix) {
