@@ -7,18 +7,16 @@ bool MatrixCalculator::operator ==(const MatrixCalculator& p) const {
     return this->matrix_ == p.matrix_;
 }
 
+bool MatrixCalculator::operator !=(const MatrixCalculator& p) const {
+    return !(this->matrix_ == p.matrix_);
+}
+
 bool MatrixCalculator::size_comp(const MatrixCalculator& p) const {
     bool result = false;
 
-    if (this->matrix_.size() == p.matrix_.size()) {
+    if ((this->matrix_.size() == p.matrix_.size()) &&
+        (this->matrix_[0].size() == p.matrix_[0].size())) {
         result = true;
-
-        for (size_t i = 0; i < matrix_.size(); ++i) {
-            if (this->matrix_[i].size() != p.matrix_[i].size()) {
-                result = false;
-                break;
-            }
-        }
     }
 
     return result;
@@ -26,7 +24,7 @@ bool MatrixCalculator::size_comp(const MatrixCalculator& p) const {
 
 MatrixCalculator::MatrixCalculator(int rows, int columns) {
     if (rows < 0 || columns < 0) {
-        throw INVALID_ARGS;
+        throw "Invalid arguments";
     }
 
     matrix_ = std::vector<std::vector<double > >(rows, 
@@ -53,7 +51,7 @@ MatrixCalculator MatrixCalculator::operator +(const MatrixCalculator& p) const {
     MatrixCalculator result(*this);
 
     if (!size_comp(p)) {
-        throw INVALID_SIZES;
+        throw "Invalid sizes";
     }
 
     for (size_t i = 0; i < this->matrix_.size(); ++i) {
@@ -69,7 +67,7 @@ MatrixCalculator MatrixCalculator::operator -(const MatrixCalculator& p) const {
     MatrixCalculator result(*this);
 
     if (!size_comp(p)) {
-        throw INVALID_SIZES;
+        throw "Invalid sizes";
     }
 
     for (size_t i = 0; i < this->matrix_.size(); ++i) {
@@ -83,7 +81,7 @@ MatrixCalculator MatrixCalculator::operator -(const MatrixCalculator& p) const {
 
 MatrixCalculator MatrixCalculator::operator *(const MatrixCalculator& p) const {
     if (this->matrix_[0].size() != p.matrix_.size()) {
-        throw INVALID_SIZES;
+        throw "Invalid sizes";
     }
 
     MatrixCalculator result(this->matrix_.size(), p.matrix_[0].size());
@@ -104,13 +102,13 @@ double MatrixCalculator::Determinant() const {
 }
 
 void MatrixCalculator::SetMat(std::vector<std::vector<double>> &input_matrix) {
-    for (size_t i = 1; i < input_matrix.size(); ++i) {
-        if (input_matrix[i - 1].size() != input_matrix[i].size()) {
-            throw INVALID_MATRIX;
-        }
-    }
-
     if (this->matrix_ != input_matrix) {
+        for (size_t i = 1; i < input_matrix.size(); ++i) {
+            if (input_matrix[i - 1].size() != input_matrix[i].size()) {
+                throw "Invalid matrix";
+            }
+        }
+
         matrix_ = input_matrix;
     }
 }

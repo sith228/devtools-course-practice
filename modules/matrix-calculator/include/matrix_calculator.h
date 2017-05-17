@@ -5,10 +5,6 @@
 #define MODULES_MATRIX_CALCULATOR_INCLUDE_MATRIX_CALCULATOR_H_
 
 #include <vector>
-#define INVALID_ARGS -1
-#define INVALID_SIZES -2
-#define INVALID_MATRIX -3
-#define DIV_BY_ZERO -4
 
 class MatrixCalculator {
  public:
@@ -24,8 +20,8 @@ class MatrixCalculator {
     double Determinant() const;
     void SetMat(std::vector<std::vector<double>> &);
 
- protected:
     bool operator ==(const MatrixCalculator&) const;
+    bool operator !=(const MatrixCalculator&) const;
     bool size_comp(const MatrixCalculator&) const;
 
  private:
