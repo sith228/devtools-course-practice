@@ -6,7 +6,7 @@
 #include <cmath>
 
 class AreaConverter {
-public:
+ public:
     static constexpr double kCentimeter = 0.01;
     static constexpr double kDecimeter = 0.1;
     static constexpr double kMeter = 1.0;
@@ -18,7 +18,7 @@ public:
     AreaConverter(double from, double to);
     double operator()(double x);
 
-private:
+ private:
     double ratio_;
     static double Square(double x) { return x * x; }
 };
