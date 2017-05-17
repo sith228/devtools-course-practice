@@ -27,18 +27,17 @@ TEST(MatrixCalculatorTest, copied_matrix_has_its_own_memory) {
     m2.SetMat(v2);
 
     EXPECT_NE(m1, m2);
-
 }
 
 TEST(MatrixCalculatorTest, assign_operator_change_matrix_size) {
     std::vector<std::vector<double>> v1(3, std::vector<double>(3, 2));
     std::vector<std::vector<double>> v2(4, std::vector<double>(4, 2));
-    
+
     MatrixCalculator m1, m2;
     m1.SetMat(v1);
     m2.SetMat(v2);
     m1 = m2;
-    
+
     EXPECT_EQ(m1, m2);
 }
 
@@ -109,7 +108,7 @@ TEST(MatrixCalculatorTest, cant_mult_matrices_with_incorrect_size) {
 }
 
 TEST(MatrixCalculatorTest, determinant_is_calculated_correctry) {
-    std::vector<std::vector<double>> v1 = { 
+    std::vector<std::vector<double>> v1 = {
         { 1.0, 2.0, 5.0 },
         { 3.0, 2.0, 5.0 },
         { 5.0, 3.0, 1.0 } };
@@ -123,7 +122,7 @@ TEST(MatrixCalculatorTest, determinant_is_calculated_correctry) {
 
 TEST(MatrixCalculatorTest, size_comp_is_correctly) {
     std::vector<std::vector<double>> v1(3, std::vector<double>(3, 2));
-    std::vector<std::vector<double>> v2(1, std::vector<double>(3, 2));
+    std::vector<std::vector<double>> v2(4, std::vector<double>(3, 2));
 
     MatrixCalculator m1, m2;
     m1.SetMat(v1);
