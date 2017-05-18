@@ -5,31 +5,30 @@
 
 #include <iostream>
 
-const int DefMemSize = 25;
+const int kDefMemSize = 25;
 
-typedef double    TElem;
-typedef TElem*    PTElem;
-typedef double    TData;
+typedef double    Elem;
+typedef Elem*    PointElem;
 
 class Deque {
+ public:
+    explicit Deque(int size = kDefMemSize);
+    ~Deque();
+    void InsFront(Elem element);
+    void InsBack(Elem element);
+    Elem GetFront();
+    Elem GetBack();
+    bool IsEmpty(void) const;
+    bool IsFull(void) const;
  protected:
-    PTElem pMem;
-    int Front;
-    int Back;
-    int MemSize;
-    int DataCount;
+    PointElem memory_;
+    int front_;
+    int back_;
+    int mem_size_;
+    int data_count_;
 
     int GetNextFrontIndex(int index);
     int GetNextBackIndex(int index);
- public:
-    explicit Deque(int size = DefMemSize);
-    ~Deque();
-    void InsFront(TElem element);
-    void InsBack(TElem element);
-    TElem GetFront();
-    TElem GetBack();
-    bool IsEmpty(void) const;
-    bool IsFull(void) const;
 };
 
 #endif  // MODULES_DEQUE_INCLUDE_DEQUE_H_

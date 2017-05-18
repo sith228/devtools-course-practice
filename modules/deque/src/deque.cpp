@@ -2,84 +2,84 @@
 
 #include "include/deque.h"
 
-Deque::Deque(int size) : Front(-1), Back(0) {
-    DataCount = 0;
-    MemSize = size;
+Deque::Deque(int size) : front_(-1), back_(0) {
+    data_count_ = 0;
+    mem_size_ = size;
     if (size < 0)
         throw "DataErr";
     else if (size == 0)
-        pMem = nullptr;
+        memory_ = nullptr;
     else
-        pMem = new TElem[MemSize];
+        memory_ = new Elem[mem_size_];
 }
 
 Deque::~Deque() {
-    delete[] pMem;
-    pMem = nullptr;
+    delete[] memory_;
+    memory_ = nullptr;
 }
 
 int Deque::GetNextFrontIndex(int index) {
-    return ++index % MemSize;
+    return ++index % mem_size_;
 }
 
 int Deque::GetNextBackIndex(int index) {
-    return (index == 0) ? MemSize - 1 : --index;
+    return (index == 0) ? mem_size_ - 1 : --index;
 }
 
-void Deque::InsFront(TElem element) {
-    if (pMem == nullptr) {
+void Deque::InsFront(Elem element) {
+    if (memory_ == nullptr) {
         throw "DataNoMem";
     } else if (IsFull()) {
         throw "DataFull";
     } else {
-        Front = GetNextFrontIndex(Front);
-        pMem[Front] = element;
-        DataCount++;
+        front_ = GetNextFrontIndex(front_);
+        memory_[front_] = element;
+        data_count_++;
     }
 }
 
-void Deque::InsBack(TElem element) {
-    if (pMem == nullptr) {
+void Deque::InsBack(Elem element) {
+    if (memory_ == nullptr) {
         throw "DataNoMem";
     } else if (IsFull()) {
         throw "DataFull";
     } else {
-        Back = GetNextBackIndex(Back);
-        pMem[Back] = element;
-        DataCount++;
+        back_ = GetNextBackIndex(back_);
+        memory_[back_] = element;
+        data_count_++;
     }
 }
 
-TElem Deque::GetFront() {
-    if (pMem == nullptr) {
+Elem Deque::GetFront() {
+    if (memory_ == nullptr) {
         throw "DataNoMem";
     } else if (IsEmpty()) {
         throw "DataEmpty";
     } else {
-        DataCount--;
-        TData tmp = pMem[Front];
-        Front = GetNextBackIndex(Front);
+        data_count_--;
+        Elem tmp = memory_[front_];
+        front_ = GetNextBackIndex(front_);
         return tmp;
     }
 }
 
-TElem Deque::GetBack() {
-    if (pMem == nullptr) {
+Elem Deque::GetBack() {
+    if (memory_ == nullptr) {
         throw "DataNoMem";
     } else if (IsEmpty()) {
         throw "DataEmpty";
     } else {
-        DataCount--;
-        TData tmp = pMem[Back];
-        Back = GetNextFrontIndex(Back);
+        data_count_--;
+        Elem tmp = memory_[back_];
+        back_ = GetNextFrontIndex(back_);
         return tmp;
     }
 }
 
 bool Deque::IsEmpty(void) const {
-    return DataCount == 0;
+    return data_count_ == 0;
 }
 
 bool Deque::IsFull(void) const {
-    return DataCount == MemSize;
+    return data_count_ == mem_size_;
 }
