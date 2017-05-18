@@ -66,10 +66,22 @@ TEST(Kozlov_Ilya_TODOListTest, TaskCanBeRenamedInTODOList) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.RenameTask(1, testname););
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShown) {
+TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithoutTasks) {
     // Arrange
     TODOList ListToTest;
     // Act
+    // Assert
+    ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
+}
+
+TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithTasks) {
+    // Arrange
+    TODOList ListToTest("Today's plan");
+    // Act
+    ListToTest.NewTask("To test the ShowTodoListMethod");
+    ListToTest.NewTask("To add some tasks");
+    ListToTest.NewTask("To make this one done");
+    ListToTest.SetDone(3);
     // Assert
     ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
 }
@@ -258,7 +270,7 @@ TEST(Kozlov_Ilya_TODOListTest, ForbiddenParamsForMethods) {
     });
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly) {
+TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly1) {
     // Arrange
     const std::string taskpos1 = "TaskPos1";
     const std::string taskpos2 = "TaskPos2";
@@ -269,6 +281,21 @@ TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly) {
     ListToTest.ChangeTasksPosition(1, 2);
     // Assert
     ASSERT_EQ(taskpos2, ListToTest.GetTaskName(1));
+}
+
+TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly2) {
+    // Arrange
+    const std::string taskpos1 = "TaskPos1";
+    const std::string taskpos2 = "TaskPos2";
+    const std::string taskpos2 = "TaskPos3";
+    TODOList ListToTest;
+    ListToTest.NewTask(taskpos1);
+    ListToTest.NewTask(taskpos2);
+    ListToTest.NewTask(taskpos3);
+    // Act
+    ListToTest.ChangeTasksPosition(3, 2);
+    // Assert
+    ASSERT_EQ(taskpos3, ListToTest.GetTaskName(2));
 }
 
 TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetName) {
