@@ -86,9 +86,7 @@ void TODOList::ShowTODOList() {
 }
 
 void TODOList::LimitTasksCount(const std::size_t _new_limit) {
-    if ((_new_limit <= data_list_.size())
-        && (_new_limit > 0)
-        && (!data_list_.empty())) {
+    if ((_new_limit > 0) && (_new_limit < data_list_.max_size())) {
         max_tasks_value_ = _new_limit;
         if (data_list_.size() > max_tasks_value_) {
             data_list_.resize(max_tasks_value_);
@@ -130,8 +128,8 @@ void TODOList::ChangeTasksPosition(const std::size_t _current_postiton,
                         data_list_.begin() + _new_position);
         } else {
                  std::rotate(data_list_.begin() + _new_position-1,
-                 data_list_.begin() + _current_postiton,
-                 data_list_.begin() + _current_postiton);
+                             data_list_.begin() + _current_postiton,
+                             data_list_.begin() + _current_postiton);
                 }
     }
 }
