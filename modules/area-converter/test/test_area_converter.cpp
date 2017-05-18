@@ -8,7 +8,7 @@
 
 #include "include/area_converter.h"
 
-static const double kNeighbourhood = 
+static const double kNeighbourhood =
     std::numeric_limits<double>::epsilon() * 100000;
 
 TEST(AreaConverterTest, can_create_converter_unit) {
@@ -50,7 +50,7 @@ TEST(AreaConverterTest, is_negative_size_area_works_correct) {
     EXPECT_ANY_THROW(c(-2.1718));
 }
 
-TEST(AreaConverterTest, 
+TEST(AreaConverterTest,
     check_convert_multiple_times_with_different_arguments) {
     AreaConverter c = AreaConverter(AreaConverter::kCentimeter,
         AreaConverter::kAcr);
