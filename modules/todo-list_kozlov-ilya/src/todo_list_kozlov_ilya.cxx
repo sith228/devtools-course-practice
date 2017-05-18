@@ -126,7 +126,7 @@ void TODOList::ChangeTasksPosition(const std::size_t _current_postiton,
             std::rotate(data_list_.begin() + _current_postiton - 1,
                         data_list_.begin() + _current_postiton,
                         data_list_.begin() + _new_position);
-        } else {
+        } else if (_current_postiton > _new_position) {
                  std::rotate(data_list_.begin() + _new_position - 1,
                              data_list_.begin() + _current_postiton - 1,
                              data_list_.begin() + _current_postiton);
