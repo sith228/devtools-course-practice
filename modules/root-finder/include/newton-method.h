@@ -3,23 +3,23 @@
 #ifndef MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_H_
 #define MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_H_
 
-class newton_method {
+class NewtonMethod {
  public:
-    void setAB(float a, float b) {
-        A = a;
-        B = b;
+    void SetAB(float a, float b) {
+        A_ = a;
+        B_ = b;
     }
-    void setAccuracy(float acc) {
-        Acc = acc;
+    void SetAccuracy(float acc) {
+        Acc_ = acc;
     }
 
     float FindRoot(float(*fun)(float),
         float(*deriv_fun)(float), float(*deriv2_fun)(float));
 
  private:
-    float A;
-    float B;
-    float Acc;
+    float A_;
+    float B_;
+    float Acc_;
     bool IsMonotone(float(*fun)(float));
 };
 #endif  // MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_H_
