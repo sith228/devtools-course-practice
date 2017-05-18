@@ -40,14 +40,14 @@ TODOList::TODOList(const std::string _users_todo_list_name) {
 }
 
 void TODOList::NewTask() {
-    if (data_list_.size() < max_tasks_value_) {
+    if (data_list_.size() <= max_tasks_value_) {
         TODOTask new_task;
         data_list_.push_back(new_task);
     }
 }
 
 void TODOList::NewTask(const std::string _new_task_name) {
-    if (data_list_.size() < max_tasks_value_) {
+    if (data_list_.size() <= max_tasks_value_) {
         TODOTask new_task(_new_task_name);
         data_list_.push_back(new_task);
     }
@@ -86,7 +86,7 @@ void TODOList::ShowTODOList() {
 }
 
 void TODOList::LimitTasksCount(const std::size_t _new_limit) {
-    if ((_new_limit > 0) && (_new_limit < data_list_.max_size())) {
+    if ((_new_limit > 0) && (_new_limit <= data_list_.max_size())) {
         max_tasks_value_ = _new_limit;
         if (data_list_.size() > max_tasks_value_) {
             data_list_.resize(max_tasks_value_);
@@ -116,8 +116,8 @@ void TODOList::SetTaskUndone(const std::size_t _task_index) {
 
 void TODOList::ChangeTasksPosition(const std::size_t _current_postiton,
                                    const std::size_t _new_position) {
-    if ((_current_postiton < data_list_.size())
-        && (_new_position < max_tasks_value_)
+    if ((_current_postiton <= data_list_.size())
+        && (_new_position <= max_tasks_value_)
         && (_new_position != _current_postiton)
         && (_new_position > 0)
         && (_current_postiton > 0)
