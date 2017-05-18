@@ -54,7 +54,7 @@ void TODOList::NewTask(const std::string _new_task_name) {
 }
 
 void TODOList::DeleteTask(const std::size_t _task_index) {
-    if ((_task_index <= data_list.size()) && (_task_index > 0)) {
+    if ((_task_index <= data_list.size()) && (_task_index > 0) ) {
             data_list.erase(data_list.begin() + _task_index - 1);
     }
 }

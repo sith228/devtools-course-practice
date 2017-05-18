@@ -27,8 +27,8 @@ class TODOList {
         std::string GetTaskName();
         TaskStatus GetTaskStatus();
     };
+    std::vector<TODOTask> data_list = {};
     std::size_t max_tasks_value = data_list.max_size();
-    std::vector<TODOTask> data_list;
     std::string todo_list_name = "";
 
  public:
