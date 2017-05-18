@@ -39,4 +39,4 @@ class Vector3D {
 };
 
 
-#endif    // MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
+#endif     // MODULES_VECTOR3D_INCLUDE_VECTOR3D_H_
