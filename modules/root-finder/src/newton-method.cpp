@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cmath>
 
-bool newton_method::IsMonotone(float(*fun)(float)) {
+bool NewtonMethod::IsMonotone(float(*fun)(float)) {
     if (A_ > B_) {
         std::swap(A_, B_);
     }
