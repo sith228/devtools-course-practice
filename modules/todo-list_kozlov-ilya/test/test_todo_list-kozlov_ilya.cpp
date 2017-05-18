@@ -81,7 +81,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithTasks) {
     ListToTest.NewTask("To test the ShowTodoListMethod");
     ListToTest.NewTask("To add some tasks");
     ListToTest.NewTask("To make this one done");
-    ListToTest.SetDone(3);
+    ListToTest.SetTaskDone(3);
     // Assert
     ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
 }
@@ -287,7 +287,7 @@ TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly2) {
     // Arrange
     const std::string taskpos1 = "TaskPos1";
     const std::string taskpos2 = "TaskPos2";
-    const std::string taskpos2 = "TaskPos3";
+    const std::string taskpos3 = "TaskPos3";
     TODOList ListToTest;
     ListToTest.NewTask(taskpos1);
     ListToTest.NewTask(taskpos2);

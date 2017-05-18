@@ -86,8 +86,8 @@ void TODOList::ShowTODOList() {
 }
 
 void TODOList::LimitTasksCount(const std::size_t _new_limit) {
-    if ((_task_index <= data_list_.size())
-        && (_task_index > 0)
+    if ((_new_limit <= data_list_.size())
+        && (_new_limit > 0)
         && (!data_list_.empty())) {
         max_tasks_value_ = _new_limit;
         if (data_list_.size() > max_tasks_value_) {
