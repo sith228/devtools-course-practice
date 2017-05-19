@@ -27,7 +27,7 @@ RegexSearch& RegexSearch::operator=(const RegexSearch& regex) {
 //
 
 void RegexSearch::SetRegex(const std::string& regex) {
-  if (regex.length() > RegexSearch::kMaxRegexLength)
+  if (regex.size() > RegexSearch::kMaxRegexLength)
     throw RegexSearch::errorTooLongRegex;
 
   std::vector<Lexeme> lexemes;
@@ -51,7 +51,10 @@ std::string RegexSearch::GetRegex() const {
 //
 
 std::vector<int> RegexSearch::Find(const std::string& str) {
-  if (str.length() > RegexSearch::kMaxStringLength)
+  if (str.size() == 0)
+    throw RegexSearch::errorStringIsEmpty;
+
+  if (str.size() > RegexSearch::kMaxStringLength)
     throw RegexSearch::errorTooLongString;
 
   std::vector<int> res, temp(2);

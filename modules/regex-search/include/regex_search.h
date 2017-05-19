@@ -23,6 +23,7 @@ class RegexSearch {
   static const int errorTooLongRegex = -1;
   static const int errorRegExpIncorrect = -2;
   static const int errorTooLongString = -3;
+  static const int errorStringIsEmpty = -4;
 
   explicit RegexSearch(const std::string = "");
   RegexSearch(const RegexSearch&);

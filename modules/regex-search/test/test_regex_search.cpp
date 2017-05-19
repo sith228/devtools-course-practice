@@ -426,6 +426,20 @@ TEST(RegexSearchTest, operator_equal_works_properly) {
 // Find
 //
 
+TEST(RegexSearchFindTest, cant_find_anything_in_empty_string) {
+  // Arrange
+  RegexSearch r;
+  std::string s1, s2;
+
+  // Act
+  s1 = "abc?d";
+  s2 = "";
+  r.SetRegex(s1);
+
+  // Assert
+  ASSERT_ANY_THROW(r.Find(s2));
+}
+
 TEST(RegexSearchFindTest, empty_regex_matches_the_whole_string) {
   // Arrange
   RegexSearch r;
