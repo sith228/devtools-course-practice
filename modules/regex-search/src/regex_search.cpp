@@ -84,13 +84,12 @@ const size_t pos) {
 
   Lexeme lexeme;
   std::string l_str, temp;
-  int curr_pos;
 
   for (size_t i = pos; i < str.size(); ++i) {
     if (match_found)
       break;
 
-    curr_pos = i;
+    int curr_pos = i;
 
     for (size_t j = 0; j < regex_.size(); ++j) {
       lexeme = regex_[j];
@@ -145,7 +144,7 @@ const std::string& str) {
 
 void RegexSearch::Parse(const std::string& regex,
 std::vector<Lexeme>& lexemes) {
-  char char_next, temp;
+  char char_next = 0, temp = 0;
   size_t offset = 0;  // how many chars to ignore after the iteration
   bool par_open = false;
 
