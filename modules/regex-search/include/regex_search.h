@@ -9,17 +9,17 @@
 #include <stack>
 #include <vector>
 
-typedef std::vector<int> RegexSearchResult;
-
 // Basic regular expressions search.
-// - Supported quanifications: *, ?, +, {n} (1<=n<=9)
-// - Parentheses and quanitifications within another parenthesis are not allowed
-// - \n, \r support
+// - Supported quantifiers: *, ?, +, {n} (1<=n<=9)
+// (only after some text somewhere before)
+// - Parentheses and quanitifiers within another parenthesis are not allowed,
+// however there can be nothing within parentheses
+// - \n, \r support, but \<char> equals just <char>
 // - There can be empty regular expressions
 // - Search is implemented according to DFA principle
 class RegexSearch {
  public:
-  static const int kNotFound = -1;
+  static const int errorNotFound = -1;
   static const int errorTooLongRegex = -1;
   static const int errorRegExpIncorrect = -2;
   static const int errorTooLongString = -3;
@@ -32,8 +32,9 @@ class RegexSearch {
   void SetRegex(const std::string&);
   std::string GetRegex(void) const;
 
-  // Returns kNotFound if there are no matches
-  RegexSearchResult Find(const std::string&);
+  // On success, returns vector(pos1,match_length1,pos2,match_length2,...)
+  // No matches, returns vector(RegexSearch::errorNotFound,<some random number>)
+  std::vector<int> Find(const std::string&);
 
  private:
   // Token type. TOK_Q_CUSTOM is {n} quantifier
@@ -61,7 +62,7 @@ class RegexSearch {
   std::vector<Lexeme> regex_;
   std::string regex_str_;
 
-  RegexSearchResult FindFirst(const std::string&, const size_t pos = 0);
+  std::vector<int> FindFirst(const std::string&, const size_t pos = 0);
 
   static void MakeStringLonger(std::string& out_str, const std::string& str);
   static void Parse(const std::string&, std::vector<Lexeme>&);

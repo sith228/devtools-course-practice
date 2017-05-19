@@ -1,4 +1,4 @@
-// Copyright 2017 Kazakov Andrew
+﻿// Copyright 2017 Kazakov Andrew
 
 #include "include/regex_search.h"
 
@@ -16,10 +16,8 @@ RegexSearch::RegexSearch(const RegexSearch& regex) {
 }
 
 RegexSearch& RegexSearch::operator=(const RegexSearch& regex) {
-  if (&regex != this) {
-    regex_ = regex.regex_;
-    regex_str_ = regex.regex_str_;
-  }
+  regex_ = regex.regex_;
+  regex_str_ = regex.regex_str_;
 
   return *this;
 }
@@ -29,7 +27,7 @@ RegexSearch& RegexSearch::operator=(const RegexSearch& regex) {
 //
 
 void RegexSearch::SetRegex(const std::string& regex) {
-  if (regex.length() > kMaxRegexLength)
+  if (regex.length() > RegexSearch::kMaxRegexLength)
     throw RegexSearch::errorTooLongRegex;
 
   std::vector<Lexeme> lexemes;
@@ -52,11 +50,11 @@ std::string RegexSearch::GetRegex() const {
 // Find
 //
 
-RegexSearchResult RegexSearch::Find(const std::string& str) {
-  if (str.length() > kMaxStringLength)
+std::vector<int> RegexSearch::Find(const std::string& str) {
+  if (str.length() > RegexSearch::kMaxStringLength)
     throw RegexSearch::errorTooLongString;
 
-  RegexSearchResult res, temp(2);
+  std::vector<int> res, temp(2);
   size_t pos = 0;
 
   // If regex is empty, the whole string matches
@@ -71,7 +69,7 @@ RegexSearchResult RegexSearch::Find(const std::string& str) {
     res.push_back(temp[0]);
     res.push_back(temp[1]);
     pos = temp[0] + temp[1];
-  } while (temp[0] != RegexSearch::kNotFound);
+  } while (temp[0] != RegexSearch::errorNotFound);
 
   // At least there is one match, last 2 elements is useless
   if (res.size() > 2) {
@@ -86,56 +84,58 @@ RegexSearchResult RegexSearch::Find(const std::string& str) {
 // Private methods
 //
 
-RegexSearchResult RegexSearch::FindFirst(const std::string& str, const size_t pos) {
-  RegexSearchResult res(2);
+std::vector<int> RegexSearch::FindFirst(const std::string& str, const size_t pos) {
+  std::vector<int> res(2);
+
+  bool match_found = false;
+  int match_start = RegexSearch::errorNotFound;
+  int match_end = 0;
 
   Lexeme lexeme;
   std::string l_str, temp;
+  int curr_pos;
 
-  // if true, we go to the next part of the regex
-  bool curr_lexeme_ended = false;
+  for (size_t i = pos; i < str.size(); ++i) {
+    if (match_found)
+      break;
 
-  int match_start = RegexSearch::kNotFound, match_end = 0;
+    curr_pos = i;
 
-  for (size_t i = pos, j = 0; i < str.size() && j < regex_.size(); ++i) {
-    lexeme = regex_[j];
-    l_str = lexeme.str;
+    for (size_t j = 0; j < regex_.size(); ++j) {
+      lexeme = regex_[j];
+      l_str = lexeme.str;
 
-    // There are only 3 options: min=0 max=1, min=0 max=<infinity>, min=max=<const>
-    if (lexeme.min == 0) {
-      if (l_str.compare(str.substr(i, l_str.size())) == 0) {
-        if (match_start == RegexSearch::kNotFound)
-          match_start = i;
-        match_end = (i += (l_str.size()));
+      // Only 3 options: min=0 max=1, min=0 max=<infinity>, min=max=<const>
+      if (lexeme.min == 0) {
+        if (l_str.compare( str.substr(curr_pos, l_str.size()) ) == 0) {
+          if (match_start == RegexSearch::errorNotFound)
+            match_start = curr_pos;
+          match_end = (curr_pos += (l_str.size()));
 
-        if (lexeme.max = RegexSearch::kInfinityRepeats)
-          while (l_str.compare(str.substr(i, l_str.size())) == 0)
-            match_end = (i += (l_str.size()));
+          if (lexeme.max = RegexSearch::kInfinityRepeats)
+            while (l_str.compare( str.substr(curr_pos, l_str.size()) ) == 0)
+              match_end = (curr_pos += (l_str.size()));
+        }
+      } else {
+        temp = "";
+        for (int k = 0; k < lexeme.min; ++k)
+          temp += l_str;
 
-        --i;
-        curr_lexeme_ended = true;
+        if (temp.compare( str.substr(curr_pos, temp.size()) ) == 0) {
+          if (match_start == RegexSearch::errorNotFound)
+            match_start = curr_pos;
+          match_end = (curr_pos += (temp.size()));
+        } else if (match_start != RegexSearch::errorNotFound) {
+          match_start = RegexSearch::errorNotFound;
+          break;
+        }
       }
-    } else {
-      temp = "";
-      for (int j = 0; j < lexeme.min; ++j)
-        temp += l_str;
 
-      if (temp.compare(str.substr(i, temp.size())) == 0) {
-        if (match_start == RegexSearch::kNotFound)
-          match_start = i;
-        match_end = (i += (temp.size()));
-        --i;
-        curr_lexeme_ended = true;
-      } else if (match_start != RegexSearch::kNotFound) {
-        match_start = RegexSearch::kNotFound;
-      }
-    }
-
-    if (curr_lexeme_ended) {
-      curr_lexeme_ended = false;
-      j++;
-    }
-
+      // Last iteration
+      if (match_start != RegexSearch::errorNotFound
+        && (j + 1) == regex_.size())
+        match_found = true;
+    }  // for
   }  // for
 
   res[0] = match_start;
@@ -150,7 +150,7 @@ RegexSearchResult RegexSearch::FindFirst(const std::string& str, const size_t po
 
 void RegexSearch::MakeStringLonger(std::string& out_str, const std::string& str) {
   out_str = str;
-  for (int i = 0; i < (kMaxTokenSize - 1); ++i) {
+  for (int i = 0; i < (RegexSearch::kMaxTokenSize - 1); ++i) {
     out_str.push_back(0);
   }
 }
@@ -165,7 +165,7 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
   int q_min_repeats, q_max_repeats;
 
   // Regex substrings
-  std::string literals_block;  // сurrent continuous sequence of literals
+  std::string literals_block;  // current continuous sequence of literals
   size_t lb_size = 0;  // literals_block current size
 
   // For looking ahead
@@ -200,17 +200,17 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
 
         if (char_next >= '1' && char_next <= '9') {
           if (regex_long[i + 2] != '}') throw 1;
-          q_min_repeats = char_next - '0';
+          q_min_repeats = q_max_repeats = char_next - '0';
 
-          if (prev_tok == TokenType::TOK_PAR_CLOSE) {
-            lexemes.push_back({ literals_block, 1, 1 });
-          } else if (prev_tok == TokenType::TOK_WORD) {
-            if (lb_size > 1)
-              lexemes.push_back({ literals_block.substr(0, lb_size - 1), 1, 1 });
-            lexemes.push_back({ literals_block.substr(lb_size - 1), q_min_repeats, q_min_repeats});
-          }
+          // if (prev_tok == TokenType::TOK_PAR_CLOSE) {
+          //   lexemes.push_back({ literals_block, 1, 1 });
+          // } else if (prev_tok == TokenType::TOK_WORD) {
+          //   if (lb_size > 1)
+          //     lexemes.push_back({ literals_block.substr(0, lb_size - 1), 1, 1 });
+          //   lexemes.push_back({ literals_block.substr(lb_size - 1), q_min_repeats, q_min_repeats});
+          // }
 
-          literals_block = "";
+          // literals_block = "";
         } else if (char_next == '}') {
           offset = 1;
         } else {
@@ -243,7 +243,7 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
         curr_tok = TokenType::TOK_Q_ASTERISK;
 
         q_min_repeats = 0;
-        q_max_repeats = kInfinityRepeats;
+        q_max_repeats = RegexSearch::kInfinityRepeats;
 
         break;
 
@@ -253,12 +253,12 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
 
         if (prev_tok == TokenType::TOK_PAR_CLOSE) {
           lexemes.push_back({ literals_block, 1, 1 });
-          lexemes.push_back({ literals_block, 0, kInfinityRepeats });
+          lexemes.push_back({ literals_block, 0, RegexSearch::kInfinityRepeats });
         } else if (prev_tok == TokenType::TOK_WORD) {
           if (lb_size > 1)
             lexemes.push_back({ literals_block.substr(0, lb_size - 1), 1, 1 });
           lexemes.push_back({ literals_block.substr(lb_size - 1), 1, 1 });
-          lexemes.push_back({ literals_block.substr(lb_size - 1), 0, kInfinityRepeats });
+          lexemes.push_back({ literals_block.substr(lb_size - 1), 0, RegexSearch::kInfinityRepeats });
         }
         literals_block = "";
 
@@ -281,11 +281,10 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
     }
 
     // Processing quantifiers
-    if (curr_tok == TokenType::TOK_Q_ASTERISK || curr_tok == TokenType::TOK_Q_QUESTION) {
-      if (lb_size == 0)
-        throw 1;
+    if (curr_tok == TokenType::TOK_Q_ASTERISK || curr_tok == TokenType::TOK_Q_QUESTION || curr_tok == TokenType::TOK_Q_CUSTOM) {
+      if (lb_size == 0) throw 1;
       if (prev_tok == TokenType::TOK_PAR_CLOSE) {
-        lexemes.push_back({ literals_block, 1, 1 });
+        lexemes.push_back({ literals_block, q_min_repeats, q_max_repeats });
       } else if (prev_tok == TokenType::TOK_WORD) {
         if (lb_size > 1)
           lexemes.push_back({ literals_block.substr(0, lb_size - 1), 1, 1 });
@@ -297,6 +296,9 @@ void RegexSearch::Parse(const std::string& regex, std::vector<Lexeme>& lexemes) 
     i += offset;
     lb_size = literals_block.size();
   }
+
+  if (par_open)
+    throw 1;
 
   if (lb_size > 0) {
     lexemes.push_back({ literals_block, 1, 1 });
