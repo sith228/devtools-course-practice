@@ -7,6 +7,8 @@
 
 #include "include/regex_search.h"
 
+const int RegexSearch::errorNotFound;
+
 // Since the constructor calls SetRegex method, it makes no sense to test
 // the constructor instead of SetRegex.
 TEST(RegexSearchTest, can_use_default_constructor) {
