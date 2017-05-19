@@ -181,7 +181,7 @@ std::vector<Lexeme>& lexemes) {
   std::string regex_long;
   MakeStringLonger(&regex_long, regex);
 
-  for (auto i = 0; i < regex.size(); offset = 0, ++i) {
+  for (size_t i = 0; i < regex.size(); offset = 0, ++i) {
     char_next = regex_long[i + 1];
     prev_tok = curr_tok;
 
