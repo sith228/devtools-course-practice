@@ -5,10 +5,6 @@
 #include <string>
 #include <vector>
 
-//
-// Constructors/operator=
-//
-
 RegexSearch::RegexSearch(const std::string regex) {
   SetRegex(regex);
 }
@@ -24,10 +20,6 @@ RegexSearch& RegexSearch::operator=(const RegexSearch& regex) {
 
   return *this;
 }
-
-//
-// Set & get
-//
 
 void RegexSearch::SetRegex(const std::string& regex) {
   if (regex.size() > RegexSearch::kMaxRegexLength)
@@ -48,10 +40,6 @@ void RegexSearch::SetRegex(const std::string& regex) {
 std::string RegexSearch::GetRegex() const {
   return regex_str_;
 }
-
-//
-// Find
-//
 
 std::vector<int> RegexSearch::Find(const std::string& str) {
   if (str.size() == 0)
@@ -85,10 +73,6 @@ std::vector<int> RegexSearch::Find(const std::string& str) {
 
   return res;
 }
-
-//
-// Private methods
-//
 
 std::vector<int> RegexSearch::FindFirst(const std::string& str,
 const size_t pos) {
@@ -150,10 +134,6 @@ const size_t pos) {
 
   return res;
 }
-
-//
-// Static methods
-//
 
 void RegexSearch::MakeStringLonger(std::string* out_str,
 const std::string& str) {

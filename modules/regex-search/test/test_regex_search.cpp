@@ -7,10 +7,6 @@
 
 #include "include/regex_search.h"
 
-//
-// Constructor
-//
-
 // Since the constructor calls SetRegex method, it makes no sense to test
 // the constructor instead of SetRegex.
 TEST(RegexSearchTest, can_use_default_constructor) {
@@ -28,10 +24,6 @@ TEST(RegexSearchTest, can_set_regex_through_constructor) {
   // Assert
   ASSERT_NO_THROW(RegexSearch r(s));
 }
-
-//
-// Set regexp
-//
 
 TEST(RegexSearchTest, can_use_empty_regex) {
   // Arrange
@@ -225,10 +217,6 @@ TEST(RegexSearchTest, can_mix_quantifiers_and_parentheses) {
   ASSERT_NO_THROW(r.SetRegex(s));
 }
 
-//
-// Get regexp
-//
-
 TEST(RegexSearchTest, can_get_empty_regex) {
   // Arrange
   RegexSearch r;
@@ -253,10 +241,6 @@ TEST(RegexSearchTest, get_regex_works_properly) {
   // Assert
   EXPECT_EQ(r.GetRegex(), s);
 }
-
-//
-// Regex type checks: what is forbidden
-//
 
 TEST(RegexSearchTest, cannot_use_question_mark_within_parentheses) {
   // Arrange
@@ -354,10 +338,6 @@ TEST(RegexSearchTest, cannot_let_custom_quanitifier_be_more_than_nine) {
   ASSERT_ANY_THROW(r.SetRegex(s));
 }
 
-//
-// Copy constructor, operator=
-//
-
 TEST(RegexSearchTest, can_use_copy_constructor) {
   // Arrange
   RegexSearch r1;
@@ -424,10 +404,6 @@ TEST(RegexSearchTest, operator_equal_works_properly) {
   // Assert
   EXPECT_EQ(r1.GetRegex(), s);
 }
-
-//
-// Find
-//
 
 TEST(RegexSearchFindTest, cant_find_anything_in_empty_string) {
   // Arrange
