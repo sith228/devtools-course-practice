@@ -65,8 +65,8 @@ class RegexSearch {
 
   std::vector<int> FindFirst(const std::string&, const size_t pos = 0);
 
-  static void MakeStringLonger(std::string& out_str, const std::string& str);
+  static void MakeStringLonger(std::string* out_str, const std::string& str);
   static void Parse(const std::string&, std::vector<Lexeme>&);
 };
 
-#endif
+#endif  // MODULES_REGEX_SEARCH_INCLUDE_REGEX_SEARCH_H_

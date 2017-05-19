@@ -152,11 +152,11 @@ const size_t pos) {
 // Static methods
 //
 
-void RegexSearch::MakeStringLonger(std::string& out_str,
+void RegexSearch::MakeStringLonger(std::string* out_str,
 const std::string& str) {
-  out_str = str;
+  *out_str = str;
   for (int i = 0; i < (RegexSearch::kMaxTokenSize - 1); ++i) {
-    out_str.push_back(0);
+    (*out_str).push_back(0);
   }
 }
 
@@ -176,7 +176,7 @@ std::vector<Lexeme>& lexemes) {
 
   // For looking ahead
   std::string regex_long;
-  MakeStringLonger(regex_long, regex);
+  MakeStringLonger(&regex_long, regex);
 
   for (auto i = 0; i < regex.size(); offset = 0, ++i) {
     char_next = regex_long[i + 1];
