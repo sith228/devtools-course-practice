@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "include/regex_search.h"
-
 #include <string>
 #include <vector>
+
+#include "include/regex_search.h"
 
 //
 // Constructor
