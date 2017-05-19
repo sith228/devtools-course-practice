@@ -2,6 +2,9 @@
 
 #include "include/regex_search.h"
 
+#include <string>
+#include <vector>
+
 //
 // Constructors/operator=
 //
@@ -111,13 +114,13 @@ const size_t pos) {
 
       // Only 3 options: min=0 max=1, min=0 max=<infinity>, min=max=<const>
       if (lexeme.min == 0) {
-        if (l_str.compare( str.substr(curr_pos, l_str.size()) ) == 0) {
+        if (l_str.compare(str.substr(curr_pos, l_str.size())) == 0) {
           if (match_start == RegexSearch::errorNotFound)
             match_start = curr_pos;
           match_end = (curr_pos += (l_str.size()));
 
           if (lexeme.max == RegexSearch::kInfinityRepeats)
-            while (l_str.compare( str.substr(curr_pos, l_str.size()) ) == 0)
+            while (l_str.compare(str.substr(curr_pos, l_str.size())) == 0)
               match_end = (curr_pos += (l_str.size()));
         }
       } else {
@@ -125,7 +128,7 @@ const size_t pos) {
         for (int k = 0; k < lexeme.min; ++k)
           temp += l_str;
 
-        if (temp.compare( str.substr(curr_pos, temp.size()) ) == 0) {
+        if (temp.compare(str.substr(curr_pos, temp.size())) == 0) {
           if (match_start == RegexSearch::errorNotFound)
             match_start = curr_pos;
           match_end = (curr_pos += (temp.size()));

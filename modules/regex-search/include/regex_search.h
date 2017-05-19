@@ -3,10 +3,7 @@
 #ifndef MODULES_REGEX_SEARCH_INCLUDE_REGEX_SEARCH_H_
 #define MODULES_REGEX_SEARCH_INCLUDE_REGEX_SEARCH_H_
 
-#include <iostream>
-#include <fstream>
 #include <string>
-#include <stack>
 #include <vector>
 
 // Basic regular expressions search.

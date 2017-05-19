@@ -4,6 +4,9 @@
 
 #include "include/regex_search.h"
 
+#include <string>
+#include <vector>
+
 //
 // Constructor
 //
@@ -458,7 +461,8 @@ TEST(RegexSearchFindTest, empty_regex_matches_the_whole_string) {
   EXPECT_EQ(rr, rr_target);
 }
 
-TEST(RegexSearchFindTest, regex_consists_only_of_parentheses_matches_the_whole_string) {
+TEST(RegexSearchFindTest,
+regex_consists_only_of_parentheses_matches_the_whole_string) {
   // Arrange
   RegexSearch r;
   std::string s1, s2;
@@ -638,7 +642,8 @@ TEST(RegexSearchFindTest, search_when_regex_contains_several_quantifiers) {
   EXPECT_EQ(rr, rr_target);
 }
 
-TEST(RegexSearchFindTest, search_when_regex_contains_question_mark_quantifier_after_parentheses) {
+TEST(RegexSearchFindTest,
+search_when_regex_contains_question_mark_quantifier_after_parentheses) {
   // Arrange
   RegexSearch r;
   std::string s1, s2;
@@ -656,7 +661,8 @@ TEST(RegexSearchFindTest, search_when_regex_contains_question_mark_quantifier_af
   EXPECT_EQ(rr, rr_target);
 }
 
-TEST(RegexSearchFindTest, search_when_regex_contains_asterisk_quantifier_after_parentheses) {
+TEST(RegexSearchFindTest,
+search_when_regex_contains_asterisk_quantifier_after_parentheses) {
   // Arrange
   RegexSearch r;
   std::string s1, s2;
@@ -674,7 +680,8 @@ TEST(RegexSearchFindTest, search_when_regex_contains_asterisk_quantifier_after_p
   EXPECT_EQ(rr, rr_target);
 }
 
-TEST(RegexSearchFindTest, search_when_regex_contains_plus_quantifier_after_parentheses) {
+TEST(RegexSearchFindTest,
+search_when_regex_contains_plus_quantifier_after_parentheses) {
   // Arrange
   RegexSearch r;
   std::string s1, s2;
@@ -692,7 +699,8 @@ TEST(RegexSearchFindTest, search_when_regex_contains_plus_quantifier_after_paren
   EXPECT_EQ(rr, rr_target);
 }
 
-TEST(RegexSearchFindTest, search_when_regex_contains_custom_quantifier_after_parentheses) {
+TEST(RegexSearchFindTest,
+search_when_regex_contains_custom_quantifier_after_parentheses) {
   // Arrange
   RegexSearch r;
   std::string s1, s2;
