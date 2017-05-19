@@ -96,7 +96,7 @@ TEST(RegexSearchTest, can_use_regex_with_some_symbols_with_slash) {
   std::string s;
 
   // Act
-  s = "t\e\s\\t\\r\\n";
+  s = "t\\e\\s\\t\\r\\n";
 
   // Assert
   ASSERT_NO_THROW(r.SetRegex(s));
@@ -537,7 +537,7 @@ TEST(RegexSearchFindTest, search_when_regex_contains_some_symbols_with_slash) {
   std::vector<int> rr, rr_target;
 
   // Act
-  s1 = "t\e\s\\t";
+  s1 = "t\\e\\s\\t";
   s2 = "123test!";
   r.SetRegex(s1);
   rr = r.Find(s2);

@@ -116,7 +116,7 @@ const size_t pos) {
             match_start = curr_pos;
           match_end = (curr_pos += (l_str.size()));
 
-          if (lexeme.max = RegexSearch::kInfinityRepeats)
+          if (lexeme.max == RegexSearch::kInfinityRepeats)
             while (l_str.compare( str.substr(curr_pos, l_str.size()) ) == 0)
               match_end = (curr_pos += (l_str.size()));
         }
