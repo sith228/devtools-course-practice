@@ -34,8 +34,7 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 6) {
+    } else if (argc != 6) {
         help(argv[0], "ERROR: Should be 5 arguments.\n\n");
         return false;
     }
@@ -67,7 +66,8 @@ int Application::parseInteger(const char* arg) {
 bool Application::validateOperationName(const char* arg) {
     std::string value = arg;
     
-    if (value == "t" || value == "r" || value == "s") {
+    if (strcmp(arg, "r") == 0 || strcmp(arg, "t") == 0 ||
+        strcmp(arg, "s") == 0) {
         return true;
     } else {
         return false;
@@ -85,7 +85,7 @@ std::string Application::operator()(int argc, const char** argv) {
         args.low_limit = parseDouble(argv[2]);
         args.upper_limit = parseDouble(argv[3]);
         args.method_name = argv[4];
-        if (args.method_name == "s") {
+        if (strcmp(args.method_name, "s") == 0) {
             args.epsilon = parseDouble(argv[5]);
         } else {
             args.quantity_of_steps = parseInteger(argv[5]);
@@ -99,25 +99,24 @@ std::string Application::operator()(int argc, const char** argv) {
 
     double result;
     std::ostringstream stream;
-    if (args.method_name == "r") {
+    if (strcmp(args.method_name, "r") == 0) {
         result = integration_method.RectangleMethod(args.integrand,
             args.low_limit, args.upper_limit, args.quantity_of_steps);
         stream << "The integration value of rectangle method equals " <<
             result;
-    }
-    else if (args.method_name == "t") {
+    } else if (strcmp(args.method_name, "t") == 0) {
         result = integration_method.TrapezoidMethod(args.integrand,
             args.low_limit, args.upper_limit, args.quantity_of_steps);
         stream << "The integration value of trapezoid method equals " <<
             result;
-    } else if (args.method_name == "s") {
+    } else if (strcmp(args.method_name, "s") == 0) {
         try {
             result = integration_method.SimpsonMethod(args.integrand,
                 args.low_limit, args.upper_limit, args.epsilon);
             stream << "The integration value of Simpson method equals " <<
                 result;
         }
-        catch (std::runtime_error& str) {
+        catch (std::runtime_error str) {
             return str.what();
         }
     }
