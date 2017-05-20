@@ -20,7 +20,6 @@ class AreaConverter {
 
  private:
     double ratio_;
-    static double Square(double x) { return x * x; }
 };
 
 #endif  // MODULES_AREA_CONVERTER_INCLUDE_AREA_CONVERTER_H_
