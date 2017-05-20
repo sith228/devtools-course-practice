@@ -1,7 +1,7 @@
 // Copyright 2017 Lobanov Andrey
 
 #include "include/LineSegment.h"
-#include <include/gtest.h>
+#include <gtest/gtest.h>
 #include <string>
 
 using std::string;
@@ -196,4 +196,37 @@ TEST(LineSegment, Calculation_Of_Points_Of_Intersection) {
   str = segment.CheckIntersection(segment1);
   // Assert
   ASSERT_EQ(str, str1);
+}
+
+TEST(LineSegment, Check_Belonging_Points) {
+  // Arrange
+  bool belong;
+  LineSegment2D segment(1, 2, 6, 2);
+  LineSegment2D segment1(3, 0, 3, 4);
+  // Act
+  belong = segment.BelongingToSegment(segment1);
+  // Assert
+  ASSERT_EQ(belong, true);
+}
+
+TEST(LineSegment, Points_Belong_To_Segment) {
+  // Arrange
+  bool belong;
+  LineSegment2D segment(3.8, 1.11, 7.3, -2.23);
+  LineSegment2D segment1(4.31, 0, 16.17, -14.3);
+  // Act
+  belong = segment.BelongingToSegment(segment1);
+  // Assert
+  ASSERT_EQ(belong, true);
+}
+
+TEST(LineSegment, Points_Not_Belong_To_Segment) {
+  // Arrange
+  bool belong;
+  LineSegment2D segment(11.73, 41.3, -14.2, 31.7);
+  LineSegment2D segment1(34.1, 11.3, 81.3, -1.48);
+  // Act
+  belong = segment.BelongingToSegment(segment1);
+  // Assert
+  ASSERT_EQ(belong, false);
 }

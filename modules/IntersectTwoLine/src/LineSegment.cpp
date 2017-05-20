@@ -44,8 +44,7 @@ string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
       str = "Segments are parallel";
       return str;
     }
-  }
-  else {
+  } else {
     double coord_X = (-1) * (C1 * B2 - C2 * B1) / (A1 * B2 - B1 * A2);
     double coord_Y = (-1) * (A1 * C2 - A2 * C1) / (A1 * B2 - A2 * B1);
 
@@ -54,17 +53,19 @@ string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
       stream << coord_X << ";" << coord_Y << ")";
       stream >> str1;
       str = str + str1;
-    }
-    else
+    } else {
       str = "Segments do not intersect";
+    }
     return str;
   }
 }
 
 bool LineSegment2D::BelongingToSegment(LineSegment2D segment) {
-  if (Get_Coord(1) <= segment.Get_Coord(3) && segment.Get_Coord(3) <= Get_Coord(3))
+  if (Get_Coord(1) <= segment.Get_Coord(3) &&
+	  segment.Get_Coord(3) <= Get_Coord(3))
     return true;
-  if (Get_Coord(1) <= segment.Get_Coord(1) && segment.Get_Coord(1) <= Get_Coord(3))
+  if (Get_Coord(1) <= segment.Get_Coord(1) &&
+	  segment.Get_Coord(1) <= Get_Coord(3))
     return true;
   return false;
 }
