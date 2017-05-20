@@ -16,7 +16,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is a application for infix to postfix conversion"
+    PASS_REGULAR_EXPRESSION "This is an application for infix to postfix conversion"
     LABELS "${MODULE}")
 
 add_test(
@@ -24,7 +24,7 @@ add_test(
     COMMAND ${APPLICATION} 1 2
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 1 arguments"
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 1 argument"
     LABELS "${MODULE}")
 
 add_test(
@@ -48,7 +48,7 @@ add_test(
     COMMAND ${APPLICATION} +1+1
 )
 set_tests_properties (${prefix}_can_Detect_Operation_In_First_Position PROPERTIES
-    PASS_REGULAR_EXPRESSION "First character can not be a operation"
+    PASS_REGULAR_EXPRESSION "First character can't be an operation"
     LABELS "${MODULE}")
 
 add_test(
@@ -56,7 +56,7 @@ add_test(
     COMMAND ${APPLICATION} 1+1+
 )
 set_tests_properties (${prefix}_can_Detect_Operation_At_Last_Position PROPERTIES
-    PASS_REGULAR_EXPRESSION "Last character can not be a operation"
+    PASS_REGULAR_EXPRESSION "Last character can't be an operation"
     LABELS "${MODULE}")
 
 add_test(
@@ -236,18 +236,18 @@ set_tests_properties (${prefix}_can_Work_With_Zero_Integer PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Work_With_Complex_Expr_Without_Bracket
+    NAME ${prefix}_can_Work_With_Complex_Expr_Without_Brackets
     COMMAND ${APPLICATION} "8+2*5-1/7+3*2-4"
 )
-set_tests_properties (${prefix}_can_Work_With_Complex_Expr_Without_Bracket PROPERTIES
+set_tests_properties (${prefix}_can_Work_With_Complex_Expr_Without_Brackets PROPERTIES
     PASS_REGULAR_EXPRESSION "8 2 5 \\* \\+ 1 7 / - 3 2 \\* \\+ 4 -"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Work_With_Complex_Expr_With_Bracket
+    NAME ${prefix}_can_Work_With_Complex_Expr_With_Brackets
     COMMAND ${APPLICATION} "(8+2*5)/(1+3*2-4)"
 )
-set_tests_properties (${prefix}_can_Work_With_Complex_Expr_With_Bracket PROPERTIES
+set_tests_properties (${prefix}_can_Work_With_Complex_Expr_With_Brackets PROPERTIES
     PASS_REGULAR_EXPRESSION "8 2 5 \\* \\+ 1 3 2 \\* \\+ 4 - /"
     LABELS "${MODULE}")
 

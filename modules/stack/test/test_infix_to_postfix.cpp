@@ -248,7 +248,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Open_Bracket_After_Close) {
 
     Act(args);
 
-    Assert("'\\)' should be followed by a operation or '\\)'!");
+    Assert("'\\)' should be followed by an operation or '\\)'!");
 }
 
 TEST_F(InfixToPostfixConverterTest,
