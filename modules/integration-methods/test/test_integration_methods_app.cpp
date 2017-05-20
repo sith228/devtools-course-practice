@@ -2,6 +2,11 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
 #include "include/integration_methods_app.h"
 
 using ::testing::internal::RE;
@@ -39,4 +44,20 @@ TEST_F(ApplicationTest, Do_Print_Help_Without_Arguments) {
     Act(args);
 
     Assert("This is a Integration Methods application\\..*");
+}
+
+TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
+    vector<string> args = { "x+5", "0", "1" };
+
+    Act(args);
+
+    Assert("ERROR: Should be 5 arguments\\..*");
+}
+
+TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
+    vector<string> args = { "x+5", "0", "1", "r", "6kk64h" };
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
 }
