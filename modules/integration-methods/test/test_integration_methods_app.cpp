@@ -54,10 +54,26 @@ TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
     Assert("ERROR: Should be 5 arguments\\..*");
 }
 
-TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format_For_Integer) {
     vector<string> args = { "x+5", "0", "1", "r", "6kk64h" };
 
     Act(args);
 
     Assert("Wrong number format!.*");
+}
+
+TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format_For_Double) {
+    vector<string> args = { "x+5", "i9k9034", "1", "r", "200" };
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(ApplicationTest, Can_Detect_Wrong_Method_Name) {
+    vector<string> args = { "x+5", "0", "1", "kokfr", "200" };
+
+    Act(args);
+
+    Assert("Wrong method name!.*");
 }

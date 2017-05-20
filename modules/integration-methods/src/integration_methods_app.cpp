@@ -66,7 +66,7 @@ bool Application::validateOperationName(const char* arg) {
         strcmp(arg, "s") == 0) {
         return true;
     } else {
-        return false;
+        throw std::string("Wrong method name!");
     }
 }
 
