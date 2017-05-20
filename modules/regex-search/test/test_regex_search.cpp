@@ -7,7 +7,13 @@
 
 #include "include/regex_search.h"
 
+const int RegexSearch::kMaxRegexLength;
+const int RegexSearch::kMaxStringLength;
 const int RegexSearch::errorNotFound;
+
+//
+// Constructor
+//
 
 // Since the constructor calls SetRegex method, it makes no sense to test
 // the constructor instead of SetRegex.
@@ -25,6 +31,23 @@ TEST(RegexSearchTest, can_set_regex_through_constructor) {
 
   // Assert
   ASSERT_NO_THROW(RegexSearch r(s));
+}
+
+//
+// Set regexp
+//
+
+TEST(RegexSearchTest, cant_set_too_long_regex) {
+  // Arrange
+  RegexSearch r;
+  std::string s;
+
+  // Act
+  for (int i = 0; i <= RegexSearch::kMaxRegexLength; ++i)
+    s += "a";
+
+  // Assert
+  ASSERT_ANY_THROW(r.SetRegex(s));
 }
 
 TEST(RegexSearchTest, can_use_empty_regex) {
@@ -219,6 +242,10 @@ TEST(RegexSearchTest, can_mix_quantifiers_and_parentheses) {
   ASSERT_NO_THROW(r.SetRegex(s));
 }
 
+//
+// Get regexp
+//
+
 TEST(RegexSearchTest, can_get_empty_regex) {
   // Arrange
   RegexSearch r;
@@ -243,6 +270,10 @@ TEST(RegexSearchTest, get_regex_works_properly) {
   // Assert
   EXPECT_EQ(r.GetRegex(), s);
 }
+
+//
+// Set: what is forbidden
+//
 
 TEST(RegexSearchTest, cannot_use_question_mark_within_parentheses) {
   // Arrange
@@ -275,6 +306,18 @@ TEST(RegexSearchTest, cannot_use_plus_within_parentheses) {
 
   // Act
   s = "a(bc+)";
+
+  // Assert
+  ASSERT_ANY_THROW(r.SetRegex(s));
+}
+
+TEST(RegexSearchTest, cannot_use_custom_quanitfier_within_parentheses) {
+  // Arrange
+  RegexSearch r;
+  std::string s;
+
+  // Act
+  s = "a(bc{5})";
 
   // Assert
   ASSERT_ANY_THROW(r.SetRegex(s));
@@ -334,11 +377,27 @@ TEST(RegexSearchTest, cannot_let_custom_quanitifier_be_more_than_nine) {
   std::string s;
 
   // Act
-  s = "abc{0}";
+  s = "abc{10}";
 
   // Assert
   ASSERT_ANY_THROW(r.SetRegex(s));
 }
+
+TEST(RegexSearchTest, custom_quanitifier_should_contain_something) {
+  // Arrange
+  RegexSearch r;
+  std::string s;
+
+  // Act
+  s = "abc{}";
+
+  // Assert
+  ASSERT_ANY_THROW(r.SetRegex(s));
+}
+
+//
+// Copy constructor & operator=
+//
 
 TEST(RegexSearchTest, can_use_copy_constructor) {
   // Arrange
@@ -405,6 +464,23 @@ TEST(RegexSearchTest, operator_equal_works_properly) {
 
   // Assert
   EXPECT_EQ(r1.GetRegex(), s);
+}
+
+//
+// Search
+//
+
+TEST(RegexSearchFindTest, cant_find_in_too_long_string) {
+  // Arrange
+  RegexSearch r;
+  std::string s;
+
+  // Act
+  for (int i = 0; i <= RegexSearch::kMaxStringLength; ++i)
+    s += "a";
+
+  // Assert
+  ASSERT_ANY_THROW(r.Find(s));
 }
 
 TEST(RegexSearchFindTest, cant_find_anything_in_empty_string) {
