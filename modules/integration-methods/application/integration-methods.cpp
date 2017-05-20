@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include <string>
 
-#include "include/integration_methods.h"
+#include "include/integration_methods_app.h"
 
 int main(int argc, const char** argv) {
-    printf("Hello World!\n");
+    Application app;
+    std::string output = app(argc, argv);
+    printf("%s\n", output.c_str());
     return 0;
 }
