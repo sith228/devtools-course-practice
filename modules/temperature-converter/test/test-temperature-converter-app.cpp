@@ -25,7 +25,6 @@ class TemperatureConverterAppTest : public ::testing::Test {
          int argc = static_cast<int>(args_.size()) + 1;
 
          output_ = app_(argc, argv);
-
      }
 
      void Assert(std::string expected) {

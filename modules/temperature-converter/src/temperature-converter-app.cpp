@@ -23,7 +23,7 @@ void TemperatureConverterApp::help(const char* message) {
         "Please provide arguments in the following format: C 23,0 F";
 }
 
-bool TemperatureConverterApp::validateNumberOfArguments(int argc, 
+bool TemperatureConverterApp::validateNumberOfArguments(int argc,
     const char** argv) {
     if (argc == 1) {
         help();
