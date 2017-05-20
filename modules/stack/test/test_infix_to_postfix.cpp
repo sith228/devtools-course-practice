@@ -12,7 +12,7 @@ using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
-class  InfixToPostfixConverterTest : public ::testing::Test {
+class  InfixToPostfixConverter : public ::testing::Test {
  protected:
     void Act(vector<string> args_) {
         vector<const char*> options;
