@@ -48,7 +48,7 @@ class LineSegment2D {
 
   double Get_Coeff(int count);
 
-  string ÑheckIntersection(LineSegment2D lineSegment);
+  string CheckIntersection(LineSegment2D lineSegment);
   bool BelongingToSegment(LineSegment2D segment);
 
  protected:

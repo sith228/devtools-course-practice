@@ -26,7 +26,7 @@ double LineSegment2D::Get_Coeff(int count) {
   }
 }
 
-string LineSegment2D::ÑheckIntersection(LineSegment2D lineSegment) {
+string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
   string str, str1;
   double A1 = Get_Coeff(1);
   double A2 = lineSegment.Get_Coeff(1);

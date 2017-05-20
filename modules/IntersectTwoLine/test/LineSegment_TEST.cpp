@@ -160,7 +160,7 @@ TEST(LineSegment, Check_Segments_For_Coincide) {
   LineSegment2D segment(-4, -2, -2, 0);
   LineSegment2D segment1(-1, 1, 2, 4);
   // Act
-  str = segment.ÑheckIntersection(segment1);
+  str = segment.CheckIntersection(segment1);
   // Assert
   ASSERT_EQ(str, str1);
 }
@@ -171,7 +171,7 @@ TEST(LineSegment, Check_Segments_For_Parallel) {
   LineSegment2D segment(5, 4, 7, 4);
   LineSegment2D segment1(4, 3, 8, 3);
   // Act
-  str = segment.ÑheckIntersection(segment1);
+  str = segment.CheckIntersection(segment1);
   // Assert
   ASSERT_EQ(str, str1);
 }
@@ -182,7 +182,7 @@ TEST(LineSegment, Check_Segments_For_Intersection) {
   LineSegment2D segment(-3.1, -5.3, -7.8, -3);
   LineSegment2D segment1(2.8, 5.871, 1.3, 2.4);
   // Act
-  str = segment.ÑheckIntersection(segment1);
+  str = segment.CheckIntersection(segment1);
   // Assert
   ASSERT_EQ(str, str1);
 }
@@ -193,7 +193,7 @@ TEST(LineSegment, Calculation_Of_Points_Of_Intersection) {
   LineSegment2D segment(1, 2, 6, 2);
   LineSegment2D segment1(3, 0, 3, 4);
   // Act
-  str = segment.ÑheckIntersection(segment1);
+  str = segment.CheckIntersection(segment1);
   // Assert
   ASSERT_EQ(str, str1);
 }
