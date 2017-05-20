@@ -80,7 +80,7 @@ add_test(
     COMMAND ${APPLICATION} "(1+1)1"
 )
 set_tests_properties (${prefix}_can_Detect_Number_After_Close_Bracket PROPERTIES
-    PASS_REGULAR_EXPRESSION "'\\)' should be followed by a operation"
+    PASS_REGULAR_EXPRESSION "'\\)' should be followed by an operation"
     LABELS "${MODULE}")
 
 add_test(
@@ -88,7 +88,7 @@ add_test(
     COMMAND ${APPLICATION} "(1+1)(1+1)"
 )
 set_tests_properties (${prefix}_can_Detect_Open_Bracket_After_Close_Bracket PROPERTIES
-    PASS_REGULAR_EXPRESSION "'\\)' should be followed by a operation"
+    PASS_REGULAR_EXPRESSION "'\\)' should be followed by an operation"
     LABELS "${MODULE}")
 
 add_test(
@@ -208,7 +208,7 @@ add_test(
     COMMAND ${APPLICATION} "(1+1)(1+1)"
 )
 set_tests_properties (${prefix}_can_Detect_Open_Bracket_After_Close PROPERTIES
-    PASS_REGULAR_EXPRESSION "'\\)' should be followed by a operation or '\\)'"
+    PASS_REGULAR_EXPRESSION "'\\)' should be followed by an operation or '\\)'"
     LABELS "${MODULE}")
 
 add_test(
