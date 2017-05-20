@@ -96,9 +96,9 @@ std::string Application::operator()(int argc, const char** argv) {
 
     IntegrationMethod integration_method;
 
-    double result;
     std::ostringstream stream;
     try {
+        double result;
         if (strcmp(args.method_name, "r") == 0) {
             result = integration_method.RectangleMethod(args.integrand,
                 args.low_limit, args.upper_limit, args.quantity_of_steps);
