@@ -42,7 +42,7 @@ TEST_F(TemperatureConverterAppTest, Do_Print_Help_Without_Arguments) {
 
     Act(args);
 
-    Assert("This is a temperature converter app\.*");
+    Assert("This is a temperature converter app*");
 }
 
 TEST_F(TemperatureConverterAppTest, Is_Checking_Number_Of_Arguments) {
@@ -50,7 +50,7 @@ TEST_F(TemperatureConverterAppTest, Is_Checking_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 3 arguments\.*");
+    Assert("ERROR: Should be 3 arguments*");
 }
 
 TEST_F(TemperatureConverterAppTest, Can_Detect_Wrong_Number_Format) {

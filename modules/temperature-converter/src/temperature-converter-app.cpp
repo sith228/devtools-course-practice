@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>
+#include <stdint.h>
+#include <string.h>
 
 TemperatureConverterApp::TemperatureConverterApp() {}
 void TemperatureConverterApp::help(const char* message) {
