@@ -93,3 +93,19 @@ TEST_F(ApplicationTest, Integrate_Integrand_By_Rectangle_Method) {
 
     Assert("The integration value of rectangle method equals 0.2.*");
 }
+
+TEST_F(ApplicationTest, Integrate_Integrand_By_Trapezoid_Method) {
+    vector<string> args = { "x*x*x*x", "0", "1", "t", "50" };
+
+    Act(args);
+
+    Assert("The integration value of trapezoid method equals 0.2.*");
+}
+
+TEST_F(ApplicationTest, Integrate_Integrand_By_Simpson_Method) {
+    vector<string> args = { "x*x*x*x", "0", "1", "s", "1e-6" };
+
+    Act(args);
+
+    Assert("The integration value of Simpson method equals 0.2.*");
+}

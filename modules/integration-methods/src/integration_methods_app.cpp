@@ -104,14 +104,12 @@ std::string Application::operator()(int argc, const char** argv) {
                 args.low_limit, args.upper_limit, args.quantity_of_steps);
             stream << "The integration value of rectangle method equals " <<
                 result;
-        }
-        else if (strcmp(args.method_name, "t") == 0) {
+        } else if (strcmp(args.method_name, "t") == 0) {
             result = integration_method.TrapezoidMethod(args.integrand,
                 args.low_limit, args.upper_limit, args.quantity_of_steps);
             stream << "The integration value of trapezoid method equals " <<
                 result;
-        }
-        else if (strcmp(args.method_name, "s") == 0) {
+        } else if (strcmp(args.method_name, "s") == 0) {
             try {
                 result = integration_method.SimpsonMethod(args.integrand,
                     args.low_limit, args.upper_limit, args.epsilon);
