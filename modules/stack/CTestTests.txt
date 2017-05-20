@@ -116,18 +116,18 @@ set_tests_properties (${prefix}_can_Detect_Wrong_Integer PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Work_Without_Bracket
+    NAME ${prefix}_can_Work_Without_Brackets
     COMMAND ${APPLICATION} 1+1
 )
-set_tests_properties (${prefix}_can_Work_Without_Bracket PROPERTIES
+set_tests_properties (${prefix}_can_Work_Without_Brackets PROPERTIES
     PASS_REGULAR_EXPRESSION "1 1 \\+"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Work_With_Bracket
+    NAME ${prefix}_can_Work_With_Brackets
     COMMAND ${APPLICATION} "(1+1)"
 )
-set_tests_properties (${prefix}_can_Work_With_Bracket PROPERTIES
+set_tests_properties (${prefix}_can_Work_With_Brackets PROPERTIES
     PASS_REGULAR_EXPRESSION "1 1 \\+"
     LABELS "${MODULE}")
 
@@ -172,10 +172,10 @@ set_tests_properties (${prefix}_can_Detect_Open_Bracket_After_Number PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_can_Work_With_Operation_Between_Bracket
+    NAME ${prefix}_can_Work_With_Operation_Between_Brackets
     COMMAND ${APPLICATION} "(1+1)+(1+1)"
 )
-set_tests_properties (${prefix}_can_Work_With_Operation_Between_Bracket PROPERTIES
+set_tests_properties (${prefix}_can_Work_With_Operation_Between_Brackets PROPERTIES
     PASS_REGULAR_EXPRESSION "1 1 \\+ 1 1 \\+ \\+"
     LABELS "${MODULE}")
 
