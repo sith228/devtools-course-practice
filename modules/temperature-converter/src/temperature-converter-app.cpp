@@ -3,12 +3,12 @@
 #include "include/temperature_converter.h"
 #include "include/temperature-converter-app.h"
 
-#include <string>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sstream>
 #include <stdint.h>
 #include <string.h>
+#include <string>
+#include <sstream>
 
 TemperatureConverterApp::TemperatureConverterApp() {}
 void TemperatureConverterApp::help(const char* message) {
@@ -23,7 +23,8 @@ void TemperatureConverterApp::help(const char* message) {
         "Please provide arguments in the following format: C 23,0 F";
 }
 
-bool TemperatureConverterApp::validateNumberOfArguments(int argc, const char** argv) {
+bool TemperatureConverterApp::validateNumberOfArguments(int argc, 
+    const char** argv) {
     if (argc == 1) {
         help();
         return false;
@@ -52,17 +53,13 @@ char parseChar(const char* arg) {
     char scale;
     if (strcmp(arg, "C") == 0) {
         scale = 'C';
-    }
-    else if (strcmp(arg, "F") == 0) {
+    } else if (strcmp(arg, "F") == 0) {
         scale = 'F';
-    }
-    else if (strcmp(arg, "N") == 0) {
+    } else if (strcmp(arg, "N") == 0) {
         scale = 'N';
-    }
-    else if (strcmp(arg, "K") == 0) {
+    } else if (strcmp(arg, "K") == 0) {
         scale = 'K';
-    }
-    else {
+    } else {
         throw std::string("Wrong format!");
     }
     return scale;

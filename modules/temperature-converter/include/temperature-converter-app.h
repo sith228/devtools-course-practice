@@ -4,7 +4,6 @@
 #define MODULES_TEMPERATURE_CONVERTER_INCLUDE_TEMPERATURE_CONVERTER_APP_H_
 
 #include <string>
-#include <sstream>
 
 class TemperatureConverterApp {
  public:
