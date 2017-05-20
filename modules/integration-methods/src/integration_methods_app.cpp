@@ -82,6 +82,9 @@ std::string Application::operator()(int argc, const char** argv) {
         args.integrand = argv[1];
         args.low_limit = parseDouble(argv[2]);
         args.upper_limit = parseDouble(argv[3]);
+        if (!validateOperationName(argv[4])) {
+            return message_;
+        }
         args.method_name = argv[4];
         if (strcmp(args.method_name, "s") == 0) {
             args.epsilon = parseDouble(argv[5]);
