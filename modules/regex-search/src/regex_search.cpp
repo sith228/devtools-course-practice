@@ -14,13 +14,6 @@ RegexSearch::RegexSearch(const RegexSearch& regex) {
   regex_str_ = regex.regex_str_;
 }
 
-RegexSearch& RegexSearch::operator=(const RegexSearch& regex) {
-  regex_ = regex.regex_;
-  regex_str_ = regex.regex_str_;
-
-  return *this;
-}
-
 void RegexSearch::SetRegex(const std::string& regex) {
   if (regex.size() > RegexSearch::kMaxRegexLength)
     throw RegexSearch::errorTooLongRegex;
