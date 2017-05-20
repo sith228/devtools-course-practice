@@ -42,7 +42,7 @@ TEST_F(InfixToPostfixConverterTest, Do_Print_Help_Without_Arguments) {
 
     Act(args);
 
-    Assert("This is a application for infix to postfix conversion\\..*");
+    Assert("This is an application for infix to postfix conversion\\..*");
 }
 
 TEST_F(InfixToPostfixConverterTest, Is_Checking_Number_Of_Arguments) {
@@ -50,7 +50,7 @@ TEST_F(InfixToPostfixConverterTest, Is_Checking_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 1 arguments\\..*");
+    Assert("ERROR: Should be 1 argument\\..*");
 }
 
 TEST_F(InfixToPostfixConverterTest, Can_Detect_Empty_Input) {
@@ -82,7 +82,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Operation_In_First_Position) {
 
     Act(args);
 
-    Assert("First character can not be a operation.*");
+    Assert("First character can't be an operation.*");
 }
 
 TEST_F(InfixToPostfixConverterTest, Can_Detect_Operation_At_Last_Position) {
@@ -90,7 +90,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Operation_At_Last_Position) {
 
     Act(args);
 
-    Assert("Last character can not be a operation.*");
+    Assert("Last character can't be an operation.*");
 }
 
 
@@ -115,7 +115,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Number_After_Close_Bracket) {
 
     Act(args);
 
-    Assert("'\\)' should be followed by a operation.*");
+    Assert("'\\)' should be followed by an operation.*");
 }
 
 TEST_F(InfixToPostfixConverterTest,
@@ -124,7 +124,7 @@ TEST_F(InfixToPostfixConverterTest,
 
     Act(args);
 
-    Assert("'\\)' should be followed by a operation.*");
+    Assert("'\\)' should be followed by an operation.*");
 }
 
 TEST_F(InfixToPostfixConverterTest, Can_Detect_Operation_After_Open_Bracket) {
@@ -152,7 +152,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Wrong_Integer) {
     Assert("is wrong integer value.*");
 }
 
-TEST_F(InfixToPostfixConverterTest, Can_Work_Without_Bracket) {
+TEST_F(InfixToPostfixConverterTest, Can_Work_Without_Brackets) {
     vector<string> args = {"1+1"};
 
     Act(args);
@@ -160,7 +160,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Work_Without_Bracket) {
     Assert("1 1 \\+");
 }
 
-TEST_F(InfixToPostfixConverterTest, Can_Work_With_Bracket) {
+TEST_F(InfixToPostfixConverterTest, Can_Work_With_Brackets) {
     vector<string> args = {"(1+1)"};
 
     Act(args);
@@ -208,7 +208,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Detect_Open_Bracket_After_Number) {
     Assert("Number can't be followed by '\\('.*");
 }
 
-TEST_F(InfixToPostfixConverterTest, Can_Work_With_Operation_Between_Bracket) {
+TEST_F(InfixToPostfixConverterTest, Can_Work_With_Operation_Between_Brackets) {
     vector<string> args = {"(1+1)+(1+1)"};
 
     Act(args);
@@ -261,7 +261,7 @@ TEST_F(InfixToPostfixConverterTest,
 }
 
 TEST_F(InfixToPostfixConverterTest,
-       Can_Work_With_Operation_With_Diff_Priority) {
+       Can_Work_With_Operation_With_Diff_Piorities) {
     vector<string> args = {"1+2*2"};
 
     Act(args);
@@ -278,7 +278,7 @@ TEST_F(InfixToPostfixConverterTest, Can_Work_With_Zero_Integer) {
 }
 
 TEST_F(InfixToPostfixConverterTest,
-       Can_Work_With_Complex_Expr_Without_Bracket) {
+       Can_Work_With_Complex_Expr_Without_Brackets) {
     vector<string> args = {"8+2*5-1/7+3*2-4"};
 
     Act(args);
@@ -286,7 +286,7 @@ TEST_F(InfixToPostfixConverterTest,
     Assert("8 2 5 \\* \\+ 1 7 / - 3 2 \\* \\+ 4 -");
 }
 
-TEST_F(InfixToPostfixConverterTest, Can_Work_With_Complex_Expr_With_Bracket) {
+TEST_F(InfixToPostfixConverterTest, Can_Work_With_Complex_Expr_With_Brackets) {
     vector<string> args = {"(8+2*5)/(1+3*2-4)"};
 
     Act(args);
