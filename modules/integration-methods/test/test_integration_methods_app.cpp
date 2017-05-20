@@ -77,3 +77,19 @@ TEST_F(ApplicationTest, Can_Detect_Wrong_Method_Name) {
 
     Assert("Wrong method name!.*");
 }
+
+TEST_F(ApplicationTest, Can_Detect_Wrong_Integrand) {
+    vector<string> args = { "jgf56jgi9o(", "0", "1", "r", "200" };
+
+    Act(args);
+
+    Assert("Invalid input.*");
+}
+
+TEST_F(ApplicationTest, Integrate_Integrand_By_Rectangle_Method) {
+    vector<string> args = { "x*x*x*x", "0", "1", "r", "50" };
+
+    Act(args);
+
+    Assert("The integration value of rectangle method equals 0.2.*");
+}
