@@ -11,9 +11,9 @@ using std::string;
 class LineSegment2D {
  public:
   LineSegment2D(double X1, double Y1, double X2, double Y2) {
-    if (X1 == X2 && Y1 == Y2)
+    if (X1 == X2 && Y1 == Y2) {
       throw "Error, points can not coincide";
-    else if (X1 > X2) {
+    } else if (X1 > X2) {
       X1_ = X2;
       Y1_ = Y2;
       X2_ = X1;
@@ -46,9 +46,9 @@ class LineSegment2D {
 
   double Get_Coord(int count);
 
-  double Get_Coeff(int count); // нахождение коэффициентов уравнения прямой
-    
-  string СheckIntersection(LineSegment2D line);
+  double Get_Coeff(int count);
+
+  string СheckIntersection(LineSegment2D lineSegment);
   bool BelongingToSegment(LineSegment2D segment);
 
  protected:
