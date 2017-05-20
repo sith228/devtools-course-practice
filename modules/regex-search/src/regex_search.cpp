@@ -268,8 +268,6 @@ std::vector<Lexeme>& lexemes) {
     if (curr_tok == TokenType::TOK_Q_ASTERISK ||
     curr_tok == TokenType::TOK_Q_QUESTION ||
     curr_tok == TokenType::TOK_Q_CUSTOM) {
-      if (lb_size == 0)
-        throw 1;
       if (prev_tok == TokenType::TOK_PAR_CLOSE) {
         lexemes.push_back({ literals_block, q_min_repeats, q_max_repeats });
       } else if (prev_tok == TokenType::TOK_WORD) {
