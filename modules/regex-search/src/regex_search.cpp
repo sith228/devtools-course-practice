@@ -144,7 +144,6 @@ const std::string& str) {
 
 void RegexSearch::Parse(const std::string& regex,
 std::vector<Lexeme>& lexemes) {
-  char char_next = 0, temp = 0;
   size_t offset = 0;  // how many chars to ignore after the iteration
   bool par_open = false;
 
@@ -161,6 +160,8 @@ std::vector<Lexeme>& lexemes) {
   MakeStringLonger(&regex_long, regex);
 
   for (size_t i = 0; i < regex.size(); offset = 0, ++i) {
+    char char_next, temp;
+
     char_next = regex_long[i + 1];
     prev_tok = curr_tok;
 
