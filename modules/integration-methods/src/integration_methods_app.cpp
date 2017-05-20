@@ -3,10 +3,10 @@
 #include "include/integration_methods.h"
 #include "include/integratoin_methods_app.h"
 
-#include <stdlib.h>
-#include <string.h>
 #include <string>
 #include <sstream>
+#include <stdlib.h>
+#include <string.h>
 
 Application::Application() : message_("") {}
 
@@ -114,8 +114,8 @@ std::string Application::operator()(int argc, const char** argv) {
             stream << "The integration value of Simpson method equals " <<
                 result;
         }
-        catch (const std::runtime_error& str) {
-            return str.what();
+        catch (const std::runtime_error& runtime_error) {
+            return runtime_error.what();
         }
     }
 
