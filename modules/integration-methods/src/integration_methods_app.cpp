@@ -1,7 +1,6 @@
 // Copyright 2017 Komarov Nikolay
 
 #include "include/integratoin_methods_app.h"
-#include "include/integration_methods.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,6 +8,7 @@
 #include <string.h>
 #include <string>
 #include <sstream>
+#include "include/integration_methods.h"
 
 Application::Application() : message_("") {}
 
@@ -65,7 +65,7 @@ int Application::parseInteger(const char* arg) {
 
 bool Application::validateOperationName(const char* arg) {
     std::string value = arg;
-    
+
     if (strcmp(arg, "r") == 0 || strcmp(arg, "t") == 0 ||
         strcmp(arg, "s") == 0) {
         return true;
@@ -116,7 +116,7 @@ std::string Application::operator()(int argc, const char** argv) {
             stream << "The integration value of Simpson method equals " <<
                 result;
         }
-        catch (std::runtime_error str) {
+        catch (const std::runtime_error& str) {
             return str.what();
         }
     }
