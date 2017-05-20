@@ -62,8 +62,6 @@ int Application::parseInteger(const char* arg) {
 }
 
 bool Application::validateOperationName(const char* arg) {
-    std::string value = arg;
-
     if (strcmp(arg, "r") == 0 || strcmp(arg, "t") == 0 ||
         strcmp(arg, "s") == 0) {
         return true;
