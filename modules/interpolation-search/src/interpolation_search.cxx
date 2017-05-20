@@ -2,15 +2,15 @@
 
 #include "include/interpolation_search.h"
 
-bool InterpolationSearch::isArrayValid_(int * sortedArray, int length) {
-  if (sortedArray == nullptr) {
+bool InterpolationSearch::IsArrayValid_(int * sorted_array, int length) {
+  if (sorted_array == nullptr) {
     throw "Array is null";
   } else {
     if (length < 1) {
       throw "length is null or negative";
     } else {
       for (int i = 1; i < length; i++)
-        if (sortedArray[i] < sortedArray[i - 1])
+        if (sorted_array[i] < sorted_array[i - 1])
           return false;
       return true;
     }
@@ -18,26 +18,26 @@ bool InterpolationSearch::isArrayValid_(int * sortedArray, int length) {
   return false;
 }
 
-int InterpolationSearch::Search(int toFind, int * sortedArray, int length) {
-  if (isArrayValid_(sortedArray, length)) {
+int InterpolationSearch::Search(int to_find, int * sorted_array, int length) {
+  if (IsArrayValid_(sorted_array, length)) {
     // Returns the index of an element with a value of toFind or -1,
     // if there is no such element
     int low = 0;
     int high = length - 1;
-    while (sortedArray[low] < toFind && sortedArray[high] > toFind) {
-      int mid = low + ((toFind - sortedArray[low]) *
-        (high - low)) / (sortedArray[high] - sortedArray[low]);
-      if (sortedArray[mid] < toFind)
+    while (sorted_array[low] < to_find && sorted_array[high] > to_find) {
+      int mid = low + ((to_find - sorted_array[low]) *
+        (high - low)) / (sorted_array[high] - sorted_array[low]);
+      if (sorted_array[mid] < to_find)
         low = mid + 1;
-      else if (sortedArray[mid] > toFind)
+      else if (sorted_array[mid] > to_find)
         high = mid - 1;
       else
         return mid;
     }
-    if (sortedArray[low] == toFind) {
+    if (sorted_array[low] == to_find) {
       return low;
     } else {
-      if (sortedArray[high] == toFind)
+      if (sorted_array[high] == to_find)
         return high;
       else
         return -1;  // Not found
