@@ -98,26 +98,33 @@ std::string Application::operator()(int argc, const char** argv) {
 
     double result;
     std::ostringstream stream;
-    if (strcmp(args.method_name, "r") == 0) {
-        result = integration_method.RectangleMethod(args.integrand,
-            args.low_limit, args.upper_limit, args.quantity_of_steps);
-        stream << "The integration value of rectangle method equals " <<
-            result;
-    } else if (strcmp(args.method_name, "t") == 0) {
-        result = integration_method.TrapezoidMethod(args.integrand,
-            args.low_limit, args.upper_limit, args.quantity_of_steps);
-        stream << "The integration value of trapezoid method equals " <<
-            result;
-    } else if (strcmp(args.method_name, "s") == 0) {
-        try {
-            result = integration_method.SimpsonMethod(args.integrand,
-                args.low_limit, args.upper_limit, args.epsilon);
-            stream << "The integration value of Simpson method equals " <<
+    try {
+        if (strcmp(args.method_name, "r") == 0) {
+            result = integration_method.RectangleMethod(args.integrand,
+                args.low_limit, args.upper_limit, args.quantity_of_steps);
+            stream << "The integration value of rectangle method equals " <<
                 result;
         }
-        catch (std::exception& runtime_error) {
-            return runtime_error.what();
+        else if (strcmp(args.method_name, "t") == 0) {
+            result = integration_method.TrapezoidMethod(args.integrand,
+                args.low_limit, args.upper_limit, args.quantity_of_steps);
+            stream << "The integration value of trapezoid method equals " <<
+                result;
         }
+        else if (strcmp(args.method_name, "s") == 0) {
+            try {
+                result = integration_method.SimpsonMethod(args.integrand,
+                    args.low_limit, args.upper_limit, args.epsilon);
+                stream << "The integration value of Simpson method equals " <<
+                    result;
+            }
+            catch (std::exception& runtime_error) {
+                return runtime_error.what();
+            }
+        }
+    }
+    catch(std::exception& e) {
+        return e.what();
     }
 
     message_ = stream.str();
