@@ -347,6 +347,18 @@ TEST(RegexSearchTest, cannot_let_parenthesis_be_open) {
   ASSERT_ANY_THROW(r.SetRegex(s));
 }
 
+TEST(RegexSearchTest, cannot_use_only_close_parenthesis) {
+  // Arrange
+  RegexSearch r;
+  std::string s;
+
+  // Act
+  s = "abc)";
+
+  // Assert
+  ASSERT_ANY_THROW(r.SetRegex(s));
+}
+
 TEST(RegexSearchTest, cannot_let_brace_be_open) {
   // Arrange
   RegexSearch r;
