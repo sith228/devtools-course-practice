@@ -1,12 +1,11 @@
 // Copyright 2017 Komarov Nikolay
 
-#include "include/integratoin_methods_app.h"
-
 #include <stdlib.h>
 #include <string.h>
 #include <string>
 #include <sstream>
 
+#include "include/integration_methods_app.h"
 #include "include/integration_methods.h"
 
 Application::Application() : message_("") {}
