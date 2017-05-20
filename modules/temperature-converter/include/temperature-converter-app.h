@@ -7,20 +7,20 @@
 #include <sstream>
 
 class TemperatureConverterApp {
-public:
-    TemperatureConverterApp();
-    std::string operator()(int argc, const char** argv);
-    ~TemperatureConverterApp();
+ public:
+     TemperatureConverterApp();
+     std::string operator()(int argc, const char** argv);
+     ~TemperatureConverterApp();
 
-private:
-    void help(const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
-    std::string message_;
-    typedef struct {
-        char Scale1;
-        double number;
-        char Scale2;
-    } Arguments;
+ private:
+     void help(const char* message = "");
+     bool validateNumberOfArguments(int argc, const char** argv);
+     std::string message_;
+     typedef struct {
+         char Scale1;
+         double number;
+         char Scale2;
+     } Arguments;
 };
 
 #endif  // MODULES_TEMPERATURE_CONVERTER_INCLUDE_TEMPERATURE_CONVERTER_APP_H_
