@@ -190,8 +190,6 @@ std::vector<Lexeme>& lexemes) {
         if (char_next >= '1' && char_next <= '9') {
           if (regex_long[i + 2] != '}') throw 1;
           q_min_repeats = q_max_repeats = char_next - '0';
-        } else if (char_next == '}') {
-          offset = 1;
         } else {
           throw 1;
         }
