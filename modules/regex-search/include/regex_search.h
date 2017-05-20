@@ -17,10 +17,10 @@
 class RegexSearch {
  public:
   static const int errorNotFound = -1;
-  static const int errorTooLongRegex = -1;
-  static const int errorRegExpIncorrect = -2;
-  static const int errorTooLongString = -3;
-  static const int errorStringIsEmpty = -4;
+  static const int errorTooLongRegex = -2;
+  static const int errorRegExpIncorrect = -3;
+  static const int errorTooLongString = -4;
+  static const int errorStringIsEmpty = -5;
 
   explicit RegexSearch(const std::string = "");
   RegexSearch(const RegexSearch&);

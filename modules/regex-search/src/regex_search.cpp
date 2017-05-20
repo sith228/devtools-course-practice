@@ -199,7 +199,8 @@ std::vector<Lexeme>& lexemes) {
         break;
 
       case '(':
-        if (par_open) throw 1;
+        if (par_open)
+          throw 1;
         par_open = true;
         curr_tok = TokenType::TOK_PAR_OPEN;
 
@@ -211,14 +212,16 @@ std::vector<Lexeme>& lexemes) {
         break;
 
       case ')':
-        if (!par_open) throw 1;
+        if (!par_open)
+          throw 1;
         par_open = false;
         curr_tok = TokenType::TOK_PAR_CLOSE;
 
         break;
 
       case '*':
-        if (par_open || lb_size == 0) throw 1;
+        if (par_open || lb_size == 0)
+          throw 1;
         curr_tok = TokenType::TOK_Q_ASTERISK;
 
         q_min_repeats = 0;
@@ -227,7 +230,8 @@ std::vector<Lexeme>& lexemes) {
         break;
 
       case '+':
-        if (par_open || lb_size == 0) throw 1;
+        if (par_open || lb_size == 0)
+          throw 1;
         curr_tok = TokenType::TOK_Q_PLUS;
 
         if (prev_tok == TokenType::TOK_PAR_CLOSE) {
@@ -246,7 +250,8 @@ std::vector<Lexeme>& lexemes) {
         break;
 
       case '?':
-        if (par_open || lb_size == 0) throw 1;
+        if (par_open || lb_size == 0)
+          throw 1;
         curr_tok = TokenType::TOK_Q_QUESTION;
 
         q_min_repeats = 0;
@@ -265,7 +270,8 @@ std::vector<Lexeme>& lexemes) {
     if (curr_tok == TokenType::TOK_Q_ASTERISK ||
     curr_tok == TokenType::TOK_Q_QUESTION ||
     curr_tok == TokenType::TOK_Q_CUSTOM) {
-      if (lb_size == 0) throw 1;
+      if (lb_size == 0)
+        throw 1;
       if (prev_tok == TokenType::TOK_PAR_CLOSE) {
         lexemes.push_back({ literals_block, q_min_repeats, q_max_repeats });
       } else if (prev_tok == TokenType::TOK_WORD) {
