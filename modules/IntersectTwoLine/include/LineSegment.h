@@ -31,22 +31,22 @@ class LineSegment2D {
     X2_ = 0;
     Y2_ = 0;
   }
-  void Set_X1(double X) {
+  void SetX1(double X) {
     X1_ = X;
   }
-  void Set_X2(double X) {
+  void SetX2(double X) {
     X2_ = X;
   }
-  void Set_Y1(double Y) {
+  void SetY1(double Y) {
     Y1_ = Y;
   }
-  void Set_Y2(double Y) {
+  void SetY2(double Y) {
     Y2_ = Y;
   }
 
-  double Get_Coord(int count);
+  double GetCoord(int count);
 
-  double Get_Coeff(int count);
+  double GetCoeff(int count);
 
   string CheckIntersection(LineSegment2D lineSegment);
   bool BelongingToSegment(LineSegment2D segment);

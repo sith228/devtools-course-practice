@@ -7,7 +7,7 @@
 using std::string;
 using std::stringstream;
 
-double LineSegment2D::Get_Coord(int count) {
+double LineSegment2D::GetCoord(int count) {
   switch (count) {
     case 1: return X1_;
     case 2: return Y1_;
@@ -17,7 +17,7 @@ double LineSegment2D::Get_Coord(int count) {
   }
 }
 
-double LineSegment2D::Get_Coeff(int count) {
+double LineSegment2D::GetCoeff(int count) {
   switch (count) {
     case 1: return Y1_ - Y2_;
     case 2: return X2_ - X1_;
@@ -28,12 +28,12 @@ double LineSegment2D::Get_Coeff(int count) {
 
 string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
   string str, str1;
-  double A1 = Get_Coeff(1);
-  double A2 = lineSegment.Get_Coeff(1);
-  double B1 = Get_Coeff(2);
-  double B2 = lineSegment.Get_Coeff(2);
-  double C1 = Get_Coeff(3);
-  double C2 = lineSegment.Get_Coeff(3);
+  double A1 = GetCoeff(1);
+  double A2 = lineSegment.GetCoeff(1);
+  double B1 = GetCoeff(2);
+  double B2 = lineSegment.GetCoeff(2);
+  double C1 = GetCoeff(3);
+  double C2 = lineSegment.GetCoeff(3);
   stringstream stream;
 
   if (A1 * B2 == B1 * A2) {
@@ -61,11 +61,11 @@ string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
 }
 
 bool LineSegment2D::BelongingToSegment(LineSegment2D segment) {
-  if (Get_Coord(1) <= segment.Get_Coord(3) &&
-      segment.Get_Coord(3) <= Get_Coord(3))
-      return true;
-  if (Get_Coord(1) <= segment.Get_Coord(1) &&
-      segment.Get_Coord(1) <= Get_Coord(3))
-      return true;
+  if (GetCoord(1) <= segment.GetCoord(3) &&
+	  segment.GetCoord(3) <= GetCoord(3))
+    return true;
+  if (GetCoord(1) <= segment.GetCoord(1) &&
+	  segment.GetCoord(1) <= GetCoord(3))
+    return true;
   return false;
 }

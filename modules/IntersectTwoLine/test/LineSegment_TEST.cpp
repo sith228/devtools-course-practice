@@ -31,7 +31,7 @@ TEST(LineSegment, Can_Get_Coord_X1) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double X1;
   // Act
-  X1 = segment.Get_Coord(1);
+  X1 = segment.GetCoord(1);
   // Assert
   ASSERT_DOUBLE_EQ(5.6, X1);
 }
@@ -41,7 +41,7 @@ TEST(LineSegment, Can_Get_Coord_Y1) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double Y1;
   // Act
-  Y1 = segment.Get_Coord(2);
+  Y1 = segment.GetCoord(2);
   // Assert
   ASSERT_DOUBLE_EQ(-4.8, Y1);
 }
@@ -51,7 +51,7 @@ TEST(LineSegment, Can_Get_Coord_X2) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double X2;
   // Act
-  X2 = segment.Get_Coord(3);
+  X2 = segment.GetCoord(3);
   // Assert
   ASSERT_DOUBLE_EQ(11.1, X2);
 }
@@ -61,7 +61,7 @@ TEST(LineSegment, Can_Get_Coord_Y2) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double Y2;
   // Act
-  Y2 = segment.Get_Coord(4);
+  Y2 = segment.GetCoord(4);
   // Assert
   ASSERT_DOUBLE_EQ(9.3, Y2);
 }
@@ -70,7 +70,7 @@ TEST(LineSegment, Cant_Get_Coord_With_Incorrect_Initialization) {
   // Arrange
   LineSegment2D segment(1.0, -4.0, 5.2, 44.3);
   // Act and Assert
-  ASSERT_ANY_THROW(segment.Get_Coord(10));
+  ASSERT_ANY_THROW(segment.GetCoord(10));
 }
 
 TEST(LineSegment, Can_Set_X1) {
@@ -78,8 +78,8 @@ TEST(LineSegment, Can_Set_X1) {
   LineSegment2D segment(0, 0, 11.3, 37.98);
   double x;
   // Act
-  segment.Set_X1(3.3);
-  x = segment.Get_Coord(1);
+  segment.SetX1(3.3);
+  x = segment.GetCoord(1);
   // Assert
   EXPECT_EQ(3.3, x);
 }
@@ -89,8 +89,8 @@ TEST(LineSegment, Can_Set_Y1) {
   LineSegment2D segment(10.5, 0, 8.8, 37.98);
   double y;
   // Act
-  segment.Set_Y1(3.3);
-  y = segment.Get_Coord(2);
+  segment.SetY1(3.3);
+  y = segment.GetCoord(2);
   // Assert
   EXPECT_EQ(3.3, y);
 }
@@ -100,8 +100,8 @@ TEST(LineSegment, Can_Set_X2) {
   LineSegment2D segment(11.7, 73.4, 0, 37.98);
   double x;
   // Act
-  segment.Set_X2(3.3);
-  x = segment.Get_Coord(3);
+  segment.SetX2(3.3);
+  x = segment.GetCoord(3);
   // Assert
   EXPECT_EQ(3.3, x);
 }
@@ -111,8 +111,8 @@ TEST(LineSegment, Can_Set_Y2) {
   LineSegment2D segment(10.5, 3.7, 8.8, 0);
   double y;
   // Act
-  segment.Set_Y2(3.3);
-  y = segment.Get_Coord(4);
+  segment.SetY2(3.3);
+  y = segment.GetCoord(4);
   // Assert
   EXPECT_EQ(3.3, y);
 }
@@ -122,7 +122,7 @@ TEST(LineSegment, Can_Get_Coeff_A) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double A;
   // Act
-  A = segment.Get_Coeff(1);
+  A = segment.GetCoeff(1);
   // Assert
   ASSERT_DOUBLE_EQ(-14.1, A);
 }
@@ -132,7 +132,7 @@ TEST(LineSegment, Can_Get_Coeff_B) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double B;
   // Act
-  B = segment.Get_Coeff(2);
+  B = segment.GetCoeff(2);
   // Assert
   ASSERT_DOUBLE_EQ(5.5, B);
 }
@@ -142,7 +142,7 @@ TEST(LineSegment, Can_Get_Coeff_C) {
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   double C;
   // Act
-  C = segment.Get_Coeff(3);
+  C = segment.GetCoeff(3);
   // Assert
   ASSERT_DOUBLE_EQ(105.36, C);
 }
@@ -151,7 +151,7 @@ TEST(LineSegment, Can_Not_Get_Coeff_With_Incorrect_Initialization) {
   // Arrange
   LineSegment2D segment(5.6, -4.8, 11.1, 9.3);
   // Act and Assert
-  ASSERT_ANY_THROW(segment.Get_Coeff(10));
+  ASSERT_ANY_THROW(segment.GetCoeff(10));
 }
 
 TEST(LineSegment, Check_Segments_For_Coincide) {
