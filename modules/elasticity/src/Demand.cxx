@@ -2,62 +2,62 @@
 
 #include "../include/Demand.h"
 
-Demand::Demand(double _oldprice, double _newprice,
-               double _olddemand, double _newdemand) {
-  if ((_oldprice >= 0) && (_newprice >= 0) &&
-     (_olddemand >= 0) && (_newdemand >= 0)) {
-    oldprice = _oldprice;
-    olddemand = _olddemand;
-    newprice = _newprice;
-    newdemand = _newdemand;
-    if (newprice == oldprice) {
-      throw "Error";
+Demand::Demand(double oldprice, double newprice,
+               double olddemand, double newdemand) {
+  if ((oldprice >= 0) && (newprice >= 0) &&
+     (olddemand >= 0) && (newdemand >= 0)) {
+    oldprice_ = oldprice;
+    olddemand_ = olddemand;
+    newprice_ = newprice;
+    newdemand_ = newdemand;
+    if (newprice_ == oldprice_) {
+      throw "Deltaprice can`t be equal zero.";
     }
-    deltaprice = newprice - oldprice;
-    deltademand = newdemand - olddemand;
-    coeffofdemand = deltademand/deltaprice;
-    revenue = 0;
-    elasticity = 0;
+    deltaprice_ = newprice - oldprice;
+    deltademand_ = newdemand - olddemand;
+    coeffofdemand_ = deltademand_/deltaprice_;
+    revenue_ = 0;
+    elasticity_ = 0;
   } else {
-      throw "Error";
+      throw "Price or demand can`t be < 0";
     }
 }
 
 int Demand::checkforelasticity() {
-  if (coeffofdemand == 1.0) {
+  if (coeffofdemand_ == 1.0) {
     // Coefficient of unit elasticity
-    elasticity = UnitElastic;
-  } else if (coeffofdemand > 1.0) {
+    elasticity_ = UnitElastic;
+  } else if (coeffofdemand_ > 1.0) {
       // Demand is elastic
-      elasticity = Elastic;
+      elasticity_ = Elastic;
     } else {
         // Demand is not elastic
-        elasticity = NoElastic;
+        elasticity_ = NoElastic;
       }
-  return elasticity;
+  return elasticity_;
 }
 
-double Demand::revenuechange(double revenue) {
+double Demand::revenuechange(double revenue_) {
   // Old revenue
-  if (coeffofdemand >= 1.0) {
+  if (coeffofdemand_ >= 1.0) {
     for (int time = 0; time < 30; time++) {
     // 30 days of work
-      if (newprice > oldprice) {
-        revenue--;
-      } else if (newprice < oldprice) {
-          revenue++;
+      if (newprice_ > oldprice_) {
+        revenue_--;
+      } else if (newprice_ < oldprice_) {
+          revenue_++;
         }
     }
   }
-  if (coeffofdemand < 1.0) {
+  if (coeffofdemand_ < 1.0) {
     for (int time=0; time < 30; time++) {
-      if (newprice > oldprice) {
-        revenue++;
-      } else if (newprice < oldprice) {
-          revenue--;
+      if (newprice_ > oldprice_) {
+        revenue_++;
+      } else if (newprice_ < oldprice_) {
+          revenue_--;
         }
     }
   }
   // New revenue
-  return revenue;
+  return revenue_;
 }

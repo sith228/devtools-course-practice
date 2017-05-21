@@ -6,18 +6,18 @@
 enum Elasticity{Elastic, UnitElastic, NoElastic};
 
 class Demand {
- protected:
-    double coeffofdemand;
-    double oldprice, newprice;
-    double olddemand, newdemand;
-    double deltaprice;
-    double deltademand;
-    double revenue;
-    int elasticity;
- public:
-    Demand(double _oldprice, double _newprice,
-           double _olddemand, double _newdemand);
+  public:
+    Demand(double oldprice, double newprice,
+           double olddemand, double newdemand);
     int checkforelasticity();
     double revenuechange(double revenue);
+  protected:
+    double coeffofdemand_;
+    double oldprice_, newprice_;
+    double olddemand_, newdemand_;
+    double deltaprice_;
+    double deltademand_;
+    double revenue_;
+    int elasticity_;
 };
 #endif  // MODULES_ELASTICITY_INCLUDE_DEMAND_H_
