@@ -53,7 +53,7 @@ double StatisticalMoments::GetCustomMoment(const std::vector<double>& values,
     CheckingInputData(values, chances);
     double moment = 0;
     if (order == 0) {
-        throw new std::runtime_error("Order must be more than zero");
+        throw std::runtime_error("Order must be more than zero");
     }
     for (unsigned int i = 0; i < chances.size(); i++) {
         moment += pow(values[i] - offset, order)*chances[i];
