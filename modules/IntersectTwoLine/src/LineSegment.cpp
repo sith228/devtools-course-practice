@@ -62,10 +62,10 @@ string LineSegment2D::CheckIntersection(LineSegment2D lineSegment) {
 
 bool LineSegment2D::BelongingToSegment(LineSegment2D segment) {
   if (GetCoord(1) <= segment.GetCoord(3) &&
-	  segment.GetCoord(3) <= GetCoord(3))
-    return true;
+      segment.GetCoord(3) <= GetCoord(3))
+      return true;
   if (GetCoord(1) <= segment.GetCoord(1) &&
-	  segment.GetCoord(1) <= GetCoord(3))
-    return true;
+      segment.GetCoord(1) <= GetCoord(3))
+      return true;
   return false;
 }
