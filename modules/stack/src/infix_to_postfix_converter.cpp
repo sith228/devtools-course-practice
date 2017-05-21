@@ -10,7 +10,10 @@
 using std::string;
 
 InfixToPostfixConverter::InfixToPostfixConverter() : message_("") {
-    opPriority_ = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
+    opPriority_['+'] = 1;
+    opPriority_['-'] = 1;
+    opPriority_['*'] = 2;
+    opPriority_['/'] = 2;
 }
 
 void InfixToPostfixConverter::help(const char* appname, const char* message) {
