@@ -96,8 +96,9 @@ TEST(StackTest, Can_Equate_To_Itself) {
     // Act
     v = v;
 
-    //Assert
+    // Assert
     EXPECT_EQ(5, v.Pop());
+    EXPECT_TRUE(v.CheckEmpty());
 }
 
 TEST(StackTest, Can_stTop_INT) {
