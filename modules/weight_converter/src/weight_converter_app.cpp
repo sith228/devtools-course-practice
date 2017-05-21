@@ -82,7 +82,7 @@ char parseOperation(const char* arg) {
         op = 'g';
     } else if (strcmp(arg, "t") == 0) {
         op = 't';
-    } else if (strcmp(arg, "ft") == 0) {
+    } else if (strcmp(arg, "f") == 0) {
         op = 'f';
     } else {
         throw std::string("Wrong operation format!");
@@ -110,27 +110,26 @@ std::string Application::operator()(int argc, const char** argv) {
     WeightConverter weight_converter(0.001, Weights::KG);
 
     std::ostringstream stream;
-
-    switch (args.operation) {
-    case 's':
-        weight_converter.SetWeight(args.weight, type_from);
-        stream << "Weight = " << weight_converter.GetWeight() << " ";
-        break;
-    case 'g':
-        stream << "Weight = " << weight_converter.GetWeight() << " ";
-        break;
-    case 't':
-        stream << "Weight = " << weight_converter.Convert(type_to) << " ";
-        break;
-    case 'f':
-        try {
-            stream << "Weight = " << weight_converter.Convert(args.weight, type_from, type_to) << " ";
+    try {
+        switch (args.operation) {
+        case 's':
+            weight_converter.SetWeight(args.weight, type_from);
+            stream << "Weight = " << weight_converter.GetWeight() << " ";
+            break;
+        case 'g':
+            stream << "Weight = " << weight_converter.GetWeight() << " ";
+            break;
+        case 't':
+            stream << "Weight = " << weight_converter.Convert(type_to) << " ";
+            break;
+        case 'f':
+            stream << "Weight = " << weight_converter.Convert(args.weight,
+                type_from, type_to) << " ";
             break;
         }
-        catch (std::string& str) {
+    } catch (std::string& str) {
             return str;
         }
-    }
 
     message_ = stream.str();
 
