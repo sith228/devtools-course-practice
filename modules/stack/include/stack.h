@@ -30,9 +30,11 @@ class TStack {
 
 template <class ValType>
 TStack<ValType>::TStack(int _size) {
-    if (_size < 0) throw "Negative size";
-    else if (_size > MAX_STACK_SIZE) throw "Size more than MAX_VECTOR_SIZE";
-    else {
+    if (_size < 0) {
+        throw "Negative size";
+    } else if (_size > MAX_STACK_SIZE) {
+        throw "Size more than MAX_VECTOR_SIZE";
+    } else {
         top_ = -1;
         size_ = _size;
         p_vector_ = new ValType[size_];
@@ -67,8 +69,9 @@ int TStack<ValType>::GetStackTop()const {
 
 template <class ValType>
 void TStack<ValType>::Push(const ValType elem) {
-    if (this->CheckFull()) throw "Full stack";
-    else {
+    if (this->CheckFull()) {
+        throw "Full stack";
+    } else {
         top_++;
         p_vector_[top_] = elem;
     }
@@ -76,8 +79,9 @@ void TStack<ValType>::Push(const ValType elem) {
 
 template <class ValType>
 ValType TStack<ValType>::Pop() {
-    if (this->CheckEmpty()) throw "Empty stack";
-    else {
+    if (this->CheckEmpty()) {
+        throw "Empty stack";
+    } else {
         ValType res;
         res = p_vector_[top_];
         top_--;
@@ -87,14 +91,20 @@ ValType TStack<ValType>::Pop() {
 
 template <class ValType>
 ValType TStack<ValType>::StTop() {
-    if (this->CheckEmpty()) throw "Empty stack";
-    else return p_vector_[top_];
+    if (this->CheckEmpty()) {
+        throw "Empty stack";
+    } else {
+        return p_vector_[top_];
+    }
 }
 
 template <class ValType>
 bool TStack<ValType>::CheckFull() const {
-    if (top_ == size_ - 1) return true;
-    else return false;
+    if (top_ == size_ - 1) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 template <class ValType>
