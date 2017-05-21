@@ -121,17 +121,6 @@ TEST(MatrixCalculatorTest, determinant_is_calculated_correctry) {
     EXPECT_EQ(m1.Determinant(), expected);
 }
 
-TEST(MatrixCalculatorTest, first_elem_is_zero) {
-    std::vector<std::vector<double>> v1 = {
-        { 0.0, 2.0, 5.0 },
-        { 3.0, 2.0, 5.0 },
-        { 5.0, 3.0, 1.0 } };
-
-    MatrixCalculator m1;
-    m1.SetMatrix(v1);
-
-    EXPECT_ANY_THROW(m1.Determinant());
-}
 
 TEST(MatrixCalculatorTest, cant_calc_determinant_in_rect_matrix) {
     std::vector<std::vector<double>> v1 = {
