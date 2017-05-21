@@ -76,27 +76,27 @@ char parseOperationUnary(const char* arg) {
 }
 
 std::string Vector3DApp::operator()(int argc, const char** argv) {
-    ArgumentsBinary argsBinary;
-    ArgumentsUnary argsUnary;
+    ArgumentsBinary args_binary;
+    ArgumentsUnary args_unary;
 
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
         if (argc == 8) {
-            argsBinary.v1_x = parseDouble(argv[1]);
-            argsBinary.v1_y = parseDouble(argv[2]);
-            argsBinary.v1_z = parseDouble(argv[3]);
-            argsBinary.v2_x = parseDouble(argv[4]);
-            argsBinary.v2_y = parseDouble(argv[5]);
-            argsBinary.v2_z = parseDouble(argv[6]);
-            argsBinary.operation = parseOperationBinary(argv[7]);
+            args_binary.v1_x = parseDouble(argv[1]);
+            args_binary.v1_y = parseDouble(argv[2]);
+            args_binary.v1_z = parseDouble(argv[3]);
+            args_binary.v2_x = parseDouble(argv[4]);
+            args_binary.v2_y = parseDouble(argv[5]);
+            args_binary.v2_z = parseDouble(argv[6]);
+            args_binary.operation = parseOperationBinary(argv[7]);
         }
         if (argc == 5) {
-            argsUnary.v1_x = parseDouble(argv[1]);
-            argsUnary.v1_y = parseDouble(argv[2]);
-            argsUnary.v1_z = parseDouble(argv[3]);
-            argsUnary.operation = parseOperationUnary(argv[4]);
+            args_unary.v1_x = parseDouble(argv[1]);
+            args_unary.v1_y = parseDouble(argv[2]);
+            args_unary.v1_z = parseDouble(argv[3]);
+            args_unary.operation = parseOperationUnary(argv[4]);
         }
     }
     catch (std::string& str) {
@@ -106,8 +106,8 @@ std::string Vector3DApp::operator()(int argc, const char** argv) {
     std::ostringstream stream;
 
     if (argc == 5) {
-        Vector3D v1(argsUnary.v1_x, argsUnary.v1_y, argsUnary.v1_z);
-        switch (argsUnary.operation) {
+        Vector3D v1(args_unary.v1_x, args_unary.v1_y, args_unary.v1_z);
+        switch (args_unary.operation) {
             case 'n':
                 stream << "Norm = " << v1.Norm();
                 break;
@@ -122,33 +122,33 @@ std::string Vector3DApp::operator()(int argc, const char** argv) {
     }
 
     if (argc == 8) {
-        Vector3D v1(argsBinary.v1_x, argsBinary.v1_y, argsBinary.v1_z);
-        Vector3D v2(argsBinary.v2_x, argsBinary.v2_y, argsBinary.v2_z);
-        Vector3D resultVector;
-        switch (argsBinary.operation) {
+        Vector3D v1(args_binary.v1_x, args_binary.v1_y, args_binary.v1_z);
+        Vector3D v2(args_binary.v2_x, args_binary.v2_y, args_binary.v2_z);
+        Vector3D result_vector;
+        switch (args_binary.operation) {
             case '+':
-                resultVector = v1 + v2;
+                result_vector = v1 + v2;
                 stream << "Sum = <" <<
-                            resultVector.GetX() <<
-                    "; " << resultVector.GetY() <<
-                    "; " << resultVector.GetZ() << ">";
+                            result_vector.GetX() <<
+                    "; " << result_vector.GetY() <<
+                    "; " << result_vector.GetZ() << ">";
                 break;
             case '-':
-                resultVector = v1 - v2;
+                result_vector = v1 - v2;
                 stream << "Difference = <" <<
-                            resultVector.GetX() <<
-                    "; " << resultVector.GetY() <<
-                    "; " << resultVector.GetZ() << ">";
+                            result_vector.GetX() <<
+                    "; " << result_vector.GetY() <<
+                    "; " << result_vector.GetZ() << ">";
                 break;
             case '*':
                 stream << "Scalar multiplication = " << v1 * v2;
                 break;
             case '^':
-                resultVector = v1 ^ v2;
+                result_vector = v1 ^ v2;
                 stream << "Vector multiplication = <" <<
-                            resultVector.GetX() <<
-                    "; " << resultVector.GetY() <<
-                    "; " << resultVector.GetZ() << ">";
+                            result_vector.GetX() <<
+                    "; " << result_vector.GetY() <<
+                    "; " << result_vector.GetZ() << ">";
                 break;
         }
     }
