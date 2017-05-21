@@ -5,6 +5,7 @@
 
 #include <map>
 #include <string>
+#include <cstring>
 #include <sstream>
 
 Application::Application() : message_("") {}
@@ -82,7 +83,7 @@ char parseOperation(const char* arg) {
     } else if (strcmp(arg, "t") == 0) {
         op = 't';
     } else if (strcmp(arg, "ft") == 0) {
-        op = 'ft';
+        op = 'f';
     } else {
         throw std::string("Wrong operation format!");
     }
@@ -122,7 +123,7 @@ std::string Application::operator()(int argc, const char** argv) {
         weight_converter.Convert(type_to);
         stream << "Weight = " << weight_converter.GetWeight() << " ";
         break;
-    case 'ft':
+    case 'f':
         try {
             weight_converter.Convert(args.weight, type_from, type_to);
             stream << "Weight = " << weight_converter.GetWeight() << " ";
