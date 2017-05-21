@@ -1,3 +1,5 @@
+// Copyright 2017 Bevzuk Semen
+
 #include "include/vector3D.h"
 #include "include/vector3D-app.h"
 
@@ -27,8 +29,7 @@ bool Vector3DApp::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (!(argc == 5 || argc == 8)) {
+    } else if (!(argc == 5 || argc == 8)) {
         help(argv[0], "ERROR: Should be 7 or 4 arguments.\n\n");
         return false;
     }
@@ -50,17 +51,13 @@ char parseOperationBinary(const char* arg) {
     char op;
     if (strcmp(arg, "+") == 0) {
         op = '+';
-    }
-    else if (strcmp(arg, "-") == 0) {
+    } else if (strcmp(arg, "-") == 0) {
         op = '-';
-    }
-    else if (strcmp(arg, "*") == 0) {
+    } else if (strcmp(arg, "*") == 0) {
         op = '*';
-    }
-    else if (strcmp(arg, "^") == 0) {
+    } else if (strcmp(arg, "^") == 0) {
         op = '^';
-    }
-    else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
@@ -70,11 +67,9 @@ char parseOperationUnary(const char* arg) {
     char op;
     if (strcmp(arg, "n") == 0) {
         op = 'n';
-    }
-    else if (strcmp(arg, "N") == 0) {
+    } else if (strcmp(arg, "N") == 0) {
         op = 'N';
-    }
-    else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
@@ -97,8 +92,7 @@ std::string Vector3DApp::operator()(int argc, const char** argv) {
             argsBinary.v2_z = parseDouble(argv[6]);
             argsBinary.operation = parseOperationBinary(argv[7]);
         }
-        if (argc == 5)
-        {
+        if (argc == 5) {
             argsUnary.v1_x = parseDouble(argv[1]);
             argsUnary.v1_y = parseDouble(argv[2]);
             argsUnary.v1_z = parseDouble(argv[3]);
@@ -121,7 +115,7 @@ std::string Vector3DApp::operator()(int argc, const char** argv) {
                 Vector3D resultVector = v1.Normalize();
                 stream << "Normalization vector = <" <<
                             resultVector.GetX() <<
-                    "; " << resultVector.GetY() << 
+                    "; " << resultVector.GetY() <<
                     "; " << resultVector.GetZ() << ">";
                 break;
         }
