@@ -6,12 +6,12 @@
 enum Elasticity{Elastic, UnitElastic, NoElastic};
 
 class Demand {
-  public:
+ public:
     Demand(double oldprice, double newprice,
            double olddemand, double newdemand);
     int checkforelasticity();
     double revenuechange(double revenue);
-  protected:
+ protected:
     double coeffofdemand_;
     double oldprice_, newprice_;
     double olddemand_, newdemand_;
