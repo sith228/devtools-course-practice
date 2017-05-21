@@ -55,7 +55,7 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
 
 add_test(
     NAME ${prefix}_Can_Get_Weight
-    COMMAND ${APPLICATION} 20.2 'KG' 'G' 'get'
+    COMMAND ${APPLICATION} 20.2 KG G get
 )
 set_tests_properties (${prefix}_Can_Get_Weight
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.001 ")
@@ -63,7 +63,7 @@ set_tests_properties (${prefix}_Can_Get_Weight
 
 add_test(
     NAME ${prefix}_Can_Set_Weight
-    COMMAND ${APPLICATION} 20 'KG' 'G' 'set'
+    COMMAND ${APPLICATION} 20 KG G set
 )
 set_tests_properties (${prefix}_Can_Get_Weight
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 20 ")
@@ -71,7 +71,7 @@ set_tests_properties (${prefix}_Can_Get_Weight
 
 add_test(
     NAME ${prefix}_Can_Convert_To
-    COMMAND ${APPLICATION} 20 'MG' 'G' 't'
+    COMMAND ${APPLICATION} 20 MG G t
 )
 set_tests_properties (${prefix}_Can_Convert_To
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 1")
@@ -79,7 +79,7 @@ set_tests_properties (${prefix}_Can_Convert_To
 
 add_test(
     NAME ${prefix}_Can_Convert_From_To
-    COMMAND ${APPLICATION} 20 'MG' 'G' 'f'
+    COMMAND ${APPLICATION} 20 MG G f
 )
 set_tests_properties (${prefix}_Can_Convert_From_To
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.02")
