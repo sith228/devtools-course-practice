@@ -8,7 +8,7 @@
 #include <functional>
 #include <iterator>
 
-#include "include/vector3d-app.h"
+#include "include/vector3D-app.h"
 
 using ::testing::internal::RE;
 using std::vector;
