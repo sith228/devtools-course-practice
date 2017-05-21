@@ -88,9 +88,9 @@ std::string ConverterCurrencyApp::operator()(int argc, const char** argv) {
     }
 
     try {
-        args.money_size = parseDouble(argv[1]);
         args.old_currency = parseCurrency(argv[2]);
         args.new_currency = parseCurrency(argv[3]);
+        args.money_size = parseDouble(argv[1]);
         args.first_convert_coeff = parseDouble(argv[4]);
         args.second_convert_coeff = parseDouble(argv[5]);
     }

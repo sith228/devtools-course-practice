@@ -56,7 +56,7 @@ TEST_F(ConverterCurrencyAppTest, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Wrong_Number_Format) {
-    vector<string> args = {"one", "RUR", "USD", "0", "0"};
+    vector<string> args = {"one", "BYN", "CNY", "0", "0"};
 
     Act(args);
 
@@ -64,7 +64,7 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Wrong_Number_Format) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Wrong_Currency_Format) {
-    vector<string> args = {"10", "currency", "RUR", "0", "0"};
+    vector<string> args = {"10", "CZN", "currency", "0", "0"};
 
     Act(args);
 
@@ -80,15 +80,23 @@ TEST_F(ConverterCurrencyAppTest, Can_Convert_Money_With_Default_Coefficient) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Convert_Money_With_New_Coefficient) {
-    vector<string> args = { "10", "USD", "RUR", "10", "0" };
+    vector<string> args = { "10", "EUR", "RUR", "10", "0" };
 
     Act(args);
 
     Assert("Result of convertation = 100");
 }
 
-TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient) {
-    vector<string> args = {"10", "USD", "RUR", "0", "-1"};
+TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient1) {
+    vector<string> args = { "10", "GBR", "KZT", "-1", "0" };
+
+    Act(args);
+
+    Assert("Convert coefficient has to be more than 0");
+}
+
+TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient2) {
+    vector<string> args = { "10", "USD", "UAH", "0", "-1" };
 
     Act(args);
 
@@ -96,7 +104,7 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Money_Size) {
-    vector<string> args = { "-10", "USD", "RUR", "0", "0" };
+    vector<string> args = { "-10", "JPY", "KRW", "0", "0" };
 
     Act(args);
 
