@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <cmath>
+#include <string>
 #include <functional>
 
 #include "../include/mortgage_calculator_app.h"
@@ -79,9 +80,9 @@ TEST_F(MortgageCalculatorAppTest, Throw_Exception_When_Amount_Is_Invalid) {
 
 TEST_F(MortgageCalculatorAppTest, Throw_Exception_When_Period_Is_Invalid) {
     std::vector<std::string> args = {"5.2", "0", "10"};
-    
+
     Act(args);
-    
+
     Assert("Period was entered incorrectly");
 }
 
