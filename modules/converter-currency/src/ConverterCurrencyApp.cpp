@@ -98,7 +98,6 @@ std::string ConverterCurrencyApp::operator()(int argc, const char** argv) {
         return str;
     }
 
-    double result;
     std::ostringstream stream;
 
     if (args.first_convert_coeff != 0) {
@@ -120,6 +119,7 @@ std::string ConverterCurrencyApp::operator()(int argc, const char** argv) {
     }
 
     try {
+        double result;
         result = ConverterCurrency::Convert(args.money_size,
             args.old_currency, args.new_currency);
         stream << "Result of convertation = " << result;
