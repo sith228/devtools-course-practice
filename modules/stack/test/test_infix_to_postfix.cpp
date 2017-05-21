@@ -1,4 +1,4 @@
-// Copyright 2017 Gvozdeva Viktoria
+// Copyright 2017 Gvozdeva Viktoriia
 
 #include <gtest/gtest.h>
 
