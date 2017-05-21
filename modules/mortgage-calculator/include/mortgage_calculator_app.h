@@ -7,13 +7,13 @@
 
 class Application {
  public:
-	Application();
-	std::string operator()(int argc, const char** argv);
-	
+    Application();
+    std::string operator()(int argc, const char** argv);
+    
  private:
-	void help(const char *appName, const char *message = "");
-	bool validateNumberOfArguments(int argc, const char **argv);
+    void help(const char *appName, const char *message = "");
+    bool validateNumberOfArguments(int argc, const char **argv);
  
-	std::string message_;
+    std::string message_;
 };
 #endif  // MODULES_MORTGAGE_CALCULATOR_INCLUDE_MORTGAGE_CALCULATOR_APP_H_
