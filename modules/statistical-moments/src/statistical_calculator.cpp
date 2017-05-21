@@ -2,6 +2,10 @@
 
 #include "include/statistical_calculator.h"
 #include "include/statistical_moments.h"
+
+#include <cstdlib>
+#include <string>
+#include <vector>
 #include <stdexcept>
 
 using std::vector;
@@ -28,7 +32,7 @@ const char *StatisticalCalculator::help_message_ =
 
 unsigned StatisticalCalculator::ParseInt(const char *s) {
     char *end = nullptr;
-    auto value = strtol(s, &end, 10);
+    auto value = std::strtol(s, &end, 10);
 
     if (end[0])
         throw string("unrecognized argument ") + s;
@@ -40,7 +44,7 @@ unsigned StatisticalCalculator::ParseInt(const char *s) {
 
 bool StatisticalCalculator::TryParseDouble(const char *s, double *value) {
     char *end = nullptr;
-    *value = strtod(s, &end);
+    *value = std::strtod(s, &end);
     return end[0] == 0;
 }
 

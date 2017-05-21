@@ -13,7 +13,7 @@ using std::vector;
 using std::string;
 
 class StatisticalCalculatorTest : public ::testing::Test {
-protected:
+ protected:
     void Act(const vector<string> &args) {
         vector<const char *> options;
 
@@ -32,7 +32,7 @@ protected:
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
-protected:
+ protected:
     StatisticalCalculator app_;
     string output_;
 };
@@ -112,7 +112,8 @@ TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Operation) {
 TEST_F(StatisticalCalculatorTest, Can_Calc_Expectancy) {
     vector<double> values = { 1.2, 2.4, 3.1 };
     vector<double> probabilities = { 0.1, 0.4, 0.5 };
-    vector<string> args = { "-exp", "-v", "1.2", "2.4", "3.1", "-p", "0.1", "0.4", "0.5" };
+    vector<string> args = { "-exp", "-v", "1.2", "2.4", "3.1",
+                            "-p", "0.1", "0.4", "0.5" };
 
     Act(args);
     string result = std::to_string(
@@ -143,8 +144,8 @@ TEST_F(StatisticalCalculatorTest, Can_Calc_Custom_Moment) {
                            "2.6", "-p", "0.4", "0.2", "0.1", "0.3" };
 
     Act(args);
-    string result = std::to_string(
-        StatisticalMoments::GetCustomMoment(values, probabilities, order, offset));
+    string result = std::to_string(StatisticalMoments::GetCustomMoment(
+        values, probabilities, order, offset));
 
     EXPECT_EQ(result, output_);
 }
