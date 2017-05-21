@@ -77,11 +77,3 @@ TEST_F(WeightConverterAppTest, Is_Checking_Operation_Argument) {
 
     Assert("Wrong operation format!");
 }
-
-TEST_F(WeightConverterAppTest, Get_Weight) {
-    vector<string> args = { "20", "KG", "G", "get" };
-
-    Act(args);
-
-    Assert("Weight = 0.001");
-}

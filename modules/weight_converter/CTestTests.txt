@@ -54,14 +54,6 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
 
 
 add_test(
-    NAME ${prefix}_Can_Get_Weight
-    COMMAND ${APPLICATION} 20 KG G get
-)
-set_tests_properties (${prefix}_Can_Get_Weight
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.001")
-
-
-add_test(
     NAME ${prefix}_Can_Set_Weight
     COMMAND ${APPLICATION} 20 KG G set
 )
