@@ -52,7 +52,7 @@ TEST_F(WeightConverterAppTest, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(WeightConverterAppTest, Is_Checking_Weight_Argument) {
-    vector<string> args = { "-0.45", "KG", "G", "f_t" };
+    vector<string> args = { "-0.45", "KG", "G", "ft" };
 
     Act(args);
 
@@ -60,7 +60,7 @@ TEST_F(WeightConverterAppTest, Is_Checking_Weight_Argument) {
 }
 
 TEST_F(WeightConverterAppTest, Is_Checking_Weight_Type_Argument) {
-    vector<string> args = { "0.45", "25", "G", "f_t" };
+    vector<string> args = { "0.45", "25", "G", "ft" };
 
     Act(args);
 

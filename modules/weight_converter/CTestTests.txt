@@ -79,7 +79,7 @@ set_tests_properties (${prefix}_Can_Convert_To
 
 add_test(
     NAME ${prefix}_Can_Convert_From_To
-    COMMAND ${APPLICATION} 20 'MG' 'G' 'f_t'
+    COMMAND ${APPLICATION} 20 'MG' 'G' 'ft'
 )
 set_tests_properties (${prefix}_Can_Convert_From_To
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.02")

@@ -1,6 +1,7 @@
 // Copyright 2017 Simonyan Vaginak
 
 #include <map>
+#include <string>
 
 #ifndef MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_APP_H_
 #define MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_APP_H_
@@ -16,8 +17,8 @@ class Application {
     std::string message_;
     typedef struct {
         double weight;
-		char type_from;
-		char type_to;
+        char type_from;
+        char type_to;
         char operation;
     } Arguments;
 };
