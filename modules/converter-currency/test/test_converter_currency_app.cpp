@@ -88,7 +88,7 @@ TEST_F(ConverterCurrencyAppTest, Can_Convert_Money_With_New_Coefficient) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient1) {
-    vector<string> args = { "10", "GBR", "KZT", "-1", "0" };
+    vector<string> args = { "10", "GBP", "KZT", "-1", "0" };
 
     Act(args);
 
