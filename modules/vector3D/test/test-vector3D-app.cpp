@@ -120,3 +120,19 @@ TEST_F(Vector3dAppTest, Can_Mult_Vector) {
 
     Assert("Vector multiplication = <-3; 6; -3>");
 }
+
+TEST_F(Vector3dAppTest, Can_Norm_Vector) {
+    vector<string> args = { "1.0", "1.0", "1.0", "n" };
+
+    Act(args);
+
+    Assert("Norm = 1.73205");
+}
+
+TEST_F(Vector3dAppTest, Can_Normalize_Vector) {
+    vector<string> args = { "1.0", "1.0", "1.0", "N" };
+
+    Act(args);
+
+    Assert("Normalization vector = <0.57735; 0.57735; 0.57735>");
+}
