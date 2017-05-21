@@ -1,4 +1,4 @@
-// Copyright 2017 Buldakov Vladislav
+// Copyright 2017 Simonyan Vaginak
 
 #include <gtest/gtest.h>
 
