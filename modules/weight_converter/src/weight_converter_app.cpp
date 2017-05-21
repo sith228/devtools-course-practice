@@ -4,6 +4,7 @@
 #include "include/weight_converter_app.h"
 
 #include <map>
+#include <string>
 #include <sstream>
 
 Application::Application() : message_("") {}
@@ -29,8 +30,7 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 5) {
+    } else if (argc != 5) {
         help(argv[0], "ERROR: Should be 4 arguments.\n\n");
         return false;
     }
@@ -53,29 +53,21 @@ Weights parseWeightType(const char* arg) {
 
     if (strcmp(arg, "KG") == 0) {
         wt = Weights::KG;
-    }
-    else if (strcmp(arg, "MG") == 0) {
+    } else if (strcmp(arg, "MG") == 0) {
         wt = Weights::MG;
-    }
-    else if (strcmp(arg, "G") == 0) {
+    } else if (strcmp(arg, "G") == 0) {
         wt = Weights::G;
-    }
-    else if (strcmp(arg, "GR") == 0) {
+    } else if (strcmp(arg, "GR") == 0) {
         wt = Weights::GR;
-    }
-    else if (strcmp(arg, "DR") == 0) {
+    } else if (strcmp(arg, "DR") == 0) {
         wt = Weights::DR;
-    }
-    else if (strcmp(arg, "OZ") == 0) {
+    } else if (strcmp(arg, "OZ") == 0) {
         wt = Weights::OZ;
-    }
-    else if (strcmp(arg, "LB") == 0) {
+    } else if (strcmp(arg, "LB") == 0) {
         wt = Weights::LB;
-    }
-    else if (strcmp(arg, "CR") == 0) {
+    } else if (strcmp(arg, "CR") == 0) {
         wt = Weights::CR;
-    }
-    else {
+    } else {
         throw std::string("Wrong weight's type format!");
     }
     return wt;
@@ -114,13 +106,13 @@ std::string Application::operator()(int argc, const char** argv) {
         return str;
     }
 
-    WeightConverter weight_converter(0.001,Weights::KG);
+    WeightConverter weight_converter(0.001, Weights::KG);
 
     std::ostringstream stream;
 
     switch (args.operation) {
     case 's':
-        weight_converter.SetWeight(args.weight,type_from);
+        weight_converter.SetWeight(args.weight, type_from);
         stream << "Weight = " << weight_converter.GetWeight() << " ";
         break;
     case 'g':
