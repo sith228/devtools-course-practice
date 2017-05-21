@@ -16,5 +16,13 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is a Integration Methods application"
+    PASS_REGULAR_EXPRESSION "This is a mortgage calculator application"
+    LABELS "${MODULE}")
+	
+add_test(
+	NAME ${prifix}_can_Chech_Number_Of_Arguments
+	COMMAND ${APPLICATION} 10 2
+)
+set_tests_properties (${prefix}_can_Chech_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
     LABELS "${MODULE}")
