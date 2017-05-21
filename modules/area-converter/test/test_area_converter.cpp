@@ -9,14 +9,14 @@
 #include "include/area_converter.h"
 
 static const double kNeighbourhood =
-    std::numeric_limits<double>::epsilon() * 100000;
+std::numeric_limits<double>::epsilon() * 100000;
 
 TEST(AreaConverterTest, can_create_converter_unit) {
     EXPECT_NO_THROW(AreaConverter(AreaConverter::kCentimeter,
         AreaConverter::kMeter));
 }
 
-TEST(AreaConverterTest, 
+TEST(AreaConverterTest,
     cant_create_converter_unit_with_wrong_format_to) {
     EXPECT_ANY_THROW(AreaConverter(AreaConverter::kCentimeter,
         0));
