@@ -47,7 +47,7 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Type_Argument
 
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Operation_Argument
-    COMMAND ${APPLICATION} 20.2 'KG' 'G' 's'
+    COMMAND ${APPLICATION} 20 KG G sset
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
