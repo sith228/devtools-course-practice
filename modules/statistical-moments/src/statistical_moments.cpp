@@ -37,13 +37,13 @@ void StatisticalMoments::CheckingInputData(const std::vector<double>& values,
         throw std::runtime_error("vector \"chances\" is empty");
     }
     if (chances.size() != values.size()) {
-        throw std::runtime_error("values and chances must have equals size");
+        throw std::runtime_error("values and chances must have equal size");
     }
     if (!IsChanceValid(values, chances)) {
-        throw std::runtime_error("One of chances is out in range [0,1]");
+        throw std::runtime_error("One of chances is out of range [0,1]");
     }
     if (!IsChancesDistributionRow(values, chances)) {
-        throw std::runtime_error("sum of chances isn't equals 1");
+        throw std::runtime_error("sum of chances isn't equal 1");
     }
 }
 

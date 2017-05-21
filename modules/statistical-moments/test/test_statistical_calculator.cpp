@@ -77,6 +77,14 @@ TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Offset) {
     Assert("ERROR: unrecognized argument two.*");
 }
 
+TEST_F(StatisticalCalculatorTest, Can_Handle_Negative_Argument) {
+    vector<string> args = { "-moment", "1", "-2", "-v", "1", "-prob", "0.1" };
+
+    Act(args);
+
+    Assert("ERROR: specified value -2 is less then zero.*");
+}
+
 TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Probs_Argument) {
     vector<string> args = { "-exp", "-v", "1", "-prob", "0.1" };
 
@@ -101,12 +109,28 @@ TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Lists_Length) {
     Assert("ERROR: values and probabilities lists must have the same length.*");
 }
 
+TEST_F(StatisticalCalculatorTest, Can_Handle_Aborted_List) {
+    vector<string> args = { "-disp", "-v", "1", "2", "3" };
+
+    Act(args);
+
+    Assert("ERROR: two few arguments.*");
+}
+
 TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Operation) {
     vector<string> args = { "-n", "-v", "1", "-p", "0.4" };
 
     Act(args);
 
     Assert("ERROR: unrecognized argument -n.*");
+}
+
+TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Probs) {
+    vector<string> args = { "-exp", "-v", "1", "-p", "1.2" };
+
+    Act(args);
+
+    Assert("ERROR: One of chances is out of range.*");
 }
 
 TEST_F(StatisticalCalculatorTest, Can_Calc_Expectancy) {

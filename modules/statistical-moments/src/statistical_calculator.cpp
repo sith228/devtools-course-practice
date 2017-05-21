@@ -89,7 +89,7 @@ string StatisticalCalculator::operator()(
             curArg = ParseList(argc, argv, curArg, &values);
 
             if (curArg >= argc) {
-                throw string("unrecognized argument ") + argv[argc - 1];
+                throw string("two few arguments");
             }
 
             arg = argv[curArg++];

@@ -55,6 +55,15 @@ add_test(
 set_tests_properties (${prefix}_Can_Handle_Wrong_Offset PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: unrecognized argument two"
     LABELS "${MODULE}")
+	
+	
+add_test(
+    NAME ${prefix}_Can_Handle_Negative_Argument
+    COMMAND ${APPLICATION} -moment 1 -2 -v 1 -prob 0.1
+)
+set_tests_properties (${prefix}_Can_Handle_Negative_Argument PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: specified value -2 is less then zero"
+    LABELS "${MODULE}")
 
 
 add_test(
@@ -83,6 +92,15 @@ set_tests_properties (${prefix}_Can_Handle_Wrong_Lists_Length PROPERTIES
     PASS_REGULAR_EXPRESSION "ERROR: values and probabilities lists must have the same length"
     LABELS "${MODULE}")
 
+	
+add_test(
+    NAME ${prefix}_Can_Handle_Aborted_List
+    COMMAND ${APPLICATION} -disp -v 1 2 3
+)
+set_tests_properties (${prefix}_Can_Handle_Aborted_List PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: two few arguments"
+    LABELS "${MODULE}")
+	
 
 add_test(
     NAME ${prefix}_Can_Handle_Wrong_Operation
@@ -93,6 +111,15 @@ set_tests_properties (${prefix}_Can_Handle_Wrong_Operation PROPERTIES
     LABELS "${MODULE}")
 
 
+add_test(
+    NAME ${prefix}_Can_Handle_Wrong_Probs
+    COMMAND ${APPLICATION} -exp -v 1 -p 1.2
+)
+set_tests_properties (${prefix}_Can_Handle_Wrong_Probs PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: One of chances is out of range"
+    LABELS "${MODULE}")
+	
+	
 add_test(
     NAME ${prefix}_Can_Calc_Expectancy
     COMMAND ${APPLICATION} -exp -v 1.2 2.4 3.1 -p 0.1 0.4 0.5
