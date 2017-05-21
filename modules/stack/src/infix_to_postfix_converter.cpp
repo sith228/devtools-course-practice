@@ -9,7 +9,9 @@
 
 using std::string;
 
-InfixToPostfixConverter::InfixToPostfixConverter() : message_("") {}
+InfixToPostfixConverter::InfixToPostfixConverter() : message_("") {
+    opPriority_ = { {'+', 1}, {'-', 1}, {'*', 2}, {'/', 2} };
+}
 
 void InfixToPostfixConverter::help(const char* appname, const char* message) {
     message_ =
