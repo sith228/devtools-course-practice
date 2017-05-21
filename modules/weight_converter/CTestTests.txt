@@ -47,7 +47,7 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Type_Argument
 
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Operation_Argument
-    COMMAND ${APPLICATION} 20.2 'Í„' 'G' 's'
+    COMMAND ${APPLICATION} 20.2 'KG' 'G' 's'
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
@@ -55,10 +55,10 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
 
 add_test(
     NAME ${prefix}_Can_Get_Weight
-    COMMAND ${APPLICATION} 20 'KG' 'G' 'get'
+    COMMAND ${APPLICATION} 20.2 'KG' 'G' 'get'
 )
 set_tests_properties (${prefix}_Can_Get_Weight
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 5.3 ")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.001 ")
 
 
 add_test(
@@ -79,7 +79,7 @@ set_tests_properties (${prefix}_Can_Convert_To
 
 add_test(
     NAME ${prefix}_Can_Convert_From_To
-    COMMAND ${APPLICATION} 20 'MG' 'G' 'ft'
+    COMMAND ${APPLICATION} 20 'MG' 'G' 'f'
 )
 set_tests_properties (${prefix}_Can_Convert_From_To
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.02")

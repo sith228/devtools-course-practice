@@ -120,13 +120,11 @@ std::string Application::operator()(int argc, const char** argv) {
         stream << "Weight = " << weight_converter.GetWeight() << " ";
         break;
     case 't':
-        weight_converter.Convert(type_to);
-        stream << "Weight = " << weight_converter.GetWeight() << " ";
+        stream << "Weight = " << weight_converter.Convert(type_to) << " ";
         break;
     case 'f':
         try {
-            weight_converter.Convert(args.weight, type_from, type_to);
-            stream << "Weight = " << weight_converter.GetWeight() << " ";
+            stream << "Weight = " << weight_converter.Convert(args.weight, type_from, type_to) << " ";
             break;
         }
         catch (std::string& str) {
