@@ -18,11 +18,11 @@ class MatrixCalculator {
     MatrixCalculator operator *(const MatrixCalculator&) const;
 
     double Determinant() const;
-    void SetMat(std::vector<std::vector<double>> &);
+    void SetMatrix(std::vector<std::vector<double>> &);
 
     bool operator ==(const MatrixCalculator&) const;
     bool operator !=(const MatrixCalculator&) const;
-    bool size_comp(const MatrixCalculator&) const;
+    bool IsSizesEqual(const MatrixCalculator&) const;
 
  private:
     std::vector<std::vector<double > > matrix_;

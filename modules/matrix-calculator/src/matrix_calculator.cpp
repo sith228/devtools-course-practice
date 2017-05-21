@@ -9,10 +9,10 @@ bool MatrixCalculator::operator ==(const MatrixCalculator& p) const {
 }
 
 bool MatrixCalculator::operator !=(const MatrixCalculator& p) const {
-    return !(this->matrix_ == p.matrix_);
+    return this->matrix_ != p.matrix_;
 }
 
-bool MatrixCalculator::size_comp(const MatrixCalculator& p) const {
+bool MatrixCalculator::IsSizesEqual(const MatrixCalculator& p) const {
     bool result = false;
 
     if ((this->matrix_.size() == p.matrix_.size()) &&
@@ -36,9 +36,7 @@ MatrixCalculator::MatrixCalculator(const MatrixCalculator& p) {
     matrix_ = p.matrix_;
 }
 
-MatrixCalculator::~MatrixCalculator() {
-    matrix_.clear();
-}
+MatrixCalculator::~MatrixCalculator() { }
 
 MatrixCalculator& MatrixCalculator::operator =(const MatrixCalculator& p) {
     if (!(*this == p)) {
@@ -51,7 +49,7 @@ MatrixCalculator& MatrixCalculator::operator =(const MatrixCalculator& p) {
 MatrixCalculator MatrixCalculator::operator +(const MatrixCalculator& p) const {
     MatrixCalculator result(*this);
 
-    if (!size_comp(p)) {
+    if (!IsSizesEqual(p)) {
         throw "Invalid sizes";
     }
 
@@ -67,7 +65,7 @@ MatrixCalculator MatrixCalculator::operator +(const MatrixCalculator& p) const {
 MatrixCalculator MatrixCalculator::operator -(const MatrixCalculator& p) const {
     MatrixCalculator result(*this);
 
-    if (!size_comp(p)) {
+    if (!IsSizesEqual(p)) {
         throw "Invalid sizes";
     }
 
@@ -105,29 +103,40 @@ double MatrixCalculator::Determinant() const {
 
     double tmp, det = 1;
     MatrixCalculator temp(*this);
+    size_t t, matrix_size = temp.matrix_.size();
 
-        for (size_t i = 0; i < temp.matrix_.size(); ++i) {
-            for (size_t j = i + 1; j < temp.matrix_.size(); ++j) {
-                if (matrix_[i][i] == 0)
-                    throw "Division by zero!";
-                tmp = temp.matrix_[j][i] / temp.matrix_[i][i];
-                for (size_t k = i; k < temp.matrix_.size(); k++) {
-                    temp.matrix_[j][k] -= temp.matrix_[i][k] * tmp;
-                }
+    for (size_t i = 0; i < matrix_size; ++i) {
+        t = i + 1;
+        while ((temp.matrix_[i][i] == 0) && (t < matrix_size)) {
+            if (temp.matrix_[t][i] != 0) {
+                temp.matrix_[i].swap(temp.matrix_[t]);
+                det *= -1;
             }
-            det *= temp.matrix_[i][i];
+            ++t;
         }
+        if (temp.matrix_[i][i] == 0) {
+            det = 0;
+            break;
+        }
+        for (size_t j = i + 1; j < matrix_size; ++j) {
+            tmp = temp.matrix_[j][i] / temp.matrix_[i][i];
+            for (size_t k = i; k < temp.matrix_.size(); k++) {
+                temp.matrix_[j][k] -= temp.matrix_[i][k] * tmp;
+            }
+        }
+        det *= temp.matrix_[i][i];
+    }
     return det;
 }
 
-void MatrixCalculator::SetMat(std::vector<std::vector<double>> &input_matrix) {
-    if (this->matrix_ != input_matrix) {
-        for (size_t i = 1; i < input_matrix.size(); ++i) {
-            if (input_matrix[i - 1].size() != input_matrix[i].size()) {
+void MatrixCalculator::SetMatrix(std::vector<std::vector<double>> &input) {
+    if (this->matrix_ != input) {
+        for (size_t i = 1; i < input.size(); ++i) {
+            if (input[i - 1].size() != input[i].size()) {
                 throw "Invalid matrix";
             }
         }
 
-        matrix_ = input_matrix;
+        matrix_ = input;
     }
 }
