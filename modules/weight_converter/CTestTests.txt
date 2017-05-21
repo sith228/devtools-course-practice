@@ -23,7 +23,7 @@ set_tests_properties (${prefix}_Do_Print_Help_Without_Arguments PROPERTIES
 
 add_test(
     NAME ${prefix}_Can_Check_Number_Of_Arguments
-    COMMAND ${APPLICATION} 20.2 'KG'
+    COMMAND ${APPLICATION} 20 'KG'
 )
 set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments
   PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
@@ -31,7 +31,7 @@ set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments
 
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Weight_Argument
-    COMMAND ${APPLICATION} -20.2 'KG' 'G' 's'
+    COMMAND ${APPLICATION} -20 'KG' 'G' 's'
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
@@ -39,7 +39,7 @@ set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Argument
 
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Weight_Type_Argument
-    COMMAND ${APPLICATION} 20.2 'Í„' 'G' 's'
+    COMMAND ${APPLICATION} 20 'Í„' 'G' 's'
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Type_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong weight's type format!")
@@ -58,7 +58,7 @@ add_test(
     COMMAND ${APPLICATION} 20 KG G get
 )
 set_tests_properties (${prefix}_Can_Get_Weight
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 20")
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.001")
 
 
 add_test(
