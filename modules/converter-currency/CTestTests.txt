@@ -34,3 +34,43 @@ add_test(
 set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
     PASS_REGULAR_EXPRESSION "Wrong number format!"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Currency_Format
+    COMMAND ${APPLICATION} 10 USD rub 0 0
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Currency_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong currency format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Convert_Money_With_Default_Coefficient
+    COMMAND ${APPLICATION} 10 RUR RUR 0 0
+)
+set_tests_properties (${prefix}_can_Convert_Money_With_Default_Coefficient PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result of convertation = 10"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Convert_Money_With_New_Coefficient
+    COMMAND ${APPLICATION} 10 USD RUR 10 0
+)
+set_tests_properties (${prefix}_can_Convert_Money_With_New_Coefficient PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result of convertation = 100"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Negative_Coefficient
+    COMMAND ${APPLICATION} 10 USD RUR 0 -1
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Coefficient PROPERTIES
+    PASS_REGULAR_EXPRESSION "Convert coefficient has to be more than 0"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Negative_Money_Size
+    COMMAND ${APPLICATION} -10 USD RUR 0 0
+)
+set_tests_properties (${prefix}_can_Detect_Negative_Money_Size PROPERTIES
+    PASS_REGULAR_EXPRESSION "Money size can't be negative"
+    LABELS "${MODULE}")
