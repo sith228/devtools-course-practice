@@ -1,7 +1,5 @@
 // Copyright 2017 Karev Boris
 
-#include "include/ConverterCurrencyApp.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -9,6 +7,7 @@
 #include <string>
 #include <sstream>
 
+#include "include/ConverterCurrencyApp.h"
 #include "include/ConverterCurrency.h"
 
 ConverterCurrencyApp::ConverterCurrencyApp() : message_("") {}
