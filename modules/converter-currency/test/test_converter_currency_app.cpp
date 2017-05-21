@@ -64,7 +64,7 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Wrong_Number_Format) {
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Wrong_Currency_Format) {
-    vector<string> args = {"10", "CZN", "currency", "0", "0"};
+    vector<string> args = {"10", "CZK", "currency", "0", "0"};
 
     Act(args);
 
