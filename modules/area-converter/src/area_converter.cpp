@@ -10,12 +10,12 @@ namespace {
     }
 }
 
-AreaConverter::AreaConverter(double from, double to)
-    : ratio_(Square(from / to)) {
+AreaConverter::AreaConverter(double from, double to) {
     if (to <= 0)
         throw std::invalid_argument("to <= 0");
     if (from <= 0)
         throw std::invalid_argument("from <= 0");
+    ratio_ = Square(from / to);
 }
 
 double AreaConverter::operator()(double x) {
