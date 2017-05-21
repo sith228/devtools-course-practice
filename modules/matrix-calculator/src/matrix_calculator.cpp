@@ -36,8 +36,6 @@ MatrixCalculator::MatrixCalculator(const MatrixCalculator& p) {
     matrix_ = p.matrix_;
 }
 
-MatrixCalculator::~MatrixCalculator() { }
-
 MatrixCalculator& MatrixCalculator::operator =(const MatrixCalculator& p) {
     if (!(*this == p)) {
         matrix_ = p.matrix_;
@@ -103,10 +101,10 @@ double MatrixCalculator::Determinant() const {
 
     double tmp, det = 1;
     MatrixCalculator temp(*this);
-    size_t t, matrix_size = temp.matrix_.size();
+    size_t matrix_size = temp.matrix_.size();
 
     for (size_t i = 0; i < matrix_size; ++i) {
-        t = i + 1;
+        size_t t = i + 1;
         while ((temp.matrix_[i][i] == 0) && (t < matrix_size)) {
             if (temp.matrix_[t][i] != 0) {
                 temp.matrix_[i].swap(temp.matrix_[t]);
