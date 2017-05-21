@@ -92,7 +92,7 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Coefficient) {
 
     Act(args);
 
-    Assert("Second parameter has to be more than 0");
+    Assert("Convert coefficient has to be more than 0");
 }
 
 TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Money_Size) {
@@ -100,5 +100,5 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Money_Size) {
 
     Act(args);
 
-    Assert("First parameter can't be negative.");
+    Assert("Money size can't be negative");
 }

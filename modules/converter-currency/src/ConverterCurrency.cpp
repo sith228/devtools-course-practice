@@ -24,7 +24,7 @@ void ConverterCurrency::SetExchangeRateToRUR(CurrencyName target_currency,
         if (target_currency != RUR)
             convert_coefficients_[target_currency] = exchange_rate_to_rur;
     } else {
-        throw std::string("Second parameter has to be more than 0");
+        throw std::string("Convert coefficient has to be more than 0");
     }
 }
 
@@ -45,6 +45,6 @@ double ConverterCurrency::Convert(double money_size,
 
         return result_money_size;
     } else {
-        throw std::string("First parameter can't be negative.");
+        throw std::string("Money size can't be negative");
     }
 }
