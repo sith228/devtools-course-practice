@@ -16,6 +16,17 @@ TEST(AreaConverterTest, can_create_converter_unit) {
         AreaConverter::kMeter));
 }
 
+TEST(AreaConverterTest, 
+    cant_create_converter_unit_with_wrong_format_to) {
+    EXPECT_ANY_THROW(AreaConverter(AreaConverter::kCentimeter,
+        0));
+}
+
+TEST(AreaConverterTest,
+    cant_create_converter_unit_with_wrong_format_from) {
+    EXPECT_ANY_THROW(AreaConverter(0,
+        AreaConverter::kMeter));
+}
 
 TEST(AreaConverterTest, check_create_converter_unit) {
     AreaConverter c = AreaConverter(AreaConverter::kCentimeter,
