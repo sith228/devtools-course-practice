@@ -15,7 +15,7 @@ using std::string;
 
 class ApplicationTest : public ::testing::Test {
  protected:
-    void Act(vector<string> args_) {
+    void Act(const vector<string> &args_) {
         vector<const char*> options;
 
         options.push_back("appname");
@@ -29,7 +29,7 @@ class ApplicationTest : public ::testing::Test {
         output_ = app_(argc, argv);
     }
 
-    void Assert(std::string expected) {
+    void Assert(const std::string &expected) {
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
@@ -38,7 +38,7 @@ class ApplicationTest : public ::testing::Test {
     string output_;
 };
 
-TEST_F(ApplicationTest, Do_Print_Help_Without_Arguments) {
+TEST_F(ApplicationTest, Can_Print_Help_Without_Arguments) {
     vector<string> args = {};
 
     Act(args);
@@ -46,7 +46,7 @@ TEST_F(ApplicationTest, Do_Print_Help_Without_Arguments) {
     Assert("This is a Integration Methods application\\..*");
 }
 
-TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
+TEST_F(ApplicationTest, Can_Check_Number_Of_Arguments) {
     vector<string> args = { "x+5", "0", "1" };
 
     Act(args);
@@ -86,7 +86,7 @@ TEST_F(ApplicationTest, Can_Detect_Wrong_Integrand) {
     Assert("Invalid input.*");
 }
 
-TEST_F(ApplicationTest, Integrate_Integrand_By_Rectangle_Method) {
+TEST_F(ApplicationTest, Can_Integrate_Integrand_By_Rectangle_Method) {
     vector<string> args = { "x*x*x*x", "0", "1", "r", "50" };
 
     Act(args);
@@ -94,7 +94,7 @@ TEST_F(ApplicationTest, Integrate_Integrand_By_Rectangle_Method) {
     Assert("The integration value of rectangle method equals 0.2.*");
 }
 
-TEST_F(ApplicationTest, Integrate_Integrand_By_Trapezoid_Method) {
+TEST_F(ApplicationTest, Can_Integrate_Integrand_By_Trapezoid_Method) {
     vector<string> args = { "x*x*x*x", "0", "1", "t", "50" };
 
     Act(args);
@@ -102,7 +102,7 @@ TEST_F(ApplicationTest, Integrate_Integrand_By_Trapezoid_Method) {
     Assert("The integration value of trapezoid method equals 0.2.*");
 }
 
-TEST_F(ApplicationTest, Integrate_Integrand_By_Simpson_Method) {
+TEST_F(ApplicationTest, Can_Integrate_Integrand_By_Simpson_Method) {
     vector<string> args = { "x*x*x*x", "0", "1", "s", "1e-6" };
 
     Act(args);

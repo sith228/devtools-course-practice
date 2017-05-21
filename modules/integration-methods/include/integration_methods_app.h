@@ -11,11 +11,11 @@ class Application {
     std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
-    bool validateOperationName(const char *arg);
-    double parseDouble(const char* arg);
-    int parseInteger(const char* arg);
+    void Help(const char* appname, const char* message = "");
+    bool ValidateNumberOfArguments(int argc, const char** argv);
+    bool ValidateOperationName(const char *arg);
+    double ParseDouble(const char* arg);
+    int ParseInteger(const char* arg);
     std::string message_;
     typedef struct {
         std::string integrand;

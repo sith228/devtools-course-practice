@@ -10,7 +10,7 @@
 
 Application::Application() : message_("") {}
 
-void Application::help(const char* appname, const char* message) {
+void Application::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is a Integration Methods application.\n\n" +
@@ -19,27 +19,27 @@ void Application::help(const char* appname, const char* message) {
         "  $ " + appname + " <integrand> <low_limit> " +
         "<upper_limit> <integration_method> <option>\n\n" +
 
-        "<integrand> - string of integrand" +
+        "<integrand> - string of integrand\n" +
         "<low_limit>, <upper_limit> - low and upper integration" +
-        " limits which are double-precision" +
-        "<integration_method> - input 'r' for rectangle method," +
-        "'t' for trapezoid method or 's' for Simpson method" +
-        "<option> - input a quantity of steps for rectangle and" +
+        " limits which are double-precision\n" +
+        "<integration_method> - input 'r' for rectangle method, " +
+        "'t' for trapezoid method or 's' for Simpson method\n" +
+        "<option> - input a quantity of steps for rectangle and " +
         "trapezoid methods or precision for Simpson method\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     } else if (argc != 6) {
-        help(argv[0], "ERROR: Should be 5 arguments.\n\n");
+        Help(argv[0], "ERROR: Should be 5 arguments.\n\n");
         return false;
     }
     return true;
 }
 
-double Application::parseDouble(const char* arg) {
+double Application::ParseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
@@ -50,7 +50,7 @@ double Application::parseDouble(const char* arg) {
     return value;
 }
 
-int Application::parseInteger(const char* arg) {
+int Application::ParseInteger(const char* arg) {
     char* end;
     int value = std::strtol(arg, &end, 10);
 
@@ -61,33 +61,33 @@ int Application::parseInteger(const char* arg) {
     return value;
 }
 
-bool Application::validateOperationName(const char* arg) {
-    if (strcmp(arg, "r") == 0 || strcmp(arg, "t") == 0 ||
-        strcmp(arg, "s") == 0) {
-        return true;
-    } else {
-        throw std::string("Wrong method name!");
+bool Application::ValidateOperationName(const char* arg) {
+    if (!(strcmp(arg, "r") == 0 || strcmp(arg, "t") == 0 ||
+        strcmp(arg, "s") == 0)) {
+        Help("Wrong method name!");
+        return false;
     }
+    return true;
 }
 
 std::string Application::operator()(int argc, const char** argv) {
     Arguments args;
 
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
         args.integrand = argv[1];
-        args.low_limit = parseDouble(argv[2]);
-        args.upper_limit = parseDouble(argv[3]);
-        if (!validateOperationName(argv[4])) {
+        args.low_limit = ParseDouble(argv[2]);
+        args.upper_limit = ParseDouble(argv[3]);
+        if (!ValidateOperationName(argv[4])) {
             return message_;
         }
         args.method_name = argv[4];
         if (strcmp(args.method_name, "s") == 0) {
-            args.epsilon = parseDouble(argv[5]);
+            args.epsilon = ParseDouble(argv[5]);
         } else {
-            args.quantity_of_steps = parseInteger(argv[5]);
+            args.quantity_of_steps = ParseInteger(argv[5]);
         }
     }
     catch (std::string& str) {
