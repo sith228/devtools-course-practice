@@ -18,7 +18,7 @@ class InfixToPostfixConverter {
     void help(const char* appname, const char* message = "");
     bool validateNumberOfArguments(int argc, const char** argv);
     std::string message_;
-    std::map<char, int> opPriority_ ;
+    std::map<char, int> opPriority_;
 };
 
 #endif  // MODULES_STACK_INCLUDE_INFIX_TO_POSTFIX_CONVERTER_H_
