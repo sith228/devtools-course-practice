@@ -57,7 +57,7 @@ add_test(
     NAME ${prefix}_Can_Set_Weight
     COMMAND ${APPLICATION} 20 KG G set
 )
-set_tests_properties (${prefix}_Can_Get_Weight
+set_tests_properties (${prefix}_Can_Set_Weight
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 20")
 
 
