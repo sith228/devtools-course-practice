@@ -134,6 +134,32 @@ TEST(MatrixCalculatorTest, cant_calc_determinant_in_rect_matrix) {
     EXPECT_ANY_THROW(m1.Determinant());
 }
 
+TEST(MatrixCalculatorTest, matrix_determinant_with_zero_elem) {
+    std::vector<std::vector<double>> v1 = {
+        { 0.0, 2.0, 5.0 },
+        { 3.0, 2.0, 5.0 },
+        { 5.0, 3.0, 1.0 } };
+    double expected = 39.0;
+
+    MatrixCalculator m1;
+    m1.SetMatrix(v1);
+
+    EXPECT_EQ(m1.Determinant(), expected);
+}
+
+TEST(MatrixCalculatorTest, matrix_determinant_with_zero_row) {
+    std::vector<std::vector<double>> v1 = {
+        { 1.0, 2.0, 5.0 },
+        { 0.0, 0.0, 0.0 },
+        { 5.0, 3.0, 1.0 } };
+    double expected = 0.0;
+
+    MatrixCalculator m1;
+    m1.SetMatrix(v1);
+
+    EXPECT_EQ(m1.Determinant(), expected);
+}
+
 TEST(MatrixCalculatorTest, size_comp_is_correctly) {
     std::vector<std::vector<double>> v1(3, std::vector<double>(3, 2));
     std::vector<std::vector<double>> v2(4, std::vector<double>(3, 2));
