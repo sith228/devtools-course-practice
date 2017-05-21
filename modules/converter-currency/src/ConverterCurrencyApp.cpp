@@ -1,6 +1,5 @@
 // Copyright 2017 Karev Boris
 
-#include "include/ConverterCurrency.h"
 #include "include/ConverterCurrencyApp.h"
 
 #include <stdio.h>
@@ -9,6 +8,8 @@
 #include <string.h>
 #include <string>
 #include <sstream>
+
+#include "include/ConverterCurrency.h"
 
 ConverterCurrencyApp::ConverterCurrencyApp() : message_("") {}
 
@@ -29,7 +30,8 @@ void ConverterCurrencyApp::help(const char* appname, const char* message) {
         "will use default meaning of convert coefficient\n";
 }
 
-bool ConverterCurrencyApp::validateNumberOfArguments(int argc, const char** argv) {
+bool ConverterCurrencyApp::validateNumberOfArguments
+(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;

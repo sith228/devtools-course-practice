@@ -45,6 +45,6 @@ double ConverterCurrency::Convert(double money_size,
 
         return result_money_size;
     } else {
-        throw std::string ("First parameter can't be negative.");
+        throw std::string("First parameter can't be negative.");
     }
 }
