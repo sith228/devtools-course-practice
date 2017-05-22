@@ -16,7 +16,6 @@ using std::string;
 
 class CalculatorAppTest : public ::testing::Test {
  protected:
-
     void Act(vector<string> args_) {
         vector<const char*> options;
 
@@ -45,7 +44,7 @@ TEST_F(CalculatorAppTest, Do_Print_Help_Without_Arguments) {
 
     Act(args);
 
-    Assert("This is an area calculator application for tgree dimensional figures\\..*");
+    Assert("This is an area calculator application.*");
 }
 
 TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments) {

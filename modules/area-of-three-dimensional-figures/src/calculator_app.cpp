@@ -15,7 +15,8 @@ CalculatorApp::CalculatorApp() : message_("") {}
 void CalculatorApp::help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
-          "This is an area calculator application for tgree dimensional figures.\n\n" +
+          "This is an area calculator " +
+          "application for tgree dimensional figures.\n\n" +
           "Please provide arguments in the following format:\n\n"+
 
           "  $ " + appname + " Sphere " +
@@ -52,62 +53,53 @@ bool CalculatorApp::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    } 
+    }
     if (strcmp(argv[1], "Sphere") == 0) {
-        if ((argc != 3)){
+        if ((argc != 3)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Cone") == 0) {
+        if ((argc != 4)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Conoid") == 0) {
+        if ((argc != 5)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Cube") == 0) {
+        if ((argc != 3)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Cylinder") == 0) {
+        if ((argc != 4)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Parallelepiped") == 0) {
+        if ((argc != 5)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Prism") == 0) {
+        if ((argc != 6)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Pyramid") == 0) {
+        if ((argc != 5)) {
+            help(argv[0], " ERROR: wrong number of arguments! \n");
+            return false;
+        }
+    } else if (strcmp(argv[1], "Tetra") == 0) {
+        if ((argc != 6)) {
             help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     }
-    else if (strcmp(argv[1], "Cone") == 0) {
-        if ((argc != 4)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Conoid") == 0) {
-        if ((argc != 5)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Cube") == 0) {
-        if ((argc != 3)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Cylinder") == 0) {
-        if ((argc != 4)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Parallelepiped") == 0) {
-        if ((argc != 5)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Prism") == 0) {
-        if ((argc != 6)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Pyramid") == 0) {
-        if ((argc != 5)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    else if (strcmp(argv[1], "Tetra") == 0) {
-        if ((argc != 6)){
-            help(argv[0], " ERROR: wrong number of arguments! \n");
-            return false;
-        }
-    }
-    
     
     return true;
 }
@@ -115,16 +107,14 @@ bool CalculatorApp::validateNumberOfArguments(int argc, const char** argv) {
 double parseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
-
     if (end[0]) {
         throw std::string(" Wrong number format! \n");
     }
-
     return value;
 }
 
-char* parseOperation(const char* arg) {
-    char* op;
+std::string parseOperation(const char* arg) {
+    std::string op;
     if (strcmp(arg, "Sphere") == 0) {
         op = "Sphere";
     } else if (strcmp(arg, "Cone") == 0) {
@@ -302,8 +292,6 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }
     stream << "S = " << s;
- 
     message_ = stream.str();
-
     return message_;
 }
