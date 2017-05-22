@@ -79,7 +79,7 @@ set_tests_properties (${prefix}_Can_Convert_To_G
 
 add_test(
     NAME ${prefix}_Can_Convert_To_GR
-    COMMAND ${APPLICATION} 20 MG G t
+    COMMAND ${APPLICATION} 20 MG GR t
 )
 set_tests_properties (${prefix}_Can_Convert_To_GR
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 15.432358352941431")
@@ -87,7 +87,7 @@ set_tests_properties (${prefix}_Can_Convert_To_GR
 
 add_test(
     NAME ${prefix}_Can_Convert_To_OZ
-    COMMAND ${APPLICATION} 20 MG G t
+    COMMAND ${APPLICATION} 20 MG OZ t
 )
 set_tests_properties (${prefix}_Can_Convert_To_OZ
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.03527396194958")
@@ -95,7 +95,7 @@ set_tests_properties (${prefix}_Can_Convert_To_OZ
 
 add_test(
     NAME ${prefix}_Can_Convert_To_DR
-    COMMAND ${APPLICATION} 20 MG G t
+    COMMAND ${APPLICATION} 20 MG DR t
 )
 set_tests_properties (${prefix}_Can_Convert_To_DR
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.56438186076699492")
@@ -103,7 +103,7 @@ set_tests_properties (${prefix}_Can_Convert_To_DR
 
 add_test(
     NAME ${prefix}_Can_Convert_To_LB
-    COMMAND ${APPLICATION} 20 MG G t
+    COMMAND ${APPLICATION} 20 MG LB t
 )
 set_tests_properties (${prefix}_Can_Convert_To_LB
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.0022046244201837776")
@@ -111,7 +111,7 @@ set_tests_properties (${prefix}_Can_Convert_To_LB
 
 add_test(
     NAME ${prefix}_Can_Convert_To_CR
-    COMMAND ${APPLICATION} 20 MG G t
+    COMMAND ${APPLICATION} 20 MG CR t
 )
 set_tests_properties (${prefix}_Can_Convert_To_CR
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 5")
@@ -119,7 +119,7 @@ set_tests_properties (${prefix}_Can_Convert_To_CR
 
 add_test(
     NAME ${prefix}_Can_Convert_From_DR_To_CR
-    COMMAND ${APPLICATION} 20 MG G f
+    COMMAND ${APPLICATION} 20 DR CR f
 )
 set_tests_properties (${prefix}_Can_Convert_From_DR_To_CR
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 340")
