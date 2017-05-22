@@ -77,3 +77,11 @@ TEST_F(WeightConverterAppTest, Is_Checking_Operation_Argument) {
 
     Assert("Wrong operation format!");
 }
+
+TEST_F(WeightConverterAppTest, dsadsa) {
+    vector<string> args = { "20", "KG", "G", "Do_It_Please" };
+
+    Act(args);
+
+    Assert("Wrong operation format!");
+}

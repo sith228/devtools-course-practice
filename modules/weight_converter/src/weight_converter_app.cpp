@@ -107,29 +107,26 @@ std::string Application::operator()(int argc, const char** argv) {
         return str;
     }
 
-    WeightConverter weight_converter(0.001, Weights::KG);
+    WeightConverter weight_converter(0.001, KG);
 
     std::ostringstream stream;
-    try {
-        switch (args.operation) {
-        case 's':
-            weight_converter.SetWeight(args.weight, type_from);
-            stream << "Weight = " << weight_converter.GetWeight() << " ";
-            break;
-        case 'g':
-            stream << "Weight = " << weight_converter.GetWeight() << " ";
-            break;
-        case 't':
-            stream << "Weight = " << weight_converter.Convert(type_to) << " ";
-            break;
-        case 'f':
-            stream << "Weight = " << weight_converter.Convert(args.weight,
-                type_from, type_to) << " ";
-            break;
-        }
-    } catch (std::string& str) {
-            return str;
-        }
+    switch (args.operation) {
+    case 's':
+        weight_converter.SetWeight(args.weight, type_from);
+        stream << "Weight = " << weight_converter.GetWeight() << " ";
+        break;
+    case 'g':
+        stream << "Weight = " << weight_converter.GetWeight() << " ";
+        break;
+    case 't':
+        stream << "Weight = " << weight_converter.Convert(type_to) << " ";
+        break;
+    case 'f':
+        stream << "Weight = " << weight_converter.Convert(args.weight,
+            type_from, type_to) << " ";
+        break;
+    }
+
 
     message_ = stream.str();
 
