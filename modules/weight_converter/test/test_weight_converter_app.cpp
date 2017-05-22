@@ -79,9 +79,9 @@ TEST_F(WeightConverterAppTest, Is_Checking_Operation_Argument) {
 }
 
 TEST_F(WeightConverterAppTest, dsadsa) {
-    vector<string> args = { "20", "KG", "G", "Do_It_Please" };
+    vector<string> args = { "10", "MG", "G", "f" };
 
     Act(args);
 
-    Assert("Wrong operation format!");
+    Assert("Weight = 0.01");
 }
