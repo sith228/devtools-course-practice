@@ -110,15 +110,10 @@ std::string Application::operator()(int argc, const char** argv) {
             stream << "The integration value of trapezoid method equals " <<
                 result;
         } else if (strcmp(args.method_name, "s") == 0) {
-            try {
-                result = integration_method.SimpsonMethod(args.integrand,
-                    args.low_limit, args.upper_limit, args.epsilon);
-                stream << "The integration value of Simpson method equals " <<
-                    result;
-            }
-            catch (std::exception& runtime_error) {
-                return runtime_error.what();
-            }
+            result = integration_method.SimpsonMethod(args.integrand,
+                args.low_limit, args.upper_limit, args.epsilon);
+            stream << "The integration value of Simpson method equals " <<
+                result;
         }
     }
     catch(std::exception& e) {
