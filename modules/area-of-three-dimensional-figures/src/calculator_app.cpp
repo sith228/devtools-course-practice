@@ -100,7 +100,6 @@ bool CalculatorApp::validateNumberOfArguments(int argc, const char** argv) {
             return false;
         }
     }
-    
     return true;
 }
 
