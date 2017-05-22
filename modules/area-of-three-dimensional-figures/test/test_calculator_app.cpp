@@ -47,7 +47,7 @@ TEST_F(CalculatorAppTest, Do_Print_Help_Without_Arguments) {
     Assert("This is an area calculator application.*");
 }
 
-TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments) {
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Spheres) {
     vector<string> args = {"Sphere", "1", "2"};
 
     Act(args);
@@ -55,7 +55,71 @@ TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments) {
     Assert("ERROR: wrong number of arguments!.*");
 }
 
-TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Pyramid) {
+    vector<string> args = {"Pyramid", "1", "2"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Cone) {
+    vector<string> args = {"Cone", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Cube) {
+    vector<string> args = {"Cube", "1", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Cylinder) {
+    vector<string> args = {"Cylinder", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Parallelepiped) {
+    vector<string> args = {"Parallelepiped", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Prism) {
+    vector<string> args = {"Prism", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Conoid) {
+    vector<string> args = {"Conoid", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Is_Checking_Number_Of_Arguments_With_Tetra) {
+    vector<string> args = {"Tetra", "1"};
+
+    Act(args);
+
+    Assert("ERROR: wrong number of arguments!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Sphere) {
     vector<string> args = {"Sphere", "pi"};
 
     Act(args);
@@ -69,6 +133,70 @@ TEST_F(CalculatorAppTest, Can_Detect_Wrong_Figure_Format) {
     Act(args);
 
     Assert("Wrong figure format!");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Pyramid) {
+    vector<string> args = {"Pyramid", "pi", "1", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Cone) {
+    vector<string> args = {"Cone", "pi", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Cube) {
+    vector<string> args = {"Cube", "pi"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Cylinder) {
+    vector<string> args = {"Cylinder", "pi", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Parallelepiped) {
+    vector<string> args = {"Parallelepiped", "pi", "1", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Prism) {
+    vector<string> args = {"Prism", "pi", "1", "1", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Conoid) {
+    vector<string> args = {"Conoid", "pi", "1", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Wrong_Number_Format_With_Tetra) {
+    vector<string> args = {"Tetra", "pi", "1", "1", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
 }
 
 TEST_F(CalculatorAppTest, Can_Calc_Sphere) {
@@ -127,6 +255,14 @@ TEST_F(CalculatorAppTest, Can_Calc_Prism) {
     Assert("S = 3.86603");
 }
 
+TEST_F(CalculatorAppTest, Can_Calc_Conoid) {
+    vector<string> args = {"Conoid", "1", "1", "1"};
+
+    Act(args);
+
+    Assert("S = 6.28319");
+}
+
 TEST_F(CalculatorAppTest, Can_Calc_Tetra) {
     vector<string> args = {"Tetra", "1", "1", "1", "1"};
 
@@ -134,10 +270,74 @@ TEST_F(CalculatorAppTest, Can_Calc_Tetra) {
 
     Assert("S = 1.73205");
 }
-TEST_F(CalculatorAppTest, Can_Detect_Negative_Radius) {
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Sphere) {
     vector<string> args = {"Sphere", "-1"};
 
     Act(args);
 
     Assert("r <== 0");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Pyramid) {
+    vector<string> args = { "Pyramid", "-1", "1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Cone) {
+    vector<string> args = { "Cone", "-1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Cube) {
+    vector<string> args = { "Cube", "-1" };
+
+    Act(args);
+
+    Assert("h <= 0");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Cylinder) {
+    vector<string> args = { "Cylinder", "-1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Parallelepiped) {
+    vector<string> args = { "Parallelepiped", "-1", "1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Prism) {
+    vector<string> args = { "Prism", "-1", "1", "1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Conoid) {
+    vector<string> args = { "Conoid", "-1", "1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
+}
+
+TEST_F(CalculatorAppTest, Can_Detect_Negative_Argument_With_Tetra) {
+    vector<string> args = { "Tetra", "-1", "1", "1", "1" };
+
+    Act(args);
+
+    Assert("Parameters are negative");
 }
