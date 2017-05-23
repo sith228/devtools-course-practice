@@ -149,3 +149,37 @@ TEST(Queue, can_return_begin_elem) {
     // Assert
     EXPECT_EQ(5, elem);
 }
+
+TEST(Queue, can_get_queue_max_size) {
+    // Arrange
+    Queue <int> Q(5);
+    // Act & Assert
+    EXPECT_EQ(5, Q.GetQueueMaxSize());
+}
+
+TEST(Queue, can_get_queue_len) {
+    // Arrange
+    Queue <int> Q(5);
+    Q.Push(5);
+    Q.Push(3);
+    // Act & Assert
+    EXPECT_EQ(2, Q.GetQueueLen());
+}
+
+TEST(Queue, can_get_queue_tail) {
+    // Arrange
+    Queue <int> Q(5);
+    Q.Push(5);
+    Q.Push(3);
+    // Act & Assert
+    EXPECT_EQ(1, Q.GetQueueTail());
+}
+
+TEST(Queue, can_get_queue_head) {
+    // Arrange
+    Queue <int> Q(5);
+    Q.Push(5);
+    Q.Push(3);
+    // Act & Assert
+    EXPECT_EQ(0, Q.GetQueueHead());
+}

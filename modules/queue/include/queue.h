@@ -18,6 +18,10 @@ class Queue {
     void Push(const valType&);
     valType Pop();
     valType Top();
+	int GetQueueMaxSize() const;
+    int GetQueueLen() const;
+    int GetQueueHead() const;
+    int GetQueueTail() const;
 
  private:
     int head_, tail_, len_, max_size_;
@@ -134,6 +138,26 @@ valType Queue <valType> ::Top() {
     } else {
         return queue_ptr_[head_];
     }
+}
+
+template <class valType>
+int Queue<valType>::GetQueueMaxSize()const {
+    return max_size_;
+}
+
+template <class valType>
+int Queue<valType>::GetQueueLen()const {
+    return len_;
+}
+
+template <class valType>
+int Queue<valType>::GetQueueTail()const {
+    return tail_;
+}
+
+template <class valType>
+int Queue<valType>::GetQueueHead()const {
+    return head_;
 }
 
 #endif  // MODULES_QUEUE_INCLUDE_QUEUE_H_
