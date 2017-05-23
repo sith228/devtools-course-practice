@@ -20,7 +20,6 @@ void QueueApp::help(const char* appname, const char* message) {
         "  $ " + appname + " <operation> <element if push>\n\n " +
         "Where element is int-precision number, " +
         "and <operation> is one of 'push', 'pop', 'top'.\n";
-
 }
 
 bool QueueApp::validateNumberOfArguments(int argc, const char** argv) {
@@ -82,10 +81,10 @@ std::string QueueApp::operator()(int argc, const char** argv) {
         stream << "element pushed";
         break;
     case 2:
-		stream << "element = " << queue.Pop() << " ";
+        stream << "element = " << queue.Pop() << " ";
         break;
     case 3:
-		stream << "element = " << queue.Top() << " ";
+        stream << "element = " << queue.Top() << " ";
         break;
     }
 

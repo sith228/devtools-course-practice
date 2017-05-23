@@ -32,7 +32,7 @@ class QueueAppTest : public ::testing::Test {
     }
 
  private:
-	QueueApp app_;
+    QueueApp app_;
     string output_;
 };
 
