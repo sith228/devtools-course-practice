@@ -20,7 +20,7 @@ void QueueApp::help(const char* appname, const char* message) {
         "  $ " + appname + " <operation> <element if push>\n\n " +
         "Where element is int-precision number, " +
         "and <operation> is one of 'push', 'pop', 'top', " +
-		"'length', 'last', 'first'.\n";
+        "'length', 'last', 'first'.\n";
 }
 
 bool QueueApp::validateNumberOfArguments(int argc, const char** argv) {
