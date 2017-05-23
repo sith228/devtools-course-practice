@@ -62,7 +62,7 @@ add_test(
     COMMAND ${APPLICATION} -moment 1 -2 -v 1 -prob 0.1
 )
 set_tests_properties (${prefix}_Can_Handle_Negative_Argument PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: specified value -2 is less then zero"
+    PASS_REGULAR_EXPRESSION "ERROR: specified value -2 is less than zero"
     LABELS "${MODULE}")
 
 
