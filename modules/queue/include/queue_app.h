@@ -1,10 +1,10 @@
 // Copyright 2017 Mironova Anna
 
-#ifndef MODULES_QUEUE_INCLUDE_QUEUEAPP_H_
-#define MODULES_QUEUE_INCLUDE_QUEUEAPP_H_
+#ifndef MODULES_QUEUE_INCLUDE_QUEUE_APP_H_
+#define MODULES_QUEUE_INCLUDE_QUEUE_APP_H_
 
 #include <string>
-#include "queue.h"
+#include "include/queue.h"
 
 class QueueApp {
  public:
@@ -22,4 +22,4 @@ class QueueApp {
     Queue<int> queue;
 };
 
-#endif  // MODULES_QUEUE_INCLUDE_QUEUEAPP_H_
+#endif  // MODULES_QUEUE_INCLUDE_QUEUE_APP_H_
