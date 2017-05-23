@@ -12,98 +12,98 @@
 
 CalculatorApp::CalculatorApp() : message_("") {}
 
-void CalculatorApp::help(const char* appname, const char* message) {
+void CalculatorApp::Help(const char* app_name, const char* message) {
     message_ =
         std::string(message) +
           "This is an area calculator " +
           "application for tgree dimensional figures.\n\n" +
           "Please provide arguments in the following format:\n\n"+
 
-          "  $ " + appname + " Sphere " +
+          "  $ " + app_name + " Sphere " +
           " <r> or\n\n " +
 
-          "  $ " + appname + " Cone "+
+          "  $ " + app_name + " Cone " +
           " <r> <l> or\n\n " +
 
-          "  $ " + appname + " Conoid " +
+          "  $ " + app_name + " Conoid " +
           " <r1> <r2> <l> or\n\n " +
 
-          "  $ " + appname + " Cube " +
+          "  $ " + app_name + " Cube " +
           " <h> or\n\n " +
 
-          "  $ " + appname + " Cylinder " +
+          "  $ " + app_name + " Cylinder " +
           " <r> <h> or\n\n " +
 
-          "  $ " + appname + " Parallelepiped " +
+          "  $ " + app_name + " Parallelepiped " +
           " <a> <b> <c> or\n\n " +
 
-          "  $ " + appname + " Prism " +
+          "  $ " + app_name + " Prism " +
           " <a> <b> <c> <h> or\n\n " +
 
-          "  $ " + appname + " Pyramid " +
+          "  $ " + app_name + " Pyramid " +
           "<a> <b> <l> or\n\n" +
 
-          "  $ " + appname + " Tetra " +
+          "  $ " + app_name + " Tetra " +
           " <a> <b> <c> <l>\n\n " +
 
           "Where all arguments are double-precision numbers.\n";
 }
 
-bool CalculatorApp::validateNumberOfArguments(int argc, const char** argv) {
+bool CalculatorApp::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     }
     if (strcmp(argv[1], "Sphere") == 0) {
         if ((argc != 3)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Cone") == 0) {
         if ((argc != 4)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Conoid") == 0) {
         if ((argc != 5)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Cube") == 0) {
         if ((argc != 3)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Cylinder") == 0) {
         if ((argc != 4)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Parallelepiped") == 0) {
         if ((argc != 5)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Prism") == 0) {
         if ((argc != 6)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Pyramid") == 0) {
         if ((argc != 5)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     } else if (strcmp(argv[1], "Tetra") == 0) {
         if ((argc != 6)) {
-            help(argv[0], " ERROR: wrong number of arguments! \n");
+            Help(argv[0], " ERROR: wrong number of arguments! \n");
             return false;
         }
     }
     return true;
 }
 
-double parseDouble(const char* arg) {
+double ParseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
     if (end[0]) {
@@ -112,7 +112,7 @@ double parseDouble(const char* arg) {
     return value;
 }
 
-std::string parseOperation(const char* arg) {
+std::string ParseOperation(const char* arg) {
     std::string op;
     if (strcmp(arg, "Sphere") == 0) {
         op = "Sphere";
@@ -148,11 +148,11 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
     Calculator calc;
     std::ostringstream stream;
 
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
-        figure = parseOperation(argv[1]);
+        figure = ParseOperation(argv[1]);
     }
     catch (std::string& str) {
         return str;
@@ -160,7 +160,7 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
 
     if (figure == "Sphere") {
         try {
-            a = parseDouble(argv[2]);
+            a = ParseDouble(argv[2]);
         }
         catch (std::string& str) {
             return str;
@@ -173,8 +173,8 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Cone") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
         }
         catch (std::string& str) {
             return str;
@@ -187,9 +187,9 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Conoid") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
-            c = parseDouble(argv[4]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
+            c = ParseDouble(argv[4]);
         }
         catch (std::string& str) {
             return str;
@@ -202,7 +202,7 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Cube") {
         try {
-            a = parseDouble(argv[2]);
+            a = ParseDouble(argv[2]);
         }
         catch (std::string& str) {
             return str;
@@ -215,8 +215,8 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Cylinder") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
         }
         catch (std::string& str) {
             return str;
@@ -229,9 +229,9 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Parallelepiped") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
-            c = parseDouble(argv[4]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
+            c = ParseDouble(argv[4]);
         }
         catch (std::string& str) {
             return str;
@@ -244,10 +244,10 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Prism") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
-            c = parseDouble(argv[4]);
-            d = parseDouble(argv[5]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
+            c = ParseDouble(argv[4]);
+            d = ParseDouble(argv[5]);
         }
         catch (std::string& str) {
             return str;
@@ -260,9 +260,9 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Pyramid") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
-            c = parseDouble(argv[4]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
+            c = ParseDouble(argv[4]);
         }
         catch (std::string& str) {
             return str;
@@ -275,10 +275,10 @@ std::string CalculatorApp::operator()(int argc, const char** argv) {
         }
     }  else if (figure == "Tetra") {
         try {
-            a = parseDouble(argv[2]);
-            b = parseDouble(argv[3]);
-            c = parseDouble(argv[4]);
-            d = parseDouble(argv[5]);
+            a = ParseDouble(argv[2]);
+            b = ParseDouble(argv[3]);
+            c = ParseDouble(argv[4]);
+            d = ParseDouble(argv[5]);
         }
         catch (std::string& str) {
             return str;
