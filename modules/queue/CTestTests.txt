@@ -45,17 +45,3 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Push
   PROPERTIES PASS_REGULAR_EXPRESSION "element pushed")
-
-add_test(
-    NAME ${prefix}_can_Pop
-    COMMAND ${APPLICATION} push 3 pop
-)
-set_tests_properties (${prefix}_can_Pop
-  PROPERTIES PASS_REGULAR_EXPRESSION "element = 3*")
-
-add_test(
-    NAME ${prefix}_can_Top
-    COMMAND ${APPLICATION} push 3 top
-)
-set_tests_properties (${prefix}_can_Top
-  PROPERTIES PASS_REGULAR_EXPRESSION "element = 3*")
