@@ -98,3 +98,39 @@ TEST_F(QueueAppTest, Can_Top) {
 
     Assert("element = 3*");
 }
+
+TEST_F(QueueAppTest, Can_Get_Length) {
+    vector<string> args = { "push", "3" };
+    vector<string> args1 = { "length" };
+
+    Act(args);
+    Assert("element pushed*");
+    Act(args1);
+
+    Assert("length = 1*");
+}
+
+TEST_F(QueueAppTest, Can_Get_Last) {
+    vector<string> args = { "push", "3" };
+    vector<string> args1 = { "push", "2" };
+    vector<string> args2 = { "last" };
+
+    Act(args);
+    Assert("element pushed*");
+    Act(args1);
+    Assert("element pushed*");
+    Act(args2);
+
+    Assert("last = 0*");
+}
+
+TEST_F(QueueAppTest, Can_Get_First) {
+    vector<string> args = { "push", "3" };
+    vector<string> args1 = { "first" };
+
+    Act(args);
+    Assert("element pushed*");
+    Act(args1);
+
+    Assert("first = 0*");
+}
