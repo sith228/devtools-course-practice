@@ -1,0 +1,61 @@
+#############################################
+##### Testing
+#############################################
+
+enable_testing()
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "This is a queue application")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} push 2 3
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 2 or 3 arguments")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} push e
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} include
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format
+  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
+
+add_test(
+    NAME ${prefix}_can_Push
+    COMMAND ${APPLICATION} push 3
+)
+set_tests_properties (${prefix}_can_Push
+  PROPERTIES PASS_REGULAR_EXPRESSION "element pushed")
+
+add_test(
+    NAME ${prefix}_can_Pop
+    COMMAND ${APPLICATION} push 3 pop
+)
+set_tests_properties (${prefix}_can_Pop
+  PROPERTIES PASS_REGULAR_EXPRESSION "element = 3*")
+
+add_test(
+    NAME ${prefix}_can_Top
+    COMMAND ${APPLICATION} push 3 top
+)
+set_tests_properties (${prefix}_can_Top
+  PROPERTIES PASS_REGULAR_EXPRESSION "element = 3*")
