@@ -20,7 +20,7 @@ const char *StatisticalCalculator::help_message_ =
     "random variable probabilities\n"
     "   <operation> can take one of the following values:\n"
     "       -disp\n"
-    "           calulate disperion\n"
+    "           calculate dispersion\n"
     "       -exp\n"
     "           calculate expectation\n"
     "       -moment <order> <offset>\n"
@@ -37,7 +37,7 @@ unsigned StatisticalCalculator::ParseInt(const char *s) {
     if (end[0])
         throw string("unrecognized argument ") + s;
     if (value < 0)
-        throw string("specified value ") + s + " is less then zero";
+        throw string("specified value ") + s + " is less than zero";
 
     return static_cast<unsigned>(value);
 }
@@ -49,13 +49,13 @@ bool StatisticalCalculator::TryParseDouble(const char *s, double *value) {
 }
 
 int StatisticalCalculator::ParseList(
-    int argc, const char *const *argv, int curArg, vector<double> *list) {
+    int argc, const char *const *argv, int cur_arg, vector<double> *list) {
     double value = 0.0;
-    while (curArg < argc && TryParseDouble(argv[curArg], &value)) {
+    while (cur_arg < argc && TryParseDouble(argv[cur_arg], &value)) {
         list->push_back(value);
-        curArg++;
+        cur_arg++;
     }
-    return curArg;
+    return cur_arg;
 }
 
 string StatisticalCalculator::operator()(
@@ -67,34 +67,33 @@ string StatisticalCalculator::operator()(
         if (argc < 6)
             throw string("too few arguments");
 
-        int curArg = 1;
+        int cur_arg = 1;
 
-        string operation = argv[curArg++];
+        string operation = argv[cur_arg++];
         unsigned order = 0;
         unsigned offset = 0;
 
         if (operation == "-moment") {
             if (argc < 8)
                 throw string("too few arguments");
-            order = ParseInt(argv[curArg++]);
-            offset = ParseInt(argv[curArg++]);
+            order = ParseInt(argv[cur_arg++]);
+            offset = ParseInt(argv[cur_arg++]);
         }
 
         vector<double> values;
         vector<double> probabilities;
 
-        string arg = argv[curArg++];
+        string arg = argv[cur_arg++];
 
         if (arg == "-v") {
-            curArg = ParseList(argc, argv, curArg, &values);
+            cur_arg = ParseList(argc, argv, cur_arg, &values);
 
-            if (curArg >= argc) {
+            if (cur_arg >= argc)
                 throw string("two few arguments");
-            }
 
-            arg = argv[curArg++];
+            arg = argv[cur_arg++];
             if (arg == "-p") {
-                ParseList(argc, argv, curArg, &probabilities);
+                ParseList(argc, argv, cur_arg, &probabilities);
             } else {
                 throw string("unrecognized argument ") + arg;
             }
@@ -102,9 +101,10 @@ string StatisticalCalculator::operator()(
             throw string("unrecognized argument ") + arg;
         }
 
-        if (values.size() != probabilities.size())
+        if (values.size() != probabilities.size()) {
             throw string("values and probabilities lists "
                          "must have the same length");
+        }
 
         try {
             double moment;

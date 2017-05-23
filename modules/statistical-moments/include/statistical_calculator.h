@@ -15,7 +15,7 @@ class StatisticalCalculator {
      static unsigned ParseInt(const char *s);
      static bool TryParseDouble(const char *s, double *value);
      static int ParseList(int argc, const char *const *argv,
-         int curArg, std::vector<double> *list);
+         int cur_arg, std::vector<double> *list);
 };
 
 #endif  // MODULES_STATISTICAL_MOMENTS_INCLUDE_STATISTICAL_CALCULATOR_H_

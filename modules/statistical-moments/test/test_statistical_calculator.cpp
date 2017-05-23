@@ -82,7 +82,7 @@ TEST_F(StatisticalCalculatorTest, Can_Handle_Negative_Argument) {
 
     Act(args);
 
-    Assert("ERROR: specified value -2 is less then zero.*");
+    Assert("ERROR: specified value -2 is less than zero.*");
 }
 
 TEST_F(StatisticalCalculatorTest, Can_Handle_Wrong_Probs_Argument) {
