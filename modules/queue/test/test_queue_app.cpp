@@ -69,7 +69,7 @@ TEST_F(QueueAppTest, Can_Detect_Wrong_Operation_Format) {
 }
 
 TEST_F(QueueAppTest, Can_Push) {
-    vector<string> args = { "push", "3" };
+    vector<string> args = { "push", "4" };
 
     Act(args);
 
