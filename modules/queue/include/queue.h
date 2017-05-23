@@ -18,7 +18,7 @@ class Queue {
     void Push(const valType&);
     valType Pop();
     valType Top();
-	int GetQueueMaxSize() const;
+    int GetQueueMaxSize() const;
     int GetQueueLen() const;
     int GetQueueHead() const;
     int GetQueueTail() const;
