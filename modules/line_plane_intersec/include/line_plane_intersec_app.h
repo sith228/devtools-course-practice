@@ -3,6 +3,8 @@
 #ifndef MODULES_LINE_PLANE_INTERSEC_INCLUDE_LINE_PLANE_INTERSEC_APP_H_
 #define MODULES_LINE_PLANE_INTERSEC_INCLUDE_LINE_PLANE_INTERSEC_APP_H_
 
+#include <string>
+
 class Application {
  public:
     Application();
