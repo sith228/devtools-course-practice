@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "include\line_plane_intersec_app.h"
+#include "include/line_plane_intersec_app.h"
 
 int main(int argc, const char** argv) {
     Application app;
