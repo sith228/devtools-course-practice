@@ -66,6 +66,7 @@ TEST(test_newton_method, work_with_random_polinom_negative_eps) {
     double *polinom_coef = new double[polinom_size];
     NM.geneate_random_polinom(polinom_size, polinom_coef);
     // Act & Assert
-    ASSERT_ANY_THROW(NM.newton_method_polinom(-0.1, polinom_size, polinom_coef));
+    ASSERT_ANY_THROW(NM.newton_method_polinom(-0.1, polinom_size,
+                                                                polinom_coef));
     delete[]polinom_coef;
 }
