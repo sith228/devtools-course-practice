@@ -9,6 +9,8 @@ double NewtonMethod::newton_method_polinom(double eps, int size,
                                            double *polinom_coef) {
     if (size <= 0)
         throw "size < 0";
+    if (eps <= 0)
+        throw "eps < 0";
     double x = 0, x1 = 1;
     double *polinom_derivative_coef = new double[size - 1];
     calculate_derivative_polinom(size - 1, polinom_coef,
@@ -25,6 +27,9 @@ double NewtonMethod::newton_method_polinom(double eps, int size,
 }
 
 double NewtonMethod::newton_method_function(double eps) {
+    if (eps <= 0) {
+        throw "eps < 0";
+    }
     double x = 0.0, x1 = 1.0;
 
     while (fabs(x1 - x) >= eps) {
@@ -45,8 +50,6 @@ void NewtonMethod::geneate_random_polinom(int size, double *polinom_coef) {
 }
 
 double NewtonMethod::polinom_value(int size, int x, const double * coef) {
-    if (size <= 0)
-        throw "size < 0";
     double sum = 0.0;
     for (int k = 0; k < size; k++) {
         sum = sum + (coef[k] * pow(x, k));
@@ -56,8 +59,6 @@ double NewtonMethod::polinom_value(int size, int x, const double * coef) {
 
 void NewtonMethod::calculate_derivative_polinom(int size,
      const double * polinom_coef, double * polinom_derivative_coef) {
-    if (size <= 0)
-        throw "size < 0";
     for (int i = 0; i < size; i++) {
         polinom_derivative_coef[i] = (i + 1) * polinom_coef[i + 1];
     }
