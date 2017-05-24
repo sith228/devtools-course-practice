@@ -4,7 +4,7 @@
 #define MODULES_QUEUE_INCLUDE_QUEUE_APP_H_
 
 #include <string>
-#include "queue.h"
+#include "../include/queue.h"
 
 class QueueApp {
  public:
