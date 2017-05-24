@@ -3,7 +3,6 @@
 #include "include/quadratic_equation.h"
 #include "include/quadratic_equation_app.h"
 
-#include <map>
 #include <string>
 #include <cstring>
 #include <sstream>
@@ -17,10 +16,12 @@ void QuadraticEquationCalculator::Help(const char* appname, const char* message)
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <coefficient a> <coefficient b> " +
-        "<coefficient c>\n\n" +
+        "<coefficient c> <operation>\n\n" +
 
         "Where the first,the second and  the third  arguments" +
-        "aren't equals zero number \n";
+        "aren't equals zero number \n"+
+        "<operation> is one of 'num' which returns count of real solution," +
+        "'sol' returns solution";
 }
 
 bool QuadraticEquationCalculator::ValidateNumberOfArguments(int argc, const char** argv) {
@@ -51,7 +52,7 @@ char parseOperation(const char* arg) {
     if (strcmp(arg, "num") == 0) {
         op = 'n';
     }
-    else if (strcmp(arg, "getSolution") == 0) {
+    else if (strcmp(arg, "sol") == 0) {
         op = 's';
     }
     else {
