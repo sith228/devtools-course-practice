@@ -64,3 +64,43 @@ TEST_F(DichotomyAppTest, Can_Detect_Wrong_Number_Format) {
 
     Assert("Wrong number format!.*");
 }
+
+TEST_F(DichotomyAppTest, Can_Detect_Wrong_Number_Format_Func) {
+    vector<string> args = {"1", "2", "0.01", "1.1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(DichotomyAppTest, Findmin_L_Border_Func_1_Is_Correct) {
+    vector<string> args = {"0", "1", "0.01", "1"};
+
+    Act(args);
+
+    Assert("Min = 0.00390625");
+}
+
+TEST_F(DichotomyAppTest, Findmin_R_Border_Func_1_Is_Correct) {
+    vector<string> args = {"-1", "0", "0.01", "1"};
+
+    Act(args);
+
+    Assert("Min = -0.00390625");
+}
+
+TEST_F(DichotomyAppTest, Findmin_L_Border_Func_2_Is_Correct) {
+    vector<string> args = {"0", "1", "0.01", "2"};
+
+    Act(args);
+
+    Assert("Min = 0.75");
+}
+
+TEST_F(DichotomyAppTest, Findmin_R_Border_Func_2_Is_Correct) {
+    vector<string> args = {"-1", "0", "0.01", "2"};
+
+    Act(args);
+
+    Assert("Min = -0.00390625");
+}

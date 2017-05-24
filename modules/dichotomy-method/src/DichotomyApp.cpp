@@ -83,15 +83,15 @@ std::string DichotomyApp::operator()(int argc, const char** argv) {
 
     std::ostringstream stream;
     Dichotomy dich;
-    int result = 0, result1 = 0;
+    double result = 0, result1 = 0;
     switch (args.func_) {
-    case '1':
+    case 1:
     result = dich.FindMin(*func1,
     args.left_border_, args.right_border_, args.eps_);
     stream << "Min = " << result;
     break;
 
-    case '2':
+    case 2:
     result1 = dich.FindMin(*func2, args.left_border_,
     args.right_border_, args.eps_);
     stream << "Min = " << result1;
