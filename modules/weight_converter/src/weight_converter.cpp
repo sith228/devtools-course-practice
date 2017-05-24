@@ -1,4 +1,4 @@
-// Copyright 2017 Simonyan Vaginak
+// Copyright 2017 Buldakov Vladislav
 
 #include "include/weight_converter.h"
 #include <map>

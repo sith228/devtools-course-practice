@@ -1,10 +1,10 @@
 // Copyright 2017 Simonyan Vaginak
 
-#include <map>
-#include <string>
-
 #ifndef MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_APP_H_
 #define MODULES_WEIGHT_CONVERTER_INCLUDE_WEIGHT_CONVERTER_APP_H_
+
+#include <map>
+#include <string>
 
 class Application {
  public:
@@ -12,8 +12,8 @@ class Application {
     std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char* appname, const char* message = "");
-    bool validateNumberOfArguments(int argc, const char** argv);
+    void Help(const char* appname, const char* message = "");
+    bool ValidateNumberOfArguments(int argc, const char** argv);
     std::string message_;
     typedef struct {
         double weight;

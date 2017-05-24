@@ -10,7 +10,7 @@
 
 Application::Application() : message_("") {}
 
-void Application::help(const char* appname, const char* message) {
+void Application::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
           "This is a weight converter application.\n\n" +
@@ -27,7 +27,7 @@ void Application::help(const char* appname, const char* message) {
           "'ft' for Convert(from, to).\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
@@ -94,7 +94,7 @@ std::string Application::operator()(int argc, const char** argv) {
     Arguments args;
     Weights type_from;
     Weights type_to;
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
