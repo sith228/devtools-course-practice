@@ -11,26 +11,6 @@
 enum TaskStatus { UNDONE_TASK, DONE_TASK };
 
 class TODOList {
- private:
-    class TODOTask {
-     private:
-        std::string task_name_ = "New Task";
-        TaskStatus task_status_ = DONE_TASK;
-
-     public:
-        TODOTask();
-        explicit TODOTask(const std::string _users_task_name);
-
-        void Rename(const std::string _new_task_name);
-        void SetDone();
-        void SetUndone();
-        std::string GetTaskName();
-        TaskStatus GetTaskStatus();
-    };
-    std::vector<TODOTask> data_list_ = {};
-    std::size_t max_tasks_value_ = data_list_.max_size();
-    std::string todo_list_name_ = "";
-
  public:
     TODOList();
     explicit TODOList(const std::string _users_todo_list_name);
@@ -53,5 +33,24 @@ class TODOList {
     std::string GetTaskName(const std::size_t _task_index);
     TaskStatus GetTaskStatus(const std::size_t _task_index);
     std::string GetTODOListName();
+
+ private:
+    class TODOTask {
+    public:
+        TODOTask();
+        explicit TODOTask(const std::string _users_task_name);
+        void Rename(const std::string _new_task_name);
+        void SetDone();
+        void SetUndone();
+        std::string GetTaskName();
+        TaskStatus GetTaskStatus();
+    private:
+        std::string task_name_ = "New Task";
+        TaskStatus task_status_ = DONE_TASK;
+    };
+    std::vector<TODOTask> data_list_ = {};
+    std::size_t max_tasks_value_ = data_list_.max_size();
+    std::string todo_list_name_ = "";
+
 };
 #endif  // MODULES_TODO_LIST_KOZLOV_ILYA_INCLUDE_TODO_LIST_KOZLOV_ILYA_H_

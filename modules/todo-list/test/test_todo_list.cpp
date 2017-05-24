@@ -5,7 +5,7 @@
 #include <string>
 #include <algorithm>
 
-#include "include/todo_list_kozlov_ilya.h"
+#include "include/todo_list.h"
 
 TEST(Kozlov_Ilya_TODOListTest, TODOListDefaultCanBeCreated) {
     // Arrange
