@@ -2,12 +2,13 @@
 
 #include "include/quadratic_equation_app.h"
 
-#include <map>
+#include <iostream>
+// #include <map>
 #include <string>
 
 int main(int argc, const char** argv) {
     QuadraticEquationCalculator app;
     std::string output = app(argc, argv);
-    printf("%s\n", output.c_str());
+    std::cout << output.c_str() << std::endl;
     return 0;
 }
