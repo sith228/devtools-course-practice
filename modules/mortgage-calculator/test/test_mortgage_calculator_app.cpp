@@ -65,7 +65,7 @@ TEST_F(MortgageCalculatorAppTest, Can_Calculate_Mortgage) {
     std::ostringstream stream;
     stream << "Monthly payment : " << monthly_payment <<
         "\nOverpayment amount : " << overpayment_amount <<
-        "\nTotal payout : " << total_payout << "\0";
+        "\nTotal payout : " << total_payout;
 
     Assert(stream.str());
 }
