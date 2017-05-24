@@ -36,8 +36,7 @@ bool Application::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 11) {
+    } else if (argc != 11) {
         help(argv[0], "ERROR: Should be 10 arguments.\n\n");
         return false;
     }
@@ -69,7 +68,7 @@ std::string Application::operator()(int argc, const char** argv) {
         args.dir_x = parseDouble(argv[4]);
         args.dir_y = parseDouble(argv[5]);
         args.dir_z = parseDouble(argv[6]);
-        
+
         args.plane_a = parseDouble(argv[7]);
         args.plane_b = parseDouble(argv[8]);
         args.plane_c = parseDouble(argv[9]);
