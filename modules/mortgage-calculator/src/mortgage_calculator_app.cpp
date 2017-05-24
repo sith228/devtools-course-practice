@@ -25,7 +25,7 @@ void Application::Help(const char *appName, const char *message) {
 }
 
 std::string Application::operator()(int argc, const char** argv) {
-	if (!ValidateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
 
