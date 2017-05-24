@@ -42,7 +42,7 @@ double parseWeight(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
-    if (end[0] || value < 0) {
+    if (end[0] || value < 0.0) {
         throw std::string("Wrong number format!");
     }
 
@@ -50,44 +50,39 @@ double parseWeight(const char* arg) {
 }
 
 Weights parseWeightType(const char* arg) {
-    Weights wt;
-
     if (strcmp(arg, "KG") == 0) {
-        wt = Weights::KG;
+        return Weights::KG;
     } else if (strcmp(arg, "MG") == 0) {
-        wt = Weights::MG;
+        return Weights::MG;
     } else if (strcmp(arg, "G") == 0) {
-        wt = Weights::G;
+        return Weights::G;
     } else if (strcmp(arg, "GR") == 0) {
-        wt = Weights::GR;
+        return Weights::GR;
     } else if (strcmp(arg, "DR") == 0) {
-        wt = Weights::DR;
+        return Weights::DR;
     } else if (strcmp(arg, "OZ") == 0) {
-        wt = Weights::OZ;
+        return Weights::OZ;
     } else if (strcmp(arg, "LB") == 0) {
-        wt = Weights::LB;
+        return Weights::LB;
     } else if (strcmp(arg, "CR") == 0) {
-        wt = Weights::CR;
+        return Weights::CR;
     } else {
         throw std::string("Wrong weight's type format!");
     }
-    return wt;
 }
 
 char parseOperation(const char* arg) {
-    char op;
     if (strcmp(arg, "set") == 0) {
-        op = 's';
+        return 's';
     } else if (strcmp(arg, "get") == 0) {
-        op = 'g';
+        return 'g';
     } else if (strcmp(arg, "t") == 0) {
-        op = 't';
+        return 't';
     } else if (strcmp(arg, "f") == 0) {
-        op = 'f';
+        return 'f';
     } else {
         throw std::string("Wrong operation format!");
     }
-    return op;
 }
 
 std::string Application::operator()(int argc, const char** argv) {
