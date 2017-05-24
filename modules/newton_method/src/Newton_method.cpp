@@ -8,14 +8,14 @@ double NewtonMethod::newton_method_polinom(double eps, int size,
                                            double *polinom_coef) {
     if (size <= 0)
         throw "size < 0";
-    double fx, fx1, x = 0, x1 = 1;
+    double x = 0, x1 = 1;
     double *polinom_derivative_coef = new double[size - 1];
     calculate_derivative_polinom(size - 1, polinom_coef,
                                         polinom_derivative_coef);
     while (fabs(x1 - x) >= eps) {
         x = x1;
-        fx = polinom_value(size, x, polinom_coef);
-        fx1 = polinom_value(size - 1, x, polinom_derivative_coef);
+        double fx = polinom_value(size, x, polinom_coef);
+        double fx1 = polinom_value(size - 1, x, polinom_derivative_coef);
         x1 = x - (fx / fx1);
     }
 
@@ -24,12 +24,12 @@ double NewtonMethod::newton_method_polinom(double eps, int size,
 }
 
 double NewtonMethod::newton_method_function(double eps) {
-    double fx, fx1, x = 0.0, x1 = 1.0;
+    double x = 0.0, x1 = 1.0;
 
     while (fabs(x1 - x) >= eps) {
-        x = x1;
-        fx = function_value(x);
-        fx1 = first_derivative_finction_value(x);
+       x = x1;
+       double fx = function_value(x);
+       double fx1 = first_derivative_finction_value(x);
         x1 = x - (fx / fx1);
     }
     return x;
