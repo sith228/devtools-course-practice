@@ -12,7 +12,7 @@ int parseInt(const std::string &arg);
 
 Application::Application() : message_("") {}
 
-void Application::help(const char *appName, const char *message) {
+void Application::Help(const char *appName, const char *message) {
     message_ = std::string(message) +
         "This is a mortgage calculator application. \n\n" +
         "Arguments should be provided in the following format: \n" +
@@ -25,7 +25,7 @@ void Application::help(const char *appName, const char *message) {
 }
 
 std::string Application::operator()(int argc, const char** argv) {
-    if (!validateNumberOfArguments(argc, argv)) {
+	if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
 
@@ -41,29 +41,29 @@ std::string Application::operator()(int argc, const char** argv) {
         return e.what();
     }
 
-    CalculatorResult calculatorResult;
+    CalculatorResult calculator_result;
     try {
-        calculatorResult = MortgageCalculator::Calculate(amount,
+        calculator_result = MortgageCalculator::Calculate(amount,
                                             period, year_interest);
     } catch (std::invalid_argument &e) {
         return e.what();
     }
 
     std::ostringstream stream;
-    stream << "Monthly payment : " << calculatorResult.monthly_payment <<
-        "\nOverpayment amount : " << calculatorResult.overpayment_amount <<
-        "\nTotal payout : " << calculatorResult.total_payout << "\0";
+    stream << "Monthly payment : " << calculator_result.monthly_payment <<
+        "\nOverpayment amount : " << calculator_result.overpayment_amount <<
+        "\nTotal payout : " << calculator_result.total_payout;
 
     message_ = stream.str();
     return message_;
 }
 
-bool Application::validateNumberOfArguments(int argc, const char **argv) {
+bool Application::ValidateNumberOfArguments(int argc, const char **argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     } else if (argc != 4) {
-        help(argv[0], "ERROR: Should be 3 arguments.\n\n");
+        Help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
     return true;
@@ -71,7 +71,7 @@ bool Application::validateNumberOfArguments(int argc, const char **argv) {
 
 double parseDouble(const std::string &arg) {
     char *end;
-    double value = static_cast<double>(strtod(arg.c_str(), &end));
+    double value = strtod(arg.c_str(), &end);
 
     if (end[0]) {
         throw std::invalid_argument("Wrong number format!");

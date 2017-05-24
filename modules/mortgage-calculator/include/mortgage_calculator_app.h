@@ -11,8 +11,8 @@ class Application {
     std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char *appName, const char *message = "");
-    bool validateNumberOfArguments(int argc, const char **argv);
+    void Help(const char *appName, const char *message = "");
+    bool ValidateNumberOfArguments(int argc, const char **argv);
 
     std::string message_;
 };
