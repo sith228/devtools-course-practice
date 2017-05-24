@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <stdexcept>
+
 #include "include/Newton_method.h"
 
 double NewtonMethod::newton_method_polinom(double eps, int size,
