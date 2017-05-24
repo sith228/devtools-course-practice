@@ -1,7 +1,7 @@
 // Copyright 2017 Kozlov Ilya
 
-#ifndef MODULES_TODO_LIST_KOZLOV_ILYA_INCLUDE_TODO_LIST_KOZLOV_ILYA_H_
-#define MODULES_TODO_LIST_KOZLOV_ILYA_INCLUDE_TODO_LIST_KOZLOV_ILYA_H_
+#ifndef MODULES_TODO_LIST_INCLUDE_TODO_LIST_H_
+#define MODULES_TODO_LIST_INCLUDE_TODO_LIST_H_
 
 #include <string>
 #include <iostream>
@@ -36,7 +36,7 @@ class TODOList {
 
  private:
     class TODOTask {
-    public:
+     public:
         TODOTask();
         explicit TODOTask(const std::string _users_task_name);
         void Rename(const std::string _new_task_name);
@@ -44,13 +44,12 @@ class TODOList {
         void SetUndone();
         std::string GetTaskName();
         TaskStatus GetTaskStatus();
-    private:
+      private:
         std::string task_name_ = "New Task";
-        TaskStatus task_status_ = DONE_TASK;
+        TaskStatus task_status_ = UNDONE_TASK;
     };
     std::vector<TODOTask> data_list_ = {};
     std::size_t max_tasks_value_ = data_list_.max_size();
     std::string todo_list_name_ = "";
-
 };
-#endif  // MODULES_TODO_LIST_KOZLOV_ILYA_INCLUDE_TODO_LIST_KOZLOV_ILYA_H_
+#endif  // MODULES_TODO_LIST_INCLUDE_TODO_LIST_H_

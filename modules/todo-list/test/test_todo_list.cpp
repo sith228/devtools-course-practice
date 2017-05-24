@@ -7,21 +7,21 @@
 
 #include "include/todo_list.h"
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListDefaultCanBeCreated) {
-    // Arrange
+TEST(TODOListTest, TODOListDefaultCanBeCreated) {
+    // Arrangef
     // Act
     // Assert
     ASSERT_NO_FATAL_FAILURE(TODOList ListToTest);
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeCreated) {
+TEST(TODOListTest, TODOListCanBeCreated) {
     // Arrange
     // Act
     // Assert
     ASSERT_NO_FATAL_FAILURE(TODOList ListToTest("ListToTest"));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreated) {
+TEST(TODOListTest, NewTaskCanBeCreated) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -29,7 +29,7 @@ TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreated) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.NewTask());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreatedWithStringArg) {
+TEST(TODOListTest, NewTaskCanBeCreatedWithStringArg) {
     // Arrange
     TODOList ListToTest;
     const std::string testname = "To test the constructor";
@@ -38,7 +38,7 @@ TEST(Kozlov_Ilya_TODOListTest, NewTaskCanBeCreatedWithStringArg) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.NewTask(testname););
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TaskCanBeDeletedInTODOList) {
+TEST(TODOListTest, TaskCanBeDeletedInTODOList) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -47,7 +47,7 @@ TEST(Kozlov_Ilya_TODOListTest, TaskCanBeDeletedInTODOList) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.DeleteTask(1));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeCleared) {
+TEST(TODOListTest, TODOListCanBeCleared) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -56,7 +56,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeCleared) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.ClearList());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TaskCanBeRenamedInTODOList) {
+TEST(TODOListTest, TaskCanBeRenamedInTODOList) {
     // Arrange
     const std::string testname = "To test the renaming";
     TODOList ListToTest;
@@ -66,7 +66,7 @@ TEST(Kozlov_Ilya_TODOListTest, TaskCanBeRenamedInTODOList) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.RenameTask(1, testname););
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithoutTasks) {
+TEST(TODOListTest, TODOListCanBeShownWithoutTasks) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -74,7 +74,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithoutTasks) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithTasks) {
+TEST(TODOListTest, TODOListCanBeShownWithTasks) {
     // Arrange
     TODOList ListToTest("Today's plan");
     // Act
@@ -86,7 +86,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeShownWithTasks) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.ShowTODOList());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
+TEST(TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -99,7 +99,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeUnlimitedAndUnlimited) {
     });
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeSetDoneAndUndone) {
+TEST(TODOListTest, TODOListCanBeSetDoneAndUndone) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -111,7 +111,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListCanBeSetDoneAndUndone) {
     });
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TasksPosCanBeChangedInTODOList) {
+TEST(TODOListTest, TasksPosCanBeChangedInTODOList) {
     // Arrange
     TODOList ListToTest;
     // Act
@@ -121,7 +121,7 @@ TEST(Kozlov_Ilya_TODOListTest, TasksPosCanBeChangedInTODOList) {
     ASSERT_NO_FATAL_FAILURE(ListToTest.ChangeTasksPosition(1, 2));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ParamsCanBeGot) {
+TEST(TODOListTest, ParamsCanBeGot) {
     // Arrange
     TODOList ListToTest;
     ListToTest.NewTask();
@@ -136,7 +136,7 @@ TEST(Kozlov_Ilya_TODOListTest, ParamsCanBeGot) {
     });
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TODOListParamConstrIsWorkingCorrectly) {
+TEST(TODOListTest, TODOListParamConstrIsWorkingCorrectly) {
     // Arrange
     const std::string todolistname = "To test the working of constructor";
     // Act
@@ -145,7 +145,7 @@ TEST(Kozlov_Ilya_TODOListTest, TODOListParamConstrIsWorkingCorrectly) {
     ASSERT_EQ(todolistname, ListToTest.GetTODOListName());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ParamNewTaskIsWorkingCorrectly) {
+TEST(TODOListTest, ParamNewTaskIsWorkingCorrectly) {
     // Arrange
     const std::string tasktestname = "To test the New() method";
     TODOList ListToTest;
@@ -155,7 +155,7 @@ TEST(Kozlov_Ilya_TODOListTest, ParamNewTaskIsWorkingCorrectly) {
     ASSERT_EQ(tasktestname, ListToTest.GetTaskName(1));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, DeleteIsWorkingCorrectly) {
+TEST(TODOListTest, DeleteIsWorkingCorrectly) {
     // Arrange
     const std::string taskname1 = "Task1";
     const std::string taskname2 = "Task2";
@@ -168,7 +168,7 @@ TEST(Kozlov_Ilya_TODOListTest, DeleteIsWorkingCorrectly) {
     ASSERT_EQ(taskname2, ListToTest.GetTaskName(1));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ClearListIsWorkingCorrectly) {
+TEST(TODOListTest, ClearListIsWorkingCorrectly) {
     // Arrange
     const int expectedlen = 0;
     const int testlen = 42;
@@ -182,7 +182,7 @@ TEST(Kozlov_Ilya_TODOListTest, ClearListIsWorkingCorrectly) {
     ASSERT_EQ(expectedlen, ListToTest.GetCurrentTasksValue());
 }
 
-TEST(Kozlov_Ilya_TODOListTest, TaskRenamingIsWorkingCorrectly) {
+TEST(TODOListTest, TaskRenamingIsWorkingCorrectly) {
     // Arrange
     const std::string expectedname = "To test renaming's work";
     TODOList ListToTest;
@@ -193,7 +193,7 @@ TEST(Kozlov_Ilya_TODOListTest, TaskRenamingIsWorkingCorrectly) {
     ASSERT_EQ(expectedname, ListToTest.GetTaskName(1));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, LimitingTaskCountIsWorkingCorrectly) {
+TEST(TODOListTest, LimitingTaskCountIsWorkingCorrectly) {
     // Arrange
     const int expectedlen = 42;
     TODOList ListToTest;
@@ -207,7 +207,7 @@ TEST(Kozlov_Ilya_TODOListTest, LimitingTaskCountIsWorkingCorrectly) {
 }
 
 
-TEST(Kozlov_Ilya_TODOListTest, LimitingTaskCountToSmaller) {
+TEST(TODOListTest, LimitingTaskCountToSmaller) {
     // Arrange
     const int oldlen = 10;
     TODOList ListToTest;
@@ -221,7 +221,7 @@ TEST(Kozlov_Ilya_TODOListTest, LimitingTaskCountToSmaller) {
     ASSERT_EQ(oldlen/2, newlen);
 }
 
-TEST(Kozlov_Ilya_TODOListTest, UnlimitingTaskCountIsWorkingCorrectly) {
+TEST(TODOListTest, UnlimitingTaskCountIsWorkingCorrectly) {
     // Arrange
     const int limitedlen = 10;
     TODOList ListToTest;
@@ -237,7 +237,7 @@ TEST(Kozlov_Ilya_TODOListTest, UnlimitingTaskCountIsWorkingCorrectly) {
     ASSERT_EQ(expectedlen, newlen);
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ForbiddenParamsForMethods) {
+TEST(TODOListTest, ForbiddenParamsForMethods) {
     // Arrange
     const std::string tasknameparam = "To test the class";
     const int toolarge = 42;
@@ -270,7 +270,7 @@ TEST(Kozlov_Ilya_TODOListTest, ForbiddenParamsForMethods) {
     });
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly1) {
+TEST(TODOListTest, ChangeTaskPosIsWorkingCorrectly1) {
     // Arrange
     const std::string taskpos1 = "TaskPos1";
     const std::string taskpos2 = "TaskPos2";
@@ -283,7 +283,7 @@ TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly1) {
     ASSERT_EQ(taskpos2, ListToTest.GetTaskName(1));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly2) {
+TEST(TODOListTest, ChangeTaskPosIsWorkingCorrectly2) {
     // Arrange
     const std::string taskpos1 = "TaskPos1";
     const std::string taskpos2 = "TaskPos2";
@@ -298,7 +298,7 @@ TEST(Kozlov_Ilya_TODOListTest, ChangeTaskPosIsWorkingCorrectly2) {
     ASSERT_EQ(taskpos3, ListToTest.GetTaskName(2));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetName) {
+TEST(TODOListTest, ThrowForWrongParamsForGetName) {
     // Arrange
     const int wrong = 42;
     TODOList ListToTest;
@@ -307,7 +307,7 @@ TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetName) {
     ASSERT_ANY_THROW(ListToTest.GetTaskName(wrong));
 }
 
-TEST(Kozlov_Ilya_TODOListTest, ThrowForWrongParamsForGetStatus) {
+TEST(TODOListTest, ThrowForWrongParamsForGetStatus) {
     // Arrange
     const int wrong = 42;
     TODOList ListToTest;
