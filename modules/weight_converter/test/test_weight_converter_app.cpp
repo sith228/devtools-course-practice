@@ -11,7 +11,6 @@ using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
-const double EPS = 0.001;
 
 class WeightConverterAppTest : public ::testing::Test {
  protected:
