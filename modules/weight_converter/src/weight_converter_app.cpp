@@ -29,10 +29,10 @@ void Application::Help(const char* appname, const char* message) {
 
 bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     } else if (argc != 5) {
-        help(argv[0], "ERROR: Should be 4 arguments.\n\n");
+        Help(argv[0], "ERROR: Should be 4 arguments.\n\n");
         return false;
     }
     return true;
