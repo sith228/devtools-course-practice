@@ -26,96 +26,22 @@ add_test(
     COMMAND ${APPLICATION} 20 'KG'
 )
 set_tests_properties (${prefix}_Can_Check_Number_Of_Arguments
-  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments.")
+  PROPERTIES PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments.")
 
 
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Weight_Argument
-    COMMAND ${APPLICATION} -20 'KG' 'G' 's'
+    COMMAND ${APPLICATION} -20 'KG' 'G'
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong number format!")
 
-
 add_test(
     NAME ${prefix}_Can_Detect_Wrong_Weight_Type_Argument
-    COMMAND ${APPLICATION} 20 'Í„' 'G' 's'
+    COMMAND ${APPLICATION} 20 'Í„' 'G'
 )
 set_tests_properties (${prefix}_Can_Detect_Wrong_Weight_Type_Argument
   PROPERTIES PASS_REGULAR_EXPRESSION "Wrong weight's type format!")
-
-
-add_test(
-    NAME ${prefix}_Can_Detect_Wrong_Operation_Argument
-    COMMAND ${APPLICATION} 20 KG G sset
-)
-set_tests_properties (${prefix}_Can_Detect_Wrong_Operation_Argument
-  PROPERTIES PASS_REGULAR_EXPRESSION "Wrong operation format!")
-
-
-add_test(
-    NAME ${prefix}_Can_Get_Weight
-    COMMAND ${APPLICATION} 20 KG G get
-)
-set_tests_properties (${prefix}_Can_Get_Weight
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.001")
-
-
-
-add_test(
-    NAME ${prefix}_Can_Set_Weight
-    COMMAND ${APPLICATION} 20 KG G set
-)
-set_tests_properties (${prefix}_Can_Set_Weight
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 20")
-
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_G
-    COMMAND ${APPLICATION} 20 MG G t
-)
-set_tests_properties (${prefix}_Can_Convert_To_G
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 1")
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_GR
-    COMMAND ${APPLICATION} 20 MG GR t
-)
-set_tests_properties (${prefix}_Can_Convert_To_GR
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 15.4324")
-
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_OZ
-    COMMAND ${APPLICATION} 20 MG OZ t
-)
-set_tests_properties (${prefix}_Can_Convert_To_OZ
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.035274")
-
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_DR
-    COMMAND ${APPLICATION} 20 MG DR t
-)
-set_tests_properties (${prefix}_Can_Convert_To_DR
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.564382")
-
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_LB
-    COMMAND ${APPLICATION} 20 MG LB t
-)
-set_tests_properties (${prefix}_Can_Convert_To_LB
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.00220462")
-
-
-add_test(
-    NAME ${prefix}_Can_Convert_To_CR
-    COMMAND ${APPLICATION} 20 MG CR t
-)
-set_tests_properties (${prefix}_Can_Convert_To_CR
-  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 5")
-
 
 add_test(
     NAME ${prefix}_Can_Convert_From_MG_To_G
@@ -123,3 +49,49 @@ add_test(
 )
 set_tests_properties (${prefix}_Can_Convert_From_MG_To_G
   PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.01")
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_G
+    COMMAND ${APPLICATION} 20 KG G
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_G
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 1")
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_GR
+    COMMAND ${APPLICATION} 20 KG GR
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_GR
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 15.4324")
+
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_OZ
+    COMMAND ${APPLICATION} 20 KG OZ
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_OZ
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.035274")
+
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_DR
+    COMMAND ${APPLICATION} 20 KG DR t
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_DR
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.564382")
+
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_LB
+    COMMAND ${APPLICATION} 20 KG LB t
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_LB
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 0.00220462")
+
+
+add_test(
+    NAME ${prefix}_Can_Convert_From_KG_To_CR
+    COMMAND ${APPLICATION} 20 KG CR t
+)
+set_tests_properties (${prefix}_Can_Convert_From_KG_To_CR
+  PROPERTIES PASS_REGULAR_EXPRESSION "Weight = 5")

@@ -17,22 +17,19 @@ void Application::Help(const char* appname, const char* message) {
           "Please provide arguments in the following format:\n\n"+
 
           "  $ " + appname + " <weight> <type_from> " +
-          "<type_to> <operation>\n\n" +
+          "<type_to>\n\n" +
 
           "Where the first argument is a positive double-precision number \n" +
-          "<type_from> and <type_to> are one of  'KG', 'MG', 'G', 'GR'," +
-          "'DR', 'OZ', 'LB', 'CR' \n"+
-          "<operation> is one of 'set' for SetWeight," +
-          "'get' for GetWeight,'t' for Convert(to)," +
-          "'ft' for Convert(from, to).\n";
+          "and <type_from> and <type_to> are one of  'KG', 'MG', 'G', 'GR'," +
+          "'DR', 'OZ', 'LB', 'CR' \n";
 }
 
 bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         Help(argv[0]);
         return false;
-    } else if (argc != 5) {
-        Help(argv[0], "ERROR: Should be 4 arguments.\n\n");
+    } else if (argc != 4) {
+        Help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
     return true;
@@ -71,20 +68,6 @@ Weights parseWeightType(const char* arg) {
     }
 }
 
-char parseOperation(const char* arg) {
-    if (strcmp(arg, "set") == 0) {
-        return 's';
-    } else if (strcmp(arg, "get") == 0) {
-        return 'g';
-    } else if (strcmp(arg, "t") == 0) {
-        return 't';
-    } else if (strcmp(arg, "f") == 0) {
-        return 'f';
-    } else {
-        throw std::string("Wrong operation format!");
-    }
-}
-
 std::string Application::operator()(int argc, const char** argv) {
     Arguments args;
     Weights type_from;
@@ -96,7 +79,6 @@ std::string Application::operator()(int argc, const char** argv) {
         args.weight = parseWeight(argv[1]);
         type_from = parseWeightType(argv[2]);
         type_to = parseWeightType(argv[3]);
-        args.operation = parseOperation(argv[4]);
     }
     catch (std::string& str) {
         return str;
@@ -105,23 +87,8 @@ std::string Application::operator()(int argc, const char** argv) {
     WeightConverter weight_converter(0.001, KG);
 
     std::ostringstream stream;
-    switch (args.operation) {
-    case 's':
-        weight_converter.SetWeight(args.weight, type_from);
-        stream << "Weight = " << weight_converter.GetWeight() << " ";
-        break;
-    case 'g':
-        stream << "Weight = " << weight_converter.GetWeight() << " ";
-        break;
-    case 't':
-        stream << "Weight = " << weight_converter.Convert(type_to) << " ";
-        break;
-    case 'f':
-        stream << "Weight = " << weight_converter.Convert(args.weight,
-            type_from, type_to) << " ";
-        break;
-    }
-
+    stream << "Weight = " << weight_converter.Convert(args.weight,
+        type_from, type_to) << " ";
 
     message_ = stream.str();
 

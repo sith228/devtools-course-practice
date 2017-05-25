@@ -46,15 +46,15 @@ TEST_F(WeightConverterAppTest, Do_Print_Help_Without_Arguments) {
 }
 
 TEST_F(WeightConverterAppTest, Is_Checking_Number_Of_Arguments) {
-    vector<string> args = {"0.45", "KG", "G"};
+    vector<string> args = {"0.45", "KG"};
 
     Act(args);
 
-    Assert("ERROR: Should be 4 arguments\\..*");
+    Assert("ERROR: Should be 3 arguments\\..*");
 }
 
 TEST_F(WeightConverterAppTest, Is_Checking_Weight_Argument) {
-    vector<string> args = { "-0.45", "KG", "G", "ft" };
+    vector<string> args = { "-0.45", "KG", "G" };
 
     Act(args);
 
@@ -62,23 +62,15 @@ TEST_F(WeightConverterAppTest, Is_Checking_Weight_Argument) {
 }
 
 TEST_F(WeightConverterAppTest, Is_Checking_Weight_Type_Argument) {
-    vector<string> args = { "0.45", "25", "G", "ft" };
+    vector<string> args = { "0.45", "25", "G" };
 
     Act(args);
 
     Assert("Wrong weight's type format!");
 }
 
-TEST_F(WeightConverterAppTest, Is_Checking_Operation_Argument) {
-    vector<string> args = { "0.45", "KG", "G", "Do_It_Please" };
-
-    Act(args);
-
-    Assert("Wrong operation format!");
-}
-
-TEST_F(WeightConverterAppTest, dsadsa) {
-    vector<string> args = { "10", "MG", "G", "f" };
+TEST_F(WeightConverterAppTest, Can_Convert_From_MG_To_G) {
+    vector<string> args = { "10", "MG", "G" };
 
     Act(args);
 
