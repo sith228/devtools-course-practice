@@ -9,6 +9,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <cstring>
+#include <tuple>
 
 using std::vector;
 using std::string;
@@ -17,10 +18,10 @@ using std::cerr;
 
 namespace {
 
-static bool TryParseDouble(const char *s, double *val) {
+static std::pair<bool, double> TryParseDouble(const char *s) {
     char *end = nullptr;
-    if (val) *val = std::strtod(s, &end);
-    return end[0] == 0;
+    double val = std::strtod(s, &end);
+    return std::make_pair(end[0] == 0, val);
 }
 
 static void printHelp(const char *appname, std::ostream *ofs) {
@@ -56,10 +57,12 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
     }
 
     double x = 0;
-    if (argc == 3 && !TryParseDouble(argv[2], &x)) {
-        printError(appname) << "cannot parse formal parameter: \""
-                            << argv[2] << "\" is not a number\n";
-        return RESULT_ERROR_PARSING;
+    if(argc == 3) {
+        bool ok;
+        std::tie(ok, x) = TryParseDouble(argv[2]);
+        if(!ok)
+            printError(appname) << "cannot parse formal parameter: \""
+                                << argv[2] << "\" is not a number\n";
     }
 
     string expr(argv[1]);
