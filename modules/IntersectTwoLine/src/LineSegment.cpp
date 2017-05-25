@@ -10,14 +10,12 @@ using std::stringstream;
 LineSegment2D::LineSegment2D(double X1, double Y1, double X2, double Y2) {
   if (X1 == X2 && Y1 == Y2) {
     throw "Error, points can not coincide";
-  }
-  else if (X1 > X2) {
+  } else if (X1 > X2) {
     X1_ = X2;
     Y1_ = Y2;
     X2_ = X1;
     Y2_ = Y1;
-  }
-  else {
+  } else {
     X1_ = X1;
     Y1_ = Y1;
     X2_ = X2;
