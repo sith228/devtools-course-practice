@@ -12,7 +12,7 @@
 
 ConverterCurrencyApp::ConverterCurrencyApp() : message_("") {}
 
-void ConverterCurrencyApp::help(const char* appname, const char* message) {
+void ConverterCurrencyApp::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is a converter currency application.\n\n" +
@@ -29,19 +29,19 @@ void ConverterCurrencyApp::help(const char* appname, const char* message) {
         "will use default meaning of convert coefficient\n";
 }
 
-bool ConverterCurrencyApp::validateNumberOfArguments
+bool ConverterCurrencyApp::ValidateNumberOfArguments
 (int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     } else if (argc != 6) {
-        help(argv[0], "ERROR: Should be 5 arguments.\n\n");
+        Help(argv[0], "ERROR: Should be 5 arguments.\n\n");
         return false;
     }
     return true;
 }
 
-double parseDouble(const char* arg) {
+double ParseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
@@ -51,7 +51,7 @@ double parseDouble(const char* arg) {
     return value;
 }
 
-CurrencyName parseCurrency(const char* arg) {
+CurrencyName ParseCurrency(const char* arg) {
     CurrencyName currency;
     if (strcmp(arg, "BYN") == 0) {
         currency = BYN;
@@ -83,16 +83,16 @@ CurrencyName parseCurrency(const char* arg) {
 
 std::string ConverterCurrencyApp::operator()(int argc, const char** argv) {
     Arguments args;
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
 
     try {
-        args.old_currency = parseCurrency(argv[2]);
-        args.new_currency = parseCurrency(argv[3]);
-        args.money_size = parseDouble(argv[1]);
-        args.first_convert_coeff = parseDouble(argv[4]);
-        args.second_convert_coeff = parseDouble(argv[5]);
+        args.old_currency = ParseCurrency(argv[2]);
+        args.new_currency = ParseCurrency(argv[3]);
+        args.money_size = ParseDouble(argv[1]);
+        args.first_convert_coeff = ParseDouble(argv[4]);
+        args.second_convert_coeff = ParseDouble(argv[5]);
     }
     catch(std::string& str) {
         return str;
