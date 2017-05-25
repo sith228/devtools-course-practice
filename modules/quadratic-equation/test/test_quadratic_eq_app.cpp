@@ -5,14 +5,14 @@
 #include <string>
 #include <vector>
 
-#include "include\quadratic_equation_app.h"
+#include "include\quadratic_eq_app.h"
 
 using ::testing::internal::RE;
 using std::vector;
 using std::string;
 
 class  QuadraticEquationAppTest : public ::testing::Test {
-protected:
+ protected:
     void Act(vector<string> args_) {
         vector<const char*> options;
 
@@ -31,8 +31,8 @@ protected:
         EXPECT_TRUE(RE::PartialMatch(output_, RE(expected)));
     }
 
-private:
-    QuadraticEquationCalculator app_;
+ private:
+    QuadrEquationCalc app_;
     string output_;
 };
 
@@ -45,7 +45,7 @@ TEST_F(QuadraticEquationAppTest, Do_Print_Help_Without_Arguments) {
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Number_Of_Arguments) {
-    vector<string> args = { "1", "2","3"};
+    vector<string> args = { "1", "2", "3"};
 
     Act(args);
 
@@ -53,7 +53,7 @@ TEST_F(QuadraticEquationAppTest, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Coefficient) {
-    vector<string> args = { "0","1","2","num" };
+    vector<string> args = { "0","1","2", "num" };
 
     Act(args);
 

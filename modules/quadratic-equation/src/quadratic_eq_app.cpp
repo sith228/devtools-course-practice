@@ -29,8 +29,7 @@ bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         Help(argv[0]);
         return false;
-    }
-    else if (argc != 5) {
+    } else if (argc != 5) {
         Help(argv[0], "ERROR: Should be 4 arguments.\n\n");
         return false;
     }
@@ -52,15 +51,12 @@ char parseOperation(const char* arg) {
     char op;
     if (strcmp(arg, "num") == 0) {
         op = 'n';
-    }
-    else if (strcmp(arg, "sol") == 0) {
+    } else if (strcmp(arg, "sol") == 0) {
         op = 's';
-    }
-    else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
-
 }
 
 
@@ -106,6 +102,7 @@ std::string QuadrEquationCalc::operator()
             stream << "x2 = " << quadratic_eq.GetRealX2();
             break;
         }
+        break;
     }
     message_ = stream.str();
     return message_;
