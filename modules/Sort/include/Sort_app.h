@@ -22,4 +22,4 @@ class SortApp {
      } Arguments;
 };
 
-#endif // MODULES_SORT_INCLUDE_SORT_APP_H_  
+#endif  // MODULES_SORT_INCLUDE_SORT_APP_H_
