@@ -47,7 +47,7 @@ add_test(
     NAME ${prefix}_Can_Get_One_Real_Solution
     COMMAND ${APPLICATION} 1 4 4
 )
-set_tests_properties (${prefix}_Can_Get_Two_Real_Solutions
+set_tests_properties (${prefix}_Can_Get_One_Real_Solutions
   PROPERTIES PASS_REGULAR_EXPRESSION "x = -2")
 
 add_test(
