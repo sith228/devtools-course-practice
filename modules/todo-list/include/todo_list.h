@@ -34,7 +34,7 @@ class TODOList {
     TaskStatus GetTaskStatus(const std::size_t _task_index);
     std::string GetTODOListName();
 
- private:
+  private:
     class TODOTask {
      public:
         TODOTask();
