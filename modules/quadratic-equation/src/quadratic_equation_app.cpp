@@ -5,6 +5,7 @@
 
 #include <string>
 #include <cstring>
+#include <iostream>
 #include <sstream>
 
 QuadraticEquationCalculator::QuadraticEquationCalculator() : message_("") {}
@@ -18,10 +19,10 @@ void QuadraticEquationCalculator::Help(const char* appname, const char* message)
         "  $ " + appname + " <coefficient a> <coefficient b> " +
         "<coefficient c> <operation>\n\n" +
 
-        "Where the first,the second and  the third  arguments" +
+        "Where the first,the second and  the third  arguments " +
         "aren't equals zero number \n"+
         "<operation> is one of 'num' which returns count of real solution," +
-        "'sol' returns solution";
+        "'sol' returns solution\n";
 }
 
 bool QuadraticEquationCalculator::ValidateNumberOfArguments(int argc, const char** argv) {
@@ -40,7 +41,7 @@ double parseCoefficient(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
-    if (end[0] || value) {
+    if (end[0] || value==0) {
         throw std::string("Wrong number format!");
     }
 
@@ -71,7 +72,8 @@ std::string QuadraticEquationCalculator::operator()
     }
     try {
         args.coeffA = parseCoefficient(argv[1]);
-        args.coeffB = parseCoefficient(argv[2]);
+        std::cout << "args.coeffA"<<args.coeffA;
+            args.coeffB = parseCoefficient(argv[2]);
         args.coeffC = parseCoefficient(argv[3]);
         args.operation = parseOperation(argv[4]);
     }
@@ -90,7 +92,7 @@ std::string QuadraticEquationCalculator::operator()
         break;
     case 's':
         std::string solution = "";
-        switch (countSolution)
+        /*switch (countSolution)
         {
         case 0:
             stream << "x1  = " << quadratic_equation.GetComplexX1().getRe() <<
@@ -108,7 +110,7 @@ std::string QuadraticEquationCalculator::operator()
             stream << "x2  = " << quadratic_equation.GetRealX2() <<
                 "+" << quadratic_equation.GetRealX2();
             break;
-        }
+        }*/
     }
     message_ = stream.str();
     return message_;
