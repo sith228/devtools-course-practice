@@ -4,7 +4,7 @@
 #define MODULES_NEWTON_METHOD_INCLUDE_NEWTON_METHOD_H_
 
 class NewtonMethod {
-public:
+ public:
     static double NewtonMethodPolynom(double eps, size_t size,
         double *polynom_coef);
     static double NewtonMethodFunction(double eps);
@@ -12,7 +12,7 @@ public:
     static bool CheckRootPolynom(double x, double eps, size_t size,
         const double *polynom_coef);
     static bool CheckRootFunction(double x, double eps);
-private:
+ private:
     static void CalculateDerivativePolynom(size_t size,
         const double *polynom_coef, double *polynom_derivative_coef);
     static double PolynomValue(size_t size, double x, const double* coef);
