@@ -17,20 +17,18 @@ void QuadrEquationCalc::Help(const char* appname,
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <coefficient a> <coefficient b> " +
-        "<coefficient c> <operation>\n\n" +
+        "<coefficient c> \n\n" +
 
         "Where the first,the second and  the third  arguments " +
-        "aren't equals zero number \n" +
-        "<operation> is one of 'num' which returns count of real solution," +
-        "'sol' returns solution\n";
+        "aren't equals zero number \n";
 }
 
 bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         Help(argv[0]);
         return false;
-    } else if (argc != 5) {
-        Help(argv[0], "ERROR: Should be 4 arguments.\n\n");
+    } else if (argc != 4) {
+        Help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
     return true;

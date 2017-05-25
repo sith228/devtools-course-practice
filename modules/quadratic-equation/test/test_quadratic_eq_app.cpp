@@ -45,15 +45,15 @@ TEST_F(QuadraticEquationAppTest, Do_Print_Help_Without_Arguments) {
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Number_Of_Arguments) {
-    vector<string> args = { "1", "2", "3"};
+    vector<string> args = { "1", "2"};
 
     Act(args);
 
-    Assert("ERROR: Should be 4 arguments\\..*");
+    Assert("ERROR: Should be 3 arguments\\..*");
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Coefficient) {
-    vector<string> args = { "0", "1", "2", "num" };
+    vector<string> args = { "0", "1", "2"};
 
     Act(args);
 
@@ -61,23 +61,17 @@ TEST_F(QuadraticEquationAppTest, Is_Checking_Coefficient) {
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Coefficient_Format) {
-    vector<string> args = { "most", "2", "3", "num"};
+    vector<string> args = { "most", "2", "3"};
 
     Act(args);
 
     Assert("Wrong number format!");
 }
-TEST_F(QuadraticEquationAppTest, Is_Checking_Operation_Format) {
-    vector<string> args = { "1", "2", "3", "most" };
 
-    Act(args);
-
-    Assert("Wrong operation format!");
-}
 TEST_F(QuadraticEquationAppTest, Is_Checking_Num_With_Correct_Coefficient) {
-    vector<string> args = { "1", "2", "3", "num" };
+    vector<string> args = { "1", "4", "4"};
 
     Act(args);
 
-    Assert("Count of solutions = 0 ");
+    Assert("x = -2");
 }
