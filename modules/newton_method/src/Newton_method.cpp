@@ -1,73 +1,85 @@
 // Copyright 2017 Dmitry Dryakhlov
 
-#include <math.h>
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include <stdexcept>
+#include <time.h>
+#include <iostream>
+#include "../include/Newton_method.h"
+using namespace std;
 
-#include "include/Newton_method.h"
-
-double NewtonMethod::newton_method_polinom(double eps, int size,
-                                           double *polinom_coef) {
-    if (size <= 0)
-        throw "size < 0";
-    if (eps <= 0)
-        throw "eps < 0";
+double NewtonMethod::NewtonMethodPolynom(double eps, size_t size,
+    double *polynom_coef) {
+    if (eps <= 0.0)
+        throw "eps <= 0";
+    if (size == 0) 
+        throw "polynom is const";
     double x = 0, x1 = 1;
-    double *polinom_derivative_coef = new double[size - 1];
-    calculate_derivative_polinom(size - 1, polinom_coef,
-                                        polinom_derivative_coef);
-    while (fabs(x1 - x) >= eps) {
+    double *polynom_derivative_coef = new double[size - 1];
+    CalculateDerivativePolynom(size - 1, polynom_coef, polynom_derivative_coef);
+    while (fabs(x1 - x) >= eps*0.01) {
         x = x1;
-        double fx = polinom_value(size, x, polinom_coef);
-        double fx1 = polinom_value(size - 1, x, polinom_derivative_coef);
-        x1 = x - (fx / fx1);
+        double fx = PolynomValue(size, x, polynom_coef);
+        double dfx = PolynomValue(size - 1, x, polynom_derivative_coef);
+        if (abs(dfx) < eps)
+			break;
+        x1 = x - (fx / dfx);
     }
-
-    delete[]polinom_derivative_coef;
-    return x;
+    delete[]polynom_derivative_coef;
+     return x;
 }
 
-double NewtonMethod::newton_method_function(double eps) {
-    if (eps <= 0) {
-        throw "eps < 0";
+double NewtonMethod::NewtonMethodFunction(double eps) {
+    if (eps <= 0.0) {
+        throw "eps <= 0";
     }
     double x = 0.0, x1 = 1.0;
 
     while (fabs(x1 - x) >= eps) {
-       x = x1;
-       double fx = function_value(x);
-       double fx1 = first_derivative_finction_value(x);
+        x = x1;
+        double fx = FunctionValue(x);
+        double fx1 = FirstDerivativeFunctionValue(x);
         x1 = x - (fx / fx1);
     }
     return x;
 }
 
-void NewtonMethod::geneate_random_polinom(int size, double *polinom_coef) {
-    if (size <= 0)
-        throw "size < 0";
+void NewtonMethod::GeneateRandomPolynom(size_t size, double *polynom_coef) {
+    srand((unsigned int)time(0));
     for (int i = 0; i < size; i++) {
-        polinom_coef[i] = static_cast<double>(i)*7.0;
+        polynom_coef[i] = -5.0 + (double)(rand()) / RAND_MAX * 10;
     }
 }
 
-double NewtonMethod::polinom_value(int size, int x, const double * coef) {
+bool NewtonMethod::CheckRootPolynom(double x, double eps, size_t size, const double * coef)
+{
+    return abs(PolynomValue(size, x, coef))<eps;
+}
+
+bool NewtonMethod::CheckRootFunction(double x, double eps)
+{
+    return abs(FunctionValue(x)) < eps*10;
+}
+
+double NewtonMethod::PolynomValue(size_t size, double x, const double * coef) {
     double sum = 0.0;
     for (int k = 0; k < size; k++) {
-        sum = sum + (coef[k] * pow(x, k));
+        sum += (coef[k] * pow(x, k));
     }
     return sum;
 }
 
-void NewtonMethod::calculate_derivative_polinom(int size,
-     const double * polinom_coef, double * polinom_derivative_coef) {
+void NewtonMethod::CalculateDerivativePolynom(size_t size,
+    const double * polynom_coef, double * polynom_derivative_coef) {
     for (int i = 0; i < size; i++) {
-        polinom_derivative_coef[i] = (i + 1) * polinom_coef[i + 1];
+        polynom_derivative_coef[i] = (i + 1) * polynom_coef[i + 1];
     }
 }
 
-double NewtonMethod::function_value(double x) {
-    return 3.0*x + sin(x) - pow(2.71828, x);
+double NewtonMethod::FunctionValue(double x) {
+    return 3.0*x + sin(x) - pow(M_E, x);
 }
 
-double NewtonMethod::first_derivative_finction_value(double x) {
-    return 3.0 - cos(x) - pow(2.71828, x);
+double NewtonMethod::FirstDerivativeFunctionValue(double x) {
+    return 3.0 - cos(x) - pow(M_E, x);
 }
