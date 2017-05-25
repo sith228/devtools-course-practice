@@ -76,7 +76,7 @@ TEST(Dmitry_Dryakhlov_ComplexNumberTest, Can_Sub_Complex) {
     ComplexNumber z_2(re_2, im_2);
     ComplexNumber z_result(-1.0, -2.0);
 
-    // Act
+     // Act
     ComplexNumber z_sub = z_1 - z_2;
 
     // Assert
