@@ -86,8 +86,7 @@ std::string QuadrEquationCalc::operator()
         stream << "Count of solutions = " << countSolution << " ";
         break;
     case 's':
-        switch (countSolution)
-        {
+        switch (countSolution) {
         case 0:
             stream << "x1  = " << quadratic_eq.GetComplexX1().getRe() <<
                 "+" << quadratic_eq.GetComplexX1().getIm() << "i ";

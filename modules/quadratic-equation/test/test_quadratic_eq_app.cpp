@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "include\quadratic_eq_app.h"
+#include "include/quadratic_eq_app.h"
 
 using ::testing::internal::RE;
 using std::vector;
@@ -53,7 +53,7 @@ TEST_F(QuadraticEquationAppTest, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(QuadraticEquationAppTest, Is_Checking_Coefficient) {
-    vector<string> args = { "0","1","2", "num" };
+    vector<string> args = { "0", "1", "2", "num" };
 
     Act(args);
 
