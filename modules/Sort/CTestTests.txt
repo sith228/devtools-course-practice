@@ -55,7 +55,7 @@ add_test(
     NAME ${prefix}_can_Detect_Wrong_Length_Array_Format
     COMMAND ${APPLICATION} -asa 0 15 -3.5
 )
-set_tests_properties (${prefix}_can_Diff_Complexs PROPERTIES
+set_tests_properties (${prefix}_can_Detect_Wrong_Length_Array_Format PROPERTIES
     PASS_REGULAR_EXPRESSION "Wrong operation format!"
     LABELS "${MODULE}")
 
