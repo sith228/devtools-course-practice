@@ -24,10 +24,10 @@ class ArithmeticCalculatorTest : public ::testing::Test {
         args.insert(args.begin(), "appname");
         testing::internal::CaptureStdout();
         testing::internal::CaptureStderr();
-        retcode_ = ArithmeticCalculator((int)args.size(), args.data());
+        retcode_ = ArithmeticCalculator(static_cast<int>(args.size()),
+                                        args.data());
         out_ = testing::internal::GetCapturedStdout();
         err_ = testing::internal::GetCapturedStderr();
-
     }
 
     void Assert(int ret, const std::string &out, const std::string &err) {
@@ -40,7 +40,6 @@ class ArithmeticCalculatorTest : public ::testing::Test {
     int retcode_;
     string out_;
     string err_;
-
 };
 
 TEST_F(ArithmeticCalculatorTest, Do_Print_Help_Without_Arguments) {
