@@ -19,13 +19,16 @@ void ConverterCurrencyApp::Help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <money size> <old currency> " +
-        "<new currency> <convert coefficient of the old currency> " +
-        "<convert coefficient of the new currency>\n\n" +
+        "<new currency> <exchange rate to the RUR of the old currency> " +
+        "<exchange rate to the RUR of the new currency>\n\n" +
 
-        "Where 1,3 and 4 arguments is double-precision number, " +
-        "2 and 3 arguments is one of type of currency, " +
-        "which you can find on the svali.ru/currency/index.htm. " +
-        "If selected meaning '0' for 3 or 4 arguments, " +
+        "Where 1, 4 and 5 arguments is double-precision nonnegative number," +
+        " 2 and 3 arguments is one of type of currency: " +
+        "BYN, CNY, CZK, EUR, GBP, KZT, RUR, USD, UAH, JPY, KRW. " +
+        "Names were taken from svali.ru / currency / index.htm" +
+        "4 and 5 arguments are exchange rates for RUR, " +
+        "they use, because the course changes with time " +
+        "If selected meaning '0'- zero, for 4 or 5 argument " +
         "will use default meaning of convert coefficient\n";
 }
 
