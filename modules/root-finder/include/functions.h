@@ -7,7 +7,7 @@
 
 class Function {
  public:
-    Function(std::vector<float> koefs);
+    explicit Function(std::vector<float> koefs);
     virtual float f(float x) const = 0;
     virtual float df(float x) const = 0;
     virtual float d2f(float x) const = 0;
@@ -17,7 +17,7 @@ class Function {
 
 class Polynomial2Degree : public Function {
  public:
-    Polynomial2Degree(std::vector<float> koefs) : Function(koefs) {}
+    explicit Polynomial2Degree(std::vector<float> koefs) : Function(koefs) {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -25,7 +25,7 @@ class Polynomial2Degree : public Function {
 
 class Polynomial3Degree : public Function {
  public:
-    Polynomial3Degree(std::vector<float> koefs) : Function(koefs) {}
+    explicit Polynomial3Degree(std::vector<float> koefs) : Function(koefs) {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -33,7 +33,7 @@ class Polynomial3Degree : public Function {
 
 class Polynomial4Degree : public Function {
  public:
-    Polynomial4Degree(std::vector<float> koefs) : Function(koefs) {}
+    explicit Polynomial4Degree(std::vector<float> koefs) : Function(koefs) {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -41,7 +41,7 @@ class Polynomial4Degree : public Function {
 
 class Exponent : public Function {
  public:
-    Exponent(std::vector<float> koefs) : Function(koefs) {}
+    explicit Exponent(std::vector<float> koefs) : Function(koefs) {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;

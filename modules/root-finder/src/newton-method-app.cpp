@@ -70,9 +70,9 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
     if (!isThereArguments(argc, argv)) {
         return message_;
     }
-	std::vector<float> bounds = getBounds(argc, argv);
-    std::vector<float> koefs = getKoefs(argc, argv);
-	Function* function = FunctionFactory::createFunction(argv[1], koefs);
+	//std::vector<float> bounds = getBounds(argc, argv);
+    //std::vector<float> koefs = getKoefs(argc, argv);
+	//Function* function = FunctionFactory::createFunction(argv[1], koefs);
 
     return message_;
 }

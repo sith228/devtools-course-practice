@@ -14,9 +14,9 @@ class NewtonMethodApplication {
  private:
     void help(const char* appname, const char* message = "");
     bool isThereArguments(int argc, const char** argv);
-	std::vector<float> getBounds(int argc, const char** argv);
-	std::vector<float> getKoefs(int argc, const char** argv);
-	double parseFloat(const char* arg);
+    std::vector<float> getBounds(int argc, const char** argv);
+    std::vector<float> getKoefs(int argc, const char** argv);
+    double parseFloat(const char* arg);
     std::string message_;
 };
 
