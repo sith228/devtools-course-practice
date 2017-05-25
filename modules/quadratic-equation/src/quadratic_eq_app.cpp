@@ -66,10 +66,10 @@ std::string QuadrEquationCalc::operator()
     int countSolution = quadratic_eq.NumOfRealSolutions();
         switch (countSolution) {
         case 0:
-            stream << "x1 = " << quadratic_eq.GetComplexX1().getRe() <<
-                "+" << quadratic_eq.GetComplexX1().getIm() << "i" << " ";
-            // stream << "x2 = " << quadratic_eq.GetComplexX2().getRe() <<
-              // quadratic_eq.GetComplexX2().getIm() << "i";
+            stream << "x1 = " << quadratic_eq.GetComplexX1().getRe() << "+"
+                << quadratic_eq.GetComplexX1().getIm()<< " ";
+            stream << "x2 = " << quadratic_eq.GetComplexX2().getRe() <<
+                quadratic_eq.GetComplexX2().getIm();
             break;
         case 1:
             stream << "x = " << quadratic_eq.GetRealX1();

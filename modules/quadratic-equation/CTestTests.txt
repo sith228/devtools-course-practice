@@ -55,6 +55,6 @@ add_test(
     COMMAND ${APPLICATION} 1 2 2
 )
 set_tests_properties (${prefix}_Can_Get_Two_Complex_Solutions
-  PROPERTIES PASS_REGULAR_EXPRESSION "x1 = -1+1i ")
+  PROPERTIES PASS_REGULAR_EXPRESSION "x1 = -1+1i x2 = -1-1i")
 
 
