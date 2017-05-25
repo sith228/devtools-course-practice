@@ -4,12 +4,13 @@
 #include "include/quadratic_equation_app.h"
 
 #include <string>
-#include <cstring>
+
 #include <sstream>
 
 QuadraticEquationCalculator::QuadraticEquationCalculator() : message_("") {}
 
-void QuadraticEquationCalculator::Help(const char* appname, const char* message) {
+void QuadraticEquationCalculator::Help(const char* appname,
+    const char* message) {
     message_ =
         std::string(message) +
         "This is a quadratic equation application.\n\n" +
@@ -79,10 +80,10 @@ std::string QuadraticEquationCalculator::operator()
         return str;
     }
 
-    QuadraticEquation quadratic_equation(args.coeffA, args.coeffB, args.coeffC);
+    QuadraticEquation quadratic_eq(args.coeffA, args.coeffB, args.coeffC);
 
     std::ostringstream stream;
-    int countSolution = quadratic_equation.NumOfRealSolutions();
+    int countSolution = quadratic_eq.NumOfRealSolutions();
 
     switch (args.operation) {
     case 'n':
@@ -93,23 +94,24 @@ std::string QuadraticEquationCalculator::operator()
         switch (countSolution)
         {
         case 0:
-            stream << "x1  = " << quadratic_equation.GetComplexX1().getRe() <<
-                "+" << quadratic_equation.GetComplexX1().getIm() << "i";
-            stream << "x2  = " << quadratic_equation.GetComplexX2().getRe() <<
-                "+" << quadratic_equation.GetComplexX2().getIm() << "i";
+            stream << "x1  = " << quadratic_eq.GetComplexX1().getRe() <<
+                "+" << quadratic_eq.GetComplexX1().getIm() << "i";
+            stream << "x2  = " << quadratic_eq.GetComplexX2().getRe() <<
+                "+" << quadratic_eq.GetComplexX2().getIm() << "i";
             break;
         case 1:
-            stream << "x = " << quadratic_equation.GetRealX1() <<
-                "+" << quadratic_equation.GetRealX1();
+            stream << "x = " << quadratic_eq.GetRealX1() <<
+                "+" << quadratic_eq.GetRealX1();
             break;
         case 2:
-            stream << "x1 = " << quadratic_equation.GetRealX1() <<
-                "+" << quadratic_equation.GetRealX1();
-            stream << "x2  = " << quadratic_equation.GetRealX2() <<
-                "+" << quadratic_equation.GetRealX2();
+            stream << "x1 = " << quadratic_eq.GetRealX1() <<
+                "+" << quadratic_eq.GetRealX1();
+            stream << "x2  = " << quadratic_eq.GetRealX2() <<
+                "+" << quadratic_eq.GetRealX2();
             break;
         }
     }
     message_ = stream.str();
     return message_;
 }
+
