@@ -24,4 +24,4 @@ class QuadrEquationCalc {
         char operation;
     } Arguments;
 };
-#endif  // MODULES_QUADRATIC_EQUATION_CALCULATOR_INCLUDE_QUADRATIC_EQ_APP_H_
+#endif  // MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQ_APP_H_
