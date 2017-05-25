@@ -90,7 +90,6 @@ std::string QuadraticEquationCalculator::operator()
         stream << "Count of solutions = " << countSolution << " ";
         break;
     case 's':
-        std::string solution = "";
         switch (countSolution)
         {
         case 0:

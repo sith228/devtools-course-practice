@@ -1,7 +1,7 @@
 // Copyright 2017 Kiseleva Olga
 
-#ifndef MODULES_QUADRATIC_EQUATION_INCLUDE_QuadraticEqApp_H_
-#define MODULES_QUADRATIC_EQUATION_INCLUDE_QuadraticEqApp_H_
+#ifndef MODULES_QUADRATIC_EQUATION_INCLUDE_Quadratic_Eq_App_H_
+#define MODULES_QUADRATIC_EQUATION_INCLUDE_Quadratic_Eq_App_H_
 
 
 #include <map>
@@ -26,4 +26,4 @@ class QuadraticEquationCalculator {
     } Arguments;
 };
 
-#endif  // MODULES_QUADRATIC_EQUATION_CALCULATOR_INCLUDE_QuadraticEqApp_H_
+#endif  // MODULES_QUADRATIC_EQUATION_CALCULATOR_INCLUDE_Quadratic_Eq_App_H_
