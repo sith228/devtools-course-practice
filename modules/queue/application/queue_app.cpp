@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 
-#include "../include/queue_app.h"
+#include "include/queue_app.h"
 
 int main(int argc, const char** argv) {
     QueueApp app;

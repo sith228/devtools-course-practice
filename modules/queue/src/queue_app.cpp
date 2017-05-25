@@ -7,8 +7,8 @@
 #include <string>
 #include <sstream>
 
-#include "../include/queue.h"
-#include "../include/queue_app.h"
+#include "include/queue.h"
+#include "include/queue_app.h"
 
 QueueApp::QueueApp() : message_("") {}
 
