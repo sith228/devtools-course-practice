@@ -4,8 +4,8 @@
 #include <vector>
 #include <string>
 
-#include "include/queue_app.h"
-#include "include/queue.h"
+#include "../include/queue_app.h"
+#include "../include/queue.h"
 
 using ::testing::internal::RE;
 using std::vector;

@@ -1,7 +1,7 @@
 // Copyright 2017 Gvozdeva Viktoria
 #include <gtest/gtest.h>
 
-#include "include/queue.h"
+#include "../include/queue.h"
 
 TEST(Queue, cant_create_queue_of_int_elements_with_negative_size) {
     // Arrange
