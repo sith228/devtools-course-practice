@@ -1,7 +1,7 @@
 // Copyright 2017 Kiseleva Olga
 
 #include "include/quadratic_equation.h"
-#include "include/quadratic_equation_app.h"
+#include "include/quadratic_eq_app.h"
 
 #include <string>
 
