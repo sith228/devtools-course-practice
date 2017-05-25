@@ -56,7 +56,7 @@ add_test(
     COMMAND ${APPLICATION} -asa 0 15 -3.5
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Length_Array_Format PROPERTIES
-    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
     LABELS "${MODULE}")
 
 add_test(

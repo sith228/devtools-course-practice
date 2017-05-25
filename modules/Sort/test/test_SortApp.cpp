@@ -1,4 +1,4 @@
-//Copyright Kildishev Maxim 2017
+// Copyright Kildishev Maxim 2017
 
 #include <gtest/gtest.h>
 
@@ -72,7 +72,7 @@ TEST_F(SortAppTest, Can_Detect_Wrong_Number_Function) {
 TEST_F(SortAppTest, Can_Detect_Wrong_Array_Size) {
     vector<string> args = { "-1", "2", "1", "1" };
     Act(args);
-    Assert("Error: Array can't have lower then 1 elem\..*");
+    Assert("Error: Array can't have lower then 1 elem\\..*");
 }
 
 TEST_F(SortAppTest, Can_Detect_Wrong_Format_Array_Size) {

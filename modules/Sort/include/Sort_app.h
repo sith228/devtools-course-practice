@@ -1,4 +1,4 @@
-//Copyright Kildishev Maxim 2017
+// Copyright Kildishev Maxim 2017
 
 #ifndef MODULES_SORT_INCLUDE_SORT_APP_H_
 #define MODULES_SORT_INCLUDE_SORT_APP_H_
@@ -22,4 +22,4 @@ class SortApp {
      } Arguments;
 };
 
-#endif //MODULES_SORT_INCLUDE_SORT_APP_H_
+#endif // MODULES_SORT_INCLUDE_SORT_APP_H_  
