@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <string>
 #include <string.h>
+#include <string>
 #include <sstream>
 
 SortApp::SortApp() : message_("") {}
@@ -34,8 +34,7 @@ double parseInt(const char* args) {
     return value;
 }
 
-bool SortApp::validateNumberOfSort(const char** argv)
-{
+bool SortApp::validateNumberOfSort(const char** argv) {
     if (parseInt(argv[2]) < 1 || parseInt(argv[2]) > 4) {
         help(argv[0], "Error: Sort number should be between 1 and 4.\n\n");
         return false;
@@ -44,8 +43,7 @@ bool SortApp::validateNumberOfSort(const char** argv)
 }
 
 
-bool SortApp::validateNumberOfArguments(int argc, const char** argv)
-{
+bool SortApp::validateNumberOfArguments(int argc, const char** argv) {
     if (parseInt(argv[1]) != (argc - 3)) {
         help(argv[0],
              "Error: Arguments count should be equal array_length plus 2.\n\n");
@@ -59,8 +57,7 @@ bool SortApp::validateNumberOfArguments(int argc, const char** argv)
 
 std::string SortApp::operator()(int argc, const char** argv) {
     Arguments args;
-    if (argc == 1)
-    {
+    if (argc == 1) {
         help(argv[0]);
         return message_;
     }
@@ -94,51 +91,49 @@ std::string SortApp::operator()(int argc, const char** argv) {
     }
 
     try {
-
         args.array_ = new int[args.length_];
-        for (int i = 0; i < args.length_; i++) {
+        for (int i = 0; i < args.length_; i++)
             args.array_[i] = parseInt(argv[3+i]);
-         }
         }
     catch(std::string& str) {
         return str;
     }
 
     std::ostringstream stream;
-    Sort sort(args.array_, args.length_);
+    Sort sort1(args.array_, args.length_);
     switch (args.sort_type_) {
         case 1:
-        sort.QuickSort(0, args.length_-1);
+        sort1.QuickSort(0, args.length_-1);
         stream << "Sorted array: ";
         for (int i = 0; i < args.length_; i++)
-            stream << sort[i] << " ";
+            stream << sort1[i] << " ";
         stream << "\n";
 
         break;
 
         case 2:
-        sort.PasteSort();
+        sort1.PasteSort();
         stream << "Sorted array: ";
         for (int i = 0; i < args.length_; i++)
-            stream << sort[i] << " ";
+            stream << sort1[i] << " ";
         stream << "\n";
 
         break;
 
         case 3:
-        sort.ChoiceSort();
+        sort1.ChoiceSort();
         stream << "Sorted array: ";
         for (int i = 0; i < args.length_; i++)
-            stream << sort[i] << " ";
+            stream << sort1[i] << " ";
         stream << "\n";
 
         break;
 
         case 4:
-        sort.MergeSort(0, args.length_-1);
+        sort1.MergeSort(0, args.length_-1);
         stream << "Sorted array: ";
         for (int i = 0; i < args.length_; i++)
-            stream << sort[i] << " ";
+            stream << sort1[i] << " ";
         stream << "\n";
 
         break;
