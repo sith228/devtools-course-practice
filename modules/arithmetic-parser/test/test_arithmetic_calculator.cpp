@@ -31,7 +31,7 @@ class ArithmeticCalculatorTest : public ::testing::Test {
     }
 
     void Assert(int ret, const std::string &out, const std::string &err) {
-        EXPECT_EQ(retcode_, ret);
+        EXPECT_EQ(ret, retcode_);
         EXPECT_TRUE(RE::PartialMatch(out_, RE(out)));
         EXPECT_TRUE(RE::PartialMatch(err_, RE(err)));
     }

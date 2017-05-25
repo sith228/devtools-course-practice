@@ -61,9 +61,11 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
     if (argc == 3) {
         bool ok;
         std::tie(ok, x) = TryParseDouble(argv[2]);
-        if (!ok)
+        if (!ok) {
             printError(appname) << "cannot parse formal parameter: \""
                                 << argv[2] << "\" is not a number\n";
+            return RESULT_ERROR_PARSING;
+        }
     }
 
     string expr(argv[1]);
