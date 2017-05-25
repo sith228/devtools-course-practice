@@ -10,6 +10,7 @@
 #include <iostream>
 #include <cstring>
 #include <tuple>
+#include <utility>
 
 using std::vector;
 using std::string;
@@ -57,10 +58,10 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
     }
 
     double x = 0;
-    if(argc == 3) {
+    if (argc == 3) {
         bool ok;
         std::tie(ok, x) = TryParseDouble(argv[2]);
-        if(!ok)
+        if (!ok)
             printError(appname) << "cannot parse formal parameter: \""
                                 << argv[2] << "\" is not a number\n";
     }
