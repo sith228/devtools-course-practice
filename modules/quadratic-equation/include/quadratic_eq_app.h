@@ -21,7 +21,6 @@ class QuadrEquationCalc {
         double coeffA;
         double coeffB;
         double coeffC;
-        char operation;
     } Arguments;
 };
 #endif  // MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQ_APP_H_

@@ -47,19 +47,6 @@ double parseCoefficient(const char* arg) {
     return value;
 }
 
-char parseOperation(const char* arg) {
-    char op;
-    if (strcmp(arg, "num") == 0) {
-        op = 'n';
-    } else if (strcmp(arg, "sol") == 0) {
-        op = 's';
-    } else {
-        throw std::string("Wrong operation format!");
-    }
-    return op;
-}
-
-
 std::string QuadrEquationCalc::operator()
 (int argc, const char** argv) {
     Arguments args;
@@ -70,7 +57,6 @@ std::string QuadrEquationCalc::operator()
         args.coeffA = parseCoefficient(argv[1]);
         args.coeffB = parseCoefficient(argv[2]);
         args.coeffC = parseCoefficient(argv[3]);
-        args.operation = parseOperation(argv[4]);
     }
     catch (std::string& str) {
         return str;
@@ -80,12 +66,6 @@ std::string QuadrEquationCalc::operator()
 
     std::ostringstream stream;
     int countSolution = quadratic_eq.NumOfRealSolutions();
-
-    switch (args.operation) {
-    case 'n':
-        stream << "Count of solutions = " << countSolution << " ";
-        break;
-    case 's':
         switch (countSolution) {
         case 0:
             stream << "x1  = " << quadratic_eq.GetComplexX1().getRe() <<
@@ -101,8 +81,6 @@ std::string QuadrEquationCalc::operator()
             stream << "x2 = " << quadratic_eq.GetRealX2();
             break;
         }
-        break;
-    }
     message_ = stream.str();
     return message_;
 }
