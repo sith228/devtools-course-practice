@@ -3,11 +3,10 @@
 #ifndef MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQ_APP_H
 #define MODULES_QUADRATIC_EQUATION_INCLUDE_QUADRATIC_EQ_APP_H
 
-
-#include <map>
+// #include <map>
 #include <string>
 #include <vector>
-#include "quadratic_equation.h"
+// #include "quadratic_equation.h"
 
 class QuadrEquationCalc {
  public:
