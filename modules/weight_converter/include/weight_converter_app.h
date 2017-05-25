@@ -19,7 +19,6 @@ class Application {
         double weight;
         char type_from;
         char type_to;
-        char operation;
     } Arguments;
 };
 
