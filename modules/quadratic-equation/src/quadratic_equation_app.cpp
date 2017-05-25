@@ -5,7 +5,6 @@
 
 #include <string>
 #include <cstring>
-#include <iostream>
 #include <sstream>
 
 QuadraticEquationCalculator::QuadraticEquationCalculator() : message_("") {}
@@ -20,7 +19,7 @@ void QuadraticEquationCalculator::Help(const char* appname, const char* message)
         "<coefficient c> <operation>\n\n" +
 
         "Where the first,the second and  the third  arguments " +
-        "aren't equals zero number \n"+
+        "aren't equals zero number \n" +
         "<operation> is one of 'num' which returns count of real solution," +
         "'sol' returns solution\n";
 }
@@ -41,7 +40,7 @@ double parseCoefficient(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
-    if (end[0] || value==0) {
+    if (end[0] || value == 0) {
         throw std::string("Wrong number format!");
     }
 
@@ -72,8 +71,7 @@ std::string QuadraticEquationCalculator::operator()
     }
     try {
         args.coeffA = parseCoefficient(argv[1]);
-        std::cout << "args.coeffA"<<args.coeffA;
-            args.coeffB = parseCoefficient(argv[2]);
+        args.coeffB = parseCoefficient(argv[2]);
         args.coeffC = parseCoefficient(argv[3]);
         args.operation = parseOperation(argv[4]);
     }
@@ -88,11 +86,11 @@ std::string QuadraticEquationCalculator::operator()
 
     switch (args.operation) {
     case 'n':
-        stream << "Count of solution= " << countSolution << " ";
+        stream << "Count of solutions = " << countSolution << " ";
         break;
     case 's':
         std::string solution = "";
-        /*switch (countSolution)
+        switch (countSolution)
         {
         case 0:
             stream << "x1  = " << quadratic_equation.GetComplexX1().getRe() <<
@@ -110,7 +108,7 @@ std::string QuadraticEquationCalculator::operator()
             stream << "x2  = " << quadratic_equation.GetRealX2() <<
                 "+" << quadratic_equation.GetRealX2();
             break;
-        }*/
+        }
     }
     message_ = stream.str();
     return message_;
