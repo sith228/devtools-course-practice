@@ -13,15 +13,13 @@ class SortApp {
  private:
      void help(const char* appname, const char* message = "");
      bool validateNumberOfArguments(int argc, const char** argv);
+     bool validateNumberOfSort(const char** argv);
      std::string message_;
      typedef struct {
-         double length_;
-         double sort_type_;
-         double* array_;
-
+         int length_;
+         int sort_type_;
+         int* array_;
      } Arguments;
-
-
 };
 
 #endif //MODULES_SORT_INCLUDE_SORT_APP_H_

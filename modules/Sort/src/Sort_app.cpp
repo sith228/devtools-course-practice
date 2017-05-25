@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string>
+#include <string.h>
 #include <sstream>
 
 SortApp::SortApp() : message_("") {}
@@ -33,6 +34,15 @@ double parseInt(const char* args) {
 	return value;
 }
 
+bool SortApp::validateNumberOfSort(const char** argv)
+{
+    int sort_choise = parseInt(argv[2]);
+    if (parseInt(argv[2]) < 1 || parseInt(argv[2]) > 4) {
+        help(argv[0], "Error: Sort number should be between 1 and 4\n");
+        return false;
+    }
+    return true;
+}
 bool SortApp::validateNumberOfArguments(int argc, const char** argv)
 {
     if (argc == 1) {
@@ -40,7 +50,8 @@ bool SortApp::validateNumberOfArguments(int argc, const char** argv)
         return false;
     }
     else if (parseInt(argv[1]) != (argc - 3)) {
-        help(argv[0], "Error: Should be <length> arguments\n");
+        help(argv[0],
+             "Error: Arguments count should be equal (array_length + 2)\n");
         return false;
     }
     return true;
@@ -55,6 +66,10 @@ std::string SortApp::operator()(int argc, const char** argv) {
     if (!validateNumberOfArguments(argc,argv)) {
         return message_;
     }
+
+	if (!validateNumberOfSort(argv)) {
+		return message_;
+	}
 
     try {
         args.length_ = parseInt(argv[1]);
