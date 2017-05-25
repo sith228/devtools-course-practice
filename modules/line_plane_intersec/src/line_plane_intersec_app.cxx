@@ -13,7 +13,7 @@
 
 Application::Application() : message_("") {}
 
-void Application::help(const char* appname, const char* message) {
+void Application::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is an application " +
@@ -32,12 +32,12 @@ void Application::help(const char* appname, const char* message) {
         "are coefficients of plane ax+by+cz+d=0.\n";
 }
 
-bool Application::validateNumberOfArguments(int argc, const char** argv) {
+bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+		Help(argv[0]);
         return false;
     } else if (argc != 11) {
-        help(argv[0], "ERROR: Should be 10 arguments.\n\n");
+		Help(argv[0], "ERROR: Should be 10 arguments.\n\n");
         return false;
     }
     return true;
@@ -57,7 +57,7 @@ double parseDouble(const char* arg) {
 std::string Application::operator()(int argc, const char** argv) {
     Arguments args;
 
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
