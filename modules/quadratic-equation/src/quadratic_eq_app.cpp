@@ -68,8 +68,8 @@ std::string QuadrEquationCalc::operator()
         case 0:
             stream << "x1 = " << quadratic_eq.GetComplexX1().getRe() <<
                 "+" << quadratic_eq.GetComplexX1().getIm() << "i" << " ";
-            stream << "x2 = " << quadratic_eq.GetComplexX2().getRe() <<
-                quadratic_eq.GetComplexX2().getIm() << "i";
+            // stream << "x2 = " << quadratic_eq.GetComplexX2().getRe() <<
+              // quadratic_eq.GetComplexX2().getIm() << "i";
             break;
         case 1:
             stream << "x = " << quadratic_eq.GetRealX1();
