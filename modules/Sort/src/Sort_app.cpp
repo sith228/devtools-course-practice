@@ -13,7 +13,7 @@ SortApp::SortApp() : message_("") {}
 
 void SortApp::help(const char* appname, const char* message) {
     message_ = std::string(message) +
-        "This is a sort application. \n\n" +
+        "This is a sort application.\n\n" +
         "Pleass provide arguments in the following format:\n\n" +
 
         " $ " + appname + " <length_> <sort_type_> <array_elem_1> ..." +
@@ -24,34 +24,31 @@ void SortApp::help(const char* appname, const char* message) {
 }
 
 double parseInt(const char* args) {
-	char* end = 0;
-	int value = strtol(args, &end, 10);
+    char* end = 0;
+    int value = strtol(args, &end, 10);
 
-	if (end[0]) {
-		throw std::string("Wrong number format!");
-	}
+    if (end[0]) {
+        throw std::string("Wrong number format!");
+    }
 
-	return value;
+    return value;
 }
 
 bool SortApp::validateNumberOfSort(const char** argv)
 {
-    int sort_choise = parseInt(argv[2]);
     if (parseInt(argv[2]) < 1 || parseInt(argv[2]) > 4) {
-        help(argv[0], "Error: Sort number should be between 1 and 4\n");
+        help(argv[0], "Error: Sort number should be between 1 and 4.\n\n");
         return false;
     }
     return true;
 }
+
+
 bool SortApp::validateNumberOfArguments(int argc, const char** argv)
 {
-    if (argc == 1) {
-        help(argv[0]);
-        return false;
-    }
-    else if (parseInt(argv[1]) != (argc - 3)) {
+    if (parseInt(argv[1]) != (argc - 3)) {
         help(argv[0],
-             "Error: Arguments count should be equal (array_length + 2)\n");
+             "Error: Arguments count should be equal array_length plus 2.\n\n");
         return false;
     }
     return true;
@@ -62,18 +59,42 @@ bool SortApp::validateNumberOfArguments(int argc, const char** argv)
 
 std::string SortApp::operator()(int argc, const char** argv) {
     Arguments args;
+    if (argc == 1)
+    {
+        help(argv[0]);
+        return message_;
+    }
+    try {
+        args.length_ = parseInt(argv[1]);
+    }
+    catch (std::string& str) {
+        return str;
+    }
 
-    if (!validateNumberOfArguments(argc,argv)) {
+    if (args.length_ < 1) {
+        help(argv[0], "Error: Array can't have lower then 1 elem.\n");
+        return message_;
+    }
+    if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
 
-	if (!validateNumberOfSort(argv)) {
-		return message_;
-	}
+    try {
+            args.sort_type_ = parseInt(argv[2]);
+    }
+    catch (std::string& str) {
+        return str;
+    }
+
+
+
+
+    if (!validateNumberOfSort(argv)) {
+        return message_;
+    }
 
     try {
-        args.length_ = parseInt(argv[1]);
-        args.sort_type_ = parseInt(argv[2]);
+
         args.array_ = new int[args.length_];
         for (int i = 0; i < args.length_; i++) {
             args.array_[i] = parseInt(argv[3+i]);
