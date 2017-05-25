@@ -82,20 +82,17 @@ std::string Application::operator()(int argc, const char** argv) {
                 parseDouble(argv[3]),
                 parseDouble(argv[4]),
                 parseDouble(argv[5]),
-                parseDouble(argv[6])
-            );
+                parseDouble(argv[6]));
             intersection.SetPlane(
                 parseDouble(argv[7]),
                 parseDouble(argv[8]),
                 parseDouble(argv[9]),
-                parseDouble(argv[10])
-            );
+                parseDouble(argv[10]));
         }
         catch (std::string& str) {
             return str;
         }
-    }
-    else {
+    } else {
         try {
             std::vector<double> line_point1(3), line_point2(3);
             line_point1[0] = parseDouble(argv[1]);
