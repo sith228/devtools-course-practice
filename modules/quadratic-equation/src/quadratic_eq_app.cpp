@@ -20,7 +20,7 @@ void QuadrEquationCalc::Help(const char* appname,
         "<coefficient c> \n\n" +
 
         "Where the first,the second and  the third  arguments " +
-        "aren't equals zero number \n";
+        "aren't equals zero\n";
 }
 
 bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
