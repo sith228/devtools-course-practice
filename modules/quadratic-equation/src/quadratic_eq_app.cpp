@@ -28,7 +28,7 @@ bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
         Help(argv[0]);
         return false;
     } else if (argc != 4) {
-        Help(argv[0], "ERROR: Should be 3 arguments\n\n");
+        Help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
     return true;
