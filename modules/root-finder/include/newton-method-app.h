@@ -3,9 +3,21 @@
 #ifndef MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_APP_H_
 #define MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_APP_H_
 
-class NewtonMethodApplication {
-    NewtonMethodApplication();
+#include <string>
+#include <vector>
 
+class NewtonMethodApplication {
+ public:
+    NewtonMethodApplication();
+    std::string operator()(int argc, const char** argv);
+
+ private:
+    void help(const char* appname, const char* message = "");
+    bool isThereArguments(int argc, const char** argv);
+	std::vector<float> getBounds(int argc, const char** argv);
+	std::vector<float> getKoefs(int argc, const char** argv);
+	double parseFloat(const char* arg);
+    std::string message_;
 };
 
 #endif  // MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_APP_H_
