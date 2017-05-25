@@ -52,10 +52,10 @@ TEST_F(ApplicationTest, Is_Checking_Number_Of_Arguments) {
 
     Act(args);
 
-    Assert("ERROR: Should be 10 arguments\\..*");
+    Assert("ERROR: Should be 10 or 15 arguments\\..*");
 }
 
-TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
+TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format_Case1) {
     vector<string> args = {"1", "qe", "2", "4", "5", "5", "2", "7", "1", "0"};
 
     Act(args);
@@ -63,9 +63,29 @@ TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format) {
     Assert("Wrong number format!.*");
 }
 
-TEST_F(ApplicationTest, Can_Calculate_Intersection) {
+TEST_F(ApplicationTest, Can_Detect_Wrong_Number_Format_Case2) {
+    vector<string> args = {
+        "1", "qe", "2", "4", "5", "5",
+        "2", "7", "1", "0", "6", "-4", "2", "9", "1"};
+
+    Act(args);
+
+    Assert("Wrong number format!.*");
+}
+
+TEST_F(ApplicationTest, Can_Calculate_Intersection_Case1) {
     vector<string> args = {
         "-3", "0", "-2", "-1", "-3", "3", "1", "-2", "-1", "3" };
+
+    Act(args);
+
+    Assert("coordinates of intersection point:\n x: -2\n y: 3\n z: -5");
+}
+
+TEST_F(ApplicationTest, Can_Calculate_Intersection_Case2) {
+    vector<string> args = {
+        "-3", "0", "-2", "-4", "-3", "1",
+        "-3", "0", "0", "0", "0", "3", "0", "1", "1"};
 
     Act(args);
 

@@ -18,8 +18,9 @@ void Application::Help(const char* appname, const char* message) {
         std::string(message) +
         "This is an application " +
         "of calculating the intersection of line and plane.\n\n" +
-        "Please provide arguments in the following format:\n\n" +
+        "Please provide arguments in one of the following formats:\n\n" +
 
+        "Format #1:\n" +
         "  $ " + appname + " <line_x> <line_y> <line_z> " +
         "<dir_x> <dir_y> <dir_z> " +
         "<plane_a> <plane_b> <plane_c> <plane_d>\n\n" +
@@ -29,15 +30,27 @@ void Application::Help(const char* appname, const char* message) {
         "<dir_x>, <dir_y>, <dir_z> " +
         "are coordinates of line direction vector,\n" +
         "<plane_a>, <plane_b>, <plane_c>, <plane_d> " +
-        "are coefficients of plane ax+by+cz+d=0.\n";
+        "are coefficients of plane ax+by+cz+d=0.\n\n" +
+
+        "Format #2:\n" +
+        "  $ " + appname + " <line_p1_x> <line_p1_y> <line_p1_z> " +
+        "<line_p1_x> <line_p1_y> <line_p1_z> " +
+        "<plane_p1_x> <plane_p1_y> <plane_p1_z> " +
+        "<plane_p2_x> <plane_p2_y> <plane_p2_z> " +
+        "<plane_p3_x> <plane_p3_y> <plane_p3_z>\n\n" +
+
+        "Where all arguments are double-precision numbers,\n" +
+        "The first 6 arguments are coordinates of 2 points " +
+        "that set the line. The last 9 arguments are coordinates " +
+        "of 3 points that set the plane\n";
 }
 
 bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-		Help(argv[0]);
+        Help(argv[0]);
         return false;
-    } else if (argc != 11) {
-		Help(argv[0], "ERROR: Should be 10 arguments.\n\n");
+    } else if ((argc != 11) && (argc != 16)) {
+        Help(argv[0], "ERROR: Should be 10 or 15 arguments.\n\n");
         return false;
     }
     return true;
@@ -55,35 +68,66 @@ double parseDouble(const char* arg) {
 }
 
 std::string Application::operator()(int argc, const char** argv) {
-    Arguments args;
+    Intersection intersection;
 
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
-    try {
-        args.line_x = parseDouble(argv[1]);
-        args.line_y = parseDouble(argv[2]);
-        args.line_z = parseDouble(argv[3]);
 
-        args.dir_x = parseDouble(argv[4]);
-        args.dir_y = parseDouble(argv[5]);
-        args.dir_z = parseDouble(argv[6]);
-
-        args.plane_a = parseDouble(argv[7]);
-        args.plane_b = parseDouble(argv[8]);
-        args.plane_c = parseDouble(argv[9]);
-        args.plane_d = parseDouble(argv[10]);
+    if (argc == 11) {
+        try {
+            intersection.SetLine(
+                parseDouble(argv[1]),
+                parseDouble(argv[2]),
+                parseDouble(argv[3]),
+                parseDouble(argv[4]),
+                parseDouble(argv[5]),
+                parseDouble(argv[6])
+            );
+            intersection.SetPlane(
+                parseDouble(argv[7]),
+                parseDouble(argv[8]),
+                parseDouble(argv[9]),
+                parseDouble(argv[10])
+            );
+        }
+        catch (std::string& str) {
+            return str;
+        }
     }
-    catch (std::string& str) {
-        return str;
+    else {
+        try {
+            std::vector<double> line_point1(3), line_point2(3);
+            line_point1[0] = parseDouble(argv[1]);
+            line_point1[1] = parseDouble(argv[2]);
+            line_point1[2] = parseDouble(argv[3]);
+
+            line_point2[0] = parseDouble(argv[4]);
+            line_point2[1] = parseDouble(argv[5]);
+            line_point2[2] = parseDouble(argv[6]);
+
+            std::vector<double> plane_point1(3),
+                plane_point2(3), plane_point3(3);
+            plane_point1[0] = parseDouble(argv[7]);
+            plane_point1[1] = parseDouble(argv[8]);
+            plane_point1[2] = parseDouble(argv[9]);
+
+            plane_point2[0] = parseDouble(argv[10]);
+            plane_point2[1] = parseDouble(argv[11]);
+            plane_point2[2] = parseDouble(argv[12]);
+
+            plane_point3[0] = parseDouble(argv[13]);
+            plane_point3[1] = parseDouble(argv[14]);
+            plane_point3[2] = parseDouble(argv[15]);
+
+            intersection.SetLineWithTwoPoints(line_point1, line_point2);
+            intersection.SetPlaneWithThreePoints(
+                plane_point1, plane_point2, plane_point3);
+        }
+        catch (std::string& str) {
+            return str;
+        }
     }
-
-    Intersection intersection;
-
-    intersection.SetLine(args.line_x, args.line_y, args.line_z,
-        args.dir_x, args.dir_y, args.dir_z);
-    intersection.SetPlane(
-        args.plane_a, args.plane_b, args.plane_c, args.plane_d);
 
     std::vector<double> intersection_result;
     try {
