@@ -66,13 +66,13 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
 
     ArithmeticParser ap;
 
-    if(!ap.Parse(expr)) {
+    if (!ap.Parse(expr)) {
         printError(appname) << "cannot parse expression\n";
         return RESULT_ERROR_PARSING;
     }
 
     double result;
-    if(!ap.Evaluate(x, &result)) {
+    if (!ap.Evaluate(x, &result)) {
         printError(appname) << "cannot evaluate expression\n";
         return RESULT_ERROR_EVALUATING;
     }
