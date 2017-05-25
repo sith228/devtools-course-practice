@@ -44,7 +44,7 @@ class TODOList {
         void SetUndone();
         std::string GetTaskName();
         TaskStatus GetTaskStatus();
-      private:
+       private:
         std::string task_name_ = "New Task";
         TaskStatus task_status_ = UNDONE_TASK;
     };
