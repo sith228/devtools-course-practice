@@ -14,7 +14,7 @@ SortApp::SortApp() : message_("") {}
 void SortApp::help(const char* appname, const char* message) {
     message_ = std::string(message) +
         "This is a sort application.\n\n" +
-        "Pleass provide arguments in the following format:\n\n" +
+        "Please provide arguments in the following format:\n\n" +
 
         " $ " + appname + " <length_> <sort_type_> <array_elem_1> ..." +
         " <array_elem_length>\n\n" +
