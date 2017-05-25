@@ -110,3 +110,11 @@ TEST_F(ConverterCurrencyAppTest, Can_Detect_Negative_Money_Size) {
 
     Assert("Money size can't be negative");
 }
+
+TEST_F(ConverterCurrencyAppTest, Can_Convert_With_Zero_Money_Size) {
+    vector<string> args = { "0", "EUR", "RUR", "0", "0" };
+
+    Act(args);
+
+    Assert("Result of convertation = 0");
+}

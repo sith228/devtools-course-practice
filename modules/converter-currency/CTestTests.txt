@@ -74,3 +74,11 @@ add_test(
 set_tests_properties (${prefix}_can_Detect_Negative_Money_Size PROPERTIES
     PASS_REGULAR_EXPRESSION "Money size can't be negative"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Convert_With_Zero_Money_Size
+    COMMAND ${APPLICATION} 0 USD RUR 0 0
+)
+set_tests_properties (${prefix}_can_Convert_With_Zero_Money_Size PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result of convertation = 0"
+    LABELS "${MODULE}")
