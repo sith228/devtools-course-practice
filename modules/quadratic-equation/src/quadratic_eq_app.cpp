@@ -7,9 +7,9 @@
 
 #include <sstream>
 
-QuadraticEquationCalculator::QuadraticEquationCalculator() : message_("") {}
+QuadrEquationCalc::QuadrEquationCalc() : message_("") {}
 
-void QuadraticEquationCalculator::Help(const char* appname,
+void QuadrEquationCalc::Help(const char* appname,
     const char* message) {
     message_ =
         std::string(message) +
@@ -25,7 +25,7 @@ void QuadraticEquationCalculator::Help(const char* appname,
         "'sol' returns solution\n";
 }
 
-bool QuadraticEquationCalculator::ValidateNumberOfArguments(int argc, const char** argv) {
+bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         Help(argv[0]);
         return false;
@@ -64,7 +64,7 @@ char parseOperation(const char* arg) {
 }
 
 
-std::string QuadraticEquationCalculator::operator()
+std::string QuadrEquationCalc::operator()
 (int argc, const char** argv) {
     Arguments args;
     if (!ValidateNumberOfArguments(argc, argv)) {

@@ -7,7 +7,7 @@
 #include <string>
 
 int main(int argc, const char** argv) {
-    QuadraticEquationCalculator app;
+    QuadrEquationCalc app;
     std::string output = app(argc, argv);
     std::cout << output.c_str() << std::endl;
     system("pause");

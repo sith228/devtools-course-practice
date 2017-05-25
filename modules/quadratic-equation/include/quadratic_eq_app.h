@@ -1,7 +1,7 @@
 // Copyright 2017 Kiseleva Olga
 
-#ifndef MODULES_QUADRATIC_EQUATION_INCLUDE_Quadratic_EQ_APP_H_
-#define MODULES_QUADRATIC_EQUATION_INCLUDE_Quadratic_Eq_APP_H_
+#ifndef MODULES_QUADRATIC_EQUATION_INCLUDE_QUADREQUATIONCALC_H_
+#define MODULES_QUADRATIC_EQUATION_INCLUDE_QUADREQUATIONCALC_H_
 
 
 #include <map>
@@ -9,9 +9,9 @@
 #include <vector>
 #include "quadratic_equation.h"
 
-class QuadraticEquationCalculator {
+class QuadrEquationCalc {
  public:
-     QuadraticEquationCalculator();
+     QuadrEquationCalc();
     std::string operator()(int argc, const char** argv);
 
  private:
@@ -26,4 +26,4 @@ class QuadraticEquationCalculator {
     } Arguments;
 };
 
-#endif  // MODULES_QUADRATIC_EQUATION_CALCULATOR_INCLUDE_Quadratic_EQ_APP_H_
+#endif  // MODULES_QUADRATIC_EQUATION_CALCULATOR_INCLUDE_QUADREQUATIONCALC_H_
