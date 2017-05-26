@@ -4,6 +4,7 @@
 #define MODULES_ROOT_FINDER_INCLUDE_FUNCTIONS_H_
 
 #include <vector>
+#include <string>
 
 class Function {
  public:
@@ -14,6 +15,8 @@ class Function {
     virtual float d2f(float x) const = 0;
  protected:
     std::vector<float> koefs;
+    void generateThrow(std::string type) const;
+	void checkKoefs(int neededNumberOfKoefs) const;
 };
 
 class Polynomial2Degree : public Function {
