@@ -3,10 +3,9 @@
 #define _USE_MATH_DEFINES
 
 #include "../include/Newton_method.h"
-#include <stdexcept>
+#include <stdlib.h>
 #include <ctime>
 #include <cmath>
-#include <stdlib.h>
 
 double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_coef) {
