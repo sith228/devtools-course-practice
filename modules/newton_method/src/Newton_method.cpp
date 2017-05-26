@@ -4,18 +4,20 @@
 #include "../include/Newton_method.h"
 #include <stdexcept>
 #include <time.h>
-#include <cmath>
-using namespace std;
+#include <math.h>
+#include <random>
+#include <stdlib.h>
 
 double NewtonMethod::NewtonMethodPolynom(double eps, size_t size,
     double *polynom_coef) {
     if (eps <= 0.0)
         throw "eps <= 0";
-    if (size == 0) 
+    if (size == 0)
         throw "polynom is const";
     double x = 0, x1 = 1;
     double *polynom_derivative_coef = new double[size - 1];
-   CalculateDerivativePolynom(size - 1, polynom_coef, polynom_derivative_coef);
+    CalculateDerivativePolynom(size - 1, polynom_coef,
+                                               polynom_derivative_coef);
     while (fabs(x1 - x) >= eps*0.01) {
         x = x1;
         double fx = PolynomValue(size, x, polynom_coef);
@@ -44,16 +46,17 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
 }
 
 void NewtonMethod::GeneateRandomPolynom(size_t size, double *polynom_coef) {
-    srand((unsigned int)time(0));
+    unsigned int seed = 0;
+    srand(seed);
     for (unsigned int i = 0; i < size; i++) {
-        polynom_coef[i] = -5.0 + static_cast<double>((double)(rand())
+        polynom_coef[i] = -5.0 + static_cast<double>(rand()
                                                            / RAND_MAX * 10);
     }
 }
 
 bool NewtonMethod::CheckRootPolynom(double x, double eps, size_t size,
                                                    const double *coef) {
-    return abs(PolynomValue(size, x, coef))<eps;
+    return abs(PolynomValue(size, x, coef)) < eps;
 }
 
 bool NewtonMethod::CheckRootFunction(double x, double eps) {
