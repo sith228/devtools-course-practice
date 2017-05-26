@@ -15,7 +15,7 @@
 
 ColorConverter::ColorConverter() : message_("") {}
 
-void ColorConverter::help(const char* appname, const char* message) {
+void ColorConverter::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is a color converter application.\n\n" +
@@ -30,13 +30,11 @@ void ColorConverter::help(const char* appname, const char* message) {
 
 bool ColorConverter::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
-        return false;
+        Help(argv[0]);
     } else if (argc != 6) {
-        help(argv[0], "ERROR: Should be 5 arguments.\n\n");
-        return false;
+        Help(argv[0], "ERROR: Should be 5 arguments.\n\n");
     }
-    return true;
+    return argc == 6 ? true : false;
 }
 
 uint16_t ParseInt(const char* arg) {

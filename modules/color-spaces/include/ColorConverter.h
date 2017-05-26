@@ -21,7 +21,7 @@ class ColorConverter {
     std::string operator()(int argc, const char** argv);
 
  private:
-    void help(const char* appname, const char* message = "");
+    void Help(const char* appname, const char* message = "");
     bool ValidateNumberOfArguments(int argc, const char** argv);
     std::string message_;
     Arguments arg_;
