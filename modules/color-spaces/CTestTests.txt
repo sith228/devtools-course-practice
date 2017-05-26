@@ -58,7 +58,86 @@ add_test(
 set_tests_properties (${prefix}_Correct_Create_XYZ PROPERTIES
     PASS_REGULAR_EXPRESSION "to RGB"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_HSVHSB_to_HSVHSB
+    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+)
+set_tests_properties (${prefix}_HSVHSB_to_HSVHSB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to HSVHSB"
+    LABELS "${MODULE}")
 	
+add_test(
+    NAME ${prefix}_RGB_to_HSVHSB
+    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+)
+set_tests_properties (${prefix}_RGB_to_HSVHSB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to HSVHSB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_LAB_to_HSVHSB
+    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+)
+set_tests_properties (${prefix}_LAB_to_HSVHSB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to HSVHSB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_XYZ_to_HSVHSB
+    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+)
+set_tests_properties (${prefix}_XYZ_to_HSVHSB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to HSVHSB"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_HSVHSB_to_LAB
+    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+)
+set_tests_properties (${prefix}_HSVHSB_to_LAB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to LAB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_RGB_to_LAB
+    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+)
+set_tests_properties (${prefix}_RGB_to_LAB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to LAB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_LAB_to_LAB
+    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+)
+set_tests_properties (${prefix}_LAB_to_LAB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to LAB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_HSVHSB_to_XYZ
+    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+)
+set_tests_properties (${prefix}_HSVHSB_to_XYZ PROPERTIES
+    PASS_REGULAR_EXPRESSION "to XYZ"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_RGB_to_XYZ
+    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+)
+set_tests_properties (${prefix}_RGB_to_XYZ PROPERTIES
+    PASS_REGULAR_EXPRESSION "to XYZ"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_LAB_to_XYZ
+    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+)
+set_tests_properties (${prefix}_LAB_to_XYZ PROPERTIES
+    PASS_REGULAR_EXPRESSION "to XYZ"
+    LABELS "${MODULE}")
 	
 add_test(
     NAME ${prefix}_Wrong_Hue_HSVHSB
