@@ -82,7 +82,7 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     case 1:
         try {
             hsbhsv = new HSBHSVSpace(arg_.value1, arg_.value2, arg_.value3);
-        } catch (std::string e) {
+        } catch (std::string& e) {
             message_ = e;
             return message_;
         }
@@ -90,7 +90,7 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     case 2:
         try {
             rgb = new RGBSpace(arg_.value1, arg_.value2, arg_.value3);
-        } catch (std::string e) {
+        } catch (std::string& e) {
             message_ = e;
             return message_;
         }
@@ -98,7 +98,7 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     case 3:
         try {
             lab = new LABSpace(arg_.value1, arg_.value2, arg_.value3);
-        } catch (std::string e) {
+        } catch (std::string& e) {
             message_ = e;
             return message_;
         }
@@ -106,7 +106,7 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     case 4:
         try {
             xyz = new XYZSpace(arg_.value1, arg_.value2, arg_.value3);
-        } catch (std::string e) {
+        } catch (std::string& e) {
             message_ = e;
             return message_;
         }
