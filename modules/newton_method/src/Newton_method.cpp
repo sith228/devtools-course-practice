@@ -21,7 +21,7 @@ double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
         x = x1;
         double fx = PolynomValue(size, x, polynom_coef);
         double dfx = PolynomValue(size - 1, x, polynom_derivative_coef);
-        if (abs(dfx) < eps)
+        if (fabs(dfx) < eps)
            break;
         x1 = x - (fx / dfx);
     }
@@ -53,11 +53,11 @@ void NewtonMethod::GeneateRandomPolynom(unsigned int size,
 
 bool NewtonMethod::CheckRootPolynom(double x, double eps, unsigned int size,
                                                    const double *coef) {
-    return abs(PolynomValue(size, x, coef)) < eps;
+    return fabs(PolynomValue(size, x, coef)) < eps;
 }
 
 bool NewtonMethod::CheckRootFunction(double x, double eps) {
-    return abs(FunctionValue(x)) < eps*10;
+    return fabs(FunctionValue(x)) < eps*10.0;
 }
 
 double NewtonMethod::PolynomValue(unsigned int size, double x,
