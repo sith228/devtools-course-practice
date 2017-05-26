@@ -47,7 +47,7 @@ TEST(test_newton_method, work_with_random_polynom) {
     double *polynom_coef = new double[polynom_size];
     nm.GeneateRandomPolynom(polynom_size, polynom_coef);
     // Act & Assert
-    ASSERT_NO_THROW(nm.NewtonMethodPolynom(eps, polynom_size, polynom_coef));
+    ASSERT_NO_THROW(nm.NewtonMethodPolynom(polynom_size, polynom_coef));
     delete[]polynom_coef;
 }
 
@@ -58,7 +58,7 @@ TEST(test_newton_method, work_with_random_polynom_zero_size) {
     double *polynom_coef = new double[polynom_size];
     nm.GeneateRandomPolynom(zero_size, polynom_coef);
     // Act & Assert
-    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(eps, zero_size, polynom_coef));
+    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(zero_size, polynom_coef));
     delete[]polynom_coef;
 }
 
@@ -71,18 +71,7 @@ TEST(test_newton_method, polynom_whith_no_root) {
     polynom_coef[2] = 1.0;
     NewtonMethod nm;
     // Act & Assert
-    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(eps, size, polynom_coef));
-    delete[]polynom_coef;
-}
-
-TEST(test_newton_method, work_with_random_polynom_negative_eps) {
-    // Arrange
-    NewtonMethod nm;
-    double *polynom_coef = new double[polynom_size];
-    nm.GeneateRandomPolynom(polynom_size, polynom_coef);
-    // Act & Assert
-    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(-0.1, polynom_size,
-                                                                polynom_coef));
+    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(size, polynom_coef));
     delete[]polynom_coef;
 }
 
@@ -98,9 +87,9 @@ TEST(test_newton_method, check_result_polynom) {
     double *polynom_coef = new double[polynom_size];
     NewtonMethod nm;
     nm.GeneateRandomPolynom(polynom_size, polynom_coef);
-    double root = nm.NewtonMethodPolynom(eps, polynom_size, polynom_coef);
+    double root = nm.NewtonMethodPolynom(polynom_size, polynom_coef);
     // Act & Assert
-    ASSERT_TRUE(nm.CheckRootPolynom(root, eps*100, polynom_size,
+    ASSERT_TRUE(nm.CheckRootPolynom(root, eps, polynom_size,
                                                                polynom_coef));
     delete[]polynom_coef;
 }

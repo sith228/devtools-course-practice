@@ -5,8 +5,8 @@
 
 class NewtonMethod {
  public:
-    static double NewtonMethodPolynom(double eps, unsigned int size,
-        double *polynom_coef);
+    static double NewtonMethodPolynom(unsigned int size,
+                                                        double *polynom_coef);
     static double NewtonMethodFunction(double eps);
     static void GeneateRandomPolynom(unsigned int size, double *polynom_coef);
     static bool CheckRootPolynom(double x, double eps, unsigned int size,

@@ -7,10 +7,8 @@
 #include <ctime>
 #include <cmath>
 
-double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
-    double *polynom_coef) {
-    if (eps <= 0.0)
-        throw "eps <= 0";
+double NewtonMethod::NewtonMethodPolynom(unsigned int size,
+                                                double *polynom_coef) {
     if (size == 0)
         throw "polynom is const";
     double x = 0, x1 = 1;
@@ -18,7 +16,7 @@ double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     CalculateDerivativePolynom(size - 1, polynom_coef,
                                                polynom_derivative_coef);
     int iter = 0;
-    while (fabs(x1 - x) >= eps && iter < 1000) {
+    while (fabs(x1 - x) >= 0.001 && iter < 1000) {
         iter++;
         x = x1;
         if (iter == 999)
