@@ -8,7 +8,7 @@
 #include <random>
 #include <stdlib.h>
 
-double NewtonMethod::NewtonMethodPolynom(double eps, size_t size,
+double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_coef) {
     if (eps <= 0.0)
         throw "eps <= 0";
@@ -45,7 +45,7 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
     return x;
 }
 
-void NewtonMethod::GeneateRandomPolynom(size_t size, double *polynom_coef) {
+void NewtonMethod::GeneateRandomPolynom(unsigned int size, double *polynom_coef) {
     unsigned int seed = 0;
     srand(seed);
     for (unsigned int i = 0; i < size; i++) {
@@ -54,7 +54,7 @@ void NewtonMethod::GeneateRandomPolynom(size_t size, double *polynom_coef) {
     }
 }
 
-bool NewtonMethod::CheckRootPolynom(double x, double eps, size_t size,
+bool NewtonMethod::CheckRootPolynom(double x, double eps, unsigned int size,
                                                    const double *coef) {
     return abs(PolynomValue(size, x, coef)) < eps;
 }
@@ -63,7 +63,7 @@ bool NewtonMethod::CheckRootFunction(double x, double eps) {
     return abs(FunctionValue(x)) < eps*10;
 }
 
-double NewtonMethod::PolynomValue(size_t size, double x, const double * coef) {
+double NewtonMethod::PolynomValue(unsigned int size, double x, const double * coef) {
     double sum = 0.0;
     for (unsigned int k = 0; k < size; k++) {
         sum += (coef[k] * pow(x, k));
@@ -71,7 +71,7 @@ double NewtonMethod::PolynomValue(size_t size, double x, const double * coef) {
     return sum;
 }
 
-void NewtonMethod::CalculateDerivativePolynom(size_t size,
+void NewtonMethod::CalculateDerivativePolynom(unsigned int size,
     const double * polynom_coef, double * polynom_derivative_coef) {
     for (int unsigned i = 0; i < size; i++) {
         polynom_derivative_coef[i] = (i + 1) * polynom_coef[i + 1];

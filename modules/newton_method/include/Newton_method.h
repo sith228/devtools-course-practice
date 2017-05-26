@@ -5,17 +5,17 @@
 
 class NewtonMethod {
  public:
-    static double NewtonMethodPolynom(double eps, size_t size,
+    static double NewtonMethodPolynom(double eps, unsigned int size,
         double *polynom_coef);
     static double NewtonMethodFunction(double eps);
-    static void GeneateRandomPolynom(size_t size, double *polynom_coef);
-    static bool CheckRootPolynom(double x, double eps, size_t size,
+    static void GeneateRandomPolynom(unsigned int size, double *polynom_coef);
+    static bool CheckRootPolynom(double x, double eps, unsigned int size,
         const double *polynom_coef);
     static bool CheckRootFunction(double x, double eps);
  private:
-    static void CalculateDerivativePolynom(size_t size,
+    static void CalculateDerivativePolynom(unsigned int size,
         const double *polynom_coef, double *polynom_derivative_coef);
-    static double PolynomValue(size_t size, double x, const double* coef);
+    static double PolynomValue(unsigned int size, double x, const double* coef);
     static double FunctionValue(double x);
     static double FirstDerivativeFunctionValue(double x);
 };
