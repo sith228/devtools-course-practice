@@ -48,7 +48,7 @@ add_test(
     COMMAND ${APPLICATION} 1 2 400 HSV RGB
 )
 set_tests_properties (${prefix}_Wrong_Brightnes_HSVHSB PROPERTIES
-    PASS_REGULAR_EXPRESSION "Mismatch in the number of arguments"
+    PASS_REGULAR_EXPRESSION "The index of brightnes not in the range 0-100"
     LABELS "${MODULE}")
 
 add_test(
@@ -69,7 +69,7 @@ set_tests_properties (${prefix}_Wrong_A_Color_LAB PROPERTIES
 
 add_test(
     NAME ${prefix}_Wrong_B_Color_LAB
-    COMMAND ${APPLICATION} 1 2 400 HSV RGB
+    COMMAND ${APPLICATION} 1 2 400 LAB RGB
 )
 set_tests_properties (${prefix}_Wrong_B_Color_LAB PROPERTIES
     PASS_REGULAR_EXPRESSION "The index of b color isn't in the range 0-128"
