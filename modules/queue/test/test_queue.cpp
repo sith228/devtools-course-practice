@@ -1,4 +1,4 @@
-// Copyright 2017 Gvozdeva Viktoria
+// Copyright 2017 Gvozdeva Viktoria, Mironova Anna
 
 #include <gtest/gtest.h>
 #include "include/queue.h"

@@ -1,4 +1,4 @@
-// Copyright 2017 Gvozdeva Viktoriia
+// Copyright 2017 Gvozdeva Viktoriia, Mironova Anna
 
 #ifndef MODULES_QUEUE_INCLUDE_QUEUE_H_
 #define MODULES_QUEUE_INCLUDE_QUEUE_H_
