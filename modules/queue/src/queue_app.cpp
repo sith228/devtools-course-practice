@@ -27,7 +27,7 @@ bool QueueApp::validateNumberOfArguments(int argc, const char** argv) {
         help(argv[0]);
         return false;
     } else if (argc > 3) {
-        help(argv[0], "ERROR: Should be 2 or 3 arguments.\n\n");
+        help(argv[0], "ERROR: Should be 1 or 2 arguments.\n\n");
         return false;
     }
     return true;
@@ -60,31 +60,43 @@ int parseOperation(const char* arg) {
 
 std::string QueueApp::operator()(int argc, const char** argv) {
     Arguments args;
+    std::ostringstream stream;
 
     if (!validateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
         args.operation = parseOperation(argv[1]);
-        if (args.operation == 1) {
-            args.element = parseInt(argv[2]);
+        if (args.operation == 1 ) {
+            if (argc == 2) {
+                stream << "Enter item to insert!";
+            } else {
+                args.element = parseInt(argv[2]);
+            }
         }
     }
     catch (std::string &str) {
         return str;
     }
 
-    std::ostringstream stream;
     switch (args.operation) {
     case 1:
         queue.Push(args.element);
         stream << "element pushed";
         break;
     case 2:
-        stream << "element = " << queue.Pop() << " ";
+        if (!queue.IsEmpty()) {
+            stream << "element = " << queue.Pop() << " ";
+        } else {
+            stream << "Queue is empty!";
+        }
         break;
     case 3:
-        stream << "element = " << queue.Top() << " ";
+        if (!queue.IsEmpty()) {
+            stream << "element = " << queue.Top() << " ";
+        } else {
+            stream << "Queue is empty!";
+        }
         break;
     }
 
