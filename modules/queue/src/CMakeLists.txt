@@ -2,10 +2,10 @@ set(target ${LIBRARY})
 
 file(GLOB srcs "*.cpp")
 file(GLOB hdrs "../include/*.h")
-set_source_files_properties(${srcs} ${hdrs} PROPERTIES
+set_source_files_properties(${srcs} PROPERTIES
     LABELS "${MODULE};Library")
 
-add_library(${target} STATIC ${srcs} ${hdrs})
+add_library(${target} STATIC ${srcs} )
 set_target_properties(${target} PROPERTIES
     OUTPUT_NAME ${MODULE}
     LABELS "${MODULE};Library")
