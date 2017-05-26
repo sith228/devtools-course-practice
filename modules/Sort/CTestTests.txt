@@ -48,7 +48,7 @@ add_test(
     COMMAND ${APPLICATION} -1 2 3 4
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Array_Size PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: Array can't have lower then 1 elem"
+    PASS_REGULAR_EXPRESSION "Error: Array can't have less then 1 elem"
     LABELS "${MODULE}")
 
 add_test(

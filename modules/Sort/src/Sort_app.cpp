@@ -69,7 +69,7 @@ std::string SortApp::operator()(int argc, const char** argv) {
     }
 
     if (args.length_ < 1) {
-        help(argv[0], "Error: Array can't have lower then 1 elem.\n\n");
+        help(argv[0], "Error: Array can't have less then 1 elem.\n\n");
         return message_;
     }
     if (!validateNumberOfArguments(argc, argv)) {
