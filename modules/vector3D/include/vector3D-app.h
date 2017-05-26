@@ -11,8 +11,8 @@ class Vector3DApp {
      std::string operator()(int argc, const char** argv);
 
  private:
-     void help(const char* appname, const char* message = "");
-     bool validateNumberOfArguments(int argc, const char** argv);
+     void Help(const char* appname, const char* message = "");
+     bool ValidateNumberOfArguments(int argc, const char** argv);
      std::string message_;
      typedef struct {
         double v1_x;

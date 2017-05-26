@@ -12,25 +12,28 @@
 
 Vector3DApp::Vector3DApp() : message_("") {}
 
-void Vector3DApp::help(const char* appname, const char* message) {
+void Vector3DApp::Help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
           "This is a vector calculator application.\n\n" +
           "Please provide arguments in the following format:\n\n"+
 
           "  $ " + appname + " <v1_x> <v1_y> <v1_z>" +
-          "<v2_x> <v2_y> <v2_z> <operation>\n\n" +
+          "<v2_x> <v2_y> <v2_z> <operation>\n\n" + " or "
+          "  $ " + appname + " <v1_x> <v1_y> <v1_z>" +
+          " <operation>\n\n" +
 
           "Where all arguments are double-precision numbers, " +
-          "and <operation> is one of '+', '-', '*', '^', 'n', 'N'.\n";
+          "and <operation> is one of '+', '-', '*', '^', 'n', 'N'.\n" +
+          "n - norm vector, N - normalize vector.\n";
 }
 
-bool Vector3DApp::validateNumberOfArguments(int argc, const char** argv) {
+bool Vector3DApp::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
-        help(argv[0]);
+        Help(argv[0]);
         return false;
     } else if (!(argc == 5 || argc == 8)) {
-        help(argv[0], "ERROR: Should be 7 or 4 arguments.\n\n");
+        Help(argv[0], "ERROR: Should be 7 or 4 arguments.\n\n");
         return false;
     }
     return true;
@@ -79,7 +82,7 @@ std::string Vector3DApp::operator()(int argc, const char** argv) {
     ArgumentsBinary args_binary;
     ArgumentsUnary args_unary;
 
-    if (!validateNumberOfArguments(argc, argv)) {
+    if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
