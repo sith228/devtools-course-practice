@@ -1,7 +1,6 @@
 // Copyright 2017 Kalinin Vladimir
 #include <gtest/gtest.h>
 
-#include "include/dijkstra.h"
 #include "include/Graph.h"
 
 
@@ -13,10 +12,10 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Edge) {
   // Act
 
   // Assert
-  EXPECT_EQ(a2.getWeight(), 1);
-  EXPECT_EQ(a2.getKey(), 2);
-  EXPECT_EQ(a1.getWeight(), 0);
-  EXPECT_EQ(a1.getKey(), 0);
+  EXPECT_EQ(a2.GetWeight(), 1);
+  EXPECT_EQ(a2.GetKey(), 2);
+  EXPECT_EQ(a1.GetWeight(), 0);
+  EXPECT_EQ(a1.GetKey(), 0);
 }
 
 TEST(Kalinin_dijkstra_tests, Can_Set_Next) {
@@ -24,10 +23,10 @@ TEST(Kalinin_dijkstra_tests, Can_Set_Next) {
   edge a1;
   edge a2;
   // Act
-  a1.setNext(&a2);
+  a1.SetNext(&a2);
 
   // Assert
-  EXPECT_EQ(a1.getNext(), &a2);
+  EXPECT_EQ(a1.GetNext(), &a2);
 }
 
 TEST(Kalinin_dijkstra_tests, Can_Create_Graph) {
@@ -38,8 +37,8 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Graph) {
   graph gr2(5);
 
   // Assert
-  EXPECT_EQ(gr1.getSize(), 0);
-  EXPECT_EQ(gr2.getSize(), 5);
+  EXPECT_EQ(gr1.GetSize(), 0);
+  EXPECT_EQ(gr2.GetSize(), 5);
 }
 
 TEST(Kalinin_dijkstra_tests, IsConnect_Works) {
@@ -47,12 +46,12 @@ TEST(Kalinin_dijkstra_tests, IsConnect_Works) {
   graph gr(6);
 
   // Act
-  gr.addEdge(9, 1, 3);
+  gr.AddEdge(9, 1, 3);
 
   // Assert
-  EXPECT_EQ(gr.isConnect(1, 3), true);
-  EXPECT_EQ(gr.isConnect(3, 1), true);
-  EXPECT_EQ(gr.isConnect(1, 2), false);
+  EXPECT_EQ(gr.IsConnect(1, 3), true);
+  EXPECT_EQ(gr.IsConnect(3, 1), true);
+  EXPECT_EQ(gr.IsConnect(1, 2), false);
 }
 
 TEST(Kalinin_dijkstra_tests, Can_Set_Edge_Weight) {
@@ -60,29 +59,29 @@ TEST(Kalinin_dijkstra_tests, Can_Set_Edge_Weight) {
   graph gr(6);
 
   // Act
-  gr.addEdge(9, 1, 3);
+  gr.AddEdge(9, 1, 3);
 
   // Assert
-  EXPECT_EQ(gr.getNode(1)->getWeight(), 9);
-  EXPECT_EQ(gr.getNode(3)->getWeight(), 9);
+  EXPECT_EQ(gr.GetNode(1)->GetWeight(), 9);
+  EXPECT_EQ(gr.GetNode(3)->GetWeight(), 9);
 }
 
 TEST(Kalinin_dijkstra_tests, Diykstra_Result_Is_Correct) {
   // Arrange
   graph gr(6);
-  gr.addEdge(7, 1, 2);
-  gr.addEdge(10, 2, 3);
-  gr.addEdge(9, 1, 3);
-  gr.addEdge(15, 2, 4);
-  gr.addEdge(11, 3, 4);
-  gr.addEdge(14, 1, 0);
-  gr.addEdge(2, 3, 0);
-  gr.addEdge(9, 5, 0);
-  gr.addEdge(6, 4, 5);
+  gr.AddEdge(7, 1, 2);
+  gr.AddEdge(10, 2, 3);
+  gr.AddEdge(9, 1, 3);
+  gr.AddEdge(15, 2, 4);
+  gr.AddEdge(11, 3, 4);
+  gr.AddEdge(14, 1, 0);
+  gr.AddEdge(2, 3, 0);
+  gr.AddEdge(9, 5, 0);
+  gr.AddEdge(6, 4, 5);
   int correct_answer[6] = { 11, 0, 7, 9, 20, 20 };
 
   // Act
-  int* tmp = dijkstra(1, gr);
+  int* tmp = gr.Dijkstra(1);
 
   // Assert
   for (int i = 0; i < 6; i++)

@@ -7,15 +7,15 @@ struct edge {
  public:
   edge();
   edge(const int _weight, const int _key);
-  void setNext(edge* _next);
-  edge* getNext();
-  int getWeight();
-  int getKey();
+  void SetNext(edge* _next);
+  edge* GetNext();
+  int GetWeight();
+  int GetKey();
 
  private:
-  int weight;
-  int key;
-  edge* next;
+  int weight_;
+  int key_;
+  edge* next_;
 };
 
 class graph {
@@ -23,14 +23,16 @@ class graph {
   graph();
   explicit graph(int size);
 
-  void addEdge(const int _weight, const int key1, const int key2);
-  bool isConnect(const int key1, const int key2);
-  int getSize();
-  edge* getNode(int n);
+  void AddEdge(const int _weight, const int key1, const int key2);
+  bool IsConnect(const int key1, const int key2);
+  int GetSize();
+  edge* GetNode(int n);
+
+  int * Dijkstra(int node_index);
 
  private:
-  int size;
-  edge **node;
+  int size_;
+  edge **node_;
 };
 
 #endif  // MODULES_DIJKSTRA_INCLUDE_GRAPH_H_
