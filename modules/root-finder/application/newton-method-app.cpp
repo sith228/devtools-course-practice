@@ -1,8 +1,11 @@
 // Copyright 2017 Maxim Doronin
 
 #include <iostream>
+#include "include\newton-method-app.h"
 
 int main(int argc, const char** argv) {
-    std::cout << "Hello world!" << std::endl;
+    NewtonMethodApplication app;
+    std::string output = app(argc, argv);
+    std::cout << output << std::endl;
     return 0;
 }
