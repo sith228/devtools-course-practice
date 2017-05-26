@@ -4,6 +4,7 @@
 #define MODULES_ROOT_FINDER_INCLUDE_FUNCTIONS_H_
 
 #include <string>
+#include <vector>
 
 class Function {
  public:
