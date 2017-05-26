@@ -77,17 +77,17 @@ std::string Application::operator()(int argc, const char** argv) {
     if (argc == 11) {
         try {
             intersection.SetLine(
-				ParseDouble(argv[1]),
-				ParseDouble(argv[2]),
-				ParseDouble(argv[3]),
-				ParseDouble(argv[4]),
-				ParseDouble(argv[5]),
-				ParseDouble(argv[6]));
+                ParseDouble(argv[1]),
+                ParseDouble(argv[2]),
+                ParseDouble(argv[3]),
+                ParseDouble(argv[4]),
+                ParseDouble(argv[5]),
+                ParseDouble(argv[6]));
             intersection.SetPlane(
-				ParseDouble(argv[7]),
-				ParseDouble(argv[8]),
-				ParseDouble(argv[9]),
-				ParseDouble(argv[10]));
+                ParseDouble(argv[7]),
+                ParseDouble(argv[8]),
+                ParseDouble(argv[9]),
+                ParseDouble(argv[10]));
         }
         catch (std::string& str) {
             return str;
