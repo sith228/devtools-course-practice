@@ -14,7 +14,7 @@ class Function {
     virtual float df(float x) const = 0;
     virtual float d2f(float x) const = 0;
  protected:
-    std::vector<float> koefs;
+    std::vector<float> koefs_;
     void generateThrow(std::string type) const;
     void checkKoefs(unsigned int neededNumberOfKoefs) const;
 };
