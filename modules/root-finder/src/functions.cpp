@@ -11,7 +11,8 @@ void Function::generateThrow(std::string type) const {
     std::string throws = "===========================================\n";
     if (type.compare("mismatch")) {
         throws += "Mismatch in the number of arguments";
-    } else if (type.compare("zero")) {
+    }
+    else if (type.compare("zero")) {
         throws += "Division by zero";
     }
     throws += "\n===========================================\n";
@@ -37,12 +38,12 @@ float Polynomial2Degree::f(float x) const {
 
 float Polynomial2Degree::df(float x) const {
     checkKoefs(3);
-    return 2*koefs.at(0)*x + koefs.at(1);
+    return 2 * koefs.at(0)*x + koefs.at(1);
 }
 
 float Polynomial2Degree::d2f(float x) const {
     checkKoefs(3);
-    return 2*koefs.at(0);
+    return 2 * koefs.at(0);
 }
 
 /*
@@ -51,17 +52,17 @@ float Polynomial2Degree::d2f(float x) const {
 float Polynomial3Degree::f(float x) const {
     checkKoefs(4);
     return koefs.at(0)*pow(x, 3) + koefs.at(1)*pow(x, 2) + koefs.at(2)*x
-    + koefs.at(3);
+        + koefs.at(3);
 }
 
 float Polynomial3Degree::df(float x) const {
     checkKoefs(4);
-    return 3*koefs.at(0)*pow(x, 2) + 2*koefs.at(1)*x + koefs.at(2);
+    return 3 * koefs.at(0)*pow(x, 2) + 2 * koefs.at(1)*x + koefs.at(2);
 }
 
 float Polynomial3Degree::d2f(float x) const {
     checkKoefs(4);
-    return 6*koefs.at(0)*x + 2*koefs.at(1);
+    return 6 * koefs.at(0)*x + 2 * koefs.at(1);
 }
 
 /*
@@ -70,18 +71,18 @@ float Polynomial3Degree::d2f(float x) const {
 float Polynomial4Degree::f(float x) const {
     checkKoefs(5);
     return koefs.at(0)*pow(x, 4) + koefs.at(1)*pow(x, 3)
-    + koefs.at(2)*pow(x, 2) + koefs.at(3)*x + koefs.at(4);
+        + koefs.at(2)*pow(x, 2) + koefs.at(3)*x + koefs.at(4);
 }
 
 float Polynomial4Degree::df(float x) const {
     checkKoefs(5);
-    return 4*koefs.at(0)*pow(x, 3) + 3*koefs.at(1)*pow(x, 2)
-    + 2*koefs.at(2)*x + koefs.at(3);
+    return 4 * koefs.at(0)*pow(x, 3) + 3 * koefs.at(1)*pow(x, 2)
+        + 2 * koefs.at(2)*x + koefs.at(3);
 }
 
 float Polynomial4Degree::d2f(float x) const {
     checkKoefs(5);
-    return 12*koefs.at(0)*pow(x, 2) + 6*koefs.at(1)*x + 2*koefs.at(2);
+    return 12 * koefs.at(0)*pow(x, 2) + 6 * koefs.at(1)*x + 2 * koefs.at(2);
 }
 
 /*

@@ -12,7 +12,7 @@ void NewtonMethodApplication::help(const char* appname,
         std::string(message) +
         "This is a Newton Method application\n" +
         "for finding roots of monotony functions.\n\n" +
-        "Please provide arguments in the following format:\n\n"+
+        "Please provide arguments in the following format:\n\n" +
 
         "  $ " + appname + " <FunctionId> <left bound> <right bound> " +
         "<list of coefficients>\n\n" +
@@ -45,27 +45,27 @@ float NewtonMethodApplication::parseFloat(const char* arg) {
 
 std::vector<float> NewtonMethodApplication::getBounds(int argc,
     const char** argv) {
-	std::vector<float> bounds;
-	if (argc < 4) {
-		help(argv[0], "ERROR: Input bounds at first.\n\n");
-		throw std::string("ERROR: No bounds!");
-	}
-	bounds.push_back(parseFloat(argv[2]));
-	bounds.push_back(parseFloat(argv[3]));
-	return bounds;
+    std::vector<float> bounds;
+    if (argc < 4) {
+        help(argv[0], "ERROR: Input bounds at first.\n\n");
+        throw std::string("ERROR: No bounds!");
+    }
+    bounds.push_back(parseFloat(argv[2]));
+    bounds.push_back(parseFloat(argv[3]));
+    return bounds;
 }
 
 std::vector<float> NewtonMethodApplication::getKoefs(int argc,
     const char** argv) {
     std::vector<float> koefs;
-	if (argc <= 4) {
-		help(argv[0], "ERROR: There is should be coefficients.\n\n");
-		throw std::string("ERROR: No coefficients!");
-	}
+    if (argc <= 4) {
+        help(argv[0], "ERROR: There is should be coefficients.\n\n");
+        throw std::string("ERROR: No coefficients!");
+    }
     for (int i = 4; i < argc; i++) {
         koefs.push_back(parseFloat(argv[i]));
     }
-	return koefs;
+    return koefs;
 }
 
 std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
@@ -78,15 +78,15 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
         bounds = getBounds(argc, argv);
         koefs = getKoefs(argc, argv);
     }
-    catch(std::string& str) {
+    catch (std::string& str) {
         help(argv[0], str + std::string("\n"));
         return message_;
     }
-	Function* function = FunctionFactory::createFunction(argv[1], koefs);
+    Function* function = FunctionFactory::createFunction(argv[1], koefs);
     NewtonMethod* newtonMethod = new NewtonMethod();
     newtonMethod->SetAB(bounds.at(0), bounds.at(1));
     newtonMethod->SetAccuracy(0.001f);
-	float root;
+    float root;
     try {
         root = newtonMethod->FindRoot(function);
     }
@@ -95,6 +95,6 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
         return message_;
     }
 
-	message_ = "Root: " + std::to_string(root);
+    message_ = "Root: " + std::to_string(root);
     return message_;
 }
