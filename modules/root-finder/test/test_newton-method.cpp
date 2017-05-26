@@ -2,22 +2,25 @@
 
 #include <gtest/gtest.h>
 
+#include <vector>
+#include "include/functions.h"
 #include "include/newton-method.h"
 
 class NewtonMethodTest : public ::testing::Test {
  protected:
     NewtonMethod nMet;
+    Function* function;
+    void SetUp() {
+        std::vector<float> koefs;
+        koefs.push_back(1);
+        koefs.push_back(0);
+        koefs.push_back(-1);
+        function = new Polynomial2Degree(koefs);
+    }
+    void TearDown() {
+        delete function;
+    }
 };
-
-float f1(float x) {
-    return (x*x-1);
-}
-float f2(float x) {
-    return 2 * x;
-}
-float f3(float x) {
-    return 2;
-}
 
 TEST_F(NewtonMethodTest, Can_set_conditions_one) {
     // Assert
@@ -34,7 +37,7 @@ TEST_F(NewtonMethodTest, Can_recognize_not_monotone_function) {
     nMet.SetAB(-1.0, 1.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_ANY_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_ANY_THROW(nMet.FindRoot(function));
 }
 
 TEST_F(NewtonMethodTest, Can_recognize_not_monotone_function2) {
@@ -42,7 +45,7 @@ TEST_F(NewtonMethodTest, Can_recognize_not_monotone_function2) {
     nMet.SetAB(-1.0, 3.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_ANY_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_ANY_THROW(nMet.FindRoot(function));
 }
 
 TEST_F(NewtonMethodTest, Can_recognize_not_monotone_function3) {
@@ -50,7 +53,7 @@ TEST_F(NewtonMethodTest, Can_recognize_not_monotone_function3) {
     nMet.SetAB(-3.0, 1.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_ANY_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_ANY_THROW(nMet.FindRoot(function));
 }
 
 TEST_F(NewtonMethodTest, Can_recognize_monotone_function) {
@@ -58,7 +61,7 @@ TEST_F(NewtonMethodTest, Can_recognize_monotone_function) {
     nMet.SetAB(1.0, 0.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_NO_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_NO_THROW(nMet.FindRoot(function));
 }
 
 TEST_F(NewtonMethodTest, Can_find_root) {
@@ -66,7 +69,7 @@ TEST_F(NewtonMethodTest, Can_find_root) {
     nMet.SetAB(0.0, 2.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_FLOAT_EQ(nMet.FindRoot(f1, f2, f3), 1);
+    ASSERT_FLOAT_EQ(nMet.FindRoot(function), 1);
 }
 
 TEST_F(NewtonMethodTest, Can_find_root2) {
@@ -74,7 +77,7 @@ TEST_F(NewtonMethodTest, Can_find_root2) {
     nMet.SetAB(-2.0, 0.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_FLOAT_EQ(nMet.FindRoot(f1, f2, f3), -1);
+    ASSERT_FLOAT_EQ(nMet.FindRoot(function), -1);
 }
 
 TEST_F(NewtonMethodTest, There_isnot_root) {
@@ -82,7 +85,7 @@ TEST_F(NewtonMethodTest, There_isnot_root) {
     nMet.SetAB(9.0, 3.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_ANY_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_ANY_THROW(nMet.FindRoot(function));
 }
 
 TEST_F(NewtonMethodTest, point_throw) {
@@ -90,7 +93,5 @@ TEST_F(NewtonMethodTest, point_throw) {
     nMet.SetAB(9.0, 9.0);
     nMet.SetAccuracy(0.01);
     // Assert
-    ASSERT_ANY_THROW(nMet.FindRoot(f1, f2, f3));
+    ASSERT_ANY_THROW(nMet.FindRoot(function));
 }
-
-
