@@ -3,7 +3,7 @@
 #ifndef MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_H_
 #define MODULES_ROOT_FINDER_INCLUDE_NEWTON_METHOD_H_
 
-#include "functions.h"
+#include "include/functions.h"
 
 class NewtonMethod {
  public:

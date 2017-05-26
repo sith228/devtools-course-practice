@@ -17,18 +17,18 @@ std::map<std::string, int> FunctionId {
 
 class FunctionFactory {
  public:
-	 static Function* createFunction (std::string functionName,
+     static Function* createFunction(std::string functionName,
          std::vector<float> koefs) {
-		 Function *function;
-         switch (FunctionId[functionName]) {
-             case 0: function = new Polynomial2Degree(koefs); break;
-             case 1: function = new Polynomial3Degree(koefs); break;
-             case 2: function = new Polynomial4Degree(koefs); break;
-             case 3: function = new Exponent(koefs); break;
-             default: function = nullptr;
+             Function *function;
+             switch (FunctionId[functionName]) {
+                 case 0: function = new Polynomial2Degree(koefs); break;
+                 case 1: function = new Polynomial3Degree(koefs); break;
+                 case 2: function = new Polynomial4Degree(koefs); break;
+                 case 3: function = new Exponent(koefs); break;
+                 default: function = nullptr;
+             }
+             return function;
          }
-         return function;
-     }
 };
 
 #endif  // MODULES_ROOT_FINDER_INCLUDE_FUNCTION_FACTORY_H_
