@@ -10,7 +10,7 @@
 #include "include/area_converter_app.h"
 #include "include/area_converter.h"
 
-Application::Application(){}
+Application::Application() {}
 
 void Application::Help(const char* appname, const char* message) {
     message_ =
