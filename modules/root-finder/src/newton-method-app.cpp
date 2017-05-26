@@ -14,11 +14,11 @@ void NewtonMethodApplication::help(const char* appname,
     const std::string message) {
     message_ =
         std::string(message) +
-        "This is a Newton Method application" +
+        "This is a Newton Method application " +
         "for finding roots of monotony functions.\n\n" +
         "Please provide arguments in the following format:\n\n" +
 
-        "  $ " + appname + " <Accuracy> <FunctionId> <left bound> " +
+        "  $ " + appname + " <FunctionId> <Accuracy> <left bound> " +
         "<right bound> <list of coefficients>\n\n" +
         "Where all coefficients and accuracy are float numbers, " +
         "and <FunctionId> is one of the following strings: \n" +
