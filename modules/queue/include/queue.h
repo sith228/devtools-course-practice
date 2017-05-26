@@ -30,14 +30,12 @@ class Queue {
 
 template <class valType>
 Queue <valType> ::Queue(int _max_size) {
-    if ((_max_size > 0)||(_max_size <= MAX_SIZE)) {
+    if ((_max_size > 0) || (_max_size <= MAX_SIZE)) {
         max_size_ = _max_size;
     } else if (_max_size > MAX_SIZE) {
         max_size_ = MAX_SIZE;
-    } 
-    if (_max_size<=0) {
-        throw "Size is incorrect!";
     }
+    if (_max_size <= 0) throw "Size is incorrect!";
     queue_ptr_ = new valType[max_size_];
     if (queue_ptr_ == nullptr) throw "Memory was not allocated";
     len_ = 0;
@@ -101,9 +99,8 @@ bool Queue <valType> ::IsEmpty() const {
 template <class valType>
 void Queue <valType> ::Push(const valType &elem) {
     if (queue_ptr_ == nullptr) throw "Queue was deleted!";
-    if (IsFull()) {
-        throw "Queue is full!";
-    } else {
+    if (IsFull()) throw "Queue is full!";
+    if (!IsFull()) {
         if (tail_ == max_size_ - 1) {
             tail_ = 0;
         } else {
@@ -117,9 +114,8 @@ void Queue <valType> ::Push(const valType &elem) {
 template <class valType>
 valType Queue <valType> ::Pop() {
     if (queue_ptr_ == nullptr) throw "Queue was deleted!";
-    if (IsEmpty()) {
-        throw "Queue is empty!";
-    } else {
+    if (IsEmpty()) throw "Queue is empty!";
+    if(!IsEmpty()) {
         valType elem = queue_ptr_[head_];
         if (head_ == max_size_ - 1) {
             head_ = 0;
@@ -134,9 +130,8 @@ valType Queue <valType> ::Pop() {
 template <class valType>
 valType Queue <valType> ::Top() {
     if (queue_ptr_ == nullptr) throw "Queue was deleted!";
-    if (IsEmpty()) {
-        throw "Queue is empty!";
-    } else {
+    if (IsEmpty()) throw "Queue is empty!";
+    if (!IsEmpty()) {
         return queue_ptr_[head_];
     }
 }
