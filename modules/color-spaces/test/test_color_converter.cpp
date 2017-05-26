@@ -50,14 +50,6 @@ TEST_F(ColorConverterApplicationTest, Not_Five_Arguments) {
     Assert("ERROR: Should be 5 arguments.");
 }
 
-TEST_F(ColorConverterApplicationTest, Wrong_Convert_Type) {
-    vector<string> args = { "1", "2", "3", "asd", "asd" };
-
-    Act(args);
-
-    Assert("Wrong type");
-}
-
 TEST_F(ColorConverterApplicationTest, Wrong_Hue_HSVHSB) {
     vector<string> args = { "400", "2", "3", "HSV", "RGB" };
 
@@ -152,4 +144,12 @@ TEST_F(ColorConverterApplicationTest, Wrong_Z_XYZ) {
     Act(args);
 
     Assert("The index of z isn't in the range 0-108");
+}
+
+TEST_F(ColorConverterApplicationTest, Wrong_Convert_Type) {
+    vector<string> args = { "1", "2", "3", "asd", "asd" };
+
+    Act(args);
+
+    Assert("Wrong type");
 }
