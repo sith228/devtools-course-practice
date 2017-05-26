@@ -77,5 +77,10 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
         return RESULT_ERROR_PARSING;
     }
 
+    double result;
+    ap.Evaluate(x, &result);
+
+    std::cout << result << endl;
+
     return RESULT_SUCESS;
 }
