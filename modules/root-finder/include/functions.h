@@ -16,7 +16,7 @@ class Function {
  protected:
     std::vector<float> koefs;
     void generateThrow(std::string type) const;
-    void checkKoefs(int neededNumberOfKoefs) const;
+    void checkKoefs(unsigned int neededNumberOfKoefs) const;
 };
 
 class Polynomial2Degree : public Function {

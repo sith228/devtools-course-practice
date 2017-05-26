@@ -76,6 +76,10 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
     if (!isThereArguments(argc, argv)) {
         return message_;
     }
+    if (FunctionId.find(argv[1]) == FunctionId.end()) {
+        help(argv[0], "Function doesn't exist\n\n");
+        return message_;
+    }
     std::vector<float> bounds;
     std::vector<float> koefs;
     try {

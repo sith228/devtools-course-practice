@@ -10,21 +10,19 @@ Function::Function(std::vector<float> koefs) {
 }
 
 void Function::generateThrow(std::string type) const {
-    std::string throws = "===========================================\n";
-    if (type.compare("mismatch")) {
-        throws += "Mismatch in the number of arguments";
-    } else if (type.compare("zero")) {
-        throws += "Division by zero";
+    std::string throws = "";
+    if (!type.compare("mismatch")) {
+        throws += "Mismatch in the number of arguments\n";
+    } else if (!type.compare("zero")) {
+        throws += "First coefficient can't be zero\n";
     }
-    throws += "\n===========================================\n";
     throw std::string(throws);
 }
 
-void Function::checkKoefs(int neededNumberOfKoefs) const {
-    if (koefs.size() != (unsigned int)neededNumberOfKoefs) {
+void Function::checkKoefs(unsigned int neededNumberOfKoefs) const {
+    if (koefs.size() != neededNumberOfKoefs) {
         generateThrow("mismatch");
-    }
-    if (koefs.at(0) == 0) {
+    } else if (koefs.at(0) == 0) {
         generateThrow("zero");
     }
 }
