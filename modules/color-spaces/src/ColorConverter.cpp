@@ -1,3 +1,5 @@
+// Copyright 2017 Baranov Evgeny
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -5,11 +7,11 @@
 #include <string>
 #include <sstream>
 
-#include "..\include\ColorConverter.h"
-#include "..\include\hsb_hsv_space.h"
-#include "..\include\lab_space.h"
-#include "..\include\rgb_space.h"
-#include "..\include\xyz_space.h"
+#include "../include/ColorConverter.h"
+#include "../include/hsb_hsv_space.h"
+#include "../include/lab_space.h"
+#include "../include/rgb_space.h"
+#include "../include/xyz_space.h"
 
 ColorConverter::ColorConverter() : message_("") {}
 
