@@ -1,6 +1,8 @@
 // Copyright 2017 Maxim Doronin
 
 #include <cmath>
+#include <string>
+#include <vector>
 #include "include/functions.h"
 
 Function::Function(std::vector<float> koefs) {
@@ -11,8 +13,7 @@ void Function::generateThrow(std::string type) const {
     std::string throws = "===========================================\n";
     if (type.compare("mismatch")) {
         throws += "Mismatch in the number of arguments";
-    }
-    else if (type.compare("zero")) {
+    } else if (type.compare("zero")) {
         throws += "Division by zero";
     }
     throws += "\n===========================================\n";

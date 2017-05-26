@@ -1,5 +1,8 @@
 // Copyright 2017 Maxim Doronin
 
+#include <string>
+#include <vector>
+
 #include "include/function-factory.h"
 #include "include/newton-method.h"
 #include "include/newton-method-app.h"

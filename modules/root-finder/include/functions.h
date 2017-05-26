@@ -3,7 +3,6 @@
 #ifndef MODULES_ROOT_FINDER_INCLUDE_FUNCTIONS_H_
 #define MODULES_ROOT_FINDER_INCLUDE_FUNCTIONS_H_
 
-#include <vector>
 #include <string>
 
 class Function {
