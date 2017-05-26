@@ -11,7 +11,7 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Edge) {
   edge a2(1, 2);
 
   // Act
-  
+
   // Assert
   EXPECT_EQ(a2.getWeight(), 1);
   EXPECT_EQ(a2.getKey(), 2);
@@ -32,7 +32,6 @@ TEST(Kalinin_dijkstra_tests, Can_Set_Next) {
 
 TEST(Kalinin_dijkstra_tests, Can_Create_Graph) {
   // Arrange
-  
 
   // Act
   graph gr1;
