@@ -14,7 +14,7 @@ int edge::getKey() { return key; }
 
 edge* edge::getNext() { return next; }
 
-graph::graph() : node(0), size(0) {}
+graph::graph() : size(0), node(0) {}
 
 graph::graph(int _size) : size(_size) {
   node = new edge*[size];
