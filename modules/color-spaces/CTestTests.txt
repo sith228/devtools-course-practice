@@ -61,7 +61,7 @@ set_tests_properties (${prefix}_Correct_Create_XYZ PROPERTIES
 
 add_test(
     NAME ${prefix}_HSVHSB_to_HSVHSB
-    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+    COMMAND ${APPLICATION} 1 2 3 HSV HSV
 )
 set_tests_properties (${prefix}_HSVHSB_to_HSVHSB PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSVHSB"
@@ -69,7 +69,7 @@ set_tests_properties (${prefix}_HSVHSB_to_HSVHSB PROPERTIES
 	
 add_test(
     NAME ${prefix}_RGB_to_HSVHSB
-    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+    COMMAND ${APPLICATION} 1 2 3 RGB HSV
 )
 set_tests_properties (${prefix}_RGB_to_HSVHSB PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSVHSB"
@@ -77,7 +77,7 @@ set_tests_properties (${prefix}_RGB_to_HSVHSB PROPERTIES
 	
 add_test(
     NAME ${prefix}_LAB_to_HSVHSB
-    COMMAND ${APPLICATION} 1 2 3 XYZ HSV
+    COMMAND ${APPLICATION} 1 2 3 LAB HSV
 )
 set_tests_properties (${prefix}_LAB_to_HSVHSB PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSVHSB"
@@ -93,7 +93,7 @@ set_tests_properties (${prefix}_XYZ_to_HSVHSB PROPERTIES
 
 add_test(
     NAME ${prefix}_HSVHSB_to_LAB
-    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+    COMMAND ${APPLICATION} 1 2 3 HSV LAB
 )
 set_tests_properties (${prefix}_HSVHSB_to_LAB PROPERTIES
     PASS_REGULAR_EXPRESSION "to LAB"
@@ -101,7 +101,7 @@ set_tests_properties (${prefix}_HSVHSB_to_LAB PROPERTIES
 	
 add_test(
     NAME ${prefix}_RGB_to_LAB
-    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+    COMMAND ${APPLICATION} 1 2 3 RGB LAB
 )
 set_tests_properties (${prefix}_RGB_to_LAB PROPERTIES
     PASS_REGULAR_EXPRESSION "to LAB"
@@ -109,7 +109,7 @@ set_tests_properties (${prefix}_RGB_to_LAB PROPERTIES
 	
 add_test(
     NAME ${prefix}_LAB_to_LAB
-    COMMAND ${APPLICATION} 1 2 3 XYZ LAB
+    COMMAND ${APPLICATION} 1 2 3 LAB LAB
 )
 set_tests_properties (${prefix}_LAB_to_LAB PROPERTIES
     PASS_REGULAR_EXPRESSION "to LAB"
@@ -117,7 +117,7 @@ set_tests_properties (${prefix}_LAB_to_LAB PROPERTIES
 	
 add_test(
     NAME ${prefix}_HSVHSB_to_XYZ
-    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+    COMMAND ${APPLICATION} 1 2 3 HSV XYZ
 )
 set_tests_properties (${prefix}_HSVHSB_to_XYZ PROPERTIES
     PASS_REGULAR_EXPRESSION "to XYZ"
@@ -125,7 +125,7 @@ set_tests_properties (${prefix}_HSVHSB_to_XYZ PROPERTIES
 	
 add_test(
     NAME ${prefix}_RGB_to_XYZ
-    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+    COMMAND ${APPLICATION} 1 2 3 RGB XYZ
 )
 set_tests_properties (${prefix}_RGB_to_XYZ PROPERTIES
     PASS_REGULAR_EXPRESSION "to XYZ"
@@ -133,7 +133,7 @@ set_tests_properties (${prefix}_RGB_to_XYZ PROPERTIES
 	
 add_test(
     NAME ${prefix}_LAB_to_XYZ
-    COMMAND ${APPLICATION} 1 2 3 XYZ XYZ
+    COMMAND ${APPLICATION} 1 2 3 LAB XYZ
 )
 set_tests_properties (${prefix}_LAB_to_XYZ PROPERTIES
     PASS_REGULAR_EXPRESSION "to XYZ"

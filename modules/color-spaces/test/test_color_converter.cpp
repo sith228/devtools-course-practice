@@ -52,8 +52,8 @@ TEST_F(ColorConverterApplicationTest, Not_Five_Arguments) {
 
 TEST_F(ColorConverterApplicationTest, Correct_Create_HSVHSB) {
     vector<string> args = { "1", "2", "3", "HSV", "RGB" };
-	
-	Act(args);
+    
+    Act(args);
 
     Assert("to RGB");
 }
@@ -61,25 +61,25 @@ TEST_F(ColorConverterApplicationTest, Correct_Create_HSVHSB) {
 TEST_F(ColorConverterApplicationTest, Correct_Create_RGB) {
     vector<string> args = { "1", "2", "3", "RGB", "RGB" };
 
-	Act(args);
+    Act(args);
 
-	Assert("to RGB");
+    Assert("to RGB");
 }
 
 TEST_F(ColorConverterApplicationTest, Correct_Create_LAB) {
     vector<string> args = { "1", "2", "3", "LAB", "RGB" };
 
-	Act(args);
+    Act(args);
 
-	Assert("to RGB");
+    Assert("to RGB");
 }
 
 TEST_F(ColorConverterApplicationTest, Correct_Create_XYZ) {
     vector<string> args = { "1", "2", "3", "XYZ", "RGB" };
 
-	Act(args);
+    Act(args);
 
-	Assert("to RGB");
+    Assert("to RGB");
 }
 
 TEST_F(ColorConverterApplicationTest, HSVHSB_to_HSVHSB) {
