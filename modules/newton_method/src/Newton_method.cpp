@@ -17,12 +17,14 @@ double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_derivative_coef = new double[size - 1];
     CalculateDerivativePolynom(size - 1, polynom_coef,
                                                polynom_derivative_coef);
-    while (fabs(x1 - x) >= eps*0.01) {
+    int iter = 0;
+    while (fabs(x1 - x) >= eps && iter<1000) {
+        iter++;
         x = x1;
+        if (iter == 999)
+        throw "no roots";
         double fx = PolynomValue(size, x, polynom_coef);
         double dfx = PolynomValue(size - 1, x, polynom_derivative_coef);
-        if (fabs(dfx) < eps)
-           break;
         x1 = x - (fx / dfx);
     }
     delete[]polynom_derivative_coef;
@@ -34,7 +36,6 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
         throw "eps <= 0";
     }
     double x = 0.0, x1 = 1.0;
-
     while (fabs(x1 - x) >= eps) {
         x = x1;
         double fx = FunctionValue(x);
@@ -57,7 +58,7 @@ bool NewtonMethod::CheckRootPolynom(double x, double eps, unsigned int size,
 }
 
 bool NewtonMethod::CheckRootFunction(double x, double eps) {
-    return fabs(FunctionValue(x)) < eps*10.0;
+    return fabs(FunctionValue(x)) < eps;
 }
 
 double NewtonMethod::PolynomValue(unsigned int size, double x,

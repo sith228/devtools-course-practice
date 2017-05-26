@@ -62,6 +62,19 @@ TEST(test_newton_method, work_with_random_polynom_zero_size) {
     delete[]polynom_coef;
 }
 
+TEST(test_newton_method, polynom_whith_no_root) {
+    // Arrange
+    unsigned int size = 3;
+    double *polynom_coef = new double[size];
+    polynom_coef[0] = 1.0;
+    polynom_coef[1] = 1.0;
+    polynom_coef[2] = 1.0;
+    NewtonMethod nm;
+    // Act & Assert
+    ASSERT_ANY_THROW(nm.NewtonMethodPolynom(eps, size, polynom_coef));
+    delete[]polynom_coef;
+}
+
 TEST(test_newton_method, work_with_random_polynom_negative_eps) {
     // Arrange
     NewtonMethod nm;
