@@ -1,7 +1,7 @@
 // Copyright 2017 Kuchkov Ivan
 
 #include <stdexcept>
-
+#include <string>
 #include "include/area_converter.h"
 
 namespace {
