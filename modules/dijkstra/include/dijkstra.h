@@ -5,10 +5,6 @@
 
 #include "include/Graph.h"
 
-//using namespace std;
-
-
 int * dijkstra(int node_index, graph grf);
-
 
 #endif  // MODULES_DIJKSTRA_INCLUDE_DIJKSTRA_H_

@@ -4,7 +4,7 @@
 #define MODULES_DIJKSTRA_INCLUDE_GRAPH_H_
 
 struct edge {
-public:
+ public:
   edge();
   edge(const int _weight, const int _key);
   void setNext(edge* _next);
@@ -12,23 +12,23 @@ public:
   int getWeight();
   int getKey();
 
-private:
+ private:
   int weight;
   int key;
   edge* next;
 };
 
 class graph {
-public:
+ public:
   graph();
-  graph(int size);
+  explicit graph(int size);
 
   void addEdge(const int _weight, const int key1, const int key2);
   bool isConnect(const int key1, const int key2);
   int getSize();
   edge* getNode(int n);
 
-private:
+ private:
   int size;
   edge **node;
 };
