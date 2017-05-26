@@ -20,7 +20,7 @@ AreaConverter::AreaConverter(double from, double to) {
 
 double AreaConverter::operator()(double x) {
     if (x < 0) {
-        throw "It is impossible to work with negative area";
+        throw std::string("It is impossible to work with negative area");
     }
 
     return x * ratio_;
