@@ -6,8 +6,8 @@
 
 TEST(Kalinin_dijkstra_tests, Can_Create_Edge) {
   // Arrange
-  edge a1;
-  edge a2(1, 2);
+  Edge a1;
+  Edge a2(1, 2);
 
   // Act
 
@@ -20,8 +20,8 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Edge) {
 
 TEST(Kalinin_dijkstra_tests, Can_Set_Next) {
   // Arrange
-  edge a1;
-  edge a2;
+  Edge a1;
+  Edge a2;
   // Act
   a1.SetNext(&a2);
 
@@ -33,8 +33,8 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Graph) {
   // Arrange
 
   // Act
-  graph gr1;
-  graph gr2(5);
+  Graph gr1;
+  Graph gr2(5);
 
   // Assert
   EXPECT_EQ(gr1.GetSize(), 0);
@@ -43,7 +43,7 @@ TEST(Kalinin_dijkstra_tests, Can_Create_Graph) {
 
 TEST(Kalinin_dijkstra_tests, IsConnect_Works) {
   // Arrange
-  graph gr(6);
+  Graph gr(6);
 
   // Act
   gr.AddEdge(9, 1, 3);
@@ -56,7 +56,7 @@ TEST(Kalinin_dijkstra_tests, IsConnect_Works) {
 
 TEST(Kalinin_dijkstra_tests, Can_Set_Edge_Weight) {
   // Arrange
-  graph gr(6);
+  Graph gr(6);
 
   // Act
   gr.AddEdge(9, 1, 3);
@@ -68,7 +68,7 @@ TEST(Kalinin_dijkstra_tests, Can_Set_Edge_Weight) {
 
 TEST(Kalinin_dijkstra_tests, Diykstra_Result_Is_Correct) {
   // Arrange
-  graph gr(6);
+  Graph gr(6);
   gr.AddEdge(7, 1, 2);
   gr.AddEdge(10, 2, 3);
   gr.AddEdge(9, 1, 3);
