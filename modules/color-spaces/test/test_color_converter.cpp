@@ -50,6 +50,126 @@ TEST_F(ColorConverterApplicationTest, Not_Five_Arguments) {
     Assert("ERROR: Should be 5 arguments.");
 }
 
+TEST_F(ColorConverterApplicationTest, Correct_Create_HSVHSB) {
+    vector<string> args = { "1", "2", "3", "HSV", "RGB" };
+	
+	Act(args);
+
+    Assert("to RGB");
+}
+
+TEST_F(ColorConverterApplicationTest, Correct_Create_RGB) {
+    vector<string> args = { "1", "2", "3", "RGB", "RGB" };
+
+	Act(args);
+
+	Assert("to RGB");
+}
+
+TEST_F(ColorConverterApplicationTest, Correct_Create_LAB) {
+    vector<string> args = { "1", "2", "3", "LAB", "RGB" };
+
+	Act(args);
+
+	Assert("to RGB");
+}
+
+TEST_F(ColorConverterApplicationTest, Correct_Create_XYZ) {
+    vector<string> args = { "1", "2", "3", "XYZ", "RGB" };
+
+	Act(args);
+
+	Assert("to RGB");
+}
+
+TEST_F(ColorConverterApplicationTest, HSVHSB_to_HSVHSB) {
+    vector<string> args = { "1", "2", "3", "HSV", "HSV" };
+
+    Act(args);
+
+    Assert("to HSBHSV");
+}
+
+TEST_F(ColorConverterApplicationTest, RGB_to_HSVHSB) {
+    vector<string> args = { "1", "2", "3", "RGB", "HSV" };
+
+    Act(args);
+
+    Assert("to HSBHSV");
+}
+
+TEST_F(ColorConverterApplicationTest, LAB_to_HSVHSB) {
+    vector<string> args = { "1", "2", "3", "LAB", "HSV" };
+
+    Act(args);
+
+    Assert("to HSBHSV");
+}
+
+TEST_F(ColorConverterApplicationTest, XYZ_to_HSVHSB) {
+    vector<string> args = { "1", "2", "3", "XYZ", "HSV" };
+
+    Act(args);
+
+    Assert("to HSBHSV");
+}
+
+TEST_F(ColorConverterApplicationTest, HSVHSB_to_LAB) {
+    vector<string> args = { "1", "2", "3", "HSV", "LAB" };
+
+    Act(args);
+
+    Assert("to LAB");
+}
+
+TEST_F(ColorConverterApplicationTest, RGB_to_LAB) {
+    vector<string> args = { "1", "2", "3", "RGB", "LAB" };
+
+    Act(args);
+
+    Assert("to LAB");
+}
+
+TEST_F(ColorConverterApplicationTest, LAB_to_LAB) {
+    vector<string> args = { "1", "2", "3", "LAB", "LAB" };
+
+    Act(args);
+
+    Assert("to LAB");
+}
+
+TEST_F(ColorConverterApplicationTest, HSVHSB_to_XYZ) {
+    vector<string> args = { "1", "2", "3", "HSV", "XYZ" };
+
+    Act(args);
+
+    Assert("to XYZ");
+}
+
+TEST_F(ColorConverterApplicationTest, RGB_to_XYZ) {
+    vector<string> args = { "1", "2", "3", "RGB", "XYZ" };
+
+    Act(args);
+
+    Assert("to XYZ");
+}
+
+TEST_F(ColorConverterApplicationTest, LAB_to_XYZ) {
+    vector<string> args = { "1", "2", "3", "LAB", "XYZ" };
+
+    Act(args);
+
+    Assert("to XYZ");
+}
+
+TEST_F(ColorConverterApplicationTest, XYZ_to_XYZ) {
+    vector<string> args = { "1", "2", "3", "XYZ", "XYZ" };
+
+    Act(args);
+
+    Assert("to XYZ");
+}
+
 TEST_F(ColorConverterApplicationTest, Wrong_Hue_HSVHSB) {
     vector<string> args = { "400", "2", "3", "HSV", "RGB" };
 

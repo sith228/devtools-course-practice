@@ -28,6 +28,39 @@ set_tests_properties (${prefix}_Not_Five_Arguments PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_Correct_Create_HSVHSB
+    COMMAND ${APPLICATION} 1 2 3 HSV RGB
+)
+set_tests_properties (${prefix}_Correct_Create_HSVHSB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to RGB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Correct_Create_RGB
+    COMMAND ${APPLICATION} 1 2 3 RGB RGB
+)
+set_tests_properties (${prefix}_Correct_Create_RGB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to RGB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Correct_Create_LAB
+    COMMAND ${APPLICATION} 1 2 3 LAB RGB
+)
+set_tests_properties (${prefix}_Correct_Create_LAB PROPERTIES
+    PASS_REGULAR_EXPRESSION "to RGB"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Correct_Create_XYZ
+    COMMAND ${APPLICATION} 1 2 3 XYZ RGB
+)
+set_tests_properties (${prefix}_Correct_Create_XYZ PROPERTIES
+    PASS_REGULAR_EXPRESSION "to RGB"
+    LABELS "${MODULE}")
+	
+	
+add_test(
     NAME ${prefix}_Wrong_Hue_HSVHSB
     COMMAND ${APPLICATION} 400 2 3 HSV RGB
 )

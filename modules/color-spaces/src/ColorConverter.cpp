@@ -111,8 +111,6 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
             return message_;
         }
         break;
-    default:
-        break;
     }
     std::ostringstream stream;
     switch (arg_.outType) {
@@ -155,9 +153,6 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         } else if (rgb) {
             lab = new LABSpace(*new XYZSpace(*rgb));
             stream << "RGB";
-        } else if (xyz) {
-            lab = new LABSpace(*xyz);
-            stream << "XYZ";
         }
         stream << " to LAB: " << std::endl <<
             "A: " << lab->GetA() << std::endl <<
