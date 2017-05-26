@@ -1,6 +1,7 @@
 // Copyright 2017 Maxim Doronin
 
 #include <iostream>
+#include <string>
 #include "include/newton-method-app.h"
 
 int main(int argc, const char** argv) {
