@@ -17,7 +17,7 @@ std::map<std::string, int> FunctionId {
 
 class FunctionFactory {
  public:
-     static Function* createFunction(std::string functionName,
+     static Function* CreateFunction(std::string functionName,
          std::vector<float> koefs) {
              Function *function;
              switch (FunctionId[functionName]) {

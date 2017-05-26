@@ -103,7 +103,7 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
         help(argv[0], str + std::string("\n"));
         return message_;
     }
-    Function* function = FunctionFactory::createFunction(argv[1], koefs);
+    Function* function = FunctionFactory::CreateFunction(argv[1], koefs);
     NewtonMethod* newtonMethod = new NewtonMethod();
     newtonMethod->SetAB(bounds.at(0), bounds.at(1));
     newtonMethod->SetAccuracy(accuracy);
