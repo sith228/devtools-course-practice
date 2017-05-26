@@ -30,11 +30,12 @@ class Queue {
 
 template <class valType>
 Queue <valType> ::Queue(int _max_size) {
-    if (_max_size > 0) {
+    if ((_max_size > 0)||(_max_size <= MAX_SIZE)) {
         max_size_ = _max_size;
     } else if (_max_size > MAX_SIZE) {
         max_size_ = MAX_SIZE;
-    } else {
+    } 
+    if (_max_size<=0) {
         throw "Size is incorrect!";
     }
     queue_ptr_ = new valType[max_size_];
