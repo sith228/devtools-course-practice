@@ -88,3 +88,59 @@ TEST_F(NewtonMethodApplicationTest, Can_Detect_Zero_As_First_Coeff) {
 
     Assert("First coefficient can't be zero");
 }
+
+TEST_F(NewtonMethodApplicationTest, Can_Detect_No_Monotone_Function) {
+    vector<string> args = { "POLINOMIAL_2_DEGREE", "-4", "4", "2", "1", "-6" };
+
+    Act(args);
+
+    Assert("function isnot monotone or its point");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Segment_Is_Point) {
+    vector<string> args = { "POLINOMIAL_2_DEGREE", "4", "4", "2", "1", "-6" };
+
+    Act(args);
+
+    Assert("function isnot monotone or its point");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Function_Hasnt_Roots) {
+    vector<string> args = { "POLINOMIAL_2_DEGREE", "3", "4", "2", "1", "-6" };
+
+    Act(args);
+
+    Assert("segment have not desidion");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_2_Degree) {
+    vector<string> args = { "POLINOMIAL_2_DEGREE", "0", "2", "2", "1", "-6" };
+
+    Act(args);
+
+    Assert("Root: 1.5");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_3_Degree) {
+    vector<string> args = { "POLINOMIAL_3_DEGREE", "3", "6", "1", "-1", "-16", "16" };
+
+    Act(args);
+
+    Assert("Root: 4");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_4_Degree) {
+    vector<string> args = { "POLINOMIAL_4_DEGREE", "2.5", "3.5", "1", "1", "-9", "-9", "0" };
+
+    Act(args);
+
+    Assert("Root: 3");
+}
+
+TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Exponent) {
+    vector<string> args = { "EXPONENT", "-1", "1", "1", "2", "-1" };
+
+    Act(args);
+
+    Assert("Root: 0");
+}
