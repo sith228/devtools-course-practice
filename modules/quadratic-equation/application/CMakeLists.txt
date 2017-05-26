@@ -8,7 +8,7 @@ add_executable(${target} ${srcs})
 set_target_properties(${target} PROPERTIES
     OUTPUT_NAME ${MODULE}
     LABELS "${MODULE};Application")
-
+target_link_libraries(${target} lib_complex-number)
 target_link_libraries(${target} ${LIBRARY})
 
 if (UNIX)
