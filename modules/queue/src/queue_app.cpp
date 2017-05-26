@@ -2,6 +2,7 @@
 
 // #include <stdlib.h>
 // #include <stdint.h>
+#include <string>
 #include <sstream>
 
 #include "include/queue.h"
