@@ -18,7 +18,7 @@ double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     CalculateDerivativePolynom(size - 1, polynom_coef,
                                                polynom_derivative_coef);
     int iter = 0;
-    while (fabs(x1 - x) >= eps && iter<1000) {
+    while (fabs(x1 - x) >= eps && iter < 1000) {
         iter++;
         x = x1;
         if (iter == 999)
