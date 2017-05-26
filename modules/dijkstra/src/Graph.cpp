@@ -4,7 +4,8 @@
 
 edge::edge() : weight(0), key(0), next(0) {}
 
-edge::edge(const int _weight, const int _key) : weight(_weight), key(_key), next(0) {}
+edge::edge(const int _weight, const int _key) : 
+  weight(_weight), key(_key), next(0) {}
 
 void edge::setNext(edge* _next) { next = _next; }
 
@@ -27,8 +28,7 @@ void graph::addEdge(const int _weight, const int key1, const int key2) {
     return;
   if (node[key1] == 0)
     node[key1] = new edge(_weight, key2);
-  else
-  {
+  else {
     edge* tmp = node[key1];
     while (tmp->getNext())
       tmp = tmp->getNext();
@@ -37,8 +37,7 @@ void graph::addEdge(const int _weight, const int key1, const int key2) {
 
   if (node[key2] == 0)
     node[key2] = new edge(_weight, key1);
-  else
-  {
+  else {
     edge* tmp = node[key2];
     while (tmp->getNext())
       tmp = tmp->getNext();

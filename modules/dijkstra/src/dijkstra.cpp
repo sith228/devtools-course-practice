@@ -1,8 +1,8 @@
+// Copyright 2017 Kalinin Vladimir
 #include "include/dijkstra.h"
 #include <limits.h>
 
-int * dijkstra(int node_index, graph grf)
-{
+int * dijkstra(int node_index, graph grf) {
   int* weight = new int[grf.getSize()];
   for (int i = 0; i < grf.getSize(); i++)
     weight[i] = INT_MAX;
@@ -24,7 +24,8 @@ int * dijkstra(int node_index, graph grf)
     mark[minWeightNode] = 1;
     edge* tmp = grf.getNode(minWeightNode);
     while (tmp) {
-      if (weight[tmp->getKey()] > weight[minWeightNode] + tmp->getWeight() && mark[tmp->getKey()] == 0)
+      if (weight[tmp->getKey()] > weight[minWeightNode] + 
+        tmp->getWeight() && mark[tmp->getKey()] == 0)
         weight[tmp->getKey()] = weight[minWeightNode] + tmp->getWeight();
       tmp = tmp->getNext();
     }
