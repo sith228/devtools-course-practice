@@ -10,7 +10,7 @@ set_target_properties(${target} PROPERTIES
     LABELS "${MODULE};Application")
 
 target_link_libraries(${target} ${LIBRARY})
-target_link_libraries(${target} lib_complex-number)
+
 if (UNIX)
   target_link_libraries(${target} ${CMAKE_THREAD_LIBS_INIT})
 endif (UNIX)

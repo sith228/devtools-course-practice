@@ -13,7 +13,6 @@ endif()
 add_executable(${target} ${srcs} ${hdrs})
 set_target_properties(${target} PROPERTIES
     LABELS "${MODULE};Test")
-target_link_libraries(${target} lib_complex-number)
 
 if (UNIX)
   target_link_libraries(${target} gtest ${CMAKE_THREAD_LIBS_INIT} pthread)
