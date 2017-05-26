@@ -1,5 +1,6 @@
 // Copyright 2017 Maxim Doronin
 
+#include <stdlib.h>
 #include <string>
 #include <vector>
 
