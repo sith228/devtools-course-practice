@@ -1,5 +1,7 @@
 // Copyright 2017 Mironova Anna
 
+#include <stdlib.h>
+#include <stdint.h>
 #include <string>
 #include <sstream>
 

@@ -1,5 +1,6 @@
 // Copyright 2017 Mironova Anna
 
+#include <stdlib.h>
 #include <string>
 
 #include "include/queue_app.h"
