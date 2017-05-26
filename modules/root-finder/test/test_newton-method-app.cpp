@@ -12,9 +12,7 @@ using std::string;
 
 class NewtonMethodApplicationTest : public ::testing::Test {
  protected:
-    //virtual void SetUp() {}
-
-    void Act(std::vector<std::string> args_) {
+     void Act(std::vector<std::string> args_) {
         std::vector<const char*> options;
 
         options.push_back("appname");
@@ -98,48 +96,54 @@ TEST_F(NewtonMethodApplicationTest, Can_Detect_Zero_As_First_Coeff) {
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Detect_No_Monotone_Function) {
-    vector<string> args = { "POLINOMIAL_2_DEGREE", "0.01", "-4", "4", "2", "1", "-6" };
-
+    vector<string> args = { "POLINOMIAL_2_DEGREE" };
+    string added[] = { "0.01", "-4", "4", "2", "1", "-6" };
+    args.insert(args.end(), added, added + 6);
     Act(args);
 
     Assert("function isnot monotone or its point");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Segment_Is_Point) {
-    vector<string> args = { "POLINOMIAL_2_DEGREE", "0.01", "4", "4", "2", "1", "-6" };
-
+    vector<string> args = { "POLINOMIAL_2_DEGREE" };
+    string added[] = { "0.01", "4", "4", "2", "1", "-6" };
+    args.insert(args.end(), added, added + 6);
     Act(args);
 
     Assert("function isnot monotone or its point");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Function_Hasnt_Roots) {
-    vector<string> args = { "POLINOMIAL_2_DEGREE", "0.01", "3", "4", "2", "1", "-6" };
-
+    vector<string> args = { "POLINOMIAL_2_DEGREE" };
+    string added[] = { "0.01", "3", "4", "2", "1", "-6" };
+    args.insert(args.end(), added, added + 6);
     Act(args);
 
     Assert("segment have not desidion");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_2_Degree) {
-    vector<string> args = { "POLINOMIAL_2_DEGREE", "0.01", "0", "2", "2", "1", "-6" };
-
+    vector<string> args = { "POLINOMIAL_2_DEGREE" };
+    string added[] = { "0.01", "0", "2", "2", "1", "-6" };
+    args.insert(args.end(), added, added + 6);
     Act(args);
 
     Assert("Root: 1.5");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_3_Degree) {
-    vector<string> args = { "POLINOMIAL_3_DEGREE", "0.01", "3", "6", "1", "-1", "-16", "16" };
-
+    vector<string> args = { "POLINOMIAL_3_DEGREE" };
+    string added[] = { "0.01", "3", "6", "1", "-1", "-16", "16" };
+    args.insert(args.end(), added, added + 7);
     Act(args);
 
     Assert("Root: 4");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_4_Degree) {
-    vector<string> args = { "POLINOMIAL_4_DEGREE", "0.01", "2.5", "3.5", "1", "1", "-9", "-9", "0" };
-
+    vector<string> args = { "POLINOMIAL_4_DEGREE", "0.01" };
+    string added[] = { "2.5", "3.5", "1", "1", "-9", "-9", "0" };
+    args.insert(args.end(), added, added + 7);
     Act(args);
 
     Assert("Root: 3");
@@ -162,8 +166,9 @@ TEST_F(NewtonMethodApplicationTest, Low_Accuracy_Affect_On_Result) {
 }
 
 TEST_F(NewtonMethodApplicationTest, Hi_Accuracy_Affect_On_Result) {
-    vector<string> args = { "EXPONENT", "0.0001", "0", "0.5", "1", "2.5", "-2" };
-
+    vector<string> args = { "EXPONENT" };
+    string added[] = { "0.0001", "0", "0.5", "1", "2.5", "-2" };
+    args.insert(args.end(), added, added + 6);
     Act(args);
 
     Assert("Root: 0.277259");
