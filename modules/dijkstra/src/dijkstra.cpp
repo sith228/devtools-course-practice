@@ -35,7 +35,7 @@ int * dijkstra(int node_index, graph grf) {
       if (mark[i] == 0)
         allNodesMarked = false;
   }
-  delete mark;
+  delete [] mark;
 
   return weight;
 }
