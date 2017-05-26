@@ -125,7 +125,7 @@ valType Queue <valType> ::Pop() {
         len_--;
         return elem;
     }
-    valType felem;
+    valType felem = 0;
     return felem;
 }
 
@@ -136,7 +136,7 @@ valType Queue <valType> ::Top() {
     if (!IsEmpty()) {
         return queue_ptr_[head_];
     }
-    valType felem;
+    valType felem = 0;
     return felem;
 }
 
