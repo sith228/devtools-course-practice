@@ -1,15 +1,15 @@
-#include "..\include\ColorConverter.h"
-#include "..\include\hsb_hsv_space.h"
-#include "..\include\lab_space.h"
-#include "..\include\rgb_space.h"
-#include "..\include\xyz_space.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <string>
 #include <sstream>
+
+#include "..\include\ColorConverter.h"
+#include "..\include\hsb_hsv_space.h"
+#include "..\include\lab_space.h"
+#include "..\include\rgb_space.h"
+#include "..\include\xyz_space.h"
 
 ColorConverter::ColorConverter() : message_("") {}
 
@@ -57,9 +57,9 @@ unsigned int ParseType(const char* arg) {
     return type;
 }
 
-void init(HSBHSVSpace* _hsbhsv, RGBSpace* _rgb, LABSpace* _lab, XYZSpace* _xyz, const Arguments& _args) {
-    switch (_args.inType)
-    {
+void init(HSBHSVSpace* _hsbhsv, RGBSpace* _rgb, LABSpace* _lab, XYZSpace* _xyz,
+    const Arguments& _args) {
+    switch (_args.inType) {
     case 1:
         _hsbhsv = new HSBHSVSpace(_args.value1, _args.value2, _args.value3);
         break;
@@ -78,7 +78,6 @@ void init(HSBHSVSpace* _hsbhsv, RGBSpace* _rgb, LABSpace* _lab, XYZSpace* _xyz, 
 }
 
 std::string ColorConverter::operator()(int argc, const char** argv) {
-
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
@@ -91,15 +90,14 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     } catch (std::string& str) {
         return str;
     }
-    
+
     HSBHSVSpace *hsbhsv;
     RGBSpace *rgb;
     LABSpace *lab;
     XYZSpace *xyz;
     init(hsbhsv, rgb, lab, xyz, arg_);
     std::ostringstream stream;
-    switch (arg_.outType)
-    {
+    switch (arg_.outType) {
     case 1:
         if (rgb) {
             hsbhsv = new HSBHSVSpace(*rgb);
