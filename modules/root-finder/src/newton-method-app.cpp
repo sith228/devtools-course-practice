@@ -47,7 +47,7 @@ std::vector<float> NewtonMethodApplication::getBounds(int argc, const char** arg
 	std::vector<float> bounds;
 	if (argc < 4) {
 		help(argv[0], "ERROR: Input bounds at first.\n\n");
-		return bounds;
+		throw std::string("ERROR: No bounds!");
 	}
 	bounds.push_back(parseFloat(argv[2]));
 	bounds.push_back(parseFloat(argv[3]));
@@ -58,7 +58,7 @@ std::vector<float> NewtonMethodApplication::getKoefs(int argc, const char** argv
     std::vector<float> koefs;
 	if (argc <= 4) {
 		help(argv[0], "ERROR: There is should be coefficients.\n\n");
-		return koefs;
+		throw std::string("ERROR: No coefficients!");
 	}
     for (int i = 4; i < argc; i++) {
         koefs.push_back(parseFloat(argv[i]));
@@ -70,9 +70,25 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
     if (!isThereArguments(argc, argv)) {
         return message_;
     }
-	//std::vector<float> bounds = getBounds(argc, argv);
-    //std::vector<float> koefs = getKoefs(argc, argv);
-	//Function* function = FunctionFactory::createFunction(argv[1], koefs);
-
+    std::vector<float> bounds;
+    std::vector<float> koefs;
+    try {
+        bounds = getBounds(argc, argv);
+        koefs = getKoefs(argc, argv);
+    }
+    catch(std::string& str) {
+        return str;
+    }
+	Function* function = FunctionFactory::createFunction(argv[1], koefs);
+    NewtonMethod* newtonMethod = new NewtonMethod();
+    newtonMethod->SetAB(bounds.at(0), bounds.at(1));
+    newtonMethod->SetAccuracy(0.001f);
+    try {
+        float root = newtonMethod->FindRoot(function);
+    }
+    catch (std::string& str) {
+        return str;
+    }
+	message_ = "Root: " + std::to_string(root);
     return message_;
 }
