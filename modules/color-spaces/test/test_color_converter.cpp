@@ -51,7 +51,7 @@ TEST_F(ColorConverterApplicationTest, Not_Five_Arguments) {
 }
 
 TEST_F(ColorConverterApplicationTest, Wrong_Type) {
-    vector<string> args = { "1", "2", "3", "HSV", "asd" };
+    vector<string> args = { "1", "2", "3", "asd", "asd" };
 
     Act(args);
 
