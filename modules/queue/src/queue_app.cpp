@@ -19,8 +19,7 @@ void QueueApp::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
         "  $ " + appname + " <operation> <element if push>\n\n " +
         "Where element is int-precision number, " +
-        "and <operation> is one of 'push', 'pop', " +
-        "'top', 'length', 'last', 'first'.\n";
+        "and <operation> is one of 'push', 'pop', 'top'.\n";
 }
 
 bool QueueApp::validateNumberOfArguments(int argc, const char** argv) {
@@ -53,12 +52,6 @@ int parseOperation(const char* arg) {
         op = 2;
     } else if (strcmp(arg, "top") == 0) {
         op = 3;
-    } else if (strcmp(arg, "length") == 0) {
-        op = 4;
-    } else if (strcmp(arg, "last") == 0) {
-        op = 5;
-    } else if (strcmp(arg, "first") == 0) {
-        op = 6;
     } else {
         throw std::string("Wrong operation format!");
     }
@@ -92,15 +85,6 @@ std::string QueueApp::operator()(int argc, const char** argv) {
         break;
     case 3:
         stream << "element = " << queue.Top() << " ";
-        break;
-    case 4:
-        stream << "length = " << queue.GetQueueLen() << " ";
-        break;
-    case 5:
-        stream << "last = " << queue.GetQueueTail() << " ";
-        break;
-    case 6:
-        stream << "first = " << queue.GetQueueHead() << " ";
         break;
     }
 
