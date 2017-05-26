@@ -18,7 +18,6 @@ typedef vector<const char*> AppArgs;
 
 class ArithmeticCalculatorTest : public ::testing::Test {
  protected:
-    // virtual void SetUp() {}
 
     ArithmeticCalculatorTest() : retcode_(0) {}
 

@@ -25,7 +25,7 @@ static std::pair<bool, double> TryParseDouble(const char *s) {
     return std::make_pair(end[0] == 0, val);
 }
 
-static void printHelp(const char *appname, std::ostream *ofs) {
+static void PrintHelp(const char *appname, std::ostream *ofs) {
     *ofs <<
     appname << ": a simple arithmetic calculator application. Usage:\n"
     "\n    " << appname << " <expr>"
@@ -38,7 +38,7 @@ static void printHelp(const char *appname, std::ostream *ofs) {
     "\n";
 }
 
-static std::ostream& printError(const char* appname) {
+static std::ostream& PrintError(const char* appname) {
     cerr << appname << ": error: ";
     return cerr;
 }
@@ -48,12 +48,12 @@ static std::ostream& printError(const char* appname) {
 int ArithmeticCalculator(int argc, const char * const *argv) {
     auto appname = argc > 0 ? argv[0] : "ArithmeticCalculator";
     if (argc <= 1) {
-        printHelp(appname, &cerr);
+        PrintHelp(appname, &cerr);
         return RESULT_BAD_ARGUMENTS;
     }
 
     if (argc > 3) {
-        printError(appname) << "wrong number of arguments\n";
+        PrintError(appname) << "wrong number of arguments\n";
         return RESULT_BAD_ARGUMENTS;
     }
 
@@ -62,7 +62,7 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
         bool ok;
         std::tie(ok, x) = TryParseDouble(argv[2]);
         if (!ok) {
-            printError(appname) << "cannot parse formal parameter: \""
+            PrintError(appname) << "cannot parse formal parameter: \""
                                 << argv[2] << "\" is not a number\n";
             return RESULT_ERROR_PARSING;
         }
@@ -73,7 +73,7 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
     ArithmeticParser ap;
 
     if (!ap.Parse(expr)) {
-        printError(appname) << "cannot parse expression\n";
+        PrintError(appname) << "cannot parse expression\n";
         return RESULT_ERROR_PARSING;
     }
 
