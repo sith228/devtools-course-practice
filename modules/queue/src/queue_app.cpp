@@ -1,10 +1,7 @@
 // Copyright 2017 Mironova Anna
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <string>
+// #include <stdlib.h>
+// #include <stdint.h>
 #include <sstream>
 
 #include "include/queue.h"
