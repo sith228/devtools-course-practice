@@ -83,7 +83,7 @@ TEST_F(ColorConverterApplicationTest, Wrong_Lightness_LAB) {
 }
 
 TEST_F(ColorConverterApplicationTest, Wrong_A_Color_LAB) {
-    vector<string> args = { "1", "400", "3", "HSV", "RGB" };
+    vector<string> args = { "1", "400", "3", "LAB", "RGB" };
 
     Act(args);
 
@@ -91,7 +91,7 @@ TEST_F(ColorConverterApplicationTest, Wrong_A_Color_LAB) {
 }
 
 TEST_F(ColorConverterApplicationTest, Wrong_B_Color_LAB) {
-    vector<string> args = { "1", "2", "400", "HSV", "RGB" };
+    vector<string> args = { "1", "2", "400", "LAB", "RGB" };
 
     Act(args);
 

@@ -46,13 +46,14 @@ uint16_t ParseInt(const char* arg) {
 
 unsigned int ParseType(const char* arg) {
     unsigned int type(-1);
-    if (strcmp(arg, "HSV"))
+	std::string arg_(arg);
+    if (!arg_.compare("HSV"))
         type = 1;
-    else if (strcmp(arg, "RGB"))
+    else if (!arg_.compare("RGB"))
         type = 2;
-    else if (strcmp(arg, "LAB"))
+    else if (!arg_.compare("LAB"))
         type = 3;
-    else if (strcmp(arg, "XYZ"))
+    else if (!arg_.compare("XYZ"))
         type = 4;
     else
         throw std::string("Wrong type!");
@@ -73,22 +74,42 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         return str;
     }
 
-    HSBHSVSpace *hsbhsv;
-    RGBSpace *rgb;
-    LABSpace *lab;
-    XYZSpace *xyz;
+    HSBHSVSpace *hsbhsv = nullptr;
+    RGBSpace *rgb = nullptr;
+    LABSpace *lab = nullptr;
+    XYZSpace *xyz = nullptr;
     switch (arg_.inType) {
     case 1:
-        hsbhsv = new HSBHSVSpace(arg_.value1, arg_.value2, arg_.value3);
+        try {
+            hsbhsv = new HSBHSVSpace(arg_.value1, arg_.value2, arg_.value3);
+        } catch (std::string e) {
+            message_ = e;
+            return message_;
+        }
         break;
     case 2:
-        rgb = new RGBSpace(arg_.value1, arg_.value2, arg_.value3);
+        try {
+            rgb = new RGBSpace(arg_.value1, arg_.value2, arg_.value3);
+        } catch (std::string e) {
+            message_ = e;
+            return message_;
+        }
         break;
     case 3:
-        lab = new LABSpace(arg_.value1, arg_.value2, arg_.value3);
+        try {
+            lab = new LABSpace(arg_.value1, arg_.value2, arg_.value3);
+        } catch (std::string e) {
+            message_ = e;
+            return message_;
+        }
         break;
     case 4:
-        xyz = new XYZSpace(arg_.value1, arg_.value2, arg_.value3);
+        try {
+            xyz = new XYZSpace(arg_.value1, arg_.value2, arg_.value3);
+        } catch (std::string e) {
+            message_ = e;
+            return message_;
+        }
         break;
     default:
         break;
@@ -106,7 +127,7 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
             hsbhsv = new HSBHSVSpace(*new RGBSpace(*xyz));
             stream << "XYZ";
         }
-        stream << " to HSBHSV: " << std::endl <<
+        stream << +" to HSBHSV: " << std::endl <<
             "hue: "<< hsbhsv->GetHue() << std::endl <<
             "saturation: "<< hsbhsv->GetSaturation() << std::endl <<
             "brightnes: " << hsbhsv->GetValueBrightnes() << std::endl;
