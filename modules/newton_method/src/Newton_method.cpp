@@ -6,7 +6,12 @@
 #include <ctime>
 #include <cmath>
 #include <random>
+#include <stdlib.h>
 
+double rand_r(unsigned int seed) {
+    srand(seed);
+    return static_cast<double>(rand());
+}
 
 double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_coef) {
@@ -48,9 +53,10 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
 void NewtonMethod::GeneateRandomPolynom(unsigned int size,
                                                     double *polynom_coef) {
     unsigned int seed = 0;
-    srand(seed);
+    //int rand_r(unsigned int *seedp);
+    //srand(time(0));
     for (unsigned int i = 0; i < size; i++) {
-        polynom_coef[i] = -5.0 + static_cast<double>(rand()
+        polynom_coef[i] = -5.0 + static_cast<double>(rand_r(seed)
                                                            / RAND_MAX * 10);
     }
 }
