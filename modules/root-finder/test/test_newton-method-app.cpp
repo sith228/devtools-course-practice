@@ -64,7 +64,7 @@ TEST_F(NewtonMethodApplicationTest, Is_Checking_Any_Coefficients) {
 
     Act(args);
 
-    Assert("Mismatch in the number of arguments");
+    Assert("ERROR: No coefficients");
 }
 
 TEST_F(NewtonMethodApplicationTest, Is_Checking_Coefficients) {
