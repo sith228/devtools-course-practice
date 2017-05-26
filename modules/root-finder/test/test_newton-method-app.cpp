@@ -59,6 +59,14 @@ TEST_F(NewtonMethodApplicationTest, Is_Checking_Bounds) {
     Assert("ERROR: No bounds!");
 }
 
+TEST_F(NewtonMethodApplicationTest, Is_Checking_Any_Coefficients) {
+    vector<string> args = { "EXPONENT", "0.01", "0", "1" };
+
+    Act(args);
+
+    Assert("Mismatch in the number of arguments");
+}
+
 TEST_F(NewtonMethodApplicationTest, Is_Checking_Coefficients) {
     vector<string> args = { "EXPONENT", "0.01", "0", "1", "1" };
 

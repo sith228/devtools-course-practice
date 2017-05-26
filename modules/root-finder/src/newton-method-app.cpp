@@ -113,9 +113,11 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
     }
     catch (std::string& str) {
         help(argv[0], str + std::string("\n"));
+        delete function;
         return message_;
     }
 
     message_ = "Root: " + std::to_string(root);
+    delete function;
     return message_;
 }

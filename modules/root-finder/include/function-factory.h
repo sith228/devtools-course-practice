@@ -25,7 +25,6 @@ class FunctionFactory {
                  case 1: function = new Polynomial3Degree(koefs); break;
                  case 2: function = new Polynomial4Degree(koefs); break;
                  case 3: function = new Exponent(koefs); break;
-                 default: function = nullptr;
              }
              return function;
          }
