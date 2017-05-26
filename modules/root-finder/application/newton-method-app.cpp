@@ -1,7 +1,7 @@
 // Copyright 2017 Maxim Doronin
 
 #include <iostream>
-#include "include\newton-method-app.h"
+#include "include/newton-method-app.h"
 
 int main(int argc, const char** argv) {
     NewtonMethodApplication app;
