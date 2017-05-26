@@ -2,21 +2,16 @@
 #include <gtest/gtest.h>
 
 #include "include/dijkstra.h"
-#include "src/dijkstra.cpp"
 #include "include/Graph.h"
-#include "src/Graph.cpp"
-
-#include <iostream>
-using namespace std;
 
 
 TEST(Kalinin_dijkstra_tests, Can_Create_Edge) {
   // Arrange
   edge a1;
   edge a2(1, 2);
+
   // Act
   
-
   // Assert
   EXPECT_EQ(a2.getWeight(), 1);
   EXPECT_EQ(a2.getKey(), 2);
@@ -89,8 +84,6 @@ TEST(Kalinin_dijkstra_tests, Diykstra_Result_Is_Correct) {
 
   // Act
   int* tmp = dijkstra(1, gr);
-
-  //cout << tmp << endl;
 
   // Assert
   for (int i = 0; i < 6; i++)

@@ -24,7 +24,7 @@ int * dijkstra(int node_index, graph grf) {
     mark[minWeightNode] = 1;
     edge* tmp = grf.getNode(minWeightNode);
     while (tmp) {
-      if (weight[tmp->getKey()] > weight[minWeightNode] + 
+      if (weight[tmp->getKey()] > weight[minWeightNode] +
         tmp->getWeight() && mark[tmp->getKey()] == 0)
         weight[tmp->getKey()] = weight[minWeightNode] + tmp->getWeight();
       tmp = tmp->getNext();
