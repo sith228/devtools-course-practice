@@ -1,11 +1,10 @@
 // Copyright 2017 Dmitry Dryakhlov
 
 #define _USE_MATH_DEFINES
-#include <cmath>
+#include "../include/Newton_method.h"
 #include <stdexcept>
 #include <time.h>
-#include <iostream>
-#include "../include/Newton_method.h"
+#include <cmath>
 using namespace std;
 
 double NewtonMethod::NewtonMethodPolynom(double eps, size_t size,
@@ -16,13 +15,13 @@ double NewtonMethod::NewtonMethodPolynom(double eps, size_t size,
         throw "polynom is const";
     double x = 0, x1 = 1;
     double *polynom_derivative_coef = new double[size - 1];
-    CalculateDerivativePolynom(size - 1, polynom_coef, polynom_derivative_coef);
+   CalculateDerivativePolynom(size - 1, polynom_coef, polynom_derivative_coef);
     while (fabs(x1 - x) >= eps*0.01) {
         x = x1;
         double fx = PolynomValue(size, x, polynom_coef);
         double dfx = PolynomValue(size - 1, x, polynom_derivative_coef);
         if (abs(dfx) < eps)
-			break;
+           break;
         x1 = x - (fx / dfx);
     }
     delete[]polynom_derivative_coef;
@@ -46,24 +45,24 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
 
 void NewtonMethod::GeneateRandomPolynom(size_t size, double *polynom_coef) {
     srand((unsigned int)time(0));
-    for (int i = 0; i < size; i++) {
-        polynom_coef[i] = -5.0 + (double)(rand()) / RAND_MAX * 10;
+    for (unsigned int i = 0; i < size; i++) {
+        polynom_coef[i] = -5.0 + static_cast<double>((double)(rand())
+                                                           / RAND_MAX * 10);
     }
 }
 
-bool NewtonMethod::CheckRootPolynom(double x, double eps, size_t size, const double * coef)
-{
+bool NewtonMethod::CheckRootPolynom(double x, double eps, size_t size,
+                                                   const double *coef) {
     return abs(PolynomValue(size, x, coef))<eps;
 }
 
-bool NewtonMethod::CheckRootFunction(double x, double eps)
-{
+bool NewtonMethod::CheckRootFunction(double x, double eps) {
     return abs(FunctionValue(x)) < eps*10;
 }
 
 double NewtonMethod::PolynomValue(size_t size, double x, const double * coef) {
     double sum = 0.0;
-    for (int k = 0; k < size; k++) {
+    for (unsigned int k = 0; k < size; k++) {
         sum += (coef[k] * pow(x, k));
     }
     return sum;
@@ -71,7 +70,7 @@ double NewtonMethod::PolynomValue(size_t size, double x, const double * coef) {
 
 void NewtonMethod::CalculateDerivativePolynom(size_t size,
     const double * polynom_coef, double * polynom_derivative_coef) {
-    for (int i = 0; i < size; i++) {
+    for (int unsigned i = 0; i < size; i++) {
         polynom_derivative_coef[i] = (i + 1) * polynom_coef[i + 1];
     }
 }
