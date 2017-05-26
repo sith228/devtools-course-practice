@@ -175,8 +175,6 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
             "Y: " << xyz->GetY() << std::endl <<
             "Z: " << xyz->GetZ() << std::endl;
         break;
-    default:
-        break;
     }
     message_ = stream.str();
     if (hsbhsv)
