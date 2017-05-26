@@ -54,24 +54,13 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Print_Result_of_Simple_Expression PROPERTIES
     PASS_REGULAR_EXPRESSION "4"
-    LABELS "${MODULE}"
-    WILL_FAIL TRUE)
+    LABELS "${MODULE}")
 
 add_test(
     NAME ${prefix}_can_Print_Result_of_Expression_With_Parameter
-    COMMAND ${APPLICATION} "104 + x" "42"
+    COMMAND ${APPLICATION} "104 + x" 42
 )
 set_tests_properties (${prefix}_can_Print_Result_of_Expression_With_Parameter
     PROPERTIES
-    PASS_REGULAR_EXPRESSION ""
-    LABELS "${MODULE}"
-    WILL_FAIL TRUE)
-
-add_test(
-    NAME ${prefix}
-    COMMAND ${APPLICATION}
-)
-set_tests_properties (${prefix} PROPERTIES
     PASS_REGULAR_EXPRESSION "146"
-    LABELS "${MODULE}"
-    WILL_FAIL TRUE)
+    LABELS "${MODULE}")
