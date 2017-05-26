@@ -115,7 +115,7 @@ template <class valType>
 valType Queue <valType> ::Pop() {
     if (queue_ptr_ == nullptr) throw "Queue was deleted!";
     if (IsEmpty()) throw "Queue is empty!";
-    if( !IsEmpty() ) {
+    if (!IsEmpty()) {
         valType elem = queue_ptr_[head_];
         if (head_ == max_size_ - 1) {
             head_ = 0;
@@ -125,6 +125,8 @@ valType Queue <valType> ::Pop() {
         len_--;
         return elem;
     }
+    valType felem;
+    return felem;
 }
 
 template <class valType>
@@ -134,6 +136,8 @@ valType Queue <valType> ::Top() {
     if (!IsEmpty()) {
         return queue_ptr_[head_];
     }
+    valType felem;
+    return felem;
 }
 
 template <class valType>
