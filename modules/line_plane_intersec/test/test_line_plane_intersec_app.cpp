@@ -110,3 +110,26 @@ TEST_F(ApplicationTest, Line_Lies_In_Plane) {
     Assert("Line and plane are parallel or line lies in plane.*");
 }
 
+TEST_F(ApplicationTest, Incorrect_Input_When_Set_Line_With_2_Points) {
+    vector<string> args = {
+        "0", "0", "0", "0", "0", "0",
+        "-3", "0", "0", "0", "0", "3", "0", "1", "1" };
+
+    Act(args);
+
+    Assert("Incorrect input");
+}
+
+
+TEST_F(ApplicationTest, Incorrect_Input_When_Set_Plane_With_3_Points) {
+    vector<string> args = {
+        "-3", "0", "-2", "-4", "-3", "1",
+        "0", "0", "0", "0", "0", "0", "0", "1", "1" };
+
+    Act(args);
+
+    Assert("Incorrect input");
+}
+
+
+

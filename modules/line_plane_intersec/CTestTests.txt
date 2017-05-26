@@ -74,3 +74,19 @@ add_test(
 set_tests_properties (${prefix}_Line_Lies_In_Plane PROPERTIES
     PASS_REGULAR_EXPRESSION "Line and plane are parallel or line lies in plane"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Incorrect_Input_When_Set_Line_With_2_Points
+    COMMAND ${APPLICATION} 0 0 0 0 0 0 -3 0 0 0 0 3 0 1 1
+)
+set_tests_properties (${prefix}_Incorrect_Input_When_Set_Line_With_2_Points PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect input"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Incorrect_Input_When_Set_Plane_With_3_Points
+    COMMAND ${APPLICATION} -3 0 -2 -4 -3 1 0 0 0 0 0 0 0 1 1
+)
+set_tests_properties (${prefix}_Incorrect_Input_When_Set_Plane_With_3_Points PROPERTIES
+    PASS_REGULAR_EXPRESSION "Incorrect input"
+    LABELS "${MODULE}")
