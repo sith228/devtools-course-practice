@@ -47,26 +47,37 @@ float NewtonMethodApplication::parseFloat(const char* arg) {
     return value;
 }
 
+float NewtonMethodApplication::getAccuracy(int argc,
+    const char** argv) {
+    float accuracy;
+    if (argc < 3) {
+        help(argv[0], "ERROR: Input accuracy at first.\n\n");
+        throw std::string("ERROR: No accuracy!");
+    }
+    accuracy = parseFloat(argv[2]);
+    return accuracy;
+}
+
 std::vector<float> NewtonMethodApplication::getBounds(int argc,
     const char** argv) {
     std::vector<float> bounds;
-    if (argc < 4) {
+    if (argc < 5) {
         help(argv[0], "ERROR: Input bounds at first.\n\n");
         throw std::string("ERROR: No bounds!");
     }
-    bounds.push_back(parseFloat(argv[2]));
     bounds.push_back(parseFloat(argv[3]));
+    bounds.push_back(parseFloat(argv[4]));
     return bounds;
 }
 
 std::vector<float> NewtonMethodApplication::getKoefs(int argc,
     const char** argv) {
     std::vector<float> koefs;
-    if (argc <= 4) {
+    if (argc <= 5) {
         help(argv[0], "ERROR: There is should be coefficients.\n\n");
         throw std::string("ERROR: No coefficients!");
     }
-    for (int i = 4; i < argc; i++) {
+    for (int i = 5; i < argc; i++) {
         koefs.push_back(parseFloat(argv[i]));
     }
     return koefs;
@@ -80,9 +91,11 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
         help(argv[0], "Function doesn't exist\n\n");
         return message_;
     }
+    float accuracy;
     std::vector<float> bounds;
     std::vector<float> koefs;
     try {
+        accuracy = getAccuracy(argc, argv);
         bounds = getBounds(argc, argv);
         koefs = getKoefs(argc, argv);
     }
@@ -93,7 +106,7 @@ std::string NewtonMethodApplication::operator()(int argc, const char** argv) {
     Function* function = FunctionFactory::createFunction(argv[1], koefs);
     NewtonMethod* newtonMethod = new NewtonMethod();
     newtonMethod->SetAB(bounds.at(0), bounds.at(1));
-    newtonMethod->SetAccuracy(0.001f);
+    newtonMethod->SetAccuracy(accuracy);
     float root;
     try {
         root = newtonMethod->FindRoot(function);
