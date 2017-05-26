@@ -1,12 +1,12 @@
 // Copyright 2017 Dmitry Dryakhlov
 
 #define _USE_MATH_DEFINES
+
 #include "../include/Newton_method.h"
-#include <stdexcept>
-#include <time.h>
-#include <math.h>
+#include <ctime>
+#include <cmath>
 #include <random>
-#include <stdlib.h>
+
 
 double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_coef) {
@@ -45,7 +45,8 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
     return x;
 }
 
-void NewtonMethod::GeneateRandomPolynom(unsigned int size, double *polynom_coef) {
+void NewtonMethod::GeneateRandomPolynom(unsigned int size,
+                                                    double *polynom_coef) {
     unsigned int seed = 0;
     srand(seed);
     for (unsigned int i = 0; i < size; i++) {
@@ -63,7 +64,8 @@ bool NewtonMethod::CheckRootFunction(double x, double eps) {
     return abs(FunctionValue(x)) < eps*10;
 }
 
-double NewtonMethod::PolynomValue(unsigned int size, double x, const double * coef) {
+double NewtonMethod::PolynomValue(unsigned int size, double x,
+                                                   const double * coef) {
     double sum = 0.0;
     for (unsigned int k = 0; k < size; k++) {
         sum += (coef[k] * pow(x, k));
