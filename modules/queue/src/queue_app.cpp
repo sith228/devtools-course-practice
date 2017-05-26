@@ -19,8 +19,8 @@ void QueueApp::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
         "  $ " + appname + " <operation> <element if push>\n\n " +
         "Where element is int-precision number, " +
-        "and <operation> is one of 'push', 'pop', 'top', " +
-        "'length', 'last', 'first'.\n";
+        "and <operation> is one of 'push', 'pop', " + 
+        "'top', 'length', 'last', 'first'.\n";
 }
 
 bool QueueApp::validateNumberOfArguments(int argc, const char** argv) {
