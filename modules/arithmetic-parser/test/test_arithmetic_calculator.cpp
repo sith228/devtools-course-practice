@@ -20,6 +20,8 @@ class ArithmeticCalculatorTest : public ::testing::Test {
  protected:
     // virtual void SetUp() {}
 
+    ArithmeticCalculatorTest() : retcode_(0) {}
+
     void Act(AppArgs args) {
         args.insert(args.begin(), "appname");
         testing::internal::CaptureStdout();
