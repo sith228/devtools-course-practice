@@ -80,7 +80,7 @@ add_test(
     COMMAND ${APPLICATION} POLINOMIAL_2_DEGREE 0.01 -4 4 2 1 -6
 )
 set_tests_properties (${prefix}_Can_Detect_No_Monotone_Function PROPERTIES
-    PASS_REGULAR_EXPRESSION "function isnot monotone or its point"
+    PASS_REGULAR_EXPRESSION "Function is not monotone or it is a point"
     LABELS "${MODULE}")
 
 add_test(
@@ -88,7 +88,7 @@ add_test(
     COMMAND ${APPLICATION} POLINOMIAL_2_DEGREE 0.01 4 4 2 1 -6
 )
 set_tests_properties (${prefix}_Can_Detect_If_Segment_Is_Point PROPERTIES
-    PASS_REGULAR_EXPRESSION "function isnot monotone or its point"
+    PASS_REGULAR_EXPRESSION "Function is not monotone or it is a point"
     LABELS "${MODULE}")
 
 add_test(
@@ -96,7 +96,7 @@ add_test(
     COMMAND ${APPLICATION} POLINOMIAL_2_DEGREE 0.01 3 4 2 1 -6
 )
 set_tests_properties (${prefix}_Can_Detect_If_Function_Hasnt_Roots PROPERTIES
-    PASS_REGULAR_EXPRESSION "segment have not desidion"
+    PASS_REGULAR_EXPRESSION "There are no roots on the segment"
     LABELS "${MODULE}")
 
 add_test(

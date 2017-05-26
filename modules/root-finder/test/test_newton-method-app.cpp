@@ -105,7 +105,7 @@ TEST_F(NewtonMethodApplicationTest, Can_Detect_No_Monotone_Function) {
     args.insert(args.end(), added, added + 6);
     Act(args);
 
-    Assert("function isnot monotone or its point");
+    Assert("Function is not monotone or it is a point");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Segment_Is_Point) {
@@ -114,7 +114,7 @@ TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Segment_Is_Point) {
     args.insert(args.end(), added, added + 6);
     Act(args);
 
-    Assert("function isnot monotone or its point");
+    Assert("Function is not monotone or it is a point");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Function_Hasnt_Roots) {
@@ -123,7 +123,7 @@ TEST_F(NewtonMethodApplicationTest, Can_Detect_If_Function_Hasnt_Roots) {
     args.insert(args.end(), added, added + 6);
     Act(args);
 
-    Assert("segment have not desidion");
+    Assert("There are no roots on the segment");
 }
 
 TEST_F(NewtonMethodApplicationTest, Can_Find_Root_On_Polinomial_2_Degree) {

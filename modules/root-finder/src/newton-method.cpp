@@ -56,13 +56,13 @@ float NewtonMethod::FindRoot(const Function* const function) {
         float xsum = std::abs(x0 - x1);
         while (xsum > Acc_) {
             if (x1 < A_ || x1 > B_)
-                throw std::string("segment have not desidion");
+                throw std::string("There are no roots on the segment");
             x0 = x1;
             x1 = x1 - function->f(x1) / function->df(x1);
             xsum = std::abs(x0 - x1);
         }
         return x1;
     } else {
-        throw std::string("function isnot monotone or its point");
+        throw std::string("Function is not monotone or it is a point");
     }
 }
