@@ -77,13 +77,5 @@ int ArithmeticCalculator(int argc, const char * const *argv) {
         return RESULT_ERROR_PARSING;
     }
 
-    double result;
-    if (!ap.Evaluate(x, &result)) {
-        printError(appname) << "cannot evaluate expression\n";
-        return RESULT_ERROR_EVALUATING;
-    }
-
-    std::cout << result << endl;
-
     return RESULT_SUCESS;
 }
