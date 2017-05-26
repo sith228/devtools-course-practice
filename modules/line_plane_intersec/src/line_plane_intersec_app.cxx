@@ -56,7 +56,7 @@ bool Application::ValidateNumberOfArguments(int argc, const char** argv) {
     return true;
 }
 
-double parseDouble(const char* arg) {
+double ParseDouble(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
@@ -77,17 +77,17 @@ std::string Application::operator()(int argc, const char** argv) {
     if (argc == 11) {
         try {
             intersection.SetLine(
-                parseDouble(argv[1]),
-                parseDouble(argv[2]),
-                parseDouble(argv[3]),
-                parseDouble(argv[4]),
-                parseDouble(argv[5]),
-                parseDouble(argv[6]));
+				ParseDouble(argv[1]),
+				ParseDouble(argv[2]),
+				ParseDouble(argv[3]),
+				ParseDouble(argv[4]),
+				ParseDouble(argv[5]),
+				ParseDouble(argv[6]));
             intersection.SetPlane(
-                parseDouble(argv[7]),
-                parseDouble(argv[8]),
-                parseDouble(argv[9]),
-                parseDouble(argv[10]));
+				ParseDouble(argv[7]),
+				ParseDouble(argv[8]),
+				ParseDouble(argv[9]),
+				ParseDouble(argv[10]));
         }
         catch (std::string& str) {
             return str;
@@ -95,27 +95,27 @@ std::string Application::operator()(int argc, const char** argv) {
     } else {
         try {
             std::vector<double> line_point1(3), line_point2(3);
-            line_point1[0] = parseDouble(argv[1]);
-            line_point1[1] = parseDouble(argv[2]);
-            line_point1[2] = parseDouble(argv[3]);
+            line_point1[0] = ParseDouble(argv[1]);
+            line_point1[1] = ParseDouble(argv[2]);
+            line_point1[2] = ParseDouble(argv[3]);
 
-            line_point2[0] = parseDouble(argv[4]);
-            line_point2[1] = parseDouble(argv[5]);
-            line_point2[2] = parseDouble(argv[6]);
+            line_point2[0] = ParseDouble(argv[4]);
+            line_point2[1] = ParseDouble(argv[5]);
+            line_point2[2] = ParseDouble(argv[6]);
 
             std::vector<double> plane_point1(3),
                 plane_point2(3), plane_point3(3);
-            plane_point1[0] = parseDouble(argv[7]);
-            plane_point1[1] = parseDouble(argv[8]);
-            plane_point1[2] = parseDouble(argv[9]);
+            plane_point1[0] = ParseDouble(argv[7]);
+            plane_point1[1] = ParseDouble(argv[8]);
+            plane_point1[2] = ParseDouble(argv[9]);
 
-            plane_point2[0] = parseDouble(argv[10]);
-            plane_point2[1] = parseDouble(argv[11]);
-            plane_point2[2] = parseDouble(argv[12]);
+            plane_point2[0] = ParseDouble(argv[10]);
+            plane_point2[1] = ParseDouble(argv[11]);
+            plane_point2[2] = ParseDouble(argv[12]);
 
-            plane_point3[0] = parseDouble(argv[13]);
-            plane_point3[1] = parseDouble(argv[14]);
-            plane_point3[2] = parseDouble(argv[15]);
+            plane_point3[0] = ParseDouble(argv[13]);
+            plane_point3[1] = ParseDouble(argv[14]);
+            plane_point3[2] = ParseDouble(argv[15]);
 
             intersection.SetLineWithTwoPoints(line_point1, line_point2);
             intersection.SetPlaneWithThreePoints(
