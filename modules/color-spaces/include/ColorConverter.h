@@ -9,7 +9,7 @@
 typedef struct {
     uint16_t colorComponent1;
     uint16_t colorComponent2;
-    uint16_t colorComponent1;
+    uint16_t colorComponent3;
 
     uint8_t inType;
     uint8_t outType;
