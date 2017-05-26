@@ -1,16 +1,9 @@
 // Copyright 2017 Dmitry Dryakhlov
 
 #define _USE_MATH_DEFINES
-
 #include "../include/Newton_method.h"
 #include <ctime>
 #include <cmath>
-#include <random>
-
-double rand_r(unsigned int seed) {
-    srand(seed);
-    return static_cast<double>(rand());
-}
 
 double NewtonMethod::NewtonMethodPolynom(double eps, unsigned int size,
     double *polynom_coef) {
@@ -51,10 +44,8 @@ double NewtonMethod::NewtonMethodFunction(double eps) {
 
 void NewtonMethod::GeneateRandomPolynom(unsigned int size,
                                                     double *polynom_coef) {
-    unsigned int seed = 0;
     for (unsigned int i = 0; i < size; i++) {
-        polynom_coef[i] = -5.0 + static_cast<double>(rand_r(seed)
-                                                           / RAND_MAX * 10);
+        polynom_coef[i] = static_cast<double>(i)*7.0;
     }
 }
 
