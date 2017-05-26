@@ -9,20 +9,20 @@
 class Function {
  public:
     explicit Function(std::vector<float> koefs);
-    virtual ~Function(){};
+    virtual ~Function() {}
     virtual float f(float x) const = 0;
     virtual float df(float x) const = 0;
     virtual float d2f(float x) const = 0;
  protected:
     std::vector<float> koefs;
     void generateThrow(std::string type) const;
-	void checkKoefs(int neededNumberOfKoefs) const;
+    void checkKoefs(int neededNumberOfKoefs) const;
 };
 
 class Polynomial2Degree : public Function {
  public:
     explicit Polynomial2Degree(std::vector<float> koefs) : Function(koefs) {}
-    virtual ~Polynomial2Degree(){};
+    virtual ~Polynomial2Degree() {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -31,7 +31,7 @@ class Polynomial2Degree : public Function {
 class Polynomial3Degree : public Function {
  public:
     explicit Polynomial3Degree(std::vector<float> koefs) : Function(koefs) {}
-    virtual ~Polynomial3Degree(){};
+    virtual ~Polynomial3Degree() {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -40,7 +40,7 @@ class Polynomial3Degree : public Function {
 class Polynomial4Degree : public Function {
  public:
     explicit Polynomial4Degree(std::vector<float> koefs) : Function(koefs) {}
-    virtual ~Polynomial4Degree(){};
+    virtual ~Polynomial4Degree() {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
@@ -49,7 +49,7 @@ class Polynomial4Degree : public Function {
 class Exponent : public Function {
  public:
     explicit Exponent(std::vector<float> koefs) : Function(koefs) {}
-    virtual ~Exponent(){};
+    virtual ~Exponent() {}
     virtual float f(float x) const;
     virtual float df(float x) const;
     virtual float d2f(float x) const;
