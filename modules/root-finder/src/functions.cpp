@@ -1,7 +1,7 @@
 // Copyright 2017 Maxim Doronin
 
 #include <cmath>
-
+#include <string>
 #include "include/functions.h"
 
 Function::Function(std::vector<float> koefs) {
@@ -13,21 +13,27 @@ Function::Function(std::vector<float> koefs) {
 */
 float Polynomial2Degree::f(float x) const {
     if (koefs.size() != 3) {
-        throw "Polynomial2Degree: Mismatch in the number of arguments";
+		std::string throws = "Polynomial2Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0)*pow(x, 2) + koefs.at(1)*x + koefs.at(2);
 }
 
 float Polynomial2Degree::df(float x) const {
     if (koefs.size() != 3) {
-        throw "Polynomial2Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial2Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 2*koefs.at(0)*x + koefs.at(1);
 }
 
 float Polynomial2Degree::d2f(float x) const {
     if (koefs.size() != 3) {
-        throw "Polynomial2Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial2Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 2*koefs.at(0);
 }
@@ -37,7 +43,9 @@ float Polynomial2Degree::d2f(float x) const {
 */
 float Polynomial3Degree::f(float x) const {
     if (koefs.size() != 4) {
-        throw "Polynomial3Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial3Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0)*pow(x, 3) + koefs.at(1)*pow(x, 2) + koefs.at(2)*x
     + koefs.at(3);
@@ -45,14 +53,18 @@ float Polynomial3Degree::f(float x) const {
 
 float Polynomial3Degree::df(float x) const {
     if (koefs.size() != 4) {
-        throw "Polynomial3Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial3Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 3*koefs.at(0)*pow(x, 2) + 2*koefs.at(1)*x + koefs.at(2);
 }
 
 float Polynomial3Degree::d2f(float x) const {
     if (koefs.size() != 4) {
-        throw "Polynomial3Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial3Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 6*koefs.at(0)*x + 2*koefs.at(1);
 }
@@ -62,7 +74,9 @@ float Polynomial3Degree::d2f(float x) const {
 */
 float Polynomial4Degree::f(float x) const {
     if (koefs.size() != 5) {
-        throw "Polynomial4Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial4Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0)*pow(x, 4) + koefs.at(1)*pow(x, 3)
     + koefs.at(2)*pow(x, 2) + koefs.at(3)*x + koefs.at(4);
@@ -70,7 +84,9 @@ float Polynomial4Degree::f(float x) const {
 
 float Polynomial4Degree::df(float x) const {
     if (koefs.size() != 5) {
-        throw "Polynomial4Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial4Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 4*koefs.at(0)*pow(x, 3) + 3*koefs.at(1)*pow(x, 2)
     + 2*koefs.at(2)*x + koefs.at(3);
@@ -78,7 +94,9 @@ float Polynomial4Degree::df(float x) const {
 
 float Polynomial4Degree::d2f(float x) const {
     if (koefs.size() != 5) {
-        throw "Polynomial4Degree: Mismatch in the number of arguments";
+        std::string throws = "Polynomial4Degree: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return 12*koefs.at(0)*pow(x, 2) + 6*koefs.at(1)*x + 2*koefs.at(2);
 }
@@ -88,21 +106,27 @@ float Polynomial4Degree::d2f(float x) const {
 */
 float Exponent::f(float x) const {
     if (koefs.size() != 3) {
-        throw "Exponent: Mismatch in the number of arguments";
+        std::string throws = "Exponent: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0) * exp(koefs.at(1) * x) + koefs.at(2);
 }
 
 float Exponent::df(float x) const {
     if (koefs.size() != 3) {
-        throw "Exponent: Mismatch in the number of arguments";
+        std::string throws = "Exponent: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0) * koefs.at(1) * exp(koefs.at(1) * x);
 }
 
 float Exponent::d2f(float x) const {
     if (koefs.size() != 3) {
-        throw "Exponent: Mismatch in the number of arguments";
+        std::string throws = "Exponent: ";
+        throws += "Mismatch in the number of arguments";
+        throw std::string(throws);
     }
     return koefs.at(0) * pow(koefs.at(1), 2) * exp(koefs.at(1) * x);
 }
