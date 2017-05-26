@@ -1,6 +1,7 @@
 // Copyright 2017 Dmitry Dryakhlov
 
 #define _USE_MATH_DEFINES
+
 #include "../include/Newton_method.h"
 #include <ctime>
 #include <cmath>
