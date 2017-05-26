@@ -46,7 +46,7 @@ uint16_t ParseInt(const char* arg) {
 
 unsigned int ParseType(const char* arg) {
     unsigned int type(-1);
-	std::string arg_(arg);
+    std::string arg_(arg);
     if (!arg_.compare("HSV"))
         type = 1;
     else if (!arg_.compare("RGB"))
