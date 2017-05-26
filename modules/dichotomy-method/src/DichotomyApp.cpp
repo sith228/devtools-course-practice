@@ -18,9 +18,10 @@ void DichotomyApp::help(const char* appname, const char* message) {
            "This is a method of dichotomy application.\n\n" +
            "Please provide arguments in the following format:\n\n"+
 
-           " $ " + appname +" <left_board_> <right_board_> <eps_><func_><\n\n"+
+           " $ " + appname +" <left_board_> <right_board_> <eps_> <func_>\n\n"+
 
-           "Where all arguments are double-precision numbers, " +
+           "Where <func_> int-precision number, " +
+           "<left_board_> <right_board_> <eps_> double-precision number, "
            "and <func_> is a choice of the kind of function\n";
 }
 
