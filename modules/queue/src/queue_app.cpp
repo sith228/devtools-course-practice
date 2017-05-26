@@ -67,7 +67,7 @@ std::string QueueApp::operator()(int argc, const char** argv) {
     }
     try {
         args.operation = parseOperation(argv[1]);
-        if (args.operation == 1 ) {
+        if ( args.operation == 1 ) {
             if (argc == 2) {
                 stream << "Enter item to insert!";
             } else {
