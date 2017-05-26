@@ -7,9 +7,9 @@
 #include <string>
 
 typedef struct {
-    uint16_t value1;
-    uint16_t value2;
-    uint16_t value3;
+    uint16_t colorComponent1;
+    uint16_t colorComponent2;
+    uint16_t colorComponent1;
 
     uint8_t inType;
     uint8_t outType;

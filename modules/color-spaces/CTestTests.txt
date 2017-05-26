@@ -28,10 +28,10 @@ set_tests_properties (${prefix}_Not_Five_Arguments PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_Correct_Create_HSVHSB
+    NAME ${prefix}_Correct_Create_HSBHSV
     COMMAND ${APPLICATION} 1 2 3 HSV RGB
 )
-set_tests_properties (${prefix}_Correct_Create_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_Correct_Create_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "to RGB"
     LABELS "${MODULE}")
 	
@@ -60,42 +60,42 @@ set_tests_properties (${prefix}_Correct_Create_XYZ PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_HSVHSB_to_HSVHSB
+    NAME ${prefix}_HSBHSV_to_HSBHSV
     COMMAND ${APPLICATION} 1 2 3 HSV HSV
 )
-set_tests_properties (${prefix}_HSVHSB_to_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_HSBHSV_to_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSBHSV"
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_RGB_to_HSVHSB
+    NAME ${prefix}_RGB_to_HSBHSV
     COMMAND ${APPLICATION} 1 2 3 RGB HSV
 )
-set_tests_properties (${prefix}_RGB_to_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_RGB_to_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSBHSV"
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_LAB_to_HSVHSB
+    NAME ${prefix}_LAB_to_HSBHSV
     COMMAND ${APPLICATION} 1 2 3 LAB HSV
 )
-set_tests_properties (${prefix}_LAB_to_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_LAB_to_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSBHSV"
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_XYZ_to_HSVHSB
+    NAME ${prefix}_XYZ_to_HSBHSV
     COMMAND ${APPLICATION} 1 2 3 XYZ HSV
 )
-set_tests_properties (${prefix}_XYZ_to_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_XYZ_to_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "to HSBHSV"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_HSVHSB_to_LAB
+    NAME ${prefix}_HSBHSV_to_LAB
     COMMAND ${APPLICATION} 1 2 3 HSV LAB
 )
-set_tests_properties (${prefix}_HSVHSB_to_LAB PROPERTIES
+set_tests_properties (${prefix}_HSBHSV_to_LAB PROPERTIES
     PASS_REGULAR_EXPRESSION "to LAB"
     LABELS "${MODULE}")
 	
@@ -116,10 +116,10 @@ set_tests_properties (${prefix}_LAB_to_LAB PROPERTIES
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_HSVHSB_to_XYZ
+    NAME ${prefix}_HSBHSV_to_XYZ
     COMMAND ${APPLICATION} 1 2 3 HSV XYZ
 )
-set_tests_properties (${prefix}_HSVHSB_to_XYZ PROPERTIES
+set_tests_properties (${prefix}_HSBHSV_to_XYZ PROPERTIES
     PASS_REGULAR_EXPRESSION "to XYZ"
     LABELS "${MODULE}")
 	
@@ -140,26 +140,26 @@ set_tests_properties (${prefix}_LAB_to_XYZ PROPERTIES
     LABELS "${MODULE}")
 	
 add_test(
-    NAME ${prefix}_Wrong_Hue_HSVHSB
+    NAME ${prefix}_Wrong_Hue_HSBHSV
     COMMAND ${APPLICATION} 400 2 3 HSV RGB
 )
-set_tests_properties (${prefix}_Wrong_Hue_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_Wrong_Hue_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "The index of hue not in the range 0-360"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_Wrong_Saturation_HSVHSB
+    NAME ${prefix}_Wrong_Saturation_HSBHSV
     COMMAND ${APPLICATION} 1 400 3 HSV RGB
 )
-set_tests_properties (${prefix}_Wrong_Saturation_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_Wrong_Saturation_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "The index of saturation not in the range 0-100"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_Wrong_Brightnes_HSVHSB
+    NAME ${prefix}_Wrong_Brightnes_HSBHSV
     COMMAND ${APPLICATION} 1 2 400 HSV RGB
 )
-set_tests_properties (${prefix}_Wrong_Brightnes_HSVHSB PROPERTIES
+set_tests_properties (${prefix}_Wrong_Brightnes_HSBHSV PROPERTIES
     PASS_REGULAR_EXPRESSION "The index of brightnes not in the range 0-100"
     LABELS "${MODULE}")
 
@@ -237,7 +237,15 @@ set_tests_properties (${prefix}_Wrong_Z_XYZ PROPERTIES
 	
 add_test(
     NAME ${prefix}_Wrong_Convert_Type
-    COMMAND ${APPLICATION} 1 2 3 asd asd
+    COMMAND ${APPLICATION} 1 2 3 HSV asd
+)
+set_tests_properties (${prefix}_Wrong_Convert_Type PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong type"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_Wrong_Input_Type
+    COMMAND ${APPLICATION} 1 2 3 asd HSV
 )
 set_tests_properties (${prefix}_Wrong_Convert_Type PROPERTIES
     PASS_REGULAR_EXPRESSION "Wrong type"

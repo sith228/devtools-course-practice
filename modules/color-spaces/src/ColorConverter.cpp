@@ -21,8 +21,8 @@ void ColorConverter::Help(const char* appname, const char* message) {
         "This is a color converter application.\n\n" +
         "Please provide arguments in the following format:\n\n" +
 
-        "  $ " + appname + " <value1> <value2> " +
-        "<value3> <inType> <outType>\n\n" +
+        "  $ " + appname + " <colorComponent1> <colorComponent2> " +
+        "<colorComponent1> <inType> <outType>\n\n" +
 
         "Where valueX arguments are integer numbers, " +
         "and <inType>, <outType> is one of 'HSV', 'RGB', 'LAB', 'XYZ'.\n";
@@ -63,9 +63,9 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         return message_;
     }
     try {
-        arg_.value1 = ParseInt(argv[1]);
-        arg_.value2 = ParseInt(argv[2]);
-        arg_.value3 = ParseInt(argv[3]);
+        arg_.colorComponent1 = ParseInt(argv[1]);
+        arg_.colorComponent2 = ParseInt(argv[2]);
+        arg_.colorComponent1 = ParseInt(argv[3]);
         arg_.inType = ParseType(argv[4]);
         arg_.outType = ParseType(argv[5]);
     } catch (std::string& str) {
@@ -79,7 +79,8 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     switch (arg_.inType) {
     case 1:
         try {
-            hsbhsv = new HSBHSVSpace(arg_.value1, arg_.value2, arg_.value3);
+            hsbhsv = new HSBHSVSpace(arg_.colorComponent1,
+                arg_.colorComponent2, arg_.colorComponent1);
         } catch (std::string& e) {
             message_ = e;
             return message_;
@@ -87,7 +88,8 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         break;
     case 2:
         try {
-            rgb = new RGBSpace(arg_.value1, arg_.value2, arg_.value3);
+            rgb = new RGBSpace(arg_.colorComponent1,
+                arg_.colorComponent2, arg_.colorComponent1);
         } catch (std::string& e) {
             message_ = e;
             return message_;
@@ -95,7 +97,8 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         break;
     case 3:
         try {
-            lab = new LABSpace(arg_.value1, arg_.value2, arg_.value3);
+            lab = new LABSpace(arg_.colorComponent1,
+                arg_.colorComponent2, arg_.colorComponent1);
         } catch (std::string& e) {
             message_ = e;
             return message_;
@@ -103,7 +106,8 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
         break;
     case 4:
         try {
-            xyz = new XYZSpace(arg_.value1, arg_.value2, arg_.value3);
+            xyz = new XYZSpace(arg_.colorComponent1,
+                arg_.colorComponent2, arg_.colorComponent1);
         } catch (std::string& e) {
             message_ = e;
             return message_;
