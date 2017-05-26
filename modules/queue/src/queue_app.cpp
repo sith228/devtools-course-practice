@@ -77,7 +77,7 @@ std::string QueueApp::operator()(int argc, const char** argv) {
             args.element = parseInt(argv[2]);
         }
     }
-    catch (std::string str) {
+    catch (std::string &str) {
         return str;
     }
 
