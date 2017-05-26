@@ -59,26 +59,6 @@ unsigned int ParseType(const char* arg) {
     return type;
 }
 
-void init(HSBHSVSpace* _hsbhsv, RGBSpace* _rgb, LABSpace* _lab, XYZSpace* _xyz,
-    const Arguments& _args) {
-    switch (_args.inType) {
-    case 1:
-        _hsbhsv = new HSBHSVSpace(_args.value1, _args.value2, _args.value3);
-        break;
-    case 2:
-        _rgb = new RGBSpace(_args.value1, _args.value2, _args.value3);
-        break;
-    case 3:
-        _lab = new LABSpace(_args.value1, _args.value2, _args.value3);
-        break;
-    case 4:
-        _xyz = new XYZSpace(_args.value1, _args.value2, _args.value3);
-        break;
-    default:
-        break;
-    }
-}
-
 std::string ColorConverter::operator()(int argc, const char** argv) {
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
@@ -97,7 +77,22 @@ std::string ColorConverter::operator()(int argc, const char** argv) {
     RGBSpace *rgb;
     LABSpace *lab;
     XYZSpace *xyz;
-    init(hsbhsv, rgb, lab, xyz, arg_);
+    switch (arg_.inType) {
+    case 1:
+        hsbhsv = new HSBHSVSpace(arg_.value1, arg_.value2, arg_.value3);
+        break;
+    case 2:
+        rgb = new RGBSpace(arg_.value1, arg_.value2, arg_.value3);
+        break;
+    case 3:
+        lab = new LABSpace(arg_.value1, arg_.value2, arg_.value3);
+        break;
+    case 4:
+        xyz = new XYZSpace(arg_.value1, arg_.value2, arg_.value3);
+        break;
+    default:
+        break;
+    }
     std::ostringstream stream;
     switch (arg_.outType) {
     case 1:
