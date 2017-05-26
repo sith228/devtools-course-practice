@@ -3,8 +3,9 @@
 #include "include/quadratic_equation.h"
 #include "include/quadratic_eq_app.h"
 
+#include <cmath>
+#include <limits>
 #include <string>
-
 #include <sstream>
 
 QuadrEquationCalc::QuadrEquationCalc() : message_("") {}
@@ -19,7 +20,7 @@ void QuadrEquationCalc::Help(const char* appname,
         "  $ " + appname + " <coefficient a> <coefficient b> " +
         "<coefficient c> \n\n" +
 
-        "Where the first,the second and  the third  arguments " +
+        "Where all arguments " +
         "aren't equals zero\n";
 }
 
@@ -34,11 +35,11 @@ bool QuadrEquationCalc::ValidateNumberOfArguments(int argc, const char** argv) {
     return true;
 }
 
-double parseCoefficient(const char* arg) {
+double ParseCoefficient(const char* arg) {
     char* end;
     double value = strtod(arg, &end);
 
-    if (end[0] || value == 0) {
+    if (end[0] || std::abs(value-0)<std::numeric_limits<double>::epsilon()) {
         throw std::string("Wrong number format!");
     }
 
@@ -47,20 +48,22 @@ double parseCoefficient(const char* arg) {
 
 std::string QuadrEquationCalc::operator()
 (int argc, const char** argv) {
-    Arguments args;
+    double coeffA;
+    double coeffB;
+    double coeffC;
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
     try {
-        args.coeffA = parseCoefficient(argv[1]);
-        args.coeffB = parseCoefficient(argv[2]);
-        args.coeffC = parseCoefficient(argv[3]);
+        coeffA = ParseCoefficient(argv[1]);
+        coeffB = ParseCoefficient(argv[2]);
+        coeffC = ParseCoefficient(argv[3]);
     }
     catch (std::string& str) {
         return str;
     }
 
-    QuadraticEquation quadratic_eq(args.coeffA, args.coeffB, args.coeffC);
+    QuadraticEquation quadratic_eq(coeffA, coeffB, coeffC);
 
     std::ostringstream stream;
     int countSolution = quadratic_eq.NumOfRealSolutions();

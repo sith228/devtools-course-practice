@@ -3,7 +3,6 @@
 #include "include/quadratic_eq_app.h"
 
 #include <iostream>
-// #include <map>
 #include <string>
 
 int main(int argc, const char** argv) {
