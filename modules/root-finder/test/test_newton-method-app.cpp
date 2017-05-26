@@ -32,10 +32,6 @@ class NewtonMethodApplicationTest : public ::testing::Test {
 
  private:
     NewtonMethodApplication app_;
-    Function* polinom2degree_;
-    Function* polinom3degree_;
-    Function* polinom4degree_;
-    Function* exponent_;
     std::string output_;
 };
 
