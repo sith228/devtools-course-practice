@@ -52,8 +52,8 @@ TEST_F(ColorConverterApplicationTest, Not_Five_Arguments) {
 
 TEST_F(ColorConverterApplicationTest, Correct_Create_HSVHSB) {
     vector<string> args = { "1", "2", "3", "HSV", "RGB" };
-    
-    Act(args);
+
+	Act(args);
 
     Assert("to RGB");
 }
