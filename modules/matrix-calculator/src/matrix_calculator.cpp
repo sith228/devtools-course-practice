@@ -36,6 +36,8 @@ MatrixCalculator::MatrixCalculator(const MatrixCalculator& p) {
     matrix_ = p.matrix_;
 }
 
+MatrixCalculator::~MatrixCalculator() {}
+
 MatrixCalculator& MatrixCalculator::operator =(const MatrixCalculator& p) {
     if (!(*this == p)) {
         matrix_ = p.matrix_;

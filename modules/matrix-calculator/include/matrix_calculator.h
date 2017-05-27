@@ -9,6 +9,7 @@ class MatrixCalculator {
  public:
     explicit MatrixCalculator(int rows = 0, int columns = 0);
     MatrixCalculator(const MatrixCalculator&);
+    ~MatrixCalculator();
 
     MatrixCalculator& operator =(const MatrixCalculator&);
     MatrixCalculator operator +(const MatrixCalculator&) const;
