@@ -41,10 +41,13 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
-    if (!strcmp(argv[1], "encode") && (!strcmp(argv[1], "encode_and_decode"))) {
-            throw std::string("command is uncorrect");
-       }
-	//std::cout <<output_;
+    if (argv[1] != std::string("encode") &&
+        (argv[1] != std::string("encode_and_decode"))) {
+        message_ = "command is uncorrect";
+        return message_;
+    }
+
+
     std::ostringstream stream;
     args.string_to_encode = argv[2];
     args.table = new std::map< char, std::vector<bool >>;

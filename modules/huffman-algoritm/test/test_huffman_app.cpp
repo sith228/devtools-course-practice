@@ -32,8 +32,8 @@ class HuffmanAlgAppTest : public ::testing::Test {
     }
 
  private:
-     HuffmanAlgApp app_;
      string output_;
+     HuffmanAlgApp app_;
 };
 
 TEST_F(HuffmanAlgAppTest, _Do_Print_Help_Without_Arguments) {
@@ -60,13 +60,13 @@ TEST_F(HuffmanAlgAppTest, _Is_Checking_Number_Of_Arguments_3) {
     Assert("ERROR: Should be less than 3 arguments*");
 }
 
-// TEST_F(HuffmanAlgAppTest, _Can_Detect_Wrong_Comand_Format) {
-//    vector<string> args = { "enscode", "itismystriiing" };
-//    // Act
-//    Act(args);
-//    // Assert
-//    Assert("command is uncorrect");
-// }
+TEST_F(HuffmanAlgAppTest, _Can_Detect_Wrong_Comand_Format) {
+    vector<string> args = { "enacode", "it is my striiing" };
+    // Act
+    Act(args);
+    // Assert
+    Assert("command is uncorrect");
+}
 
 TEST_F(HuffmanAlgAppTest, _Can_Calculate_Huffman_Cod) {
     vector<string> args = { "encode", "it is my striiing" };
