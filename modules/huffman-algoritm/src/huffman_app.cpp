@@ -1,7 +1,6 @@
 // Copyright 2017 Dryakhlov Dmitry
 
 #include <stdlib.h>
-#include <string>
 #include <stdio.h>
 #include <sstream>
 
