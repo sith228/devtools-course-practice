@@ -7,7 +7,7 @@
 #include <map>
 #include <vector>
 
-#include "include/Huffman_app.h"
+#include "include/huffman_app.h"
 #include "include/huffman.h"
 
 HuffmanAlgApp::HuffmanAlgApp() : message_("") {}
