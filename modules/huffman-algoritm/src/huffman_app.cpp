@@ -41,6 +41,7 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
+
     try {
         if (argv[1] != std::string("encode") &&
            (argv[1] != std::string("encode and decode"))) {
@@ -56,7 +57,6 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
     args.table = new std::map< char, std::vector<bool >>;
     std::string huffman_cod;
     std::string huffman_decod;
-    stream << "input string: " << args.string_to_encode << "\n";
     Huffman Huff;
     if (argv[1] == std::string("encode")) {
        try {
@@ -71,8 +71,7 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
         try {
             huffman_cod = Huff.Encode(args.string_to_encode, args.table);
             huffman_decod = Huff.Decode(huffman_cod, *args.table);
-            stream <<"huffman cod: "<< huffman_cod << "\n" <<"string: "
-            << huffman_decod << "\n";
+            stream << huffman_decod;
         }
         catch (std::string& str) {
             delete args.table;
