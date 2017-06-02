@@ -53,7 +53,7 @@ LABELS "${MODULE}")
 
 add_test(
     NAME ${prefix}Can_Encode_And_Decode
-    COMMAND ${APPLICATION} "encode and decode" "it is my striiing"
+    COMMAND ${APPLICATION} "encode_and_decode" "it is my striiing"
 )
 set_tests_properties (${prefix}Can_Encode_And_Decode PROPERTIES
     PASS_REGULAR_EXPRESSION "it is my striiing"

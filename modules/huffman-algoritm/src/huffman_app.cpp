@@ -18,7 +18,7 @@ void HuffmanAlgApp::Help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n\n" +
         "  $ " + appname + ", 'encode' , " + "<string to encode>" +
         ", or \n" +
-        "  $ " + appname + ", 'encode and decode' , " + "<string to encode>";
+        "  $ " + appname + ", 'encode_and_decode' , " + "<string to encode>";
 }
 
 bool HuffmanAlgApp::ValidateNumberOfArguments(int argc, const char** argv) {
@@ -41,44 +41,23 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
     if (!ValidateNumberOfArguments(argc, argv)) {
         return message_;
     }
-
-    try {
-        if (argv[1] != std::string("encode") &&
-           (argv[1] != std::string("encode and decode"))) {
+    if (!strcmp(argv[1], "encode") && (!strcmp(argv[1], "encode_and_decode"))) {
             throw std::string("command is uncorrect");
-        }
-    }
-    catch (std::string& str) {
-        return str;
-    }
-
+       }
+	//std::cout <<output_;
     std::ostringstream stream;
     args.string_to_encode = argv[2];
     args.table = new std::map< char, std::vector<bool >>;
-    std::string huffman_cod;
-    std::string huffman_decod;
-    Huffman Huff;
+    std::string result;
+    Huffman huff;
     if (argv[1] == std::string("encode")) {
-       try {
-            huffman_cod = Huff.Encode(args.string_to_encode, args.table);
-            stream << huffman_cod;
-       }
-       catch (std::string& str) {
-            delete args.table;
-            return str;
-       }
-    } else if (argv[1] == std::string("encode and decode")) {
-        try {
-            huffman_cod = Huff.Encode(args.string_to_encode, args.table);
-            huffman_decod = Huff.Decode(huffman_cod, *args.table);
-            stream << huffman_decod;
+        args.string_to_decode = huff.Encode(args.string_to_encode, args.table);
+        stream << args.string_to_decode;
+    } else if (argv[1] == std::string("encode_and_decode")) {
+        args.string_to_decode = huff.Encode(args.string_to_encode, args.table);
+        result = huff.Decode(args.string_to_decode, *args.table);
+        stream << result;
         }
-        catch (std::string& str) {
-            delete args.table;
-            return str;
-        }
-    }
-
     delete args.table;
     message_ = stream.str();
     return message_;
