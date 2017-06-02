@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sstream>
+#include <string>
+#include <map>
+#include <vector>
 
 #include "include/Huffman_app.h"
 #include "include/huffman.h"

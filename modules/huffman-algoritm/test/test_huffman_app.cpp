@@ -162,7 +162,8 @@
 // }
 //
 // TEST_F(NewtonMethodApplicationTest, Low_Accuracy_Affect_On_Result) {
-//    vector<string> args = { "EXPONENT", "0.01", "0", "0.5", "1", "2.5", "-2" };
+//    vector<string> args = { "EXPONENT", "0.01", "0", "0.5", "1",
+// "2.5", "-2" };
 //
 //    Act(args);
 //
