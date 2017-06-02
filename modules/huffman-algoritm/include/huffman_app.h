@@ -3,7 +3,6 @@
 #ifndef MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_APP_H_
 #define MODULES_HUFFMAN_ALGORITM_INCLUDE_HUFFMAN_APP_H_
 
-#include <string>
 #include <map>
 #include <vector>
 

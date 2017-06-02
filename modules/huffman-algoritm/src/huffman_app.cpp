@@ -2,14 +2,11 @@
 
 #include <stdlib.h>
 #include <string>
-#include <vector>
+#include <stdio.h>
+#include <sstream>
 
 #include "include/Huffman_app.h"
 #include "include/huffman.h"
-
-#include <stdio.h>
-#include <string>
-#include <sstream>
 
 HuffmanAlgApp::HuffmanAlgApp() : message_("") {}
 
@@ -27,12 +24,10 @@ bool HuffmanAlgApp::ValidateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         Help(argv[0]);
         return false;
-	}
-    else if (argc == 2) {
+    } else if (argc == 2) {
         Help(argv[0], "ERROR: Should be more than 1 arguments\n\n");
         return false;
-    }
-    else if (argc > 3) {
+    } else if (argc > 3) {
         Help(argv[0], "ERROR: Should be less than 3 arguments\n\n");
         return false;
     }
@@ -45,7 +40,8 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
         return message_;
     }
     try {
-        if (argv[1] != std::string("encode") && (argv[1] != std::string("encode and decode"))) {
+        if (argv[1] != std::string("encode") &&
+           (argv[1] != std::string("encode and decode"))) {
             throw std::string("command is uncorrect");
         }
     }
@@ -69,12 +65,12 @@ std::string HuffmanAlgApp::operator()(int argc, const char** argv) {
             delete args.table;
             return str;
        }
-    }
-    else if (argv[1] == std::string("encode and decode")) {
+    } else if (argv[1] == std::string("encode and decode")) {
         try {
             huffman_cod = Huff.Encode(args.string_to_encode, args.table);
             huffman_decod = Huff.Decode(huffman_cod, *args.table);
-            stream <<"huffman cod: "<< huffman_cod << "\n" <<"string: "<< huffman_decod << "\n";
+            stream <<"huffman cod: "<< huffman_cod << "\n" <<"string: "
+            << huffman_decod << "\n";
         }
         catch (std::string& str) {
             delete args.table;
