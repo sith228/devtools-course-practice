@@ -9,8 +9,8 @@ class Demand {
  public:
     Demand(double oldprice, double newprice,
            double olddemand, double newdemand);
-    int checkforelasticity();
-    double revenuechange(double revenue);
+    int CheckForElasticity();
+    double RevenueChange(double revenue);
  protected:
     double coeffofdemand_;
     double oldprice_, newprice_;

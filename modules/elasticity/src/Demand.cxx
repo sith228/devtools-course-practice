@@ -23,7 +23,7 @@ Demand::Demand(double oldprice, double newprice,
     }
 }
 
-int Demand::checkforelasticity() {
+int Demand::CheckForElasticity() {
   if (coeffofdemand_ == 1.0) {
     // Coefficient of unit elasticity
     elasticity_ = UnitElastic;
@@ -37,7 +37,7 @@ int Demand::checkforelasticity() {
   return elasticity_;
 }
 
-double Demand::revenuechange(double revenue_) {
+double Demand::RevenueChange(double revenue_) {
   // Old revenue
   if (coeffofdemand_ >= 1.0) {
     for (int time = 0; time < 30; time++) {
