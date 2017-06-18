@@ -1,6 +1,8 @@
 set(target ${TESTS})
-
+#
 file(GLOB srcs "*.cpp")
+file(GLOB srcs "../application/saper.cpp" && "*.cpp")
+#
 set_source_files_properties(${srcs} PROPERTIES
     LABELS "${MODULE};Test")
 
