@@ -2,6 +2,15 @@
 
 #include "./include/saper.h"
 
+int main(){
+	Saper a;
+	a.IsWin();
+	a.MarkCell(0, 0);
+	a.NewLVL();
+	a.Print();
+	a.TouchResult(0, 0);
+	return 0;
+}
 
 Saper::Saper(int wth, int hght, int countbomb)
 {
