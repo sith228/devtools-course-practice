@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include"include\saper.h"
+#include"include/saper.h"
 
 TEST(Saper, Can_creat_obj_by_defult) {
 	ASSERT_NO_THROW(Saper app());
