@@ -1,7 +1,7 @@
 // Copyright 2017 Fedorov Igor
 
-#ifndef MODULES_SAPPER_INCLUDE_SAPER_H_  
-#define MODULES_SAPPER_INCLUDE_SAPER_H_  
+#ifndef MODULES_SAPPER_INCLUDE_SAPER_H_
+#define MODULES_SAPPER_INCLUDE_SAPER_H_
 
 #include<iostream>
 #include"../include/field.h"
@@ -19,4 +19,4 @@ class Saper {
     int DeactivatedBomb_;
 };
 
-#endif MODULES_SAPPER_INCLUDE_SAPER_H_  
+#endif // MODULES_SAPPER_INCLUDE_SAPER_H_

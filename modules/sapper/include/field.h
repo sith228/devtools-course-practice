@@ -11,15 +11,12 @@ struct Cell {
 };
 
 class Field {
- 
  private:
-     
      Cell **field_;
      int16_t Height_;
      int16_t Width_;
      int16_t NumBomb_;
  public:
-
      explicit Field(int Width = 10, int Height = 10, int bombcount = 10);
      ~Field();
      void PrintField();
@@ -38,11 +35,10 @@ class Field {
      }
 
  private:
-
      // add in field bombcount bombs
      void GenerateBomb(int bombcount);
      // generate num of bomb for each cell
      void GenerateCellNum();
 };
 
-#endif MODULES_SAPPER_INCLUDE_FIELD_H_
+#endif // MODULES_SAPPER_INCLUDE_FIELD_H_
