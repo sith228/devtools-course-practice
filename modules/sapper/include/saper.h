@@ -8,7 +8,7 @@
 
 class Saper {
  public:
-	 explicit Saper(int wth = 10, int hght = 10, int countbomb = 10);
+    explicit Saper(int wth = 10, int hght = 10, int countbomb = 10);
     void Print();
     bool TouchResult(int x_, int y_);
     void MarkCell(int x, int y);
@@ -19,4 +19,4 @@ class Saper {
     int DeactivatedBomb_;
 };
 
-#endif // MODULES_SAPPER_INCLUDE_SAPER_H_
+#endif  // MODULES_SAPPER_INCLUDE_SAPER_H_

@@ -41,4 +41,4 @@ class Field {
      void GenerateCellNum();
 };
 
-#endif // MODULES_SAPPER_INCLUDE_FIELD_H_
+#endif  // MODULES_SAPPER_INCLUDE_FIELD_H_
