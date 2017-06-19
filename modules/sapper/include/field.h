@@ -25,7 +25,7 @@ class Field {
      // create array[,]
      void GenerateField();
      // getter
-     int16_t GetBombCount() {
+     int GetBombCount() {
          return NumBomb_;
      }
 
@@ -35,9 +35,9 @@ class Field {
      // generate num of bomb for each cell
      void GenerateCellNum();
      Cell **field_;
-     int16_t Height_;
-     int16_t Width_;
-     int16_t NumBomb_;
+     int Height_;
+     int Width_;
+     int NumBomb_;
 };
 
 #endif  // MODULES_SAPPER_INCLUDE_FIELD_H_

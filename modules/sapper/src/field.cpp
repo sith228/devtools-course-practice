@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <time.h>
+#include <stdlib.h>
 
 Field::Field(int Width , int Height ,int bombcount ) {
     if (Width < 0 || Height < 0 || Width*Height< bombcount) {
@@ -19,8 +20,7 @@ Field::Field(int Width , int Height ,int bombcount ) {
     }
 }
 
-Field::~Field()
-{
+Field::~Field() {
     for (int i = 0; i < Height_; i++)
     {
         delete[] field_[i];
@@ -28,16 +28,14 @@ Field::~Field()
     delete[] field_;
 }
 
-void Field::GenerateField()
-{
+void Field::GenerateField() {
     field_ = new Cell*[Height_];
     for (int i = 0; i < Height_; i++) {
         field_[i] = new Cell[Width_];
     }
 }
 
-void Field::GenerateBomb(int bombcount)
-{
+void Field::GenerateBomb(int bombcount) {
     short int i = 0, x = 0, y = 0;
     srand(time(0));
     while (i < NumBomb_) {
@@ -51,8 +49,7 @@ void Field::GenerateBomb(int bombcount)
     }
 }
 
-void Field::GenerateCellNum()
-{
+void Field::GenerateCellNum() {
     int countBomb = 0;
     int i1, k1, Hlimit, Wlimit , temp;
     for (int i = 0; i < Height_; i++)
@@ -82,8 +79,7 @@ void Field::GenerateCellNum()
         }
 }
 
-void Field::PrintField()
-{
+void Field::PrintField() {
     std::cout << " |";
     for (int i = 0; i < Width_; i++)
         std::cout << i << " ";
@@ -125,11 +121,13 @@ void Field::OpenNearCell(int x, int y) {
     for (; i1 < Hlimit; i1++) {
         for (; k1 < Wlimit; k1++) {
             if (field_[x + i1][y + k1].viewCell == '*') {
-                if (field_[x + i1][y + k1].num == 0 && (x + i1 != x || y != y + k1))
+                if (field_[x + i1][y + k1].num == 0 &&
+                    (x + i1 != x || y != y + k1))
                     OpenNearCell(x + i1, y + k1);
                 if (field_[x + i1][y + k1].num == 0)
                     OpenCurrentCell(x + i1, y + k1);
-                if (field_[x + i1][y + k1].num > -1 && field_[x + i1][y + k1].num < 10)
+                if (field_[x + i1][y + k1].num > -1 &&
+                    field_[x + i1][y + k1].num < 10)
                     OpenCurrentCell(x + i1, y + k1);
             }
         }
@@ -145,14 +143,12 @@ bool Field::OpenCurrentCell(int x_, int y_) {
     return true;
 }
 
-void Field::MarkCell(int x, int y)
-{
+void Field::MarkCell(int x, int y){
     if (x<0 || y<0 || x >= Height_ || y >= Width_)
         return ;
     field_[x][y].viewCell = '!';
 }
 
-Cell* Field::operator[](int index)
-{
+Cell* Field::operator[](int index){
     return field_[index];
 }
