@@ -21,7 +21,7 @@ int main() {
         // std::cin >> y;
         do {
             std::cout << "Make flag or touch cell: (f/c)" << std::endl;
-            answer = "c";// std::cin >> answer;
+            answer = "c";  // std::cin >> answer;
             if (answer[0] == 'c' || answer[0] == 'C') {
                 system("cls");
                 if (app.TouchResult(x, y)) {
@@ -37,7 +37,7 @@ int main() {
                     std::cout << "Sory, you lose(" << std::endl;
                     do {
                         std::cout << "Try again?:) (y/n)" << std::endl;
-                        answer = "n";// std::cin >> answer;
+                        answer = "n";  // std::cin >> answer;
                         if (answer[0] == 'n' || answer[0] == 'N') {
                             again = false;
                             break;
