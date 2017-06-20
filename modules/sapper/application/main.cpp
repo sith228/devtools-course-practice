@@ -9,20 +9,20 @@
 
 int main() {
     bool again = true;
-    int x, y;
+    int x = 0, y = 0;
     std::string answer;
-    Saper app(12, 4, 7);
+    Saper app(9, 9, 80);
     std::cout << "\t Welcome!" << std::endl;
     while (true) {
         app.Print();
         std::cout << "Enter coords." << std::endl;
         std::cout << "Enter number of row: " << std::endl;
-        std::cin >> x;
+        // std::cin >> x;
         std::cout << "Enter number of column: " << std::endl;
-        std::cin >> y;
+        // std::cin >> y;
         do {
             std::cout << "Make flag or touch cell: (f/c)" << std::endl;
-            std::cin >> answer;
+            // std::cin >> answer;
             if (answer[0] == 'c' || answer[0] == 'C') {
                 system("cls");
                 if (app.TouchResult(x, y)) {
