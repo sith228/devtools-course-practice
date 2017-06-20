@@ -37,7 +37,7 @@ void Field::GenerateField() {
 
 void Field::GenerateBomb(int bombcount) {
     int i = 0, x = 0, y = 0;
-	unsigned int seedp = 0;
+    unsigned int seedp = 0;
     srand(time(0));
     while (i < NumBomb_) {
         y = rand_r(&seedp) % Width_;
