@@ -5,8 +5,6 @@
 #include <iostream>
 #include <string>
 
-#include <stdlib.h>
-
 int main() {
     bool again = true;
     int x = 0, y = 0;
@@ -48,25 +46,26 @@ int main() {
                             app.NewLVL();
                             std::cout << "\t Welcome" << std::endl;
                             break;
-                        } else continue;
+                        } else {
+                            continue;
+                        }
                     } while (true);
                 }
 
                 break;
             } else if (answer[0] == 'f' || answer[0] == 'F') {
                 system("cls");
-                std::cout << 
-                    "\t You make a flag! My congratulations!" 
+                std::cout <<
+                    "\t You make a flag! My congratulations!"
                     << std::endl;
                 app.MarkCell(x, y);
                 break;
-            }
-            else
+            } else
                 continue;
         } while (true);
         if (!again)
             break;
     }
-    std::cout << "Come again!)"<<std::endl;
+    std::cout << "Come again!)" << std::endl;
     system("pause");
 }
