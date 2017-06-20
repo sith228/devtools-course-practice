@@ -2,15 +2,16 @@
 
 #include "./include/saper.h"
 
-#include <stdlib.h>
 #include <iostream>
 #include <string>
+
+#include <stdlib.h>
 
 int main() {
     bool again = true;
     int x, y;
     std::string answer;
-    Saper app(12,4,7);
+    Saper app(12, 4, 7);
     std::cout << "\t Welcome!" << std::endl;
     while (true) {
         app.Print();
@@ -52,14 +53,16 @@ int main() {
                 }
 
                 break;
-            }
-            else if (answer[0] == 'f' || answer[0] == 'F') {
+            } else if (answer[0] == 'f' || answer[0] == 'F') {
                 system("cls");
-                std::cout << "\t You make a flag! My congratulations!" << std::endl;
+                std::cout << 
+                    "\t You make a flag! My congratulations!" 
+                    << std::endl;
                 app.MarkCell(x, y);
                 break;
             }
-            else continue;
+            else
+                continue;
         } while (true);
         if (!again)
             break;
