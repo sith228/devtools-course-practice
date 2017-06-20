@@ -5,7 +5,7 @@
 #include"include/saper.h"
 
 TEST(Saper, Can_creat_obj_by_defult) {
-    ASSERT_NO_THROW(Saper app());
+    ASSERT_NO_THROW(Saper app);
 }
 
 TEST(Saper, Can_creat_obj_width_less_height) {
