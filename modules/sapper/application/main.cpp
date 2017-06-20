@@ -1,9 +1,10 @@
 // Copyright 2017 Fedorov Igor
 
-#include "./include/saper.h"
 
-#include <iostream>
 #include <string>
+#include <iostream>
+
+#include "./include/saper.h"
 
 int main() {
     bool again = true;
@@ -51,7 +52,6 @@ int main() {
                         }
                     } while (true);
                 }
-
                 break;
             } else if (answer[0] == 'f' || answer[0] == 'F') {
                 system("cls");
@@ -60,8 +60,9 @@ int main() {
                     << std::endl;
                 app.MarkCell(x, y);
                 break;
-            } else
+            } else {
                 continue;
+            }
         } while (true);
         if (!again)
             break;
