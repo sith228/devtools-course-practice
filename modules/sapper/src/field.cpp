@@ -2,12 +2,13 @@
 
 #include "include/field.h"
 
-#include <iostream>
-#include <string>
 #include <time.h>
 #include <stdlib.h>
 
-Field::Field(int Width , int Height ,int bombcount ) {
+#include <iostream>
+#include <string>
+
+Field::Field(int Width , int Height , int bombcount ) {
     if (Width < 0 || Height < 0 || Width*Height< bombcount) {
         throw("wrong value");
     } else {
@@ -21,8 +22,7 @@ Field::Field(int Width , int Height ,int bombcount ) {
 }
 
 Field::~Field() {
-    for (int i = 0; i < Height_; i++)
-    {
+    for (int i = 0; i < Height_; i++) {
         delete[] field_[i];
     }
     delete[] field_;
@@ -36,7 +36,7 @@ void Field::GenerateField() {
 }
 
 void Field::GenerateBomb(int bombcount) {
-    short int i = 0, x = 0, y = 0;
+    int i = 0, x = 0, y = 0;
     srand(time(0));
     while (i < NumBomb_) {
         y = rand() % Width_;
@@ -63,7 +63,7 @@ void Field::GenerateCellNum() {
                     Hlimit = 1;
                 if (k == 0)
                     k1 = temp = 0;
-                if (k == Width_ - 1) 
+                if (k == Width_ - 1)
                     Wlimit = 1;
                 for (; i1 < Hlimit; i1++) {
                     for (; k1 < Wlimit; k1++) {
@@ -75,7 +75,6 @@ void Field::GenerateCellNum() {
                 field_[i][k].num = countBomb;
                 countBomb = 0;
             }
-
         }
 }
 
@@ -143,12 +142,12 @@ bool Field::OpenCurrentCell(int x_, int y_) {
     return true;
 }
 
-void Field::MarkCell(int x, int y){
-    if (x<0 || y<0 || x >= Height_ || y >= Width_)
-        return ;
+void Field::MarkCell(int x, int y) {
+    if (x < 0 || y < 0 || x >= Height_ || y >= Width_)
+        return;
     field_[x][y].viewCell = '!';
 }
 
-Cell* Field::operator[](int index){
+Cell* Field::operator[](int index) {
     return field_[index];
 }

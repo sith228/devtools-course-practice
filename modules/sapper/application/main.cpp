@@ -2,7 +2,7 @@
 
 #include "./include/saper.h"
 
-int main(){
+int main() {
     Saper a;
     a.IsWin();
     a.MarkCell(0, 0);

@@ -21,9 +21,9 @@ bool Saper::TouchResult(int x, int y) {
         std::cout << "Pleas, try another one.";
         return true;
     }
-    if ((*field_)[x][y].isBomb)
+    if ((*field_)[x][y].isBomb) {
         return false;
-    else if ((*field_)[x][y].num == 0) {
+    } else if ((*field_)[x][y].num == 0) {
             field_->OpenNearCell(x, y);
     }
     return true;
