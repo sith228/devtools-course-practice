@@ -1,6 +1,6 @@
 set(target ${APPLICATION})
 
-file(GLOB srcs "*.cpp")
+file(GLOB srcs "*.cpp" && ../src/saper.h)
 set_source_files_properties(${srcs} PROPERTIES
     LABELS "${MODULE};Application")
 
