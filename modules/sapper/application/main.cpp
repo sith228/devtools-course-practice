@@ -8,5 +8,5 @@
 
 int main() {
     Saper app(9, 9, 80);
-	app.Gaming();
+    app.Gaming();
 }

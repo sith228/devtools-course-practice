@@ -71,9 +71,9 @@ TEST(Saper, Can_create_new_level) {
     ASSERT_NO_THROW(app.NewLVL());
 }
 TEST(Saper, Can_create_new_level) {
-	Saper app;
+    Saper app;
 
-	app.Gaming();
+    app.Gaming();
 
-	ASSERT_NO_THROW(app.NewLVL());
+    ASSERT_NO_THROW(app.NewLVL());
 }
