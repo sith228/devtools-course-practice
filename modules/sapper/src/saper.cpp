@@ -94,6 +94,7 @@ void Saper::Gaming() {
             } else {
                 continue;
             }
+            break;
         } while (true);
         if (!again)
             break;
