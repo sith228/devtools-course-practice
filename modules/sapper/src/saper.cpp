@@ -4,7 +4,6 @@
 #include <string>
 
 Saper::Saper(int wth, int hght, int countbomb) {
-    DeactivatedBomb_ = 0;
     field_ = new Field(wth, hght, countbomb);
 }
 
