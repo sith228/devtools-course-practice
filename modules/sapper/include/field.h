@@ -19,7 +19,7 @@ class Field {
      void OpenNearCell(int x, int y);
      bool OpenCurrentCell(int x_, int y_);
      // mark cell as cell with bomb
-     void MarkCell(int x, int y);
+     bool MarkCell(int x, int y);
      // access to cell
      Cell* operator[] (int index);
      // create array[,]
@@ -28,6 +28,7 @@ class Field {
      int GetBombCount() {
          return NumBomb_;
      }
+    bool Field::IsWin();
 
  private:
      // add in field bombcount bombs

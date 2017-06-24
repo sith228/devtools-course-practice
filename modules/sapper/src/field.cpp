@@ -9,7 +9,7 @@
 #include <string>
 
 Field::Field(int Width , int Height , int bombcount ) {
-    if (Width < 0 || Height < 0 || Width*Height< bombcount) {
+    if (Width < 0 || Height < 0 || Width*Height <= bombcount) {
         throw("wrong value");
     } else {
         Width_ = Width;
@@ -143,10 +143,20 @@ bool Field::OpenCurrentCell(int x_, int y_) {
     return true;
 }
 
-void Field::MarkCell(int x, int y) {
+bool Field::IsWin() {
+    for(int i = 0;i<Height_;i++)
+        for (int k = 0; k < Width_; k++)
+            if (!field_[i][k].isBomb)
+                if (field_[i][k].viewCell != '!' != '*')
+                    return false;
+            return true;
+}
+
+bool Field::MarkCell(int x, int y) {
     if (x < 0 || y < 0 || x >= Height_ || y >= Width_)
-        return;
+        return false;
     field_[x][y].viewCell = '!';
+    return true;
 }
 
 Cell* Field::operator[](int index) {

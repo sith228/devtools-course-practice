@@ -14,6 +14,7 @@ class Saper {
     void MarkCell(int x, int y);
     void NewLVL();
     bool IsWin();
+	void Gaming();
  private:
     Field *field_;
     int DeactivatedBomb_;
