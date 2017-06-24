@@ -148,7 +148,7 @@ bool Field::IsWin() {
         for (int k = 0; k < Width_; k++)
             if (!field_[i][k].isBomb)
                 if (field_[i][k].viewCell == '!'
-                    && field_[i][k].viewCell == '*')
+                    || field_[i][k].viewCell == '*')
                     return false;
             return true;
 }
