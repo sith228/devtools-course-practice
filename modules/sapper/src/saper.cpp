@@ -1,7 +1,7 @@
 // Copyright 2017 Fedorov Igor
 
 #include "./include/saper.h"
-
+#include <string>
 
 Saper::Saper(int wth, int hght, int countbomb) {
     DeactivatedBomb_ = 0;
@@ -41,7 +41,7 @@ void Saper::NewLVL() {
 void Saper::Gaming() {
     bool again = true;
     int x = 0, y = 0;
-    std::string answer = "c";
+	std::string answer = "c";
     std::cout << "\t Welcome!" << std::endl;
     while (true) {
         Print();
@@ -57,8 +57,7 @@ void Saper::Gaming() {
                 system("cls");
                 if (TouchResult(x, y)) {
                     std::cout << "\t Good move!" << std::endl;
-                }
-                else {
+                } else {
                     system("cls");
                     std::cout << "\t Bad move :(" << std::endl;
                     Print();
@@ -73,30 +72,26 @@ void Saper::Gaming() {
                         if (answer[0] == 'n' || answer[0] == 'N') {
                             again = false;
                             break;
-                        }
-                        else if (answer[0] == 'y' || answer[0] == 'Y') {
+                        } else if (answer[0] == 'y' || answer[0] == 'Y') {
                             again = true;
                             system("cls");
                             NewLVL();
                             std::cout << "\t Welcome" << std::endl;
                             break;
-                        }
-                        else {
+                        } else {
                             continue;
                         }
                     } while (true);
                 }
                 break;
-            }
-            else if (answer[0] == 'f' || answer[0] == 'F') {
+            } else if (answer[0] == 'f' || answer[0] == 'F') {
                 system("cls");
                 std::cout <<
                     "\t You make a flag! My congratulations!"
                     << std::endl;
                 MarkCell(x, y);
                 break;
-            }
-            else {
+            } else {
                 continue;
             }
         } while (true);

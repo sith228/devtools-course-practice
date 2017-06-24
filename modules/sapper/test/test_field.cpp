@@ -8,16 +8,16 @@ TEST(Field, Can_creat_obj_by_defult) {
 }
 
 TEST(Field, Can_print_in_console) {
-    Field app(10,10,90);
+    Field app(10, 10, 90);
 
     app.GenerateField();
 
-    ASSERT_FALSE(app.OpenCurrentCell(1000,10000));
-    ASSERT_TRUE(app.OpenCurrentCell(1,1));
+    ASSERT_FALSE(app.OpenCurrentCell(1000, 10000));
+    ASSERT_TRUE(app.OpenCurrentCell(1, 1));
 }
 
 TEST(Field, Can_win_lose) {
-    Field app,app1;
+    Field app, app1;
 
     for (int i = 0; i < 10; i++)
         for (int k = 0; k < 10; k++)
@@ -34,7 +34,7 @@ TEST(Field, Can_mark) {
     app.MarkCell(-20, 200);
     app.MarkCell(0, 0);
 
-    ASSERT_TRUE(app[0][0].viewCell == '!');
+    ASSERT_EQ(app[0][0].viewCell, '!');
 }
 
 

@@ -144,7 +144,7 @@ bool Field::OpenCurrentCell(int x_, int y_) {
 }
 
 bool Field::IsWin() {
-    for(int i = 0;i<Height_;i++)
+    for (int i = 0; i < Height_; i++)
         for (int k = 0; k < Width_; k++)
             if (!field_[i][k].isBomb)
                 if (field_[i][k].viewCell != '!' != '*')
