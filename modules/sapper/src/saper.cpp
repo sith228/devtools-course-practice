@@ -41,7 +41,7 @@ void Saper::NewLVL() {
 void Saper::Gaming() {
     bool again = true;
     int x = 0, y = 0;
-	std::string answer = "c";
+    std::string answer = "c";
     std::cout << "\t Welcome!" << std::endl;
     while (true) {
         Print();
