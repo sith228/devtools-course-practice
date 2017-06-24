@@ -54,17 +54,6 @@ TEST(Saper, Can_recognize_all_bomb) {
     ASSERT_EQ(count, 10);
 }
 
-TEST(Saper, Can_win) {
-    Saper app;
-
-    for (int i = 0; i < 10; i++)
-        for (int k = 0; k < 10; k++)
-            if (!app.TouchResult(i, k))
-                app.MarkCell(i, k);
-
-    ASSERT_TRUE(app.IsWin());
-}
-
 TEST(Saper, Can_create_new_level) {
     Saper app;
 
