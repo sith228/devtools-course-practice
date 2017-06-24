@@ -28,7 +28,7 @@ class Field {
      int GetBombCount() {
          return NumBomb_;
      }
-    bool Field::IsWin();
+    bool IsWin();
 
  private:
      // add in field bombcount bombs
