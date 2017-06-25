@@ -95,12 +95,11 @@ std::string Saper::operator()(int argc, const char ** argv) {
 				//  stream << "Triangle Corner #" << args.num << " = " << result;
 			break;
 		}
-		if (args.choose > 1)
-
-
-			message_ = stream.str();
-		return message_;
 	}
+//	if (args.choose > 1)
+
+		message_ = stream.str();
+	return message_;
 }
 
 void Saper::help(const char * appname, const char * message)
