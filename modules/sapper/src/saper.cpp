@@ -2,6 +2,8 @@
 
 #include "./include/saper.h"
 #include <string>
+#include <sstream>
+
 
 Saper::Saper(int wth, int hght, int countbomb) {
     field_ = new Field(wth, hght, countbomb);
@@ -104,85 +106,87 @@ void Saper::Gaming() {
 
 std::string Saper::operator()(int argc, const char ** argv) {
 	Arguments args;
-	double result;
 
 	if (!validateNumberOfArguments(argc, argv)) {
 		return message_;
 	}
 	try {
-		args.point1_coordx = parseDouble(argv[1]);
-		args.point1_coordy = parseDouble(argv[2]);
-		args.point2_coordx = parseDouble(argv[3]);
-		args.point2_coordy = parseDouble(argv[4]);
-		args.point3_coordx = parseDouble(argv[5]);
-		args.point3_coordy = parseDouble(argv[6]);
-		args.operation = parseOperation(argv[7]);
-		if (args.operation >= 1 && args.operation <= 2)
-			args.num = parseInt(argv[8]);
+		args.x = parseInt(argv[1]);
+		args.y = parseInt(argv[2]);
+		args.choose = parseInt(argv[3]);
 	}
 	catch (std::string& str) {
 		return str;
 	}
 
-	Triangle triangle(args.point1_coordx, args.point1_coordy,
-		args.point2_coordx, args.point2_coordy,
-		args.point3_coordx, args.point3_coordy);
-
 	std::ostringstream stream;
-	switch (args.operation) {
+	switch (args.choose) {
+	case 0:
+		std::cout <<
+			"\t You make a flag! My congratulations!"
+			<< std::endl;
+		MarkCell(args.x, args.y);
+		break;
 	case 1:
-		result = triangle.CalculateSide(args.num);
-		stream << "Triangle Side #" << args.num << " = " << result;
-		break;
-	case 2:
-		result = triangle.CalculateCorner(args.num);
-		stream << "Triangle Corner #" << args.num << " = " << result;
-		break;
-	case 3:
-		result = triangle.CalculatePerimeter();
-		stream << "Triangle Perimeter = " << result;
-		break;
-	case 4:
-		result = triangle.CalculateSquare();
-		stream << "Triangle Square = " << result;
-		break;
-	case 5:
-		stream << "Triangle Median Coords = " <<
-			triangle.GetCoordXMedian() << ", " <<
-			triangle.GetCoordYMedian();
-		break;
-	case 6:
-		stream << "Triangle Circumscribed Circle Center = " <<
-			triangle.GetCoordXCircumscribedCircle() << ", " <<
-			triangle.GetCoordYCircumscribedCircle();
-		break;
-	case 7:
-		stream << "Triangle Inscribed Circle Center = " <<
-			triangle.GetCoordXInscribedCircle() << ", " <<
-			triangle.GetCoordYInscribedCircle();
-		break;
+		if (TouchResult(args.x, args.y)) {
+			std::cout << "\t Good move!" << std::endl;
+		}
+		else {
+			//  system("cls");
+			std::cout << "\t Bad move :(" << std::endl;
+			Print();
+			std::cout << "Ba Ba Ba Bah!" << std::endl;
+			std::cout << "Ba Ba Ba Bah!" << std::endl;
+			std::cout << "Ba Ba Ba Bah!" << std::endl;
+			std::cout << "Ba Ba Ba Bah!" << std::endl;
+			std::cout << "Sory, you lose(" << std::endl;
+			/*
+			do {
+				std::cout << "Try again?:) (y/n)" << std::endl;
+				//  answer = "n";  // std::cin >> answer;
+				if (answer[0] == 'n' || answer[0] == 'N') {
+					again = false;
+					break;
+				} else if (answer[0] == 'y' || answer[0] == 'Y') {
+					again = true;
+					system("cls");
+					NewLVL();
+					std::cout << "\t Welcome" << std::endl;
+					break;
+				} else {
+					continue;
+				}
+				*/
+				//  stream << "Triangle Corner #" << args.num << " = " << result;
+			break;
+		}
+		if (args.choose > 1)
+
+
+			message_ = stream.str();
+		return message_;
 	}
-
-	message_ = stream.str();
-	return message_;
 }
-
 void Saper::help(const char * appname, const char * message)
 {
 	message_ =
 		std::string(message) +
 		"This is a sapper application.\n\n" +
 		"Please size field and number of bomb " +
-		"in the following format:\n\n" +
+		"in the following format for start:\n\n" +
 
-		"  $ " + appname + " <coord1_x> <coord1_y> " +
-		"<coord2_x> <coord2_y> <coord3_x> <coord3_y> <operation> [<num>]\n\n" +
+		"  $ " + appname + " <Heigth> <Width> " +
+		"<bomb_count>" + "\n\n" +
+		
+		"for make decidion:\n\n" +
 
-		"All arguments should be double-precision numbers\n" +
-		"You can use next operations: side, corner, perimeter, square," +
-		"    median, circumscribed_circle, inscribed_circle" +
-		"<num> is necessary for side and corner calculation where " +
-		"<num> is a number of corner/side counting from coord1 to coord3";
+		"  $ " + appname + " <row_coord> <column_coord> " +
+		"<mark/open_glyfe>(f or c)" + "\n\n" +
+
+		"All arguments should be int numbers\n" +
+		"exept last for make decidion\n" +
+		"You can Make flag or touch cell \n " +
+		"    and finish work";
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv)

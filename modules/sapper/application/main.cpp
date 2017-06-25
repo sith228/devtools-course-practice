@@ -1,6 +1,5 @@
 // Copyright 2017 Fedorov Igor
 
-
 #include <string>
 #include <iostream>
 

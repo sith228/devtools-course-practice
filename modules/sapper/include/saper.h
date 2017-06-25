@@ -22,14 +22,9 @@ class Saper {
 	std::string message_;
     Field *field_;
 	typedef struct {
-		double point1_coordx;
-		double point1_coordy;
-		double point2_coordx;
-		double point2_coordy;
-		double point3_coordx;
-		double point3_coordy;
-		int operation;
-		int num;                // for side and corner
+		int x;
+		int y;
+		int choose;
 	} Arguments;
 };
 
