@@ -34,11 +34,6 @@ void Saper::MarkCell(int x, int y) {
     field_->MarkCell(x, y);
 }
 
-void Saper::NewLVL() {
-    field_->~Field();
-    field_ = new Field();
-}
-
 std::string Saper::operator()(int argc, const char ** argv) {
 	Arguments args;
 
@@ -93,12 +88,14 @@ std::string Saper::operator()(int argc, const char ** argv) {
 				}
 				*/
 				//  stream << "Triangle Corner #" << args.num << " = " << result;
-			break;
+			return "you lose";
 		}
+		break;
 	}
-//	if (args.choose > 1)
-
-		message_ = stream.str();
+	//	if (args.choose > 1)
+	if (IsWin())
+		return "You win!";
+	message_ = stream.str();
 	return message_;
 }
 
@@ -124,9 +121,15 @@ void Saper::help(const char * appname, const char * message)
 		"    and finish work";
 }
 
-bool Saper::validateNumberOfArguments(int argc, const char ** argv)
-{
-	return false;
+bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
+	if (argc == 1) {
+		help(argv[0]);
+		return false;
+	} else if (parseInt(argv[3]) <= 1 ) {
+		help(argv[0], "ERROR: Incorrect arguments num.\n\n");
+		return false;
+	}
+	return true;
 }
 
 int Saper::parseInt(const char* arg) {
