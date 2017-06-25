@@ -39,71 +39,6 @@ void Saper::NewLVL() {
     field_ = new Field();
 }
 
-void Saper::Gaming() {
-    bool again = true;
-    int x = 0, y = 0;
-    std::string answer = "c";
-    std::cout << "\t Welcome!" << std::endl;
-    while (true) {
-        Print();
-        std::cout << "Enter coords." << std::endl;
-        std::cout << "Enter number of row: " << std::endl;
-        // std::cin >> x;
-        std::cout << "Enter number of column: " << std::endl;
-        // std::cin >> y;
-        do {
-            std::cout << "Make flag or touch cell: (f/c)" << std::endl;
-            answer = "c";  // std::cin >> answer;
-            if (answer[0] == 'c' || answer[0] == 'C') {
-                system("cls");
-                if (TouchResult(x, y)) {
-                    std::cout << "\t Good move!" << std::endl;
-                } else {
-                    system("cls");
-                    std::cout << "\t Bad move :(" << std::endl;
-                    Print();
-                    std::cout << "Ba Ba Ba Bah!" << std::endl;
-                    std::cout << "Ba Ba Ba Bah!" << std::endl;
-                    std::cout << "Ba Ba Ba Bah!" << std::endl;
-                    std::cout << "Ba Ba Ba Bah!" << std::endl;
-                    std::cout << "Sory, you lose(" << std::endl;
-                    do {
-                        std::cout << "Try again?:) (y/n)" << std::endl;
-                        answer = "n";  // std::cin >> answer;
-                        if (answer[0] == 'n' || answer[0] == 'N') {
-                            again = false;
-                            break;
-                        } else if (answer[0] == 'y' || answer[0] == 'Y') {
-                            again = true;
-                            system("cls");
-                            NewLVL();
-                            std::cout << "\t Welcome" << std::endl;
-                            break;
-                        } else {
-                            continue;
-                        }
-                    } while (true);
-                }
-                break;
-            } else if (answer[0] == 'f' || answer[0] == 'F') {
-                system("cls");
-                std::cout <<
-                    "\t You make a flag! My congratulations!"
-                    << std::endl;
-                MarkCell(x, y);
-                break;
-            } else {
-                continue;
-            }
-            break;
-        } while (true);
-        if (!again)
-            break;
-    }
-    std::cout << "Come again!)" << std::endl;
-    system("pause");
-}
-
 std::string Saper::operator()(int argc, const char ** argv) {
 	Arguments args;
 
@@ -167,6 +102,7 @@ std::string Saper::operator()(int argc, const char ** argv) {
 		return message_;
 	}
 }
+
 void Saper::help(const char * appname, const char * message)
 {
 	message_ =
@@ -194,7 +130,7 @@ bool Saper::validateNumberOfArguments(int argc, const char ** argv)
 	return false;
 }
 
-int parseInt(const char* arg) {
+int Saper::parseInt(const char* arg) {
 	int value = atoi(arg);
 
 	if (value <= 0 || value > 50) {

@@ -59,10 +59,3 @@ TEST(Saper, Can_create_new_level) {
 
     ASSERT_NO_THROW(app.NewLVL());
 }
-TEST(Saper, Can_smth) {
-    Saper app;
-
-    //  app.Gaming();
-
-    ASSERT_NO_THROW(app.NewLVL());
-}

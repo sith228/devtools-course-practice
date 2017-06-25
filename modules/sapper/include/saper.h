@@ -14,7 +14,7 @@ class Saper {
     void MarkCell(int x, int y);
     void NewLVL();
     bool IsWin();
-    void Gaming();
+	int parseInt(const char* arg);
     std::string operator()(int argc, const char** argv);
     bool validateNumberOfArguments(int argc, const char** argv);
  private:
