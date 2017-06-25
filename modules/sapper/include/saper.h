@@ -15,9 +15,22 @@ class Saper {
     void NewLVL();
     bool IsWin();
     void Gaming();
+    std::string operator()(int argc, const char** argv);
+    bool validateNumberOfArguments(int argc, const char** argv);
  private:
+    void help(const char* appname, const char* message = "");
+	std::string message_;
     Field *field_;
-    int DeactivatedBomb_;
+	typedef struct {
+		double point1_coordx;
+		double point1_coordy;
+		double point2_coordx;
+		double point2_coordy;
+		double point3_coordx;
+		double point3_coordy;
+		int operation;
+		int num;                // for side and corner
+	} Arguments;
 };
 
 #endif  // MODULES_SAPPER_INCLUDE_SAPER_H_
