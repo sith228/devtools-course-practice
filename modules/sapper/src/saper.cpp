@@ -60,8 +60,7 @@ std::string Saper::operator()(int argc, const char ** argv) {
 	case 1:
 		if (TouchResult(args.x, args.y)) {
 			std::cout << "\t Good move!" << std::endl;
-		}
-		else {
+		} else {
 			//  system("cls");
 			std::cout << "\t Bad move :(" << std::endl;
 			Print();

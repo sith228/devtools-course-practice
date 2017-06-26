@@ -58,11 +58,6 @@ TEST(Saper, Can_recognize_all_bomb) {
     ASSERT_EQ(count, 10);
 }
 
-TEST(Saper, Can_create_new_level) {
-    Saper app;
-
-    ASSERT_NO_THROW(app.NewLVL());
-}
 
 TEST(Saper, Can_help) {
 	std::string output_;
