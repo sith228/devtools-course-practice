@@ -2,7 +2,11 @@
 
 #include <gtest/gtest.h>
 
+#include<vector>
+#include <string>
+
 #include"include/saper.h"
+
 
 TEST(Saper, Can_creat_obj_by_defult) {
     ASSERT_NO_THROW(Saper app);
@@ -61,11 +65,18 @@ TEST(Saper, Can_create_new_level) {
 }
 
 TEST(Saper, Can_help) {
-	Saper app;
-	const char** arg = new const char*[10];
-	arg[0] = new char('0');
-	arg[1] = new char('0');
-	arg[2] = new char('0');
+	std::string output_;
+	Saper app_;
 
-	ASSERT_NO_THROW(app(2, arg));
+	std::vector<std::string> args = { "0", "0", "0" };
+	std::vector<const char*> options;
+
+	options.push_back("appname");
+	for (size_t i = 0; i < args.size(); ++i)
+		options.push_back(args[i].c_str());
+	const char** argv = &options.front();
+	int argc = static_cast<int>(args.size()) + 1;
+
+	output_ = app_(argc, argv);
+	EXPECT_TRUE(output_ == "asd");
 }
