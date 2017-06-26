@@ -62,12 +62,10 @@ TEST(Saper, Can_create_new_level) {
 
 TEST(Saper, Can_help) {
 	Saper app;
-	const char** arg = new char*[3];
-	arg[0] = new char[3];
-	arg[1] = new char[3]; 
-	arg[2] = new char[3];
-	arg[0] = arg[1] = "1";
-	arg[2] = "0";
+	const char** arg = new char*[10];
+	arg[0] = new char('0');
+	arg[1] = new char('0');
+	arg[2] = new char('0');
 
 	ASSERT_NO_THROW(app(2, arg));
 }

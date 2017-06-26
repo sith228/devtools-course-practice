@@ -121,7 +121,7 @@ void Saper::help(const char * appname, const char * message)
 		"    and finish work";
 }
 
-bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
+bool Saper::validateNumberOfArguments(int argc, char ** argv) {
 	if (argc == 1) {
 		help(argv[0]);
 		return false;
