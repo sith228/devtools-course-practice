@@ -57,10 +57,12 @@ std::string Saper::operator()(int argc, const char ** argv) {
 			"\t You make a flag!"
 			<< std::endl;
 		MarkCell(args.x, args.y);
+		return "You make a flag";
 		break;
 	case 1:
 		if (TouchResult(args.x, args.y)) {
 			std::cout << "\t Good move!" << std::endl;
+			return "Good move!";
 		} else {
 			//  system("cls");
 			std::cout << "\t Bad move :(" << std::endl;

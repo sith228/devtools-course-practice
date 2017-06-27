@@ -76,8 +76,7 @@ TEST(Saper, Can_help) {
 	EXPECT_TRUE(output_ == "error");
 }
 
-
-TEST(Saper, Can_touch) {
+TEST(Saper, Can_touch_and_lose) {
 	std::vector<std::string> argsF = { "0", "0", "2" };
 	std::string output_;
 	Saper app_;
@@ -91,7 +90,7 @@ TEST(Saper, Can_touch) {
 	int argc = static_cast<int>(args.size()) + 1;
 
 	output_ = app_(argc, argv);
-	EXPECT_TRUE(output_ == "asd");
+	EXPECT_TRUE(output_ == "You lose");
 }
 
 
@@ -109,5 +108,5 @@ TEST(Saper, Can_make_flag) {
 	int argc = static_cast<int>(args.size()) + 1;
 
 	output_ = app_(argc, argv);
-	EXPECT_TRUE(output_ == "asd");
+	EXPECT_TRUE(output_ == "You make a flag");
 }
