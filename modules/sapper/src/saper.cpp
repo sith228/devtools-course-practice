@@ -71,24 +71,6 @@ std::string Saper::operator()(int argc, const char ** argv ) {
 			std::cout << "Ba Ba Ba Bah!" << std::endl;
 			std::cout << "Ba Ba Ba Bah!" << std::endl;
 			std::cout << "Sory, you lose(" << std::endl;
-			/*
-			do {
-				std::cout << "Try again?:) (y/n)" << std::endl;
-				//  answer = "n";  // std::cin >> answer;
-				if (answer[0] == 'n' || answer[0] == 'N') {
-					again = false;
-					break;
-				} else if (answer[0] == 'y' || answer[0] == 'Y') {
-					again = true;
-					system("cls");
-					NewLVL();
-					std::cout << "\t Welcome" << std::endl;
-					break;
-				} else {
-					continue;
-				}
-				*/
-				//  stream << "Triangle Corner #" << args.num << " = " << result;
 			return "You lose";
 		}
 		break;
@@ -142,6 +124,7 @@ int Saper::parseInt(const char* arg) {
 	int value = atoi(arg);
 
 	if (value <= 0 || value > 50) {
+		std::cout << value;
 		throw std::string("Wrong number format!");
 	}
 	return value;
