@@ -34,7 +34,8 @@ void Saper::MarkCell(int x, int y) {
     field_->MarkCell(x, y);
 }
 
-std::string Saper::operator()(int argc, const char ** argv) {
+std::string Saper::operator()(int argc, const char ** argv ) {
+
 	Arguments args;
 
 	if (!validateNumberOfArguments(argc, argv)) {
@@ -132,6 +133,8 @@ bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
 		help(argv[0]);
 		return false;
 	}
+	if(argc == 1)
+		return "exit";
 	return true;
 }
 

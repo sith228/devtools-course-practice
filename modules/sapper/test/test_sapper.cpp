@@ -98,13 +98,15 @@ TEST(Saper, Can_make_flag) {
 	std::vector<std::string> argsF = { "0", "0", "2" };
 	std::string output_;
 	Saper app_;
-	std::vector<std::string> args = { "0", "0", "1" };
-	std::vector<const char*> options;
+	std::vector<const char*> args = {"appname", "0", "0", "1" };
+	std::vector<const char*> options = { "appname", "0", "0", "1" };
 
-	options.push_back("appname");
-	for (size_t i = 0; i < args.size(); ++i)
-		options.push_back(args[i].c_str());
-	const char** argv = &options.front();
+	//options.push_back();
+	//for (size_t i = 0; i < args.size(); ++i)
+	//	options.push_back(args[i].c_str());
+	// const char** argv = &options.front();
+	const char** argv = &args.front();
+
 	int argc = static_cast<int>(args.size()) + 1;
 
 	output_ = app_(argc, argv);
