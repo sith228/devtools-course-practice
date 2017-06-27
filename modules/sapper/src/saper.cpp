@@ -48,12 +48,13 @@ std::string Saper::operator()(int argc, const char ** argv) {
 	catch (std::string& str) {
 		return str;
 	}
-
+	if (argc != 3)
+		return("error");
 	std::ostringstream stream;
 	switch (args.choose) {
 	case 0:
 		std::cout <<
-			"\t You make a flag! My congratulations!"
+			"\t You make a flag!"
 			<< std::endl;
 		MarkCell(args.x, args.y);
 		break;
@@ -87,7 +88,7 @@ std::string Saper::operator()(int argc, const char ** argv) {
 				}
 				*/
 				//  stream << "Triangle Corner #" << args.num << " = " << result;
-			return "you lose";
+			return "You lose";
 		}
 		break;
 	}
