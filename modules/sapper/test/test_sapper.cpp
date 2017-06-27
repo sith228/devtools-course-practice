@@ -90,7 +90,7 @@ TEST(Saper, Can_touch_and_lose) {
 	int argc = static_cast<int>(args.size()) + 1;
 
 	output_ = app_(argc, argv);
-	ASSERT_EQ(output_ ,"You lose")
+	ASSERT_EQ(output_, "You lose");
 }
 
 
