@@ -131,9 +131,6 @@ bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
 	if (argc != 4) {
 		help(argv[0]);
 		return false;
-	} else if (parseInt(argv[3]) <= 1 ) {
-		help(argv[0], "ERROR: Incorrect arguments num.\n\n");
-		return false;
 	}
 	return true;
 }
