@@ -38,7 +38,7 @@ std::string Saper::operator()(int argc, const char ** argv) {
 	Arguments args;
 
 	if (!validateNumberOfArguments(argc, argv)) {
-		return message_;
+		return "error";
 	}
 	try {
 		args.x = parseInt(argv[1]);
@@ -91,6 +91,12 @@ std::string Saper::operator()(int argc, const char ** argv) {
 			return "You lose";
 		}
 		break;
+	case 2:
+		std::cout <<
+			"\t Have a good day!"
+			<< std::endl;
+		return "exit";
+		break;
 	}
 	//	if (args.choose > 1)
 	if (IsWin())
@@ -122,7 +128,7 @@ void Saper::help(const char * appname, const char * message)
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
-	if (argc == 1) {
+	if (argc > 3) {
 		help(argv[0]);
 		return false;
 	} else if (parseInt(argv[3]) <= 1 ) {
