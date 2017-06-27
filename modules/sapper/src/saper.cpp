@@ -48,8 +48,6 @@ std::string Saper::operator()(int argc, const char ** argv) {
 	catch (std::string& str) {
 		return str;
 	}
-	if (argc != 3)
-		return("error");
 	std::ostringstream stream;
 	switch (args.choose) {
 	case 0:
@@ -130,7 +128,7 @@ void Saper::help(const char * appname, const char * message)
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
-	if (argc > 3) {
+	if (argc != 4) {
 		help(argv[0]);
 		return false;
 	} else if (parseInt(argv[3]) <= 1 ) {
