@@ -113,10 +113,12 @@ void Saper::help(const char * appname, const char * message)
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
 	if (argc != 4) {
 		help(argv[0]);
+		std::cout << "-==================================";
 		return false;
 	}
 	if(argc == 1)
 		return "exit";
+	std::cout << "++++++==================================";
 	return true;
 }
 
