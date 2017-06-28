@@ -14,7 +14,7 @@ class Saper {
     std::string operator()(int argc, const char** argv);
  private:
     bool validateNumberOfArguments(int argc, const char** argv);
-	static void PrintHelp(const char *appname, std::ostream *ofss);
+    static void PrintHelp(const char *appname, std::ostream *ofss);
     std::ostringstream* stream;
     std::string message_;
     Field *field_;
