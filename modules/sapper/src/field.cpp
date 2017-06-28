@@ -36,7 +36,7 @@ void Field::GenerateField() {
 }
 
 void Field::GenerateBomb(int bombcount) {
-    int i = 0, x = 0, y = 0;
+    int16_t i = 0, x = 0, y = 0;
     unsigned int seedp = 1;
     srand(time(0));
     while (i < NumBomb_) {
