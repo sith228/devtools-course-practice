@@ -92,7 +92,7 @@ void Saper::help(const char * appname, const char * message) {
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
     if (argc != 4) {
-        help(argv[0]);
+        help(argv[0],"Wrong numbers of argument");
         return false;
     }
     return true;

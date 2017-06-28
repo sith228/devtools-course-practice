@@ -67,9 +67,9 @@ TEST(Saper, Can_touch_and_lose) {
     std::string output_;
     Saper app_(3, 3, 9);
     std::vector<const char*> args = {"appname", "1", "1", "1" };
-
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
+
     output_ = app_(argc, argv);
 
     ASSERT_EQ(output_, "You lose");
@@ -80,9 +80,9 @@ TEST(Saper, Can_touch_and_win) {
     std::string output_;
     Saper app_(3, 3, 0);
     std::vector<const char*> args = { "appname", "1", "1", "1" };
-
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
+
     output_ = app_(argc, argv);
 
     ASSERT_EQ(output_, "You win!");
@@ -92,9 +92,9 @@ TEST(Saper, Can_touch_and_not_lose) {
     std::string output_;
     Saper app_(10, 10, 6);
     std::vector<const char*> args = { "appname", "5", "4", "1" };
-
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
+
     output_ = app_(argc, argv);
 
     ASSERT_EQ(output_, "Good move!");
@@ -107,7 +107,7 @@ TEST(Saper, Can_touch_nothing) {
 }
 
 TEST(Saper, Can_touch) {
-    Saper app_(4,4,0);
+    Saper app_(4, 4, 0);
 
     ASSERT_TRUE(app_.TouchResult(0, 0));
 }
