@@ -64,12 +64,10 @@ std::string Saper::operator()(int argc, const char ** argv) {
             return "You lose";
         }
         break;
-    case 2:
-        std::cout <<
-            "\t Have a good day!"<< std::endl;
-        return "exit";
-        break;
     }
+    std::cout <<
+        "\t Have a good day!" << std::endl;
+    return "exit";
 }
 
 void Saper::PrintHelp(const char *appname, std::ostream *ofs) {

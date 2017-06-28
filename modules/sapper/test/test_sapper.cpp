@@ -60,7 +60,7 @@ TEST(Saper, Can_help) {
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
 
-    ASSERT_EQ("wrong arguments!",output_ = app_(argc, argv));
+    ASSERT_EQ("wrong arguments!", output_ = app_(argc, argv));
 }
 
 TEST(Saper, Can_touch_and_lose) {
