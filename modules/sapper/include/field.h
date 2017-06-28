@@ -23,13 +23,7 @@ class Field {
      bool MarkCell(int x, int y);
      // access to cell
      Cell* operator[] (int index);
-     // create array[,]
-     void GenerateField();
-     // getter
-     int GetBombCount() {
-         return NumBomb_;
-     }
-    bool IsWin();
+     bool IsWin();
 
  private:
      int rand_m(int k);
@@ -37,6 +31,8 @@ class Field {
      void GenerateBomb(int bombcount);
      // generate num of bomb for each cell
      void GenerateCellNum();
+     // create array[,]
+     void GenerateField();
      Cell **field_;
      int Height_;
      int Width_;

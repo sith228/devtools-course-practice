@@ -83,3 +83,23 @@ TEST(Field, Can_creat_obj_with_equal_size) {
 TEST(Field, throw_when_negative_hight) {
     ASSERT_ANY_THROW(Field app(-20, -20, -10));
 }
+
+TEST(Field, braket_work) {
+    Field app;
+
+    for (int k = 0; k < 10; k++)
+        for (int i = 0; i < 10; i++)
+            ASSERT_NE(&app[i][k], nullptr);
+}
+
+TEST(Field, braket_work_and_give_information) {
+    Field app;
+
+    for (int k = 0; k < 10; k++) {
+        for (int i = 0; i < 10; i++) {
+            ASSERT_NO_THROW(app[i][k].isBomb);
+            ASSERT_NO_THROW(app[i][k].num);
+            ASSERT_NO_THROW(app[i][k].viewCell);
+        }
+    }
+}
