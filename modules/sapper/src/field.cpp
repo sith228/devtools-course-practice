@@ -40,12 +40,12 @@ void Field::GenerateBomb(int bombcount) {
     unsigned int seedp = 0;
     srand(time(0));
     while (i < NumBomb_) {
-        rand_s(&seedp);
-        y = seedp % Width_;
-        rand_s(&seedp);
-        x = seedp % Height_;
-        //  y = rand() % Width_;
-        //  x = rand() % Height_;
+        //  rand_s(&seedp);
+        //  y = seedp % Width_;
+        //  rand_s(&seedp);
+        //  x = seedp % Height_;
+        y = rand() % Width_;
+        x = rand() % Height_;
         if (!field_[x][y].isBomb) {
             field_[x][y].isBomb = true;
             field_[x][y].num = -1;
