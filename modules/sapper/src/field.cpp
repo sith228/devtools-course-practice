@@ -175,25 +175,26 @@ int temp[100];
 int Field::rand_m(int k) {
     int t = time(0)%32000;
     int i = 0;
-    temp[i] = std::log2((double)t);
-    if(k%100 == 1)
+    temp[i] = std::log2(static_cast<double>(t));
+    if (k % 100 == 1) {
         while (i < 10) {
-            temp[10 * i] = 10 * i + t/7;
-            temp[10 * i + 1] = 10 * i + 1*t;
-            temp[10 * i + 2] = 10 * i+2 + t % 50;
-            temp[10 * i + 3] = 10 * i+3 + t % 10;
-            temp[10 * i + 4] = 10 * i+4 + t % 13;
-            temp[10 * i + 5] = 10 * i+5 + t % 19;
-            temp[10 * i + 6] = 10 * i+6 + t % 109;
-            temp[10 * i + 7] = 10 * i+7 + t % 100;
-            temp[10 * i + 8] = 10 * i+8 + t % 10000;
-            temp[10 * i + 9] = 10 * i+9 + t % 1000;
+            temp[10 * i] = 10 * i + t / 7;
+            temp[10 * i + 1] = 10 * i + 1 * t;
+            temp[10 * i + 2] = 10 * i + 2 + t % 50;
+            temp[10 * i + 3] = 10 * i + 3 + t % 10;
+            temp[10 * i + 4] = 10 * i + 4 + t % 13;
+            temp[10 * i + 5] = 10 * i + 5 + t % 19;
+            temp[10 * i + 6] = 10 * i + 6 + t % 109;
+            temp[10 * i + 7] = 10 * i + 7 + t % 100;
+            temp[10 * i + 8] = 10 * i + 8 + t % 10000;
+            temp[10 * i + 9] = 10 * i + 9 + t % 1000;
             i++;
             t = time(0) % 32000;
             t *= t % 32000;
         }
-    if(k<100)
+    }
+    if (k < 100)
         return temp[k];
     else
-        return temp[k%100];
+        return temp[k % 100];
 }
