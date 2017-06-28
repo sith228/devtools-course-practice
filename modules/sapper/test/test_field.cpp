@@ -8,7 +8,7 @@ TEST(Field, Can_creat_obj_by_defult) {
 }
 
 TEST(Field, Can_print_in_console) {
-    Field app(10, 10, 90);
+    Field app(10, 10, 10);
 
     app.GenerateField();
 

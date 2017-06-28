@@ -32,6 +32,7 @@ class Field {
     bool IsWin();
 
  private:
+     int rand_m(int k);
      // add in field bombcount bombs
      void GenerateBomb(int bombcount);
      // generate num of bomb for each cell

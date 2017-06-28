@@ -1,5 +1,5 @@
 // Copyright 2017 Fedorov Igor
-#define _CRT_RAND_S
+
 #include "include/field.h"
 
 #include <time.h>
@@ -36,8 +36,8 @@ void Field::GenerateField() {
 }
 
 void Field::GenerateBomb(int bombcount) {
-    int16_t i = 0, x = 0, y = 0;
-    //  unsigned int seedp = 0;
+    int i = 0, x = 0, y = 0;
+    unsigned int seedp = 1;
     srand(time(0));
     while (i < NumBomb_) {
         //  rand_s(&seedp);
@@ -45,7 +45,11 @@ void Field::GenerateBomb(int bombcount) {
         //  rand_s(&seedp);
         //  x = seedp % Height_;
         //  y = rand() % Width_;
-        x = rand() % Height_;
+        //  x = rand() % Height_;
+        x = rand_m(seedp++) % Height_;
+        y = rand_m(seedp++) % Width_;
+        // y = (int)time(0) % Width_;
+        // x = (int)time(0) % Height_;
         if (!field_[x][y].isBomb) {
             field_[x][y].isBomb = true;
             field_[x][y].num = -1;
@@ -166,4 +170,30 @@ bool Field::MarkCell(int x, int y) {
 
 Cell* Field::operator[](int index) {
     return field_[index];
+}
+int temp[100];
+int Field::rand_m(int k) {
+    int t = time(0)%32000;
+    int i = 0;
+    temp[i] = std::log2((double)t);
+    if(k%100 == 1)
+        while (i < 10) {
+            temp[10 * i] = 10 * i + t/7;
+            temp[10 * i + 1] = 10 * i + 1*t;
+            temp[10 * i + 2] = 10 * i+2 + t % 50;
+            temp[10 * i + 3] = 10 * i+3 + t % 10;
+            temp[10 * i + 4] = 10 * i+4 + t % 13;
+            temp[10 * i + 5] = 10 * i+5 + t % 19;
+            temp[10 * i + 6] = 10 * i+6 + t % 109;
+            temp[10 * i + 7] = 10 * i+7 + t % 100;
+            temp[10 * i + 8] = 10 * i+8 + t % 10000;
+            temp[10 * i + 9] = 10 * i+9 + t % 1000;
+            i++;
+            t = time(0) % 32000;
+            t *= t % 32000;
+        }
+    if(k<100)
+        return temp[k];
+    else
+        return temp[k%100];
 }
