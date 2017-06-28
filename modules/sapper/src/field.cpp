@@ -174,7 +174,7 @@ Cell* Field::operator[](int index) {
 int temp[100];
 int Field::rand_m(int k) {
     int t = time(0)%32000;
-    int i = 0;
+    int16_t i = 0;
     if (k % 100 == 1) {
         while (i < 10) {
             temp[10 * i] = 10 * i + t / 7;
