@@ -14,6 +14,16 @@ TEST(Field, Can_print_in_console_open_map) {
     ASSERT_NO_THROW(app.PrintField());
 }
 
+TEST(Field, Print_not_change_obj) {
+    Field app(10,10,0);
+
+    app.PrintField();
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            ASSERT_EQ(app[i][k].viewCell, '*');
+}
+
 TEST(Field, Can_print_in_console) {
     Field app(10, 10, 10);
 
@@ -55,6 +65,35 @@ TEST(Field, Can_not_win) {
     ASSERT_FALSE(app.IsWin());
 }
 
+TEST(Field, Win_no_throw) {
+    Field app;
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            if (!app[i][k].isBomb)
+                app.OpenCurrentCell(i, k);
+
+    ASSERT_NO_THROW(app.IsWin());
+}
+
+TEST(Field, no_win_no_throw) {
+    Field app;
+
+    ASSERT_NO_THROW(app.IsWin());
+}
+
+TEST(Field, Can_mark_all) {
+    Field app;
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            app.MarkCell(i, k);
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            ASSERT_EQ(app[i][k].viewCell,'!');
+}
+
 TEST(Field, Can_mark) {
     Field app;
 
@@ -85,6 +124,22 @@ TEST(Field, Can_open_near_cell) {
     }
 }
 
+TEST(Field, Open_near_cell_print) {
+    Field app(10, 10, 10);
+    
+    for (int k = 0; k < 10; k++)
+        for (int i = 0; i < 10; i++)
+            if (app[i][k].num == 0)
+                app.OpenNearCell(i, k);
+    app.PrintField();
+    
+    for (int k = 0; k < 10; k++)
+        for (int i = 0; i < 10; i++)
+            if (app[i][k].num == 0)
+                ASSERT_EQ(app[i][k].viewCell, '0');
+}
+
+
 TEST(Field, Can_delet) {
     Field* app_ = new Field();
 
@@ -113,4 +168,16 @@ TEST(Field, braket_work) {
     for (int k = 0; k < 10; k++)
         for (int i = 0; i < 10; i++)
             ASSERT_NE(&app[i][k], nullptr);
+}
+
+TEST(Field, braket_work_well) {
+    Field app;
+
+    for (int k = 0; k < 10; k++)
+        for (int i = 0; i < 10; i++)
+            app[i][k].isBomb = true;
+
+    for (int k = 0; k < 10; k++)
+        for (int i = 0; i < 10; i++)
+            ASSERT_EQ(app[i][k].isBomb, true);
 }

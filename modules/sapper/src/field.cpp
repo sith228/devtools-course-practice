@@ -26,6 +26,7 @@ Field::~Field() {
         delete[] field_[i];
     }
     delete[] field_;
+	std::cout << "aaaaaaaaaaaaaaaa";
 }
 
 void Field::GenerateField() {
@@ -79,7 +80,7 @@ void Field::GenerateCellNum() {
         }
 }
 
-void Field::PrintField() {
+void const Field::PrintField() {
     std::cout << " |";
     for (int i = 0; i < Width_; i++)
         std::cout << i << " ";

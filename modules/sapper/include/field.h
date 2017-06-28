@@ -15,14 +15,14 @@ class Field {
  public:
      explicit Field(int Width = 10, int Height = 10, int bombcount = 10);
      ~Field();
-     void PrintField();
+     void  const PrintField();
      // feedback from touch
      void OpenNearCell(int x, int y);
      bool OpenCurrentCell(int x_, int y_);
      // mark cell as cell with bomb
      bool MarkCell(int x, int y);
      // access to cell
-     Cell* operator[] (int index);
+	 Cell* operator[] (int index);
      bool IsWin();
 
  private:
