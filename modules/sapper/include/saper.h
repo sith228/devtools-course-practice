@@ -11,13 +11,13 @@ class Saper {
  public:
     explicit Saper(int wth = 10, int hght = 10, int countbomb = 10);
     bool TouchResult(int x_, int y_);
-    int parseInt(const char* arg);
     std::string operator()(int argc, const char** argv);
-    bool validateNumberOfArguments(int argc, const char** argv);
  private:
+    bool validateNumberOfArguments(int argc, const char** argv);
     void help(const char* appname, const char* message = "");
     std::string message_;
     Field *field_;
+    int parseInt(const char* arg);
     typedef struct {
         int x;
         int y;

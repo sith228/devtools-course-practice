@@ -100,6 +100,37 @@ TEST(Saper, Can_touch_and_not_lose) {
     ASSERT_EQ(output_, "Good move!");
 }
 
+TEST(Saper, Can_touch_nothing) {
+    Saper app_;
+
+    ASSERT_TRUE(app_.TouchResult(-1, 23));
+}
+
+TEST(Saper, Can_touch) {
+    Saper app_(4,4,0);
+
+    ASSERT_TRUE(app_.TouchResult(0, 0));
+}
+
+TEST(Saper, Can_touch_bomb) {
+    Saper app_;
+    int x = 0, y = 0;
+
+    for (int k = 0; k < 10; k++) {
+        for (int i = 0; i < 10; i++) {
+            if (!app_.TouchResult(k, i)) {
+                x = k;
+                y = i;
+                break;
+            }
+        }
+        if (x != 0 && y != 0)
+            break;
+    }
+
+    ASSERT_FALSE(app_.TouchResult(x, y));
+}
+
 TEST(Saper, Can_make_flag) {
     std::string output_;
     Saper app_;
