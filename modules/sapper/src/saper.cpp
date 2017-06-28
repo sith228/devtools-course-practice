@@ -41,18 +41,20 @@ std::string Saper::operator()(int argc, const char ** argv) {
             "\t You make a flag!"
             << std::endl;
         field_->MarkCell(args.x, args.y);
+        field_->PrintField();
         return "You make a flag";
         break;
     case 1:
         if (TouchResult(args.x, args.y)) {
             std::cout << "\t Good move!" << std::endl;
+            field_->PrintField();
             if (field_->IsWin())
                 return "You win!";
             return "Good move!";
         } else {
             //  system("cls");
             std::cout << "\t Bad move :(" << std::endl;
-            field_->PrintField;
+            field_->PrintField();
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
@@ -67,6 +69,8 @@ std::string Saper::operator()(int argc, const char ** argv) {
         return "exit";
         break;
     }
+    message_ = stream.str();
+    return message_;
 }
 
 void Saper::help(const char * appname, const char * message) {

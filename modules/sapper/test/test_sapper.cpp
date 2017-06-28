@@ -60,8 +60,7 @@ TEST(Saper, Can_help) {
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
 
-    output_ = app_(argc, argv);
-    EXPECT_EQ(output_, "error");
+    EXPECT_NO_THROW(output_ = app_(argc, argv));
 }
 
 TEST(Saper, Can_touch_and_lose) {
