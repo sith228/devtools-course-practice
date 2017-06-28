@@ -135,8 +135,9 @@ TEST(Saper, Can_throw_parce) {
 
 	const char** argv = &args.front();
 	int argc = static_cast<int>(args.size());
-	output_ = app_(argc, argv);
+	// output_ = app_(argc, argv);
 
+	ASSERT_ANY_THROW(output_ = app_(argc, argv));
 	ASSERT_EQ(output_,"Wrong number format!");
 }
 
@@ -163,5 +164,5 @@ TEST(Saper, Can_exit_by_1_args) {
 	int argc = static_cast<int>(args.size());
 	output_ = app_(argc, argv);
 
-	ASSERT_EQ(output_, "error");
+	ASSERT_EQ(output_, "exit");
 }

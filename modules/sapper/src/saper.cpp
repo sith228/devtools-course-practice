@@ -35,18 +35,17 @@ void Saper::MarkCell(int x, int y) {
 }
 
 std::string Saper::operator()(int argc, const char ** argv ) {
-
 	Arguments args;
+	std::ostringstream stream;
 
+	if (argc == 1)
+		return "exit";
 	if (!validateNumberOfArguments(argc, argv)) {
 		return "error";
 	}
-	if (argc == 1)
-		return "exit";
 	args.x = parseInt(argv[1]);
 	args.y = parseInt(argv[2]);
 	args.choose = parseInt(argv[3]);
-	std::ostringstream stream;
 	switch (args.choose) {
 	case 0:
 		std::cout <<
