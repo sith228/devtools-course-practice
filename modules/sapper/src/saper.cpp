@@ -24,12 +24,13 @@ bool Saper::TouchResult(int x, int y) {
 
 std::string Saper::operator()(int argc, const char ** argv) {
     Arguments args;
-    std::ostringstream stream;
-
-    if (argc == 1)
+    stream = new std::ostringstream();
+    if (argc == 1) {
+        PrintHelp(argv[0], stream);
         return "exit";
+    }
     if (!validateNumberOfArguments(argc, argv)) {
-        message_ = stream.str();
+        message_ = (*stream).str();
         return message_;
     }
     args.x = parseInt(argv[1]);
@@ -69,30 +70,25 @@ std::string Saper::operator()(int argc, const char ** argv) {
         return "exit";
         break;
     }
-    message_ = stream.str();
+    message_ = (*stream).str();
     return message_;
 }
 
-void Saper::help(const char * appname, const char * message) {
-    message_ =
-        std::string(message) +
-        "This is a sapper application.\n\n" +
-        "Please size field and number of bomb " +
-        "in the following format for start:\n\n" +
-        "  $ " + appname + " <Heigth> <Width> " +
-        "<bomb_count>" + "\n\n" +
-        "for make decidion:\n\n" +
-        "  $ " + appname + " <row_coord> <column_coord> " +
-        "<mark/open_glyfe>(f or c)" + "\n\n" +
-        "All arguments should be int numbers\n" +
-        "exept last for make decidion\n" +
-        "You can Make flag or touch cell \n " +
-        "    and finish work";
+void Saper::PrintHelp(const char *appname, std::ostream *ofs) {
+    *ofs <<
+        appname << ": a simple saper application. Usage:\n"
+        "\n    " << appname << " <x> <y> <option>"
+        "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit "
+        "and print the result"
+        "\n    " << appname << " <somth>"
+        "\n        -- exit"
+        "\n           a formal parameter is int "
+        "\n";
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
     if (argc != 4) {
-        help(argv[0],"Wrong numbers of argument");
+        PrintHelp(argv[0], stream);
         return false;
     }
     return true;
