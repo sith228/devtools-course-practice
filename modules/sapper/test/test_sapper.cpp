@@ -138,7 +138,7 @@ TEST(Saper, Can_throw_parce) {
     // output_ = app_(argc, argv);
 
     ASSERT_ANY_THROW(output_ = app_(argc, argv));
-    ASSERT_EQ(output_,"Wrong number format!");
+    //  ASSERT_EQ(output_,"Wrong number format!");
 }
 
 
