@@ -13,7 +13,6 @@ class Saper {
     void Print();
     bool TouchResult(int x_, int y_);
     void MarkCell(int x, int y);
-    void NewLVL();
     bool IsWin();
     int parseInt(const char* arg);
     std::string operator()(int argc, const char** argv);

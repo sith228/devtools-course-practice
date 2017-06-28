@@ -67,19 +67,19 @@ TEST(Saper, Can_help) {
     int argc = static_cast<int>(args.size());
 
     output_ = app_(argc, argv);
-    EXPECT_TRUE(output_ == "error");
+    EXPECT_EQ(output_, "error");
 }
 
 TEST(Saper, Can_touch_and_lose) {
     std::string output_;
     Saper app_(3, 3, 9);
     std::vector<const char*> args = {"appname", "1", "1", "1" };
-    
+
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
     output_ = app_(argc, argv);
     app_.Print();
-    
+
     ASSERT_EQ(output_, "You lose");
 }
 
@@ -115,10 +115,10 @@ TEST(Saper, Can_make_flag) {
     std::vector<const char*> args = {"appname", "0", "0", "0" };
     std::vector<const char*> options = { "appname", "0", "0", "0" };
 
-    //options.push_back();
-    //for (size_t i = 0; i < args.size(); ++i)
-    //    options.push_back(args[i].c_str());
-    // const char** argv = &options.front();
+    //  options.push_back();
+    //  for (size_t i = 0; i < args.size(); ++i)
+    //      options.push_back(args[i].c_str());
+    //  const char** argv = &options.front();
     const char** argv = &args.front();
 
     int argc = static_cast<int>(args.size());

@@ -82,22 +82,17 @@ std::string Saper::operator()(int argc, const char ** argv ) {
     return message_;
 }
 
-void Saper::help(const char * appname, const char * message)
-{
+void Saper::help(const char * appname, const char * message) {
     message_ =
         std::string(message) +
         "This is a sapper application.\n\n" +
         "Please size field and number of bomb " +
         "in the following format for start:\n\n" +
-
         "  $ " + appname + " <Heigth> <Width> " +
         "<bomb_count>" + "\n\n" +
-        
         "for make decidion:\n\n" +
-
         "  $ " + appname + " <row_coord> <column_coord> " +
         "<mark/open_glyfe>(f or c)" + "\n\n" +
-
         "All arguments should be int numbers\n" +
         "exept last for make decidion\n" +
         "You can Make flag or touch cell \n " +
