@@ -99,7 +99,7 @@ TEST(Saper, Can_touch_and_win) {
 
 TEST(Saper, Can_touch_and_not_lose) {
     std::string output_;
-    Saper app_(10, 10, 11);
+    Saper app_(10, 10, 6);
     std::vector<const char*> args = { "appname", "1", "1", "1" };
 
     const char** argv = &args.front();
