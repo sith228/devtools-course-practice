@@ -1,5 +1,5 @@
 // Copyright 2017 Fedorov Igor
-#define _CRT_RAND_S 
+#define _CRT_RAND_S
 #include "include/field.h"
 
 #include <time.h>
