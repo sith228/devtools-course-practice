@@ -15,7 +15,7 @@ TEST(Field, Can_print_in_console_open_map) {
 }
 
 TEST(Field, Print_not_change_obj) {
-    Field app(10,10,0);
+    Field app(10, 10, 0);
 
     app.PrintField();
 
@@ -91,7 +91,7 @@ TEST(Field, Can_mark_all) {
 
     for (int i = 0; i < 10; i++)
         for (int k = 0; k < 10; k++)
-            ASSERT_EQ(app[i][k].viewCell,'!');
+            ASSERT_EQ(app[i][k].viewCell, '!');
 }
 
 TEST(Field, Can_mark) {
@@ -126,19 +126,18 @@ TEST(Field, Can_open_near_cell) {
 
 TEST(Field, Open_near_cell_print) {
     Field app(10, 10, 10);
-    
+
     for (int k = 0; k < 10; k++)
         for (int i = 0; i < 10; i++)
             if (app[i][k].num == 0)
                 app.OpenNearCell(i, k);
     app.PrintField();
-    
+
     for (int k = 0; k < 10; k++)
         for (int i = 0; i < 10; i++)
             if (app[i][k].num == 0)
                 ASSERT_EQ(app[i][k].viewCell, '0');
 }
-
 
 TEST(Field, Can_delet) {
     Field* app_ = new Field();

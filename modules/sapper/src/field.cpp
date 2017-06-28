@@ -26,7 +26,6 @@ Field::~Field() {
         delete[] field_[i];
     }
     delete[] field_;
-	std::cout << "aaaaaaaaaaaaaaaa";
 }
 
 void Field::GenerateField() {
