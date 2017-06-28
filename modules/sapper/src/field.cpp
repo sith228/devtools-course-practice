@@ -175,7 +175,6 @@ int temp[100];
 int Field::rand_m(int k) {
     int t = time(0)%32000;
     int i = 0;
-    temp[i] = log2(static_cast<double>(t));
     if (k % 100 == 1) {
         while (i < 10) {
             temp[10 * i] = 10 * i + t / 7;
