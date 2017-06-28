@@ -22,7 +22,7 @@ class Field {
      // mark cell as cell with bomb
      bool MarkCell(int x, int y);
      // access to cell
-	 Cell* operator[] (int index);
+     Cell* operator[] (int index);
      bool IsWin();
 
  private:
