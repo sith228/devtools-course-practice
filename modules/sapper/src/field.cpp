@@ -1,5 +1,5 @@
 // Copyright 2017 Fedorov Igor
-
+#define _CRT_RAND_S 
 #include "include/field.h"
 
 #include <time.h>
@@ -40,8 +40,10 @@ void Field::GenerateBomb(int bombcount) {
     unsigned int seedp = 0;
     srand(time(0));
     while (i < NumBomb_) {
-        y = rand_r(&seedp) % Width_;
-        x = rand_r(&seedp) % Height_;
+        rand_s(&seedp);
+        y = seedp % Width_;
+        rand_s(&seedp);
+        x = seedp % Height_;
         //  y = rand() % Width_;
         //  x = rand() % Height_;
         if (!field_[x][y].isBomb) {
