@@ -56,7 +56,7 @@ TEST(Saper, Can_recognize_all_bomb) {
 TEST(Saper, Can_help) {
     std::string output_;
     Saper app_;
-    std::vector<const char*> args = { "appname", "0", "0", "0", "0","0" };
+    std::vector<const char*> args = { "appname", "0", "0", "0", "0", "0" };
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
 
