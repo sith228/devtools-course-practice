@@ -40,7 +40,6 @@ class Field {
      int Height_;
      int Width_;
      int NumBomb_;
-
 };
 
 #endif  // MODULES_SAPPER_INCLUDE_FIELD_H_

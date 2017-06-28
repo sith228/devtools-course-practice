@@ -35,88 +35,88 @@ void Saper::MarkCell(int x, int y) {
 }
 
 std::string Saper::operator()(int argc, const char ** argv ) {
-	Arguments args;
-	std::ostringstream stream;
+    Arguments args;
+    std::ostringstream stream;
 
-	if (argc == 1)
-		return "exit";
-	if (!validateNumberOfArguments(argc, argv)) {
-		return "error";
-	}
-	args.x = parseInt(argv[1]);
-	args.y = parseInt(argv[2]);
-	args.choose = parseInt(argv[3]);
-	switch (args.choose) {
-	case 0:
-		std::cout <<
-			"\t You make a flag!"
-			<< std::endl;
-		MarkCell(args.x, args.y);
-		return "You make a flag";
-		break;
-	case 1:
-		if (TouchResult(args.x, args.y)) {
-			std::cout << "\t Good move!" << std::endl;
-			if (IsWin())
-				return "You win!";
-			return "Good move!";
-		} else {
-			//  system("cls");
-			std::cout << "\t Bad move :(" << std::endl;
-			Print();
-			std::cout << "Ba Ba Ba Bah!" << std::endl;
-			std::cout << "Ba Ba Ba Bah!" << std::endl;
-			std::cout << "Ba Ba Ba Bah!" << std::endl;
-			std::cout << "Ba Ba Ba Bah!" << std::endl;
-			std::cout << "Sory, you lose(" << std::endl;
-			return "You lose";
-		}
-		break;
-	case 2:
-		std::cout <<
-			"\t Have a good day!"<< std::endl;
-		return "exit";
-		break;
-	}
-	message_ = stream.str();
-	return message_;
+    if (argc == 1)
+        return "exit";
+    if (!validateNumberOfArguments(argc, argv)) {
+        return "error";
+    }
+    args.x = parseInt(argv[1]);
+    args.y = parseInt(argv[2]);
+    args.choose = parseInt(argv[3]);
+    switch (args.choose) {
+    case 0:
+        std::cout <<
+            "\t You make a flag!"
+            << std::endl;
+        MarkCell(args.x, args.y);
+        return "You make a flag";
+        break;
+    case 1:
+        if (TouchResult(args.x, args.y)) {
+            std::cout << "\t Good move!" << std::endl;
+            if (IsWin())
+                return "You win!";
+            return "Good move!";
+        } else {
+            //  system("cls");
+            std::cout << "\t Bad move :(" << std::endl;
+            Print();
+            std::cout << "Ba Ba Ba Bah!" << std::endl;
+            std::cout << "Ba Ba Ba Bah!" << std::endl;
+            std::cout << "Ba Ba Ba Bah!" << std::endl;
+            std::cout << "Ba Ba Ba Bah!" << std::endl;
+            std::cout << "Sory, you lose(" << std::endl;
+            return "You lose";
+        }
+        break;
+    case 2:
+        std::cout <<
+            "\t Have a good day!"<< std::endl;
+        return "exit";
+        break;
+    }
+    message_ = stream.str();
+    return message_;
 }
 
 void Saper::help(const char * appname, const char * message)
 {
-	message_ =
-		std::string(message) +
-		"This is a sapper application.\n\n" +
-		"Please size field and number of bomb " +
-		"in the following format for start:\n\n" +
+    message_ =
+        std::string(message) +
+        "This is a sapper application.\n\n" +
+        "Please size field and number of bomb " +
+        "in the following format for start:\n\n" +
 
-		"  $ " + appname + " <Heigth> <Width> " +
-		"<bomb_count>" + "\n\n" +
-		
-		"for make decidion:\n\n" +
+        "  $ " + appname + " <Heigth> <Width> " +
+        "<bomb_count>" + "\n\n" +
+        
+        "for make decidion:\n\n" +
 
-		"  $ " + appname + " <row_coord> <column_coord> " +
-		"<mark/open_glyfe>(f or c)" + "\n\n" +
+        "  $ " + appname + " <row_coord> <column_coord> " +
+        "<mark/open_glyfe>(f or c)" + "\n\n" +
 
-		"All arguments should be int numbers\n" +
-		"exept last for make decidion\n" +
-		"You can Make flag or touch cell \n " +
-		"    and finish work";
+        "All arguments should be int numbers\n" +
+        "exept last for make decidion\n" +
+        "You can Make flag or touch cell \n " +
+        "    and finish work";
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
-	if (argc != 4) {
-		help(argv[0]);
-		return false;
-	}
-	return true;
+    if (argc != 4) {
+        help(argv[0]);
+        return false;
+    }
+    return true;
 }
 
 int Saper::parseInt(const char* arg) {
-	int value = atoi(arg);
+    int value = atoi(arg);
 
-	if (value < 0) {
-		throw std::string("Wrong number format!");
-	}
-	return value;
+    if (value < 0) {
+        throw std::string("Wrong number format!");
+    }
+    return value;
 }
