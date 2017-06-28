@@ -9,3 +9,4 @@ add_test(
 )
 set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
+
