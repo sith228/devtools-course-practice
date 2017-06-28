@@ -1,5 +1,6 @@
 // Copyright 2017 Fedorov Igor
 
+//  #include<fstream>
 
 #ifndef MODULES_SAPPER_INCLUDE_FIELD_H_
 #define MODULES_SAPPER_INCLUDE_FIELD_H_
@@ -39,6 +40,7 @@ class Field {
      int Height_;
      int Width_;
      int NumBomb_;
+
 };
 
 #endif  // MODULES_SAPPER_INCLUDE_FIELD_H_

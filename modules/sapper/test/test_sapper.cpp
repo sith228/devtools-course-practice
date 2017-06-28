@@ -62,7 +62,6 @@ TEST(Saper, Can_recognize_all_bomb) {
 TEST(Saper, Can_help) {
 	std::string output_;
 	Saper app_;
-	std::vector<std::string> argsF = { "0", "0", "2" };
 	std::vector<std::string> args = { "0", "0", "0", "0" };
 	std::vector<const char*> options;
 
@@ -77,25 +76,19 @@ TEST(Saper, Can_help) {
 }
 
 TEST(Saper, Can_touch_and_lose) {
-	std::vector<std::string> argsF = { "0", "0", "2" };
 	std::string output_;
 	Saper app_;
-	std::vector<std::string> args = { "0", "0", "0" };
-	std::vector<const char*> options;
-
-	options.push_back("appname");
-	for (size_t i = 0; i < args.size(); ++i)
-		options.push_back(args[i].c_str());
-	const char** argv = &options.front();
+	std::vector<const char*> args = {"appname", "0", "0", "0" };
+	
+	const char** argv = &args.front();
 	int argc = static_cast<int>(args.size()) + 1;
-
 	output_ = app_(argc, argv);
+	
 	ASSERT_EQ(output_, "You lose");
 }
 
 
 TEST(Saper, Can_make_flag) {
-	std::vector<std::string> argsF = { "0", "0", "2" };
 	std::string output_;
 	Saper app_;
 	std::vector<const char*> args = {"appname", "0", "0", "1" };

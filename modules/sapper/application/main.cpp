@@ -14,5 +14,9 @@ int main(int argc, const char** argv) {
 			(app(argc, argv)) == "exit")
 			break;
 	// printf("%s\n", output.c_str());
+//	fwrite()
+//	std::ofstream f("dump.bin", std::binary);
+//	f.write(&m, sizeof(m));
+//	f.close();
 	return 0;
 }
