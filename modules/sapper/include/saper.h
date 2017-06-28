@@ -16,7 +16,6 @@ class Saper {
     bool validateNumberOfArguments(int argc, const char** argv);
     static void PrintHelp(const char *appname, std::ostream *ofss);
     std::ostringstream* stream;
-    std::string message_;
     Field *field_;
     int parseInt(const char* arg);
     typedef struct {

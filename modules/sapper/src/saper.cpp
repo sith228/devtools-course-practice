@@ -30,8 +30,8 @@ std::string Saper::operator()(int argc, const char ** argv) {
         return "exit";
     }
     if (!validateNumberOfArguments(argc, argv)) {
-        message_ = (*stream).str();
-        return message_;
+        PrintHelp(argv[0], stream);
+        return "wrong arguments!";
     }
     args.x = parseInt(argv[1]);
     args.y = parseInt(argv[2]);
@@ -70,8 +70,6 @@ std::string Saper::operator()(int argc, const char ** argv) {
         return "exit";
         break;
     }
-    message_ = (*stream).str();
-    return message_;
 }
 
 void Saper::PrintHelp(const char *appname, std::ostream *ofs) {

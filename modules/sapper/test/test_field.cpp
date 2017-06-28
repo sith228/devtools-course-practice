@@ -3,6 +3,17 @@
 #include <gtest/gtest.h>
 #include"include/field.h"
 
+TEST(Field, Can_print_in_console_open_map) {
+    Field app(10, 10, 10);
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            if (!app[i][k].isBomb)
+                app.OpenCurrentCell(i, k);
+
+    ASSERT_NO_THROW(app.PrintField());
+}
+
 TEST(Field, Can_print_in_console) {
     Field app(10, 10, 10);
 
@@ -15,8 +26,14 @@ TEST(Field, Cant_open_wrong_cur_cell) {
     ASSERT_FALSE(app.OpenCurrentCell(1000, 10000));
 }
 
-TEST(Field, Can_open_cur_cell) {
+TEST(Field, Cant_open_wrong_cur_cell1) {
     Field app(10, 10, 10);
+
+    ASSERT_FALSE(app.OpenCurrentCell(-1000, -10000));
+}
+
+TEST(Field, Can_open_cur_cell) {
+    Field app(10, 10, 0);
 
     ASSERT_TRUE(app.OpenCurrentCell(1, 1));
 }
@@ -51,6 +68,12 @@ TEST(Field, Cannt_mark) {
     ASSERT_FALSE(app.MarkCell(-20, 200));
 }
 
+TEST(Field, Cannt_mark1) {
+    Field app;
+
+    ASSERT_FALSE(app.MarkCell(2013, -200));
+}
+
 TEST(Field, Can_open_near_cell) {
     Field app(10, 10, 10);
     for (int k = 0; k < 10; k++) {
@@ -73,7 +96,7 @@ TEST(Field, Can_creat_obj_by_defult) {
 }
 
 TEST(Field, Can_creat_obj_width_less_height) {
-    ASSERT_NO_THROW(Field app(10, 10, 10));
+    ASSERT_NO_THROW(Field app(10, 10, 30));
 }
 
 TEST(Field, Can_creat_obj_with_equal_size) {

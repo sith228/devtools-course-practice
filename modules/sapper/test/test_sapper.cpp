@@ -60,7 +60,7 @@ TEST(Saper, Can_help) {
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
 
-    EXPECT_NO_THROW(output_ = app_(argc, argv));
+    ASSERT_EQ("wrong arguments!",output_ = app_(argc, argv));
 }
 
 TEST(Saper, Can_touch_and_lose) {
@@ -72,9 +72,20 @@ TEST(Saper, Can_touch_and_lose) {
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "You lose");
+    ASSERT_EQ("You lose", output_);
 }
 
+TEST(Saper, Can_touch_no_throw) {
+    std::string output_;
+    Saper app_(3, 3, 9);
+    std::vector<const char*> args = { "appname", "1", "1", "1" };
+    const char** argv = &args.front();
+    int argc = static_cast<int>(args.size());
+
+    output_ = app_(argc, argv);
+
+    ASSERT_NO_THROW(output_ = app_(argc, argv));
+}
 
 TEST(Saper, Can_touch_and_win) {
     std::string output_;
@@ -85,7 +96,7 @@ TEST(Saper, Can_touch_and_win) {
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "You win!");
+    ASSERT_EQ("You win!", output_);
 }
 
 TEST(Saper, Can_touch_and_not_lose) {
@@ -97,7 +108,7 @@ TEST(Saper, Can_touch_and_not_lose) {
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "Good move!");
+    ASSERT_EQ("Good move!", output_);
 }
 
 TEST(Saper, Can_touch_nothing) {
@@ -135,7 +146,6 @@ TEST(Saper, Can_make_flag) {
     std::string output_;
     Saper app_;
     std::vector<const char*> args = {"appname", "0", "0", "0" };
-    std::vector<const char*> options = { "appname", "0", "0", "0" };
 
     const char** argv = &args.front();
 
@@ -143,14 +153,13 @@ TEST(Saper, Can_make_flag) {
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "You make a flag");
+    ASSERT_EQ("You make a flag", output_);
 }
 
 TEST(Saper, Can_throw_parce) {
     std::string output_;
     Saper app_(10, 10, 11);
-    std::vector<const char*> args = { "appname", "-19", "-20", "1" };
-
+    std::vector<const char*> args = { "appname", "-19", "-20", "0" };
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
     // output_ = app_(argc, argv);
@@ -164,12 +173,11 @@ TEST(Saper, Can_exit) {
     std::string output_;
     Saper app_(10, 10, 11);
     std::vector<const char*> args = { "appname", "0", "0", "2" };
-
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "exit");
+    ASSERT_EQ("exit", output_);
 }
 
 
@@ -182,5 +190,5 @@ TEST(Saper, Can_exit_by_1_args) {
     int argc = static_cast<int>(args.size());
     output_ = app_(argc, argv);
 
-    ASSERT_EQ(output_, "exit");
+    ASSERT_EQ("exit", output_);
 }
