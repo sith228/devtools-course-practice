@@ -10,10 +10,7 @@
 class Saper {
  public:
     explicit Saper(int wth = 10, int hght = 10, int countbomb = 10);
-    void Print();
     bool TouchResult(int x_, int y_);
-    void MarkCell(int x, int y);
-    bool IsWin();
     int parseInt(const char* arg);
     std::string operator()(int argc, const char** argv);
     bool validateNumberOfArguments(int argc, const char** argv);

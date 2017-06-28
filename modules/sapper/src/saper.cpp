@@ -9,14 +9,6 @@ Saper::Saper(int wth, int hght, int countbomb) {
     field_ = new Field(wth, hght, countbomb);
 }
 
-bool Saper::IsWin() {
-    return field_->IsWin();
-}
-
-void Saper::Print() {
-    field_->PrintField();
-}
-
 bool Saper::TouchResult(int x, int y) {
     if (!field_->OpenCurrentCell(x, y)) {
         std::cout << "Pleas, try another one.";
@@ -30,18 +22,15 @@ bool Saper::TouchResult(int x, int y) {
     return true;
 }
 
-void Saper::MarkCell(int x, int y) {
-    field_->MarkCell(x, y);
-}
-
-std::string Saper::operator()(int argc, const char ** argv ) {
+std::string Saper::operator()(int argc, const char ** argv) {
     Arguments args;
     std::ostringstream stream;
 
     if (argc == 1)
         return "exit";
     if (!validateNumberOfArguments(argc, argv)) {
-        return "error";
+        message_ = stream.str();
+        return message_;
     }
     args.x = parseInt(argv[1]);
     args.y = parseInt(argv[2]);
@@ -51,19 +40,19 @@ std::string Saper::operator()(int argc, const char ** argv ) {
         std::cout <<
             "\t You make a flag!"
             << std::endl;
-        MarkCell(args.x, args.y);
+        field_->MarkCell(args.x, args.y);
         return "You make a flag";
         break;
     case 1:
         if (TouchResult(args.x, args.y)) {
             std::cout << "\t Good move!" << std::endl;
-            if (IsWin())
+            if (field_->IsWin())
                 return "You win!";
             return "Good move!";
         } else {
             //  system("cls");
             std::cout << "\t Bad move :(" << std::endl;
-            Print();
+            field_->PrintField;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
@@ -78,8 +67,6 @@ std::string Saper::operator()(int argc, const char ** argv ) {
         return "exit";
         break;
     }
-    message_ = stream.str();
-    return message_;
 }
 
 void Saper::help(const char * appname, const char * message) {

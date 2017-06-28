@@ -40,12 +40,6 @@ TEST(Saper, throw_when_a_lot_bomb) {
     ASSERT_ANY_THROW(Saper app(20, 20, 1000));
 }
 
-TEST(Saper, Can_print_in_console) {
-    Saper app;
-
-    ASSERT_NO_THROW(app.Print());
-}
-
 TEST(Saper, Can_recognize_all_bomb) {
     Saper app;
     int count = 0;
@@ -78,7 +72,6 @@ TEST(Saper, Can_touch_and_lose) {
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
     output_ = app_(argc, argv);
-    app_.Print();
 
     ASSERT_EQ(output_, "You lose");
 }
@@ -92,7 +85,6 @@ TEST(Saper, Can_touch_and_win) {
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
     output_ = app_(argc, argv);
-    app_.Print();
 
     ASSERT_EQ(output_, "You win!");
 }
@@ -115,10 +107,6 @@ TEST(Saper, Can_make_flag) {
     std::vector<const char*> args = {"appname", "0", "0", "0" };
     std::vector<const char*> options = { "appname", "0", "0", "0" };
 
-    //  options.push_back();
-    //  for (size_t i = 0; i < args.size(); ++i)
-    //      options.push_back(args[i].c_str());
-    //  const char** argv = &options.front();
     const char** argv = &args.front();
 
     int argc = static_cast<int>(args.size());
