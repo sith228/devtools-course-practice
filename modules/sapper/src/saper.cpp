@@ -41,14 +41,11 @@ std::string Saper::operator()(int argc, const char ** argv ) {
 	if (!validateNumberOfArguments(argc, argv)) {
 		return "error";
 	}
-	try {
-		args.x = parseInt(argv[1]);
-		args.y = parseInt(argv[2]);
-		args.choose = parseInt(argv[3]);
-	}
-	catch (std::string& str) {
-		return str;
-	}
+	if (argc == 1)
+		return "exit";
+	args.x = parseInt(argv[1]);
+	args.y = parseInt(argv[2]);
+	args.choose = parseInt(argv[3]);
 	std::ostringstream stream;
 	switch (args.choose) {
 	case 0:
@@ -61,6 +58,8 @@ std::string Saper::operator()(int argc, const char ** argv ) {
 	case 1:
 		if (TouchResult(args.x, args.y)) {
 			std::cout << "\t Good move!" << std::endl;
+			if (IsWin())
+				return "You win!";
 			return "Good move!";
 		} else {
 			//  system("cls");
@@ -76,14 +75,10 @@ std::string Saper::operator()(int argc, const char ** argv ) {
 		break;
 	case 2:
 		std::cout <<
-			"\t Have a good day!"
-			<< std::endl;
+			"\t Have a good day!"<< std::endl;
 		return "exit";
 		break;
 	}
-	//	if (args.choose > 1)
-	if (IsWin())
-		return "You win!";
 	message_ = stream.str();
 	return message_;
 }
@@ -113,20 +108,15 @@ void Saper::help(const char * appname, const char * message)
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
 	if (argc != 4) {
 		help(argv[0]);
-		std::cout << "-==================================";
 		return false;
 	}
-	if(argc == 1)
-		return "exit";
-	std::cout << "++++++==================================";
 	return true;
 }
 
 int Saper::parseInt(const char* arg) {
 	int value = atoi(arg);
 
-	if (value <= 0 || value > 50) {
-		std::cout << value;
+	if (value < 0) {
 		throw std::string("Wrong number format!");
 	}
 	return value;

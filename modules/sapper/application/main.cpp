@@ -6,7 +6,7 @@
 #include "./include/saper.h"
 
 int main(int argc, const char** argv) {
-	Saper app(9, 9, 80); 
+	Saper app(9, 9, 30); 
 	while (true)
 		if ((app(argc, argv)) == "error" ||
 			(app(argc, argv)) == "You win!" ||
