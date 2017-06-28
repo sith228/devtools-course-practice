@@ -91,15 +91,3 @@ TEST(Field, braket_work) {
         for (int i = 0; i < 10; i++)
             ASSERT_NE(&app[i][k], nullptr);
 }
-
-TEST(Field, braket_work_and_give_information) {
-    Field app;
-
-    for (int k = 0; k < 10; k++) {
-        for (int i = 0; i < 10; i++) {
-            ASSERT_NO_THROW(app[i][k].isBomb);
-            ASSERT_NO_THROW(app[i][k].num);
-            ASSERT_NO_THROW(app[i][k].viewCell);
-        }
-    }
-}
