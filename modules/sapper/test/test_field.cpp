@@ -77,3 +77,37 @@ TEST(Field, Can_open_all_and_eq_print_string) {
     ASSERT_EQ(" |0 1 |\n-+----+\n0|0 0 |\n1|0 0 |\n-+----+\n",
         app.PrintField());
 }
+
+TEST(Field, can_win) {
+    Field app(10, 10, 9);
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            if (!app[i][k].isBomb)
+                app.OpenCurrentCell(i, k);
+
+    ASSERT_NO_THROW(app.IsWin());
+}
+
+TEST(Field, Can_not_win) {
+    Field app(10, 10, 9);
+
+    ASSERT_NO_THROW(app.IsWin());
+}
+
+TEST(Field, Can_not_win_with_false) {
+    Field app(10, 10, 9);
+
+    ASSERT_FALSE(app.IsWin());
+}
+
+TEST(Field, Can_win_with_true) {
+    Field app(10, 10, 9);
+
+    for (int i = 0; i < 10; i++)
+        for (int k = 0; k < 10; k++)
+            if (!app[i][k].isBomb)
+                app.OpenCurrentCell(i, k);
+
+    ASSERT_TRUE(app.IsWin());
+}
