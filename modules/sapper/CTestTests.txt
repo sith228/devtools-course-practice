@@ -22,7 +22,7 @@ set_tests_properties (${prefix}_can_detect_Wrong_Number_Format_and_print_message
 
 add_test(
     NAME ${prefix}_can_exit_by_3_argmnt
-    COMMAND ${APPLICATION} 0 0 2
+    COMMAND ${APPLICATION} 0 0 3
 )
 set_tests_properties (${prefix}_can_exit_by_3_argmnt PROPERTIES
     PASS_REGULAR_EXPRESSION "exit"
@@ -72,6 +72,13 @@ set_tests_properties (${prefix}_can_make_flag PROPERTIES
      LABELS "${MODULE}")
 
 
+add_test(
+    NAME ${prefix}_can_print
+    COMMAND ${APPLICATION} 0 0 2
+)
+set_tests_properties (${prefix}_can_print PROPERTIES
+    PASS_REGULAR_EXPRESSION " |0 1 2 3 4 5 6 7 8 |"
+    LABELS "${MODULE}")
 
 
 
