@@ -33,7 +33,7 @@ add_test(
     NAME ${prefix}_can_exit_by_0_args
     COMMAND ${APPLICATION} 
 )
-set_tests_properties (${prefix}_can_exit_by_1_args PROPERTIES
+set_tests_properties (${prefix}_can_exit_by_0_args PROPERTIES
     PASS_REGULAR_EXPRESSION "exit"
     LABELS "${MODULE}")
 
