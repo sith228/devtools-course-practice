@@ -72,7 +72,7 @@ std::string Saper::operator()(int argc, const char ** argv) {
 
 void Saper::PrintHelp(const char *appname, std::ostream *ofs) {
     *ofs <<
-        appname << ": a simple saper application. Usage:\n"
+        "This is a simple saper application. Usage:\n"
         "\n    " << appname << " <x> <y> <option>"
         "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit "
         "and print the result"
