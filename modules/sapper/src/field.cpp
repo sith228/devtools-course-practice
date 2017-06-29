@@ -79,31 +79,28 @@ void Field::GenerateCellNum() {
         }
 }
 
-void const Field::PrintField() {
-    std::cout << " |";
+std::string Field::PrintField() {
+    std::string temp;
+    temp += " |";
     for (int i = 0; i < Width_; i++)
-        std::cout << i << " ";
-    std::cout << "|";
-    std::cout << std::endl;
-    std::cout << "-+";
+        temp += std::to_string(i) + " ";
+    temp += "|\n-+";
     for (int i = 0; i < 2 * Width_; i++)
-        std::cout << "-";
-    std::cout << "+";
-    std::cout << std::endl;
+        temp += "-";
+    temp += "+\n";
     for (int i = 0; i < Height_; i++) {
-        std::cout << i;
-        std::cout << "|";
+        temp += std::to_string(i) + "|";
         for (int k = 0; k < Width_; k++) {
-                std::cout << field_[i][k].viewCell << " ";
+            temp += field_[i][k].viewCell;
+            temp += " ";
         }
-        std::cout << "|";
-        std::cout << std::endl;
+        temp += "|\n";
     }
-    std::cout << "-+";
+    temp += "-+";
     for (int i = 0; i < 2 * Height_; i++)
-        std::cout << "-";
-    std::cout << "+";
-    std::cout << std::endl;
+        temp += "-";
+    temp += "+\n";
+    return temp;
 }
 
 void Field::OpenNearCell(int x, int y) {
