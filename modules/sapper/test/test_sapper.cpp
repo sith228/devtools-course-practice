@@ -205,7 +205,7 @@ TEST(Saper, Can_exit_by_1_args_) {
     int argc = static_cast<int>(args_.size());
     output_ = app_(argc, argv);
     std::string message_;
-    
+
     message_ += "exit\n";
     message_ += "This is a simple saper application. Usage:\n";
     message_ += "\n    ";
