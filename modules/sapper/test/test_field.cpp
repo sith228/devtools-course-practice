@@ -145,7 +145,7 @@ TEST(Field, Can_open_near_cell) {
 }
 
 TEST(Field, Can_open_all_near_to_zero) {
-    Field app(10, 10, 2);
+    Field app(10, 10, 1);
 
     for (int i = 0; i < 5; i++)
         for (int k = 0; k < 5; k++)
