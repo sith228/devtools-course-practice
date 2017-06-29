@@ -116,8 +116,8 @@ TEST(Saper, Can_touch_and_win) {
 
 TEST(Saper, Can_touch_and_not_lose) {
     std::string output_;
-    Saper app_(10, 10, 6);
-    std::vector<const char*> args_ = { "appname", "5", "4", "1" };
+    Saper app_(9, 9, 4);
+    std::vector<const char*> args_ = { "appname", "0", "0", "1" };
     const char** argv = &args_.front();
     int argc = static_cast<int>(args_.size());
 
