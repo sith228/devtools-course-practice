@@ -7,7 +7,7 @@
 
 int main(int argc, const char** argv) {
      std::string output;
-     Saper app(9, 9, 1);
+     Saper app(9, 9, 0);
      output = app(argc, argv);
      printf("%s\n", output.c_str());
      return 0;
