@@ -111,3 +111,26 @@ TEST(Field, Can_win_with_true) {
 
     ASSERT_TRUE(app.IsWin());
 }
+
+TEST(Field, Can_create_flag) {
+    Field app(2, 2, 1);
+
+    for (int i = -10; i < 10; i++)
+        for (int k = -10; k < 10; k++)
+            ASSERT_NO_THROW(app.MarkCell(k, i));
+}
+
+TEST(Field, Can_create_flag) {
+    Field app(2, 2, 1);
+
+    for (int i = -10; i < 10; i++)
+        for (int k = -10; k < 10; k++)
+            if (i != 0 && i != 1 && k != 0 && k != 1)
+                ASSERT_FALSE(app.MarkCell(k, i));
+}
+
+TEST(Field, Can_create_flag) {
+    Field app(2, 2, 1);
+
+    ASSERT_TRUE(app.MarkCell(0, 0));
+}
