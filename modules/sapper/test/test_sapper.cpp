@@ -56,19 +56,34 @@ TEST(Saper, Can_recognize_all_bomb) {
 TEST(Saper, Can_help) {
     std::string output_;
     Saper app_;
-    std::vector<const char*> args = { "appname", "0", "0", "0", "0", "0" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "0", "0", "0", "0", "0" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
 
-    ASSERT_EQ("wrong arguments!", output_ = app_(argc, argv));
+    std::string message_;
+    message_ += "Wrong arguments!\n";
+    message_ += "This is a simple saper application. Usage:\n";
+    message_ += "\n    ";
+    message_ += "appname";
+    message_ += " <x> <y> <option>";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
+    message_ += "and print the result";
+    message_ += "\n    ";
+    message_ += "appname";
+    message_ += " <somth>";
+    message_ += "\n        -- exit";
+    message_ += "\n           a formal parameter is int ";
+    message_ += "\n";
+
+    ASSERT_EQ(message_, output_ = app_(argc, argv));
 }
 
 TEST(Saper, Can_touch_and_lose) {
     std::string output_;
     Saper app_(3, 3, 9);
-    std::vector<const char*> args = {"appname", "1", "1", "1" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = {"appname", "1", "1", "1" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
 
     output_ = app_(argc, argv);
 
@@ -78,9 +93,9 @@ TEST(Saper, Can_touch_and_lose) {
 TEST(Saper, Can_touch_no_throw) {
     std::string output_;
     Saper app_(3, 3, 9);
-    std::vector<const char*> args = { "appname", "1", "1", "1" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "1", "1", "1" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
 
     output_ = app_(argc, argv);
 
@@ -90,25 +105,25 @@ TEST(Saper, Can_touch_no_throw) {
 TEST(Saper, Can_touch_and_win) {
     std::string output_;
     Saper app_(3, 3, 0);
-    std::vector<const char*> args = { "appname", "1", "1", "1" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "1", "1", "1" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ("You win!", output_);
+    ASSERT_EQ("You win!\n", output_);
 }
 
 TEST(Saper, Can_touch_and_not_lose) {
     std::string output_;
     Saper app_(10, 10, 6);
-    std::vector<const char*> args = { "appname", "5", "4", "1" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "5", "4", "1" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ("Good move!", output_);
+    ASSERT_EQ("Good move!\n", output_);
 }
 
 TEST(Saper, Can_touch_nothing) {
@@ -145,50 +160,65 @@ TEST(Saper, Can_touch_bomb) {
 TEST(Saper, Can_make_flag) {
     std::string output_;
     Saper app_;
-    std::vector<const char*> args = {"appname", "0", "0", "0" };
+    std::vector<const char*> args_ = {"appname", "0", "0", "0" };
 
-    const char** argv = &args.front();
+    const char** argv = &args_.front();
 
-    int argc = static_cast<int>(args.size());
+    int argc = static_cast<int>(args_.size());
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ("You make a flag", output_);
+    ASSERT_EQ("You make a flag!\n", output_);
 }
 
+/*
 TEST(Saper, Can_throw_parce) {
     std::string output_;
     Saper app_(10, 10, 11);
-    std::vector<const char*> args = { "appname", "-19", "-20", "0" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "-19", "-20", "0" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
     // output_ = app_(argc, argv);
 
     ASSERT_ANY_THROW(output_ = app_(argc, argv));
     //  ASSERT_EQ(output_,"Wrong number format!");
 }
-
+*/
 
 TEST(Saper, Can_exit) {
     std::string output_;
     Saper app_(10, 10, 11);
-    std::vector<const char*> args = { "appname", "0", "0", "2" };
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname", "0", "0", "2" };
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
     output_ = app_(argc, argv);
 
-    ASSERT_EQ("exit", output_);
+    ASSERT_EQ("exit\n", output_);
 }
 
 
-TEST(Saper, Can_exit_by_1_args) {
+TEST(Saper, Can_exit_by_1_args_) {
     std::string output_;
     Saper app_(10, 10, 11);
-    std::vector<const char*> args = { "appname"};
-
-    const char** argv = &args.front();
-    int argc = static_cast<int>(args.size());
+    std::vector<const char*> args_ = { "appname"};
+    const char** argv = &args_.front();
+    int argc = static_cast<int>(args_.size());
     output_ = app_(argc, argv);
+    std::string message_;
+    
+    message_ += "exit\n";
+    message_ += "This is a simple saper application. Usage:\n";
+    message_ += "\n    ";
+    message_ += "appname";
+    message_ += " <x> <y> <option>";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
+    message_ += "and print the result";
+    message_ += "\n    ";
+    message_ += "appname";
+    message_ += " <somth>";
+    message_ += "\n        -- exit";
+    message_ += "\n           a formal parameter is int ";
+    message_ += "\n";
 
-    ASSERT_EQ("exit", output_);
+    ASSERT_EQ(message_, output_);
 }

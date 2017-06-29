@@ -14,15 +14,15 @@ class Saper {
     std::string operator()(int argc, const char** argv);
  private:
     bool validateNumberOfArguments(int argc, const char** argv);
-    static void PrintHelp(const char *appname, std::ostream *ofss);
-    std::ostringstream* stream_;
+    void PrintHelp(const char *appname);
+    std::string message_;
     Field *field_;
-    int parseInt(const char* arg);
     typedef struct {
         int x;
         int y;
         int choose;
     } Arguments;
+    Arguments args_;
 };
 
 #endif  // MODULES_SAPPER_INCLUDE_SAPER_H_

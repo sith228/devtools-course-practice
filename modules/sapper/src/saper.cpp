@@ -23,35 +23,32 @@ bool Saper::TouchResult(int x, int y) {
 }
 
 std::string Saper::operator()(int argc, const char ** argv) {
-    Arguments args;
-    stream_ = new std::ostringstream();
     if (argc == 1) {
-        PrintHelp(argv[0], stream_);
-        return "exit";
+        message_ += "exit\n";
+        PrintHelp(argv[0]);
+        return message_;
     }
     if (!validateNumberOfArguments(argc, argv)) {
-        PrintHelp(argv[0], stream_);
-        return "wrong arguments!";
+        message_ += "Wrong arguments!\n";
+        PrintHelp(argv[0]);
+        return message_;
     }
-    args.x = parseInt(argv[1]);
-    args.y = parseInt(argv[2]);
-    args.choose = parseInt(argv[3]);
-    switch (args.choose) {
+    switch (args_.choose) {
     case 0:
         std::cout <<
             "\t You make a flag!"
             << std::endl;
-        field_->MarkCell(args.x, args.y);
+        field_->MarkCell(args_.x, args_.y);
         field_->PrintField();
-        return "You make a flag";
+        return "You make a flag!\n";
         break;
     case 1:
-        if (TouchResult(args.x, args.y)) {
+        if (TouchResult(args_.x, args_.y)) {
             std::cout << "\t Good move!" << std::endl;
             field_->PrintField();
             if (field_->IsWin())
-                return "You win!";
-            return "Good move!";
+                return "You win!\n";
+            return "Good move!\n";
         } else {
             //  system("cls");
             std::cout << "\t Bad move :(" << std::endl;
@@ -67,34 +64,32 @@ std::string Saper::operator()(int argc, const char ** argv) {
     }
     std::cout <<
         "\t Have a good day!" << std::endl;
-    return "exit";
+    return "exit\n";
 }
 
-void Saper::PrintHelp(const char *appname, std::ostream *ofs) {
-    *ofs <<
-        "This is a simple saper application. Usage:\n"
-        "\n    " << appname << " <x> <y> <option>"
-        "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit "
-        "and print the result"
-        "\n    " << appname << " <somth>"
-        "\n        -- exit"
-        "\n           a formal parameter is int "
-        "\n";
+void Saper::PrintHelp(const char *appname) {
+    message_ += "This is a simple saper application. Usage:\n";
+    message_ += "\n    ";
+    message_ += appname;
+    message_ += " <x> <y> <option>";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
+    message_ += "and print the result";
+    message_ += "\n    ";
+    message_ += appname;
+    message_ += " <somth>";
+    message_ += "\n        -- exit";
+    message_ += "\n           a formal parameter is int ";
+    message_ += "\n";
 }
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
     if (argc != 4) {
-        PrintHelp(argv[0], stream_);
         return false;
     }
+    args_.x = atoi(argv[1]);
+    args_.y = atoi(argv[2]);
+    args_.choose = atoi(argv[3]);
+    if (args_.x < 0 || args_.y < 0)
+        return false;
     return true;
-}
-
-int Saper::parseInt(const char* arg) {
-    int value = atoi(arg);
-
-    if (value < 0) {
-        throw std::string("Wrong number format!");
-    }
-    return value;
 }

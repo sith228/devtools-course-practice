@@ -17,7 +17,7 @@ add_test(
     COMMAND ${APPLICATION} 10000 -12 0
 )
 set_tests_properties (${prefix}_can_detect_Wrong_Number_Format_and_print_message PROPERTIES
-    PASS_REGULAR_EXPRESSION "wrong arguments!"
+    PASS_REGULAR_EXPRESSION "Wrong arguments!"
     LABELS "${MODULE}")
 
 add_test(
@@ -30,8 +30,8 @@ set_tests_properties (${prefix}_can_exit_by_3_argmnt PROPERTIES
 
 
 add_test(
-    NAME ${prefix}_can_exit_by_1_args
-    COMMAND ${APPLICATION} 0
+    NAME ${prefix}_can_exit_by_0_args
+    COMMAND ${APPLICATION} 
 )
 set_tests_properties (${prefix}_can_exit_by_1_args PROPERTIES
     PASS_REGULAR_EXPRESSION "exit"
