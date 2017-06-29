@@ -21,15 +21,16 @@ TEST(Field, throw_when_negative_hight) {
 // print
 TEST(Field, can_print) {
     Field app(2, 2, 1);
-    
+
     ASSERT_NO_THROW(app.PrintField());
 }
 
 
 TEST(Field, print_predict) {
     Field app(2, 2, 1);
-    
+
     std::cout << app.PrintField() << std::endl;
 
-    ASSERT_EQ(" |0 1 |\n-+----+\n0|* * |\n1|* * |\n-+----+\n", app.PrintField());
+    ASSERT_EQ(" |0 1 |\n-+----+\n0|* * |\n1|* * |\n-+----+\n",
+        app.PrintField());
 }
