@@ -24,13 +24,13 @@ bool Saper::TouchResult(int x, int y) {
 
 std::string Saper::operator()(int argc, const char ** argv) {
     Arguments args;
-    stream_ = new std::ostringstream();
+    stream = new std::ostringstream();
     if (argc == 1) {
-        PrintHelp(argv[0], stream_);
+        PrintHelp(argv[0], stream);
         return "exit";
     }
     if (!validateNumberOfArguments(argc, argv)) {
-        PrintHelp(argv[0], stream_);
+        PrintHelp(argv[0], stream);
         return "wrong arguments!";
     }
     args.x = parseInt(argv[1]);
@@ -84,7 +84,7 @@ void Saper::PrintHelp(const char *appname, std::ostream *ofs) {
 
 bool Saper::validateNumberOfArguments(int argc, const char ** argv) {
     if (argc != 4) {
-        PrintHelp(argv[0], stream_);
+        PrintHelp(argv[0], stream);
         return false;
     }
     return true;

@@ -146,7 +146,9 @@ TEST(Saper, Can_make_flag) {
     std::string output_;
     Saper app_;
     std::vector<const char*> args = {"appname", "0", "0", "0" };
+
     const char** argv = &args.front();
+
     int argc = static_cast<int>(args.size());
 
     output_ = app_(argc, argv);
@@ -160,9 +162,12 @@ TEST(Saper, Can_throw_parce) {
     std::vector<const char*> args = { "appname", "-19", "-20", "0" };
     const char** argv = &args.front();
     int argc = static_cast<int>(args.size());
+    // output_ = app_(argc, argv);
 
     ASSERT_ANY_THROW(output_ = app_(argc, argv));
+    //  ASSERT_EQ(output_,"Wrong number format!");
 }
+
 
 TEST(Saper, Can_exit) {
     std::string output_;
@@ -174,6 +179,7 @@ TEST(Saper, Can_exit) {
 
     ASSERT_EQ("exit", output_);
 }
+
 
 TEST(Saper, Can_exit_by_1_args) {
     std::string output_;

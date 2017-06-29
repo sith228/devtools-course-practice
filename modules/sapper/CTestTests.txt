@@ -10,19 +10,3 @@ add_test(
 set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
 
-
-add_test(
-    NAME ${prefix}_can_Detect_Wrong_Number_Format
-    COMMAND ${APPLICATION} 10000 -12 0
-)
-set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
-    PASS_REGULAR_EXPRESSION "wrong arguments!"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_can_Detect_Wrong_Number_Format
-    COMMAND ${APPLICATION} 0 0 2
-)
-set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
-    PASS_REGULAR_EXPRESSION "exit"
-    LABELS "${MODULE}")
