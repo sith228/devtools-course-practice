@@ -152,5 +152,8 @@ TEST(Field, Can_open_all_near_to_zero) {
             if (app[i][k].num == 0)
                 app.OpenNearCell(i, k);
 
-    ASSERT_TRUE(app.IsWin());
+    for (int i = 0; i < 5; i++)
+        for (int k = 0; k < 5; k++)
+            if (app[i][k].num == 0)
+                ASSERT_NE(app[i][k].viewCell, '*');
 }
