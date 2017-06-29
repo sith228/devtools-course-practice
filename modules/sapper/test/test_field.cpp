@@ -120,7 +120,7 @@ TEST(Field, Can_create_flag) {
             ASSERT_NO_THROW(app.MarkCell(k, i));
 }
 
-TEST(Field, Can_create_flag) {
+TEST(Field, Can_not_mark_nothing) {
     Field app(2, 2, 1);
 
     for (int i = -10; i < 10; i++)
@@ -129,8 +129,28 @@ TEST(Field, Can_create_flag) {
                 ASSERT_FALSE(app.MarkCell(k, i));
 }
 
-TEST(Field, Can_create_flag) {
+TEST(Field, Can_create_flag_true) {
     Field app(2, 2, 1);
 
     ASSERT_TRUE(app.MarkCell(0, 0));
+}
+
+TEST(Field, Can_open_near_cell) {
+    Field app(2, 2, 0);
+
+    for (int i = 0; i < 2; i++)
+        for (int k = 0; k < 2; k++)
+            if (app[i][k].num == 0)
+                ASSERT_NO_THROW(app.OpenNearCell(i, k));
+}
+
+TEST(Field, Can_open_all_near_to_zero) {
+    Field app(10, 10, 2);
+
+    for (int i = 0; i < 5; i++)
+        for (int k = 0; k < 5; k++)
+            if (app[i][k].num == 0)
+                app.OpenNearCell(i, k);
+
+    ASSERT_TRUE(app.IsWin());
 }
