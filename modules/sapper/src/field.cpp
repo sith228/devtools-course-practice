@@ -133,7 +133,7 @@ void Field::OpenNearCell(int x, int y) {
 }
 
 bool Field::OpenCurrentCell(int x_, int y_) {
-    if (x_<0 || y_<0 || x_ >=Height_ || y_ >= Width_)
+    if (x_<0 || y_<0 || x_ >= Height_ || y_ >= Width_)
         return false;
     std::string temp = std::to_string(field_[x_][y_].num);
     field_[x_][y_].viewCell = temp[0];

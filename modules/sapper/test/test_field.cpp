@@ -25,12 +25,55 @@ TEST(Field, can_print) {
     ASSERT_NO_THROW(app.PrintField());
 }
 
-
 TEST(Field, print_predict) {
     Field app(2, 2, 1);
 
     std::cout << app.PrintField() << std::endl;
 
     ASSERT_EQ(" |0 1 |\n-+----+\n0|* * |\n1|* * |\n-+----+\n",
+        app.PrintField());
+}
+
+TEST(Field, Can_open_all) {
+    Field app(2, 2, 0);
+
+    for (int i = 0; i < 2; i++)
+        for (int k = 0; k < 2; k++)
+            ASSERT_NO_THROW(app.OpenCurrentCell(i, k));
+}
+
+TEST(Field, Cant_open_nothing) {
+    Field app(2, 2, 0);
+
+    for (int i = -3; i < 6; i++)
+        for (int k = -10; k < 20; k++)
+            if (i != 0 && i != 1 && k != 0 && k != 1)
+                ASSERT_FALSE(app.OpenCurrentCell(i, k));
+}
+
+TEST(Field, Can_open_that_exist) {
+    Field app(2, 2, 0);
+
+    for (int i = -1; i < 4; i++)
+        for (int k = -10; k < 20; k++)
+            ASSERT_NO_THROW(app.OpenCurrentCell(i, k));
+}
+
+TEST(Field, Can_open_all_cell_with_true_) {
+    Field app(2, 2, 0);
+
+    for (int i = 0; i < 2; i++)
+        for (int k = 0; k < 2; k++)
+            ASSERT_TRUE(app.OpenCurrentCell(i, k));
+}
+
+TEST(Field, Can_open_all_and_eq_print_string) {
+    Field app(2, 2, 0);
+
+    for (int i = 0; i < 2; i++)
+        for (int k = 0; k < 2; k++)
+            app.OpenCurrentCell(i, k);
+
+    ASSERT_EQ(" |0 1 |\n-+----+\n0|0 0 |\n1|0 0 |\n-+----+\n",
         app.PrintField());
 }
