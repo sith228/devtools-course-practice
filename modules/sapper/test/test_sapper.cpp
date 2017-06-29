@@ -66,8 +66,8 @@ TEST(Saper, Can_help) {
     message_ += "\n    ";
     message_ += "appname";
     message_ += " <x> <y> <option>";
-    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
-    message_ += "and print the result";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 3 - exit. ";
+    message_ += "2 - print the result";
     message_ += "\n    ";
     message_ += "appname";
     message_ += " <somth>";
@@ -87,7 +87,7 @@ TEST(Saper, Can_touch_and_lose) {
 
     output_ = app_(argc, argv);
 
-    ASSERT_EQ("You lose", output_);
+    ASSERT_EQ("You lose\n", output_);
 }
 
 TEST(Saper, Can_touch_no_throw) {
@@ -171,18 +171,16 @@ TEST(Saper, Can_make_flag) {
     ASSERT_EQ("You make a flag!\n", output_);
 }
 
-/*
+
 TEST(Saper, Can_print) {
     std::string output_;
-    Saper app_(10, 10, 11);
+    Saper app_;
     std::vector<const char*> args_ = { "appname", "0", "0", "2" };
     const char** argv = &args_.front();
     int argc = static_cast<int>(args_.size());
 
     ASSERT_NO_THROW(output_ = app_(argc, argv));
-    //  ASSERT_EQ(output_,"Wrong number format!");
 }
-*/
 
 TEST(Saper, Can_exit) {
     std::string output_;
@@ -210,8 +208,8 @@ TEST(Saper, Can_exit_by_1_args_) {
     message_ += "\n    ";
     message_ += "appname";
     message_ += " <x> <y> <option>";
-    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
-    message_ += "and print the result";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 3 - exit. ";
+    message_ += "2 - print the result";
     message_ += "\n    ";
     message_ += "appname";
     message_ += " <somth>";

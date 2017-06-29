@@ -36,13 +36,13 @@ std::string Saper::operator()(int argc, const char ** argv) {
     switch (args_.choose) {
     case 0:
         field_->MarkCell(args_.x, args_.y);
-        return "You make a flag!\n" + field_->PrintField();
+        return "You make a flag!\n";
         break;
     case 1:
         if (TouchResult(args_.x, args_.y)) {
             if (field_->IsWin())
-                return "You win!\n" + field_->PrintField();
-            return "Good move!\n" + field_->PrintField();
+                return "You win!\n";
+            return "Good move!\n";
         } else {
             //  system("cls");
             std::cout << "\t Bad move :(" << std::endl;
@@ -51,12 +51,13 @@ std::string Saper::operator()(int argc, const char ** argv) {
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Sory, you lose(" << std::endl;
-            return "You lose\n" + field_->PrintField();
+            return "You lose\n";
         }
         break;
+    case 2:
+        return field_->PrintField();
+        break;
     }
-    std::cout <<
-        "\t Have a good day!" << std::endl;
     return "exit\n";
 }
 
@@ -65,8 +66,8 @@ void Saper::PrintHelp(const char *appname) {
     message_ += "\n    ";
     message_ += appname;
     message_ += " <x> <y> <option>";
-    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 2 - exit ";
-    message_ += "and print the result";
+    message_ += "\n   <option> = 0 - touch cell. 1 - mark cell. 3 - exit. ";
+    message_ += "2 - print the result";
     message_ += "\n    ";
     message_ += appname;
     message_ += " <somth>";
