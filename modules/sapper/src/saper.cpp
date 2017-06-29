@@ -35,30 +35,23 @@ std::string Saper::operator()(int argc, const char ** argv) {
     }
     switch (args_.choose) {
     case 0:
-        std::cout <<
-            "\t You make a flag!"
-            << std::endl;
         field_->MarkCell(args_.x, args_.y);
-        field_->PrintField();
-        return "You make a flag!\n";
+        return "You make a flag!\n" + field_->PrintField();
         break;
     case 1:
         if (TouchResult(args_.x, args_.y)) {
-            std::cout << "\t Good move!" << std::endl;
-            field_->PrintField();
             if (field_->IsWin())
-                return "You win!\n";
-            return "Good move!\n";
+                return "You win!\n" + field_->PrintField();
+            return "Good move!\n" + field_->PrintField();
         } else {
             //  system("cls");
             std::cout << "\t Bad move :(" << std::endl;
-            field_->PrintField();
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Ba Ba Ba Bah!" << std::endl;
             std::cout << "Sory, you lose(" << std::endl;
-            return "You lose";
+            return "You lose\n" + field_->PrintField();
         }
         break;
     }
