@@ -7,12 +7,8 @@
 
 int main(int argc, const char** argv) {
      std::string output;
-     Saper app(9, 9, 10);
+     Saper app(9, 9, 1);
      output = app(argc, argv);
-    printf("%s\n", output.c_str());
-     //  fwrite()
-     //  std::ofstream f("dump.bin", std::binary);
-     //  f.write(&m, sizeof(m));
-     //  f.close();
+     printf("%s\n", output.c_str());
      return 0;
 }
